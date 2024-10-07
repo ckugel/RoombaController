@@ -1,14 +1,24 @@
 const capy = @import("capy");
 const std = @import("std");
+const net = std.net;
+const fs = std.fs;
+const os = std.os;
 pub usingnamespace capy.cross_platform;
+const atomic = std.atomic;
+const Atom = capy.Atom;
 
 var gpa: std.heap.GeneralPurposeAllocator(.{}) = undefined;
 pub const capy_allocator = gpa.allocator();
 
-var corner_1 = capy.Atom(f32).of(5);
-var corner_2 = capy.Atom(f32).of(5);
-var corner_3 = capy.Atom(f32).of(5);
-var corner_4 = capy.Atom(f32).of(5);
+var corner_1 = Atom(f32).of(5);
+var corner_2 = Atom(f32).of(5);
+var corner_3 = Atom(f32).of(5);
+var corner_4 = Atom(f32).of(5);
+
+var angleSpin = Atom(f32).of(45);
+
+const PORT = 288;
+const Address = net.Address.parseIp("192.168.1.1", PORT);
 
 pub fn main() !void {
     gpa = .{};
@@ -34,6 +44,7 @@ pub fn main() !void {
     try window.set(capy.row(.{ .spacing = 0 }, .{
         capy.navigationSidebar(.{}),
         capy.tabs(.{
+            capy.tab(.{ .label = "Basic Controls"},  ),
             capy.tab(.{ .label = "Border Layout" }, BorderLayoutExample()),
             capy.tab(.{ .label = "Buttons" }, capy.column(.{}, .{
                 // alignX = 0 means buttons should be aligned to the left
@@ -67,13 +78,48 @@ pub fn main() !void {
                     .bind("value", &corner_4)),
                 }),
             })),
-            //capy.tab(.{ .label = "Drawing" }, capy.expanded(drawer(.{}))),
+            capy.tab(.{ .label = "Drawing" }, capy.expanded(drawer(.{}))),
         }),
     }));
 
     window.show();
+
+    // maybe spawn thread here for main event loop???
     capy.runEventLoop();
     std.log.info("Goodbye!", .{});
+}
+
+fn mainPage(angle: Atom(f32)) anyerror!*capy.Container {
+    return capy.column(.{},
+        .{
+            capy.alignment(.{.x = 0}, capy.button(.{ .label = "Send angle", .onclick = sendAngleData})),
+            capy.iexpanded(capy.slider(.{ .min = -180, .max = 180, .step = 1 }).bind("value", &angle)),
+        }
+    );
+}
+
+fn connectViaTCP(read_buffer: *atomic.Queue, write_buffer: *atomic.Queue) !void {
+    var server = net.StreamServer.init();
+    defer server.deinit();
+
+    var oldAngle: f32 = 45;
+
+    try server.listen(Address);
+
+    while (1) {
+        const client = try server.connect();
+        const client_addr = client.address;
+        const stream = client.stream;
+
+        var buffer: [256]u8 = undefined;
+
+
+        _ = try stream.write("a");
+        for i in 0..2 {
+            
+        }
+
+    }
 }
 
 fn drawRounded(cnv: *anyopaque, ctx: *capy.DrawContext) !void {

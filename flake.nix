@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    zig.url = "github:mitchellh/zig-overlay#master-2024-06-01"
   };
 
   outputs = { self, nixpkgs, flake-utils }:
@@ -34,6 +35,8 @@
           pkgs.cairo
           pkgs.gobject-introspection
         ];
+
+        packages = with pkgs; [  ];
 
         # Build Zig from source (Zig 0.13.0 from GitHub)
         shellHook = ''
