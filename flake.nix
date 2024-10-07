@@ -4,58 +4,64 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    zig.url = "github:mitchellh/zig-overlay#master-2024-06-01"
-  };
+    zig.url = "github:mitchellh/zig-overlay";
+    zls.url = "github:zigtools/zls";
+    
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
+};
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+
+
+outputs =
+    { self
+    , nixpkgs
+    , flake-utils
+    , ...
+    } @ inputs:
     let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-    in {
-      devShell = pkgs.mkShell {
-        buildInputs = [
-          pkgs.cmake
-          pkgs.llvm_18
-          pkgs.git
-          pkgs.pkg-config
-          pkgs.buildPackages.libcxx
-          pkgs.libffi
-          pkgs.zlib
-          pkgs.python3
-          pkgs.python3Packages.virtualenv
-          pkgs.binutils
-          pkgs.clang
-          pkgs.openssl
+      overlays = [
+        # Other overlays
+        (final: prev: {
+          zigpkgs = inputs.zig.packages.${prev.system};
+          zls = inputs.zls.packages.${prev.system}.zls;
+        })
+      ];
 
-          # GTK 4 and its dependencies
-          pkgs.gtk4
-          pkgs.glib
-          pkgs.cairo
-          pkgs.gobject-introspection
-        ];
+      # Our supported systems are the same supported systems as the Zig binaries
+      systems = builtins.attrNames inputs.zig.packages;
+    in
+    flake-utils.lib.eachSystem systems (
+      system:
+      let
+        pkgs = import nixpkgs { inherit overlays system; };
+      in
+      rec {
+        devShells.default = pkgs.mkShell {
+          nativeBuildInputs = [
+            pkgs.zigpkgs."0.13.0"
+            pkgs.zls
+          ];
 
-        packages = with pkgs; [  ];
+          buildInputs = [
+            # we need a version of bash capable of being interactive
+            # as opposed to a bash just used for building this flake
+            # in non-interactive mode
+            pkgs.bashInteractive
+            pkgs.zlib
+          ];
 
-        # Build Zig from source (Zig 0.13.0 from GitHub)
-        shellHook = ''
-          if [ ! -d "zig" ]; then
-            git clone https://github.com/ziglang/zig.git --branch 0.13.0 --depth 1
-            cd zig
-            cmake -B build -DCMAKE_INSTALL_PREFIX=$HOME/.local/zig -DZIG_PREFER_CLANG_LLVM=ON
-            cmake --build build -j$(nproc)
-            echo "Zig 0.13.0 has been built and is ready!"
-          else
-            echo "Zig 0.13.0 is already cloned and built."
-            cd zig
-          fi
+          shellHook = ''
+            # once we set SHELL to point to the interactive bash, neovim will
+            # launch the correct $SHELL in its :terminal
+            export SHELL=${pkgs.bashInteractive}/bin/bash
+          '';
+        };
 
-          # Optionally set up environment for GTK 4
-          export GTK_PATH=${pkgs.gtk4}/lib
-          echo "GTK 4 environment ready!"
-        '';
-      };
-    });
+        # For compatibility with older versions of the `nix` binary
+        devShell = devShells.${system}.default;
+  }
+  );
 }
-
