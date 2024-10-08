@@ -15,10 +15,12 @@ var corner_2 = Atom(f32).of(5);
 var corner_3 = Atom(f32).of(5);
 var corner_4 = Atom(f32).of(5);
 
+var message = Atom(u8).of(0);
+
 var angleSpin = Atom(f32).of(45);
+var angleSpining = Atom(i16).of(45);
 
 const PORT = 288;
-const Address = net.Address.parseIp("192.168.1.1", PORT);
 
 pub fn main() !void {
     gpa = .{};
@@ -44,81 +46,151 @@ pub fn main() !void {
     try window.set(capy.row(.{ .spacing = 0 }, .{
         capy.navigationSidebar(.{}),
         capy.tabs(.{
-            capy.tab(.{ .label = "Basic Controls"},  ),
-            capy.tab(.{ .label = "Border Layout" }, BorderLayoutExample()),
-            capy.tab(.{ .label = "Buttons" }, capy.column(.{}, .{
-                // alignX = 0 means buttons should be aligned to the left
-                // TODO: use constraint layout (when it's added) to make all buttons same width
-                capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Button", .onclick = moveButton })),
-                capy.button(.{ .label = "Button (disabled)", .enabled = false }),
-                capy.checkBox(.{ .label = "Checked", .checked = true }), // TODO: dynamic label based on checked
-                capy.checkBox(.{ .label = "Disabled", .enabled = false }),
-                capy.row(.{}, .{
-                    capy.expanded(capy.slider(.{ .min = -10, .max = 10, .step = 0.1 })
-                    .bind("value", &somesliderValue)),
-                    capy.label(.{})
-                    .bind("text", somesliderText),
-                }),
-            })),
-            capy.tab(.{ .label = "Rounded Rectangle" }, capy.column(.{}, .{
-                capy.alignment(
-                    .{},
-                    capy.canvas(.{ .preferredSize = capy.Size.init(100, 100), .ondraw = drawRounded }),
-                ),
-                capy.row(.{}, .{
-                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
-                    .bind("value", &corner_1)),
-                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
-                    .bind("value", &corner_2)),
-                }),
-                capy.row(.{}, .{
-                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
-                    .bind("value", &corner_3)),
-                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
-                    .bind("value", &corner_4)),
-                }),
-            })),
-            capy.tab(.{ .label = "Drawing" }, capy.expanded(drawer(.{}))),
+            capy.tab(.{ .label = "Basic Controls" }, mainPage()),
+            // capy.tab(.{ .label = "Border Layout" }, BorderLayoutExample()),
+            //           capy.tab(.{ .label = "Buttons" }, capy.column(.{}, .{
+            //                // alignX = 0 means buttons should be aligned to the left
+            //                // TODO: use constraint layout (when it's added) to make all buttons same width
+            //                capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Button", .onclick = moveButton })),
+            //                capy.button(.{ .label = "Button (disabled)", .enabled = false }),
+            //                capy.checkBox(.{ .label = "Checked", .checked = true }), // TODO: dynamic label based on checked
+            //                capy.checkBox(.{ .label = "Disabled", .enabled = false }),
+            //                capy.row(.{}, .{
+            //                    capy.expanded(capy.slider(.{ .min = -10, .max = 10, .step = 0.1 })
+            //                        .bind("value", &somesliderValue)),
+            //                    capy.label(.{})
+            //                        .bind("text", somesliderText),
+            //                }),
+            //            })),
+            //            capy.tab(.{ .label = "Rounded Rectangle" }, capy.column(.{}, .{
+            //                capy.alignment(
+            //                    .{},
+            //                    capy.canvas(.{ .preferredSize = capy.Size.init(100, 100), .ondraw = drawRounded }),
+            //                ),
+            //                capy.row(.{}, .{
+            //                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
+            //                        .bind("value", &corner_1)),
+            //                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
+            //                        .bind("value", &corner_2)),
+            //                }),
+            //                capy.row(.{}, .{
+            //                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
+            //                        .bind("value", &corner_3)),
+            //                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
+            //                        .bind("value", &corner_4)),
+            //                }),
+            //            })),
+            // capy.tab(.{ .label = "Drawing" }, capy.expanded(drawer(.{}))),
         }),
     }));
 
     window.show();
 
     // maybe spawn thread here for main event loop???
+    _ = try std.Thread.spawn(.{}, connectViaTCP, .{});
+
+    // _ = try connectViaTCP();
+
     capy.runEventLoop();
     std.log.info("Goodbye!", .{});
 }
 
-fn mainPage(angle: Atom(f32)) anyerror!*capy.Container {
-    return capy.column(.{},
-        .{
-            capy.alignment(.{.x = 0}, capy.button(.{ .label = "Send angle", .onclick = sendAngleData})),
-            capy.iexpanded(capy.slider(.{ .min = -180, .max = 180, .step = 1 }).bind("value", &angle)),
-        }
-    );
+fn mainPage() anyerror!*capy.Container {
+    const somesliderText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d:1}", .{&angleSpin});
+    return capy.column(.{}, .{
+        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Send angle", .onclick = sendAngleData })),
+        capy.slider(.{ .min = -180, .max = 180, .step = 1 }).bind("value", &angleSpin),
+        capy.label(.{}).bind("text", somesliderText),
+        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Forward", .onclick = sendW })),
+        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Backwards", .onclick = sendS })),
+        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Spin left", .onclick = sendA })),
+        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Spin right", .onclick = sendD })),
+        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Stop", .onclick = sendSpace })),
+        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Quit program", .onclick = sendQuit })),
+    });
 }
 
-fn connectViaTCP(read_buffer: *atomic.Queue, write_buffer: *atomic.Queue) !void {
-    var server = net.StreamServer.init();
-    defer server.deinit();
+fn sendW(_: *anyopaque) !void {
+    message.set('w');
+}
 
-    var oldAngle: f32 = 45;
+fn sendA(_: *anyopaque) !void {
+    message.set('a');
+}
 
-    try server.listen(Address);
+fn sendS(_: *anyopaque) !void {
+    message.set('s');
+}
 
-    while (1) {
-        const client = try server.connect();
-        const client_addr = client.address;
-        const stream = client.stream;
+fn sendD(_: *anyopaque) !void {
+    message.set('d');
+}
 
-        var buffer: [256]u8 = undefined;
+fn sendSpace(_: *anyopaque) !void {
+    message.set(' ');
+}
 
+fn sendQuit(_: *anyopaque) !void {
+    message.set('q');
+}
 
-        _ = try stream.write("a");
-        for i in 0..2 {
-            
+fn sendAngleData(_: *anyopaque) !void {
+    angleSpining.set(@intFromFloat(angleSpin.get()));
+}
+
+fn connectViaTCP() !void {
+    // var server = net.Stream.init(.{});
+
+    const Address = try net.Address.parseIp("192.168.1.1", PORT);
+    var oldAngle: i16 = 45;
+    var oldMessage: u8 = 0;
+
+    const stream = try net.tcpConnectToAddress(Address);
+    defer stream.close();
+
+    //var listener = try Address.listen(.{
+    //    .reuse_address = true,
+    //    .kernel_backlog = 2048,
+    //});
+    //defer listener.deinit();
+
+    // _ = try stream.write("w");
+
+    while (true) {
+        // if (listener.accept()) |conn| {
+        // const client_addr = client.address;
+        // const stream = client.stream;
+
+        // var buffer: [256]u8 = undefined;
+
+        // _ = try stream.read(&buffer);
+
+        if (oldMessage != message.get()) {
+            oldMessage = message.get();
+            const my_array: []const u8 = &[_]u8{oldMessage}; // Create a constant array with one element
+
+            _ = try stream.write(my_array);
         }
 
+        if (angleSpining.get() != oldAngle) {
+            oldAngle = angleSpining.get();
+            _ = try stream.write("t");
+            if (oldAngle < 0) {
+                _ = try stream.write("n");
+                oldAngle *= -1;
+            }
+            for (0..2) |i| {
+                const value: u8 = @intCast(@rem(@divTrunc(oldAngle, (std.math.pow(i16, 10, @intCast(i)))), 10));
+                std.debug.print("Huh value: {}", .{value});
+                const my_message: []const u8 = &[_]u8{value};
+                _ = try stream.write(my_message);
+            }
+            _ = try stream.write("t");
+        }
+        // } else |err| {
+        //    std.log.err("failed to accept connection {}", .{err});
+        //}
+        //}
     }
 }
 
