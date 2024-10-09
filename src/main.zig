@@ -47,6 +47,8 @@ pub fn main() !void {
         capy.navigationSidebar(.{}),
         capy.tabs(.{
             capy.tab(.{ .label = "Basic Controls" }, mainPage()),
+            capy.tab(.{ .label = "Graph" }, graph_page()),
+            capy.tab(.{ .label = "Recieved data" }, raw_read_page()),
             // capy.tab(.{ .label = "Border Layout" }, BorderLayoutExample()),
             //           capy.tab(.{ .label = "Buttons" }, capy.column(.{}, .{
             //                // alignX = 0 means buttons should be aligned to the left
@@ -105,8 +107,44 @@ fn mainPage() anyerror!*capy.Container {
         capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Backwards", .onclick = sendS })),
         capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Spin left", .onclick = sendA })),
         capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Spin right", .onclick = sendD })),
+        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Measure", .onclick = sendM })),
         capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Stop", .onclick = sendSpace })),
         capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Quit program", .onclick = sendQuit })),
+    });
+}
+
+fn graph_page() anyerror!*capy.Container {
+    return capy.column(.{}, .{});
+}
+
+fn raw_read_page() anyerror!*capy.Container {
+    var monospace = capy.Atom(bool).of(false);
+    var text = capy.Atom([]const u8).of("");
+
+    const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
+        fn callback(txt: []const u8) usize {
+            return txt.len;
+        }
+    }.callback);
+
+    var label_text = try capy.FormattedAtom(capy.internal.lasting_allocator, "Text length: {d}", .{text_length});
+    defer label_text.deinit();
+
+    try window.set(capy.column(.{ .spacing = 0 }, .{
+        capy.expanded(capy.textArea(.{})
+            .bind("monospace", &monospace)
+            .bind("text", &text)),
+        capy.label(.{ .text = "TODO: cursor info" })
+            .bind("text", label_text),
+        // TODO: move into menu
+        capy.checkBox(.{ .label = "Monospaced" })
+            .bind("checked", &monospace),
+    }));
+
+
+    const resultText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d:1}", .{});
+    return capy.column(.{}, .{
+        capy.TextArea(.text = resultText),
     });
 }
 
@@ -128,6 +166,10 @@ fn sendD(_: *anyopaque) !void {
 
 fn sendSpace(_: *anyopaque) !void {
     message.set(' ');
+}
+
+fn sendM(_: *anyopaque) !void {
+    message.set('m');
 }
 
 fn sendQuit(_: *anyopaque) !void {
