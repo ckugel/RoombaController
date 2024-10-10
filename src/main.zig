@@ -20,6 +20,10 @@ var message = Atom(u8).of(0);
 var angleSpin = Atom(f32).of(45);
 var angleSpining = Atom(i16).of(45);
 
+var logText = Atom([]const u8).of("");
+
+var quitAll = Atom(bool).of(false);
+
 const PORT = 288;
 
 pub fn main() !void {
@@ -89,12 +93,14 @@ pub fn main() !void {
     window.show();
 
     // maybe spawn thread here for main event loop???
-    _ = try std.Thread.spawn(.{}, connectViaTCP, .{});
+    // _ = try std.Thread.spawn(.{}, connect_tcp_writer, .{});
+    // _ = try std.Thread.spawn(.{}, connect_tcp_reader, .{});
 
     // _ = try connectViaTCP();
 
     capy.runEventLoop();
     std.log.info("Goodbye!", .{});
+    quitAll.set(true);
 }
 
 fn mainPage() anyerror!*capy.Container {
@@ -114,38 +120,36 @@ fn mainPage() anyerror!*capy.Container {
 }
 
 fn graph_page() anyerror!*capy.Container {
-    return capy.column(.{}, .{});
+    return capy.column(.{}, .{
+        // capy.alignment(.{}, capy.row(.{ .spacing = 10}, . {
+        //    capy.button(. { .label = ""})
+        // }))
+        
+    });
 }
 
 fn raw_read_page() anyerror!*capy.Container {
-    var monospace = capy.Atom(bool).of(false);
-    var text = capy.Atom([]const u8).of("");
+//   const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
+//       fn callback(txt: []const u8) usize {
+//           return txt.len;
+//       }
+//   }.callback);
 
-    const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
-        fn callback(txt: []const u8) usize {
-            return txt.len;
-        }
-    }.callback);
+//    var label_text = try capy.FormattedAtom(capy.internal.lasting_allocator, "Text length: {d}", .{text_length});
+//    defer label_text.deinit();
 
-    var label_text = try capy.FormattedAtom(capy.internal.lasting_allocator, "Text length: {d}", .{text_length});
-    defer label_text.deinit();
+    return capy.column(.{ .spacing = 0 }, .{
+       capy.expanded(capy.textArea(.{})
+           .bind("text", &logText)),
+//      capy.label(.{ .text = "TODO: cursor info" })
+//           .bind("text", label_text),
+       // TODO: move into menu
+   });
 
-    try window.set(capy.column(.{ .spacing = 0 }, .{
-        capy.expanded(capy.textArea(.{})
-            .bind("monospace", &monospace)
-            .bind("text", &text)),
-        capy.label(.{ .text = "TODO: cursor info" })
-            .bind("text", label_text),
-        // TODO: move into menu
-        capy.checkBox(.{ .label = "Monospaced" })
-            .bind("checked", &monospace),
-    }));
-
-
-    const resultText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d:1}", .{});
-    return capy.column(.{}, .{
-        capy.TextArea(.text = resultText),
-    });
+   // const resultText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d}", .{});
+   // return capy.column(.{}, .{
+   //    capy.textArea(.{.name = "" }).bind("text", &resultText),
+   // });
 }
 
 fn sendW(_: *anyopaque) !void {
@@ -180,7 +184,23 @@ fn sendAngleData(_: *anyopaque) !void {
     angleSpining.set(@intFromFloat(angleSpin.get()));
 }
 
-fn connectViaTCP() !void {
+fn connect_tcp_reader() !void {
+    const Address = try net.Address.parseIp("192.168.1.1", PORT);
+
+    const stream = try net.tcpConnectToAddress(Address);
+    defer stream.close();
+
+    while (true) {
+        if (quitAll.get()) {
+            break;
+        }
+        var buffer: [256]u8 = undefined;
+        const len = try stream.read(&buffer);
+        logText.set(logText.get() ++ .{buffer[0..len]});
+    }
+}
+
+fn connect_tcp_writer() !void {
     // var server = net.Stream.init(.{});
 
     const Address = try net.Address.parseIp("192.168.1.1", PORT);
@@ -206,6 +226,12 @@ fn connectViaTCP() !void {
         // var buffer: [256]u8 = undefined;
 
         // _ = try stream.read(&buffer);
+        
+        if (quitAll.get()) {
+            _ = try stream.write("q");
+            break;
+        }
+
 
         if (oldMessage != message.get()) {
             oldMessage = message.get();
@@ -217,12 +243,13 @@ fn connectViaTCP() !void {
         if (angleSpining.get() != oldAngle) {
             oldAngle = angleSpining.get();
             _ = try stream.write("t");
+            var angleWrite: f32 = oldAngle;
             if (oldAngle < 0) {
-                _ = try stream.write("n");
-                oldAngle *= -1;
+                _ = try stream.write("-");
+                angleWrite = oldAngle * -1;
             }
             for (0..2) |i| {
-                const value: u8 = @intCast(@rem(@divTrunc(oldAngle, (std.math.pow(i16, 10, @intCast(i)))), 10));
+                const value: u8 = @intCast(@rem(@divTrunc(angleWrite, (std.math.pow(i16, 10, @intCast(i)))), 10));
                 std.debug.print("Huh value: {}", .{value});
                 const my_message: []const u8 = &[_]u8{value};
                 _ = try stream.write(my_message);
