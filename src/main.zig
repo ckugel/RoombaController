@@ -124,32 +124,32 @@ fn graph_page() anyerror!*capy.Container {
         // capy.alignment(.{}, capy.row(.{ .spacing = 10}, . {
         //    capy.button(. { .label = ""})
         // }))
-        
+
     });
 }
 
 fn raw_read_page() anyerror!*capy.Container {
-//   const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
-//       fn callback(txt: []const u8) usize {
-//           return txt.len;
-//       }
-//   }.callback);
+    //   const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
+    //       fn callback(txt: []const u8) usize {
+    //           return txt.len;
+    //       }
+    //   }.callback);
 
-//    var label_text = try capy.FormattedAtom(capy.internal.lasting_allocator, "Text length: {d}", .{text_length});
-//    defer label_text.deinit();
+    //    var label_text = try capy.FormattedAtom(capy.internal.lasting_allocator, "Text length: {d}", .{text_length});
+    //    defer label_text.deinit();
 
     return capy.column(.{ .spacing = 0 }, .{
-       capy.expanded(capy.textArea(.{})
-           .bind("text", &logText)),
-//      capy.label(.{ .text = "TODO: cursor info" })
-//           .bind("text", label_text),
-       // TODO: move into menu
-   });
+        capy.expanded(capy.textArea(.{})
+            .bind("text", &logText)),
+        //      capy.label(.{ .text = "TODO: cursor info" })
+        //           .bind("text", label_text),
+        // TODO: move into menu
+    });
 
-   // const resultText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d}", .{});
-   // return capy.column(.{}, .{
-   //    capy.textArea(.{.name = "" }).bind("text", &resultText),
-   // });
+    // const resultText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d}", .{});
+    // return capy.column(.{}, .{
+    //    capy.textArea(.{.name = "" }).bind("text", &resultText),
+    // });
 }
 
 fn sendW(_: *anyopaque) !void {
@@ -226,12 +226,11 @@ fn connect_tcp_writer() !void {
         // var buffer: [256]u8 = undefined;
 
         // _ = try stream.read(&buffer);
-        
+
         if (quitAll.get()) {
             _ = try stream.write("q");
             break;
         }
-
 
         if (oldMessage != message.get()) {
             oldMessage = message.get();
@@ -254,7 +253,7 @@ fn connect_tcp_writer() !void {
                 const my_message: []const u8 = &[_]u8{value};
                 _ = try stream.write(my_message);
             }
-            _ = try stream.write("t");
+            _ = try stream.write("\n");
         }
         // } else |err| {
         //    std.log.err("failed to accept connection {}", .{err});
