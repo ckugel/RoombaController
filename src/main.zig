@@ -15,6 +15,10 @@ var corner_2 = Atom(f32).of(5);
 var corner_3 = Atom(f32).of(5);
 var corner_4 = Atom(f32).of(5);
 
+var objectAngle = Atom(f32).of(0);
+var objectX = Atom(f32).of(0);
+var objectY = Atom(f32).of(0);
+
 var message = Atom(u8).of(0);
 
 var angleSpin = Atom(f32).of(45);
@@ -121,12 +125,31 @@ fn mainPage() anyerror!*capy.Container {
 
 fn graph_page() anyerror!*capy.Container {
     return capy.column(.{}, .{
-        // capy.alignment(.{}, capy.row(.{ .spacing = 10}, . {
-        //    capy.button(. { .label = ""})
-        // }))
-        
+        capy.canvas(.{
+            .preferredSize = capy.Size.init(800, 600),
+            .ondraw = draw_objects_on_canvas,
+        }),
     });
 }
+
+fn draw_objects_on_canvas(cnv: *anyopaque, ctx: *capy.DrawContext) !void {
+    _ = @as(*capy.Canvas, @ptrCast(@alignCast(cnv)));
+
+    ctx.setColor(0.0, 1.0, 0.0); // Set color to green for the object
+
+    const obj_x = objectX.get();
+    const obj_y = objectY.get();
+    const obj_radius = 30;  // Example radius, adjust according to data or input
+
+    // Draw the object (circle) at x, y coordinates with radius
+    ctx.drawCircle(obj_x, obj_y, obj_radius);
+    ctx.fill();
+
+    // You can also display other elements like angle or labels here
+    ctx.setColor(1.0, 1.0, 1.0); // Set color to white for the text
+    ctx.text(obj_x + obj_radius, obj_y, "Pillar", .{});
+}
+
 
 fn raw_read_page() anyerror!*capy.Container {
 //   const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
@@ -186,7 +209,6 @@ fn sendAngleData(_: *anyopaque) !void {
 
 fn connect_tcp_reader() !void {
     const Address = try net.Address.parseIp("192.168.1.1", PORT);
-
     const stream = try net.tcpConnectToAddress(Address);
     defer stream.close();
 
@@ -196,8 +218,40 @@ fn connect_tcp_reader() !void {
         }
         var buffer: [256]u8 = undefined;
         const len = try stream.read(&buffer);
+        const data = buffer[0..len];
+
+        // Parse the data stream
+        if (data.len > 0 and data[0] == 'o') {
+            var angle: f32 = 0;
+            var x_coord: f32 = 0;
+            var y_coord: f32 = 0;
+            try parse_stream_data(data, &angle, &x_coord, &y_coord);
+
+            // Store the parsed data in a shared atom for UI rendering
+            try update_object_position(angle, x_coord, y_coord);
+        }
+
         logText.set(logText.get() ++ .{buffer[0..len]});
     }
+}
+
+fn parse_stream_data(data: []const u8, angle: *f32, x: *f32, y: *f32) !void {
+    var tokenizer = std.mem.tokenize(data, " "); // Tokenize data by space
+    const angle_str = try tokenizer.nextExpected() catch return error.InvalidData;
+    const x_str = try tokenizer.nextExpected() catch return error.InvalidData;
+    const y_str = try tokenizer.nextExpected() catch return error.InvalidData;
+
+    // Convert the string segments to floating-point values
+    (*angle) = try std.fmt.parseFloat(f32, angle_str, 10);
+    (*x) = try std.fmt.parseFloat(f32, x_str, 10);
+    (*y) = try std.fmt.parseFloat(f32, y_str, 10);
+}
+
+fn update_object_position(angle: f32, x: f32, y: f32) !void {
+    // Update the object position (using Atom to share between threads)
+    objectAngle.set(angle);
+    objectX.set(x);
+    objectY.set(y);
 }
 
 fn connect_tcp_writer() !void {
