@@ -6,18 +6,18 @@ const os = std.os;
 pub usingnamespace capy.cross_platform;
 const atomic = std.atomic;
 const Atom = capy.Atom;
+const ListAtom = capy.ListAtom;
 
 var gpa: std.heap.GeneralPurposeAllocator(.{}) = undefined;
 pub const capy_allocator = gpa.allocator();
 
-var corner_1 = Atom(f32).of(5);
-var corner_2 = Atom(f32).of(5);
-var corner_3 = Atom(f32).of(5);
-var corner_4 = Atom(f32).of(5);
+// var objectRadius = Atom([10]f32);
+// var objectX = Atom([10]f32);
+// var objectY = Atom([10]f32);
 
-var objectAngle = Atom(f32).of(0);
-var objectX = Atom(f32).of(0);
-var objectY = Atom(f32).of(0);
+var objectsRadi = ListAtom(f32).init(capy_allocator);
+var objectsX = ListAtom(f32).init(capy_allocator);
+var objectsY = ListAtom(f32).init(capy_allocator);
 
 var message = Atom(u8).of(0);
 
@@ -30,14 +30,33 @@ var quitAll = Atom(bool).of(false);
 
 const PORT = 288;
 
+const PolarPoint = struct {
+    angle: f32,
+    magnitude: f32,
+    radius: f32,
+};
+
+const CartesianPoint = struct {
+    x: f32,
+    y: f32,
+    radius: f32,
+
+    pub fn toPolar(self: *CartesianPoint) !PolarPoint {
+        return PolarPoint{
+            .angle = std.math.atan2(self.y, self.x),
+            .magnitude = (std.math.pow(self.x, 2) + std.math.pow(self.y, 2)),
+            .radius = self.radius,
+        };
+    }
+};
+
+const Graph = struct {
+    data: std.ArrayList(CartesianPoint),
+};
+
 pub fn main() !void {
     gpa = .{};
     defer _ = gpa.deinit();
-
-    defer corner_1.deinit();
-    defer corner_2.deinit();
-    defer corner_3.deinit();
-    defer corner_4.deinit();
 
     try capy.init();
     defer capy.deinit();
@@ -45,52 +64,12 @@ pub fn main() !void {
     var window = try capy.Window.init();
     defer window.deinit();
 
-    var somesliderValue = capy.Atom(f32).of(0);
-    defer somesliderValue.deinit();
-
-    const somesliderText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d:.1}", .{&somesliderValue});
-    defer somesliderText.deinit();
-
     try window.set(capy.row(.{ .spacing = 0 }, .{
         capy.navigationSidebar(.{}),
         capy.tabs(.{
             capy.tab(.{ .label = "Basic Controls" }, mainPage()),
             capy.tab(.{ .label = "Graph" }, graph_page()),
             capy.tab(.{ .label = "Recieved data" }, raw_read_page()),
-            // capy.tab(.{ .label = "Border Layout" }, BorderLayoutExample()),
-            //           capy.tab(.{ .label = "Buttons" }, capy.column(.{}, .{
-            //                // alignX = 0 means buttons should be aligned to the left
-            //                // TODO: use constraint layout (when it's added) to make all buttons same width
-            //                capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Button", .onclick = moveButton })),
-            //                capy.button(.{ .label = "Button (disabled)", .enabled = false }),
-            //                capy.checkBox(.{ .label = "Checked", .checked = true }), // TODO: dynamic label based on checked
-            //                capy.checkBox(.{ .label = "Disabled", .enabled = false }),
-            //                capy.row(.{}, .{
-            //                    capy.expanded(capy.slider(.{ .min = -10, .max = 10, .step = 0.1 })
-            //                        .bind("value", &somesliderValue)),
-            //                    capy.label(.{})
-            //                        .bind("text", somesliderText),
-            //                }),
-            //            })),
-            //            capy.tab(.{ .label = "Rounded Rectangle" }, capy.column(.{}, .{
-            //                capy.alignment(
-            //                    .{},
-            //                    capy.canvas(.{ .preferredSize = capy.Size.init(100, 100), .ondraw = drawRounded }),
-            //                ),
-            //                capy.row(.{}, .{
-            //                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
-            //                        .bind("value", &corner_1)),
-            //                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
-            //                        .bind("value", &corner_2)),
-            //                }),
-            //                capy.row(.{}, .{
-            //                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
-            //                        .bind("value", &corner_3)),
-            //                    capy.expanded(capy.slider(.{ .min = 0, .max = 100, .step = 0.1 })
-            //                        .bind("value", &corner_4)),
-            //                }),
-            //            })),
-            // capy.tab(.{ .label = "Drawing" }, capy.expanded(drawer(.{}))),
         }),
     }));
 
@@ -109,18 +88,20 @@ pub fn main() !void {
 
 fn mainPage() anyerror!*capy.Container {
     const somesliderText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d:1}", .{&angleSpin});
-    return capy.column(.{}, .{
-        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Send angle", .onclick = sendAngleData })),
-        capy.slider(.{ .min = -180, .max = 180, .step = 1 }).bind("value", &angleSpin),
+    return capy.column(.{}, .{ capy.row(.{}, .{
+        capy.expanded(capy.slider(.{ .min = -180, .max = 180, .step = 1 }).bind("value", &angleSpin)),
+    }), capy.row(.{}, .{
         capy.label(.{}).bind("text", somesliderText),
-        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Forward", .onclick = sendW })),
-        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Backwards", .onclick = sendS })),
-        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Spin left", .onclick = sendA })),
-        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Spin right", .onclick = sendD })),
-        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Measure", .onclick = sendM })),
-        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Stop", .onclick = sendSpace })),
-        capy.alignment(.{ .x = 0 }, capy.button(.{ .label = "Quit program", .onclick = sendQuit })),
-    });
+    }), capy.row(.{}, .{
+        capy.alignment(.{}, capy.button(.{ .label = "Send angle", .onclick = sendAngleData })),
+        capy.alignment(.{}, capy.button(.{ .label = "Forward", .onclick = sendW })),
+        capy.alignment(.{}, capy.button(.{ .label = "Backwards", .onclick = sendS })),
+        capy.alignment(.{}, capy.button(.{ .label = "Spin left", .onclick = sendA })),
+        capy.alignment(.{}, capy.button(.{ .label = "Spin right", .onclick = sendD })),
+        capy.alignment(.{}, capy.button(.{ .label = "Scan", .onclick = sendM })),
+        capy.alignment(.{}, capy.button(.{ .label = "Stop", .onclick = sendSpace })),
+        capy.alignment(.{}, capy.button(.{ .label = "Quit program", .onclick = sendQuit })),
+    }) });
 }
 
 fn graph_page() anyerror!*capy.Container {
@@ -135,20 +116,25 @@ fn graph_page() anyerror!*capy.Container {
 fn draw_objects_on_canvas(cnv: *anyopaque, ctx: *capy.DrawContext) !void {
     const canvas = @as(*capy.Canvas, @ptrCast(@alignCast(cnv)));
 
-    ctx.setColor(0.0, 1.0, 0.0); // Set color to green for the object
+    ctx.setColor(0.0, 1.0, 0.0);
 
-    const obj_x = objectX.get();
-    const obj_y = objectY.get();
-    const obj_radius = 30; // Example radius, adjust according to data or input
+    const length = objectsX.getLength(); // assumes that objects X and Y have the same length (they should)
 
-    // Draw the object (circle) at x, y coordinates with radius
-    ctx.roundedRectangleEx(
-        obj_x,
-        obj_y,
-        canvas.getWidth(),
-        canvas.getHeight(),
-        .{ obj_radius, obj_radius, obj_radius, obj_radius },
-    );
+    for (0..length) |i| {
+        const obj_x: i32 = @intFromFloat(objectsX.get(i));
+        const obj_y: i32 = @intFromFloat(objectsY.get(i));
+        const obj_radius: u32 = @intFromFloat(objectsRadi.get(i));
+
+        // Draw the object (circle) at x, y coordinates with radius
+        ctx.ellipse(
+            obj_x,
+            obj_y,
+            obj_radius,
+            obj_radius,
+        );
+    }
+
+    _ = canvas;
 
     ctx.fill();
 }
@@ -166,15 +152,7 @@ fn raw_read_page() anyerror!*capy.Container {
     return capy.column(.{ .spacing = 0 }, .{
         capy.expanded(capy.textArea(.{})
             .bind("text", &logText)),
-        //      capy.label(.{ .text = "TODO: cursor info" })
-        //           .bind("text", label_text),
-        // TODO: move into menu
     });
-
-    // const resultText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d}", .{});
-    // return capy.column(.{}, .{
-    //    capy.textArea(.{.name = "" }).bind("text", &resultText),
-    // });
 }
 
 fn sendW(_: *anyopaque) !void {
@@ -251,9 +229,9 @@ fn parse_stream_data(data: []const u8, angle: *f32, x: *f32, y: *f32) !void {
 
 fn update_object_position(angle: f32, x: f32, y: f32) !void {
     // Update the object position (using Atom to share between threads)
-    objectAngle.set(angle);
-    objectX.set(x);
-    objectY.set(y);
+    objectsRadi.append(angle);
+    objectsX.append(x);
+    objectsY.append(y);
 }
 
 fn connect_tcp_writer() !void {
@@ -266,23 +244,7 @@ fn connect_tcp_writer() !void {
     const stream = try net.tcpConnectToAddress(Address);
     defer stream.close();
 
-    //var listener = try Address.listen(.{
-    //    .reuse_address = true,
-    //    .kernel_backlog = 2048,
-    //});
-    //defer listener.deinit();
-
-    // _ = try stream.write("w");
-
     while (true) {
-        // if (listener.accept()) |conn| {
-        // const client_addr = client.address;
-        // const stream = client.stream;
-
-        // var buffer: [256]u8 = undefined;
-
-        // _ = try stream.read(&buffer);
-
         if (quitAll.get()) {
             _ = try stream.write("q");
             break;
@@ -310,108 +272,6 @@ fn connect_tcp_writer() !void {
                 _ = try stream.write(my_message);
             }
             _ = try stream.write("\n");
-        }
-        // } else |err| {
-        //    std.log.err("failed to accept connection {}", .{err});
-        //}
-        //}
-    }
-}
-
-fn drawRounded(cnv: *anyopaque, ctx: *capy.DrawContext) !void {
-    const canvas = @as(*capy.Canvas, @ptrCast(@alignCast(cnv)));
-
-    ctx.setColor(0.7, 0.9, 0.3);
-    ctx.setLinearGradient(.{ .x0 = 80, .y0 = 0, .x1 = 100, .y1 = 100, .stops = &.{
-        .{ .offset = 0.1, .color = capy.Color.yellow },
-        .{ .offset = 0.8, .color = capy.Color.red },
-    } });
-    ctx.roundedRectangleEx(
-        0,
-        0,
-        canvas.getWidth(),
-        canvas.getHeight(),
-        .{ corner_1.get(), corner_2.get(), corner_3.get(), corner_4.get() },
-    );
-    ctx.fill();
-}
-
-pub const Drawer = struct {
-    pub usingnamespace capy.internal.All(Drawer);
-
-    peer: ?capy.backend.Canvas = null,
-    handlers: Drawer.Handlers = undefined,
-    dataWrappers: Drawer.Atoms = .{},
-    image: capy.ImageData,
-
-    pub fn init() !Drawer {
-        return Drawer.init_events(Drawer{
-            .image = try capy.ImageData.new(1, 1, .RGB), // start with a 1x1 image
-        });
-    }
-
-    pub fn onDraw(self: *Drawer, ctx: *capy.DrawContext) !void {
-        const width = self.getWidth();
-        const height = self.getHeight();
-        ctx.image(0, 0, width, height, self.image);
-    }
-
-    pub fn onResize(self: *Drawer, size: capy.Size) !void {
-        if (size.width > self.image.width or size.height > self.image.height) {
-            self.image.deinit(); // delete old image
-            self.image = try capy.ImageData.new(size.width, size.height, .RGB);
-            @import("std").log.info("new image of size {}", .{size});
-        }
-    }
-
-    pub fn show(self: *Drawer) !void {
-        if (self.peer == null) {
-            self.peer = try capy.backend.canvas.create();
-            try self.show_events();
-        }
-    }
-
-    pub fn getPreferredSize(self: *Drawer, _: capy.Size) capy.Size {
-        return .{ .width = self.image.width, .height = self.image.height };
-    }
-};
-
-pub fn drawer(config: Drawer.Config) !Drawer {
-    _ = config;
-    var lineGraph = try Drawer.init();
-    try lineGraph.addDrawHandler(&Drawer.onDraw);
-    try lineGraph.addResizeHandler(&Drawer.onResize);
-    return lineGraph;
-}
-
-// You can simulate a border layout using only column, row and expanded
-fn BorderLayoutExample() anyerror!*capy.Container {
-    return capy.column(.{}, .{
-        capy.label(.{ .text = "Top", .alignment = .Center }),
-        capy.expanded(
-            capy.row(.{}, .{
-                capy.label(.{ .text = "Left", .alignment = .Center }),
-                capy.expanded(
-                    capy.label(.{ .text = "Center", .alignment = .Center }),
-                ),
-                capy.label(.{ .text = "Right", .alignment = .Center }),
-            }),
-        ),
-        capy.label(.{ .text = "Bottom", .alignment = .Center }),
-    });
-}
-
-fn moveButton(button_: *anyopaque) !void {
-    const button = @as(*capy.Button, @ptrCast(@alignCast(button_)));
-    const parent = button.getParent().?.as(capy.Alignment);
-
-    const alignX = &parent.x;
-    // Ensure the current animation is done before starting another
-    if (!alignX.hasAnimation()) {
-        if (alignX.get() == 0) { // if on the left
-            alignX.animate(capy.Easings.InOut, 1, 1000);
-        } else {
-            alignX.animate(capy.Easings.InOut, 0, 1000);
         }
     }
 }
