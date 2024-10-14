@@ -2,3 +2,4 @@
 zig-out/
 zig
 .idea
+cmake-build-debug/
