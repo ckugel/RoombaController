@@ -139,47 +139,42 @@ fn draw_objects_on_canvas(cnv: *anyopaque, ctx: *capy.DrawContext) !void {
 
     const obj_x = objectX.get();
     const obj_y = objectY.get();
-    const obj_radius = 30;  // Example radius, adjust according to data or input
+    const obj_radius = 30; // Example radius, adjust according to data or input
 
     // Draw the object (circle) at x, y coordinates with radius
     ctx.roundedRectangleEx(
-        0,
-        0,
+        obj_x,
+        obj_y,
         canvas.getWidth(),
         canvas.getHeight(),
-        .{ 100, 100, 100, 100 },
+        .{ obj_radius, obj_radius, obj_radius, obj_radius },
     );
 
     ctx.fill();
-
-    // You can also display other elements like angle or labels here
-    ctx.setColor(1.0, 1.0, 1.0); // Set color to white for the text
-    ctx.text(obj_x + obj_radius, obj_y, "Pillar", .{});
 }
 
-
 fn raw_read_page() anyerror!*capy.Container {
-//   const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
-//       fn callback(txt: []const u8) usize {
-//           return txt.len;
-//       }
-//   }.callback);
+    //   const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
+    //       fn callback(txt: []const u8) usize {
+    //           return txt.len;
+    //       }
+    //   }.callback);
 
-//    var label_text = try capy.FormattedAtom(capy.internal.lasting_allocator, "Text length: {d}", .{text_length});
-//    defer label_text.deinit();
+    //    var label_text = try capy.FormattedAtom(capy.internal.lasting_allocator, "Text length: {d}", .{text_length});
+    //    defer label_text.deinit();
 
     return capy.column(.{ .spacing = 0 }, .{
-       capy.expanded(capy.textArea(.{})
-           .bind("text", &logText)),
-//      capy.label(.{ .text = "TODO: cursor info" })
-//           .bind("text", label_text),
-       // TODO: move into menu
-   });
+        capy.expanded(capy.textArea(.{})
+            .bind("text", &logText)),
+        //      capy.label(.{ .text = "TODO: cursor info" })
+        //           .bind("text", label_text),
+        // TODO: move into menu
+    });
 
-   // const resultText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d}", .{});
-   // return capy.column(.{}, .{
-   //    capy.textArea(.{.name = "" }).bind("text", &resultText),
-   // });
+    // const resultText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d}", .{});
+    // return capy.column(.{}, .{
+    //    capy.textArea(.{.name = "" }).bind("text", &resultText),
+    // });
 }
 
 fn sendW(_: *anyopaque) !void {
@@ -287,12 +282,11 @@ fn connect_tcp_writer() !void {
         // var buffer: [256]u8 = undefined;
 
         // _ = try stream.read(&buffer);
-        
+
         if (quitAll.get()) {
             _ = try stream.write("q");
             break;
         }
-
 
         if (oldMessage != message.get()) {
             oldMessage = message.get();
