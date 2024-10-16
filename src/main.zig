@@ -9,7 +9,11 @@ const Atom = capy.Atom;
 const ListAtom = capy.ListAtom;
 
 var gpa: std.heap.GeneralPurposeAllocator(.{}) = undefined;
+var ogpa = std.heap.GeneralPurposeAllocator(.{}){};
+const allocator = ogpa.allocator();
 pub const capy_allocator = gpa.allocator();
+
+const posix = std.posix;
 
 // var objectRadius = Atom([10]f32);
 // var objectX = Atom([10]f32);
@@ -19,12 +23,15 @@ var objectsRadi = ListAtom(f32).init(capy_allocator);
 var objectsX = ListAtom(f32).init(capy_allocator);
 var objectsY = ListAtom(f32).init(capy_allocator);
 
+const stdout = std.io.getStdOut().writer();
+
 var message = Atom(u8).of(0);
 
 var angleSpin = Atom(f32).of(45);
 var angleSpining = Atom(i16).of(45);
 
-var logText = Atom([]const u8).of("");
+var logText = ListAtom(u8).init(capy_allocator);
+var logRawText = Atom([]const u8).of("");
 
 var quitAll = Atom(bool).of(false);
 
@@ -76,12 +83,15 @@ pub fn main() !void {
     window.show();
 
     // maybe spawn thread here for main event loop???
-    // _ = try std.Thread.spawn(.{}, connect_tcp_writer, .{});
-    // _ = try std.Thread.spawn(.{}, connect_tcp_reader, .{});
+     _ = try std.Thread.spawn(.{}, connect_tcp_writer, .{});
+     _ = try std.Thread.spawn(.{}, connect_tcp_reader, .{});
 
     // _ = try connectViaTCP();
 
+    // _ = try connect_tcp_reader();
+
     capy.runEventLoop();
+    
     std.log.info("Goodbye!", .{});
     quitAll.set(true);
 }
@@ -151,7 +161,7 @@ fn raw_read_page() anyerror!*capy.Container {
 
     return capy.column(.{ .spacing = 0 }, .{
         capy.expanded(capy.textArea(.{})
-            .bind("text", &logText)),
+            .bind("text", &logRawText)),
     });
 }
 
@@ -196,42 +206,82 @@ fn connect_tcp_reader() !void {
         if (quitAll.get()) {
             break;
         }
+
+        // std.debug.print("HUHHHHHHHHHHH\n\n\n\n", .{});
         var buffer: [256]u8 = undefined;
         const len = try stream.read(&buffer);
         const data = buffer[0..len];
 
         // Parse the data stream
-        if (data.len > 0 and data[0] == 'o') {
-            var angle: f32 = 0;
-            var x_coord: f32 = 0;
-            var y_coord: f32 = 0;
-            try parse_stream_data(data, &angle, &x_coord, &y_coord);
+        var ticker: u64 = 0;
+        var nextLen: u64 = data.len;
+        while (ticker < data.len) {
+            if (data[ticker] == 'o') {
+                // start reading routine
+                // find upper bound of this, should occur when 3 spaces have been read
+                var counter: u64 = 0;
+                var temp: u64 = 0;
+                while (counter < 3 and temp < data.len) {
+                    if (data[temp] == ' ') {
+                        counter += 1;
+                    }
+                    temp += 1;
+                }
+                nextLen = counter;
+                
+                var angle: f32 = 0;
+                var x_coord: f32 = 0;
+                var y_coord: f32 = 0;
+                try parse_stream_data(data[ticker..nextLen], &angle, &x_coord, &y_coord);
 
-            // Store the parsed data in a shared atom for UI rendering
-            try update_object_position(angle, x_coord, y_coord);
+                // Store the parsed data in a shared atom for UI rendering
+                try update_object_position(angle, x_coord, y_coord);
+                
+                ticker = nextLen - 1;
+            }
+            // else if // handle other data types
+
+
+            ticker += 1;
+        }
+        
+        if (data.len > 0) {
+            const msg = logRawText.get();
+
+            _ = try stdout.print("\n\nMessage: {s}\n\n", .{data[0..len]});
+            const result = try concat(msg, buffer[0..len]);
+            defer allocator.free(result);
+            logRawText.set(result);
         }
 
-        logText.set(logText.get() ++ .{buffer[0..len]});
     }
 }
 
-fn parse_stream_data(data: []const u8, angle: *f32, x: *f32, y: *f32) !void {
-    var tokenizer = std.mem.tokenize(data, " "); // Tokenize data by space
-    const angle_str = try tokenizer.nextExpected() catch return error.InvalidData;
-    const x_str = try tokenizer.nextExpected() catch return error.InvalidData;
-    const y_str = try tokenizer.nextExpected() catch return error.InvalidData;
+fn concat(a: []const u8, b: []const u8) ![]u8 {
+   const result = try allocator.alloc(u8, a.len + b.len);
+    @memcpy(result[0..a.len], a);
+    @memcpy(result[a.len..], b);
+    return result;
+}
 
+fn parse_stream_data(data: []const u8, angle: *f32, x: *f32, y: *f32) !void {
+    std.debug.print("\nTried to parse: {s}\n", .{data});
+    var tokenizer = std.mem.tokenize(u8, data, " "); // Tokenize data by space
+    const x_str = tokenizer.next();
+    const y_str = tokenizer.next(); 
+    const angle_str = tokenizer.next();
+    
     // Convert the string segments to floating-point values
-    (*angle) = try std.fmt.parseFloat(f32, angle_str, 10);
-    (*x) = try std.fmt.parseFloat(f32, x_str, 10);
-    (*y) = try std.fmt.parseFloat(f32, y_str, 10);
+    angle.* = try std.fmt.parseFloat(f32, angle_str orelse "10");
+    x.* = try std.fmt.parseFloat(f32, x_str orelse "10");
+    y.* = try std.fmt.parseFloat(f32, y_str orelse "10");
 }
 
 fn update_object_position(angle: f32, x: f32, y: f32) !void {
     // Update the object position (using Atom to share between threads)
-    objectsRadi.append(angle);
-    objectsX.append(x);
-    objectsY.append(y);
+    _ = try objectsRadi.append(angle);
+    _ = try objectsX.append(x);
+    _ = try objectsY.append(y);
 }
 
 fn connect_tcp_writer() !void {
@@ -260,7 +310,7 @@ fn connect_tcp_writer() !void {
         if (angleSpining.get() != oldAngle) {
             oldAngle = angleSpining.get();
             _ = try stream.write("t");
-            var angleWrite: f32 = oldAngle;
+            var angleWrite: i16 = oldAngle;
             if (oldAngle < 0) {
                 _ = try stream.write("-");
                 angleWrite = oldAngle * -1;
