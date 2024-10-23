@@ -1,39 +1,87 @@
-const capy = @import("capy");
 const std = @import("std");
 const net = std.net;
 const fs = std.fs;
 const os = std.os;
-pub usingnamespace capy.cross_platform;
 const atomic = std.atomic;
-const Atom = capy.Atom;
-const ListAtom = capy.ListAtom;
+const posix = std.posix;
+
 
 var gpa: std.heap.GeneralPurposeAllocator(.{}) = undefined;
 var ogpa = std.heap.GeneralPurposeAllocator(.{}){};
-const allocator = ogpa.allocator();
-pub const capy_allocator = gpa.allocator();
-
-const posix = std.posix;
+const g_allocator = ogpa.allocator();
+const Mutex = std.Thread.Mutex;
+const Allocator = std.mem.Allocator;
 
 // var objectRadius = Atom([10]f32);
 // var objectX = Atom([10]f32);
 // var objectY = Atom([10]f32);
 
-var objectsRadi = ListAtom(f32).init(capy_allocator);
-var objectsX = ListAtom(f32).init(capy_allocator);
-var objectsY = ListAtom(f32).init(capy_allocator);
+pub const ThreadSafeArrayList = struct {
+    const Self = @This();
+    const default_alignment = @alignOf(Self);
+
+    pub fn init(comptime T: type, allocator: *Allocator) !ThreadSafeArrayList(T) {
+        return ThreadSafeArrayList(T){
+            .list = try std.ArrayList(T).init(allocator),
+            .mutex = Mutex.init(),
+        };
+    }
+
+    pub fn deinit(self: *Self) void {
+        self.mutex.deinit();
+        self.list.deinit();
+    }
+
+    pub fn add(self: *Self, item: @field(self.list, "T")) !void {
+        self.mutex.lock();
+        defer self.mutex.unlock();
+
+        try self.list.append(item);
+    }
+};
+
+pub fn createThreadSafeArrayList(comptime T: type) type {
+    return struct {
+        list: std.ArrayList(T),
+        mutex: Mutex,
+
+        pub fn init(allocator: *Allocator) !ThreadSafeArrayList(T) {
+            return ThreadSafeArrayList(T){
+                .list = try std.ArrayList(T).init(allocator),
+                .mutex = Mutex.init(),
+            };
+        }
+
+        pub fn deinit(self: *@This()) void {
+            self.mutex.deinit();
+            self.list.deinit();
+        }
+
+        pub fn add(self: *@This(), item: T) !void {
+            self.mutex.lock();
+            defer self.mutex.unlock();
+
+            try self.list.append(item);
+        }
+    };
+}
+
+
+var objectsRadi = ThreadSafeArrayList(f32);
+var objectsX = ThreadSafeArrayList(f32);
+var objectsY = ThreadSafeArrayList(f32);
 
 const stdout = std.io.getStdOut().writer();
 
-var message = Atom(u8).of(0);
+var message = atomic.Value(u8).init(0);
 
-var angleSpin = Atom(f32).of(45);
-var angleSpining = Atom(i16).of(45);
+var angleSpin = atomic.Value(f32).init(45);
+var angleSpining = atomic.Value(i16).init(45);
 
-var logText = ListAtom(u8).init(capy_allocator);
-var logRawText = Atom([]const u8).of("");
+var logText = ThreadSafeArrayList(f32);
+var logRawText = atomic.Value([]const u8).init("");
 
-var quitAll = Atom(bool).of(false);
+var quitAll = atomic.Value(bool).init(false);
 
 const PORT = 288;
 
@@ -62,108 +110,9 @@ const Graph = struct {
 };
 
 pub fn main() !void {
-    gpa = .{};
-    defer _ = gpa.deinit();
 
-    try capy.init();
-    defer capy.deinit();
-
-    var window = try capy.Window.init();
-    defer window.deinit();
-
-    try window.set(capy.row(.{ .spacing = 0 }, .{
-        capy.navigationSidebar(.{}),
-        capy.tabs(.{
-            capy.tab(.{ .label = "Basic Controls" }, mainPage()),
-            capy.tab(.{ .label = "Graph" }, graph_page()),
-            capy.tab(.{ .label = "Recieved data" }, raw_read_page()),
-        }),
-    }));
-
-    window.show();
-
-    // maybe spawn thread here for main event loop???
-     _ = try std.Thread.spawn(.{}, connect_tcp_writer, .{});
-     _ = try std.Thread.spawn(.{}, connect_tcp_reader, .{});
-
-    // _ = try connectViaTCP();
-
-    // _ = try connect_tcp_reader();
-
-    capy.runEventLoop();
-    
-    std.log.info("Goodbye!", .{});
-    quitAll.set(true);
 }
 
-fn mainPage() anyerror!*capy.Container {
-    const somesliderText = try capy.FormattedAtom(capy.internal.lasting_allocator, "{d:1}", .{&angleSpin});
-    return capy.column(.{}, .{ capy.row(.{}, .{
-        capy.expanded(capy.slider(.{ .min = -180, .max = 180, .step = 1 }).bind("value", &angleSpin)),
-    }), capy.row(.{}, .{
-        capy.label(.{}).bind("text", somesliderText),
-    }), capy.row(.{}, .{
-        capy.alignment(.{}, capy.button(.{ .label = "Send angle", .onclick = sendAngleData })),
-        capy.alignment(.{}, capy.button(.{ .label = "Forward", .onclick = sendW })),
-        capy.alignment(.{}, capy.button(.{ .label = "Backwards", .onclick = sendS })),
-        capy.alignment(.{}, capy.button(.{ .label = "Spin left", .onclick = sendA })),
-        capy.alignment(.{}, capy.button(.{ .label = "Spin right", .onclick = sendD })),
-        capy.alignment(.{}, capy.button(.{ .label = "Scan", .onclick = sendM })),
-        capy.alignment(.{}, capy.button(.{ .label = "Stop", .onclick = sendSpace })),
-        capy.alignment(.{}, capy.button(.{ .label = "Quit program", .onclick = sendQuit })),
-    }) });
-}
-
-fn graph_page() anyerror!*capy.Container {
-    return capy.column(.{}, .{
-        capy.canvas(.{
-            .preferredSize = capy.Size.init(800, 600),
-            .ondraw = draw_objects_on_canvas,
-        }),
-    });
-}
-
-fn draw_objects_on_canvas(cnv: *anyopaque, ctx: *capy.DrawContext) !void {
-    const canvas = @as(*capy.Canvas, @ptrCast(@alignCast(cnv)));
-
-    ctx.setColor(0.0, 1.0, 0.0);
-
-    const length = objectsX.getLength(); // assumes that objects X and Y have the same length (they should)
-
-    for (0..length) |i| {
-        const obj_x: i32 = @intFromFloat(objectsX.get(i));
-        const obj_y: i32 = @intFromFloat(objectsY.get(i));
-        const obj_radius: u32 = @intFromFloat(objectsRadi.get(i));
-
-        // Draw the object (circle) at x, y coordinates with radius
-        ctx.ellipse(
-            obj_x,
-            obj_y,
-            obj_radius,
-            obj_radius,
-        );
-    }
-
-    _ = canvas;
-
-    ctx.fill();
-}
-
-fn raw_read_page() anyerror!*capy.Container {
-    //   const text_length = try capy.Atom(usize).derived(.{&text}, &struct {
-    //       fn callback(txt: []const u8) usize {
-    //           return txt.len;
-    //       }
-    //   }.callback);
-
-    //    var label_text = try capy.FormattedAtom(capy.internal.lasting_allocator, "Text length: {d}", .{text_length});
-    //    defer label_text.deinit();
-
-    return capy.column(.{ .spacing = 0 }, .{
-        capy.expanded(capy.textArea(.{})
-            .bind("text", &logRawText)),
-    });
-}
 
 fn sendW(_: *anyopaque) !void {
     message.set('w');
@@ -211,7 +160,7 @@ fn connect_tcp_reader() !void {
         var buffer: [256]u8 = undefined;
         const len = try stream.read(&buffer);
         const data = buffer[0..len];
-
+        
         // Parse the data stream
         var ticker: u64 = 0;
         var nextLen: u64 = data.len;
@@ -255,6 +204,55 @@ fn connect_tcp_reader() !void {
         }
 
     }
+}
+
+
+fn handle_read(stream: Stream) !*void {
+    var buffer: [256]u8 = undefined;
+        const len = try stream.read(&buffer);
+        const data = buffer[0..len];
+
+        // Parse the data stream
+        var ticker: u64 = 0;
+        var nextLen: u64 = data.len;
+        while (ticker < data.len) {
+            if (data[ticker] == 'o') {
+                // start reading routine
+                // find upper bound of this, should occur when 3 spaces have been read
+                var counter: u64 = 0;
+                var temp: u64 = 0;
+                while (counter < 3 and temp < data.len) {
+                    if (data[temp] == ' ') {
+                        counter += 1;
+                    }
+                    temp += 1;
+                }
+                nextLen = counter;
+                
+                var angle: f32 = 0;
+                var x_coord: f32 = 0;
+                var y_coord: f32 = 0;
+                try parse_stream_data(data[ticker..nextLen], &angle, &x_coord, &y_coord);
+
+                // Store the parsed data in a shared atom for UI rendering
+                try update_object_position(angle, x_coord, y_coord);
+                
+                ticker = nextLen - 1;
+            }
+            // else if // handle other data types
+
+
+            ticker += 1;
+        }
+        
+        if (data.len > 0) {
+            const msg = logRawText.get();
+
+            _ = try stdout.print("\n\nMessage: {s}\n\n", .{data[0..len]});
+            const result = try concat(msg, buffer[0..len]);
+            defer allocator.free(result);
+            logRawText.set(result);
+        }
 }
 
 fn concat(a: []const u8, b: []const u8) ![]u8 {
@@ -305,6 +303,12 @@ fn connect_tcp_writer() !void {
             const my_array: []const u8 = &[_]u8{oldMessage}; // Create a constant array with one element
 
             _ = try stream.write(my_array);
+            
+            if (oldMessage == 'm'){
+                // if we sent an m we need to handle updating the graph
+                handle_read(stream);
+            }
+
         }
 
         if (angleSpining.get() != oldAngle) {
