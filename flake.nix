@@ -19,6 +19,7 @@
           pkgs.mesa  # Provides OpenGL libraries
           pkgs.glfw
           pkgs.git
+          pkgs.libclang
         ];
 
         shellHook = ''
