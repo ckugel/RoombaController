@@ -9,6 +9,6 @@
 
 class Pillar {
 
-}
+};
 
 #endif //PILLAR_H

@@ -6,6 +6,36 @@
 #include "Graph.h"
 #include "Pillar.h"
 #include <vector>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+
+
+
+// connect to Roomba server
+void connectTCP() {
+ int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
+  sockaddr_in serverAddress;
+  serverAddress.sin_family = AF_INET;
+  serverAddress.sin_port = htons(288);
+  serverAddress.sin_addr.s_addr = inet_addr("192.168.1.1");
+
+  int status = connect(clientSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
+
+  // maybe make thread here
+
+
+  const char* message = "Handshake";
+  send(clientSocket, message, strlen(message), 0);
+
+  // expect a "Handshake" response to be echoed
+  read();
+
+
+  close(clientSocket);
+}
+
 
 // Simple function to set up OpenGL and ImGui context
 void setupImGui(GLFWwindow* window) {

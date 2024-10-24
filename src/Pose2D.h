@@ -13,7 +13,8 @@ class Pose2D {
 
   public:
     
-}
+    
+};
 
 
 
