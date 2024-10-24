@@ -2,4 +2,6 @@
 zig-out/
 zig
 .idea
+build
+.ccls-cache
 cmake-build-debug/
