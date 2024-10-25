@@ -15,6 +15,7 @@ class Pose2D {
   public:
     Pose2D(double x, double y, double heading);
     Pose2D(double x, double y);
+    Pose2D(Pose2D* position);
     double angleTo(Pose2D other);
     double distanceTo(Pose2D other);
     double squareOfDistanceTo(Pose2D other);
@@ -27,7 +28,9 @@ class Pose2D {
     void translateByPose(Pose2D translation);
     void translateByMagnitude(double magnitude);
     void transformPose(Pose2D modifier);
-
+    double getX();
+    double getY();
+    double getHeading();
 };
 
 

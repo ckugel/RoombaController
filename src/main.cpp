@@ -29,6 +29,12 @@ std::condition_variable sendCondition;
 std::atomic<bool> stopClient(false);
 
 
+std::unique_ptr<Graph<Pose2D>> discretizeField(std::vector<Pillar> fields, Pose2D botPose, uint8_t desiredIndex) {
+  
+
+}
+
+
 void readAndLog(int socket) {
   const uint16_t BUFF_SIZE = 1024;
 

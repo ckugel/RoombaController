@@ -33,8 +33,6 @@ class Graph {
 
         bool contains(Node<V>* node, std::vector<Node<V>*> listOfNodes);
 
-        std::vector<Node<V>*> Dijkstra(Node<V>* find);
-
         void printAdjacent(Node<V>* next);
 
     public:
@@ -51,6 +49,8 @@ class Graph {
         void setHead(int index);
         void addConnection(Node<V>* one, Node<V>* two, unsigned int weight);
         void addConnection(Node<V>* one, Node<V>* two);
+
+        std::vector<Node<V>*> Dijkstra(Node<V>* find);
 
         std::vector<Node<V>*> getAdj(Node<V>* next);
 

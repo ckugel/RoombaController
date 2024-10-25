@@ -15,6 +15,12 @@ Pose2D::Pose2D(double x, double y) {
   this->y = y;
 }
 
+Pose2D::Pose2D(Pose2D* position) {
+  this->x = position->x;
+  this->y = position->y;
+  this->heading = position->heading;
+}
+
 double Pose2D::angleTo(Pose2D other) {
   return atan2(other.y - this->y, other.x - this->x);  
 }
@@ -55,5 +61,15 @@ void Pose2D::translateByMagnitude(double magnitude) {
 void Pose2D::transformPose(Pose2D modifier) {
   translateByPose(modifier);
   rotateByPose(modifier);
+}
+
+double Pose2D::getX() {
+  return x;
+}
+double Pose2D::getY() {
+  return y;
+}
+double Pose2D::getHeading() {
+  return heading;
 }
 
