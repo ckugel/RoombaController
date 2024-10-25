@@ -7,11 +7,75 @@
 #include "Pillar.h"
 #include <vector>
 #include <netinet/in.h>
+#include <chrono>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <fcntl.h>
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <thread>
+#include <queue>
+#include <condition_variable>
+#include <atomic>
 
 
+std::queue<std::string> sendQueue;
+std::mutex queueMutex;
+std::condition_variable sendCondition;
+
+
+std::atomic<bool> stopClient(false);
+
+
+void readAndLog(int socket) {
+  const uint16_t BUFF_SIZE = 1024;
+
+  /*
+  auto now = std::chrono::system_clock::now(); 
+  std::time_t timeNow = std::chrono::system_clock::to_time_t(now);
+
+  std::tm* timeInfo = std::localtime(&timeNow);
+  
+  std::stringstream filename;
+  filename << "log_" << std::put_time(timeInfo, "%Y%m%d_%H%M%S") << ".txt";
+*/
+
+  static char name_buff[32];
+  time_t now = time(0);
+  strftime(name_buff, sizeof(name_buff), "log_%Y%m%d_%H%M%S", localtime(&now));
+  std::string str_name(name_buff);
+
+  std::ofstream logFile(str_name);
+  
+  while (!(stopClient.load())) {
+
+    char buff[BUFF_SIZE];
+
+    // expect a "Handshake" response to be echoed
+    uint16_t bytesRead = read(socket, buff, BUFF_SIZE);
+    if (bytesRead > 0) {
+      std::string response(buff, bytesRead);
+      logFile << response << std::endl;
+      if (response.find("quit") != std::string::npos) {
+	std::cout << "exiting tcp server" << std::endl;
+	stopClient.store(true);
+      }
+    }
+    else {
+      // sleep and wait
+      // There should be an os signal to handle this
+      // potentially fcntl
+    }
+
+    // no matter what we are going to log this in a file, however we should also update certain fields
+
+  }
+
+  logFile.close();
+
+}
 
 // connect to Roomba server
 void connectTCP() {
@@ -21,18 +85,22 @@ void connectTCP() {
   serverAddress.sin_port = htons(288);
   serverAddress.sin_addr.s_addr = inet_addr("192.168.1.1");
 
+
+  // https://beej.us/guide/bgnet/html/#blocking
+  // fcntl(clientSocket, F_SETFL, O_NONBLOCK);
   int status = connect(clientSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
 
   // maybe make thread here
 
-
   const char* message = "Handshake";
   send(clientSocket, message, strlen(message), 0);
 
-  // expect a "Handshake" response to be echoed
-  read();
+  // spawn read and log thread here
+  std::thread readThread(readAndLog, clientSocket);
 
+  
 
+  readThread.join();
   close(clientSocket);
 }
 
