@@ -8,6 +8,15 @@
 #include "Pose2D.h"
 
 class Pillar {
+  protected:
+    Pose2D position;
+    double radius;
+  public:
+    Pillar(Pose2D position, double radius);
+    Pillar(double x, double y, double radius);
+    ~Pillar();
+  
+  
 
 };
 
