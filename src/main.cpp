@@ -3,8 +3,8 @@
 #include "../include/imgui/backends/imgui_impl_glfw.h"
 #include "../include/imgui/backends/imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
-#include "Graph.h"
-#include "Pillar.h"
+#include "Graph.hpp"
+#include "Pillar.hpp"
 #include <vector>
 #include <netinet/in.h>
 #include <chrono>
@@ -19,7 +19,7 @@
 #include <queue>
 #include <condition_variable>
 #include <atomic>
-#include "Pose2D.h"
+#include "Pose2D.hpp"
 
 #define ADDRESS "127.0.0.1" // "192.168.1.1"
 #define PORT 65432
@@ -114,7 +114,14 @@ void connectTCP() {
   // spawn read and log thread here
   std::thread readThread(readAndLog, clientSocket);
 
-   
+  while(!stopClient.load()) {
+	if (!sendQueue.empty()) {
+	    std::string message = sendQueue.front();
+	    sendQueue.pop();
+	    send(clientSocket, message.c_str(), message.length(), 0);
+	}
+    }
+
 
   readThread.join();
   close(clientSocket);
@@ -135,24 +142,56 @@ void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 
   drawList->AddCircle(center, radius, color, 0, 0.2f);
 }
 
-void ShowPillarWindow(const std::vector<Pillar>& pillars) {
+void ShowPillarWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex) {
   ImGui::Begin("Field");
+    
+    ImDrawList* drawList = ImGui::GetWindowDrawList();
+    ImVec2 windowPos = ImGui::GetWindowPos();
+    ImVec2 windowSize = ImGui::GetWindowSize();
+    float scale = 5.0f;
+    ImVec2 offset = ImVec2(windowPos.x + 50, windowPos.y + 50);
+    
+    pillarsMutex->lock();
 
+    for (Pillar pillar: pillars) {
+	ImVec2 center = ImVec2(offset.x + pillar.getX() * scale, offset.y + pillar.getY() * scale);
+	float radius = pillar.getRadius() * scale;
+	DrawCircle(drawList, center, radius, IM_COL32(255, 100, 100, 255));
+    }
 
+    pillarsMutex->unlock();
 }
 
 
-void addToQueue(string message) {
-  sendQueue.add(message);
+void addToQueue(std::string message) {
+  sendQueue.push(message);
+}
+
+void sendAngleToQueue(int16_t angle) {
+  std::ostringstream message;
+
+  if (angle < 0) {
+    message << '-';
+    angle = -angle;
+  }
+
+  message << std::setw(3) << std::setfill('0') << angle;
+
+  sendQueue.push(message.str());
 }
 
 int main() {
     if (!glfwInit()) return -1;
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello, ImGui!", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(1280, 720, "Roomba Dashboard", NULL, NULL);
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
 
     setupImGui(window);
+
+    float angleSend = 0;
+    std::vector<Pillar> pillars;
+    std::mutex pillarsMutex;
+
 
     std::thread tcpConnect(connectTCP);
 
@@ -166,11 +205,34 @@ int main() {
         ImGui::NewFrame();
 	// bool open;
 	// ImGui::ShowDemoWindow(&open);
+	
+	ShowPillarWindow(pillars, &pillarsMutex);
 
         // Your ImGui code here
         ImGui::Begin("Control Panel");
         //ImGui::Text("This is some text");
-	ImGui::Button("Forward", );
+	if (ImGui::Button("Forward")) {
+	  addToQueue("w");
+	}
+
+	if (ImGui::Button("Backward")) {
+	  addToQueue("s"); 
+	}
+
+	if (ImGui::Button("Counter Clockwise")) {
+	  addToQueue("a");
+	}
+
+	if (ImGui::Button("Clockwise")) {
+	  addToQueue("d");
+	}
+
+	ImGui::SliderAngle("Turn angle", &angleSend);
+
+	if (ImGui::Button("Send turn")) {
+	  sendAngleToQueue((int16_t) angleSend);
+	}
+
         ImGui::End();
 
         // Render

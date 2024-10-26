@@ -5,7 +5,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 
-#include "Pillar.h"
+#include "Pillar.hpp"
 #include "vector"
 #include <cstdint> 
 #include <memory>

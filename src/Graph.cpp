@@ -2,7 +2,7 @@
 // Created by caleb on 11/9/21.
 //
 
-#include "Graph.h"
+#include "Graph.hpp"
 
 #include <iostream>
 #include <queue>
@@ -44,7 +44,7 @@ void Graph<V>::playGround() {
     head = nodes[0];
 
 
-    printOut();
+    // printOut();
 
     printAdjacent(head);
 

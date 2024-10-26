@@ -2,7 +2,7 @@
 // Created by caleb on 10/24/2024
 //
 
-#include "Pose2D.h"
+#include "Pose2D.hpp"
 
 Pose2D::Pose2D(double x, double y, double heading) {
   this->x = x;

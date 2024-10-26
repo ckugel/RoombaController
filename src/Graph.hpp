@@ -39,10 +39,22 @@ class Graph {
 
         void addNode(Node<V>* newNode);
 
+	void printOut();
+	
+	void addNode(Node<V>* nextNode, std::vector<Node<V>*> adjacentNodes, unsigned int weight);
+	void addNode(Node<V> *nextNode, std::vector<Node<V>*> adjacentNodes);
+	void addNode(Node<V> *nextNode, Node<V> *nodeITSLATE);
+
+	void addConnection(Node<V> *one, Node<V> *two, unsigned int weight);
+	void addConnection(Node<V> *one, Node<V> *two);
+	void addNode(Node<V> *nextNode, Node<V> *nodeITSLATE, unsigned int weight); 
+	void setHead(int index);
 
         std::vector<Node<V>*> Dijkstra(Node<V>* find);
 
         std::vector<Node<V>*> getAdj(Node<V>* next);
+
+	void playGround();
 
         Graph();
 

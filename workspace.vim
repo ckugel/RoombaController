@@ -13,42 +13,39 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +46 src/main.cpp
-badd +1 src/Graph.cpp
-badd +58 src/Graph.h
-badd +1 src/Node.cpp
-badd +1 src/Node.h
-badd +21 src/Pillar.h
-badd +31 src/Pose2D.h
-badd +37 src/Pose2D.cpp
-badd +24 src/Pillar.cpp
-badd +20 Field.h
+badd +157 src/main.cpp
 badd +1 src/Field.cpp
-badd +0 src/Field.h
+badd +1 src/Graph.cpp
+badd +1 src/Node.cpp
+badd +1 src/Pillar.cpp
+badd +1 src/Pose2D.cpp
+badd +8 src/Field.hpp
+badd +0 src/Graph.hpp
+badd +0 src/Node.hpp
+badd +0 src/Pillar.hpp
+badd +0 src/Pose2D.hpp
 argglobal
 %argdel
+$argadd src/Field.cpp
+$argadd src/Graph.cpp
+$argadd src/Node.cpp
+$argadd src/Pillar.cpp
+$argadd src/Pose2D.cpp
 $argadd src/main.cpp
-edit src/Graph.cpp
+set stal=2
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabrewind
+edit src/Field.hpp
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
-wincmd _ | wincmd |
-vsplit
-wincmd _ | wincmd |
-vsplit
-3wincmd h
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-wincmd w
+1wincmd h
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -59,62 +56,12 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 35 + 36) / 72)
-exe 'vert 1resize ' . ((&columns * 141 + 282) / 564)
-exe '2resize ' . ((&lines * 34 + 36) / 72)
-exe 'vert 2resize ' . ((&columns * 141 + 282) / 564)
-exe '3resize ' . ((&lines * 35 + 36) / 72)
-exe 'vert 3resize ' . ((&columns * 141 + 282) / 564)
-exe '4resize ' . ((&lines * 34 + 36) / 72)
-exe 'vert 4resize ' . ((&columns * 141 + 282) / 564)
-exe 'vert 5resize ' . ((&columns * 139 + 282) / 564)
-exe 'vert 6resize ' . ((&columns * 140 + 282) / 564)
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
 argglobal
-balt src/Pillar.cpp
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 42 - ((34 * winheight(0) + 17) / 35)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 42
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify("src/Pillar.cpp", ":p")) | buffer src/Pillar.cpp | else | edit src/Pillar.cpp | endif
+if bufexists(fnamemodify("src/Field.hpp", ":p")) | buffer src/Field.hpp | else | edit src/Field.hpp | endif
 if &buftype ==# 'terminal'
-  silent file src/Pillar.cpp
-endif
-balt src/Pose2D.cpp
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 24 - ((23 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 24
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify("src/Field.h", ":p")) | buffer src/Field.h | else | edit src/Field.h | endif
-if &buftype ==# 'terminal'
-  silent file src/Field.h
+  silent file src/Field.hpp
 endif
 balt src/Field.cpp
 setlocal fdm=manual
@@ -127,18 +74,19 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 16 - ((15 * winheight(0) + 17) / 35)
+let s:l = 8 - ((7 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
-normal! 013|
+keepjumps 8
+normal! 021|
 wincmd w
 argglobal
 if bufexists(fnamemodify("src/Field.cpp", ":p")) | buffer src/Field.cpp | else | edit src/Field.cpp | endif
 if &buftype ==# 'terminal'
   silent file src/Field.cpp
 endif
+balt src/Field.hpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -149,17 +97,238 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 8 - ((7 * winheight(0) + 17) / 34)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 8
-normal! 02|
+keepjumps 1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+tabnext
+edit src/Graph.hpp
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+argglobal
+2argu
+if bufexists(fnamemodify("src/Graph.hpp", ":p")) | buffer src/Graph.hpp | else | edit src/Graph.hpp | endif
+if &buftype ==# 'terminal'
+  silent file src/Graph.hpp
+endif
+balt src/Graph.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("src/main.cpp", ":p")) | buffer src/main.cpp | else | edit src/main.cpp | endif
+2argu
+balt src/Graph.hpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+tabnext
+edit src/Node.hpp
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+argglobal
+3argu
+if bufexists(fnamemodify("src/Node.hpp", ":p")) | buffer src/Node.hpp | else | edit src/Node.hpp | endif
 if &buftype ==# 'terminal'
-  silent file src/main.cpp
+  silent file src/Node.hpp
+endif
+balt src/Node.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+argglobal
+3argu
+balt src/Node.hpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 02|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+tabnext
+edit src/Pillar.hpp
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+argglobal
+4argu
+if bufexists(fnamemodify("src/Pillar.hpp", ":p")) | buffer src/Pillar.hpp | else | edit src/Pillar.hpp | endif
+if &buftype ==# 'terminal'
+  silent file src/Pillar.hpp
+endif
+balt src/Pillar.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+argglobal
+4argu
+balt src/Pillar.hpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+tabnext
+edit src/Pose2D.hpp
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+argglobal
+5argu
+if bufexists(fnamemodify("src/Pose2D.hpp", ":p")) | buffer src/Pose2D.hpp | else | edit src/Pose2D.hpp | endif
+if &buftype ==# 'terminal'
+  silent file src/Pose2D.hpp
 endif
 balt src/Pose2D.cpp
 setlocal fdm=manual
@@ -172,19 +341,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 30 - ((29 * winheight(0) + 35) / 70)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 30
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("src/Graph.h", ":p")) | buffer src/Graph.h | else | edit src/Graph.h | endif
-if &buftype ==# 'terminal'
-  silent file src/Graph.h
-endif
-balt src/Pose2D.h
+5argu
+balt src/Pose2D.hpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -195,40 +361,50 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 52 - ((42 * winheight(0) + 35) / 70)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 52
+keepjumps 1
 normal! 0
 wincmd w
-4wincmd w
-exe '1resize ' . ((&lines * 35 + 36) / 72)
-exe 'vert 1resize ' . ((&columns * 141 + 282) / 564)
-exe '2resize ' . ((&lines * 34 + 36) / 72)
-exe 'vert 2resize ' . ((&columns * 141 + 282) / 564)
-exe '3resize ' . ((&lines * 35 + 36) / 72)
-exe 'vert 3resize ' . ((&columns * 141 + 282) / 564)
-exe '4resize ' . ((&lines * 34 + 36) / 72)
-exe 'vert 4resize ' . ((&columns * 141 + 282) / 564)
-exe 'vert 5resize ' . ((&columns * 139 + 282) / 564)
-exe 'vert 6resize ' . ((&columns * 140 + 282) / 564)
-tabnext 1
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+tabnext
+edit src/main.cpp
+argglobal
+6argu
+balt src/Pose2D.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 8 - ((7 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 8
+normal! 017|
+tabnext 6
+set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

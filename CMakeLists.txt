@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 project(RoombaControllers)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 # Add ImGui files
 set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/include/imgui)
@@ -18,7 +18,8 @@ find_package(OpenGL REQUIRED)
 # find_package(PkgConfig REQUIRED)
 # pkg_check_modules(GLFW REQUIRED glfw3)
 
-add_executable(RoombaControllers src/main.cpp ${IMGUI_SOURCES})
+add_executable(RoombaControllers src/main.cpp ${IMGUI_SOURCES}
+        src/Pose2D.cpp src/Pillar.cpp src/Graph.cpp)
 
 # add_executable(RoombaControllers main.cpp ${IMGUI_SOURCES})
 target_include_directories(RoombaControllers PRIVATE ${IMGUI_DIR} ${IMGUI_DIR}/backends)
@@ -28,6 +29,7 @@ target_link_libraries(RoombaControllers ${GLFW_LIBRARIES}
 
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # pkg_check_modules(GLFW REQUIRED glfw3)
 
