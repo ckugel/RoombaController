@@ -46,37 +46,38 @@ while True:  # Loop recieving/sending data from/to client until client disconnec
                 print("Connection closed: " + str(msg) + "\n")
                 break
 
-        # Check if server has recieved that client is quitting
-        if data.decode() == "quit\n": # Client is quitting
-                print("Server quitting")
-                break
+        if (data is not None and data.decode() is not ""): # Checkif (data.decode() is not empty): # Checkif (data.decode() is not empty):
+            # Check if server has recieved that client is quitting
+            if data.decode() == "quit\n": # Client is quitting
+                    print("Server quitting")
+                    break
 
-        # Check if a sensor scan command has been sent
-        elif (data.decode() == "M\n") or (data.decode() == "m\n"):
+            # Check if a sensor scan command has been sent
+            elif (data.decode() == "M\n") or (data.decode() == "m\n"):
 
-                print("Recieved Sensor scan request... sending data:\n")
+                    print("Recieved Sensor scan request... sending data:\n")
 
-                # Open file containing mock sensor data
-                file_object = open(full_path + filename,'r') # Open the file: file_object is just a variable for the file "handler" returned by open()
-                sensor_data = "" # Initialize sensor data varible
+                    # Open file containing mock sensor data
+                    file_object = open(full_path + filename,'r') # Open the file: file_object is just a variable for the file "handler" returned by open()
+                    sensor_data = "" # Initialize sensor data varible
 
-                while (sensor_data != "END\n"): # Collect sensor data until "END" recieved
-                        sensor_data = file_object.readline()   # Grab a line from sensor file, readline expects message to end with "\n"
-                        conn.send(sensor_data.encode()) # Send a line of sensor data to client. Convert from String to bytes (i.e., encode) 
-                        print(sensor_data) # Pring line of Sensor data
+                    while (sensor_data != "END\n"): # Collect sensor data until "END" recieved
+                            sensor_data = file_object.readline()   # Grab a line from sensor file, readline expects message to end with "\n"
+                            conn.send(sensor_data.encode()) # Send a line of sensor data to client. Convert from String to bytes (i.e., encode) 
+                            print(sensor_data) # Pring line of Sensor data
 
-                file_object.close() # Important to close file once you are done with it!!                
+                    file_object.close() # Important to close file once you are done with it!!                
 
-        else:                
-                # Convert message from bytes to String (i.e., decode), then print
-                print("Recieved from client: " + data.decode()) 
+            else:                
+                    # Convert message from bytes to String (i.e., decode), then print
+                    print("Recieved from client: " + data.decode()) 
 
-                data_to_client = data.decode()  # Echo Server: option for echoing data back to client, or 
-                #data_to_client = input('Enter data to sent to the client -> ') + '\n'  # Chat Server: option for interactively choosing what data to send to the client
-        
-                # Convert String to bytes (i.e., encode), and send data to the client
-                conn.send(data_to_client.encode()) 
-                print("Sent to client:" + data_to_client)
+                    data_to_client = data.decode()  # Echo Server: option for echoing data back to client, or 
+                    #data_to_client = input('Enter data to sent to the client -> ') + '\n'  # Chat Server: option for interactively choosing what data to send to the client
+            
+                    # Convert String to bytes (i.e., encode), and send data to the client
+                    conn.send(data_to_client.encode()) 
+                    print("Sent to client:" + data_to_client)
 
 print("Server exiting\n")
 time.sleep(3) # Sleep for 3 seconds

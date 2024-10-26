@@ -20,6 +20,8 @@
 #include <condition_variable>
 #include <atomic>
 #include "Pose2D.hpp"
+#include <sstream>
+#include <iomanip>
 
 #define ADDRESS "127.0.0.1" // "192.168.1.1"
 #define PORT 65432
@@ -59,7 +61,7 @@ void readAndLog(int socket) {
 
   static char name_buff[32];
   time_t now = time(0);
-  strftime(name_buff, sizeof(name_buff), "log_%Y%m%d_%H%M%S", localtime(&now));
+  strftime(name_buff, sizeof(name_buff), "log/%Y%m%d_%H%M%S", localtime(&now));
   std::string str_name(name_buff);
 
   std::ofstream logFile(str_name);
@@ -117,6 +119,9 @@ void connectTCP() {
   while(!stopClient.load()) {
 	if (!sendQueue.empty()) {
 	    std::string message = sendQueue.front();
+	    if (message.compare("q") == 0) {
+		stopClient.store(true);
+	    }
 	    sendQueue.pop();
 	    send(clientSocket, message.c_str(), message.length(), 0);
 	}
@@ -160,24 +165,30 @@ void ShowPillarWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex) {
     }
 
     pillarsMutex->unlock();
+
+    ImGui::End();
 }
 
 
 void addToQueue(std::string message) {
+    // std::cout << message << std::endl;
   sendQueue.push(message);
 }
 
 void sendAngleToQueue(int16_t angle) {
-  std::ostringstream message;
+  char buff[8];
+    sprintf(buff, "t%03d", angle);
 
-  if (angle < 0) {
-    message << '-';
-    angle = -angle;
-  }
+  
+ // std::cout << std::string(buff) << std::endl;
+  sendQueue.push(std::string(buff));
+}
 
-  message << std::setw(3) << std::setfill('0') << angle;
-
-  sendQueue.push(message.str());
+void sendDistanceToQueue(uint16_t angle) {
+  char buff[8];
+    sprintf(buff, "r%03d", angle);
+ // std::cout << std::string(buff) << std::endl;
+  sendQueue.push(std::string(buff));
 }
 
 int main() {
@@ -189,9 +200,10 @@ int main() {
     setupImGui(window);
 
     float angleSend = 0;
+    int driveForward = 0;
+
     std::vector<Pillar> pillars;
     std::mutex pillarsMutex;
-
 
     std::thread tcpConnect(connectTCP);
 
@@ -227,10 +239,28 @@ int main() {
 	  addToQueue("d");
 	}
 
+	if (ImGui::Button("Scan")) {
+	  addToQueue("g");
+	}
+
+	if (ImGui::Button("Auton")) {
+	  addToQueue("h");
+	}
+
+	if(ImGui::Button("Quit all")) {
+	    addToQueue("q");
+	}
+
 	ImGui::SliderAngle("Turn angle", &angleSend);
 
 	if (ImGui::Button("Send turn")) {
-	  sendAngleToQueue((int16_t) angleSend);
+	  sendAngleToQueue((int16_t) (angleSend * 180 / M_PI));
+	}
+
+	ImGui::SliderInt("Drive x cm", &driveForward, 0, 999);
+
+	if (ImGui::Button("Drive x")) {
+	    sendDistanceToQueue(driveForward);
 	}
 
         ImGui::End();
