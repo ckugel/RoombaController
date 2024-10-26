@@ -19,7 +19,10 @@
 #include <queue>
 #include <condition_variable>
 #include <atomic>
+#include "Pose2D.h"
 
+#define ADDRESS "127.0.0.1" // "192.168.1.1"
+#define PORT 65432
 
 std::queue<std::string> sendQueue;
 std::mutex queueMutex;
@@ -28,11 +31,17 @@ std::condition_variable sendCondition;
 
 std::atomic<bool> stopClient(false);
 
-
+/*
 std::unique_ptr<Graph<Pose2D>> discretizeField(std::vector<Pillar> fields, Pose2D botPose, uint8_t desiredIndex) {
+
+  std::unique_ptr<Graph<Pose2D>> graph = std::make_unique<Graph<Pose2D>>();  
+  
   
 
+
+  return graph;
 }
+*/
 
 
 void readAndLog(int socket) {
@@ -88,13 +97,14 @@ void connectTCP() {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
   sockaddr_in serverAddress;
   serverAddress.sin_family = AF_INET;
-  serverAddress.sin_port = htons(288);
-  serverAddress.sin_addr.s_addr = inet_addr("192.168.1.1");
-
+  serverAddress.sin_port = htons(PORT);
+  serverAddress.sin_addr.s_addr = inet_addr(ADDRESS);
 
   // https://beej.us/guide/bgnet/html/#blocking
   // fcntl(clientSocket, F_SETFL, O_NONBLOCK);
   int status = connect(clientSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
+
+  std::cout << "CONNECT" << std::endl;
 
   // maybe make thread here
 
@@ -104,7 +114,7 @@ void connectTCP() {
   // spawn read and log thread here
   std::thread readThread(readAndLog, clientSocket);
 
-  
+   
 
   readThread.join();
   close(clientSocket);
@@ -131,6 +141,11 @@ void ShowPillarWindow(const std::vector<Pillar>& pillars) {
 
 }
 
+
+void addToQueue(string message) {
+  sendQueue.add(message);
+}
+
 int main() {
     if (!glfwInit()) return -1;
     GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello, ImGui!", NULL, NULL);
@@ -138,6 +153,8 @@ int main() {
     glfwMakeContextCurrent(window);
 
     setupImGui(window);
+
+    std::thread tcpConnect(connectTCP);
 
     // Main loop
     while (!glfwWindowShouldClose(window)) {
@@ -151,8 +168,9 @@ int main() {
 	// ImGui::ShowDemoWindow(&open);
 
         // Your ImGui code here
-        ImGui::Begin("Hello, world!");
-        ImGui::Text("This is some text");
+        ImGui::Begin("Control Panel");
+        //ImGui::Text("This is some text");
+	ImGui::Button("Forward", );
         ImGui::End();
 
         // Render
@@ -167,6 +185,8 @@ int main() {
         glfwSwapBuffers(window);
     }
 
+    stopClient.store(true);
+  
     // Cleanup
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
