@@ -207,7 +207,7 @@ void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2
 	DrawCircle(drawList, center, radius, color);
 }
 
-void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose) {
+void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>& graph) {
   ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -223,6 +223,16 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
     }
 
     ShowPillarOnWindow(drawList, botPose, IM_COL32(0, 120, 220, 100), offset);
+
+    std::vector<Node<Pose2D>*> nodes = graph.getNodes();
+    for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
+	Pose2D position = nodes[nodeIndex]->getData();
+	
+	ImVec2 center = ImVec2(offset.x + position.getX() * SCREEN_SCALE, offset.y + position.getY() * SCREEN_SCALE);
+	float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
+	DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
+    }
+
 
     pillarsMutex->unlock();
 
@@ -264,8 +274,8 @@ bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D l
 
 
 
-Graph<Pillar> discretizeGraph(std::vector<Pillar> pillars, std::mutex fieldMutex, uint8_t desired, Pillar botPose) {
-    Graph<Pillar> graph();
+Graph<Pose2D> discretizeGraph(std::vector<Pillar> pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
+    Graph<Pose2D> graph;
     fieldMutex.lock();
     // std::vector<Node<Pillar>*> nodes;
     for (uint8_t currentPillar = 0; currentPillar < pillars.size(); currentPillar++) {
@@ -275,9 +285,9 @@ Graph<Pillar> discretizeGraph(std::vector<Pillar> pillars, std::mutex fieldMutex
 	    for (double angle = 0; angle < 361; angle += 50) {
 		double radian = angle * M_PI / 180.0;
 		Pose2D attemptAdd = Pose2D::fromPolar(magnitude, radian);
-		if (validLocationForNode(attemptAdd)) {
+		if (validLocationForNode(pillars, desired, attemptAdd)) {
 		    // add to list
-		    Node<Pillar> toAdd = new Node<Pillar>(pillars[currentPillar]);
+		    Node<Pose2D>* toAdd = new Node<Pose2D>(attemptAdd);
 		    
 		    graph.addNode(toAdd);
 		    // nodes = graph.getNodes();
@@ -286,17 +296,18 @@ Graph<Pillar> discretizeGraph(std::vector<Pillar> pillars, std::mutex fieldMutex
 	}	
     }
 
-    graph.addNode(new Node<Pillar>(botPose));
+    graph.addNode(new Node<Pose2D>(botPose.getPose()));
 
     fieldMutex.unlock();
-    
+    return graph;    
 }
 
-void weightGraph(Graph<Pillar>& graph, std::vector<Pillar>& pillars, std::mutex fieldMutex, uint8_t desired, Pillar botPose) {
+void weightGraph(Graph<Pose2D>& graph, std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
    for (uint8_t pillarIndex = 0; pillarIndex < pillars.size(); pillarIndex++) {
 	if (pillarIndex != desired) {
-	    std::vector<Node<Pillar>*> nodes = graph.getNodes();
+	    std::vector<Node<Pose2D>*> nodes = graph.getNodes();
 
+	    //TODO: IMPLEMENT
 	}
     }
 }
@@ -318,6 +329,7 @@ int main() {
 
     std::vector<Pillar> pillars;
     std::mutex pillarsMutex;
+    Graph<Pose2D> graph;
 
 
     // connectTCP(pillars, pillarsMutex, desired);
@@ -343,7 +355,7 @@ int main() {
 	// ImGui::ShowDemoWindow(&open);
 	
 
-	ShowFieldWindow(pillars, &pillarsMutex, botPose);
+	ShowFieldWindow(pillars, &pillarsMutex, botPose, graph);
 	// std::cout << "About to begin" << std::endl;
 	
         // Your ImGui code here
@@ -390,6 +402,14 @@ int main() {
 
 	if (ImGui::Button("Drive x")) {
 	    sendDistanceToQueue(driveForward);
+	}
+
+	if (ImGui::Button("Discretize")) {
+	    graph = discretizeGraph(pillars, pillarsMutex, desired, botPose);
+	}
+
+	if (ImGui::Button("Weight")) {
+	    weightGraph(graph, pillars, pillarsMutex, desired, botPose);
 	}
 
 	// std::cout << "About to end" << std::endl;

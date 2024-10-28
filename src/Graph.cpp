@@ -93,8 +93,8 @@ bool Graph<V>::contains(Node<V>* node, std::vector<Node<V>*> listOfNodes) {
 }
 
 template<typename V>
-std::vector<Node<V>*> getNodes() {
-    return nodes;
+std::vector<Node<V>*> Graph<V>::getNodes() {
+    return this->nodes;
 }
 
 template<typename V>
