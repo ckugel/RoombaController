@@ -93,6 +93,11 @@ bool Graph<V>::contains(Node<V>* node, std::vector<Node<V>*> listOfNodes) {
 }
 
 template<typename V>
+std::vector<Node<V>*> getNodes() {
+    return nodes;
+}
+
+template<typename V>
 void Graph<V>::addNode(Node<V>* newNode) {
     if (contains(newNode, nodes)) {return;}
     head = newNode;
@@ -231,6 +236,14 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* find) {
     delete queue;
     delete[] distances;
     return thing;
+}
+
+template<typename V>
+Graph<V>::~Graph() {
+    // delete all connections and nodes
+    for (Node<V> node : nodes) {
+	delete node;
+    }
 }
 
 template<typename V>

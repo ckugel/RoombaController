@@ -15,6 +15,12 @@ Pose2D::Pose2D(double x, double y) {
   this->y = y;
 }
 
+Pose2D::Pose2D() {
+    this->x = 0;
+    this->y = 0;
+    this->heading = 0;
+}
+
 Pose2D::Pose2D(Pose2D* position) {
   this->x = position->x;
   this->y = position->y;
@@ -71,5 +77,13 @@ double Pose2D::getY() {
 }
 double Pose2D::getHeading() {
   return heading;
+}
+
+
+Pose2D Pose2D::fromPolar(double magnitude, double angle) {
+    double x = magnitude * cos(angle);
+    double y = magnitude * sin(angle);
+    Pose2D pose(x, y, 0);
+    return pose;
 }
 

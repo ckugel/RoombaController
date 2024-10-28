@@ -25,6 +25,8 @@
 
 #define ADDRESS "127.0.0.1" // "192.168.1.1"
 #define PORT 65432
+#define SCREEN_SCALE 2.0f
+#define BOT_RADIUS 10
 
 std::queue<std::string> sendQueue;
 std::mutex queueMutex;
@@ -46,7 +48,7 @@ std::unique_ptr<Graph<Pose2D>> discretizeField(std::vector<Pillar> fields, Pose2
 */
 
 
-void readAndLog(int socket) {
+void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose) {
   const uint16_t BUFF_SIZE = 1024;
 
   /*
@@ -71,7 +73,51 @@ void readAndLog(int socket) {
     char buff[BUFF_SIZE];
 
     // expect a "Handshake" response to be echoed
-    uint16_t bytesRead = read(socket, buff, BUFF_SIZE);
+    size_t bytesRead = read(socket, buff, BUFF_SIZE);
+
+    std::string response(buff, bytesRead);
+
+    if (bytesRead > 0) {
+	logFile << response;
+    }
+
+    std::istringstream stream(response);
+    char tag;
+    while (stream >> tag) {
+	switch(tag) {
+	    case 'F':
+		break;
+	    case 'd':
+		{
+			uint8_t readAble;
+			if (stream >> readAble) {
+			    desired = readAble;
+			}
+			else {
+			    logFile << "Could not parse stream for: d" << std::endl;
+			}
+		}
+		break;
+	    case 'o':
+		    {	fieldMutex.lock();
+			field.push_back(Pillar::parseFromStream(stream));
+			fieldMutex.unlock();
+		    }
+		break;
+		case 'b':
+		    {
+			fieldMutex.lock();
+			botPose = Pillar::parseFromStream(stream);
+			fieldMutex.unlock();
+		    }
+		break;
+	    default:
+		break;
+	}
+    }
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(5));
+/*
     if (bytesRead > 0) {
       std::string response(buff, bytesRead);
       logFile << response << std::endl;
@@ -79,13 +125,16 @@ void readAndLog(int socket) {
 	std::cout << "exiting tcp server" << std::endl;
 	stopClient.store(true);
       }
+      else if (response.) {
+
+	    }
     }
     else {
       // sleep and wait
       // There should be an os signal to handle this
       // potentially fcntl
     }
-
+*/
     // no matter what we are going to log this in a file, however we should also update certain fields
 
   }
@@ -95,7 +144,7 @@ void readAndLog(int socket) {
 }
 
 // connect to Roomba server
-void connectTCP() {
+void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose) {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
   sockaddr_in serverAddress;
   serverAddress.sin_family = AF_INET;
@@ -106,15 +155,17 @@ void connectTCP() {
   // fcntl(clientSocket, F_SETFL, O_NONBLOCK);
   int status = connect(clientSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
 
-  std::cout << "CONNECT" << std::endl;
+  // std::cout << "CONNECT" << std::endl;
 
   // maybe make thread here
 
   const char* message = "Handshake";
   send(clientSocket, message, strlen(message), 0);
 
+    // readAndLog(clientSocket, field, fieldMutex, desired);
+
   // spawn read and log thread here
-  std::thread readThread(readAndLog, clientSocket);
+  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(field), std::ref(fieldMutex), std::ref(desired), std::ref(botPose));
 
   while(!stopClient.load()) {
 	if (!sendQueue.empty()) {
@@ -125,6 +176,8 @@ void connectTCP() {
 	    sendQueue.pop();
 	    send(clientSocket, message.c_str(), message.length(), 0);
 	}
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
 
 
@@ -147,26 +200,34 @@ void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 
   drawList->AddCircle(center, radius, color, 0, 0.2f);
 }
 
-void ShowPillarWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex) {
+void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset) {
+    	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y + pillar.getY() * SCREEN_SCALE);
+	float radius = pillar.getRadius() * SCREEN_SCALE;
+	// std::cout << "haven't drawn yet" << std::endl;
+	DrawCircle(drawList, center, radius, color);
+}
+
+void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose) {
   ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
     ImVec2 windowPos = ImGui::GetWindowPos();
     ImVec2 windowSize = ImGui::GetWindowSize();
-    float scale = 5.0f;
-    ImVec2 offset = ImVec2(windowPos.x + 50, windowPos.y + 50);
+    ImVec2 offset = ImVec2(windowPos.x + 50 + (windowSize.x / 2), windowPos.y + 50 + (windowSize.y / 2));
     
     pillarsMutex->lock();
+    // std::cout << pillars.size() << std::endl;
 
     for (Pillar pillar: pillars) {
-	ImVec2 center = ImVec2(offset.x + pillar.getX() * scale, offset.y + pillar.getY() * scale);
-	float radius = pillar.getRadius() * scale;
-	DrawCircle(drawList, center, radius, IM_COL32(255, 100, 100, 255));
+	ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 120), offset);
     }
+
+    ShowPillarOnWindow(drawList, botPose, IM_COL32(0, 120, 220, 100), offset);
 
     pillarsMutex->unlock();
 
     ImGui::End();
+    // std::cout << "Ended" << std::endl;
 }
 
 
@@ -191,13 +252,58 @@ void sendDistanceToQueue(uint16_t angle) {
   sendQueue.push(std::string(buff));
 }
 
+bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pillar botPose) {
+    
+}
+
+Graph discretizeGraph(std::vector<Pillar> pillars, std::mutex fieldMutex, uint8_t desired, Pillar botPose) {
+    Graph<Pillar> graph();
+    fieldMutex.lock();
+    std::vector<Node<Pillar>*> nodes;
+    for (uint8_t currentPillar = 0; currentPillar < pillars.size(); currentPillar++) {
+	if (currentPillar != desired) {
+	    double magnitude = pillars[currentPillar].getRadius() + BOT_RADIUS;
+	    
+	    for (double angle = 0; angle < 361; angle += 10) {
+		double radian = angle * M_PI / 180.0;
+		Pose2D attemptAdd = Pose2D::fromPolar(magnitude, radian);
+		if (validLocationForNode(attemptAdd)) {
+		    // add to list
+		    Node<Pillar> toAdd = new Node<Pillar>(pillars[currentPillar]);
+		    
+		    graph.addNode(toAdd);
+		    nodes = graph.getNodes();
+		    
+		    
+		    for (uint16_t otherNodes = 0; otherNodes < nodes.size(); otherNodes++) {
+			if (intersectsCircle(nodes[otherNodes].get(), pillars[currentPillar]) {
+			   // make a new connection
+			    
+			}
+		    }
+
+		    // determine what paths we can connect it to (any that do not intersect a circle)
+
+		}
+	    }
+	}	
+    }
+
+    fieldMutex.unlock();
+    
+}
+
 int main() {
     if (!glfwInit()) return -1;
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "Roomba Dashboard", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(1880, 900, "Roomba Dashboard", NULL, NULL);
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
 
     setupImGui(window);
+
+    Pillar botPose(0, 0, 0);
+
+    uint8_t desired = 0;
 
     float angleSend = 0;
     int driveForward = 0;
@@ -205,8 +311,18 @@ int main() {
     std::vector<Pillar> pillars;
     std::mutex pillarsMutex;
 
-    std::thread tcpConnect(connectTCP);
 
+    // connectTCP(pillars, pillarsMutex, desired);
+    std::thread tcpConnect(connectTCP, std::ref(pillars), std::ref(pillarsMutex), std::ref(desired), std::ref(botPose));
+    
+    // Pillar pillar(3.2, 9.1, 2.2, 6.7);
+    // pillars.push_back(/**Pillar(5.0f, 5.0f, 0.0f, 2.5)*/ pillar);
+/*
+    std::cout << "pillar 0 x" << pillar.getX() << " pillar 0 y "<< pillar.getY() << " . radius: " << pillar.getRadius()  << std::endl;
+
+
+    std::cout << "pillar 1 x " << pillars[0].getX() << ". pillar 1 y " << pillars[0].getY() << ". radius: " << pillars[0].getRadius() << std::endl; 
+*/
     // Main loop
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
@@ -218,10 +334,15 @@ int main() {
 	// bool open;
 	// ImGui::ShowDemoWindow(&open);
 	
-	ShowPillarWindow(pillars, &pillarsMutex);
 
+	ShowFieldWindow(pillars, &pillarsMutex, botPose);
+	// std::cout << "About to begin" << std::endl;
+	
         // Your ImGui code here
         ImGui::Begin("Control Panel");
+
+// 	std::cout << "began" << std::endl;
+
         //ImGui::Text("This is some text");
 	if (ImGui::Button("Forward")) {
 	  addToQueue("w");
@@ -263,7 +384,10 @@ int main() {
 	    sendDistanceToQueue(driveForward);
 	}
 
+	// std::cout << "About to end" << std::endl;
+
         ImGui::End();
+	
 
         // Render
         ImGui::Render();
@@ -275,9 +399,13 @@ int main() {
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 
     stopClient.store(true);
+
+    tcpConnect.join();
   
     // Cleanup
     ImGui_ImplOpenGL3_Shutdown();

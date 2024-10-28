@@ -53,20 +53,22 @@ while True:  # Loop recieving/sending data from/to client until client disconnec
                     break
 
             # Check if a sensor scan command has been sent
-            elif (data.decode() == "M\n") or (data.decode() == "m\n"):
+            elif (data.decode() == "g"):
 
                     print("Recieved Sensor scan request... sending data:\n")
 
+                    conn.send("F o 3.2 3 0 2 F".encode());
+
                     # Open file containing mock sensor data
-                    file_object = open(full_path + filename,'r') # Open the file: file_object is just a variable for the file "handler" returned by open()
-                    sensor_data = "" # Initialize sensor data varible
+                    #file_object = open(full_path + filename,'r') # Open the file: file_object is just a variable for the file "handler" returned by open()
+                    #sensor_data = "" # Initialize sensor data varible
 
-                    while (sensor_data != "END\n"): # Collect sensor data until "END" recieved
-                            sensor_data = file_object.readline()   # Grab a line from sensor file, readline expects message to end with "\n"
-                            conn.send(sensor_data.encode()) # Send a line of sensor data to client. Convert from String to bytes (i.e., encode) 
-                            print(sensor_data) # Pring line of Sensor data
+                    # while (sensor_data != "END\n"): # Collect sensor data until "END" recieved
+                    #        sensor_data = file_object.readline()   # Grab a line from sensor file, readline expects message to end with "\n"
+                    #        conn.send(sensor_data.encode()) # Send a line of sensor data to client. Convert from String to bytes (i.e., encode) 
+                    #        print(sensor_data) # Pring line of Sensor data
 
-                    file_object.close() # Important to close file once you are done with it!!                
+                    #file_object.close() # Important to close file once you are done with it!!                
 
             else:                
                     # Convert message from bytes to String (i.e., decode), then print

@@ -15,11 +15,12 @@ class Pose2D {
   public:
     Pose2D(double x, double y, double heading);
     Pose2D(double x, double y);
+    Pose2D();
     Pose2D(Pose2D* position);
     double angleTo(Pose2D other);
     double distanceTo(Pose2D other);
     double squareOfDistanceTo(Pose2D other);
-    static Pose2D createPoseFromAngleMagnitude(double angle, double magnitude);
+    static Pose2D fromPolar(double magnitude, double angle);
     static double degreesToRadians(double degrees);
     static double radiansToDegrees(double radians);
     Pose2D clone();
@@ -31,6 +32,7 @@ class Pose2D {
     double getX();
     double getY();
     double getHeading();
+
 };
 
 
