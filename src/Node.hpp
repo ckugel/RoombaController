@@ -6,15 +6,18 @@
 #define ANOTHERGRAPH_NODE_H
 
 
+#include "Pose2D.hpp"
+
 template <typename V>
 class Node {
     private:
         V data;
     public:
-        explicit Node(V data);
+        Node(V data);
         V getData();
         void SetData(V newData);
 };
 
+#include "Node.cpp"
 
 #endif //ANOTHERGRAPH_NODE_H

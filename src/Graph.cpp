@@ -19,7 +19,7 @@ Graph<V>::Graph() {
     matrix.push_back(temp);
 }
 
-
+/*
 template<typename V>
 void Graph<V>::playGround() {
     Node<V> *tempNode = new Node<V>(0);
@@ -72,7 +72,8 @@ void Graph<V>::playGround() {
     }*/
 
 
-}
+// }
+
 
 template<typename V>
 void Graph<V>::resize() {
@@ -134,6 +135,7 @@ void Graph<V>::addNode(Node<V> *nextNode, Node<V> *nodeITSLATE) {
     addNode(nextNode, adj);
 }
 
+/*
 template<typename V>
 void Graph<V>::printOut() {
     for (int looper = 0; looper < nodes.size(); looper++) {
@@ -164,6 +166,7 @@ void Graph<V>::printOut() {
     }
     std::cout << "\n\n\n" << std::endl;
 }
+*/
 
 template<typename V>
 std::vector<Node<V>*> Graph<V>::getAdj(Node<V>* next) {
@@ -180,8 +183,9 @@ std::vector<Node<V>*> Graph<V>::getAdj(Node<V>* next) {
 
 template<typename V>
 void Graph<V>::setHead(int index) {
-    head = getAdj()[index];
+    head = getNodes()[index];
 }
+
 
 template<typename V>
 std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* find) {
@@ -213,7 +217,7 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* find) {
         visited[nodeMap.at(curr)] = 1;
 
         if (find == curr) {
-            std::cout << "\n\nDistance: " << currentDistance << std::endl;
+            // std::cout << "\n\nDistance: " << currentDistance << std::endl;
             return path;
         }
 
@@ -224,7 +228,7 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* find) {
             for (int i = 0; i < path.size(); i++) {
                 possiblePath.push_back(path[i]);
             }
-            printAdjacent(curr);
+            // printAdjacent(curr);
             if (!visited[nodeMap.at(adj[looper])] && currentDistance + matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])] < distances[nodeMap.at(adj[looper])]) {
                 distances[nodeMap.at(adj[looper])] = currentDistance + matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])];
                 possiblePath.push_back(adj[looper]);
@@ -233,15 +237,15 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* find) {
         }
         thing = path;
     }
-    delete queue;
-    delete[] distances;
+   //  delete queue;
+    // delete[] distances;
     return thing;
 }
 
 template<typename V>
 Graph<V>::~Graph() {
     // delete all connections and nodes
-    for (Node<V> node : nodes) {
+    for (Node<V>* node : nodes) {
 	delete node;
     }
 }
@@ -279,6 +283,7 @@ int Graph<V>::numVisited(std::vector<bool> listOfBools) {
     return counter;
 }
 
+/*
 template<typename V>
 void Graph<V>::printAdjacent(Node<V>* next) {
     std::vector<Node<V>*> list = getAdj(next);
@@ -293,7 +298,8 @@ void Graph<V>::printAdjacent(Node<V>* next) {
     }
     std::cout << std::endl;
 }
-
+*/
+/*
 template<typename V> 
 std::vector<Node<V>*> Graph<V>::FrugalKugel(Node<V>* find, unsigned int steps) {
     std::vector<Node<V>*> toReturn;
@@ -363,3 +369,5 @@ std::vector<Node<V>*> Graph<V>::FrugalKugel(Node<V>* find, unsigned int steps) {
     delete[] distances;
     return toReturn;
 }
+
+*/

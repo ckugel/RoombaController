@@ -18,8 +18,8 @@ find_package(OpenGL REQUIRED)
 # find_package(PkgConfig REQUIRED)
 # pkg_check_modules(GLFW REQUIRED glfw3)
 
-add_executable(RoombaControllers src/main.cpp ${IMGUI_SOURCES}
-        src/Pose2D.cpp src/Pillar.cpp src/Graph.cpp)
+add_executable(RoombaControllers ${IMGUI_SOURCES}
+        src/Pose2D.cpp src/Pillar.cpp src/Graph.cpp src/main.cpp)
 
 # add_executable(RoombaControllers main.cpp ${IMGUI_SOURCES})
 target_include_directories(RoombaControllers PRIVATE ${IMGUI_DIR} ${IMGUI_DIR}/backends)

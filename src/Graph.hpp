@@ -5,7 +5,8 @@
 #ifndef ANOTHERGRAPH_GRAPH_H
 #define ANOTHERGRAPH_GRAPH_H
 
-#include "Node.cpp"
+#include "Node.hpp"
+#include "Pose2D.hpp"
 #include <stack>
 
 #include "vector"
@@ -23,7 +24,7 @@ class Graph {
         };
         std::vector<Node<V>*> nodes;
         std::vector<std::vector<unsigned int>> matrix;
-        Node<int>* head = nullptr;
+        Node<V>* head = nullptr;
         std::map<Node<V>*, unsigned int> nodeMap;
 
 
@@ -33,13 +34,13 @@ class Graph {
 
         bool contains(Node<V>* node, std::vector<Node<V>*> listOfNodes);
 
-        void printAdjacent(Node<V>* next);
+        //void printAdjacent(Node<V>* next);
 
     public:
 
         void addNode(Node<V>* newNode);
 
-	void printOut();
+	// void printOut();
 	
 	void addNode(Node<V>* nextNode, std::vector<Node<V>*> adjacentNodes, unsigned int weight);
 	void addNode(Node<V> *nextNode, std::vector<Node<V>*> adjacentNodes);
@@ -56,15 +57,17 @@ class Graph {
 
 	std::vector<Node<V>*> getNodes();
 
-	void playGround();
+	// void playGround();
 
         Graph();
 
-        std::vector<Node<V>*> FrugalKugel(Node<V>* find, unsigned int steps);
+        // std::vector<Node<V>*> FrugalKugel(Node<V>* find, unsigned int steps);
 
 	~Graph();
 
 };
+
+template class Graph<Pose2D>;
 
 
 #endif //ANOTHERGRAPH_GRAPH_H

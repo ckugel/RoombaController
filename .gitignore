@@ -4,4 +4,5 @@ zig
 .idea
 build/
 .ccls-cache
+*.gch
 cmake-build-debug/

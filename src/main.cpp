@@ -3,6 +3,8 @@
 #include "../include/imgui/backends/imgui_impl_glfw.h"
 #include "../include/imgui/backends/imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
+#include "Pose2D.hpp"
+#include "Node.hpp"
 #include "Graph.hpp"
 #include "Pillar.hpp"
 #include <vector>
@@ -19,7 +21,6 @@
 #include <queue>
 #include <condition_variable>
 #include <atomic>
-#include "Pose2D.hpp"
 #include <sstream>
 #include <iomanip>
 
@@ -207,6 +208,7 @@ void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2
 	DrawCircle(drawList, center, radius, color);
 }
 
+
 void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>& graph) {
   ImGui::Begin("Field");
     
@@ -240,7 +242,6 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
     // std::cout << "Ended" << std::endl;
 }
 
-
 void addToQueue(std::string message) {
     // std::cout << message << std::endl;
   sendQueue.push(message);
@@ -273,7 +274,6 @@ bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D l
 }
 
 
-
 Graph<Pose2D> discretizeGraph(std::vector<Pillar> pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
     Graph<Pose2D> graph;
     fieldMutex.lock();
@@ -303,17 +303,51 @@ Graph<Pose2D> discretizeGraph(std::vector<Pillar> pillars, std::mutex& fieldMute
 }
 
 void weightGraph(Graph<Pose2D>& graph, std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
-   for (uint8_t pillarIndex = 0; pillarIndex < pillars.size(); pillarIndex++) {
-	if (pillarIndex != desired) {
-	    std::vector<Node<Pose2D>*> nodes = graph.getNodes();
+    fieldMutex.lock();
+    std::vector<Node<Pose2D>*> nodes = graph.getNodes();
+    for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
+	for (uint16_t nodeIndexTwo = 0; nodeIndexTwo < nodes.size(); nodeIndexTwo++) {
+	    if (nodeIndex != nodeIndexTwo) {
+		Pose2D positionOne = nodes[nodeIndex]->getData();
+		Pose2D positionTwo = nodes[nodeIndex]->getData();
+		double length = positionOne.distanceTo(positionTwo);
+		double dy = (positionTwo.getY() - positionOne.getY()) / length;
+		double dx = (positionTwo.getX() - positionTwo.getY()) / length;
+		bool gotThrough = true;
 
-	    //TODO: IMPLEMENT
+		for (uint8_t pillarIndex = 0; pillarIndex < pillars.size(); pillarIndex++) {
+		    if (pillarIndex != desired) {
+			double t = dx * (pillars[pillarIndex].getX() - positionOne.getX()) + dy * (pillars[pillarIndex].getY() - positionOne.getY());
+			double Ex = t * dx + positionOne.getX();
+			double Ey = t * dy + positionOne.getY();
+
+			double L = pow(Ex - pillars[pillarIndex].getX(), 2) + pow(Ey - pillars[pillarIndex].getY(), 2); 
+
+			if (L < pow(pillars[pillarIndex].getRadius() + BOT_RADIUS, 2)) {
+			    // uh oh we hit the circle
+			    gotThrough = false;
+			}
+		    }
+		}
+
+		if (gotThrough) {
+		    // add a weight between nodes[nodeIndex] and nodes[nodeIndexTwo]
+		    graph.addConnection(nodes[nodeIndex], nodes[nodeIndexTwo], length);
+		}
+	    }
 	}
     }
+    fieldMutex.unlock();
+}
+
+
+std::string parsePathIntoRoutine(std::vector<Pose2D> path) {
+    //TODO: IMPLEMENT
+    return "";
 }
 
 int main() {
-    if (!glfwInit()) return -1;
+  if (!glfwInit()) return -1;
     GLFWwindow* window = glfwCreateWindow(1880, 900, "Roomba Dashboard", NULL, NULL);
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
@@ -330,6 +364,12 @@ int main() {
     std::vector<Pillar> pillars;
     std::mutex pillarsMutex;
     Graph<Pose2D> graph;
+    std::vector<Pose2D> path;
+
+
+    // Pose2D toAdd(0, 0, 0);
+
+    // graph.addNode(new Node<Pose2D>(toAdd));
 
 
     // connectTCP(pillars, pillarsMutex, desired);
@@ -339,7 +379,6 @@ int main() {
     // pillars.push_back(/**Pillar(5.0f, 5.0f, 0.0f, 2.5)*/ pillar);
 /*
     std::cout << "pillar 0 x" << pillar.getX() << " pillar 0 y "<< pillar.getY() << " . radius: " << pillar.getRadius()  << std::endl;
-
 
     std::cout << "pillar 1 x " << pillars[0].getX() << ". pillar 1 y " << pillars[0].getY() << ". radius: " << pillars[0].getRadius() << std::endl; 
 */
@@ -392,6 +431,17 @@ int main() {
 	    addToQueue("q");
 	}
 
+	if (ImGui::Button("Generate path")) {
+	    pillarsMutex.lock();
+	      path = graph.Dijkstra(graph.getNodes().back());
+	    pillarsMutex.unlock();
+	}
+
+	if (ImGui::Button("send planned path")) {
+	    // string message = parsePathIntoRoutine(path);
+	    addToQueue(parsePathIntoRoutine(path));
+	}
+
 	ImGui::SliderAngle("Turn angle", &angleSend);
 
 	if (ImGui::Button("Send turn")) {
@@ -405,7 +455,7 @@ int main() {
 	}
 
 	if (ImGui::Button("Discretize")) {
-	    graph = discretizeGraph(pillars, pillarsMutex, desired, botPose);
+	   graph = discretizeGraph(pillars, pillarsMutex, desired, botPose);
 	}
 
 	if (ImGui::Button("Weight")) {
