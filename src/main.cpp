@@ -62,9 +62,9 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
   filename << "log_" << std::put_time(timeInfo, "%Y%m%d_%H%M%S") << ".txt";
 */
 
-  static char name_buff[32];
+  static char name_buff[50];
   time_t now = time(0);
-  strftime(name_buff, sizeof(name_buff), "log/%Y%m%d_%H%M%S", localtime(&now));
+  strftime(name_buff, sizeof(name_buff), "log/%Y%m%d_%H%M%S.log", localtime(&now));
   std::string str_name(name_buff);
 
   std::ofstream logFile(str_name);
@@ -154,7 +154,18 @@ void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& des
 
   // https://beej.us/guide/bgnet/html/#blocking
   // fcntl(clientSocket, F_SETFL, O_NONBLOCK);
+    bool connected = false;
+    while (!connected) {
+    try {
   int status = connect(clientSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
+	    connected = true;
+    }
+    catch (std::exception e) {
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	    connected = false;
+    }
+
+    }
 
   // std::cout << "CONNECT" << std::endl;
 
@@ -297,6 +308,7 @@ Graph<Pose2D> discretizeGraph(std::vector<Pillar> pillars, std::mutex& fieldMute
     }
 
     graph.addNode(new Node<Pose2D>(botPose.getPose()));
+    graph.addNode(new Node<Pose2D>(pillars[desired].getPose()));
 
     fieldMutex.unlock();
     return graph;    
@@ -433,7 +445,10 @@ int main() {
 
 	if (ImGui::Button("Generate path")) {
 	    pillarsMutex.lock();
-	      path = graph.Dijkstra(graph.getNodes().back());
+	    std::vector<Node<Pose2D>*> pathNodes = graph.Dijkstra(graph.getNodes().back());
+	    for (uint8_t i = 0; i < pathNodes.size(); i++) {
+		path.push_back(pathNodes[i]->getData());
+	    }
 	    pillarsMutex.unlock();
 	}
 
