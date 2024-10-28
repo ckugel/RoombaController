@@ -252,19 +252,27 @@ void sendDistanceToQueue(uint16_t angle) {
   sendQueue.push(std::string(buff));
 }
 
-bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pillar botPose) {
-    
+bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D location) {
+   for (uint8_t i = 0; i < pillars.size(); i++) {
+	if (pillars[i].getPose().distanceTo(location) < pillars[i].getRadius() + BOT_RADIUS) {
+	    return false;
+	}
+    }
+
+    return true;
 }
 
-Graph discretizeGraph(std::vector<Pillar> pillars, std::mutex fieldMutex, uint8_t desired, Pillar botPose) {
+
+
+Graph<Pillar> discretizeGraph(std::vector<Pillar> pillars, std::mutex fieldMutex, uint8_t desired, Pillar botPose) {
     Graph<Pillar> graph();
     fieldMutex.lock();
-    std::vector<Node<Pillar>*> nodes;
+    // std::vector<Node<Pillar>*> nodes;
     for (uint8_t currentPillar = 0; currentPillar < pillars.size(); currentPillar++) {
 	if (currentPillar != desired) {
 	    double magnitude = pillars[currentPillar].getRadius() + BOT_RADIUS;
 	    
-	    for (double angle = 0; angle < 361; angle += 10) {
+	    for (double angle = 0; angle < 361; angle += 50) {
 		double radian = angle * M_PI / 180.0;
 		Pose2D attemptAdd = Pose2D::fromPolar(magnitude, radian);
 		if (validLocationForNode(attemptAdd)) {
@@ -272,25 +280,25 @@ Graph discretizeGraph(std::vector<Pillar> pillars, std::mutex fieldMutex, uint8_
 		    Node<Pillar> toAdd = new Node<Pillar>(pillars[currentPillar]);
 		    
 		    graph.addNode(toAdd);
-		    nodes = graph.getNodes();
-		    
-		    
-		    for (uint16_t otherNodes = 0; otherNodes < nodes.size(); otherNodes++) {
-			if (intersectsCircle(nodes[otherNodes].get(), pillars[currentPillar]) {
-			   // make a new connection
-			    
-			}
-		    }
-
-		    // determine what paths we can connect it to (any that do not intersect a circle)
-
+		    // nodes = graph.getNodes();
 		}
 	    }
 	}	
     }
 
+    graph.addNode(new Node<Pillar>(botPose));
+
     fieldMutex.unlock();
     
+}
+
+void weightGraph(Graph<Pillar>& graph, std::vector<Pillar>& pillars, std::mutex fieldMutex, uint8_t desired, Pillar botPose) {
+   for (uint8_t pillarIndex = 0; pillarIndex < pillars.size(); pillarIndex++) {
+	if (pillarIndex != desired) {
+	    std::vector<Node<Pillar>*> nodes = graph.getNodes();
+
+	}
+    }
 }
 
 int main() {
