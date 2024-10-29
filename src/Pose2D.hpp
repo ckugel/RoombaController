@@ -16,7 +16,8 @@ class Pose2D {
     Pose2D(double x, double y, double heading);
     Pose2D(double x, double y);
     Pose2D();
-    Pose2D(Pose2D* position);
+    Pose2D(const Pose2D& position);
+    // Pose2D(Pose2D* position);
     double angleTo(Pose2D other);
     double distanceTo(Pose2D other);
     double squareOfDistanceTo(Pose2D other);
@@ -32,6 +33,7 @@ class Pose2D {
     double getX();
     double getY();
     double getHeading();
+    void plus(Pose2D other);
 
 };
 

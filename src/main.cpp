@@ -24,10 +24,18 @@
 #include <sstream>
 #include <iomanip>
 
-#define ADDRESS "127.0.0.1" // "192.168.1.1"
-#define PORT 65432
-#define SCREEN_SCALE 2.0f
-#define BOT_RADIUS 10
+#define BOT_CONNECT 1
+#if BOT_CONNECT
+    #define ADDRESS "192.168.1.1"
+    #define PORT 288
+#else
+    #define ADDRESS "127.0.0.1"
+    #define PORT  65432
+#endif
+
+
+#define SCREEN_SCALE 3.0f
+#define BOT_RADIUS 6
 
 std::queue<std::string> sendQueue;
 std::mutex queueMutex;
@@ -87,12 +95,13 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
     while (stream >> tag) {
 	switch(tag) {
 	    case 'F':
+		    field.clear();
 		break;
 	    case 'd':
 		{
 			uint8_t readAble;
 			if (stream >> readAble) {
-			    desired = readAble;
+			    desired = readAble - '0';
 			}
 			else {
 			    logFile << "Could not parse stream for: d" << std::endl;
@@ -101,7 +110,9 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 		break;
 	    case 'o':
 		    {	fieldMutex.lock();
-			field.push_back(Pillar::parseFromStream(stream));
+			Pillar toAdd = Pillar::parseFromStream(stream);
+			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl; 
+			field.push_back(toAdd);
 			fieldMutex.unlock();
 		    }
 		break;
@@ -156,14 +167,14 @@ void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& des
   // fcntl(clientSocket, F_SETFL, O_NONBLOCK);
     bool connected = false;
     while (!connected) {
-    try {
-  int status = connect(clientSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
+	try {
+	    int status = connect(clientSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
 	    connected = true;
-    }
-    catch (std::exception e) {
-	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	}
+	catch (std::exception e) {
+	    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	    connected = false;
-    }
+	}
 
     }
 
@@ -213,14 +224,14 @@ void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 
 }
 
 void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset) {
-    	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y + pillar.getY() * SCREEN_SCALE);
+    	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y - pillar.getY() * SCREEN_SCALE);
 	float radius = pillar.getRadius() * SCREEN_SCALE;
 	// std::cout << "haven't drawn yet" << std::endl;
 	DrawCircle(drawList, center, radius, color);
 }
 
 
-void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>& graph) {
+void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>* graph, std::vector<Pose2D>& path) {
   ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -237,13 +248,33 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
 
     ShowPillarOnWindow(drawList, botPose, IM_COL32(0, 120, 220, 100), offset);
 
-    std::vector<Node<Pose2D>*> nodes = graph.getNodes();
+    std::vector<Node<Pose2D>*> nodes = graph->getNodes();
+    /*
+    if (nodes.size() > 1) {
+	std::cout << nodes.size() << std::endl; // 10
+	std::cout << nodes[1]->getData().getX() << std::endl; // 0
+    }
+    */
     for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
 	Pose2D position = nodes[nodeIndex]->getData();
 	
-	ImVec2 center = ImVec2(offset.x + position.getX() * SCREEN_SCALE, offset.y + position.getY() * SCREEN_SCALE);
+	ImVec2 center = ImVec2(offset.x + position.getX() * SCREEN_SCALE, offset.y - position.getY() * SCREEN_SCALE);
 	float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
 	DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
+	// draw a line from every node to the adjacent yes we will double count draws with this
+	//  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
+	// for (uint16_t connected = 0; connected < )
+
+    }
+/*
+    if (path.size() > 0) {
+	std::cout << "PATH SIZE: " << path.size() <<  " PATH 0 Y " << path[0].getY() << std::endl; 
+    }
+    */
+    for (uint8_t i = 1; i < path.size(); i++) {
+	ImVec2 p1 = ImVec2(path[i - 1].getX() * SCREEN_SCALE + offset.x, -path[i - 1].getY() * SCREEN_SCALE + offset.y);
+	ImVec2 p2 = ImVec2(path[i].getX() * SCREEN_SCALE + offset.x, -path[i - 1].getY() * SCREEN_SCALE + offset.y);
+	drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2); 
     }
 
 
@@ -285,8 +316,7 @@ bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D l
 }
 
 
-Graph<Pose2D> discretizeGraph(std::vector<Pillar> pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
-    Graph<Pose2D> graph;
+void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose, Graph<Pose2D>* graph) {
     fieldMutex.lock();
     // std::vector<Node<Pillar>*> nodes;
     for (uint8_t currentPillar = 0; currentPillar < pillars.size(); currentPillar++) {
@@ -296,27 +326,34 @@ Graph<Pose2D> discretizeGraph(std::vector<Pillar> pillars, std::mutex& fieldMute
 	    for (double angle = 0; angle < 361; angle += 50) {
 		double radian = angle * M_PI / 180.0;
 		Pose2D attemptAdd = Pose2D::fromPolar(magnitude, radian);
+
+		attemptAdd.plus(pillars[currentPillar].getPose());
+
 		if (validLocationForNode(pillars, desired, attemptAdd)) {
 		    // add to list
 		    Node<Pose2D>* toAdd = new Node<Pose2D>(attemptAdd);
 		    
-		    graph.addNode(toAdd);
+		    graph->addNode(toAdd);
 		    // nodes = graph.getNodes();
 		}
 	    }
 	}	
+	graph->addNode(new Node<Pose2D>(botPose.getPose()));
     }
+    
+    // graph->setHead(graph->getNodes().size() - 1);
+    std::cout << "X: " << pillars[desired].getX() << std::endl;
+    graph->addNode(new Node<Pose2D>(pillars[desired].getPose()));
 
-    graph.addNode(new Node<Pose2D>(botPose.getPose()));
-    graph.addNode(new Node<Pose2D>(pillars[desired].getPose()));
+    std::cout << "SIZE: " << graph->getNodes().size() << std::endl;
+    std::cout << " X: " << graph->getNodes()[1]->getData().getX() << std::endl; // 8.7
 
     fieldMutex.unlock();
-    return graph;    
 }
 
-void weightGraph(Graph<Pose2D>& graph, std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
+void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
     fieldMutex.lock();
-    std::vector<Node<Pose2D>*> nodes = graph.getNodes();
+    std::vector<Node<Pose2D>*> nodes = graph->getNodes();
     for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
 	for (uint16_t nodeIndexTwo = 0; nodeIndexTwo < nodes.size(); nodeIndexTwo++) {
 	    if (nodeIndex != nodeIndexTwo) {
@@ -334,7 +371,6 @@ void weightGraph(Graph<Pose2D>& graph, std::vector<Pillar>& pillars, std::mutex&
 			double Ey = t * dy + positionOne.getY();
 
 			double L = pow(Ex - pillars[pillarIndex].getX(), 2) + pow(Ey - pillars[pillarIndex].getY(), 2); 
-
 			if (L < pow(pillars[pillarIndex].getRadius() + BOT_RADIUS, 2)) {
 			    // uh oh we hit the circle
 			    gotThrough = false;
@@ -344,7 +380,9 @@ void weightGraph(Graph<Pose2D>& graph, std::vector<Pillar>& pillars, std::mutex&
 
 		if (gotThrough) {
 		    // add a weight between nodes[nodeIndex] and nodes[nodeIndexTwo]
-		    graph.addConnection(nodes[nodeIndex], nodes[nodeIndexTwo], length);
+		    graph->addConnection(nodes[nodeIndex], nodes[nodeIndexTwo], length);
+		    // print out attempt to add
+		    // std::cout << "attempting to connnect: " << nodes[nodeIndex]->getData().getX() << " with: " << nodes[nodeIndexTwo]->getData().getX() << std::endl;
 		}
 	    }
 	}
@@ -354,8 +392,20 @@ void weightGraph(Graph<Pose2D>& graph, std::vector<Pillar>& pillars, std::mutex&
 
 
 std::string parsePathIntoRoutine(std::vector<Pose2D> path) {
-    //TODO: IMPLEMENT
-    return "";
+    std::stringstream toSend;
+
+    toSend << "R ";
+
+    for (uint8_t i = 0; i < path.size(); i++) {
+	static char buffer[50];
+	sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
+	toSend << std::string(buffer);
+    }
+
+    toSend << " R";
+
+    
+    return toSend.str();
 }
 
 int main() {
@@ -366,7 +416,7 @@ int main() {
 
     setupImGui(window);
 
-    Pillar botPose(0, 0, 0);
+    Pillar botPose(0, 0, 0, BOT_RADIUS);
 
     uint8_t desired = 0;
 
@@ -375,7 +425,7 @@ int main() {
 
     std::vector<Pillar> pillars;
     std::mutex pillarsMutex;
-    Graph<Pose2D> graph;
+    Graph<Pose2D>* graph = new Graph<Pose2D>();
     std::vector<Pose2D> path;
 
 
@@ -406,7 +456,7 @@ int main() {
 	// ImGui::ShowDemoWindow(&open);
 	
 
-	ShowFieldWindow(pillars, &pillarsMutex, botPose, graph);
+	ShowFieldWindow(std::ref(pillars), &pillarsMutex, botPose, graph, path);
 	// std::cout << "About to begin" << std::endl;
 	
         // Your ImGui code here
@@ -431,6 +481,10 @@ int main() {
 	  addToQueue("d");
 	}
 
+	if (ImGui::Button("Stop")) {
+	    addToQueue(" ");
+	}
+
 	if (ImGui::Button("Scan")) {
 	  addToQueue("g");
 	}
@@ -445,7 +499,8 @@ int main() {
 
 	if (ImGui::Button("Generate path")) {
 	    pillarsMutex.lock();
-	    std::vector<Node<Pose2D>*> pathNodes = graph.Dijkstra(graph.getNodes().back());
+	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().back(), graph->getNodes()[desired]);
+	   //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
 	    for (uint8_t i = 0; i < pathNodes.size(); i++) {
 		path.push_back(pathNodes[i]->getData());
 	    }
@@ -470,7 +525,10 @@ int main() {
 	}
 
 	if (ImGui::Button("Discretize")) {
-	   graph = discretizeGraph(pillars, pillarsMutex, desired, botPose);
+	    delete graph;
+	    graph = new graph();
+	    // std::cout << "HUH: " << pillars[0].getX() << std::endl;
+	   discretizeGraph(std::ref(pillars), pillarsMutex, desired, botPose, graph);
 	}
 
 	if (ImGui::Button("Weight")) {

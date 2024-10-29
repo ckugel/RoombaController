@@ -51,7 +51,7 @@ class Graph {
 	void addNode(Node<V> *nextNode, Node<V> *nodeITSLATE, unsigned int weight); 
 	void setHead(int index);
 
-        std::vector<Node<V>*> Dijkstra(Node<V>* find);
+        std::vector<Node<V>*> Dijkstra(Node<V>* from, Node<V>* find);
 
         std::vector<Node<V>*> getAdj(Node<V>* next);
 

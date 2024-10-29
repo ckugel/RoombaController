@@ -51,7 +51,7 @@ double Pillar::getRadius() {
 Pillar Pillar::parseFromStream(std::istringstream& stream) {
 	double x, y, heading, radius;
 	if (stream >> x >> y >> heading >> radius) {
-	return Pillar(x, y, heading, radius);
+	    return Pillar(x, y, heading, radius);
 	}
 	return Pillar(0, 0, 0);
 }

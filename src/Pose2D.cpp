@@ -21,11 +21,18 @@ Pose2D::Pose2D() {
     this->heading = 0;
 }
 
+Pose2D::Pose2D(const Pose2D& position) {
+    this->x = position.x;
+    this->y = position.y;
+    this->heading = position.heading;
+}
+/*
 Pose2D::Pose2D(Pose2D* position) {
   this->x = position->x;
   this->y = position->y;
   this->heading = position->heading;
 }
+*/
 
 double Pose2D::angleTo(Pose2D other) {
   return atan2(other.y - this->y, other.x - this->x);  
@@ -48,6 +55,11 @@ void Pose2D::rotateByAngle(double angle) {
   this->y = this->x * sin(angle) - this->y * cos(angle);
   this->x = newX;
   this->heading += angle;
+}
+
+void Pose2D::plus(Pose2D other) {
+    this->x += other.x;
+    this->y += other.y;
 }
 
 void Pose2D::rotateByPose(Pose2D rotation) {

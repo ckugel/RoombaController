@@ -170,7 +170,7 @@ void Graph<V>::printOut() {
 
 template<typename V>
 std::vector<Node<V>*> Graph<V>::getAdj(Node<V>* next) {
-    std::vector<Node<V> *> adjacent;
+    std::vector<Node<V>*> adjacent;
     int index = nodeMap.at(next);
 
     for (int looper = 0; looper < matrix.size(); looper++) {
@@ -188,9 +188,10 @@ void Graph<V>::setHead(int index) {
 
 
 template<typename V>
-std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* find) {
+std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* from, Node<V>* find) {
     std::vector<Node<V>*> thing;
-    if (head == find) {
+    if (from == find) {
+	// std::cout << "was head" << std::endl;
         return thing;
     }
     std::vector<bool> visited;
@@ -205,7 +206,7 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* find) {
 
     std::priority_queue<pair, std::vector<pair>, CustomCompare> queue;
     std::vector<Node<V>*> temp;
-    temp.push_back(head);
+    temp.push_back(from);
     queue.push(std::pair<unsigned int, std::vector<Node<V>*>>(0, temp));
 
     while (!queue.empty()) {
@@ -237,6 +238,8 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* find) {
         }
         thing = path;
     }
+
+    // std::cout << "ATTEMPT TO RETURN SIZE: " << thing.size() << std::endl;
    //  delete queue;
     // delete[] distances;
     return thing;
