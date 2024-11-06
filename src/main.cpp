@@ -24,7 +24,7 @@
 #include <sstream>
 #include <iomanip>
 
-#define BOT_CONNECT 1
+#define BOT_CONNECT 0
 #if BOT_CONNECT
     #define ADDRESS "192.168.1.1"
     #define PORT 288
@@ -37,10 +37,22 @@
 #define SCREEN_SCALE 3.0f
 #define BOT_RADIUS 6
 
+enum MovementType {
+    MOVE_FORWARD,
+    MOVE_BACKWARDS,
+    MOVE_FORWARD_SMART,
+    TURN_TO_ANGLE,
+    SCAN
+};
+
 std::queue<std::string> sendQueue;
 std::mutex queueMutex;
 std::condition_variable sendCondition;
 
+struct Move {
+    double quantity;
+    MovementType type;
+};
 
 std::atomic<bool> stopClient(false);
 
@@ -221,7 +233,7 @@ void setupImGui(GLFWwindow* window) {
 
 void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 color) {
   drawList->AddCircle(center, radius, color, 0, 0.2f);
-}
+;;;}
 
 void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset) {
     	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y - pillar.getY() * SCREEN_SCALE);
@@ -275,6 +287,7 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
 	ImVec2 p1 = ImVec2(path[i - 1].getX() * SCREEN_SCALE + offset.x, -path[i - 1].getY() * SCREEN_SCALE + offset.y);
 	ImVec2 p2 = ImVec2(path[i].getX() * SCREEN_SCALE + offset.x, -path[i - 1].getY() * SCREEN_SCALE + offset.y);
 	drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2); 
+	std::cout << "p1 x: " << p1.x << ". p1 y: " << p1.y << std::endl;
     }
 
 
@@ -318,23 +331,25 @@ bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D l
 
 void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose, Graph<Pose2D>* graph) {
     fieldMutex.lock();
+    graph->addNode(new Node<Pose2D>(botPose.getPose()));
     // std::vector<Node<Pillar>*> nodes;
     for (uint8_t currentPillar = 0; currentPillar < pillars.size(); currentPillar++) {
 	if (currentPillar != desired) {
 	    double magnitude = pillars[currentPillar].getRadius() + BOT_RADIUS;
-	    
-	    for (double angle = 0; angle < 361; angle += 50) {
-		double radian = angle * M_PI / 180.0;
-		Pose2D attemptAdd = Pose2D::fromPolar(magnitude, radian);
+	    for (int i = 1; i < 3; i++) { 
+		for (double angle = 0; angle < 361; angle += 35) {
+		    double radian = angle * M_PI / 180.0;
+		    Pose2D attemptAdd = Pose2D::fromPolar(magnitude * i, radian);
 
-		attemptAdd.plus(pillars[currentPillar].getPose());
+		    attemptAdd.plus(pillars[currentPillar].getPose());
 
-		if (validLocationForNode(pillars, desired, attemptAdd)) {
-		    // add to list
-		    Node<Pose2D>* toAdd = new Node<Pose2D>(attemptAdd);
-		    
-		    graph->addNode(toAdd);
-		    // nodes = graph.getNodes();
+		    if (validLocationForNode(pillars, desired, attemptAdd)) {
+			// add to list
+			Node<Pose2D>* toAdd = new Node<Pose2D>(attemptAdd);
+			
+			graph->addNode(toAdd);
+			// nodes = graph.getNodes();
+		    }
 		}
 	    }
 	}	
@@ -342,11 +357,11 @@ void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8
     }
     
     // graph->setHead(graph->getNodes().size() - 1);
-    std::cout << "X: " << pillars[desired].getX() << std::endl;
+    // std::cout << "X: " << pillars[desired].getX() << std::endl;
     graph->addNode(new Node<Pose2D>(pillars[desired].getPose()));
 
-    std::cout << "SIZE: " << graph->getNodes().size() << std::endl;
-    std::cout << " X: " << graph->getNodes()[1]->getData().getX() << std::endl; // 8.7
+    // std::cout << "SIZE: " << graph->getNodes().size() << std::endl;
+    // std::cout << " X: " << graph->getNodes()[1]->getData().getX() << std::endl; // 8.7
 
     fieldMutex.unlock();
 }
@@ -390,15 +405,37 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
     fieldMutex.unlock();
 }
 
+void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
+    // gurantee that we can look back.
+    std::cout << "path size: " << path.size() << std::endl;
+    for (uint8_t move = 1; move < (path.size()*2); move += 2) {
+	// for every point we want to point and move
+	Pose2D pointOld = path[move / 2];
+	Pose2D pointNew = path[(move / 2) + 1];
+	// angle to turn to
+	double angle = pointNew.angleTo(pointOld) + pointNew.getHeading();
+	// magnitude
+	double magnitude = pointNew.distanceTo(pointOld);
+	routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
+	routine.push_back((Move) {.quantity = magnitude, .type = MOVE_FORWARD_SMART});
+	std::cout << "angle: " << angle << ". magnitude: " << magnitude << std::endl;
+    }
+}
 
 std::string parsePathIntoRoutine(std::vector<Pose2D> path) {
     std::stringstream toSend;
 
+    std::vector<Move> routine;
+    // std::cout << "routine length: " << routine.size() << std::endl;
+    pathToRoutine(path, routine);
+
     toSend << "R ";
 
-    for (uint8_t i = 0; i < path.size(); i++) {
+    for (uint8_t i = 0; i < routine.size(); i++) {
 	static char buffer[50];
-	sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
+	// sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
+	// // routine[i] is all 0
+	sprintf(buffer, "p %0.3f %d ", routine[i].quantity, routine[i].type);
 	toSend << std::string(buffer);
     }
 
@@ -526,7 +563,7 @@ int main() {
 
 	if (ImGui::Button("Discretize")) {
 	    delete graph;
-	    graph = new graph();
+	    graph = new Graph<Pose2D>();
 	    // std::cout << "HUH: " << pillars[0].getX() << std::endl;
 	   discretizeGraph(std::ref(pillars), pillarsMutex, desired, botPose, graph);
 	}

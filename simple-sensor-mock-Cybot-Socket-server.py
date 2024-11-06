@@ -57,7 +57,7 @@ while True:  # Loop recieving/sending data from/to client until client disconnec
 
                     print("Recieved Sensor scan request... sending data:\n")
 
-                    conn.send("F o 27.65 -5.89 0.00 4.29  o 21.75 25.25 0.00 6.56 d 0 ".encode())
+                    conn.send("F o 27.65 -5.89 0.00 4.29 o 21.75 25.25 0.00 6.56 o 56 -11 0.00 3 d 2 ".encode())
 
                     # Open file containing mock sensor data
                     #file_object = open(full_path + filename,'r') # Open the file: file_object is just a variable for the file "handler" returned by open()
