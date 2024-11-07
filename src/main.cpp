@@ -546,12 +546,15 @@ int main() {
 
 	if (ImGui::Button("Generate path")) {
 	    pillarsMutex.lock();
-	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().back(), graph->getNodes()[desired]);
+	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().back(), graph->getNodes()[desired - 1]);
 	   //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
-	    path.push_back(Pose2D(0, 0, 0));
+	    path.push_back(botPose.getPose());
 	    for (uint8_t i = 0; i < pathNodes.size(); i++) {
 		path.push_back(pathNodes[i]->getData());
+		std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
 	    }
+	    std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
+	    
 	    pillarsMutex.unlock();
 	}
 
