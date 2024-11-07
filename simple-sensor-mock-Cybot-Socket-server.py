@@ -48,7 +48,7 @@ while True:  # Loop recieving/sending data from/to client until client disconnec
 
         if (data is not None and data.decode() is not ""): # Checkif (data.decode() is not empty): # Checkif (data.decode() is not empty):
             # Check if server has recieved that client is quitting
-            if data.decode() == "quit\n": # Client is quitting
+            if data.decode() == "q": # Client is quitting
                     print("Server quitting")
                     break
 

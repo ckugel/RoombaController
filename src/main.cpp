@@ -242,6 +242,11 @@ void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2
 	DrawCircle(drawList, center, radius, color);
 }
 
+ImVec2 coordsToScreen(ImVec2 offset, double x, double y) {
+    double xN = ((x * SCREEN_SCALE) + offset.x);
+    double yN = ((-y * SCREEN_SCALE) + offset.y);
+    return ImVec2(xN, yN);
+}
 
 void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>* graph, std::vector<Pose2D>& path) {
   ImGui::Begin("Field");
@@ -284,10 +289,10 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
     }
     */
     for (uint8_t i = 1; i < path.size(); i++) {
-	ImVec2 p1 = ImVec2(path[i - 1].getX() * SCREEN_SCALE + offset.x, -path[i - 1].getY() * SCREEN_SCALE + offset.y);
-	ImVec2 p2 = ImVec2(path[i].getX() * SCREEN_SCALE + offset.x, -path[i - 1].getY() * SCREEN_SCALE + offset.y);
+	ImVec2 p1 = coordsToScreen(offset, path[i - 1].getX(), path[i - 1].getY());
+	ImVec2 p2 = coordsToScreen(offset, path[i].getX(), path[i].getY());
 	drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2); 
-	std::cout << "p1 x: " << p1.x << ". p1 y: " << p1.y << std::endl;
+//	std::cout << "p1 x: " << p1.x << ". p1 y: " << p1.y << std::endl;
     }
 
 
@@ -373,7 +378,7 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 	for (uint16_t nodeIndexTwo = 0; nodeIndexTwo < nodes.size(); nodeIndexTwo++) {
 	    if (nodeIndex != nodeIndexTwo) {
 		Pose2D positionOne = nodes[nodeIndex]->getData();
-		Pose2D positionTwo = nodes[nodeIndex]->getData();
+		Pose2D positionTwo = nodes[nodeIndexTwo]->getData();
 		double length = positionOne.distanceTo(positionTwo);
 		double dy = (positionTwo.getY() - positionOne.getY()) / length;
 		double dx = (positionTwo.getX() - positionTwo.getY()) / length;
@@ -408,7 +413,12 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
     // gurantee that we can look back.
     std::cout << "path size: " << path.size() << std::endl;
-    for (uint8_t move = 1; move < (path.size()*2); move += 2) {
+    std::cout << "path 0: " << path[0].getX() << ". " << path[0].getY() << std::endl;
+    std::cout << "path 1: " << path[1].getX() << ". " << path[1].getY() << std::endl;
+    std::cout << "path 2: " << path[2].getX() << ". " << path[2].getY() << std::endl;
+
+    // BUFFER OVERFLOW
+    for (uint8_t move = 1; move < ((path.size() - 1)*2); move += 2) {
 	// for every point we want to point and move
 	Pose2D pointOld = path[move / 2];
 	Pose2D pointNew = path[(move / 2) + 1];
@@ -538,6 +548,7 @@ int main() {
 	    pillarsMutex.lock();
 	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().back(), graph->getNodes()[desired]);
 	   //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
+	    path.push_back(Pose2D(0, 0, 0));
 	    for (uint8_t i = 0; i < pathNodes.size(); i++) {
 		path.push_back(pathNodes[i]->getData());
 	    }
