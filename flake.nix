@@ -1,74 +1,63 @@
 {
-  description = "Development environment for Zig 0.13.0 from source with GTK 4";
+  description = "RoombaController - C++ ImGui project with GLFW and OpenGL";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    zig.url = "github:mitchellh/zig-overlay";
-    zls.url = "github:zigtools/zls";
-
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , flake-utils
-    , ...
-    } @ inputs:
+  outputs = { self, nixpkgs }:
     let
-      overlays = [
-        # Other overlays
-        (final: prev: {
-          zigpkgs = inputs.zig.packages.${prev.system};
-          zls = inputs.zls.packages.${prev.system}.zls;
-        })
-      ];
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";  # Adjust if you're on a different architecture
+    in {
+      # Define the devShell (development environment)
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        buildInputs = [
+          pkgs.cmake
+          pkgs.gcc
+          pkgs.glew
+          pkgs.pkg-config
+          pkgs.mesa  # Provides OpenGL libraries
+          pkgs.glfw
+          pkgs.git
+          pkgs.libclang
+        ];
 
-      # Our supported systems are the same supported systems as the Zig binaries
-      systems = builtins.attrNames inputs.zig.packages;
-    in
-    flake-utils.lib.eachSystem systems (
-      system:
-      let
-        pkgs = import nixpkgs { inherit overlays system; };
-      in
-      rec {
-        devShells.default = pkgs.mkShell {
-          nativeBuildInputs = [
-            pkgs.zigpkgs."0.13.0"
-            pkgs.zls
-            pkgs.gtk4  # Add GTK 4 as a program
-          ];
+        shellHook = ''
+          echo "Welcome to the RoombaController development shell!"
+        '';
+      };
 
-          buildInputs = [
-            pkgs.bashInteractive
-            pkgs.zlib
-            pkgs.glib
-            pkgs.pkg-config  # Add pkg-config to ensure proper library detection
-          ];
+      # Define a package for building the project
+      packages.x86_64-linux.roomba-controller = pkgs.stdenv.mkDerivation {
+        name = "RoombaControllers";
+        src = ./.;
+        buildInputs = [
+          pkgs.cmake
+          pkgs.gcc
+          pkgs.glew
+          pkgs.mesa  # Provides OpenGL libraries
+          pkgs.glfw
+        ];
 
-          shellHook = ''
-            # Setting the interactive bash shell
-            export SHELL=${pkgs.bashInteractive}/bin/bash
+        nativeBuildInputs = [ pkgs.cmake ];
 
-            # Adding GTK 4 binaries to the PATH
-            export PATH=${pkgs.gtk4}/bin:$PATH
+        buildPhase = ''
+          mkdir -p build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          make
+        '';
 
-            # Setting LD_LIBRARY_PATH for dynamic linking
-            export LD_LIBRARY_PATH=${pkgs.gtk4}/lib:$LD_LIBRARY_PATH
+        installPhase = ''
+          mkdir -p $out/bin
+          cp build/RoombaControllers $out/bin/
+        '';
+      };
 
-            # Setting PKG_CONFIG_PATH for pkg-config
-            export PKG_CONFIG_PATH=${pkgs.gtk4}/lib/pkgconfig:$PKG_CONFIG_PATH
-          '';
-        };
-
-        # For compatibility with older versions of the `nix` binary
-        devShell = devShells.${system}.default;
-      }
-    );
+      # Optionally, define a `run` command to run the app after building
+      apps.x86_64-linux.run = {
+        type = "app";
+        program = "${self.packages.x86_64-linux.roomba-controller}/bin/RoombaControllers";
+      };
+    };
 }
-
