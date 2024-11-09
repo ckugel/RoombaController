@@ -371,6 +371,31 @@ void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8
     fieldMutex.unlock();
 }
 
+bool lineIntersectsCircle(double cx, double cy, double r, double x1, double y1, double x2, double y2) {
+    // Calculate the line direction vector
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+
+    // Calculate the projection of the circle center onto the line
+    double t = ((cx - x1) * dx + (cy - y1) * dy) / (dx * dx + dy * dy);
+
+    // Find the closest point on the line to the circle center
+    double closestX = x1 + t * dx;
+    double closestY = y1 + t * dy;
+
+    // Calculate the distance from the circle center to the closest point
+    double distX = closestX - cx;
+    double distY = closestY - cy;
+    double distanceToLine = std::sqrt(distX * distX + distY * distY);
+
+    // Check if the distance is less than or equal to the radius
+    return distanceToLine <= r;
+}
+
+bool lineIntersectsCircle(Pillar p1, Pose2D one, Pose2D two) {
+    return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY());
+}
+
 void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
     fieldMutex.lock();
     std::vector<Node<Pose2D>*> nodes = graph->getNodes();
@@ -380,18 +405,13 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 		Pose2D positionOne = nodes[nodeIndex]->getData();
 		Pose2D positionTwo = nodes[nodeIndexTwo]->getData();
 		double length = positionOne.distanceTo(positionTwo);
-		double dy = (positionTwo.getY() - positionOne.getY()) / length;
-		double dx = (positionTwo.getX() - positionTwo.getY()) / length;
+		double dy = (positionTwo.getY() - positionOne.getY());
+		double dx = (positionTwo.getX() - positionTwo.getY());
 		bool gotThrough = true;
 
 		for (uint8_t pillarIndex = 0; pillarIndex < pillars.size(); pillarIndex++) {
 		    if (pillarIndex != desired) {
-			double t = dx * (pillars[pillarIndex].getX() - positionOne.getX()) + dy * (pillars[pillarIndex].getY() - positionOne.getY());
-			double Ex = t * dx + positionOne.getX();
-			double Ey = t * dy + positionOne.getY();
-
-			double L = pow(Ex - pillars[pillarIndex].getX(), 2) + pow(Ey - pillars[pillarIndex].getY(), 2); 
-			if (L < pow(pillars[pillarIndex].getRadius() + BOT_RADIUS, 2)) {
+			if (lineIntersectsCircle(pillars[pillarIndex], positionOne, positionTwo)) {			
 			    // uh oh we hit the circle
 			    gotThrough = false;
 			}
@@ -554,7 +574,16 @@ int main() {
 		std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
 	    }
 	    std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
-	    
+	   
+	    std::vector<std::vector<unsigned int>> adjacencyMatrix = graph->getAdjacencyList();
+
+	    for (int i = 0; i < adjacencyMatrix.size(); i++) {
+		for (int j = 0; j < adjacencyMatrix[i].size(); j++) {
+		    std::cout << ", " << adjacencyMatrix[i][j]; 
+		}
+		std::cout << std::endl;
+	    }
+
 	    pillarsMutex.unlock();
 	}
 

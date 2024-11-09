@@ -254,6 +254,11 @@ Graph<V>::~Graph() {
 }
 
 template<typename V>
+std::vector<std::vector<unsigned int>> Graph<V>::getAdjacencyList() {
+    return matrix;
+}
+
+template<typename V>
 void Graph<V>::addConnection(Node<V> *one, Node<V> *two, unsigned int weight) {
     int oneIndex = nodeMap.at(one);
     int twoIndex = nodeMap.at(two);

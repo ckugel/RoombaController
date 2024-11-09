@@ -53,6 +53,8 @@ class Graph {
 
         std::vector<Node<V>*> Dijkstra(Node<V>* from, Node<V>* find);
 
+	std::vector<std::vector<unsigned int>> getAdjacencyList();
+
         std::vector<Node<V>*> getAdj(Node<V>* next);
 
 	std::vector<Node<V>*> getNodes();
