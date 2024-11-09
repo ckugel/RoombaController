@@ -288,10 +288,16 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
 	std::cout << "PATH SIZE: " << path.size() <<  " PATH 0 Y " << path[0].getY() << std::endl; 
     }
     */
-    for (uint8_t i = 1; i < path.size(); i++) {
-	ImVec2 p1 = coordsToScreen(offset, path[i - 1].getX(), path[i - 1].getY());
-	ImVec2 p2 = coordsToScreen(offset, path[i].getX(), path[i].getY());
-	drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2); 
+    for (uint8_t i = 0; i < path.size(); i++) {
+	if (i > 0) {
+	    ImVec2 p1 = coordsToScreen(offset, path[i - 1].getX(), path[i - 1].getY());
+	    ImVec2 p2 = coordsToScreen(offset, path[i].getX(), path[i].getY());
+	    drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2); 
+	}
+
+	ImVec2 center = coordsToScreen(offset, path[i].getX(), path[i].getY());
+	float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
+	DrawCircle(drawList, center, radius, IM_COL32(30, 120, 220, 150));
 //	std::cout << "p1 x: " << p1.x << ". p1 y: " << p1.y << std::endl;
     }
 
@@ -358,7 +364,6 @@ void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8
 		}
 	    }
 	}	
-	graph->addNode(new Node<Pose2D>(botPose.getPose()));
     }
     
     // graph->setHead(graph->getNodes().size() - 1);
@@ -566,12 +571,18 @@ int main() {
 
 	if (ImGui::Button("Generate path")) {
 	    pillarsMutex.lock();
-	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().back(), graph->getNodes()[desired - 1]);
+	    /*
+	    std::cout << "desire: " << desired << std::endl;
+	    for (int i = 0; i < graph->getNodes().size(); i++) {
+		std::cout << "node: " << i << ".  " << graph->getNodes()[i]->getData().getX() << std::endl;
+	    }
+	    */
+	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().front(), graph->getNodes().back());
 	   //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
-	    path.push_back(botPose.getPose());
+	    // path.push_back(botPose.getPose());
 	    for (uint8_t i = 0; i < pathNodes.size(); i++) {
 		path.push_back(pathNodes[i]->getData());
-		std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
+	//	std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
 	    }
 	    std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
 	   
@@ -584,6 +595,8 @@ int main() {
 		std::cout << std::endl;
 	    }
 
+	  //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
+	    
 	    pillarsMutex.unlock();
 	}
 
