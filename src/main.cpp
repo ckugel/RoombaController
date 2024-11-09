@@ -233,7 +233,7 @@ void setupImGui(GLFWwindow* window) {
 
 void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 color) {
   drawList->AddCircle(center, radius, color, 0, 0.2f);
-;;;}
+}
 
 void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset) {
     	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y - pillar.getY() * SCREEN_SCALE);
@@ -437,10 +437,10 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 
 void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
     // gurantee that we can look back.
-    std::cout << "path size: " << path.size() << std::endl;
+    /*std::cout << "path size: " << path.size() << std::endl;
     std::cout << "path 0: " << path[0].getX() << ". " << path[0].getY() << std::endl;
     std::cout << "path 1: " << path[1].getX() << ". " << path[1].getY() << std::endl;
-    std::cout << "path 2: " << path[2].getX() << ". " << path[2].getY() << std::endl;
+    std::cout << "path 2: " << path[2].getX() << ". " << path[2].getY() << std::endl;*/
 
     // BUFFER OVERFLOW
     for (uint8_t move = 1; move < ((path.size() - 1)*2); move += 2) {
@@ -453,7 +453,7 @@ void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
 	double magnitude = pointNew.distanceTo(pointOld);
 	routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
 	routine.push_back((Move) {.quantity = magnitude, .type = MOVE_FORWARD_SMART});
-	std::cout << "angle: " << angle << ". magnitude: " << magnitude << std::endl;
+	// std::cout << "angle: " << angle << ". magnitude: " << magnitude << std::endl;
     }
 }
 
@@ -584,8 +584,8 @@ int main() {
 		path.push_back(pathNodes[i]->getData());
 	//	std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
 	    }
-	    std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
-	   
+	   //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
+	   /*
 	    std::vector<std::vector<unsigned int>> adjacencyMatrix = graph->getAdjacencyList();
 
 	    for (int i = 0; i < adjacencyMatrix.size(); i++) {
@@ -594,7 +594,7 @@ int main() {
 		}
 		std::cout << std::endl;
 	    }
-
+	    */
 	  //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
 	    
 	    pillarsMutex.unlock();
