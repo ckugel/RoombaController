@@ -347,8 +347,8 @@ void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8
     for (uint8_t currentPillar = 0; currentPillar < pillars.size(); currentPillar++) {
 	if (currentPillar != desired) {
 	    double magnitude = pillars[currentPillar].getRadius() + BOT_RADIUS;
-	    for (int i = 1; i < 3; i++) { 
-		for (double angle = 0; angle < 361; angle += 35) {
+	    for (double i = 1.0; i < 5.0; i += 0.75) { 
+		for (double angle = 0; angle < 361; angle += 25) {
 		    double radian = angle * M_PI / 180.0;
 		    Pose2D attemptAdd = Pose2D::fromPolar(magnitude * i, radian);
 
