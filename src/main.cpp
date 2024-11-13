@@ -194,8 +194,8 @@ void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& des
 
   // maybe make thread here
 
-  const char* message = "Handshake";
-  send(clientSocket, message, strlen(message), 0);
+  // const char* message = "Handshake";
+  // send(clientSocket, message, strlen(message), 0);
 
     // readAndLog(clientSocket, field, fieldMutex, desired);
 
@@ -464,17 +464,17 @@ std::string parsePathIntoRoutine(std::vector<Pose2D> path) {
     // std::cout << "routine length: " << routine.size() << std::endl;
     pathToRoutine(path, routine);
 
-    toSend << "R ";
+    toSend << "R";
 
     for (uint8_t i = 0; i < routine.size(); i++) {
 	static char buffer[50];
 	// sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
 	// // routine[i] is all 0
-	sprintf(buffer, "p %0.3f %d ", routine[i].quantity, routine[i].type);
+	sprintf(buffer, "p %0.3f %d p", routine[i].quantity, routine[i].type);
 	toSend << std::string(buffer);
     }
 
-    toSend << " R";
+    toSend << "R";
 
     
     return toSend.str();
