@@ -111,17 +111,18 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 		break;
 	    case 'd':
 		{
-			uint8_t readAble;
-			if (stream >> readAble) {
-			    desired = readAble - '0';
-			}
-			else {
-			    logFile << "Could not parse stream for: d" << std::endl;
-			}
+		    uint8_t readAble;
+		    if (stream >> readAble) {
+			desired = readAble - '0';
+		    }
+		    else {
+			logFile << "Could not parse stream for: d" << std::endl;
+		    }
 		}
 		break;
 	    case 'o':
-		    {	fieldMutex.lock();
+		    {
+			fieldMutex.lock();
 			Pillar toAdd = Pillar::parseFromStream(stream);
 			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl; 
 			field.push_back(toAdd);
