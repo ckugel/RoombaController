@@ -249,6 +249,37 @@ ImVec2 coordsToScreen(ImVec2 offset, double x, double y) {
     return ImVec2(xN, yN);
 }
 
+ImVec2 coordsToScreen(ImVec2 offset, Pose2D position) {
+    return coordsToScreen(offset, position.getX(), position.getY());
+}
+
+/**
+ * Draws a triangle on the bot position facing in the direction that the bot is.
+ * The color of the triangle will be lime green.
+ *
+ * @param drawList the draw list for the window
+ * @param botPose the position of the bot
+ * @param offset the offset of the screen for cartesian coordinates
+ */
+void drawBotPose(ImDrawList* drawList, Pose2D botPose, ImVec2 offset) {
+    ImU32 color = IM_COL32(144, 238, 144, 200);
+    
+    // calculate the position of the first point
+    // should be botPose + (botRadius * 1.5 @ bot heading)
+    Pose2D lineOutOfCenter = Pose2D::fromPolar(BOT_RADIUS * 1.5, 0);
+    lineOutOfCenter.transformPose(botPose);
+    const ImVec2 p1 = coordsToScreen(offset, lineOutOfCenter);
+    Pose2D sideLine = Pose2D::fromPolar(BOT_RADIUS * 0.75, Pose2D::degreesToRadians(120));
+    sideLine.transformPose(botPose);
+    const ImVec2 p2 = coordsToScreen(offset, sideLine);
+    Pose2D otherSide = Pose2D::fromPolar(BOT_RADIUS * 0.75, Pose2D::degreesToRadians(240));
+    otherSide.transformPose(botPose);
+    const ImVec2 p3 = coordsToScreen(offset, otherSide);
+    
+    drawList->AddTriangle(p1, p2, p3, color);
+     
+}
+
 void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>* graph, std::vector<Pose2D>& path) {
   ImGui::Begin("Field");
     
@@ -263,8 +294,8 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
     for (Pillar pillar: pillars) {
 	ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 120), offset);
     }
-
-    ShowPillarOnWindow(drawList, botPose, IM_COL32(0, 120, 220, 100), offset);
+    
+    drawBotPose(drawList, botPose.getPose(), offset);
 
     std::vector<Node<Pose2D>*> nodes = graph->getNodes();
     /*
