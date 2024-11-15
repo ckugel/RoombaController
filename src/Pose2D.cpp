@@ -38,12 +38,22 @@ double Pose2D::angleTo(Pose2D other) {
   return atan2(other.y - this->y, other.x - this->x);  
 }
 
+void Pose2D::addAngle(double angle) {
+    this->heading += angle;
+}
+
 double Pose2D::distanceTo(Pose2D other) {
   return hypot(this->x - other.x, this->y - other.y);
 }
 
 double Pose2D::squareOfDistanceTo(Pose2D other) {
   return pow(other.x -this->x, 2) + pow(other.y - this->y, 2);
+}
+
+void Pose2D::plus(Pose2D other) {
+    this->x += other.x;
+    this->y += other.y;
+    this->heading += other.heading;
 }
 
 Pose2D Pose2D::clone() {
@@ -57,7 +67,7 @@ void Pose2D::rotateByAngle(double angle) {
   this->heading += angle;
 }
 
-void Pose2D::plus(Pose2D other) {
+void Pose2D::plusCoord(Pose2D other) {
     this->x += other.x;
     this->y += other.y;
 }
@@ -91,11 +101,20 @@ double Pose2D::getHeading() {
   return heading;
 }
 
+void Pose2D::minus(Pose2D other) {
+    this->x -= other.x;
+    this->y -= other.y;
+    this->heading -= other.heading;
+}
 
 Pose2D Pose2D::fromPolar(double magnitude, double angle) {
     double x = magnitude * cos(angle);
     double y = magnitude * sin(angle);
     Pose2D pose(x, y, 0);
     return pose;
+}
+
+double Pose2D::degreesToRadians(double degrees) {
+    return degrees * M_PI / 180.0;
 }
 

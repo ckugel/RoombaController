@@ -33,8 +33,10 @@ class Pose2D {
     double getX();
     double getY();
     double getHeading();
+    void plusCoord(Pose2D other);
     void plus(Pose2D other);
-
+    void minus(Pose2D other);
+    void addAngle(double angle);
 };
 
 
