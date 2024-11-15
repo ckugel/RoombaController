@@ -4,21 +4,22 @@
 
 #include "Field.hpp"
 
-Field::Field(std::vector<Pillar> pillars, uint8_t desiredDestinationPillar, Pillar botPose) {
+Field::Field(std::vector<Pillar> pillars, Pose2D desiredDestination, Pillar botPose) {
   this->pillars = std::make_unique<std::vector<Pillar>>(pillars);
+    this->desiredDestination = desiredDestination;
+    this->botPose = botPose;
 }
 
-Field::Field(std::vector<Pillar> pillars, Pillar desiredPillar) {
+Field::Field(std::vector<Pillar> pillars, Pose2D desiredDestination) {
     this->pillars = std::make_unique<std::vector<Pillar>>(pillars);
   
-    // search for desired pillar
-    this->desiredDesitnationPillar = 0xFF;
+    this->desiredDestination = desiredDestination;
     this->botPose = Pillar(0, 0, 0);
 }
 
 Field::Field() {
-  pillars(std::make_unique<std::vector<Pillar>());
-  this->desiredDesitnationPillar = 0xFF;
+  this-> pillars = std::make_unique<std::vector<Pillar>>();
+  this->desiredDestination = Pose2D(0, 0, 0);
   this->botPose = Pillar(0, 0, 0);
 }
 

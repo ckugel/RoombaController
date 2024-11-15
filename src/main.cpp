@@ -56,33 +56,11 @@ struct Move {
 
 std::atomic<bool> stopClient(false);
 
-/*
-std::unique_ptr<Graph<Pose2D>> discretizeField(std::vector<Pillar> fields, Pose2D botPose, uint8_t desiredIndex) {
-
-  std::unique_ptr<Graph<Pose2D>> graph = std::make_unique<Graph<Pose2D>>();  
-  
-  
-
-
-  return graph;
-}
-*/
-
 
 void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose) {
   const uint16_t BUFF_SIZE = 1024;
 
-  /*
-  auto now = std::chrono::system_clock::now(); 
-  std::time_t timeNow = std::chrono::system_clock::to_time_t(now);
-
-  std::tm* timeInfo = std::localtime(&timeNow);
-  
-  std::stringstream filename;
-  filename << "log_" << std::put_time(timeInfo, "%Y%m%d_%H%M%S") << ".txt";
-*/
-
-  static char name_buff[50];
+    static char name_buff[50];
   time_t now = time(0);
   strftime(name_buff, sizeof(name_buff), "log/%Y%m%d_%H%M%S.log", localtime(&now));
   std::string str_name(name_buff);
@@ -129,6 +107,16 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 			fieldMutex.unlock();
 		    }
 		break;
+		case 'h':
+		    {
+			
+		    }
+		    break;
+		case 'H':
+		    {
+
+		    }
+		    break;
 		case 'b':
 		    {
 			fieldMutex.lock();
@@ -142,24 +130,6 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
     }
 
 	std::this_thread::sleep_for(std::chrono::milliseconds(5));
-/*
-    if (bytesRead > 0) {
-      std::string response(buff, bytesRead);
-      logFile << response << std::endl;
-      if (response.find("quit") != std::string::npos) {
-	std::cout << "exiting tcp server" << std::endl;
-	stopClient.store(true);
-      }
-      else if (response.) {
-
-	    }
-    }
-    else {
-      // sleep and wait
-      // There should be an os signal to handle this
-      // potentially fcntl
-    }
-*/
     // no matter what we are going to log this in a file, however we should also update certain fields
 
   }
@@ -190,15 +160,6 @@ void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& des
 	}
 
     }
-
-  // std::cout << "CONNECT" << std::endl;
-
-  // maybe make thread here
-
-  // const char* message = "Handshake";
-  // send(clientSocket, message, strlen(message), 0);
-
-    // readAndLog(clientSocket, field, fieldMutex, desired);
 
   // spawn read and log thread here
   std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(field), std::ref(fieldMutex), std::ref(desired), std::ref(botPose));
@@ -277,7 +238,6 @@ void drawBotPose(ImDrawList* drawList, Pose2D botPose, ImVec2 offset) {
     const ImVec2 p3 = coordsToScreen(offset, otherSide);
     
     drawList->AddTriangle(p1, p2, p3, color);
-     
 }
 
 void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>* graph, std::vector<Pose2D>& path) {
@@ -298,12 +258,7 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
     drawBotPose(drawList, botPose.getPose(), offset);
 
     std::vector<Node<Pose2D>*> nodes = graph->getNodes();
-    /*
-    if (nodes.size() > 1) {
-	std::cout << nodes.size() << std::endl; // 10
-	std::cout << nodes[1]->getData().getX() << std::endl; // 0
-    }
-    */
+
     for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
 	Pose2D position = nodes[nodeIndex]->getData();
 	
@@ -315,11 +270,7 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
 	// for (uint16_t connected = 0; connected < )
 
     }
-/*
-    if (path.size() > 0) {
-	std::cout << "PATH SIZE: " << path.size() <<  " PATH 0 Y " << path[0].getY() << std::endl; 
-    }
-    */
+    
     for (uint8_t i = 0; i < path.size(); i++) {
 	if (i > 0) {
 	    ImVec2 p1 = coordsToScreen(offset, path[i - 1].getX(), path[i - 1].getY());
@@ -330,14 +281,12 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
 	ImVec2 center = coordsToScreen(offset, path[i].getX(), path[i].getY());
 	float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
 	DrawCircle(drawList, center, radius, IM_COL32(30, 120, 220, 150));
-//	std::cout << "p1 x: " << p1.x << ". p1 y: " << p1.y << std::endl;
     }
 
 
     pillarsMutex->unlock();
 
     ImGui::End();
-    // std::cout << "Ended" << std::endl;
 }
 
 void addToQueue(std::string message) {
@@ -357,7 +306,6 @@ void sendAngleToQueue(int16_t angle) {
 void sendDistanceToQueue(uint16_t angle) {
   char buff[8];
     sprintf(buff, "r%03d", angle);
- // std::cout << std::string(buff) << std::endl;
   sendQueue.push(std::string(buff));
 }
 
@@ -398,12 +346,7 @@ void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8
 	}	
     }
     
-    // graph->setHead(graph->getNodes().size() - 1);
-    // std::cout << "X: " << pillars[desired].getX() << std::endl;
     graph->addNode(new Node<Pose2D>(pillars[desired].getPose()));
-
-    // std::cout << "SIZE: " << graph->getNodes().size() << std::endl;
-    // std::cout << " X: " << graph->getNodes()[1]->getData().getX() << std::endl; // 8.7
 
     fieldMutex.unlock();
 }
@@ -469,12 +412,7 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 
 void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
     // gurantee that we can look back.
-    /*std::cout << "path size: " << path.size() << std::endl;
-    std::cout << "path 0: " << path[0].getX() << ". " << path[0].getY() << std::endl;
-    std::cout << "path 1: " << path[1].getX() << ". " << path[1].getY() << std::endl;
-    std::cout << "path 2: " << path[2].getX() << ". " << path[2].getY() << std::endl;*/
 
-    // BUFFER OVERFLOW
     for (uint8_t move = 1; move < ((path.size() - 1)*2); move += 2) {
 	// for every point we want to point and move
 	Pose2D pointOld = path[move / 2];
@@ -485,7 +423,6 @@ void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
 	double magnitude = pointNew.distanceTo(pointOld);
 	routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
 	routine.push_back((Move) {.quantity = magnitude, .type = MOVE_FORWARD_SMART});
-	// std::cout << "angle: " << angle << ". magnitude: " << magnitude << std::endl;
     }
 }
 
@@ -523,7 +460,7 @@ int main() {
     Pillar botPose(0, 0, 0, BOT_RADIUS);
 
     uint8_t desired = 0;
-
+    
     float angleSend = 0;
     int driveForward = 0;
 

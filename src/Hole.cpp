@@ -3,3 +3,11 @@
 */
 
 #include "Hole.hpp"
+
+
+Hole::Hole() {
+
+}
+
+
+
