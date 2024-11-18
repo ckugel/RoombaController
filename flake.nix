@@ -19,6 +19,8 @@
           pkgs.mesa  # Provides OpenGL libraries
           pkgs.glfw
           pkgs.git
+          pkgs.doxygen
+          pkgs.doxygen_gui
           pkgs.libclang
         ];
 
