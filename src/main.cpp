@@ -7,6 +7,8 @@
 #include "Node.hpp"
 #include "Graph.hpp"
 #include "Pillar.hpp"
+#include "HoleManager.hpp"
+#include "Hole.hpp"
 #include <vector>
 #include <netinet/in.h>
 #include <chrono>
@@ -57,7 +59,7 @@ struct Move {
 std::atomic<bool> stopClient(false);
 
 
-void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose) {
+void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose, HoleManager& holeManager) {
   const uint16_t BUFF_SIZE = 1024;
 
     static char name_buff[50];
@@ -109,12 +111,16 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 		break;
 		case 'h':
 		    {
-			
+			fieldMutex.lock();
+			// data is coming in the format " X Y Theta" 
+			fieldMutex.unlock();
 		    }
 		    break;
 		case 'H':
 		    {
-
+			fieldMutex.lock();
+			// data is coming in the format " X1 Y1 X2 Y2 "
+			fieldMutex.unlock();
 		    }
 		    break;
 		case 'b':
@@ -139,7 +145,7 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 }
 
 // connect to Roomba server
-void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose) {
+void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose, HoleManager& holeManager) {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
   sockaddr_in serverAddress;
   serverAddress.sin_family = AF_INET;
@@ -162,7 +168,7 @@ void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& des
     }
 
   // spawn read and log thread here
-  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(field), std::ref(fieldMutex), std::ref(desired), std::ref(botPose));
+  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(field), std::ref(fieldMutex), std::ref(desired), std::ref(botPose), std::ref(holeManager));
 
   while(!stopClient.load()) {
 	if (!sendQueue.empty()) {
@@ -249,7 +255,6 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
     ImVec2 offset = ImVec2(windowPos.x + 50 + (windowSize.x / 2), windowPos.y + 50 + (windowSize.y / 2));
     
     pillarsMutex->lock();
-    // std::cout << pillars.size() << std::endl;
 
     for (Pillar pillar: pillars) {
 	ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 120), offset);
@@ -267,7 +272,6 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
 	DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
 	// draw a line from every node to the adjacent yes we will double count draws with this
 	//  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
-	// for (uint16_t connected = 0; connected < )
 
     }
     
@@ -402,7 +406,6 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 		    // add a weight between nodes[nodeIndex] and nodes[nodeIndexTwo]
 		    graph->addConnection(nodes[nodeIndex], nodes[nodeIndexTwo], length);
 		    // print out attempt to add
-		    // std::cout << "attempting to connnect: " << nodes[nodeIndex]->getData().getX() << " with: " << nodes[nodeIndexTwo]->getData().getX() << std::endl;
 		}
 	    }
 	}
@@ -459,6 +462,8 @@ int main() {
 
     Pillar botPose(0, 0, 0, BOT_RADIUS);
 
+    HoleManager holeManager;
+
     uint8_t desired = 0;
     
     float angleSend = 0;
@@ -476,15 +481,8 @@ int main() {
 
 
     // connectTCP(pillars, pillarsMutex, desired);
-    std::thread tcpConnect(connectTCP, std::ref(pillars), std::ref(pillarsMutex), std::ref(desired), std::ref(botPose));
+    std::thread tcpConnect(connectTCP, std::ref(pillars), std::ref(pillarsMutex), std::ref(desired), std::ref(botPose), std::ref(holeManager));
     
-    // Pillar pillar(3.2, 9.1, 2.2, 6.7);
-    // pillars.push_back(/**Pillar(5.0f, 5.0f, 0.0f, 2.5)*/ pillar);
-/*
-    std::cout << "pillar 0 x" << pillar.getX() << " pillar 0 y "<< pillar.getY() << " . radius: " << pillar.getRadius()  << std::endl;
-
-    std::cout << "pillar 1 x " << pillars[0].getX() << ". pillar 1 y " << pillars[0].getY() << ". radius: " << pillars[0].getRadius() << std::endl; 
-*/
     // Main loop
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
