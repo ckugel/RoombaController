@@ -9,12 +9,23 @@
 #include <memory>
 #include "Pose2D.hpp"
 
+#define HOLE_SIZE 20; // TODO: find
+
 class Hole {
     private:
 	Pose2D cornerOne;
 	Pose2D cornerTwo;
     public:
     
+	/**
+	 * Make a new hole with the given coordinates
+	 * @param X1 one corner's X position
+	 * @param Y1 one corner's Y position
+	 * @param X2 the other corner's X position
+	 * @parram Y2 the other corner's Y position
+	 */
+	Hole(double X1, double Y1, double X2, double Y2);	
+
 	/**
 	 * Creates a new Hole object
 	 */

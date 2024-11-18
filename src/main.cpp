@@ -35,7 +35,6 @@
     #define PORT  65432
 #endif
 
-
 #define SCREEN_SCALE 3.0f
 #define BOT_RADIUS 6
 
@@ -88,7 +87,15 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 	switch(tag) {
 	    case 'F':
 		    field.clear();
-		break;
+		    break;
+	    case 'o': 
+	    {
+		fieldMutex.lock();
+		Pillar toAdd = Pillar::parseFromStream(stream);
+		// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl; 
+		field.push_back(toAdd);
+		fieldMutex.unlock();
+		}
 	    case 'd':
 		{
 		    uint8_t readAble;
@@ -99,15 +106,6 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 			logFile << "Could not parse stream for: d" << std::endl;
 		    }
 		}
-		break;
-	    case 'o':
-		    {
-			fieldMutex.lock();
-			Pillar toAdd = Pillar::parseFromStream(stream);
-			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl; 
-			field.push_back(toAdd);
-			fieldMutex.unlock();
-		    }
 		break;
 		case 'h':
 		    {
@@ -246,7 +244,28 @@ void drawBotPose(ImDrawList* drawList, Pose2D botPose, ImVec2 offset) {
     drawList->AddTriangle(p1, p2, p3, color);
 }
 
-void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>* graph, std::vector<Pose2D>& path) {
+void drawRectangle(ImDrawList* drawList, ImVec2 offset, Pose2D p1, Pose2D p2) {
+    // const Pose2D MinPosition = Pose2D(std::min(p1.getX(), p2.getX()), std::min(p1.getY(), p2.getY()));
+    // const Pose2D MaxPosition = Pose2D(std::max(p1.getX(), p2.getX()), std::max(p1.getY(), p2.getY()));
+    // fun math time
+    double xCenter = (p1.getX() + p2.getX()) / 2;
+    double yCenter = (p1.getY() + p2.getY()) / 2;
+    double xDiagonal = (p1.getX() - p2.getX()) / 2;
+    double yDiagonal = (p1.getY() - p2.getY()) / 2;
+
+    Pose2D p3(xCenter - yDiagonal, yCenter + xDiagonal);
+    Pose2D p4(xCenter + yDiagonal, yCenter - xDiagonal);
+
+    const ImVec2 m1 = coordsToScreen(offset, p1);
+    const ImVec2 m2 = coordsToScreen(offset, p2);
+    const ImVec2 m3 = coordsToScreen(offset, p3);
+    const ImVec2 m4 = coordsToScreen(offset, p4);
+    //     std::    cout << "p2 position: " << p2.getY() << std::endl;
+
+    drawList->AddQuadFilled(m1, m3, m2, m4, IM_COL32(255, 165, 0, 170));
+}
+
+void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>* graph, std::vector<Pose2D>& path, HoleManager& holeManager) {
   ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -257,7 +276,14 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
     pillarsMutex->lock();
 
     for (Pillar pillar: pillars) {
-	ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 120), offset);
+	ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 200), offset);
+    }
+
+    std::vector<Hole> holes = holeManager.getHoles();
+//     std::cout << "size: " << holes.size() << std::endl; // output 1
+    for (Hole hole: holes) {
+	// std::cout << "X1 Y1 X2 Y2: {" << hole.getOneSquareCorner().getX() << " " << hole.getOneSquareCorner().getY() << " " << hole.getSecondSquareCorner().getX() << " " << hole.getSecondSquareCorner().getY() << std::endl; 
+	drawRectangle(drawList, offset, hole.getOneSquareCorner(), hole.getSecondSquareCorner());	
     }
     
     drawBotPose(drawList, botPose.getPose(), offset);
@@ -355,6 +381,9 @@ void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8
     fieldMutex.unlock();
 }
 
+/**
+ * Util function that returns whether a given line intersects a circle
+ */
 bool lineIntersectsCircle(double cx, double cy, double r, double x1, double y1, double x2, double y2) {
     // Calculate the line direction vector
     double dx = x2 - x1;
@@ -475,6 +504,12 @@ int main() {
     std::vector<Pose2D> path;
 
 
+    // test
+    Hole bruh = Hole(15, 10, 15, 20);
+    // std::cout << "bruh: " << bruh.getSecondSquareCorner().getY() << std::endl; // Y is this 0 UGHHHHHHHH
+    holeManager.addHole(bruh);
+
+
     // Pose2D toAdd(0, 0, 0);
 
     // graph.addNode(new Node<Pose2D>(toAdd));
@@ -495,7 +530,7 @@ int main() {
 	// ImGui::ShowDemoWindow(&open);
 	
 
-	ShowFieldWindow(std::ref(pillars), &pillarsMutex, botPose, graph, path);
+	ShowFieldWindow(std::ref(pillars), &pillarsMutex, botPose, graph, path, holeManager);
 	// std::cout << "About to begin" << std::endl;
 	
         // Your ImGui code here

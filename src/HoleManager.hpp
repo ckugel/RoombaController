@@ -26,6 +26,26 @@ class HoleManager {
 	void addPoint(Pose2D position);
 
 	/**
+	 * get a hole from registered holes
+	 * @param index of the hole in the holes list
+	 * @return the hole that has been registered
+	 */
+	Hole getHole(uint8_t index);
+
+	/**
+	 * Adds a hole to the holes
+	 * @param hole to add
+	 */
+	void addHole(Hole hole);
+
+	/**
+	 * Adds a hole to the hole manager
+	 * @param cornerOne the first Corner
+	 * @param cornerTwo the second Corner
+	 */
+	void addHole(Pose2D cornerOne, Pose2D cornerTwo);
+
+	/**
 	* get the holes that we for sure know about
 	*/
 	std::vector<Hole> getHoles();
