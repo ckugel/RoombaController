@@ -107,6 +107,11 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 		    }
 		}
 		break;
+		case 'E':
+		    {
+			// first term is the raw X or Y value next value is the direction
+		    }
+		    break;
 		case 'h':
 		    {
 			fieldMutex.lock();
@@ -505,8 +510,7 @@ int main() {
 
 
     // test
-    Hole bruh = Hole(15, 10, 15, 20);
-    // std::cout << "bruh: " << bruh.getSecondSquareCorner().getY() << std::endl; // Y is this 0 UGHHHHHHHH
+    Hole bruh = Hole(30, 20, 30, 40);
     holeManager.addHole(bruh);
 
 

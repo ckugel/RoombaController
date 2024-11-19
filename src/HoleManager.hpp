@@ -11,7 +11,6 @@
 
 class HoleManager {
     private:
-	std::unique_ptr<std::vector<Pose2D>> points;
 	std::unique_ptr<std::vector<Hole>> holes;
     public:
 	/**

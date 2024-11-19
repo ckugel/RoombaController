@@ -10,6 +10,9 @@
 #include <cstdint> 
 #include <memory>
 
+#define FIELD_LENGTH 0
+#define FIELD_WIDTH  0
+
 class Field {
   protected:
     std::unique_ptr<std::vector<Pillar>> pillars;

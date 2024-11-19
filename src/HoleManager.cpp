@@ -5,7 +5,6 @@
 #include "HoleManager.hpp"
 
 HoleManager::HoleManager() {
-    points = std::make_unique<std::vector<Pose2D>>();
     holes = std::make_unique<std::vector<Hole>>();
 }
 
@@ -33,5 +32,14 @@ std::vector<Hole> HoleManager::getHoles() {
 	toCpy.push_back(holes->data()[i]); // Unsafe lol
     }
     return toCpy;
+}
+
+void HoleManager::addPoint(Pose2D position) {
+    for (uint16_t i = 0; i < this->holes->size(); i++) {
+	if (this->holes->data()[i].pointCouldBeMemberOfHole(position)) {
+	    this->holes->data()[i].addPoint(position);
+	    break;
+	}
+    }
 }
 
