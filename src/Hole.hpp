@@ -9,7 +9,7 @@
 #include <memory>
 #include "Pose2D.hpp"
 
-#define HOLE_SIZE 20 // TODO: find
+#define HOLE_SIZE 0.6906 // meters
 
 /**
  * A Hole is either a complete square where we know the critical points (two vertices of the square).

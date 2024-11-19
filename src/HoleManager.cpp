@@ -43,3 +43,10 @@ void HoleManager::addPoint(Pose2D position) {
     }
 }
 
+std::vector<Pose2D> getSuggestedNodePlacements() {
+    // for every hole return a few points around the square
+    
+    // for all incomplete holes return an estimate for where you can go
+
+}
+

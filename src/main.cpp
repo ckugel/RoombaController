@@ -508,12 +508,6 @@ int main() {
     Graph<Pose2D>* graph = new Graph<Pose2D>();
     std::vector<Pose2D> path;
 
-
-    // test
-    Hole bruh = Hole(30, 20, 30, 40);
-    holeManager.addHole(bruh);
-
-
     // Pose2D toAdd(0, 0, 0);
 
     // graph.addNode(new Node<Pose2D>(toAdd));

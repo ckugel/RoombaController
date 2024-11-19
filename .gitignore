@@ -6,7 +6,7 @@ build/
 .ccls-cache
 *.gch
 cmake-build-debug/
-MakeFile
+Makefile
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake

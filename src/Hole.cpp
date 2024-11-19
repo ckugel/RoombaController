@@ -80,6 +80,28 @@ void Hole::addPoint(Pose2D position) {
     //TODO: add logic to check if we can morph into found
     //General flow:
     if (this->points->size() > 2) {
+	// should be 3 elements
+	// pick 2
+	Pose2D positionOne = this->points->data()[0];
+	Pose2D positionTwo = this->points->data()[1];
+	Pose2D positionThree = this->points->data()[2];
+
+	SlopeIntercept sl1(positionOne, positionThree);
+
+	if (sl1.hasPoseClose(positionTwo)) {
+	    // all along same line
+
+	    // remove the middle one
+
+	}
+
+	uint16_t pivot = 0; // start with 0 for our guess of a pivot
+	for (uint16_t i = 0; i < this->points->size(); i++) {
+	    // try to form line 
+	    // if all positions are in a line, then we should continue past
+
+	}
+
 	// we pick a point, then we have to see if the either other points make a 90 ish degree angle with the other point(s?)
     }
 }
