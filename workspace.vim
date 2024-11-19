@@ -13,7 +13,7 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +157 src/main.cpp
+badd +105 src/main.cpp
 badd +1 src/Field.cpp
 badd +1 src/Graph.cpp
 badd +1 src/Node.cpp
@@ -24,8 +24,10 @@ badd +1 src/Graph.hpp
 badd +1 src/Node.hpp
 badd +1 src/Pillar.hpp
 badd +1 src/Pose2D.hpp
-badd +19 src/Hole.hpp
+badd +1 src/Hole.hpp
 badd +2 src/Hole.cpp
+badd +0 src/HoleManager.cpp
+badd +0 src/HoleManager.hpp
 argglobal
 %argdel
 $argadd src/Field.cpp
@@ -35,6 +37,7 @@ $argadd src/Pillar.cpp
 $argadd src/Pose2D.cpp
 $argadd src/main.cpp
 set stal=2
+tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -59,8 +62,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 argglobal
 if bufexists(fnamemodify("src/Field.hpp", ":p")) | buffer src/Field.hpp | else | edit src/Field.hpp | endif
 if &buftype ==# 'terminal'
@@ -77,7 +80,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 15 - ((11 * winheight(0) + 19) / 38)
+let s:l = 15 - ((10 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -100,15 +103,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 tabnext
 edit src/Graph.hpp
 let s:save_splitbelow = &splitbelow
@@ -127,8 +130,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 argglobal
 2argu
 if bufexists(fnamemodify("src/Graph.hpp", ":p")) | buffer src/Graph.hpp | else | edit src/Graph.hpp | endif
@@ -146,7 +149,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -166,15 +169,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 tabnext
 edit src/Node.hpp
 let s:save_splitbelow = &splitbelow
@@ -193,8 +196,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 argglobal
 3argu
 if bufexists(fnamemodify("src/Node.hpp", ":p")) | buffer src/Node.hpp | else | edit src/Node.hpp | endif
@@ -212,7 +215,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -232,15 +235,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 02|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 tabnext
 edit src/Pillar.hpp
 let s:save_splitbelow = &splitbelow
@@ -259,8 +262,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 argglobal
 4argu
 if bufexists(fnamemodify("src/Pillar.hpp", ":p")) | buffer src/Pillar.hpp | else | edit src/Pillar.hpp | endif
@@ -278,7 +281,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -298,15 +301,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 tabnext
 edit src/Pose2D.hpp
 let s:save_splitbelow = &splitbelow
@@ -325,8 +328,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 argglobal
 5argu
 if bufexists(fnamemodify("src/Pose2D.hpp", ":p")) | buffer src/Pose2D.hpp | else | edit src/Pose2D.hpp | endif
@@ -344,7 +347,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -364,15 +367,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
 tabnext
 edit src/main.cpp
 argglobal
@@ -388,12 +391,80 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 105 - ((34 * winheight(0) + 17) / 35)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 105
+normal! 017|
+tabnext
+edit src/HoleManager.hpp
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 94 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 94 + 94) / 189)
+argglobal
+if bufexists(fnamemodify("src/HoleManager.hpp", ":p")) | buffer src/HoleManager.hpp | else | edit src/HoleManager.hpp | endif
+if &buftype ==# 'terminal'
+  silent file src/HoleManager.hpp
+endif
+balt src/HoleManager.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
-normal! 017|
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("src/HoleManager.cpp", ":p")) | buffer src/HoleManager.cpp | else | edit src/HoleManager.cpp | endif
+if &buftype ==# 'terminal'
+  silent file src/HoleManager.cpp
+endif
+balt src/HoleManager.hpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 13 - ((12 * winheight(0) + 17) / 35)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 13
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 94 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 94 + 94) / 189)
 tabnext
 edit src/Hole.hpp
 let s:save_splitbelow = &splitbelow
@@ -412,9 +483,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 100 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 94 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 94 + 94) / 189)
 argglobal
+1argu
 if bufexists(fnamemodify("src/Hole.hpp", ":p")) | buffer src/Hole.hpp | else | edit src/Hole.hpp | endif
 if &buftype ==# 'terminal'
   silent file src/Hole.hpp
@@ -429,14 +501,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 18 - ((17 * winheight(0) + 19) / 38)
+let s:l = 18 - ((16 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 18
-normal! 02|
+normal! 0
 wincmd w
 argglobal
+1argu
 if bufexists(fnamemodify("src/Hole.cpp", ":p")) | buffer src/Hole.cpp | else | edit src/Hole.cpp | endif
 if &buftype ==# 'terminal'
   silent file src/Hole.cpp
@@ -452,16 +525,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 02|
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 100 + 100) / 200)
-exe 'vert 2resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 94 + 94) / 189)
+exe 'vert 2resize ' . ((&columns * 94 + 94) / 189)
 tabnext 7
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
