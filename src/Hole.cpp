@@ -78,5 +78,9 @@ Hole::Hole(const Hole& hole) {
 void Hole::addPoint(Pose2D position) {
     this->points->push_back(position);
     //TODO: add logic to check if we can morph into found
+    //General flow:
+    if (this->points->size() > 2) {
+	// we pick a point, then we have to see if the either other points make a 90 ish degree angle with the other point(s?)
+    }
 }
 
