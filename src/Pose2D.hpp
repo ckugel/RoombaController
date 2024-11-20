@@ -55,6 +55,11 @@ class Pose2D {
     bool isOnLine(Pose2D LineEnd1, Pose2D LineEnd2);
 
     /**
+     * Determines whether a position is perpendicular to a given line
+     */
+    bool isPerpendicularToLine(double m); 
+
+    /**
     * gets the angle between points in radians. 
     * @param corner 
     * @param end1 
