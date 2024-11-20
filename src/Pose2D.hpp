@@ -44,7 +44,15 @@ class Pose2D {
      * @param two the second position
      * @return Slope intercept object that runs through two points
      */
-    static SlopeIntercept getSlopeIntercept(Pose2D one, Pose2D two);
+    // static SlopeIntercept getSlopeIntercept(Pose2D one, Pose2D two);
+    
+
+    /**
+     * Determines whether a pose is on a given bounded line
+     * @param LineEnd1 one endpoint of the line
+     * @param LineEnd2 the other endpoint of the line
+     */
+    bool isOnLine(Pose2D LineEnd1, Pose2D LineEnd2);
 
     /**
     * gets the angle between points in radians. 

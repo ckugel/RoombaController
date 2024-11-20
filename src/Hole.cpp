@@ -86,23 +86,32 @@ void Hole::addPoint(Pose2D position) {
 	Pose2D positionTwo = this->points->data()[1];
 	Pose2D positionThree = this->points->data()[2];
 
-	SlopeIntercept sl1(positionOne, positionThree);
-
-	if (sl1.hasPoseClose(positionTwo)) {
-	    // all along same line
-
-	    // remove the middle one
-
-	}
-
 	uint16_t pivot = 0; // start with 0 for our guess of a pivot
-	for (uint16_t i = 0; i < this->points->size(); i++) {
-	    // try to form line 
-	    // if all positions are in a line, then we should continue past
+	
+	// First case our third measurment is in a line
+	if (positionOne.isOnLine(positionTwo, positionThree)) {
+	    this->points->at(0) = positionThree;
+	    this->points->pop_back();
+	    return ;
 
 	}
+	else if (positionTwo.isOnLine(positionOne, positionThree)) {
+	    this->points->at(1) = positionThree;
+	    this->points->pop_back();
+	    return ;
+	}
+	else if (positionThree.isOnLine(positionOne, positionTwo)) {
+	    this->points->pop_back();
+	    return ;
+	}
 
-	// we pick a point, then we have to see if the either other points make a 90 ish degree angle with the other point(s?)
+	// Case 2: we pick a point, then we have to see if the either other points make a 90 ish degree angle with the other point(s?)
+	
+	// pick positionOne first
+	// find the line that is parallel
+	Pose2D perpendicular = positionThree;
+	if ()
+	
     }
 }
 

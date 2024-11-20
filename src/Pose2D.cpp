@@ -21,11 +21,52 @@ Pose2D::Pose2D() {
     this->heading = 0;
 }
 
+bool Pose2D::isOnLine(Pose2D LineEnd1, Pose2D LineEnd2) {
+    double y1 = LineEnd1.getY();
+    double x1 = LineEnd1.getX();
+
+    double y2 = LineEnd2.getY();
+    double x2 = LineEnd2.getX();
+
+    if (x1 > x2) {
+	// need to swap
+	double holder = x1;
+	x1 = x2;
+	x2 = holder;
+	holder = y1;
+	y1 = y2;
+	y2 = holder;
+    }
+
+    // base case of the line just being y = 
+    if (std::abs(y1 - y2) < 0.1) {
+	// straight y = line
+	return (this->getX() < x2 && this->getX() > x1);
+    }
+
+    // case where the line is just x =
+    else if (std::abs(x1 - x2) < 0.1) {
+	return (this->getY() < std::fmax(y1, y2) && this->getY() > std::fmin(y1, y2));
+    }
+
+    // y = mx + b line can be formed
+    else {
+	double m, b;	
+	// find the equation of the line and plugin this coordinates into it to see if it is close to on the line
+	m = (y2 - y1) / (x2 - x1);
+	b = y1 - m * x1; // B?
+	    
+	double wouldBeY = m * this->getX() + b;
+	return fabs(wouldBeY - this->getY()) < 0.1;
+    }
+}
+
 Pose2D::Pose2D(const Pose2D& position) {
     this->x = position.x;
     this->y = position.y;
     this->heading = position.heading;
 }
+
 /*
 Pose2D::Pose2D(Pose2D* position) {
   this->x = position->x;
