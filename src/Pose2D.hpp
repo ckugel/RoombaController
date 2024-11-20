@@ -7,6 +7,10 @@
 #define POSE2D_H
 
 #include <cmath>
+#include <sstream>
+
+
+#define BOT_RADIUS 6
 
 class Pose2D {
   protected:
@@ -37,6 +41,8 @@ class Pose2D {
     void plus(Pose2D other);
     void minus(Pose2D other);
     void addAngle(double angle);
+
+    static Pose2D parseFromStream(std::istringstream& stream);
 
     /**
      * Makes a slope intercept object from two pose2Ds

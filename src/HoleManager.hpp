@@ -12,6 +12,7 @@
 class HoleManager {
     private:
 	std::unique_ptr<std::vector<Hole>> holes;
+    std::unique_ptr<std::vector<Pose2D>> holeMeasurements;
     public:
 	/**
 	 * Creats a new Hole manager
@@ -58,6 +59,13 @@ class HoleManager {
 	* returns a list of likely accessible nodes
 	*/
 	std::vector<Pose2D> getSuggestedNodePlacements();
+
+	/**
+	* Whether a node collides with the estimated hole or not
+	* @param position the position of the node
+	* @return whether that node is valid from a hole perspective
+	*/
+	bool nodeColides(Pose2D position);
 
 };
 

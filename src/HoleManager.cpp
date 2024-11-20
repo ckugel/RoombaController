@@ -6,6 +6,7 @@
 
 HoleManager::HoleManager() {
     holes = std::make_unique<std::vector<Hole>>();
+    holeMeasurements = std::make_unique<std::vector<Pose2D>>();
 }
 
 void HoleManager::addHole(Pose2D cornerOne, Pose2D cornerTwo) {
@@ -35,18 +36,44 @@ std::vector<Hole> HoleManager::getHoles() {
 }
 
 void HoleManager::addPoint(Pose2D position) {
+   this->holeMeasurements->push_back(position); 
+    /*
     for (uint16_t i = 0; i < this->holes->size(); i++) {
 	if (this->holes->data()[i].pointCouldBeMemberOfHole(position)) {
 	    this->holes->data()[i].addPoint(position);
 	    break;
 	}
     }
+	 */
 }
 
-std::vector<Pose2D> getSuggestedNodePlacements() {
+bool HoleManager::nodeColides(Pose2D position) {
+	// shoot out a small line from the position in the dircection of the heading
+	
+	for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
+	    Pose2D initial = this->holeMeasurements->at(i);
+	    Pose2D pose2(this->holeMeasurements->at(i)); // should copy
+	    pose2.translateByMagnitude(HOLE_SIZE * 0.5);
+	    if (position.isOnLine(initial, pose2)) {
+		return false;
+	    }
+	}
+    return true;
+}
+
+std::vector<Pose2D> HoleManager::getSuggestedNodePlacements() {
     // for every hole return a few points around the square
     
     // for all incomplete holes return an estimate for where you can go
+    std::vector<Pose2D> toReturn;
+   // basically make sure that none of these are on a collision
+    for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
+	Pose2D suggested(this->holeMeasurements->at(i));
+	suggested.addAngle(M_PI);
+	suggested.translateByMagnitude(BOT_RADIUS);
+	toReturn.push_back(suggested);
+    }
+    return toReturn;
 
 }
 

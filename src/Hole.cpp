@@ -110,7 +110,6 @@ void Hole::addPoint(Pose2D position) {
 	// pick positionOne first
 	// find the line that is parallel
 	Pose2D perpendicular = positionThree;
-	if ()
 	
     }
 }

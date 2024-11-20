@@ -6,7 +6,6 @@
 #define PILLAR_H
 
 #include "Pose2D.hpp"
-#include <sstream>
 
 class Pillar {
   protected:

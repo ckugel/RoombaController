@@ -36,7 +36,7 @@
 #endif
 
 #define SCREEN_SCALE 3.0f
-#define BOT_RADIUS 6
+
 
 enum MovementType {
     MOVE_FORWARD,
@@ -115,7 +115,8 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 		case 'h':
 		    {
 			fieldMutex.lock();
-			// data is coming in the format " X Y Theta" 
+			// data is coming in the format " X Y Theta " 
+			Pose2D holeMeasurment = Pose2D::parseFromStream(stream); 
 			fieldMutex.unlock();
 		    }
 		    break;

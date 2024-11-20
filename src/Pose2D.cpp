@@ -159,3 +159,12 @@ double Pose2D::degreesToRadians(double degrees) {
     return degrees * M_PI / 180.0;
 }
 
+Pose2D parseFromStream(std::istringstream& stream) {
+    double x, y, heading;
+    	if (stream >> x >> y >> heading) {
+	    return Pose2D(x, y, heading);
+	}
+
+    return Pose2D(0, 0);
+}
+
