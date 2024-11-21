@@ -9,7 +9,6 @@
 #include <cmath>
 #include <sstream>
 
-
 #define BOT_RADIUS 6
 
 class Pose2D {
@@ -37,6 +36,7 @@ class Pose2D {
     double getX();
     double getY();
     double getHeading();
+    void setHeading(double angle);
     void plusCoord(Pose2D other);
     void plus(Pose2D other);
     void minus(Pose2D other);
@@ -76,6 +76,18 @@ class Pose2D {
 };
 
 
+struct Rectangle {
+    Pose2D r1, r2, r3, r4;
+};
+
+/**
+* Makes a rectangle from a line
+* @param L1 One bound of the line
+* @param L2 Another bound of the line
+* @param width the width of the rectangle
+* @return a rectangle with the the line in the middle and a width of the width passed in
+*/
+Rectangle makeRectangleFromLine(Pose2D L1, Pose2D L2, double width);
 
 #endif //POSE2D_H
 

@@ -1,4 +1,8 @@
-#include "util.h"
+/**
+* Created by Caleb Kugel 11/21/2024
+*/
+
+#include "util.hpp"
 
 double orientation(double px, double py, double qx, double qy, double rx, double ry) {
     double val = (qy - py) * (rx - qx) - (qx - px) * (ry - qy);

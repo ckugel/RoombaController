@@ -77,9 +77,18 @@ std::vector<Pose2D> HoleManager::getSuggestedNodePlacements() {
 
 }
 
-bool HoleManager::lineIntersectsAnyHoleMeasurmenent(Pose2D locations) {
-   // we have a pose of each measurement
-
+bool HoleManager::lineIntersectsAnyHoleMeasurement(Pose2D positionOne, Pose2D positionTwo) {
+    // we have a pose of each measurement
+    // have to make the rectangle and the expected line
+    
+    for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
+	// for every point make the rectangle
+	Rectangle rect = makeRectangleFromLine(positionOne, positionTwo, MEASUREMENT_WIDTH);	
+	if (lineIntersectsRectangle(positionOne.getX(), positionOne.getY(), positionTwo.getX(), positionTwo.getY(), rect.r1.getX(), rect.r1.getY(), rect.r2.getX(), rect.r2.getY(), rect.r3.getX(), rect.r3.getY(), rect.r4.getX(), rect.r4.getY())) {
+	    return true;
+	}
+    }
+    return false;
 }
 
 

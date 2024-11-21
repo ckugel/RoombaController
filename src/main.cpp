@@ -117,13 +117,20 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 			fieldMutex.lock();
 			// data is coming in the format " X Y Theta " 
 			Pose2D holeMeasurment = Pose2D::parseFromStream(stream); 
+			holeManager.addPoint(holeMeasurment);
 			fieldMutex.unlock();
 		    }
 		    break;
 		case 'H':
 		    {
-			fieldMutex.lock();
 			// data is coming in the format " X1 Y1 X2 Y2 "
+			fieldMutex.lock();
+			double x1, y1, x2, y2;
+			if (stream >> x1 >> y1 >> x2 >> y2) {
+		
+			    Hole hole(x1, y1, x2, y2);
+			    holeManager.addHole(hole);
+			}
 			fieldMutex.unlock();
 		    }
 		    break;
@@ -351,7 +358,7 @@ bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D l
 	    return false;
 	}
     }
-    if (holeManager.nodeCollides(locations)) {
+    if (holeManager.nodeCollides(location)) {
 	return false;
     }
 
@@ -373,7 +380,7 @@ void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8
 
 		    attemptAdd.plus(pillars[currentPillar].getPose());
 
-		    if (validLocationForNode(pillars, desired, attemptAdd)) {
+		    if (validLocationForNode(pillars, desired, attemptAdd, holeManager)) {
 			// add to list
 			Node<Pose2D>* toAdd = new Node<Pose2D>(attemptAdd);
 			
@@ -438,6 +445,10 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 			    gotThrough = false;
 			}
 		    }
+		}
+
+		if (holeManager.lineIntersectsAnyHoleMeasurement(positionOne, positionTwo)) {
+		    gotThrough = false;
 		}
 		
 
@@ -630,7 +641,7 @@ int main() {
 	}
 
 	if (ImGui::Button("Weight")) {
-	    weightGraph(graph, pillars, pillarsMutex, desired, botPose);
+	    weightGraph(graph, pillars, pillarsMutex, desired, botPose, holeManager);
 	}
 
 	// std::cout << "About to end" << std::endl;

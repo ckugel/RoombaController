@@ -142,6 +142,10 @@ double Pose2D::getHeading() {
   return heading;
 }
 
+void Pose2D::setHeading(double angle) {
+    this->heading = angle;
+}
+
 void Pose2D::minus(Pose2D other) {
     this->x -= other.x;
     this->y -= other.y;
@@ -166,5 +170,24 @@ Pose2D parseFromStream(std::istringstream& stream) {
 	}
 
     return Pose2D(0, 0);
+}
+
+Rectangle makeRectangleFromLine(Pose2D L1, Pose2D L2, double width) {
+    double angleBetweenPoints = L1.angleTo(L2);
+    double lengthBetween = L1.distanceTo(L2);
+    Pose2D head(L1);
+    head.setHeading(angleBetweenPoints - M_PI);
+    head.translateByMagnitude(width);
+    Pose2D r1(head);
+    head.addAngle(M_PI);
+    head.translateByMagnitude(lengthBetween);
+    Pose2D r2(head);
+    head.addAngle(M_PI);
+    head.translateByMagnitude(width * 2);
+    Pose2D r3(head);
+    head.addAngle(M_PI);
+    head.translateByMagnitude(lengthBetween);
+    
+    return (Rectangle) {r1, r2, r3, head};
 }
 

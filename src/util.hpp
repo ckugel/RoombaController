@@ -1,5 +1,13 @@
+/**
+* Created by Caleb Kugel 11/21/2024
+*/
+
+#ifndef UTIL_H
+#define UTIL_H
+
 #include "stdbool.h"
 #include "math.h"
+
 
 /*
  * calculates the orientation of the ordered triplet (p, q, r)
@@ -8,7 +16,7 @@
     * 1 -> Clockwise
     * 2 -> Counterclockwise
 */
-double orientation(double px2, double py, double qx, double rx, double ry);
+double orientation(double px2, double py, double qx, double qy, double rx, double ry);
 
 
 /*
@@ -20,7 +28,7 @@ bool onSegment(double px, double py, double qx, double qy, double rx, double ry)
 /*
  * determines if line segments (p1, q1) and (p2, q2) intersect
 */
-bool doIntersect(double p1x, double p1y, double q1x, double q1y, double p2x, double p2y, double q2x, double q2y)
+bool doIntersect(double p1x, double p1y, double q1x, double q1y, double p2x, double p2y, double q2x, double q2y);
 
 /*
 * function to check if the line intersects a given rectangle
@@ -39,4 +47,6 @@ bool doIntersect(double p1x, double p1y, double q1x, double q1y, double p2x, dou
 * @return whether the line intersects the position
 */
 bool lineIntersectsRectangle(double cx1, double cy1, double cx2, double cy2, double rx1, double ry1, double rx2, double ry2, double rx3, double ry3, double rx4, double ry4);
+
+#endif // UTIL_H
 

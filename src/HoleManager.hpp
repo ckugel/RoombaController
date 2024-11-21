@@ -6,8 +6,10 @@
 #define HOLE_MANAGER_H
 
 #include "Hole.hpp"
+#include "util.hpp"
 
-#define sideLength 20.0 // FIND THIS
+#define sideLength 0.6096 // 2 by 2 squares in feet. meters
+#define MEASUREMENT_WIDTH 0.05 // meters
 
 class HoleManager {
     private:
@@ -70,7 +72,7 @@ class HoleManager {
 	/**
 	* Determines whether a line is valid for all the hole measurements
 	*/
-	bool lineIntersectsAnyHoleMeasurmenent(Pose2D locations);
+	bool lineIntersectsAnyHoleMeasurement(Pose2D positionOne, Pose2D positionTwo);
 
 };
 
