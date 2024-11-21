@@ -77,9 +77,9 @@ std::vector<Pose2D> HoleManager::getSuggestedNodePlacements() {
 
 }
 
-
 bool HoleManager::lineIntersectsAnyHoleMeasurmenent(Pose2D locations) {
-    
+   // we have a pose of each measurement
+
 }
 
 

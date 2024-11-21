@@ -26,10 +26,12 @@ badd +1 src/Pillar.hpp
 badd +1 src/Pose2D.hpp
 badd +1 src/Hole.hpp
 badd +89 src/Hole.cpp
-badd +49 src/HoleManager.cpp
-badd +1 src/HoleManager.hpp
+badd +80 src/HoleManager.cpp
+badd +37 src/HoleManager.hpp
 badd +1 src/SlopeIntercept.hpp
 badd +1 src/SlopeIntercept.cpp
+badd +0 src/util.h
+badd +0 src/util.c
 argglobal
 %argdel
 $argadd src/Field.cpp
@@ -39,6 +41,7 @@ $argadd src/Pillar.cpp
 $argadd src/Pose2D.cpp
 $argadd src/main.cpp
 set stal=2
+tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -370,7 +373,7 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 45
-normal! 066|
+normal! 01|
 wincmd w
 argglobal
 5argu
@@ -455,15 +458,83 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 41 - ((26 * winheight(0) + 19) / 39)
+let s:l = 80 - ((29 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 41
-normal! 018|
+keepjumps 80
+normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 48 + 70) / 140)
 exe 'vert 2resize ' . ((&columns * 91 + 70) / 140)
+tabnext
+edit src/util.c
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 70 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 69 + 70) / 140)
+argglobal
+if bufexists(fnamemodify("src/util.c", ":p")) | buffer src/util.c | else | edit src/util.c | endif
+if &buftype ==# 'terminal'
+  silent file src/util.c
+endif
+balt src/util.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("src/util.h", ":p")) | buffer src/util.h | else | edit src/util.h | endif
+if &buftype ==# 'terminal'
+  silent file src/util.h
+endif
+balt src/util.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 70 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 69 + 70) / 140)
 tabnext
 edit src/Hole.hpp
 let s:save_splitbelow = &splitbelow
@@ -534,13 +605,6 @@ exe 'vert 1resize ' . ((&columns * 46 + 70) / 140)
 exe 'vert 2resize ' . ((&columns * 93 + 70) / 140)
 tabnext
 edit src/main.cpp
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
 argglobal
 6argu
 balt src/Pose2D.cpp
@@ -560,7 +624,7 @@ keepjumps exe s:l
 normal! zt
 keepjumps 502
 normal! 04|
-tabnext 8
+tabnext 7
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -568,8 +632,6 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
