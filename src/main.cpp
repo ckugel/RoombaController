@@ -345,18 +345,21 @@ void sendDistanceToQueue(uint16_t angle) {
   sendQueue.push(std::string(buff));
 }
 
-bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D location) {
+bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D location, HoleManager& holeManager) {
    for (uint8_t i = 0; i < pillars.size(); i++) {
 	if (pillars[i].getPose().distanceTo(location) < pillars[i].getRadius() + BOT_RADIUS) {
 	    return false;
 	}
+    }
+    if (holeManager.nodeCollides(locations)) {
+	return false;
     }
 
     return true;
 }
 
 
-void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose, Graph<Pose2D>* graph) {
+void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose, Graph<Pose2D>* graph, HoleManager& holeManager) {
     fieldMutex.lock();
     graph->addNode(new Node<Pose2D>(botPose.getPose()));
     // std::vector<Node<Pillar>*> nodes;
@@ -415,7 +418,7 @@ bool lineIntersectsCircle(Pillar p1, Pose2D one, Pose2D two) {
     return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY());
 }
 
-void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose) {
+void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose, HoleManager& holeManager) {
     fieldMutex.lock();
     std::vector<Node<Pose2D>*> nodes = graph->getNodes();
     for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
@@ -436,6 +439,7 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 			}
 		    }
 		}
+		
 
 		if (gotThrough) {
 		    // add a weight between nodes[nodeIndex] and nodes[nodeIndexTwo]
@@ -622,7 +626,7 @@ int main() {
 	    delete graph;
 	    graph = new Graph<Pose2D>();
 	    // std::cout << "HUH: " << pillars[0].getX() << std::endl;
-	   discretizeGraph(std::ref(pillars), pillarsMutex, desired, botPose, graph);
+	   discretizeGraph(std::ref(pillars), pillarsMutex, desired, botPose, graph, holeManager);
 	}
 
 	if (ImGui::Button("Weight")) {

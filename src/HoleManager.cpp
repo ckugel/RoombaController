@@ -47,7 +47,7 @@ void HoleManager::addPoint(Pose2D position) {
 	 */
 }
 
-bool HoleManager::nodeColides(Pose2D position) {
+bool HoleManager::nodeCollides(Pose2D position) {
 	// shoot out a small line from the position in the dircection of the heading
 	
 	for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
@@ -76,4 +76,10 @@ std::vector<Pose2D> HoleManager::getSuggestedNodePlacements() {
     return toReturn;
 
 }
+
+
+bool HoleManager::lineIntersectsAnyHoleMeasurmenent(Pose2D locations) {
+    
+}
+
 

@@ -65,7 +65,12 @@ class HoleManager {
 	* @param position the position of the node
 	* @return whether that node is valid from a hole perspective
 	*/
-	bool nodeColides(Pose2D position);
+	bool nodeCollides(Pose2D position);
+
+	/**
+	* Determines whether a line is valid for all the hole measurements
+	*/
+	bool lineIntersectsAnyHoleMeasurmenent(Pose2D locations);
 
 };
 
