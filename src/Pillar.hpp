@@ -13,14 +13,16 @@ class Pillar {
     double radius;
   public:
     Pillar();
-    Pillar(Pose2D position, double radius);
+    Pillar(const Pose2D& position, double radius);
     Pillar(double x, double y, double heading, double radius);
     Pillar(double x, double y, double radius);
-    ~Pillar();
+    //~Pillar();
     Pose2D getPose();
     double getX();
     double getY();
-    double getRadius();
+    [[nodiscard]] double getRadius() const;
+
+    void setPosition(const Pose2D& newPosition);
 
     static Pillar parseFromStream(std::istringstream& stream);
 };

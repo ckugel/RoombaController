@@ -42,6 +42,18 @@ class Pose2D {
     void minus(Pose2D other);
     void addAngle(double angle);
 
+    /**
+     * Setter for x
+     * @param x the new x value
+     */
+    void setX(double x);
+
+    /**
+     * Setter for y
+     * @param y the new y value
+     */
+    void setY(double y);
+
     static Pose2D parseFromStream(std::istringstream& stream);
 
     /**

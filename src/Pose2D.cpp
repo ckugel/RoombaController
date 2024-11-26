@@ -146,6 +146,14 @@ void Pose2D::setHeading(double angle) {
     this->heading = angle;
 }
 
+void Pose2D::setX(double x) {
+    this->x = x;
+}
+
+void Pose2D::setY(double y) {
+    this->y = y;
+}
+
 void Pose2D::minus(Pose2D other) {
     this->x -= other.x;
     this->y -= other.y;
@@ -163,7 +171,7 @@ double Pose2D::degreesToRadians(double degrees) {
     return degrees * M_PI / 180.0;
 }
 
-Pose2D parseFromStream(std::istringstream& stream) {
+Pose2D Pose2D::parseFromStream(std::istringstream& stream) {
     double x, y, heading;
     	if (stream >> x >> y >> heading) {
 	    return Pose2D(x, y, heading);

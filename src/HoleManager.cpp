@@ -55,10 +55,10 @@ bool HoleManager::nodeCollides(Pose2D position) {
 	    Pose2D pose2(this->holeMeasurements->at(i)); // should copy
 	    pose2.translateByMagnitude(HOLE_SIZE * 0.5);
 	    if (position.isOnLine(initial, pose2)) {
-		return false;
+		return true;
 	    }
 	}
-    return true;
+    return false;
 }
 
 std::vector<Pose2D> HoleManager::getSuggestedNodePlacements() {
@@ -68,10 +68,10 @@ std::vector<Pose2D> HoleManager::getSuggestedNodePlacements() {
     std::vector<Pose2D> toReturn;
    // basically make sure that none of these are on a collision
     for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
-	Pose2D suggested(this->holeMeasurements->at(i));
-	suggested.addAngle(M_PI);
-	suggested.translateByMagnitude(BOT_RADIUS);
-	toReturn.push_back(suggested);
+		Pose2D suggested(this->holeMeasurements->at(i));
+		suggested.addAngle(M_PI);
+		suggested.translateByMagnitude(BOT_RADIUS);
+		toReturn.push_back(suggested);
     }
     return toReturn;
 
@@ -84,9 +84,9 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(Pose2D positionOne, Pose2D po
     for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
 	// for every point make the rectangle
 	Rectangle rect = makeRectangleFromLine(positionOne, positionTwo, MEASUREMENT_WIDTH);	
-	if (lineIntersectsRectangle(positionOne.getX(), positionOne.getY(), positionTwo.getX(), positionTwo.getY(), rect.r1.getX(), rect.r1.getY(), rect.r2.getX(), rect.r2.getY(), rect.r3.getX(), rect.r3.getY(), rect.r4.getX(), rect.r4.getY())) {
-	    return true;
-	}
+		if (lineIntersectsRectangle(positionOne.getX(), positionOne.getY(), positionTwo.getX(), positionTwo.getY(), rect.r1.getX(), rect.r1.getY(), rect.r2.getX(), rect.r2.getY(), rect.r3.getX(), rect.r3.getY(), rect.r4.getX(), rect.r4.getY())) {
+			return true;
+		}
     }
     return false;
 }

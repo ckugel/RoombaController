@@ -13,20 +13,43 @@
 #define FIELD_LENGTH 0
 #define FIELD_WIDTH  0
 
+#include "HoleManager.hpp"
+#include "Pose2D.hpp"
+#include "Pillar.hpp"
+
+enum Cardinality {
+    N = 'N',
+    S = 'S',
+    E = 'E',
+    W = 'W',
+};
+
 class Field {
   protected:
     std::unique_ptr<std::vector<Pillar>> pillars;
+    HoleManager holeManager;
+    Pose2D offset;
     Pose2D desiredDestination;
     Pillar botPose;
     
   public:
-    Field(std::vector<Pillar> pillars, Pose2D desiredDestination, Pillar botPose);
-    Field(std::vector<Pillar> pillars, Pose2D desiredDestination);
+    Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination, const Pillar& botPose);
+    Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination);
     Field();
 
-    void addPillar(Pillar newPillar);
-    void updateBotPose(Pose2D updatedPosition);
+    void addEdgeMeasurement(double rawPosition, Cardinality cardinality);
+
+    HoleManager& getManager();
+
+    void clearField();
+
+    Pillar getBotPose();
+
+    void addPillar(const Pillar& newPillar);
+    void updateBotPose(const Pose2D& updatedPosition);
     std::unique_ptr<std::vector<Pillar>> getPillars();
+    void setPillars(std::unique_ptr<std::vector<Pillar>> pillars);
+    std::vector<Pillar> getCopyPillars();
 
 };
 

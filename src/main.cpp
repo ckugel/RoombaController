@@ -1,5 +1,4 @@
 #include "../include/imgui/imgui.h"
-// #include "../include/imgui/imgui_demo.cpp"
 #include "../include/imgui/backends/imgui_impl_glfw.h"
 #include "../include/imgui/backends/imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
@@ -9,13 +8,13 @@
 #include "Pillar.hpp"
 #include "HoleManager.hpp"
 #include "Hole.hpp"
+#include "Field.hpp"
 #include <vector>
 #include <netinet/in.h>
 #include <chrono>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <arpa/inet.h>
-#include <fcntl.h>
 #include <fstream>
 #include <iostream>
 #include <iomanip>
@@ -24,7 +23,6 @@
 #include <condition_variable>
 #include <atomic>
 #include <sstream>
-#include <iomanip>
 
 #define BOT_CONNECT 0
 #if BOT_CONNECT
@@ -36,7 +34,6 @@
 #endif
 
 #define SCREEN_SCALE 3.0f
-
 
 enum MovementType {
     MOVE_FORWARD,
@@ -57,8 +54,7 @@ struct Move {
 
 std::atomic<bool> stopClient(false);
 
-
-void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose, HoleManager& holeManager) {
+void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& field) {
   const uint16_t BUFF_SIZE = 1024;
 
     static char name_buff[50];
@@ -86,30 +82,34 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
     while (stream >> tag) {
 	switch(tag) {
 	    case 'F':
-		    field.clear();
+		    field.clearField();
 		    break;
 	    case 'o': 
-	    {
-		fieldMutex.lock();
-		Pillar toAdd = Pillar::parseFromStream(stream);
-		// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl; 
-		field.push_back(toAdd);
-		fieldMutex.unlock();
-		}
+			{
+			fieldMutex.lock();
+			Pillar toAdd = Pillar::parseFromStream(stream);
+			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl;
+			field.addPillar(toAdd);
+			fieldMutex.unlock();
+			}
+			break;
 	    case 'd':
-		{
-		    uint8_t readAble;
-		    if (stream >> readAble) {
-			desired = readAble - '0';
-		    }
-		    else {
-			logFile << "Could not parse stream for: d" << std::endl;
-		    }
-		}
-		break;
+			{
+				Pose2D other = Pose2D::parseFromStream(stream);
+				desired.setX(other.getX());
+				desired.setY(other.getY());
+				desired.setHeading(other.getHeading());
+			}
+			break;
 		case 'E':
 		    {
+			double m;
+			char cardinality;
+			if (stream >> m >> cardinality) {
+			    field.addEdgeMeasurement(m, (Cardinality) cardinality);
+			}
 			// first term is the raw X or Y value next value is the direction
+
 		    }
 		    break;
 		case 'h':
@@ -117,7 +117,7 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 			fieldMutex.lock();
 			// data is coming in the format " X Y Theta " 
 			Pose2D holeMeasurment = Pose2D::parseFromStream(stream); 
-			holeManager.addPoint(holeMeasurment);
+			field.getManager().addPoint(holeMeasurment);
 			fieldMutex.unlock();
 		    }
 		    break;
@@ -127,9 +127,8 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 			fieldMutex.lock();
 			double x1, y1, x2, y2;
 			if (stream >> x1 >> y1 >> x2 >> y2) {
-		
 			    Hole hole(x1, y1, x2, y2);
-			    holeManager.addHole(hole);
+			    field.getManager().addHole(hole);
 			}
 			fieldMutex.unlock();
 		    }
@@ -137,14 +136,14 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 		case 'b':
 		    {
 			fieldMutex.lock();
-			botPose = Pillar::parseFromStream(stream);
+			field.updateBotPose(Pose2D::parseFromStream(stream));
 			fieldMutex.unlock();
 		    }
-		break;
+			break;
 	    default:
-		break;
+			break;
 	}
-    }
+	}
 
 	std::this_thread::sleep_for(std::chrono::milliseconds(5));
     // no matter what we are going to log this in a file, however we should also update certain fields
@@ -156,7 +155,7 @@ void readAndLog(int socket, std::vector<Pillar>& field, std::mutex& fieldMutex, 
 }
 
 // connect to Roomba server
-void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& desired, Pillar& botPose, HoleManager& holeManager) {
+void connectTCP(Field& field, std::mutex& fieldMutex, Pose2D& desired) {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
   sockaddr_in serverAddress;
   serverAddress.sin_family = AF_INET;
@@ -168,7 +167,7 @@ void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& des
     bool connected = false;
     while (!connected) {
 	try {
-	    int status = connect(clientSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
+	    int status = connect(clientSocket, (struct sockaddr*)& serverAddress, sizeof(serverAddress));
 	    connected = true;
 	}
 	catch (std::exception e) {
@@ -179,7 +178,7 @@ void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& des
     }
 
   // spawn read and log thread here
-  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(field), std::ref(fieldMutex), std::ref(desired), std::ref(botPose), std::ref(holeManager));
+  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(fieldMutex), std::ref(desired), std::ref(field));
 
   while(!stopClient.load()) {
 	if (!sendQueue.empty()) {
@@ -198,7 +197,6 @@ void connectTCP(std::vector<Pillar>& field, std::mutex& fieldMutex, uint8_t& des
   readThread.join();
   close(clientSocket);
 }
-
 
 // Simple function to set up OpenGL and ImGui context
 void setupImGui(GLFWwindow* window) {
@@ -278,7 +276,7 @@ void drawRectangle(ImDrawList* drawList, ImVec2 offset, Pose2D p1, Pose2D p2) {
     drawList->AddQuadFilled(m1, m3, m2, m4, IM_COL32(255, 165, 0, 170));
 }
 
-void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pillar botPose, Graph<Pose2D>* graph, std::vector<Pose2D>& path, HoleManager& holeManager) {
+void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector<Pose2D>& path, Field& field) {
   ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -288,29 +286,31 @@ void ShowFieldWindow(std::vector<Pillar> pillars, std::mutex* pillarsMutex, Pill
     
     pillarsMutex->lock();
 
-    for (Pillar pillar: pillars) {
-	ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 200), offset);
+    std::vector<Pillar> pillars = field.getCopyPillars();
+
+    for (const Pillar& pillar: pillars) {
+		ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 200), offset);
     }
 
-    std::vector<Hole> holes = holeManager.getHoles();
+    std::vector<Hole> holes = field.getManager().getHoles();
 //     std::cout << "size: " << holes.size() << std::endl; // output 1
     for (Hole hole: holes) {
-	// std::cout << "X1 Y1 X2 Y2: {" << hole.getOneSquareCorner().getX() << " " << hole.getOneSquareCorner().getY() << " " << hole.getSecondSquareCorner().getX() << " " << hole.getSecondSquareCorner().getY() << std::endl; 
-	drawRectangle(drawList, offset, hole.getOneSquareCorner(), hole.getSecondSquareCorner());	
+		// std::cout << "X1 Y1 X2 Y2: {" << hole.getOneSquareCorner().getX() << " " << hole.getOneSquareCorner().getY() << " " << hole.getSecondSquareCorner().getX() << " " << hole.getSecondSquareCorner().getY() << std::endl;
+		drawRectangle(drawList, offset, hole.getOneSquareCorner(), hole.getSecondSquareCorner());
     }
     
-    drawBotPose(drawList, botPose.getPose(), offset);
+    drawBotPose(drawList, field.getBotPose().getPose(), offset);
 
     std::vector<Node<Pose2D>*> nodes = graph->getNodes();
 
-    for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
-	Pose2D position = nodes[nodeIndex]->getData();
-	
-	ImVec2 center = ImVec2(offset.x + position.getX() * SCREEN_SCALE, offset.y - position.getY() * SCREEN_SCALE);
-	float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
-	DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
-	// draw a line from every node to the adjacent yes we will double count draws with this
-	//  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
+    for (Node<Pose2D>*& node : nodes) {
+		Pose2D position = node->getData();
+
+		ImVec2 center = ImVec2(offset.x + position.getX() * SCREEN_SCALE, offset.y - position.getY() * SCREEN_SCALE);
+		float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
+		DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
+		// draw a line from every node to the adjacent yes we will double count draws with this
+		//  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
 
     }
     
@@ -347,86 +347,64 @@ void sendAngleToQueue(int16_t angle) {
 }
 
 void sendDistanceToQueue(uint16_t angle) {
-  char buff[8];
-    sprintf(buff, "r%03d", angle);
-  sendQueue.push(std::string(buff));
+	char buff[8];
+	sprintf(buff, "r%03d", angle);
+	sendQueue.push(std::string(buff));
 }
 
-bool validLocationForNode(std::vector<Pillar> pillars, uint8_t desired, Pose2D location, HoleManager& holeManager) {
-   for (uint8_t i = 0; i < pillars.size(); i++) {
-	if (pillars[i].getPose().distanceTo(location) < pillars[i].getRadius() + BOT_RADIUS) {
-	    return false;
-	}
+bool validLocationForNode(Field& field, Pose2D location) {
+    std::vector<Pillar> pillars = field.getCopyPillars();
+	for (uint8_t i = 0; i < pillars.size(); i++) {
+		if (pillars[i].getPose().distanceTo(location) < pillars[i].getRadius() + BOT_RADIUS) {
+			return false;
+		}
     }
-    if (holeManager.nodeCollides(location)) {
-	return false;
+    if (field.getManager().nodeCollides(location)) {
+		return false;
     }
 
     return true;
 }
 
 
-void discretizeGraph(std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose, Graph<Pose2D>* graph, HoleManager& holeManager) {
+void discretizeGraph(Field& field, std::mutex& fieldMutex, Pose2D desired, Graph<Pose2D>* graph) {
     fieldMutex.lock();
-    graph->addNode(new Node<Pose2D>(botPose.getPose()));
+    graph->addNode(new Node<Pose2D>(field.getBotPose().getPose()));
+    std::vector<Pillar> pillars = field.getCopyPillars();
     // std::vector<Node<Pillar>*> nodes;
-    for (uint8_t currentPillar = 0; currentPillar < pillars.size(); currentPillar++) {
-	if (currentPillar != desired) {
-	    double magnitude = pillars[currentPillar].getRadius() + BOT_RADIUS;
-	    for (double i = 1.0; i < 5.0; i += 0.75) { 
-		for (double angle = 0; angle < 361; angle += 25) {
-		    double radian = angle * M_PI / 180.0;
-		    Pose2D attemptAdd = Pose2D::fromPolar(magnitude * i, radian);
+    for (Pillar & pillar : pillars) {
+	double magnitude = pillar.getRadius() + BOT_RADIUS;
+	for (double i = 1.0; i < 5.0; i += 0.75) { 
+	    for (double angle = 0; angle < 361; angle += 25) {
+		const double radian = angle * M_PI / 180.0;
+		Pose2D attemptAdd = Pose2D::fromPolar(magnitude * i, radian);
 
-		    attemptAdd.plus(pillars[currentPillar].getPose());
+		attemptAdd.plus(pillar.getPose());
 
-		    if (validLocationForNode(pillars, desired, attemptAdd, holeManager)) {
-			// add to list
-			Node<Pose2D>* toAdd = new Node<Pose2D>(attemptAdd);
-			
-			graph->addNode(toAdd);
-			// nodes = graph.getNodes();
-		    }
+		if (validLocationForNode(field, attemptAdd)) {
+		    // add to list
+		    Node<Pose2D>* toAdd = new Node<Pose2D>(attemptAdd);
+		    
+		    graph->addNode(toAdd);
+		    // nodes = graph.getNodes();
 		}
 	    }
 	}	
     }
     
-    graph->addNode(new Node<Pose2D>(pillars[desired].getPose()));
+    graph->addNode(new Node<Pose2D>(desired));
 
     fieldMutex.unlock();
 }
 
-/**
- * Util function that returns whether a given line intersects a circle
- */
-bool lineIntersectsCircle(double cx, double cy, double r, double x1, double y1, double x2, double y2) {
-    // Calculate the line direction vector
-    double dx = x2 - x1;
-    double dy = y2 - y1;
-
-    // Calculate the projection of the circle center onto the line
-    double t = ((cx - x1) * dx + (cy - y1) * dy) / (dx * dx + dy * dy);
-
-    // Find the closest point on the line to the circle center
-    double closestX = x1 + t * dx;
-    double closestY = y1 + t * dy;
-
-    // Calculate the distance from the circle center to the closest point
-    double distX = closestX - cx;
-    double distY = closestY - cy;
-    double distanceToLine = std::sqrt(distX * distX + distY * distY);
-
-    // Check if the distance is less than or equal to the radius
-    return distanceToLine <= r;
-}
 
 bool lineIntersectsCircle(Pillar p1, Pose2D one, Pose2D two) {
     return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY());
 }
 
-void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex& fieldMutex, uint8_t desired, Pillar botPose, HoleManager& holeManager) {
+void weightGraph(Graph<Pose2D>* graph, Field& field, std::mutex& fieldMutex) {
     fieldMutex.lock();
+    std::vector<Pillar> pillars = field.getCopyPillars();
     std::vector<Node<Pose2D>*> nodes = graph->getNodes();
     for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
 	for (uint16_t nodeIndexTwo = 0; nodeIndexTwo < nodes.size(); nodeIndexTwo++) {
@@ -439,15 +417,13 @@ void weightGraph(Graph<Pose2D>* graph, std::vector<Pillar>& pillars, std::mutex&
 		bool gotThrough = true;
 
 		for (uint8_t pillarIndex = 0; pillarIndex < pillars.size(); pillarIndex++) {
-		    if (pillarIndex != desired) {
-			if (lineIntersectsCircle(pillars[pillarIndex], positionOne, positionTwo)) {			
-			    // uh oh we hit the circle
-			    gotThrough = false;
-			}
+		    if (lineIntersectsCircle(pillars[pillarIndex], positionOne, positionTwo)) {			
+			// uh oh we hit the circle
+			gotThrough = false;
 		    }
 		}
 
-		if (holeManager.lineIntersectsAnyHoleMeasurement(positionOne, positionTwo)) {
+		if (field.getManager().lineIntersectsAnyHoleMeasurement(positionOne, positionTwo)) {
 		    gotThrough = false;
 		}
 		
@@ -510,19 +486,17 @@ int main() {
 
     setupImGui(window);
 
-    Pillar botPose(0, 0, 0, BOT_RADIUS);
-
-    HoleManager holeManager;
-
-    uint8_t desired = 0;
+    Pose2D desired(0, 0);
     
+    // used to hold GUI slider values
     float angleSend = 0;
     int driveForward = 0;
 
-    std::vector<Pillar> pillars;
     std::mutex pillarsMutex;
     Graph<Pose2D>* graph = new Graph<Pose2D>();
     std::vector<Pose2D> path;
+
+    Field field;
 
     // Pose2D toAdd(0, 0, 0);
 
@@ -530,7 +504,7 @@ int main() {
 
 
     // connectTCP(pillars, pillarsMutex, desired);
-    std::thread tcpConnect(connectTCP, std::ref(pillars), std::ref(pillarsMutex), std::ref(desired), std::ref(botPose), std::ref(holeManager));
+    std::thread tcpConnect(connectTCP, std::ref(field), std::ref(pillarsMutex), std::ref(desired));
     
     // Main loop
     while (!glfwWindowShouldClose(window)) {
@@ -544,7 +518,7 @@ int main() {
 	// ImGui::ShowDemoWindow(&open);
 	
 
-	ShowFieldWindow(std::ref(pillars), &pillarsMutex, botPose, graph, path, holeManager);
+	ShowFieldWindow(&pillarsMutex, graph, path, field);
 	// std::cout << "About to begin" << std::endl;
 	
         // Your ImGui code here
@@ -637,11 +611,11 @@ int main() {
 	    delete graph;
 	    graph = new Graph<Pose2D>();
 	    // std::cout << "HUH: " << pillars[0].getX() << std::endl;
-	   discretizeGraph(std::ref(pillars), pillarsMutex, desired, botPose, graph, holeManager);
+	   discretizeGraph(std::ref(field), pillarsMutex, desired, graph);
 	}
 
 	if (ImGui::Button("Weight")) {
-	    weightGraph(graph, pillars, pillarsMutex, desired, botPose, holeManager);
+	    weightGraph(graph, field, pillarsMutex);
 	}
 
 	// std::cout << "About to end" << std::endl;

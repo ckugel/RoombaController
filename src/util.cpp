@@ -41,6 +41,27 @@ bool doIntersect(double p1x, double p1y, double q1x, double q1y, double p2x, dou
 }
 
 
+bool lineIntersectsCircle(double cx, double cy, double r, double x1, double y1, double x2, double y2) {
+    // Calculate the line direction vector
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+
+    // Calculate the projection of the circle center onto the line
+    double t = ((cx - x1) * dx + (cy - y1) * dy) / (dx * dx + dy * dy);
+
+    // Find the closest point on the line to the circle center
+    double closestX = x1 + t * dx;
+    double closestY = y1 + t * dy;
+
+    // Calculate the distance from the circle center to the closest point
+    double distX = closestX - cx;
+    double distY = closestY - cy;
+    double distanceToLine = std::sqrt(distX * distX + distY * distY);
+
+    // Check if the distance is less than or equal to the radius
+    return distanceToLine <= r;
+}
+
 bool lineIntersectsRectangle(double cx1, double cy1, double cx2, double cy2, double rx1, double ry1, double rx2, double ry2, double rx3, double ry3, double rx4, double ry4) {
     // Check if the line intersects any of the rectangle's edges
     return doIntersect(cx1, cy1, cx2, cy2, rx1, ry1, rx2, ry2) || doIntersect(cx1, cy1, cx2, cy2, rx2, ry2, rx3, ry3) || doIntersect(cx1, cy1, cx2, cy2, rx3, ry3, rx4, ry4) || doIntersect(cx1, cy1, cx2, cy2, rx4, ry4, rx1, ry1);

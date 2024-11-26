@@ -5,30 +5,25 @@
 #include "Pillar.hpp"
 
 Pillar::Pillar() {
-    Pose2D pose(0, 0, 0);
-   this->position = pose;
+   this->position = Pose2D(0, 0, 0);
     this->radius = 0;
 }
 
-Pillar::Pillar(double x, double y, double heading, double radius) {
+Pillar::Pillar(const double x, const double y, const double heading, const double radius) {
     this->radius = radius;
     Pose2D pose(x, y, heading);
     this->position = pose;
 }
 
-Pillar::Pillar(Pose2D position, double radius) {
-this->position = position; 
-  this->radius = radius;
+Pillar::Pillar(const Pose2D& position, const double radius) {
+    this->position = position;
+    this->radius = radius;
 }
 
-Pillar::Pillar(double x, double y, double radius) {
+Pillar::Pillar(const double x, const double y, const double radius) {
     Pose2D pose(x, y);
     this->position = pose;
   this->radius = radius;
-}
-
-Pillar::~Pillar() {
-  // delete this->position;
 }
 
 Pose2D Pillar::getPose() {
@@ -43,16 +38,20 @@ double Pillar::getY() {
     return this->position.getY();
 }
 
-double Pillar::getRadius() {
+double Pillar::getRadius() const {
     return this->radius;
 }
 
 
 Pillar Pillar::parseFromStream(std::istringstream& stream) {
-	double x, y, heading, radius;
+    double x, y, heading, radius;
 	if (stream >> x >> y >> heading >> radius) {
 	    return Pillar(x, y, heading, radius);
 	}
 	return Pillar(0, 0, 0);
+}
+
+void Pillar::setPosition(const Pose2D& newPosition) {
+    this->position = newPosition;
 }
 
