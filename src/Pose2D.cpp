@@ -180,6 +180,25 @@ Pose2D Pose2D::parseFromStream(std::istringstream& stream) {
     return Pose2D(0, 0);
 }
 
+Pose2D Pose2D::subtractBy(const Pose2D& other) const {
+    return {this->x - other.x, this->y - other.y};
+}
+
+Pose2D Pose2D::scaleBy(double scalar) const {
+    return {this->x * scalar, this->y * scalar};
+}
+
+Pose2D Pose2D::normalize() const {
+    double squared = sqrt(pow(this->x, 2) + pow(this->y, 2));
+    return {this->x / squared, this->y / squared};
+}
+
+double Pose2D::dotProduct(const Pose2D& other) const {
+    this->x * other.x + this->y * other.y;
+}
+
+
+
 Rectangle makeRectangleFromLine(Pose2D L1, Pose2D L2, double width) {
     double angleBetweenPoints = L1.angleTo(L2);
     double lengthBetween = L1.distanceTo(L2);

@@ -4,6 +4,8 @@
 
 #include "Hole.hpp"
 
+#include <iostream>
+
 
 Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo) {
     this->cornerOne = positionOne;
@@ -32,8 +34,43 @@ Pose2D Hole::getSecondSquareCorner() {
 }
 
 bool Hole::isInSquare(Pose2D& position) {
-    //TODO: Implement
-    return 1;
+    // Calculate the center of the square
+    Pose2D center = {(cornerOne.x + cornerTwo.x) / 2, (cornerOne.y + cornerTwo.y) / 2};
+
+    // Calculate the vector representing one side of the square
+    Pose2D sideVector = cornerTwo.subtractBy(cornerOne);
+    double sideLength = cornerOne.distanceTo(cornerTwo) / std::sqrt(2);
+
+    if (std::abs(sideLength - HOLE_SIZE) > 0.05) {
+        std::cerr << "Error: Given corners do not form a square of the specified hole length." << std::endl;
+        return false;
+    }
+
+    Pose2D sideVectorNormalized = sideVector.normalize();
+    Pose2D perpendicularVector = {-sideVectorNormalized.getY(), sideVectorNormalized.getX()};
+
+    // Project the point onto the square's local axes
+    Pose2D toPointVector = position.subtractBy(center);
+    double projSide = toPointVector.dotProduct(sideVectorNormalized);
+    double projPerpendicular = toPointVector.dotProduct(perpendicularVector);
+
+    double halfSize = HOLE_SIZE / 2;
+
+    // Check if the point is within the square
+    if (std::abs(projSide) <= halfSize && std::abs(projPerpendicular) <= halfSize) {
+        return true;
+    }
+
+    // Check if the point is within RADIUS of the square
+    if (std::abs(projSide) <= halfSize + BOT_RADIUS && std::abs(projPerpendicular) <= halfSize + BOT_RADIUS) {
+        Pose2D closestPoint = {
+            center.getX() + projSide * sideVectorNormalized.getX() + projPerpendicular * perpendicularVector.getX(),
+            center.getY() + projSide * sideVectorNormalized.getY() + projPerpendicular * perpendicularVector.getY()
+        };
+        return position.distanceTo(closestPoint) <= BOT_RADIUS;
+    }
+
+    return false;
 }
 
 Hole::Hole(double X1, double Y1, double X2, double Y2) {

@@ -42,6 +42,11 @@ class Pose2D {
     void minus(Pose2D other);
     void addAngle(double angle);
 
+    [[nodiscard]] Pose2D subtractBy(const Pose2D& other) const;
+    [[nodiscard]] Pose2D scaleBy(double scaler) const;
+    [[nodiscard]] Pose2D normalize() const;
+    [[nodiscard]] double dotProduct(const Pose2D& other) const;
+
     /**
      * Setter for x
      * @param x the new x value
