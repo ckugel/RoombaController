@@ -157,20 +157,23 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
 // connect to Roomba server
 void connectTCP(Field& field, std::mutex& fieldMutex, Pose2D& desired) {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
-  sockaddr_in serverAddress;
-  serverAddress.sin_family = AF_INET;
-  serverAddress.sin_port = htons(PORT);
-  serverAddress.sin_addr.s_addr = inet_addr(ADDRESS);
+  sockaddr_in serverAddress{
+	.sin_family = AF_INET,
+  	.sin_port = htons(PORT),
+  	.sin_addr = inet_addr(ADDRESS)
+  };
 
   // https://beej.us/guide/bgnet/html/#blocking
   // fcntl(clientSocket, F_SETFL, O_NONBLOCK);
     bool connected = false;
     while (!connected) {
 	try {
-	    int status = connect(clientSocket, (struct sockaddr*)& serverAddress, sizeof(serverAddress));
+	    if(connect(clientSocket, (struct sockaddr*)& serverAddress, sizeof(serverAddress))) {
+		    throw std::exception();
+	    }
 	    connected = true;
 	}
-	catch (std::exception e) {
+	catch (std::exception& e) {
 	    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	    connected = false;
 	}
@@ -259,13 +262,13 @@ void drawRectangle(ImDrawList* drawList, ImVec2 offset, Pose2D p1, Pose2D p2) {
     // const Pose2D MinPosition = Pose2D(std::min(p1.getX(), p2.getX()), std::min(p1.getY(), p2.getY()));
     // const Pose2D MaxPosition = Pose2D(std::max(p1.getX(), p2.getX()), std::max(p1.getY(), p2.getY()));
     // fun math time
-    double xCenter = (p1.getX() + p2.getX()) / 2;
-    double yCenter = (p1.getY() + p2.getY()) / 2;
-    double xDiagonal = (p1.getX() - p2.getX()) / 2;
-    double yDiagonal = (p1.getY() - p2.getY()) / 2;
+    const double xCenter = (p1.getX() + p2.getX()) / 2;
+    const double yCenter = (p1.getY() + p2.getY()) / 2;
+    const double xDiagonal = (p1.getX() - p2.getX()) / 2;
+    const double yDiagonal = (p1.getY() - p2.getY()) / 2;
 
-    Pose2D p3(xCenter - yDiagonal, yCenter + xDiagonal);
-    Pose2D p4(xCenter + yDiagonal, yCenter - xDiagonal);
+    const Pose2D p3(xCenter - yDiagonal, yCenter + xDiagonal);
+    const Pose2D p4(xCenter + yDiagonal, yCenter - xDiagonal);
 
     const ImVec2 m1 = coordsToScreen(offset, p1);
     const ImVec2 m2 = coordsToScreen(offset, p2);
@@ -367,7 +370,7 @@ bool validLocationForNode(Field& field, Pose2D location) {
 }
 
 
-void discretizeGraph(Field& field, std::mutex& fieldMutex, Pose2D desired, Graph<Pose2D>* graph) {
+void discretizeGraph(Field& field, std::mutex& fieldMutex, const Pose2D& desired, Graph<Pose2D>* graph) {
     fieldMutex.lock();
     graph->addNode(new Node<Pose2D>(field.getBotPose().getPose()));
     std::vector<Pillar> pillars = field.getCopyPillars();
@@ -465,11 +468,11 @@ std::string parsePathIntoRoutine(std::vector<Pose2D> path) {
     toSend << "R";
 
     for (uint8_t i = 0; i < routine.size(); i++) {
-	static char buffer[50];
-	// sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
-	// // routine[i] is all 0
-	sprintf(buffer, "p %0.3f %d p", routine[i].quantity, routine[i].type);
-	toSend << std::string(buffer);
+		static char buffer[50];
+		// sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
+		// // routine[i] is all 0
+		sprintf(buffer, "p %0.3f %d p", routine[i].quantity, routine[i].type);
+		toSend << std::string(buffer);
     }
 
     toSend << "R";
@@ -562,17 +565,17 @@ int main() {
 	if (ImGui::Button("Generate path")) {
 	    pillarsMutex.lock();
 	    /*
-	    std::cout << "desire: " << desired << std::endl;
-	    for (int i = 0; i < graph->getNodes().size(); i++) {
-		std::cout << "node: " << i << ".  " << graph->getNodes()[i]->getData().getX() << std::endl;
+			std::cout << "desire: " << desired << std::endl;
+			for (int i = 0; i < graph->getNodes().size(); i++) {
+			std::cout << "node: " << i << ".  " << graph->getNodes()[i]->getData().getX() << std::endl;
 	    }
 	    */
 	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().front(), graph->getNodes().back());
-	   //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
+		//  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
 	    // path.push_back(botPose.getPose());
 	    for (uint8_t i = 0; i < pathNodes.size(); i++) {
-		path.push_back(pathNodes[i]->getData());
-	//	std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
+			path.push_back(pathNodes[i]->getData());
+			//	std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
 	    }
 	   //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
 	   /*

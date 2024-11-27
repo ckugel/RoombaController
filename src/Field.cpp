@@ -7,12 +7,13 @@
 Field::Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination, const Pillar& botPose) {
   this->pillars = std::make_unique<std::vector<Pillar>>(pillars);
     this->desiredDestination = desiredDestination;
+    this->holeManager = HoleManager();
     this->botPose = botPose;
 }
 
 Field::Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination) {
     this->pillars = std::make_unique<std::vector<Pillar>>(pillars);
-  
+    this->holeManager = HoleManager();
     this->desiredDestination = desiredDestination;
     this->botPose = Pillar(0, 0, 0, BOT_RADIUS);
 }
@@ -21,6 +22,7 @@ Field::Field() {
   this-> pillars = std::make_unique<std::vector<Pillar>>();
   this->desiredDestination = Pose2D(0, 0, 0);
   this->botPose = Pillar(0, 0, 0, BOT_RADIUS);
+    this->holeManager = HoleManager();
 }
 
 HoleManager& Field::getManager() {

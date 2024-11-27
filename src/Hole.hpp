@@ -37,12 +37,12 @@ class Hole {
 	/**
 	 * Copy  constructor for hole
 	 */
-	Hole(Pose2D positionOne, Pose2D positionTwo, bool foundHole, std::vector<Pose2D> points);
+	Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, std::vector<Pose2D> points);
 
 	/**
 	 * Creates a new Hole object
 	 */
-	Hole(Pose2D positionOne, Pose2D positionTwo);
+	Hole(const Pose2D& positionOne, const Pose2D& positionTwo);
     
 	/**
 	* @return one of the square's corners
@@ -58,7 +58,7 @@ class Hole {
 	 * returns whether a new point could be within the range of this hole.
 	 * @param measurment the position of the point that may or may not be close to this hole
 	 */
-	bool pointCouldBeMemberOfHole(Pose2D measurment);
+	bool pointCouldBeMemberOfHole(const Pose2D& measurment);
 
 	/**
 	 * The deafult constructor for a hole.
@@ -74,21 +74,21 @@ class Hole {
 	 * Makes a new hole and stores the initial measurment
 	 * @param initialPoint our initial measurment
 	 */
-	Hole(Pose2D initialPoint);
+	explicit Hole(const Pose2D& initialPoint);
 
 	/**
 	 * Add a point to this hole/chunk. 
 	 * Morphs this object into a found hole if possible
 	 * @param position the position of the measurment
 	 */
-	void addPoint(Pose2D position);
+	void addPoint(const Pose2D& position);
 
 	/**
 	* Whether the passed in position is in the square
 	* @param position the position to check
 	* @return whether that position is in the square
 	*/
-	bool isInSquare(Pose2D position);
+	bool isInSquare(Pose2D& position);
 };
 
 #endif // HOLE_H

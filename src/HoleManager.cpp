@@ -13,8 +13,7 @@ void HoleManager::addHole(Pose2D cornerOne, Pose2D cornerTwo) {
     holes->push_back(Hole(cornerOne, cornerTwo));
 }
 
-
-void HoleManager::addHole(Hole hole) {
+void HoleManager::addHole(const Hole& hole) {
     holes->push_back(hole);
 }
 
@@ -37,14 +36,12 @@ std::vector<Hole> HoleManager::getHoles() {
 
 void HoleManager::addPoint(Pose2D position) {
    this->holeMeasurements->push_back(position); 
-    /*
     for (uint16_t i = 0; i < this->holes->size(); i++) {
-	if (this->holes->data()[i].pointCouldBeMemberOfHole(position)) {
-	    this->holes->data()[i].addPoint(position);
-	    break;
-	}
+		if (this->holes->data()[i].pointCouldBeMemberOfHole(position)) {
+			this->holes->data()[i].addPoint(position);
+			break;
+		}
     }
-	 */
 }
 
 bool HoleManager::nodeCollides(Pose2D position) {

@@ -38,7 +38,7 @@ class HoleManager {
 		 * Adds a hole to the holes
 		 * @param hole to add
 		 */
-		void addHole(Hole hole);
+		void addHole(const Hole& hole);
 
 		/**
 		 * Adds a hole to the hole manager
