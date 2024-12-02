@@ -9,17 +9,17 @@ HoleManager::HoleManager() {
     holeMeasurements = std::make_unique<std::vector<Pose2D>>();
 }
 
-void HoleManager::addHole(Pose2D cornerOne, Pose2D cornerTwo) {
-    holes->push_back(Hole(cornerOne, cornerTwo));
+void HoleManager::addHole(const Pose2D& cornerOne, const Pose2D& cornerTwo) {
+    this->holes->push_back(Hole(cornerOne, cornerTwo));
 }
 
 void HoleManager::addHole(const Hole& hole) {
-    holes->push_back(hole);
+    this->holes->push_back(hole);
 }
 
 Hole HoleManager::getHole(uint8_t index) {
     if (index > holes->size()) {
-	return Hole(NAN, NAN, NAN, NAN);
+	return {NAN, NAN, NAN, NAN};
     }
     else {
 	return holes->data()[index];
@@ -34,7 +34,7 @@ std::vector<Hole> HoleManager::getHoles() {
     return toCpy;
 }
 
-void HoleManager::addPoint(Pose2D position) {
+void HoleManager::addPoint(const Pose2D& position) {
    this->holeMeasurements->push_back(position); 
     for (uint16_t i = 0; i < this->holes->size(); i++) {
 		if (this->holes->data()[i].pointCouldBeMemberOfHole(position)) {
@@ -44,9 +44,9 @@ void HoleManager::addPoint(Pose2D position) {
     }
 }
 
+// deiscretization step
 bool HoleManager::nodeCollides(Pose2D position) {
 	// shoot out a small line from the position in the dircection of the heading
-	
 	for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
 	    Pose2D initial = this->holeMeasurements->at(i);
 	    Pose2D pose2(this->holeMeasurements->at(i)); // should copy
@@ -54,6 +54,13 @@ bool HoleManager::nodeCollides(Pose2D position) {
 	    if (position.isOnLine(initial, pose2)) {
 		return true;
 	    }
+	}
+
+
+	for (uint8_t i = 0; i < this->holes->size(); i++) {
+		if (this->holes->at(i).isInSquare(position)) {
+			return true;
+		}
 	}
     return false;
 }
@@ -74,7 +81,8 @@ std::vector<Pose2D> HoleManager::getSuggestedNodePlacements() {
 
 }
 
-bool HoleManager::lineIntersectsAnyHoleMeasurement(Pose2D positionOne, Pose2D positionTwo) {
+// weighting step
+bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, const Pose2D& positionTwo) {
     // we have a pose of each measurement
     // have to make the rectangle and the expected line
     
@@ -85,6 +93,8 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(Pose2D positionOne, Pose2D po
 			return true;
 		}
     }
+
+
     return false;
 }
 

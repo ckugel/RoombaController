@@ -8,17 +8,26 @@
 #include "vector"
 #include <memory>
 #include "Pose2D.hpp"
+#include <cmath>
 
-#define HOLE_SIZE 0.6906 // meters
+#define HOLE_SIZE 69.06 // centimeters
 
 /**
  * A Hole is either a complete square where we know the critical points (two vertices of the square).
  * A Hole could also represent a bunch of points that are all within Square Length * Root(2) of eachother
  */
+
+static const double halfHoleDiagonal = HOLE_SIZE * sqrt(2) / 2;
 class Hole {
     private:
 	Pose2D cornerOne;
 	Pose2D cornerTwo;
+	double cos_phi;
+	double sin_phi;
+	double x_translation_one;
+	double y_translation_one;
+	double x_translation_two;
+	double y_translation_two;
 
 	bool foundHole;
 
@@ -37,12 +46,26 @@ class Hole {
 	/**
 	 * Copy  constructor for hole
 	 */
-	Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, std::vector<Pose2D> points);
+	Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, const std::vector<Pose2D>& points);
 
 	/**
 	 * Creates a new Hole object
 	 */
 	Hole(const Pose2D& positionOne, const Pose2D& positionTwo);
+
+	/**
+	 *  Register the corners of a hole
+	 * @param positionOne corner One
+	 * @param positionTwo Corner Two
+	 */
+	void registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo);
+
+	/**
+	 * do the whole operation and copy it into a new object for object collision
+	 * @param pose the Pose2D to apply the big formula
+	 * @return the result of the operations
+	 */
+	[[nodiscard]] Pose2D doOperationCopy(const Pose2D& pose) const;
     
 	/**
 	* @return one of the square's corners
@@ -88,7 +111,7 @@ class Hole {
 	* @param position the position to check
 	* @return whether that position is in the square
 	*/
-	bool isInSquare(Pose2D& position);
+	bool isInSquare(Pose2D& position) const;
 };
 
 #endif // HOLE_H

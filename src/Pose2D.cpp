@@ -75,7 +75,7 @@ Pose2D::Pose2D(Pose2D* position) {
 }
 */
 
-double Pose2D::angleTo(Pose2D other) {
+double Pose2D::angleTo(const Pose2D& other) const {
   return atan2(other.y - this->y, other.x - this->x);  
 }
 
@@ -83,23 +83,29 @@ void Pose2D::addAngle(double angle) {
     this->heading += angle;
 }
 
-double Pose2D::distanceTo(Pose2D other) {
+double Pose2D::distanceTo(const Pose2D& other) const {
   return hypot(this->x - other.x, this->y - other.y);
 }
 
-double Pose2D::squareOfDistanceTo(Pose2D other) {
+double Pose2D::squareOfDistanceTo(const Pose2D& other) const {
   return pow(other.x -this->x, 2) + pow(other.y - this->y, 2);
 }
 
-void Pose2D::plus(Pose2D other) {
+void Pose2D::plus(const Pose2D& other) {
     this->x += other.x;
     this->y += other.y;
     this->heading += other.heading;
 }
 
-Pose2D Pose2D::clone() {
-  return Pose2D(this->x, this->y, this->heading);
+Pose2D Pose2D::clone() const {
+  return {this->x, this->y, this->heading};
 }
+
+void Pose2D::vecAdd(const double angle, const double magnitude) {
+    this->x += magnitude * cos(angle);
+    this->y += magnitude * sin(angle);
+}
+
 
 void Pose2D::rotateByAngle(double angle) {
   double newX = this->x * cos(angle) - this->y * sin(angle);
@@ -108,16 +114,16 @@ void Pose2D::rotateByAngle(double angle) {
   this->heading += angle;
 }
 
-void Pose2D::plusCoord(Pose2D other) {
+void Pose2D::plusCoord(const Pose2D& other) {
     this->x += other.x;
     this->y += other.y;
 }
 
-void Pose2D::rotateByPose(Pose2D rotation) {
+void Pose2D::rotateByPose(const Pose2D& rotation) {
   rotateByAngle(rotation.heading);
 }
 
-void Pose2D::translateByPose(Pose2D translation) {
+void Pose2D::translateByPose(const Pose2D& translation) {
   this->x += translation.x;
   this->y += translation.y;
 } 
@@ -127,18 +133,20 @@ void Pose2D::translateByMagnitude(double magnitude) {
   this->y += magnitude * sin(this->heading);
 }
 
-void Pose2D::transformPose(Pose2D modifier) {
+void Pose2D::transformPose(const Pose2D& modifier) {
   translateByPose(modifier);
   rotateByPose(modifier);
 }
 
-double Pose2D::getX() {
+double Pose2D::getX() const {
   return x;
 }
-double Pose2D::getY() {
+
+double Pose2D::getY() const {
   return y;
 }
-double Pose2D::getHeading() {
+
+double Pose2D::getHeading() const {
   return heading;
 }
 
@@ -154,7 +162,23 @@ void Pose2D::setY(double y) {
     this->y = y;
 }
 
-void Pose2D::minus(Pose2D other) {
+uint8_t Pose2D::getQuadrant() const {
+    if (x == 0 || y == 0) {
+        return 0;
+    }
+    if (x < 0) {
+        if (y < 0) {
+            return 3;
+        }
+        return 2;
+    }
+    if (y > 0) {
+        return 1;
+    }
+    return 4;
+}
+
+void Pose2D::minus(const Pose2D other) {
     this->x -= other.x;
     this->y -= other.y;
     this->heading -= other.heading;
@@ -174,10 +198,10 @@ double Pose2D::degreesToRadians(double degrees) {
 Pose2D Pose2D::parseFromStream(std::istringstream& stream) {
     double x, y, heading;
     	if (stream >> x >> y >> heading) {
-	    return Pose2D(x, y, heading);
+	    return {x, y, heading};
 	}
 
-    return Pose2D(0, 0);
+    return {0, 0};
 }
 
 Pose2D Pose2D::subtractBy(const Pose2D& other) const {
@@ -194,12 +218,12 @@ Pose2D Pose2D::normalize() const {
 }
 
 double Pose2D::dotProduct(const Pose2D& other) const {
-    this->x * other.x + this->y * other.y;
+    return this->x * other.x + this->y * other.y;
 }
 
 
 
-Rectangle makeRectangleFromLine(Pose2D L1, Pose2D L2, double width) {
+Rectangle makeRectangleFromLine(Pose2D L1, const Pose2D& L2, double width) {
     double angleBetweenPoints = L1.angleTo(L2);
     double lengthBetween = L1.distanceTo(L2);
     Pose2D head(L1);

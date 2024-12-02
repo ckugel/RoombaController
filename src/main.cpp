@@ -216,7 +216,7 @@ void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 
 }
 
 void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset) {
-    	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y - pillar.getY() * SCREEN_SCALE);
+	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y - pillar.getY() * SCREEN_SCALE);
 	float radius = pillar.getRadius() * SCREEN_SCALE;
 	// std::cout << "haven't drawn yet" << std::endl;
 	DrawCircle(drawList, center, radius, color);
@@ -228,7 +228,7 @@ ImVec2 coordsToScreen(ImVec2 offset, double x, double y) {
     return ImVec2(xN, yN);
 }
 
-ImVec2 coordsToScreen(ImVec2 offset, Pose2D position) {
+ImVec2 coordsToScreen(ImVec2 offset, const Pose2D& position) {
     return coordsToScreen(offset, position.getX(), position.getY());
 }
 
@@ -240,7 +240,7 @@ ImVec2 coordsToScreen(ImVec2 offset, Pose2D position) {
  * @param botPose the position of the bot
  * @param offset the offset of the screen for cartesian coordinates
  */
-void drawBotPose(ImDrawList* drawList, Pose2D botPose, ImVec2 offset) {
+void drawBotPose(ImDrawList* drawList, const Pose2D& botPose, ImVec2 offset) {
     ImU32 color = IM_COL32(144, 238, 144, 200);
     
     // calculate the position of the first point
@@ -335,7 +335,7 @@ void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector
     ImGui::End();
 }
 
-void addToQueue(std::string message) {
+void addToQueue(const std::string& message) {
     // std::cout << message << std::endl;
   sendQueue.push(message);
 }
@@ -346,16 +346,16 @@ void sendAngleToQueue(int16_t angle) {
 
   
  // std::cout << std::string(buff) << std::endl;
-  sendQueue.push(std::string(buff));
+  sendQueue.emplace(buff);
 }
 
 void sendDistanceToQueue(uint16_t angle) {
 	char buff[8];
 	sprintf(buff, "r%03d", angle);
-	sendQueue.push(std::string(buff));
+	sendQueue.emplace(buff);
 }
 
-bool validLocationForNode(Field& field, Pose2D location) {
+bool validLocationForNode(Field& field, const Pose2D& location) {
     std::vector<Pillar> pillars = field.getCopyPillars();
 	for (uint8_t i = 0; i < pillars.size(); i++) {
 		if (pillars[i].getPose().distanceTo(location) < pillars[i].getRadius() + BOT_RADIUS) {
@@ -401,7 +401,7 @@ void discretizeGraph(Field& field, std::mutex& fieldMutex, const Pose2D& desired
 }
 
 
-bool lineIntersectsCircle(Pillar p1, Pose2D one, Pose2D two) {
+bool lineIntersectsCircle(Pillar p1, const Pose2D& one, const Pose2D& two) {
     return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY());
 }
 
@@ -446,19 +446,19 @@ void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
     // gurantee that we can look back.
 
     for (uint8_t move = 1; move < ((path.size() - 1)*2); move += 2) {
-	// for every point we want to point and move
-	Pose2D pointOld = path[move / 2];
-	Pose2D pointNew = path[(move / 2) + 1];
-	// angle to turn to
-	double angle = pointNew.angleTo(pointOld) + pointNew.getHeading();
-	// magnitude
-	double magnitude = pointNew.distanceTo(pointOld);
-	routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
-	routine.push_back((Move) {.quantity = magnitude, .type = MOVE_FORWARD_SMART});
-    }
+		// for every point we want to point and move
+		Pose2D pointOld = path[move / 2];
+		Pose2D pointNew = path[(move / 2) + 1];
+		// angle to turn to
+		double angle = pointNew.angleTo(pointOld) + pointNew.getHeading();
+		// magnitude
+		double magnitude = pointNew.distanceTo(pointOld);
+		routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
+		routine.push_back((Move) {.quantity = magnitude, .type = MOVE_FORWARD_SMART});
+	}
 }
 
-std::string parsePathIntoRoutine(std::vector<Pose2D> path) {
+std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
     std::stringstream toSend;
 
     std::vector<Move> routine;
@@ -570,6 +570,10 @@ int main() {
 			std::cout << "node: " << i << ".  " << graph->getNodes()[i]->getData().getX() << std::endl;
 	    }
 	    */
+		std::cout << "Attempting to make a path between: " << graph->getNodes().front()->getData().getX() << ", " << graph->getNodes().front()->getData().getY() << std::endl;
+		std::cout << "To: " <<graph->getNodes().back()->getData().getX() << ", " << graph->getNodes().back()->getData().getY() << std::endl;
+		// Attempting to make a path between: 0, 0
+		// To: -100, -100
 	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().front(), graph->getNodes().back());
 		//  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
 	    // path.push_back(botPose.getPose());
@@ -624,7 +628,7 @@ int main() {
 	// std::cout << "About to end" << std::endl;
 
         ImGui::End();
-	
+
 
         // Render
         ImGui::Render();
@@ -637,7 +641,7 @@ int main() {
 
         glfwSwapBuffers(window);
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(16));
+		std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 
     stopClient.store(true);

@@ -4,24 +4,22 @@
 
 #include "Hole.hpp"
 
-#include <iostream>
-
 
 Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo) {
-    this->cornerOne = positionOne;
-    this->cornerTwo = positionTwo;
-    this->foundHole = false;
+    Pose2D o1 = positionOne.clone();
+    Pose2D o2 = positionTwo.clone();
+    registerPointsToHole(o1, o2);
     this->points = std::make_unique<std::vector<Pose2D>>();
 }
 
-Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, std::vector<Pose2D> points) {
+Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, const std::vector<Pose2D>& points) {
     this->cornerOne = positionOne;
     this->cornerTwo = positionTwo;
     this->foundHole = foundHole;
 
     this->points = std::make_unique<std::vector<Pose2D>>();
     for (uint16_t i = 0; i < points.size(); i++) {
-	this->points->push_back(points[i]);
+        this->points->push_back(points[i]);
     }
 }
 
@@ -33,19 +31,129 @@ Pose2D Hole::getSecondSquareCorner() {
     return this->cornerTwo;
 }
 
-bool Hole::isInSquare(Pose2D& position) {
+Pose2D Hole::doOperationCopy(const Pose2D& pose) const {
+    double x = (pose.getX() + x_translation_one) * cos_phi - (y_translation_one + pose.getY()) * sin_phi + x_translation_two;
+    double y = (pose.getX() + x_translation_one) * sin_phi + (y_translation_one + pose.getY()) * cos_phi + y_translation_two;
+    return {x, y};
+}
+
+bool Hole::isInSquare(Pose2D& position) const {
+    // general idea: we use the operations in the object to translate objects for checks
+    Pose2D outside = doOperationCopy(cornerTwo);
+    Pose2D pos = doOperationCopy(position);
+
+
+    if (pos.getX() > 0 && pos.getX() < outside.getX() && pos.getY() > 0 && pos.getY() < outside.getY()) {
+        return true;
+    }
+    if (pos.getX() - BOT_RADIUS > 0 && pos.getX() - BOT_RADIUS < outside.getX() && pos.getY() > 0 && pos.getY() < outside.getY()) {
+        return true;
+    }
+    if (pos.getX() + BOT_RADIUS > 0 && pos.getX() + BOT_RADIUS < outside.getX() && pos.getY() > 0 && pos.getY() < outside.getY()) {
+        return true;
+    }
+    if (pos.getX() > 0 && pos.getX() < outside.getX() && pos.getY() + BOT_RADIUS > 0 && pos.getY() + BOT_RADIUS < outside.getY()) {
+        return true;
+    }
+    if (pos.getX() > 0 && pos.getX() < outside.getX() && pos.getY() - BOT_RADIUS > 0 && pos.getY() - BOT_RADIUS < outside.getY()) {
+        return true;
+    }
+    return false;
+
+
+    /*
+    // heres the idea: we generate the cour points. Translate the four points such that the center is around the origin
+    // translate the position by the same offset
+    Pose2D cornerOne(this->cornerOne);
+    Pose2D cornerTwo(this->cornerTwo);
+
+    // calculate center of rectangle
+    Pose2D centerOfRectangle(cornerOne);
+    centerOfRectangle.setHeading(centerOfRectangle.angleTo(cornerTwo));
+    double halfDistance = cornerOne.distanceTo(cornerTwo);
+    centerOfRectangle.translateByMagnitude(halfDistance);
+    // now calculate the translation for the corners
+    double angleTo = centerOfRectangle.angleTo(Pose2D(0, 0));
+    double amount = centerOfRectangle.distanceTo(Pose2D(0, 0));
+
+    cornerOne.setHeading(angleTo);
+    cornerTwo.setHeading(angleTo);
+    position.setHeading(angleTo);
+    cornerOne.translateByMagnitude(amount);
+    cornerTwo.translateByMagnitude(amount);
+    position.translateByMagnitude(amount);
+
+    if (cornerTwo.getX() < 0) {
+        if (cornerTwo.getY() < 0) {
+            // - 90 degree rotation
+            cornerOne.rotateByAngle(- M_PI / 2);
+            cornerTwo.rotateByAngle(-M_PI / 2);
+            position.rotateByAngle(-M_PI / 2);
+        }
+        else {
+            // -180 degree rotation
+            cornerOne.rotateByAngle(M_PI);
+            cornerTwo.rotateByAngle(M_PI);
+            position.rotateByAngle(M_PI);
+        }
+    }
+    if (cornerOne.getX() < 0 && cornerOne.getY() >= 0) {
+        // user cornerOne
+        cornerOne.rotateByAngle(M_PI / 2);
+        cornerTwo.rotateByAngle(M_PI / 2);
+        position.rotateByAngle(M_PI / 2);
+    }
+
+    Pose2D otherCorner(cornerOne);
+    otherCorner.rotateByAngle(M_PI / 2); // really thinky
+    amount = otherCorner.angleTo(otherCorner) / 2;
+
+    cornerOne.rotateByAngle(amount);
+    cornerTwo.rotateByAngle(amount);
+    position.rotateByAngle(amount);
+    angleTo = cornerOne.angleTo(Pose2D(0, 0));
+    cornerOne.setHeading(angleTo);
+    cornerTwo.setHeading(angleTo);
+    position.setHeading(angleTo);
+    cornerOne.translateByMagnitude(halfDistance);
+    cornerTwo.translateByMagnitude(halfDistance);
+    position.translateByMagnitude(halfDistance);
+
+
+    // now we have cornerOne and cornerTwo forming a square with the bottom left on the origin
+    if ((position.getX() + BOT_RADIUS > 0 && position.getX() + BOT_RADIUS < cornerTwo.getX()) || (position.getX() - BOT_RADIUS > 0 && position.getX() - BOT_RADIUS < cornerTwo.getX()) || (position.getX() > 0 && position.getX() < cornerTwo.getX())) {
+        // X coord has collision
+        // now check Y below
+        if ((position.getY() + BOT_RADIUS > 0 && position.getY() + BOT_RADIUS < cornerTwo.getY()) || (position.getY() - BOT_RADIUS > 0 && position.getY() - BOT_RADIUS < cornerTwo.getY()) || (position.getY() > 0 && position.getY() < cornerTwo.getY())) {
+            return true;
+        }
+    }
+    return false;
+
+    // perform a rotation on all the points such that the coordinate are in a stanard rectangle
+    // translate the bottom left coordinate to the origin
+    // translate all the points by that offset
+    // check if the coordinate is in that posiiton
+    // create four points aroung the new posiiton and determine if any of those are in the square
+
+*/
+
+    /*
     // Calculate the center of the square
-    Pose2D center = {(cornerOne.x + cornerTwo.x) / 2, (cornerOne.y + cornerTwo.y) / 2};
+    Pose2D center = {(cornerOne.getX() + cornerTwo.getX()) / 2, (cornerOne.getY() + cornerTwo.getY()) / 2};
 
     // Calculate the vector representing one side of the square
-    Pose2D sideVector = cornerTwo.subtractBy(cornerOne);
-    double sideLength = cornerOne.distanceTo(cornerTwo) / std::sqrt(2);
+    const Pose2D sideVector = cornerTwo.subtractBy(cornerOne);
+    // const double sideLength = cornerOne.distanceTo(cornerTwo) / std::sqrt(2);
 
-    if (std::abs(sideLength - HOLE_SIZE) > 0.05) {
+    /*
+    if (std::abs(sideLength - HOLE_SIZE) > 5) {
         std::cerr << "Error: Given corners do not form a square of the specified hole length." << std::endl;
         return false;
     }
+    */
 
+    /*
     Pose2D sideVectorNormalized = sideVector.normalize();
     Pose2D perpendicularVector = {-sideVectorNormalized.getY(), sideVectorNormalized.getX()};
 
@@ -57,12 +165,12 @@ bool Hole::isInSquare(Pose2D& position) {
     double halfSize = HOLE_SIZE / 2;
 
     // Check if the point is within the square
-    if (std::abs(projSide) <= halfSize && std::abs(projPerpendicular) <= halfSize) {
+    if (fabs(projSide) <= halfSize && fabs(projPerpendicular) <= halfSize) {
         return true;
     }
 
     // Check if the point is within RADIUS of the square
-    if (std::abs(projSide) <= halfSize + BOT_RADIUS && std::abs(projPerpendicular) <= halfSize + BOT_RADIUS) {
+    if (fabs(projSide) <= halfSize + BOT_RADIUS && fabs(projPerpendicular) <= halfSize + BOT_RADIUS) {
         Pose2D closestPoint = {
             center.getX() + projSide * sideVectorNormalized.getX() + projPerpendicular * perpendicularVector.getX(),
             center.getY() + projSide * sideVectorNormalized.getY() + projPerpendicular * perpendicularVector.getY()
@@ -71,12 +179,13 @@ bool Hole::isInSquare(Pose2D& position) {
     }
 
     return false;
+    */
 }
 
 Hole::Hole(double X1, double Y1, double X2, double Y2) {
-   this->cornerOne = Pose2D(X1, Y1);
-    this->cornerTwo = Pose2D(X2, Y2);
-    this->foundHole = false;
+    Pose2D o1(X1, Y1);
+    Pose2D o2(X2, Y2);
+    registerPointsToHole(o1, o2);
 
     this->points = std::make_unique<std::vector<Pose2D>>();
 }
@@ -107,11 +216,16 @@ Hole::Hole(const Hole& hole) {
     this->cornerOne = hole.cornerOne;
     this->cornerTwo = hole.cornerTwo;
     this->foundHole = hole.foundHole;
+    this->cos_phi = hole.cos_phi;
+    this->sin_phi = hole.sin_phi;
+    this->x_translation_one = hole.x_translation_one;
+    this->y_translation_one = hole.y_translation_one;
+    this->x_translation_two = hole.x_translation_two;
+    this->y_translation_two = hole.y_translation_two;
 
     this->points = std::make_unique<std::vector<Pose2D>>();
     for (uint16_t i = 0; i < hole.points->size(); i++) {
-	this->points->push_back(hole.points->data()[i]);
-
+        this->points->push_back(hole.points->data()[i]);
     }
 }
 
@@ -233,5 +347,48 @@ void Hole::addPoint(const Pose2D& position) {
         this->cornerTwo = oppositeCorner;
         this->foundHole = true;
     }
+}
+
+void Hole::registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo) {
+    // calculate the first translation
+    cornerOne = Pose2D(positionOne);
+    cornerTwo = Pose2D(positionTwo);
+    foundHole = true;
+
+    // wrong should be center x and y
+    Pose2D center(positionOne);
+    center.vecAdd(center.angleTo(positionTwo), center.distanceTo(positionTwo) / 2);
+    x_translation_one = center.getX();
+    y_translation_one = center.getY();
+
+    double phi;
+    positionOne.minus(Pose2D(x_translation_one, y_translation_two));
+    switch (positionOne.getQuadrant()) {
+        case 1:
+            phi = M_PI;
+        break;
+        case 2:
+            phi = M_PI / 2;
+        break;
+        case 4:
+            phi = -M_PI / 2;
+        break;
+        default:
+            phi = 0;
+        break;
+    }
+
+    positionOne.rotateByAngle(phi);
+
+    Pose2D cpy = Pose2D(positionOne);
+    cpy.rotateByAngle(M_PI / 2); // rotate this object into quadrant one
+    double newAngle = -positionOne.angleTo(cpy) / 2;
+    positionOne.rotateByAngle(newAngle);
+    phi += newAngle;
+    cos_phi = cos(phi);
+    sin_phi = sin(phi);
+    // calculate position one into
+    x_translation_two = -positionOne.getX();
+    y_translation_two = -positionOne.getY();
 }
 

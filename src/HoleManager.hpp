@@ -25,7 +25,7 @@ class HoleManager {
 		* Adds a point that we collided on the hole with
 		* @param position the position of the collision
 		*/
-		void addPoint(Pose2D position);
+		void addPoint(const Pose2D& position);
 
 		/**
 		 * get a hole from registered holes
@@ -45,7 +45,7 @@ class HoleManager {
 		 * @param cornerOne the first Corner
 		 * @param cornerTwo the second Corner
 		 */
-		void addHole(Pose2D cornerOne, Pose2D cornerTwo);
+		void addHole(const Pose2D& cornerOne, const Pose2D& cornerTwo);
 
 		/**
 		* get the holes that we for sure know about
@@ -72,7 +72,7 @@ class HoleManager {
 		/**
 		* Determines whether a line is valid for all the hole measurements
 		*/
-		bool lineIntersectsAnyHoleMeasurement(Pose2D positionOne, Pose2D positionTwo);
+		bool lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, const Pose2D& positionTwo);
 
 };
 
