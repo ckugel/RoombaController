@@ -9,6 +9,7 @@
 #include <memory>
 #include "Pose2D.hpp"
 #include <cmath>
+#include <ostream>
 
 #define HOLE_SIZE 69.06 // centimeters
 
@@ -22,6 +23,7 @@ class Hole {
     private:
 	Pose2D cornerOne;
 	Pose2D cornerTwo;
+    Pose2D correctedCornerTwo;
 	double cos_phi;
 	double sin_phi;
 	double x_translation_one;
@@ -58,13 +60,15 @@ class Hole {
 	 * @param positionOne corner One
 	 * @param positionTwo Corner Two
 	 */
-	void registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo);
+	void registerPointsToHole(const Pose2D& positionOne, const Pose2D& positionTwo);
 
-	/**
-	 * do the whole operation and copy it into a new object for object collision
-	 * @param pose the Pose2D to apply the big formula
-	 * @return the result of the operations
-	 */
+    friend std::ostream &operator<<(std::ostream &os, const Hole &hole);
+
+    /**
+     * do the whole operation and copy it into a new object for object collision
+     * @param pose the Pose2D to apply the big formula
+     * @return the result of the operations
+     */
 	[[nodiscard]] Pose2D doOperationCopy(const Pose2D& pose) const;
     
 	/**

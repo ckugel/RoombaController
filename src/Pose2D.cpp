@@ -221,6 +221,10 @@ double Pose2D::dotProduct(const Pose2D& other) const {
     return this->x * other.x + this->y * other.y;
 }
 
+std::ostream &operator<<(std::ostream &os, const Pose2D &d) {
+    os << "x: " << d.x << " y: " << d.y << " heading: " << d.heading;
+    return os;
+}
 
 
 Rectangle makeRectangleFromLine(Pose2D L1, const Pose2D& L2, double width) {

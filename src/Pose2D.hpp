@@ -9,6 +9,7 @@
 #include <cmath>
 #include <cstdint>
 #include <sstream>
+#include <ostream>
 
 #define BOT_RADIUS 6
 
@@ -54,6 +55,8 @@ class Pose2D {
     [[nodiscard]] Pose2D scaleBy(double scaler) const;
     [[nodiscard]] Pose2D normalize() const;
     [[nodiscard]] double dotProduct(const Pose2D& other) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const Pose2D &d);
 
     /**
      * Setter for x
