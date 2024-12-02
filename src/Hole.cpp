@@ -398,3 +398,14 @@ void Hole::registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo) {
     << "angleTurn: " << phi << std::endl << "x translation 2: " << x_translation_two << std::endl << "y_translation: " << y_translation_two << std::endl;
 }
 
+void Hole::offset(const Pose2D& offset) {
+    if (foundHole) {
+        this->cornerOne.plus(offset);
+        this->cornerTwo.plus(offset);
+        registerPointsToHole(cornerOne, cornerTwo);
+    }
+    for (uint16_t i = 0; i < this->points->size(); i++) {
+        this->points->at(i).plus(offset);
+    }
+}
+

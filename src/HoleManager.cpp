@@ -96,6 +96,7 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, co
 		}
     }
 
+	/*
     for (uint16_t i = 0; i < this->holes->size(); i++) {
         Pose2D positionOne = this->holes->at(i).getOneSquareCorner();
         Pose2D positionTwo = this->holes->at(i).getSecondSquareCorner();
@@ -104,9 +105,17 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, co
 			return true;
 		}
     }
+    */
 
 
     return false;
 }
 
-
+void HoleManager::offsetAll(const Pose2D& offset) const {
+	for (uint16_t i = 0; i < this->holes->size(); i++) {
+		this->holes->at(i).offset(offset);
+	}
+	for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
+		this->holeMeasurements->at(i).plus(offset);
+	}
+}

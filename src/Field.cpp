@@ -86,3 +86,12 @@ void Field::addEdgeMeasurement(const double rawPosition, const Cardinality cardi
     }
 }
 
+void Field::applyOffsetToEdge(double x, double y) {
+    Pose2D offset = Pose2D(x, y);
+    for (uint16_t i = 0; i < this->pillars->size(); i++) {
+        this->pillars->at(i).getPose().plus(offset);
+        this->holeManager.offsetAll(offset);
+    }
+}
+
+

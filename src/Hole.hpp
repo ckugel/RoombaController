@@ -112,6 +112,12 @@ class Hole {
 	* @return whether that position is in the square
 	*/
 	bool isInSquare(Pose2D& position) const;
+
+	/**
+	 * Offset all the corners and measurements
+	 * @param offset the amount to offset by
+	 */
+	void offset(const Pose2D& offset);
 };
 
 #endif // HOLE_H

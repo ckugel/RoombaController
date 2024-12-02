@@ -41,6 +41,8 @@ class Field {
 
     HoleManager& getManager();
 
+    void applyOffsetToEdge(double x, double y);
+
     void clearField();
 
     Pillar getBotPose();
