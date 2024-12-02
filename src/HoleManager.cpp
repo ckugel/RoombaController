@@ -2,6 +2,7 @@
 * Created by Caleb Kugel 11/15/2024
 */
 
+#include <iostream>
 #include "HoleManager.hpp"
 
 HoleManager::HoleManager() {
@@ -52,13 +53,14 @@ bool HoleManager::nodeCollides(Pose2D position) {
 	    Pose2D pose2(this->holeMeasurements->at(i)); // should copy
 	    pose2.translateByMagnitude(HOLE_SIZE * 0.5);
 	    if (position.isOnLine(initial, pose2)) {
-		return true;
+            return true;
 	    }
 	}
 
 
 	for (uint8_t i = 0; i < this->holes->size(); i++) {
 		if (this->holes->at(i).isInSquare(position)) {
+            // std::cout << "failed for: " << position.getX() << ", " << position.getY() << std::endl;
 			return true;
 		}
 	}
@@ -90,6 +92,15 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, co
 	// for every point make the rectangle
 	Rectangle rect = makeRectangleFromLine(positionOne, positionTwo, MEASUREMENT_WIDTH);	
 		if (lineIntersectsRectangle(positionOne.getX(), positionOne.getY(), positionTwo.getX(), positionTwo.getY(), rect.r1.getX(), rect.r1.getY(), rect.r2.getX(), rect.r2.getY(), rect.r3.getX(), rect.r3.getY(), rect.r4.getX(), rect.r4.getY())) {
+			return true;
+		}
+    }
+
+    for (uint16_t i = 0; i < this->holes->size(); i++) {
+        Pose2D positionOne = this->holes->at(i).getOneSquareCorner();
+        Pose2D positionTwo = this->holes->at(i).getSecondSquareCorner();
+        Rectangle rect = makeRectangleFromLine(positionOne, positionTwo, positionOne.distanceTo(positionTwo) / sqrt(2));
+        if (lineIntersectsRectangle(positionOne.getX(), positionOne.getY(), positionTwo.getX(), positionTwo.getY(), rect.r1.getX(), rect.r1.getY(), rect.r2.getX(), rect.r2.getY(), rect.r3.getX(), rect.r3.getY(), rect.r4.getX(), rect.r4.getY())) {
 			return true;
 		}
     }

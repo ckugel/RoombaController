@@ -12,7 +12,7 @@
 
 template<typename V>
 Graph<V>::Graph() {
-    std::vector<unsigned int> temp;
+    std::vector<double> temp;
     temp.push_back(0);
     temp.push_back(0);
     matrix.push_back(temp);
@@ -78,7 +78,7 @@ void Graph<V>::playGround() {
 template<typename V>
 void Graph<V>::resize() {
     matrix.resize(nodes.size());
-    for (std::vector<unsigned int>& looper : matrix) {
+    for (std::vector<double>& looper : matrix) {
         looper.resize(nodes.size());
     }
 }
@@ -108,7 +108,7 @@ void Graph<V>::addNode(Node<V>* newNode) {
 }
 
 template<typename V>
-void Graph<V>::addNode(Node<V>* nextNode, std::vector<Node<V>*> adjacentNodes, unsigned int weight) {
+void Graph<V>::addNode(Node<V>* nextNode, std::vector<Node<V>*> adjacentNodes, double weight) {
     addNode(nextNode);
     for (int looper = 0; looper < adjacentNodes.size(); looper++) {
         if (!contains(adjacentNodes[looper], nodes)) {
@@ -196,7 +196,7 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* from, Node<V>* find) {
     }
     std::vector<bool> visited;
     visited.resize(nodes.size());
-    unsigned int distances[nodes.size()];
+    double distances[nodes.size()];
 
     for(int filler = 0; filler < nodes.size(); filler++) {
         visited[filler] = 0;
@@ -207,12 +207,12 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* from, Node<V>* find) {
     std::priority_queue<pair, std::vector<pair>, CustomCompare> queue;
     std::vector<Node<V>*> temp;
     temp.push_back(from);
-    queue.push(std::pair<unsigned int, std::vector<Node<V>*>>(0, temp));
+    queue.push(std::pair<double, std::vector<Node<V>*>>(0, temp));
 
     while (!queue.empty()) {
         std::vector<Node<V>*> path = queue.top().second;        
         Node<V> *curr = path[path.size() - 1];
-        unsigned int currentDistance = queue.top().first;
+        double currentDistance = queue.top().first;
         queue.pop();
 
         visited[nodeMap.at(curr)] = 1;
@@ -233,7 +233,7 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* from, Node<V>* find) {
             if (!visited[nodeMap.at(adj[looper])] && currentDistance + matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])] < distances[nodeMap.at(adj[looper])]) {
                 distances[nodeMap.at(adj[looper])] = currentDistance + matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])];
                 possiblePath.push_back(adj[looper]);
-                queue.push(std::pair<unsigned int, std::vector<Node<V>*>>(currentDistance + matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])], possiblePath));
+                queue.push(std::pair<double, std::vector<Node<V>*>>(currentDistance + matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])], possiblePath));
             }
         }
         thing = path;
@@ -254,12 +254,12 @@ Graph<V>::~Graph() {
 }
 
 template<typename V>
-std::vector<std::vector<unsigned int>> Graph<V>::getAdjacencyList() {
+std::vector<std::vector<double>> Graph<V>::getAdjacencyList() {
     return matrix;
 }
 
 template<typename V>
-void Graph<V>::addConnection(Node<V> *one, Node<V> *two, unsigned int weight) {
+void Graph<V>::addConnection(Node<V> *one, Node<V> *two, double weight) {
     int oneIndex = nodeMap.at(one);
     int twoIndex = nodeMap.at(two);
 
@@ -274,7 +274,7 @@ void Graph<V>::addConnection(Node<V> *one, Node<V> *two) {
 }
 
 template<typename V>
-void Graph<V>::addNode(Node<V> *nextNode, Node<V> *nodeITSLATE, unsigned int weight) {
+void Graph<V>::addNode(Node<V> *nextNode, Node<V> *nodeITSLATE, double weight) {
     std::vector<Node<V>*> adj;
     adj.push_back(nodeITSLATE);
     addNode(nextNode, adj, weight);

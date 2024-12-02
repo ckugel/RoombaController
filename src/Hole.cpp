@@ -2,6 +2,7 @@
 * Created by Caleb Kugel on 11/15/2024
 */
 
+#include <iostream>
 #include "Hole.hpp"
 
 
@@ -41,6 +42,8 @@ bool Hole::isInSquare(Pose2D& position) const {
     // general idea: we use the operations in the object to translate objects for checks
     Pose2D outside = doOperationCopy(cornerTwo);
     Pose2D pos = doOperationCopy(position);
+
+    std::cout << "outside became: " << outside.getX() << ", " << outside.getY() << std::endl;
 
 
     if (pos.getX() > 0 && pos.getX() < outside.getX() && pos.getY() > 0 && pos.getY() < outside.getY()) {
@@ -358,11 +361,11 @@ void Hole::registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo) {
     // wrong should be center x and y
     Pose2D center(positionOne);
     center.vecAdd(center.angleTo(positionTwo), center.distanceTo(positionTwo) / 2);
-    x_translation_one = center.getX();
-    y_translation_one = center.getY();
+    x_translation_one = -center.getX();
+    y_translation_one = -center.getY();
 
     double phi;
-    positionOne.minus(Pose2D(x_translation_one, y_translation_two));
+    positionOne.plus(Pose2D(x_translation_one, y_translation_two));
     switch (positionOne.getQuadrant()) {
         case 1:
             phi = M_PI;
@@ -389,6 +392,9 @@ void Hole::registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo) {
     sin_phi = sin(phi);
     // calculate position one into
     x_translation_two = -positionOne.getX();
-    y_translation_two = -positionOne.getY();
+    y_translation_two = positionOne.getY();
+
+    std::cout << "x translation: " << x_translation_one << std::endl << "y translation: " << y_translation_one << std::endl
+    << "angleTurn: " << phi << std::endl << "x translation 2: " << x_translation_two << std::endl << "y_translation: " << y_translation_two << std::endl;
 }
 
