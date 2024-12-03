@@ -22,6 +22,7 @@
           pkgs.doxygen
           pkgs.doxygen_gui
           pkgs.libclang
+          pkgs.gtest
         ];
 
         shellHook = ''
