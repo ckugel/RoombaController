@@ -9,14 +9,17 @@
 Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo) {
     Pose2D o1 = positionOne.clone();
     Pose2D o2 = positionTwo.clone();
-    registerPointsToHole(o1, o2);
+    this->registerPointsToHole(o1, o2);
     this->points = std::make_unique<std::vector<Pose2D>>();
 }
 
 Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, const std::vector<Pose2D>& points) {
-    this->cornerOne = positionOne;
-    this->cornerTwo = positionTwo;
-    this->foundHole = foundHole;
+    if (foundHole) {
+        this->registerPointsToHole(positionOne, positionTwo);
+    }
+    else {
+        this->foundHole = false;
+    }
 
     this->points = std::make_unique<std::vector<Pose2D>>();
     for (uint16_t i = 0; i < points.size(); i++) {
@@ -32,33 +35,32 @@ Pose2D Hole::getSecondSquareCorner() {
     return this->cornerTwo;
 }
 
-Pose2D Hole::doOperationCopy(const Pose2D& pose) const {
-    double x = (pose.getX() + x_translation_one) * cos_phi - (y_translation_one + pose.getY()) * sin_phi + x_translation_two;
-    double y = (pose.getX() + x_translation_one) * sin_phi + (y_translation_one + pose.getY()) * cos_phi + y_translation_two;
-    return {x, y};
-}
-
 bool Hole::isInSquare(Pose2D& position) const {
     // general idea: we use the operations in the object to translate objects for checks
-    Pose2D outside = doOperationCopy(cornerTwo);
-    Pose2D pos = doOperationCopy(position);
 
-    std::cout << "outside became: " << outside.getX() << ", " << outside.getY() << std::endl;
+    Pose2D center(this->cornerOne);
+    center.setHeading(center.angleTo(this->cornerTwo));
+    center.translateByMagnitude(center.distanceTo(this->cornerTwo) / 2);
 
+    Pose2D pos(position);
+    pos.minus(center);
 
-    if (pos.getX() > 0 && pos.getX() < outside.getX() && pos.getY() > 0 && pos.getY() < outside.getY()) {
+    pos.rotateByAngle(phi);
+    pos.plus(Pose2D(x_translation_two, y_translation_two));
+
+    if (pos.getX() > 0 && pos.getX() < threshold && pos.getY() > 0 && pos.getY() < threshold) {
         return true;
     }
-    if (pos.getX() - BOT_RADIUS > 0 && pos.getX() - BOT_RADIUS < outside.getX() && pos.getY() > 0 && pos.getY() < outside.getY()) {
+    if (pos.getX() - BOT_RADIUS > 0 && pos.getX() - BOT_RADIUS < threshold && pos.getY() > 0 && pos.getY() < threshold) {
         return true;
     }
-    if (pos.getX() + BOT_RADIUS > 0 && pos.getX() + BOT_RADIUS < outside.getX() && pos.getY() > 0 && pos.getY() < outside.getY()) {
+    if (pos.getX() + BOT_RADIUS > 0 && pos.getX() + BOT_RADIUS < threshold && pos.getY() > 0 && pos.getY() < threshold) {
         return true;
     }
-    if (pos.getX() > 0 && pos.getX() < outside.getX() && pos.getY() + BOT_RADIUS > 0 && pos.getY() + BOT_RADIUS < outside.getY()) {
+    if (pos.getX() > 0 && pos.getX() < threshold && pos.getY() + BOT_RADIUS > 0 && pos.getY() + BOT_RADIUS < threshold) {
         return true;
     }
-    if (pos.getX() > 0 && pos.getX() < outside.getX() && pos.getY() - BOT_RADIUS > 0 && pos.getY() - BOT_RADIUS < outside.getY()) {
+    if (pos.getX() > 0 && pos.getX() < threshold && pos.getY() - BOT_RADIUS > 0 && pos.getY() - BOT_RADIUS < threshold) {
         return true;
     }
     return false;
@@ -208,9 +210,9 @@ bool Hole::pointCouldBeMemberOfHole(const Pose2D& measurment) {
     bool viable = true;
     this->points = std::make_unique<std::vector<Pose2D>>();
     for (uint16_t i = 0; i < this->points->size(); i++) {
-	if (this->points->data()[i].distanceTo(measurment) > HOLE_SIZE * std::sqrt(2)) {
-	    viable = false;
-	}
+        if (this->points->data()[i].distanceTo(measurment) > HOLE_SIZE * std::sqrt(2)) {
+            viable = false;
+        }
     }
     return viable;
 }
@@ -219,8 +221,8 @@ Hole::Hole(const Hole& hole) {
     this->cornerOne = hole.cornerOne;
     this->cornerTwo = hole.cornerTwo;
     this->foundHole = hole.foundHole;
-    this->cos_phi = hole.cos_phi;
-    this->sin_phi = hole.sin_phi;
+    this->phi = hole.phi;
+    this->threshold = hole.threshold;
     this->x_translation_one = hole.x_translation_one;
     this->y_translation_one = hole.y_translation_one;
     this->x_translation_two = hole.x_translation_two;
@@ -352,10 +354,11 @@ void Hole::addPoint(const Pose2D& position) {
     }
 }
 
-void Hole::registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo) {
+void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positionTwo) {
     // calculate the first translation
     cornerOne = Pose2D(positionOne);
     cornerTwo = Pose2D(positionTwo);
+    Pose2D D(positionOne);
     foundHole = true;
 
     // wrong should be center x and y
@@ -365,8 +368,28 @@ void Hole::registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo) {
     y_translation_one = -center.getY();
 
     double phi;
-    positionOne.plus(Pose2D(x_translation_one, y_translation_two));
-    switch (positionOne.getQuadrant()) {
+    D.plus(Pose2D(x_translation_one, y_translation_two));
+    switch (D.getQuadrant()) {
+        case 0:
+            if (fabs(D.getX()) < 0.01) {
+                // on y axis
+                if (D.getY() < 0) {
+                    phi = - M_PI / 3; // just a nudge
+                }
+                else {
+                    phi = M_PI / 4 * 3;
+                }
+            }
+            else {
+                // on x axis
+                if (D.getX() > 0) {
+                    phi = -M_PI / 4 * 3;
+                }
+                else {
+                    phi = M_PI / 3;
+                }
+            }
+            break;
         case 1:
             phi = M_PI;
         break;
@@ -381,20 +404,28 @@ void Hole::registerPointsToHole(Pose2D& positionOne, Pose2D& positionTwo) {
         break;
     }
 
-    positionOne.rotateByAngle(phi);
+    D.rotateByAngle(phi);
 
-    Pose2D cpy = Pose2D(positionOne);
-    cpy.rotateByAngle(M_PI / 2); // rotate this object into quadrant one
-    double newAngle = -positionOne.angleTo(cpy) / 2;
-    positionOne.rotateByAngle(newAngle);
-    phi += newAngle;
-    cos_phi = cos(phi);
-    sin_phi = sin(phi);
+    double newAngle = M_PI / 4 - atan2(-D.getY(), -D.getX()); // see desmos graph
+    D.rotateByAngle(newAngle);
+    phi = newAngle;
+    this->phi = phi;
     // calculate position one into
-    x_translation_two = -positionOne.getX();
-    y_translation_two = positionOne.getY();
+    x_translation_two = -D.getX();
+    y_translation_two = -D.getY();
+
+    threshold = cornerOne.distanceTo(cornerTwo) / sqrt(2);
 
     std::cout << "x translation: " << x_translation_one << std::endl << "y translation: " << y_translation_one << std::endl
-    << "angleTurn: " << phi << std::endl << "x translation 2: " << x_translation_two << std::endl << "y_translation: " << y_translation_two << std::endl;
+    << "angleTurn: " << phi << std::endl << "x translation 2: " << x_translation_two << std::endl << "y_translation: " << y_translation_two << std::endl
+    << "threshold: " << threshold << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &os, const Hole &hole) {
+    os << "cornerOne: " << hole.cornerOne << " cornerTwo: " << hole.cornerTwo << " threshold: " << hole.threshold << " phi: " << hole.phi
+    << " x_translation_one: " << hole.x_translation_one << " y_translation_one: " << hole.y_translation_one
+       << " x_translation_two: " << hole.x_translation_two << " y_translation_two: " << hole.y_translation_two
+       << " foundHole: " << hole.foundHole << " points: " << hole.points;
+    return os;
 }
 
