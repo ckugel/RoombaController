@@ -23,9 +23,8 @@ class Hole {
     private:
 	Pose2D cornerOne;
 	Pose2D cornerTwo;
-    Pose2D correctedCornerTwo;
-	double cos_phi;
-	double sin_phi;
+    double threshold;
+	double phi;
 	double x_translation_one;
 	double y_translation_one;
 	double x_translation_two;
@@ -69,7 +68,7 @@ class Hole {
      * @param pose the Pose2D to apply the big formula
      * @return the result of the operations
      */
-	[[nodiscard]] Pose2D doOperationCopy(const Pose2D& pose) const;
+	// [[nodiscard]] Pose2D doOperationCopy(const Pose2D& pose) const;
     
 	/**
 	* @return one of the square's corners

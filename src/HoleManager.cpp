@@ -59,6 +59,7 @@ bool HoleManager::nodeCollides(Pose2D position) {
 
 
 	for (uint8_t i = 0; i < this->holes->size(); i++) {
+        //std::cout << this->holes->at(i) << std::endl;
 		if (this->holes->at(i).isInSquare(position)) {
             // std::cout << "failed for: " << position.getX() << ", " << position.getY() << std::endl;
 			return true;
@@ -96,6 +97,7 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, co
 		}
     }
 
+    /*
     for (uint16_t i = 0; i < this->holes->size(); i++) {
         Pose2D positionOne = this->holes->at(i).getOneSquareCorner();
         Pose2D positionTwo = this->holes->at(i).getSecondSquareCorner();
@@ -104,6 +106,7 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, co
 			return true;
 		}
     }
+     */
 
 
     return false;
