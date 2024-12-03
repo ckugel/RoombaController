@@ -38,6 +38,7 @@ Pose2D Hole::getSecondSquareCorner() {
 Pose2D Hole::doOperationCopy(const Pose2D& pose) const {
     double x = (pose.getX() + x_translation_one) * cos_phi - (y_translation_one + pose.getY()) * sin_phi + x_translation_two;
     double y = (pose.getX() + x_translation_one) * sin_phi + (y_translation_one + pose.getY()) * cos_phi + y_translation_two;
+    // std::cout << "oper: " << x << ", " << y << std::endl;
     return {x, y};
 }
 
@@ -45,7 +46,7 @@ bool Hole::isInSquare(Pose2D& position) const {
     // general idea: we use the operations in the object to translate objects for checks
     Pose2D pos = doOperationCopy(position);
 
-    std::cout << *this;
+    // std::cout << *this << std::endl;
 
 
     if (pos.getX() > 0 && pos.getX() < correctedCornerTwo.getX() && pos.getY() > 0 && pos.getY() < correctedCornerTwo.getY()) {
@@ -358,6 +359,7 @@ void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positio
     // calculate the first translation
     cornerOne = Pose2D(positionOne);
     cornerTwo = Pose2D(positionTwo);
+    Pose2D D(positionOne);
     foundHole = true;
 
     // wrong should be center x and y
@@ -365,11 +367,30 @@ void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positio
     center.vecAdd(center.angleTo(positionTwo), center.distanceTo(positionTwo) / 2);
     x_translation_one = -center.getX();
     y_translation_one = -center.getY();
-    center = Pose2D(cornerOne);
 
     double phi;
-    center.plus(Pose2D(x_translation_one, y_translation_two));
-    switch (center.getQuadrant()) {
+    D.plus(Pose2D(x_translation_one, y_translation_two));
+    switch (D.getQuadrant()) {
+        case 0:
+            if (fabs(D.getX()) < 0.01) {
+                // on y axis
+                if (D.getY() < 0) {
+                    phi = - M_PI / 3; // just a nudge
+                }
+                else {
+                    phi = M_PI / 4 * 3;
+                }
+            }
+            else {
+                // on x axis
+                if (D.getX() > 0) {
+                    phi = -M_PI / 4 * 3;
+                }
+                else {
+                    phi = M_PI / 3;
+                }
+            }
+            break;
         case 1:
             phi = M_PI;
         break;
@@ -384,20 +405,18 @@ void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positio
         break;
     }
 
-    center.rotateByAngle(phi);
+    D.rotateByAngle(phi);
 
-    Pose2D cpy(center);
-    cpy.rotateByAngle(M_PI / 2); // rotate this object into quadrant one
-    double newAngle = -center.angleTo(cpy) / 2;
-    center.rotateByAngle(newAngle);
-    phi += newAngle;
+    double newAngle = M_PI / 4 - atan2(-D.getY(), -D.getX()); // see desmos graph
+    D.rotateByAngle(newAngle);
+    phi = newAngle;
     cos_phi = cos(phi);
     sin_phi = sin(phi);
     // calculate position one into
-    x_translation_two = -center.getX();
-    y_translation_two = center.getY();
+    x_translation_two = -D.getX();
+    y_translation_two = -D.getY();
 
-    correctedCornerTwo = doOperationCopy(cornerTwo);
+    this->correctedCornerTwo = doOperationCopy(cornerTwo);
 
     std::cout << "x translation: " << x_translation_one << std::endl << "y translation: " << y_translation_one << std::endl
     << "angleTurn: " << phi << std::endl << "x translation 2: " << x_translation_two << std::endl << "y_translation: " << y_translation_two << std::endl

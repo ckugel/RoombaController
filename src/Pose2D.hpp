@@ -48,7 +48,7 @@ class Pose2D {
      * @param other the other pose
      */
     void plus(const Pose2D& other);
-    void minus(const Pose2D other);
+    void minus(Pose2D other);
     void addAngle(double angle);
 
     [[nodiscard]] Pose2D subtractBy(const Pose2D& other) const;
