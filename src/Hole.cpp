@@ -36,6 +36,7 @@ Pose2D Hole::getSecondSquareCorner() {
 }
 
 bool Hole::isInSquare(Pose2D& position) const {
+    std::cout << "starting position: " << position << std::endl;
     // general idea: we use the operations in the object to translate objects for checks
 
     Pose2D center(this->cornerOne);
@@ -47,6 +48,8 @@ bool Hole::isInSquare(Pose2D& position) const {
 
     pos.rotateByAngle(phi);
     pos.plus(Pose2D(x_translation_two, y_translation_two));
+
+    std::cout << "translated position: " << pos << std::endl;
 
     if (pos.getX() > 0 && pos.getX() < threshold && pos.getY() > 0 && pos.getY() < threshold) {
         return true;
@@ -367,9 +370,8 @@ void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positio
     x_translation_one = -center.getX();
     y_translation_one = -center.getY();
 
-    double phi = 0;
+    double phi;
     D.plus(Pose2D(x_translation_one, y_translation_one));
-    /*
     switch (D.getQuadrant()) {
         case 0:
             if (fabs(D.getX()) < 0.01) {
@@ -404,7 +406,6 @@ void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positio
             phi = 0;
         break;
     }
-    */
 
     D.rotateByAngle(phi);
 

@@ -55,9 +55,9 @@ struct Move {
 std::atomic<bool> stopClient(false);
 
 void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& field) {
-  const uint16_t BUFF_SIZE = 1024;
+	const uint16_t BUFF_SIZE = 1024;
 
-    static char name_buff[50];
+	static char name_buff[50];
   time_t now = time(0);
   strftime(name_buff, sizeof(name_buff), "log/%Y%m%d_%H%M%S.log", localtime(&now));
   std::string str_name(name_buff);
@@ -82,7 +82,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
     while (stream >> tag) {
 	switch(tag) {
 	    case 'F':
-		    field.clearField();
+		    // field.clearField();
 		    break;
 	    case 'o': 
 			{
