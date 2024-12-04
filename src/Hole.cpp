@@ -367,8 +367,9 @@ void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positio
     x_translation_one = -center.getX();
     y_translation_one = -center.getY();
 
-    double phi;
-    D.plus(Pose2D(x_translation_one, y_translation_two));
+    double phi = 0;
+    D.plus(Pose2D(x_translation_one, y_translation_one));
+    /*
     switch (D.getQuadrant()) {
         case 0:
             if (fabs(D.getX()) < 0.01) {
@@ -403,6 +404,7 @@ void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positio
             phi = 0;
         break;
     }
+    */
 
     D.rotateByAngle(phi);
 

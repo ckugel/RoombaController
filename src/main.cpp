@@ -89,7 +89,8 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
 			fieldMutex.lock();
 			Pillar toAdd = Pillar::parseFromStream(stream);
 			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl;
-			field.addPillar(toAdd);
+	    	toAdd.getPose().plus(field.getBotPose().getPose());
+	    	field.addPillar(toAdd);
 			fieldMutex.unlock();
 			}
 			break;

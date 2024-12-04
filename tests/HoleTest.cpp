@@ -9,7 +9,7 @@ TEST(YourTestSuite, TestPositiveScenario) {
     
     Pose2D inSquare[] = {Pose2D(48, 46), Pose2D(55.4, 49.75), Pose2D(51.6, 55.1), Pose2D(46.1, 55.3), Pose2D(50, 44), Pose2D(54, 47.1)};
     
-    Pose2D outOfSquare[] = {Pose2D(57.6, 44.6), Pose2D(56.55, 56.2), Pose2D(43.3, 58.1), Pose2D(46.1, 55.3), Pose2D(42.4, 43), Pose2D(-30, 30)};
+    Pose2D outOfSquare[] = {Pose2D(67.6, 54.6), Pose2D(37, 39.8), Pose2D(61.5, 37.7), Pose2D(39, 62), Pose2D(84.8, 31.3), Pose2D(-43.3, -27.3)};
 
     for (uint16_t i = 0; i < 6; i++) {
 	bool result = hole.isInSquare(inSquare[i]);
