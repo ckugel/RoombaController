@@ -22,7 +22,7 @@ Field::Field() {
   this-> pillars = std::make_unique<std::vector<Pillar>>();
   this->desiredDestination = Pose2D(0, 0, 0);
   this->botPose = Pillar(0, 0, 0, BOT_RADIUS);
-    this->holeManager = HoleManager();
+  this->holeManager = HoleManager();
 }
 
 HoleManager& Field::getManager() {
@@ -59,6 +59,10 @@ std::vector<Pillar> Field::getCopyPillars() {
         copy.push_back(i);
     }
     return copy;
+}
+
+bool Field::outOfBounds(const Pose2D& location) {
+    return (location.getX() < 0 || location.getY() < 0 || location.getX() > MAX_X || location.getY() > MAX_Y);
 }
 
 void Field::addEdgeMeasurement(const double rawPosition, const Cardinality cardinality) {

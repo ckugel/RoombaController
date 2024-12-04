@@ -1,7 +1,7 @@
 - Doc for API
 - Way to end when we hit the target
 - Avoid border
-- Way to model edges and holes on the field, update path planning to ensure we are not in a hole, and we are in the field.
+
 - We can likely use a very large starting estimation then shrink it as we encounter more data.
 - Automatic configuration graphing and display
 - RRT star

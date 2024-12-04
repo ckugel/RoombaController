@@ -1,7 +1,8 @@
 #include <gtest/gtest.h>
 #include "../src/Hole.hpp"
+#include "../src/Field.hpp"
 
-TEST(YourTestSuite, TestPositiveScenario) {
+TEST(testSuite, TestPositiveScenario) {
     // Arrange
     Pose2D posOne(50, 40);
     Pose2D posTwo(50, 60);
@@ -19,6 +20,26 @@ TEST(YourTestSuite, TestPositiveScenario) {
 	EXPECT_EQ(result, true);
 	EXPECT_FALSE(result2);
     }
+
+
+    // Arrange
+    Pose2D posOneOne(50, 40);
+    Pose2D posTwoOne(50, 60);
+    Pose2D posThree(-100, 0);
+    Pose2D posFour(-2, -2);
+    Pose2D posFive(300, 300);
+    Pose2D posSix(500, 500);
+    Pose2D posSeven(-1, -1);
+
+    Field field;
+
+    EXPECT_FALSE(field.outOfBounds(posOneOne));
+    EXPECT_FALSE(field.outOfBounds(posTwoOne));
+    EXPECT_TRUE(field.outOfBounds(posThree));
+    EXPECT_TRUE(field.outOfBounds(posFour));
+    EXPECT_TRUE(field.outOfBounds(posFive));
+    EXPECT_TRUE(field.outOfBounds(posSix));
+    EXPECT_TRUE(field.outOfBounds(posSeven));
 }
 
 /*

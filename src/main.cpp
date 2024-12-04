@@ -357,6 +357,9 @@ void sendDistanceToQueue(uint16_t angle) {
 }
 
 bool validLocationForNode(Field& field, const Pose2D& location) {
+    if (Field::outOfBounds(location)) {
+        return false;
+    }
     std::vector<Pillar> pillars = field.getCopyPillars();
 	for (uint8_t i = 0; i < pillars.size(); i++) {
 		if (pillars[i].getPose().distanceTo(location) < pillars[i].getRadius() + BOT_RADIUS) {

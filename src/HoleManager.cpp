@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "HoleManager.hpp"
+#include "Field.hpp"
 
 HoleManager::HoleManager() {
     holes = std::make_unique<std::vector<Hole>>();
@@ -47,6 +48,7 @@ void HoleManager::addPoint(const Pose2D& position) {
 
 // deiscretization step
 bool HoleManager::nodeCollides(Pose2D position) {
+
 	// shoot out a small line from the position in the dircection of the heading
 	for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
 	    Pose2D initial = this->holeMeasurements->at(i);

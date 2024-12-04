@@ -17,6 +17,9 @@
 #include "Pose2D.hpp"
 #include "Pillar.hpp"
 
+#define MAX_X 426.72
+#define MAX_Y 242.57
+
 enum Cardinality {
     N = 'N',
     S = 'S',
@@ -46,6 +49,8 @@ class Field {
     void clearField();
 
     Pillar getBotPose();
+
+    static bool outOfBounds(const Pose2D& location);
 
     void addPillar(const Pillar& newPillar);
     void updateBotPose(const Pose2D& updatedPosition);
