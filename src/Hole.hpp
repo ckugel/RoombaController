@@ -65,10 +65,10 @@ class Hole {
 
     /**
      * do the whole operation and copy it into a new object for object collision
-     * @param pose the Pose2D to apply the big formula
+     * @param position the Pose2D to apply the big formula
      * @return the result of the operations
      */
-	// [[nodiscard]] Pose2D doOperationCopy(const Pose2D& pose) const;
+	[[nodiscard]] Pose2D copyDoOperation(const Pose2D& position) const;
     
 	/**
 	* @return one of the square's corners
@@ -121,6 +121,13 @@ class Hole {
 	 * @param offset the amount to offset by
 	 */
 	void offset(const Pose2D& offset);
+
+    /**
+     * Line intersects any hole measurement
+     * @param posOne position one of the line
+     * @param posTwo position two of the line
+     */
+     bool lineIntersectsHole(Pose2D& posOne, Pose2D& posTwo);
 };
 
 #endif // HOLE_H

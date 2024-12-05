@@ -217,7 +217,7 @@ void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 
 }
 
 void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset) {
-	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y - pillar.getY() * SCREEN_SCALE);
+	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y + pillar.getY() * SCREEN_SCALE);
 	float radius = pillar.getRadius() * SCREEN_SCALE;
 	// std::cout << "haven't drawn yet" << std::endl;
 	DrawCircle(drawList, center, radius, color);
@@ -286,7 +286,7 @@ void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector
     ImDrawList* drawList = ImGui::GetWindowDrawList();
     ImVec2 windowPos = ImGui::GetWindowPos();
     ImVec2 windowSize = ImGui::GetWindowSize();
-    ImVec2 offset = ImVec2(windowPos.x + 50 + (windowSize.x / 2), windowPos.y + 50 + (windowSize.y / 2));
+    ImVec2 offset = ImVec2(windowPos.x, windowPos.y + MAX_Y);
     
     pillarsMutex->lock();
 
@@ -310,7 +310,7 @@ void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector
     for (Node<Pose2D>*& node : nodes) {
 		Pose2D position = node->getData();
 
-		ImVec2 center = ImVec2(offset.x + position.getX() * SCREEN_SCALE, offset.y - position.getY() * SCREEN_SCALE);
+		ImVec2 center = ImVec2(offset.x + position.getX() * SCREEN_SCALE, offset.y + position.getY() * SCREEN_SCALE);
 		float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
 		DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
 		// draw a line from every node to the adjacent yes we will double count draws with this

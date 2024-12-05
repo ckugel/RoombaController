@@ -35,10 +35,7 @@ Pose2D Hole::getSecondSquareCorner() {
     return this->cornerTwo;
 }
 
-bool Hole::isInSquare(Pose2D& position) const {
-    std::cout << "starting position: " << position << std::endl;
-    // general idea: we use the operations in the object to translate objects for checks
-
+Pose2D Hole::copyDoOperation(const Pose2D& position) const {
     Pose2D center(this->cornerOne);
     center.setHeading(center.angleTo(this->cornerTwo));
     center.translateByMagnitude(center.distanceTo(this->cornerTwo) / 2);
@@ -48,8 +45,15 @@ bool Hole::isInSquare(Pose2D& position) const {
 
     pos.rotateByAngle(phi);
     pos.plus(Pose2D(x_translation_two, y_translation_two));
+}
 
-    std::cout << "translated position: " << pos << std::endl;
+bool Hole::isInSquare(Pose2D& position) const {
+    // std::cout << "starting position: " << position << std::endl;
+    // general idea: we use the operations in the object to translate objects for checks
+
+    Pose2D pos = copyDoOperation(position);
+
+   // std::cout << "translated position: " << pos << std::endl;
 
     if (pos.getX() > 0 && pos.getX() < threshold && pos.getY() > 0 && pos.getY() < threshold) {
         return true;
@@ -419,9 +423,9 @@ void Hole::registerPointsToHole(const Pose2D& positionOne, const Pose2D& positio
 
     threshold = cornerOne.distanceTo(cornerTwo) / sqrt(2);
 
-    std::cout << "x translation: " << x_translation_one << std::endl << "y translation: " << y_translation_one << std::endl
+    /*std::cout << "x translation: " << x_translation_one << std::endl << "y translation: " << y_translation_one << std::endl
     << "angleTurn: " << phi << std::endl << "x translation 2: " << x_translation_two << std::endl << "y_translation: " << y_translation_two << std::endl
-    << "threshold: " << threshold << std::endl;
+    << "threshold: " << threshold << std::endl;*/
 }
 
 std::ostream &operator<<(std::ostream &os, const Hole &hole) {
@@ -441,5 +445,19 @@ void Hole::offset(const Pose2D& offset) {
     for (uint16_t i = 0; i < this->points->size(); i++) {
         this->points->at(i).plus(offset);
     }
+}
+
+bool Hole::lineIntersectsHole(Pose2D& posOne, Pose2D& posTwo) {
+    Pose2D positionOne = copyDoOperation(posOne);
+    Pose2D positionTwo = copyDoOperation(posTwo);
+
+    // if the line between them, at any point falls between 0 and threshold
+    // annoyingly I think this means that we need to do real math (ew)
+    if (fabs(positionOne.getX() - positionTwo.getX()) < 0.05) {
+        // we have a vertical line
+        
+    }
+
+
 }
 

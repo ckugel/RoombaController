@@ -99,17 +99,11 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, co
 		}
     }
 
-    /*
     for (uint16_t i = 0; i < this->holes->size(); i++) {
-        Pose2D positionOne = this->holes->at(i).getOneSquareCorner();
-        Pose2D positionTwo = this->holes->at(i).getSecondSquareCorner();
-        Rectangle rect = makeRectangleFromLine(positionOne, positionTwo, positionOne.distanceTo(positionTwo) / sqrt(2));
-        if (lineIntersectsRectangle(positionOne.getX(), positionOne.getY(), positionTwo.getX(), positionTwo.getY(), rect.r1.getX(), rect.r1.getY(), rect.r2.getX(), rect.r2.getY(), rect.r3.getX(), rect.r3.getY(), rect.r4.getX(), rect.r4.getY())) {
-			return true;
-		}
+        if (this->holes->at(i).lineIntersectsHole()) {
+            return true;
+        }
     }
-     */
-
 
     return false;
 }
