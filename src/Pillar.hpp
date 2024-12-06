@@ -21,6 +21,7 @@ class Pillar {
     double getX();
     double getY();
     [[nodiscard]] double getRadius() const;
+    void setRadius(double newRadius);
 
     void setPosition(const Pose2D& newPosition);
 

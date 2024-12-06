@@ -45,7 +45,8 @@ Pillar Field::getBotPose() {
     return botPose;
 }
 
-void Field::addPillar(const Pillar& newPillar) {
+void Field::addPillar(Pillar& newPillar) {
+    newPillar.setRadius(roundRadius(newPillar.getRadius()));
     this->pillars->push_back(newPillar);
 }
 

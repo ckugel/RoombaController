@@ -53,12 +53,27 @@ class Field {
 
     static bool outOfBounds(const Pose2D& location);
 
-    void addPillar(const Pillar& newPillar);
+    void addPillar(Pillar& newPillar);
     void updateBotPose(const Pose2D& updatedPosition);
     std::unique_ptr<std::vector<Pillar>> getPillars();
     void setPillars(std::unique_ptr<std::vector<Pillar>> pillars);
     std::vector<Pillar> getCopyPillars();
 
-};
+    static double roundRadius(double radius) {
+        const double possibleRadii[] = {5.1, 7.62, 10.16, 12.7};
+        double closest = possibleRadii[0];
+        double minDiff = std::abs(radius - possibleRadii[0]);
+
+        for (double r : possibleRadii) {
+            double diff = std::abs(radius - r);
+            if (diff < minDiff) {
+                minDiff = diff;
+                closest = r;
+            }
+        }
+        return closest;
+    }
+
+    };
 
 #endif //FIELD_H

@@ -42,6 +42,10 @@ double Pillar::getRadius() const {
     return this->radius;
 }
 
+void Pillar::setRadius(double newRadius) {
+    this->radius = newRadius;
+}
+
 
 Pillar Pillar::parseFromStream(std::istringstream& stream) {
     double x, y, heading, radius;
