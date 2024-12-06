@@ -33,8 +33,6 @@
     #define PORT  65432
 #endif
 
-#define SCREEN_SCALE 3.0f
-
 enum MovementType {
     MOVE_FORWARD,
     MOVE_BACKWARDS,
@@ -63,7 +61,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
   std::string str_name(name_buff);
 
   std::ofstream logFile(str_name);
-  
+
   while (!(stopClient.load())) {
 
     char buff[BUFF_SIZE];
@@ -84,13 +82,13 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
 	    case 'F':
 		    // field.clearField();
 		    break;
-	    case 'o': 
+	    case 'o':
 			{
 			fieldMutex.lock();
 			Pillar toAdd = Pillar::parseFromStream(stream);
 			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl;
-	    	toAdd.getPose().plus(field.getBotPose().getPose());
-	    	field.addPillar(toAdd);
+			toAdd.getPose().plus(field.getBotPose().getPose());
+			field.addPillar(toAdd);
 			fieldMutex.unlock();
 			}
 			break;
@@ -116,8 +114,8 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
 		case 'h':
 		    {
 			fieldMutex.lock();
-			// data is coming in the format " X Y Theta " 
-			Pose2D holeMeasurment = Pose2D::parseFromStream(stream); 
+			// data is coming in the format " X Y Theta "
+			Pose2D holeMeasurment = Pose2D::parseFromStream(stream);
 			field.getManager().addPoint(holeMeasurment);
 			fieldMutex.unlock();
 		    }
@@ -216,21 +214,28 @@ void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 
   drawList->AddCircle(center, radius, color, 0, 0.2f);
 }
 
-void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset) {
-	ImVec2 center = ImVec2(offset.x + pillar.getX() * SCREEN_SCALE, offset.y + pillar.getY() * SCREEN_SCALE);
-	float radius = pillar.getRadius() * SCREEN_SCALE;
-	// std::cout << "haven't drawn yet" << std::endl;
-	DrawCircle(drawList, center, radius, color);
+Pose2D ScreenToCoords(ImVec2 coords, ImVec2 offset, ImVec2 scaling) {
+	double x = (coords.x - offset.x) / scaling.x;
+	double y = MAX_Y - (coords.y - offset.y) / scaling.y;
+	return Pose2D(x, y);
 }
 
-ImVec2 coordsToScreen(ImVec2 offset, double x, double y) {
-    double xN = ((x * SCREEN_SCALE) + offset.x);
-    double yN = ((-y * SCREEN_SCALE) + offset.y);
+ImVec2 coordsToScreen(ImVec2 offset, ImVec2 scaling, double x, double y) {
+    double xN = offset.x + (scaling.x * x);
+    double yN = offset.y + (scaling.y * (MAX_Y - y));
     return ImVec2(xN, yN);
 }
 
-ImVec2 coordsToScreen(ImVec2 offset, const Pose2D& position) {
-    return coordsToScreen(offset, position.getX(), position.getY());
+ImVec2 coordsToScreen(ImVec2 offset, ImVec2 scaling, const Pose2D& position) {
+    return coordsToScreen(offset, scaling, position.getX(), position.getY());
+}
+
+
+void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset, ImVec2 scaling) {
+	ImVec2 center = coordsToScreen(offset, scaling, pillar.getPose());
+	float radius = pillar.getRadius();
+	// std::cout << "haven't drawn yet" << std::endl;
+	DrawCircle(drawList, center, radius, color);
 }
 
 /**
@@ -241,25 +246,25 @@ ImVec2 coordsToScreen(ImVec2 offset, const Pose2D& position) {
  * @param botPose the position of the bot
  * @param offset the offset of the screen for cartesian coordinates
  */
-void drawBotPose(ImDrawList* drawList, const Pose2D& botPose, ImVec2 offset) {
+void drawBotPose(ImDrawList* drawList, const Pose2D& botPose, ImVec2 offset, ImVec2 scaling) {
     ImU32 color = IM_COL32(144, 238, 144, 200);
     
     // calculate the position of the first point
     // should be botPose + (botRadius * 1.5 @ bot heading)
     Pose2D lineOutOfCenter = Pose2D::fromPolar(BOT_RADIUS * 1.5, 0);
     lineOutOfCenter.transformPose(botPose);
-    const ImVec2 p1 = coordsToScreen(offset, lineOutOfCenter);
+    const ImVec2 p1 = coordsToScreen(offset, scaling, lineOutOfCenter);
     Pose2D sideLine = Pose2D::fromPolar(BOT_RADIUS * 0.75, Pose2D::degreesToRadians(120));
     sideLine.transformPose(botPose);
-    const ImVec2 p2 = coordsToScreen(offset, sideLine);
+    const ImVec2 p2 = coordsToScreen(offset, scaling, sideLine);
     Pose2D otherSide = Pose2D::fromPolar(BOT_RADIUS * 0.75, Pose2D::degreesToRadians(240));
     otherSide.transformPose(botPose);
-    const ImVec2 p3 = coordsToScreen(offset, otherSide);
+    const ImVec2 p3 = coordsToScreen(offset, scaling, otherSide);
     
     drawList->AddTriangle(p1, p2, p3, color);
 }
 
-void drawRectangle(ImDrawList* drawList, ImVec2 offset, Pose2D p1, Pose2D p2) {
+void drawRectangle(ImDrawList* drawList, ImVec2 offset, ImVec2 scaling, const Pose2D& p1, const Pose2D& p2) {
     // const Pose2D MinPosition = Pose2D(std::min(p1.getX(), p2.getX()), std::min(p1.getY(), p2.getY()));
     // const Pose2D MaxPosition = Pose2D(std::max(p1.getX(), p2.getX()), std::max(p1.getY(), p2.getY()));
     // fun math time
@@ -271,47 +276,51 @@ void drawRectangle(ImDrawList* drawList, ImVec2 offset, Pose2D p1, Pose2D p2) {
     const Pose2D p3(xCenter - yDiagonal, yCenter + xDiagonal);
     const Pose2D p4(xCenter + yDiagonal, yCenter - xDiagonal);
 
-    const ImVec2 m1 = coordsToScreen(offset, p1);
-    const ImVec2 m2 = coordsToScreen(offset, p2);
-    const ImVec2 m3 = coordsToScreen(offset, p3);
-    const ImVec2 m4 = coordsToScreen(offset, p4);
+    const ImVec2 m1 = coordsToScreen(offset, scaling, p1);
+    const ImVec2 m2 = coordsToScreen(offset, scaling, p2);
+    const ImVec2 m3 = coordsToScreen(offset, scaling, p3);
+    const ImVec2 m4 = coordsToScreen(offset, scaling, p4);
     //     std::    cout << "p2 position: " << p2.getY() << std::endl;
 
     drawList->AddQuadFilled(m1, m3, m2, m4, IM_COL32(255, 165, 0, 170));
 }
 
 void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector<Pose2D>& path, Field& field) {
-  ImGui::Begin("Field");
+	ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
+	ImVec2 windowSize(MAX_X * 2.5, MAX_Y * 2.5);
+	ImGui::SetWindowSize(windowSize);
     ImVec2 windowPos = ImGui::GetWindowPos();
-    ImVec2 windowSize = ImGui::GetWindowSize();
-    ImVec2 offset = ImVec2(windowPos.x, windowPos.y + MAX_Y);
+	windowPos.x += windowSize.x / 100;
+	windowPos.y += windowSize.y / 100;
+    ImVec2 offset =  ImVec2(windowPos.x + windowSize.x / 50, windowPos.y - windowSize.y / 50);
+    ImVec2 scalingFactor = ImVec2(windowSize.x / MAX_X, windowSize.y / MAX_Y);
     
     pillarsMutex->lock();
 
     std::vector<Pillar> pillars = field.getCopyPillars();
 
     for (const Pillar& pillar: pillars) {
-		ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 200), offset);
+		ShowPillarOnWindow(drawList, pillar, IM_COL32(255, 0, 0, 200), offset, scalingFactor);
     }
 
     std::vector<Hole> holes = field.getManager().getHoles();
 //     std::cout << "size: " << holes.size() << std::endl; // output 1
     for (Hole hole: holes) {
 		// std::cout << "X1 Y1 X2 Y2: {" << hole.getOneSquareCorner().getX() << " " << hole.getOneSquareCorner().getY() << " " << hole.getSecondSquareCorner().getX() << " " << hole.getSecondSquareCorner().getY() << std::endl;
-		drawRectangle(drawList, offset, hole.getOneSquareCorner(), hole.getSecondSquareCorner());
+		drawRectangle(drawList, offset, scalingFactor, hole.getOneSquareCorner(), hole.getSecondSquareCorner());
     }
     
-    drawBotPose(drawList, field.getBotPose().getPose(), offset);
+    drawBotPose(drawList, field.getBotPose().getPose(), offset, scalingFactor);
 
     std::vector<Node<Pose2D>*> nodes = graph->getNodes();
 
     for (Node<Pose2D>*& node : nodes) {
 		Pose2D position = node->getData();
 
-		ImVec2 center = ImVec2(offset.x + position.getX() * SCREEN_SCALE, offset.y + position.getY() * SCREEN_SCALE);
-		float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
+		ImVec2 center = coordsToScreen(offset, scalingFactor, position.getX(), position.getY());
+		float radius = BOT_RADIUS;
 		DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
 		// draw a line from every node to the adjacent yes we will double count draws with this
 		//  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
@@ -319,19 +328,24 @@ void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector
     }
     
     for (uint8_t i = 0; i < path.size(); i++) {
-	if (i > 0) {
-	    ImVec2 p1 = coordsToScreen(offset, path[i - 1].getX(), path[i - 1].getY());
-	    ImVec2 p2 = coordsToScreen(offset, path[i].getX(), path[i].getY());
-	    drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2); 
+		if (i > 0) {
+			ImVec2 p1 = coordsToScreen(offset, scalingFactor, path[i - 1].getX(), path[i - 1].getY());
+			ImVec2 p2 = coordsToScreen(offset, scalingFactor, path[i].getX(), path[i].getY());
+			drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2);
+		}
+
+		ImVec2 center = coordsToScreen(offset, scalingFactor, path[i].getX(), path[i].getY());
+		float radius = BOT_RADIUS;
+		DrawCircle(drawList, center, radius, IM_COL32(30, 120, 220, 150));
 	}
 
-	ImVec2 center = coordsToScreen(offset, path[i].getX(), path[i].getY());
-	float radius = BOT_RADIUS / 2.0 * SCREEN_SCALE;
-	DrawCircle(drawList, center, radius, IM_COL32(30, 120, 220, 150));
-    }
-
-
     pillarsMutex->unlock();
+
+	ImVec2 mousePos = ImGui::GetMousePos();
+// 	std::string mousePosStr = std::to_string((int)mousePos.x) + ", " + std::to_string((int)mousePos.y);
+	ImGui::Text("mouse: %d, %d", (int)mousePos.x, (int)mousePos.y);
+	Pose2D transformed = ScreenToCoords(ImVec2((int) mousePos.x, (int) mousePos.y), offset, scalingFactor);
+	ImGui::Text("Pose on field: %d, %d", (int) transformed.getX(), (int) transformed.getY());
 
     ImGui::End();
 }
@@ -608,6 +622,7 @@ int main() {
 
 	ImGui::SliderAngle("Turn angle", &angleSend);
 
+
 	if (ImGui::Button("Send turn")) {
 	  sendAngleToQueue((int16_t) (angleSend * 180 / M_PI));
 	}
@@ -628,6 +643,8 @@ int main() {
 	if (ImGui::Button("Weight")) {
 	    weightGraph(graph, field, pillarsMutex);
 	}
+
+
 
 	// std::cout << "About to end" << std::endl;
 

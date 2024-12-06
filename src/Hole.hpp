@@ -55,6 +55,13 @@ class Hole {
 	Hole(const Pose2D& positionOne, const Pose2D& positionTwo);
 
 	/**
+	 * Gets a list of suggested node placements, for nodes in the graph.
+	 * These node placements are guranteed to not conflict with a hole, or it's measurements.
+	 * @return a list of suggested node placements
+	 */
+	std::vector<Pose2D> getSuggestedNodePlacements();
+
+	/**
 	 *  Register the corners of a hole
 	 * @param positionOne corner One
 	 * @param positionTwo Corner Two
@@ -127,7 +134,7 @@ class Hole {
      * @param posOne position one of the line
      * @param posTwo position two of the line
      */
-     bool lineIntersectsHole(Pose2D& posOne, Pose2D& posTwo);
+     bool lineIntersectsHole(const Pose2D& posOne, const Pose2D& posTwo) const;
 };
 
 #endif // HOLE_H

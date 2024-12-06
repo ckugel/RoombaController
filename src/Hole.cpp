@@ -45,6 +45,34 @@ Pose2D Hole::copyDoOperation(const Pose2D& position) const {
 
     pos.rotateByAngle(phi);
     pos.plus(Pose2D(x_translation_two, y_translation_two));
+    return pos;
+}
+
+std::vector<Pose2D> Hole::getSuggestedNodePlacements() {
+    // the nodes that we will generate will be around the hole, One hole length * 1.5 45 degrees offset to each corner from the center of the hole
+    std::vector<Pose2D> toReturn;
+
+    if (this->foundHole) {
+	Pose2D center(this->cornerOne);
+	center.setHeading(center.angleTo(this->cornerTwo));
+	Pose2D temp(center);
+	double magnitude = HOLE_SIZE * 1.5;
+	for (uint8_t i = 0; i < 8; i++) {
+	    Pose2D toAdd(temp);
+	    toAdd.translateByMagnitude(magnitude);
+	    toReturn.push_back(toAdd);
+	    temp.addAngle(M_PI / 4);
+	}
+    }
+    else {
+	for (uint16_t i = 0; i < this->points->size(); i++) {
+	    Pose2D suggested(this->points->at(i));
+	    suggested.addAngle(M_PI);
+	    suggested.translateByMagnitude(BOT_RADIUS);
+	    toReturn.push_back(suggested);
+	}
+    }
+    return toReturn;
 }
 
 bool Hole::isInSquare(Pose2D& position) const {
@@ -447,17 +475,42 @@ void Hole::offset(const Pose2D& offset) {
     }
 }
 
-bool Hole::lineIntersectsHole(Pose2D& posOne, Pose2D& posTwo) {
-    Pose2D positionOne = copyDoOperation(posOne);
-    Pose2D positionTwo = copyDoOperation(posTwo);
+bool Hole::lineIntersectsHole(const Pose2D& posOne, const Pose2D& posTwo) const {
+    Pose2D positionOne;
+    Pose2D positionTwo;
+    if (posOne.getX() < posTwo.getX()) {
+        positionOne = copyDoOperation(posOne);
+        positionTwo = copyDoOperation(posTwo);
+    }
+    else {
+        positionOne = copyDoOperation(posTwo);
+        positionTwo = copyDoOperation(posTwo);
+    }
 
     // if the line between them, at any point falls between 0 and threshold
     // annoyingly I think this means that we need to do real math (ew)
     if (fabs(positionOne.getX() - positionTwo.getX()) < 0.05) {
         // we have a vertical line
-        
+        // if the vertical line starts below 0 and ends after threshold and X is between 0 and threshold then it intersects
+        return (((positionOne.getX() > 0 && positionOne.getX() < threshold) || (positionTwo.getX() > 0 && positionTwo.getX() < threshold)) && fmax(positionOne.getY(), positionTwo.getY()) > threshold && fmin(positionOne.getY(), positionTwo.getY()) < 0);
+
+    }
+    if (fabs(positionOne.getY() - positionTwo.getY()) < 0.05) {
+        // we have a horizontal line
+        return (((positionOne.getY() > 0 && positionOne.getY() < threshold) || (positionTwo.getY() > 0 && positionTwo.getY() < threshold)) && fmax(positionOne.getX(), positionTwo.getX()) > threshold && fmin(positionOne.getX(), positionTwo.getX()) < 0);
     }
 
+    // now we gotta make a line, which we can guranteed will exist without a slope of 0
+    double m = (positionTwo.getY() - positionOne.getY()) / (positionTwo.getX() - positionOne.getX());
+    double b = positionOne.getY() - (positionOne.getX() * m);
 
+    // now that we know the equation of the line we can determine if it intersects the x axis, y axis, or y = threshold or x = threshold
+    // yayyyy finding 0's of a function
+    double y2Check = m * positionOne.getX() + b;
+    if ((b < threshold && b > 0)  || (y2Check < threshold) && (y2Check > 0)) {
+        return true; // we intersect with the x axis
+    }
+    double xValueAtYIsZero = (-b / m);
+    double xValueATYIsThreshold = (threshold - b) / m;
+    return (xValueAtYIsZero > 0 || xValueAtYIsZero < threshold) || (xValueATYIsThreshold > 0 || xValueATYIsThreshold < threshold);
 }
-
