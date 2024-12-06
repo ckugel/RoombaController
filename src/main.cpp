@@ -373,50 +373,8 @@ void sendDistanceToQueue(uint16_t angle) {
 	sendQueue.emplace(buff);
 }
 
-bool lineIntersectsCircle(Pillar p1, const Pose2D& one, const Pose2D& two) {
-    return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY());
-}
-
-void weightGraph(Graph<Pose2D>* graph, Field& field, std::mutex& fieldMutex) {
-    fieldMutex.lock();
-    std::vector<Pillar> pillars = field.getCopyPillars();
-    std::vector<Node<Pose2D>*> nodes = graph->getNodes();
-    for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
-	for (uint16_t nodeIndexTwo = 0; nodeIndexTwo < nodes.size(); nodeIndexTwo++) {
-	    if (nodeIndex != nodeIndexTwo) {
-		Pose2D positionOne = nodes[nodeIndex]->getData();
-		Pose2D positionTwo = nodes[nodeIndexTwo]->getData();
-		double length = positionOne.distanceTo(positionTwo);
-		double dy = (positionTwo.getY() - positionOne.getY());
-		double dx = (positionTwo.getX() - positionTwo.getY());
-		bool gotThrough = true;
-
-		for (uint8_t pillarIndex = 0; pillarIndex < pillars.size(); pillarIndex++) {
-		    if (lineIntersectsCircle(pillars[pillarIndex], positionOne, positionTwo)) {			
-			// uh oh we hit the circle
-			gotThrough = false;
-		    }
-		}
-
-		if (field.getManager().lineIntersectsAnyHoleMeasurement(positionOne, positionTwo)) {
-		    gotThrough = false;
-		}
-		
-
-		if (gotThrough) {
-		    // add a weight between nodes[nodeIndex] and nodes[nodeIndexTwo]
-		    graph->addConnection(nodes[nodeIndex], nodes[nodeIndexTwo], length);
-		    // print out attempt to add
-		}
-	    }
-	}
-    }
-    fieldMutex.unlock();
-}
-
 void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
-    // gurantee that we can look back.
-
+    // start at 1 so that we can gurantee that we can look back.
     for (uint8_t move = 1; move < ((path.size() - 1)*2); move += 2) {
 		// for every point we want to point and move
 		Pose2D pointOld = path[move / 2];
@@ -432,7 +390,6 @@ void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
 
 std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
     std::stringstream toSend;
-
     std::vector<Move> routine;
     // std::cout << "routine length: " << routine.size() << std::endl;
     pathToRoutine(path, routine);
@@ -449,13 +406,12 @@ std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
 
     toSend << "R";
 
-    
     return toSend.str();
 }
 
 int main() {
   if (!glfwInit()) return -1;
-    GLFWwindow* window = glfwCreateWindow(1880, 900, "Roomba Dashboard", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(1880, 900, "Roomba Dashboard", nullptr, nullptr);
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
 
@@ -472,12 +428,8 @@ int main() {
     std::vector<Pose2D> path;
 
     Field field;
-
     // Pose2D toAdd(0, 0, 0);
-
     // graph.addNode(new Node<Pose2D>(toAdd));
-
-
     // connectTCP(pillars, pillarsMutex, desired);
     std::thread tcpConnect(connectTCP, std::ref(field), std::ref(pillarsMutex), std::ref(desired));
     
@@ -489,83 +441,81 @@ int main() {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-	// bool open;
-	// ImGui::ShowDemoWindow(&open);
-	
-
-	ShowFieldWindow(&pillarsMutex, graph, path, field);
-	// std::cout << "About to begin" << std::endl;
+        // bool open;
+        // ImGui::ShowDemoWindow(&open);
+        ShowFieldWindow(&pillarsMutex, graph, path, field);
+        // std::cout << "About to begin" << std::endl;
 	
         // Your ImGui code here
         ImGui::Begin("Control Panel");
-
-// 	std::cout << "began" << std::endl;
-
+        // 	std::cout << "began" << std::endl;
         //ImGui::Text("This is some text");
-	if (ImGui::Button("Forward")) {
-	  addToQueue("w");
-	}
+        {
+            if (ImGui::Button("Forward")) {
+                addToQueue("w");
+            }
 
-	if (ImGui::Button("Backward")) {
-	  addToQueue("s"); 
-	}
+            if (ImGui::Button("Backward")) {
+                addToQueue("s");
+            }
 
-	if (ImGui::Button("Counter Clockwise")) {
-	  addToQueue("a");
-	}
+            if (ImGui::Button("Counter Clockwise")) {
+                addToQueue("a");
+            }
 
-	if (ImGui::Button("Clockwise")) {
-	  addToQueue("d");
-	}
+            if (ImGui::Button("Clockwise")) {
+                addToQueue("d");
+            }
 
-	if (ImGui::Button("Stop")) {
-	    addToQueue(" ");
-	}
+            if (ImGui::Button("Stop")) {
+                addToQueue(" ");
+            }
 
-	if (ImGui::Button("Scan")) {
-	  addToQueue("g");
-	}
+            if (ImGui::Button("Scan")) {
+                addToQueue("g");
+            }
 
-	if (ImGui::Button("Auton")) {
-	  addToQueue("h");
-	}
+            if (ImGui::Button("Auton")) {
+                addToQueue("h");
+            }
 
-	if(ImGui::Button("Quit all")) {
-	    addToQueue("q");
-	}
+            if (ImGui::Button("Quit all")) {
+                addToQueue("q");
+            }
+        }
 
-	if (ImGui::Button("Generate path")) {
-	    pillarsMutex.lock();
-	    /*
-			std::cout << "desire: " << desired << std::endl;
-			for (int i = 0; i < graph->getNodes().size(); i++) {
-			std::cout << "node: " << i << ".  " << graph->getNodes()[i]->getData().getX() << std::endl;
-	    }
-	    */
-		std::cout << "Attempting to make a path between: " << graph->getNodes().front()->getData().getX() << ", " << graph->getNodes().front()->getData().getY() << std::endl;
-		std::cout << "To: " <<graph->getNodes().back()->getData().getX() << ", " << graph->getNodes().back()->getData().getY() << std::endl;
-		// Attempting to make a path between: 0, 0
-		// To: -100, -100
-	    std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().front(), graph->getNodes().back());
-		//  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
-	    // path.push_back(botPose.getPose());
-	    for (uint8_t i = 0; i < pathNodes.size(); i++) {
-			path.push_back(pathNodes[i]->getData());
-			//	std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
-	    }
-	   //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
-	   /*
-	    std::vector<std::vector<unsigned int>> adjacencyMatrix = graph->getAdjacencyList();
+        if (ImGui::Button("Generate path")) {
+            pillarsMutex.lock();
+            /*
+                std::cout << "desire: " << desired << std::endl;
+                for (int i = 0; i < graph->getNodes().size(); i++) {
+                std::cout << "node: " << i << ".  " << graph->getNodes()[i]->getData().getX() << std::endl;
+            }
+            */
+            std::cout << "Attempting to make a path between: " << graph->getNodes().front()->getData().getX() << ", " << graph->getNodes().front()->getData().getY() << std::endl;
+            std::cout << "To: " <<graph->getNodes().back()->getData().getX() << ", " << graph->getNodes().back()->getData().getY() << std::endl;
+            // Attempting to make a path between: 0, 0
+            // To: -100, -100
+            std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().front(), graph->getNodes().back());
+            //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
+            // path.push_back(botPose.getPose());
+            for (uint8_t i = 0; i < pathNodes.size(); i++) {
+                path.push_back(pathNodes[i]->getData());
+                //	std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
+            }
+           //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl;
+           /*
+            std::vector<std::vector<unsigned int>> adjacencyMatrix = graph->getAdjacencyList();
 
-	    for (int i = 0; i < adjacencyMatrix.size(); i++) {
-		for (int j = 0; j < adjacencyMatrix[i].size(); j++) {
-		    std::cout << ", " << adjacencyMatrix[i][j]; 
-		}
-		std::cout << std::endl;
-	    }
-	    */
-	  //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl; 
-	    
+            for (int i = 0; i < adjacencyMatrix.size(); i++) {
+            for (int j = 0; j < adjacencyMatrix[i].size(); j++) {
+                std::cout << ", " << adjacencyMatrix[i][j];
+            }
+            std::cout << std::endl;
+            }
+            */
+          //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl;
+
 	    pillarsMutex.unlock();
 	}
 
@@ -591,20 +541,15 @@ int main() {
 	    delete graph;
 	    graph = new Graph<Pose2D>();
 	    // std::cout << "HUH: " << pillars[0].getX() << std::endl;
-	   discretizeGraph(std::ref(field), pillarsMutex, desired, graph);
+	   field.discretizeGraph();
 	}
 
 	if (ImGui::Button("Weight")) {
-	    weightGraph(graph, field, pillarsMutex);
+	    field.weightGraph();
 	}
-
-
-
 	// std::cout << "About to end" << std::endl;
 
         ImGui::End();
-
-
         // Render
         ImGui::Render();
         int display_w, display_h;

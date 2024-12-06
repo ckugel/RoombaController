@@ -54,13 +54,20 @@ class Field {
 
     void applyOffsetToEdge(double x, double y);
 
+    int32_t getDesiredIndex() const;
+
     void clearField();
 
     Pillar getBotPose();
 
     static bool outOfBounds(const Pose2D& location);
-    static bool lineIntersectsCircle(Pillar p1, const Pose2D& one, const Pose2D& two) {
-    return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY()); }
+
+    /**
+     * Util function that returns whether a given line intersects a circle
+     */
+    static bool lineIntersectsCircle(double cx, double cy, double r, double x1, double y1, double x2, double y2);
+
+    static bool lineIntersectsCircle(Pillar p1, const Pose2D& one, const Pose2D& two) {return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY()); }
 
     void discretizeGraph();
     void weightGraph();
