@@ -85,6 +85,9 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
 	    case 'o':
 			{
 			fieldMutex.lock();
+	    	if (field.getDesiredIndex() != -1) {
+
+	    	}
 			Pillar toAdd = Pillar::parseFromStream(stream);
 			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl;
 			toAdd.getPose().plus(field.getBotPose().getPose());
@@ -230,7 +233,6 @@ ImVec2 coordsToScreen(ImVec2 offset, ImVec2 scaling, const Pose2D& position) {
     return coordsToScreen(offset, scaling, position.getX(), position.getY());
 }
 
-
 void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset, ImVec2 scaling) {
 	ImVec2 center = coordsToScreen(offset, scaling, pillar.getPose());
 	float radius = pillar.getRadius() * 2.5;
@@ -370,55 +372,6 @@ void sendDistanceToQueue(uint16_t angle) {
 	sprintf(buff, "r%03d", angle);
 	sendQueue.emplace(buff);
 }
-
-bool validLocationForNode(Field& field, const Pose2D& location) {
-    if (Field::outOfBounds(location)) {
-        return false;
-    }
-    std::vector<Pillar> pillars = field.getCopyPillars();
-	for (uint8_t i = 0; i < pillars.size(); i++) {
-		if (pillars[i].getPose().distanceTo(location) < pillars[i].getRadius() + BOT_RADIUS) {
-			return false;
-		}
-    }
-    if (field.getManager().nodeCollides(location)) {
-		return false;
-    }
-
-    return true;
-}
-
-
-void discretizeGraph(Field& field, std::mutex& fieldMutex, const Pose2D& desired, Graph<Pose2D>* graph) {
-    fieldMutex.lock();
-    graph->addNode(new Node<Pose2D>(field.getBotPose().getPose()));
-    std::vector<Pillar> pillars = field.getCopyPillars();
-    // std::vector<Node<Pillar>*> nodes;
-    for (Pillar & pillar : pillars) {
-	double magnitude = pillar.getRadius() + BOT_RADIUS;
-	for (double i = 1.0; i < 5.0; i += 0.75) { 
-	    for (double angle = 0; angle < 361; angle += 25) {
-		const double radian = angle * M_PI / 180.0;
-		Pose2D attemptAdd = Pose2D::fromPolar(magnitude * i, radian);
-
-		attemptAdd.plus(pillar.getPose());
-
-		if (validLocationForNode(field, attemptAdd)) {
-		    // add to list
-		    Node<Pose2D>* toAdd = new Node<Pose2D>(attemptAdd);
-		    
-		    graph->addNode(toAdd);
-		    // nodes = graph.getNodes();
-		}
-	    }
-	}	
-    }
-    
-    graph->addNode(new Node<Pose2D>(desired));
-
-    fieldMutex.unlock();
-}
-
 
 bool lineIntersectsCircle(Pillar p1, const Pose2D& one, const Pose2D& two) {
     return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY());

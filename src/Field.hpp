@@ -13,9 +13,11 @@
 #define FIELD_LENGTH 0
 #define FIELD_WIDTH  0
 
+#include "Graph.hpp"
 #include "HoleManager.hpp"
 #include "Pose2D.hpp"
 #include "Pillar.hpp"
+#include "util.hpp"
 
 #define MAX_X 426.72
 #define MAX_Y 242.57
@@ -35,11 +37,16 @@ class Field {
     Pose2D desiredDestination;
     Pillar botPose;
     Pose2D runningError;
+    Graph<Pose2D> graph;
+    int32_t desiredIndex = -1;
     
   public:
     Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination, const Pillar& botPose);
     Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination);
     Field();
+
+    Field(const std::unique_ptr<std::vector<Pillar>> &pillars, const Pose2D &desired_destination,
+        const Pillar &bot_pose, const Graph<Pose2D> &graph);
 
     void addEdgeMeasurement(double rawPosition, Cardinality cardinality);
 
@@ -52,12 +59,22 @@ class Field {
     Pillar getBotPose();
 
     static bool outOfBounds(const Pose2D& location);
+    static bool lineIntersectsCircle(Pillar p1, const Pose2D& one, const Pose2D& two) {
+    return lineIntersectsCircle(p1.getX(), p1.getY(), p1.getRadius() + BOT_RADIUS, one.getX(), one.getY(), two.getX(), two.getY()); }
+
+    void discretizeGraph();
+    void weightGraph();
+    std::vector<Pose2D> makePath();
 
     void addPillar(Pillar& newPillar);
     void updateBotPose(const Pose2D& updatedPosition);
     std::unique_ptr<std::vector<Pillar>> getPillars();
     void setPillars(std::unique_ptr<std::vector<Pillar>> pillars);
     std::vector<Pillar> getCopyPillars();
+
+    bool validLocationForNode(const Pose2D& location);
+
+    void setDesiredIndex(int32_t index);
 
     static double roundRadius(double radius) {
         const double possibleRadii[] = {5.1, 7.62, 10.16, 12.7};
