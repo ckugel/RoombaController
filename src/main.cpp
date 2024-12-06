@@ -217,7 +217,7 @@ void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 
 Pose2D ScreenToCoords(ImVec2 coords, ImVec2 offset, ImVec2 scaling) {
 	double x = (coords.x - offset.x) / scaling.x;
 	double y = MAX_Y - (coords.y - offset.y) / scaling.y;
-	return Pose2D(x, y);
+	return {x, y};
 }
 
 ImVec2 coordsToScreen(ImVec2 offset, ImVec2 scaling, double x, double y) {
@@ -233,7 +233,7 @@ ImVec2 coordsToScreen(ImVec2 offset, ImVec2 scaling, const Pose2D& position) {
 
 void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset, ImVec2 scaling) {
 	ImVec2 center = coordsToScreen(offset, scaling, pillar.getPose());
-	float radius = pillar.getRadius();
+	float radius = pillar.getRadius() * 2.5;
 	// std::cout << "haven't drawn yet" << std::endl;
 	DrawCircle(drawList, center, radius, color);
 }
@@ -251,13 +251,14 @@ void drawBotPose(ImDrawList* drawList, const Pose2D& botPose, ImVec2 offset, ImV
     
     // calculate the position of the first point
     // should be botPose + (botRadius * 1.5 @ bot heading)
-    Pose2D lineOutOfCenter = Pose2D::fromPolar(BOT_RADIUS * 1.5, 0);
+	double scaleAmount = 2;
+    Pose2D lineOutOfCenter = Pose2D::fromPolar(BOT_RADIUS * 1.5 * scaleAmount, 0);
     lineOutOfCenter.transformPose(botPose);
     const ImVec2 p1 = coordsToScreen(offset, scaling, lineOutOfCenter);
-    Pose2D sideLine = Pose2D::fromPolar(BOT_RADIUS * 0.75, Pose2D::degreesToRadians(120));
+    Pose2D sideLine = Pose2D::fromPolar(scaleAmount * BOT_RADIUS * 0.75, Pose2D::degreesToRadians(120));
     sideLine.transformPose(botPose);
     const ImVec2 p2 = coordsToScreen(offset, scaling, sideLine);
-    Pose2D otherSide = Pose2D::fromPolar(BOT_RADIUS * 0.75, Pose2D::degreesToRadians(240));
+    Pose2D otherSide = Pose2D::fromPolar(BOT_RADIUS * scaleAmount * 0.75, Pose2D::degreesToRadians(240));
     otherSide.transformPose(botPose);
     const ImVec2 p3 = coordsToScreen(offset, scaling, otherSide);
     
@@ -320,7 +321,7 @@ void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector
 		Pose2D position = node->getData();
 
 		ImVec2 center = coordsToScreen(offset, scalingFactor, position.getX(), position.getY());
-		float radius = BOT_RADIUS;
+		float radius = BOT_RADIUS * 2.5;
 		DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
 		// draw a line from every node to the adjacent yes we will double count draws with this
 		//  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
@@ -335,7 +336,7 @@ void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector
 		}
 
 		ImVec2 center = coordsToScreen(offset, scalingFactor, path[i].getX(), path[i].getY());
-		float radius = BOT_RADIUS;
+		float radius = BOT_RADIUS * 2.5;
 		DrawCircle(drawList, center, radius, IM_COL32(30, 120, 220, 150));
 	}
 

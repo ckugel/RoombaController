@@ -34,6 +34,7 @@ class Field {
     Pose2D offset;
     Pose2D desiredDestination;
     Pillar botPose;
+    Pose2D runningError;
     
   public:
     Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination, const Pillar& botPose);
