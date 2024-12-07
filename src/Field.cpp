@@ -90,7 +90,12 @@ void Field::weightGraph() {
 }
 
 std::vector<Pose2D> Field::makePath() {
-
+    std::vector<Node<Pose2D>*> path = graph.Dijkstra(graph.getNodes()[0], graph.getNodes()[desiredIndex]);
+    std::vector<Pose2D> toReturn;
+    for (uint16_t i = 0; i < path.size(); i++) {
+        toReturn.push_back(path[i]->getData());
+    }
+    return toReturn;
 }
 
 
@@ -215,6 +220,6 @@ int32_t Field::getDesiredIndex() const {
     return desiredIndex;
 }
 
-
-
-
+Graph<Pose2D> &Field::getGraph() {
+    return graph;
+}

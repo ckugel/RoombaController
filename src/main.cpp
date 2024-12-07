@@ -4,9 +4,7 @@
 #include <GLFW/glfw3.h>
 #include "Pose2D.hpp"
 #include "Node.hpp"
-#include "Graph.hpp"
 #include "Pillar.hpp"
-#include "HoleManager.hpp"
 #include "Hole.hpp"
 #include "Field.hpp"
 #include <vector>
@@ -17,7 +15,6 @@
 #include <arpa/inet.h>
 #include <fstream>
 #include <iostream>
-#include <iomanip>
 #include <thread>
 #include <queue>
 #include <condition_variable>
@@ -288,7 +285,7 @@ void drawRectangle(ImDrawList* drawList, ImVec2 offset, ImVec2 scaling, const Po
     drawList->AddQuadFilled(m1, m3, m2, m4, IM_COL32(255, 165, 0, 170));
 }
 
-void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector<Pose2D>& path, Field& field) {
+void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field& field) {
 	ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -317,7 +314,7 @@ void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector
     
     drawBotPose(drawList, field.getBotPose().getPose(), offset, scalingFactor);
 
-    std::vector<Node<Pose2D>*> nodes = graph->getNodes();
+    std::vector<Node<Pose2D>*> nodes = field.getGraph().getNodes();
 
     for (Node<Pose2D>*& node : nodes) {
 		Pose2D position = node->getData();
@@ -355,7 +352,9 @@ void ShowFieldWindow(std::mutex* pillarsMutex, Graph<Pose2D>* graph, std::vector
 
 void addToQueue(const std::string& message) {
     // std::cout << message << std::endl;
+    queueMutex.lock();
   sendQueue.push(message);
+  queueMutex.unlock();
 }
 
 void sendAngleToQueue(int16_t angle) {
@@ -414,9 +413,7 @@ int main() {
     GLFWwindow* window = glfwCreateWindow(1880, 900, "Roomba Dashboard", nullptr, nullptr);
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
-
     setupImGui(window);
-
     Pose2D desired(0, 0);
     
     // used to hold GUI slider values
@@ -424,7 +421,6 @@ int main() {
     int driveForward = 0;
 
     std::mutex pillarsMutex;
-    Graph<Pose2D>* graph = new Graph<Pose2D>();
     std::vector<Pose2D> path;
 
     Field field;
@@ -443,7 +439,7 @@ int main() {
         ImGui::NewFrame();
         // bool open;
         // ImGui::ShowDemoWindow(&open);
-        ShowFieldWindow(&pillarsMutex, graph, path, field);
+        ShowFieldWindow(&pillarsMutex, path, field);
         // std::cout << "About to begin" << std::endl;
 	
         // Your ImGui code here
@@ -491,32 +487,15 @@ int main() {
                 for (int i = 0; i < graph->getNodes().size(); i++) {
                 std::cout << "node: " << i << ".  " << graph->getNodes()[i]->getData().getX() << std::endl;
             }
-            */
+
             std::cout << "Attempting to make a path between: " << graph->getNodes().front()->getData().getX() << ", " << graph->getNodes().front()->getData().getY() << std::endl;
             std::cout << "To: " <<graph->getNodes().back()->getData().getX() << ", " << graph->getNodes().back()->getData().getY() << std::endl;
             // Attempting to make a path between: 0, 0
             // To: -100, -100
-            std::vector<Node<Pose2D>*> pathNodes = graph->Dijkstra(graph->getNodes().front(), graph->getNodes().back());
+            */
+            path =  field.makePath();
             //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
             // path.push_back(botPose.getPose());
-            for (uint8_t i = 0; i < pathNodes.size(); i++) {
-                path.push_back(pathNodes[i]->getData());
-                //	std::cout << path[i].getX() << ", " << path[i].getY() << std::endl;
-            }
-           //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl;
-           /*
-            std::vector<std::vector<unsigned int>> adjacencyMatrix = graph->getAdjacencyList();
-
-            for (int i = 0; i < adjacencyMatrix.size(); i++) {
-            for (int j = 0; j < adjacencyMatrix[i].size(); j++) {
-                std::cout << ", " << adjacencyMatrix[i][j];
-            }
-            std::cout << std::endl;
-            }
-            */
-          //  std::cout << path[path.size() - 1].getX() << ", " << path[path.size() - 1].getY() << std::endl;
-
-	    pillarsMutex.unlock();
 	}
 
 	if (ImGui::Button("send planned path")) {
@@ -538,8 +517,6 @@ int main() {
 	}
 
 	if (ImGui::Button("Discretize")) {
-	    delete graph;
-	    graph = new Graph<Pose2D>();
 	    // std::cout << "HUH: " << pillars[0].getX() << std::endl;
 	   field.discretizeGraph();
 	}

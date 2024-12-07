@@ -54,9 +54,11 @@ class Field {
 
     void applyOffsetToEdge(double x, double y);
 
-    int32_t getDesiredIndex() const;
+    [[nodiscard]] int32_t getDesiredIndex() const;
 
     void clearField();
+
+    Graph<Pose2D>& getGraph();
 
     Pillar getBotPose();
 
