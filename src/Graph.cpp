@@ -384,3 +384,14 @@ std::vector<Node<V>*> Graph<V>::FrugalKugel(Node<V>* find, unsigned int steps) {
 }
 
 */
+
+
+template<typename V>
+void Graph<V>::removeNode(size_t index) {
+    if (index >= nodes.size()) {
+        return;
+    }
+    delete nodes.at(index);
+    nodes.erase(nodes.begin() + index);
+    resize();
+}

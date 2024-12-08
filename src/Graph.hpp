@@ -51,6 +51,8 @@ class Graph {
 	void addNode(Node<V> *nextNode, Node<V> *nodeITSLATE, double weight);
 	void setHead(int index);
 
+    void removeNode(size_t index);
+
         std::vector<Node<V>*> Dijkstra(Node<V>* from, Node<V>* find);
 
 	std::vector<std::vector<double>> getAdjacencyList();

@@ -49,7 +49,66 @@ struct Move {
 
 std::atomic<bool> stopClient(false);
 
-void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& field) {
+
+void addToQueue(const std::string& message) {
+    // std::cout << message << std::endl;
+    queueMutex.lock();
+    sendQueue.push(message);
+    queueMutex.unlock();
+}
+
+void sendAngleToQueue(int16_t angle) {
+    char buff[8];
+    sprintf(buff, "t%03d", angle);
+
+
+    // std::cout << std::string(buff) << std::endl;
+    sendQueue.emplace(buff);
+}
+
+void sendDistanceToQueue(uint16_t angle) {
+    char buff[8];
+    sprintf(buff, "r%03d", angle);
+    sendQueue.emplace(buff);
+}
+
+void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
+    // start at 1 so that we can gurantee that we can look back.
+    for (uint8_t move = 1; move < ((path.size() - 1)*2); move += 2) {
+        // for every point we want to point and move
+        Pose2D pointOld = path[move / 2];
+        Pose2D pointNew = path[(move / 2) + 1];
+        // angle to turn to
+        double angle = pointNew.angleTo(pointOld) + pointNew.getHeading();
+        // magnitude
+        double magnitude = pointNew.distanceTo(pointOld);
+        routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
+        routine.push_back((Move) {.quantity = magnitude, .type = MOVE_FORWARD_SMART});
+    }
+}
+
+std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
+    std::stringstream toSend;
+    std::vector<Move> routine;
+    // std::cout << "routine length: " << routine.size() << std::endl;
+    pathToRoutine(path, routine);
+
+    toSend << "R";
+
+    for (uint8_t i = 0; i < routine.size(); i++) {
+        static char buffer[50];
+        // sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
+        // // routine[i] is all 0
+        sprintf(buffer, "p %0.3f %d p", routine[i].quantity, routine[i].type);
+        toSend << std::string(buffer);
+    }
+
+    toSend << "R";
+
+    return toSend.str();
+}
+
+void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
 	const uint16_t BUFF_SIZE = 1024;
 
 	static char name_buff[50];
@@ -69,7 +128,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
     std::string response(buff, bytesRead);
 
     if (bytesRead > 0) {
-	logFile << response;
+        logFile << response;
     }
 
     std::istringstream stream(response);
@@ -77,14 +136,40 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
     while (stream >> tag) {
 	switch(tag) {
 	    case 'F':
-		    // field.clearField();
+            // send the routine
+            {
+                // generate path and return it
+                fieldMutex.lock();
+
+                field.discretizeGraph();
+                field.weightGraph();
+                std::vector<Pose2D> path = field.makePath();
+                Pose2D oldCenter = field.getDesiredDestination();
+                if (path.empty()) {
+                    // try a new desired position until its not empty
+                    for (uint8_t i = 0; i < 25; i += 5) {
+                        for (double j = 0; j < 2 * M_PI; j += M_PI * 1/4) {
+                            Pose2D newDesired = Pose2D::fromPolar(i, j);
+                            newDesired.plus(oldCenter);
+                            if (!Field::outOfBounds(newDesired)) {
+                                field.updateDesired(newDesired);
+                                field.discretizeGraph();
+                                field.weightGraph();
+                                path = field.makePath();
+                                if (!path.empty()) {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                fieldMutex.unlock();
+            }
 		    break;
 	    case 'o':
 			{
 			fieldMutex.lock();
-	    	if (field.getDesiredIndex() != -1) {
-
-	    	}
 			Pillar toAdd = Pillar::parseFromStream(stream);
 			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl;
 			toAdd.getPose().plus(field.getBotPose().getPose());
@@ -95,9 +180,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
 	    case 'd':
 			{
 				Pose2D other = Pose2D::parseFromStream(stream);
-				desired.setX(other.getX());
-				desired.setY(other.getY());
-				desired.setHeading(other.getHeading());
+                field.updateDesired(other);
 			}
 			break;
 		case 'E':
@@ -108,7 +191,6 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
 			    field.addEdgeMeasurement(m, (Cardinality) cardinality);
 			}
 			// first term is the raw X or Y value next value is the direction
-
 		    }
 		    break;
 		case 'h':
@@ -154,7 +236,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Pose2D& desired, Field& fiel
 }
 
 // connect to Roomba server
-void connectTCP(Field& field, std::mutex& fieldMutex, Pose2D& desired) {
+void connectTCP(Field& field, std::mutex& fieldMutex) {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
   sockaddr_in serverAddress{
 	.sin_family = AF_INET,
@@ -180,7 +262,7 @@ void connectTCP(Field& field, std::mutex& fieldMutex, Pose2D& desired) {
     }
 
   // spawn read and log thread here
-  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(fieldMutex), std::ref(desired), std::ref(field));
+  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(fieldMutex), std::ref(field));
 
   while(!stopClient.load()) {
 	if (!sendQueue.empty()) {
@@ -350,63 +432,7 @@ void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field&
     ImGui::End();
 }
 
-void addToQueue(const std::string& message) {
-    // std::cout << message << std::endl;
-    queueMutex.lock();
-  sendQueue.push(message);
-  queueMutex.unlock();
-}
 
-void sendAngleToQueue(int16_t angle) {
-  char buff[8];
-    sprintf(buff, "t%03d", angle);
-
-  
- // std::cout << std::string(buff) << std::endl;
-  sendQueue.emplace(buff);
-}
-
-void sendDistanceToQueue(uint16_t angle) {
-	char buff[8];
-	sprintf(buff, "r%03d", angle);
-	sendQueue.emplace(buff);
-}
-
-void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
-    // start at 1 so that we can gurantee that we can look back.
-    for (uint8_t move = 1; move < ((path.size() - 1)*2); move += 2) {
-		// for every point we want to point and move
-		Pose2D pointOld = path[move / 2];
-		Pose2D pointNew = path[(move / 2) + 1];
-		// angle to turn to
-		double angle = pointNew.angleTo(pointOld) + pointNew.getHeading();
-		// magnitude
-		double magnitude = pointNew.distanceTo(pointOld);
-		routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
-		routine.push_back((Move) {.quantity = magnitude, .type = MOVE_FORWARD_SMART});
-	}
-}
-
-std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
-    std::stringstream toSend;
-    std::vector<Move> routine;
-    // std::cout << "routine length: " << routine.size() << std::endl;
-    pathToRoutine(path, routine);
-
-    toSend << "R";
-
-    for (uint8_t i = 0; i < routine.size(); i++) {
-		static char buffer[50];
-		// sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
-		// // routine[i] is all 0
-		sprintf(buffer, "p %0.3f %d p", routine[i].quantity, routine[i].type);
-		toSend << std::string(buffer);
-    }
-
-    toSend << "R";
-
-    return toSend.str();
-}
 
 int main() {
   if (!glfwInit()) return -1;
@@ -427,7 +453,7 @@ int main() {
     // Pose2D toAdd(0, 0, 0);
     // graph.addNode(new Node<Pose2D>(toAdd));
     // connectTCP(pillars, pillarsMutex, desired);
-    std::thread tcpConnect(connectTCP, std::ref(field), std::ref(pillarsMutex), std::ref(desired));
+    std::thread tcpConnect(connectTCP, std::ref(field), std::ref(pillarsMutex));
     
     // Main loop
     while (!glfwWindowShouldClose(window)) {

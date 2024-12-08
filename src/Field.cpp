@@ -30,7 +30,9 @@ Field::Field(const std::unique_ptr<std::vector<Pillar>> &pillars, const Pose2D &
 }
 
 void Field::discretizeGraph() {
-    graph.addNode(new Node<Pose2D>(botPose.getPose()));
+    if (graph.getNodes().empty()) {
+        graph.addNode(new Node<Pose2D>(botPose.getPose()));
+    }
     // std::vector<Node<Pillar>*> nodes;
     for (Pillar & pillar : *pillars) {
         double magnitude = pillar.getRadius() + BOT_RADIUS;
@@ -148,6 +150,9 @@ void Field::addPillar(Pillar& newPillar) {
 
 void Field::updateBotPose(const Pose2D& updatedPosition) {
     this->botPose.setPosition(updatedPosition);
+    if (!graph.getNodes().empty()) {
+        graph.getNodes()[0]->SetData(updatedPosition);
+    }
 }
 
 std::vector<Pillar> Field::getCopyPillars() {
@@ -222,4 +227,17 @@ int32_t Field::getDesiredIndex() const {
 
 Graph<Pose2D> &Field::getGraph() {
     return graph;
+}
+
+void Field::updateDesired(const Pose2D& other) {
+    if (desiredIndex != -1) {
+        graph.removeNode(desiredIndex);
+    }
+    graph.addNode(new Node<Pose2D>(other));
+    desiredIndex = graph.getNodes().size() - 1;
+    this->desiredDestination = other;
+}
+
+Pose2D Field::getDesiredDestination() {
+    return this->desiredDestination;
 }

@@ -83,6 +83,10 @@ class Field {
 
     bool validLocationForNode(const Pose2D& location);
 
+    Pose2D getDesiredDestination();
+
+    void updateDesired(const Pose2D& other);
+
     void setDesiredIndex(int32_t index);
 
     static double roundRadius(double radius) {

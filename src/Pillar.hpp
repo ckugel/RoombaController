@@ -17,7 +17,7 @@ class Pillar {
     Pillar(double x, double y, double heading, double radius);
     Pillar(double x, double y, double radius);
     //~Pillar();
-    Pose2D getPose();
+    Pose2D& getPose();
     double getX();
     double getY();
     [[nodiscard]] double getRadius() const;
