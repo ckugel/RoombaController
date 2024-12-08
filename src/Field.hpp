@@ -39,6 +39,7 @@ class Field {
     Pose2D runningError;
     Graph<Pose2D> graph;
     int32_t desiredIndex = -1;
+    std::vector<Pillar> newPillars;
     
   public:
     Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination, const Pillar& botPose);

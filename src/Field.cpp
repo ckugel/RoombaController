@@ -33,8 +33,9 @@ void Field::discretizeGraph() {
     if (graph.getNodes().empty()) {
         graph.addNode(new Node<Pose2D>(botPose.getPose()));
     }
+
     // std::vector<Node<Pillar>*> nodes;
-    for (Pillar & pillar : *pillars) {
+    for (Pillar & pillar : newPillars) {
         double magnitude = pillar.getRadius() + BOT_RADIUS;
         for (double i = 1.0; i < 5.0; i += 0.75) {
             for (uint16_t angle = 0; angle < 361; angle += 25) {
@@ -146,6 +147,7 @@ Pillar Field::getBotPose() {
 void Field::addPillar(Pillar& newPillar) {
     newPillar.setRadius(roundRadius(newPillar.getRadius()));
     this->pillars->push_back(newPillar);
+    this->newPillars.push_back(newPillar);
 }
 
 void Field::updateBotPose(const Pose2D& updatedPosition) {
