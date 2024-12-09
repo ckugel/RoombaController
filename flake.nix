@@ -23,6 +23,7 @@
           pkgs.doxygen_gui
           pkgs.libclang
           pkgs.gtest
+          pkgs.nodejs_22
         ];
 
         shellHook = ''

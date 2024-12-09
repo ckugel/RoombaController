@@ -55,6 +55,13 @@ class Hole {
 	Hole(const Pose2D& positionOne, const Pose2D& positionTwo);
 
 	/**
+	 * Gets a list of suggested node placements, for nodes in the graph.
+	 * These node placements are guranteed to not conflict with a hole, or it's measurements.
+	 * @return a list of suggested node placements
+	 */
+	std::vector<Pose2D> getSuggestedNodePlacements();
+
+	/**
 	 *  Register the corners of a hole
 	 * @param positionOne corner One
 	 * @param positionTwo Corner Two
@@ -65,10 +72,10 @@ class Hole {
 
     /**
      * do the whole operation and copy it into a new object for object collision
-     * @param pose the Pose2D to apply the big formula
+     * @param position the Pose2D to apply the big formula
      * @return the result of the operations
      */
-	// [[nodiscard]] Pose2D doOperationCopy(const Pose2D& pose) const;
+	[[nodiscard]] Pose2D copyDoOperation(const Pose2D& position) const;
     
 	/**
 	* @return one of the square's corners
@@ -115,6 +122,19 @@ class Hole {
 	* @return whether that position is in the square
 	*/
 	bool isInSquare(Pose2D& position) const;
+
+	/**
+	 * Offset all the corners and measurements
+	 * @param offset the amount to offset by
+	 */
+	void offset(const Pose2D& offset);
+
+    /**
+     * Line intersects any hole measurement
+     * @param posOne position one of the line
+     * @param posTwo position two of the line
+     */
+     bool lineIntersectsHole(const Pose2D& posOne, const Pose2D& posTwo) const;
 };
 
 #endif // HOLE_H

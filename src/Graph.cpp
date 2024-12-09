@@ -208,8 +208,11 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* from, Node<V>* find) {
     std::vector<Node<V>*> temp;
     temp.push_back(from);
     queue.push(std::pair<double, std::vector<Node<V>*>>(0, temp));
+    uint64_t iterations = 0;
 
     while (!queue.empty()) {
+        iterations++;
+
         std::vector<Node<V>*> path = queue.top().second;        
         Node<V> *curr = path[path.size() - 1];
         double currentDistance = queue.top().first;
@@ -219,6 +222,7 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* from, Node<V>* find) {
 
         if (find == curr) {
             // std::cout << "\n\nDistance: " << currentDistance << std::endl;
+            std::cout << iterations << std::endl;
             return path;
         }
 
@@ -242,6 +246,7 @@ std::vector<Node<V>*> Graph<V>::Dijkstra(Node<V>* from, Node<V>* find) {
     // std::cout << "ATTEMPT TO RETURN SIZE: " << thing.size() << std::endl;
    //  delete queue;
     // delete[] distances;
+    std::cout << iterations << std::endl;
     return thing;
 }
 
@@ -379,3 +384,14 @@ std::vector<Node<V>*> Graph<V>::FrugalKugel(Node<V>* find, unsigned int steps) {
 }
 
 */
+
+
+template<typename V>
+void Graph<V>::removeNode(size_t index) {
+    if (index >= nodes.size()) {
+        return;
+    }
+    delete nodes.at(index);
+    nodes.erase(nodes.begin() + index);
+    resize();
+}

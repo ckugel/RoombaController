@@ -26,7 +26,7 @@ Pillar::Pillar(const double x, const double y, const double radius) {
   this->radius = radius;
 }
 
-Pose2D Pillar::getPose() {
+Pose2D& Pillar::getPose() {
   return this->position;
 }
 
@@ -40,6 +40,10 @@ double Pillar::getY() {
 
 double Pillar::getRadius() const {
     return this->radius;
+}
+
+void Pillar::setRadius(double newRadius) {
+    this->radius = newRadius;
 }
 
 

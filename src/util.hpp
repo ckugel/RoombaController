@@ -47,10 +47,7 @@ bool doIntersect(double p1x, double p1y, double q1x, double q1y, double p2x, dou
 */
 bool lineIntersectsRectangle(double cx1, double cy1, double cx2, double cy2, double rx1, double ry1, double rx2, double ry2, double rx3, double ry3, double rx4, double ry4);
 
-/**
- * Util function that returns whether a given line intersects a circle
- */
-bool lineIntersectsCircle(double cx, double cy, double r, double x1, double y1, double x2, double y2);
+
 
 #endif // UTIL_H
 

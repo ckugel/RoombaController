@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "HoleManager.hpp"
+#include "Field.hpp"
 
 HoleManager::HoleManager() {
     holes = std::make_unique<std::vector<Hole>>();
@@ -30,23 +31,29 @@ Hole HoleManager::getHole(uint8_t index) {
 std::vector<Hole> HoleManager::getHoles() {
     std::vector<Hole> toCpy;
     for (uint8_t i = 0; i < holes->size(); i++) {
-	toCpy.push_back(holes->data()[i]); // Unsafe lol
+		toCpy.push_back(holes->data()[i]); // Unsafe lol
     }
     return toCpy;
 }
 
 void HoleManager::addPoint(const Pose2D& position) {
+	bool foundMatch = false;
    this->holeMeasurements->push_back(position); 
     for (uint16_t i = 0; i < this->holes->size(); i++) {
 		if (this->holes->data()[i].pointCouldBeMemberOfHole(position)) {
 			this->holes->data()[i].addPoint(position);
+			foundMatch = true;
 			break;
 		}
     }
+	if (!foundMatch) {
+
+	}
 }
 
 // deiscretization step
 bool HoleManager::nodeCollides(Pose2D position) {
+
 	// shoot out a small line from the position in the dircection of the heading
 	for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
 	    Pose2D initial = this->holeMeasurements->at(i);
@@ -71,24 +78,22 @@ bool HoleManager::nodeCollides(Pose2D position) {
 std::vector<Pose2D> HoleManager::getSuggestedNodePlacements() {
     // for every hole return a few points around the square
     
-    // for all incomplete holes return an estimate for where you can go
     std::vector<Pose2D> toReturn;
-   // basically make sure that none of these are on a collision
-    for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
-		Pose2D suggested(this->holeMeasurements->at(i));
-		suggested.addAngle(M_PI);
-		suggested.translateByMagnitude(BOT_RADIUS);
-		toReturn.push_back(suggested);
-    }
+    for (uint16_t i = 0; i < this->holes->size(); i++) {
+	std::vector<Pose2D> placements = this->holes->at(i).getSuggestedNodePlacements();
+	for (uint16_t j = 0; j < placements.size(); j++) {
+	    toReturn.push_back(placements.at(j));
+	}
+    } 
     return toReturn;
-
 }
 
 // weighting step
 bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, const Pose2D& positionTwo) {
     // we have a pose of each measurement
     // have to make the rectangle and the expected line
-    
+
+	/*
     for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
 	// for every point make the rectangle
 	Rectangle rect = makeRectangleFromLine(positionOne, positionTwo, MEASUREMENT_WIDTH);	
@@ -96,20 +101,22 @@ bool HoleManager::lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, co
 			return true;
 		}
     }
+    */
 
-    /*
     for (uint16_t i = 0; i < this->holes->size(); i++) {
-        Pose2D positionOne = this->holes->at(i).getOneSquareCorner();
-        Pose2D positionTwo = this->holes->at(i).getSecondSquareCorner();
-        Rectangle rect = makeRectangleFromLine(positionOne, positionTwo, positionOne.distanceTo(positionTwo) / sqrt(2));
-        if (lineIntersectsRectangle(positionOne.getX(), positionOne.getY(), positionTwo.getX(), positionTwo.getY(), rect.r1.getX(), rect.r1.getY(), rect.r2.getX(), rect.r2.getY(), rect.r3.getX(), rect.r3.getY(), rect.r4.getX(), rect.r4.getY())) {
-			return true;
-		}
+        if (this->holes->at(i).lineIntersectsHole(positionOne, positionTwo)) {
+            return true;
+        }
     }
-     */
-
 
     return false;
 }
 
-
+void HoleManager::offsetAll(const Pose2D& offset) const {
+	for (uint16_t i = 0; i < this->holes->size(); i++) {
+		this->holes->at(i).offset(offset);
+	}
+	for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
+		this->holeMeasurements->at(i).plus(offset);
+	}
+}

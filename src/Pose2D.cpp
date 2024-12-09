@@ -109,7 +109,7 @@ void Pose2D::vecAdd(const double angle, const double magnitude) {
 
 void Pose2D::rotateByAngle(double angle) {
   double newX = this->x * cos(angle) - this->y * sin(angle);
-  this->y = this->x * sin(angle) - this->y * cos(angle);
+  this->y = this->x * sin(angle) + this->y * cos(angle);
   this->x = newX;
   this->heading += angle;
 }

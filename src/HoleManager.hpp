@@ -74,6 +74,11 @@ class HoleManager {
 		*/
 		bool lineIntersectsAnyHoleMeasurement(const Pose2D& positionOne, const Pose2D& positionTwo);
 
+		/**
+		 * provides the offset to all holes and their values
+		 */
+		void offsetAll(const Pose2D& offset) const;
+
 };
 
 
