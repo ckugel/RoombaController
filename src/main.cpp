@@ -147,7 +147,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
                 Pose2D oldCenter = field.getDesiredDestination();
                 if (path.empty()) {
                     // try a new desired position until its not empty
-                    for (uint8_t i = 0; i < 25; i += 5) {
+                    for (uint8_t i = 0; i < 10; i += 5) {
                         for (double j = 0; j < 2 * M_PI; j += M_PI * 1/4) {
                             Pose2D newDesired = Pose2D::fromPolar(i, j);
                             newDesired.plus(oldCenter);
@@ -157,6 +157,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
                                 field.weightGraph();
                                 path = field.makePath();
                                 if (!path.empty()) {
+                                    sendQueue.push(parsePathIntoRoutine(path));
                                     break;
                                 }
                             }
@@ -367,7 +368,7 @@ void drawRectangle(ImDrawList* drawList, ImVec2 offset, ImVec2 scaling, const Po
     drawList->AddQuadFilled(m1, m3, m2, m4, IM_COL32(255, 165, 0, 170));
 }
 
-void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field& field) {
+void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field& field, std::atomic<bool>& showNodes, std::atomic<bool>& showEdges) {
 	ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -396,18 +397,33 @@ void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field&
     
     drawBotPose(drawList, field.getBotPose().getPose(), offset, scalingFactor);
 
-    std::vector<Node<Pose2D>*> nodes = field.getGraph().getNodes();
+    if (showNodes.load()) {
+        std::vector<Node<Pose2D> *> nodes = field.getGraph().getNodes();
 
-    for (Node<Pose2D>*& node : nodes) {
-		Pose2D position = node->getData();
+        for (Node<Pose2D> *&node: nodes) {
+            Pose2D position = node->getData();
 
-		ImVec2 center = coordsToScreen(offset, scalingFactor, position.getX(), position.getY());
-		float radius = BOT_RADIUS * 2.5;
-		DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
-		// draw a line from every node to the adjacent yes we will double count draws with this
-		//  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
+            ImVec2 center = coordsToScreen(offset, scalingFactor, position.getX(), position.getY());
+            float radius = BOT_RADIUS * 2.5;
+            DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
+            // draw a line from every node to the adjacent yes we will double count draws with this
+            //  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
 
+        }
     }
+
+    if (showEdges.load()) {
+        std::vector<Node<Pose2D> *> nodes = field.getGraph().getNodes();
+        for (Node<Pose2D> *&node: nodes) {
+            std::vector<Node<Pose2D> *> adjacent = field.getGraph().getAdj(node);
+            for (Node<Pose2D> *&adj: adjacent) {
+                ImVec2 p1 = coordsToScreen(offset, scalingFactor, node->getData());
+                ImVec2 p2 = coordsToScreen(offset, scalingFactor, adj->getData());
+                drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2);
+            }
+        }
+    }
+
     
     for (uint8_t i = 0; i < path.size(); i++) {
 		if (i > 0) {
@@ -446,6 +462,11 @@ int main() {
     float angleSend = 0;
     int driveForward = 0;
 
+    std::atomic<bool> showNodes;
+    showNodes.store(false);
+    std::atomic<bool> showEdges;
+    showEdges.store(false);
+
     std::mutex pillarsMutex;
     std::vector<Pose2D> path;
 
@@ -465,7 +486,7 @@ int main() {
         ImGui::NewFrame();
         // bool open;
         // ImGui::ShowDemoWindow(&open);
-        ShowFieldWindow(&pillarsMutex, path, field);
+        ShowFieldWindow(&pillarsMutex, path, field, showNodes, showEdges);
         // std::cout << "About to begin" << std::endl;
 	
         // Your ImGui code here
@@ -503,6 +524,14 @@ int main() {
 
             if (ImGui::Button("Quit all")) {
                 addToQueue("q");
+            }
+
+            if (ImGui::RadioButton("Show nodes", false)) {
+                showNodes.store(!showNodes.load());
+            }
+
+            if (ImGui::RadioButton("Show edges", false)) {
+                showEdges.store(!showEdges.load());
             }
         }
 

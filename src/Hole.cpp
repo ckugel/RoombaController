@@ -26,8 +26,8 @@ Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole,
     }
 
     this->points = std::make_unique<std::vector<Pose2D>>();
-    for (uint16_t i = 0; i < points.size(); i++) {
-        this->points->push_back(points[i]);
+    for (const auto & point : points) {
+        this->points->push_back(point);
     }
     this->pointHoles = std::make_unique<std::vector<Hole>>();
 }
@@ -450,6 +450,7 @@ Hole::Hole(double x1, double y1, double x2, double y2) {
     this->cornerOne = Pose2D(x1, y1);
     this->cornerTwo = Pose2D(x2, y2);
     this->points = std::make_unique<std::vector<Pose2D>>();
+    this->pointHoles = std::make_unique<std::vector<Hole>>();
     this->holeSize = cornerOne.distanceTo(cornerTwo) / sqrt(2);
     registerPointsToHole(cornerOne, cornerTwo);
 }
