@@ -9,6 +9,8 @@ Field::Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestinatio
     this->desiredDestination = desiredDestination;
     this->holeManager = HoleManager();
     this->botPose = botPose;
+    this->graph = Graph<Pose2D>();
+    graph.addNode(new Node<Pose2D>(Pose2D(0, 0)));
 }
 
 Field::Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination) {
@@ -16,6 +18,7 @@ Field::Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestinatio
     this->holeManager = HoleManager();
     this->desiredDestination = desiredDestination;
     this->botPose = Pillar(0, 0, 0, BOT_RADIUS);
+    graph.addNode(new Node<Pose2D>(Pose2D(0, 0)));
 }
 
 Field::Field() {
@@ -23,10 +26,7 @@ Field::Field() {
   this->desiredDestination = Pose2D(0, 0, 0);
   this->botPose = Pillar(0, 0, 0, BOT_RADIUS);
   this->holeManager = HoleManager();
-}
-
-Field::Field(const std::unique_ptr<std::vector<Pillar>> &pillars, const Pose2D &desired_destination,
-    const Pillar &bot_pose, const Graph<Pose2D> &graph) {
+    graph.addNode(new Node<Pose2D>(Pose2D(0, 0)));
 }
 
 void Field::discretizeGraph() {
@@ -180,6 +180,9 @@ void Field::updateBotPose(const Pose2D& updatedPosition) {
     this->botPose.setPosition(updatedPosition);
     if (!graph.getNodes().empty()) {
         graph.getNodes()[0]->SetData(updatedPosition);
+    }
+    else {
+        graph.addNode(new Node<Pose2D>(updatedPosition));
     }
 }
 

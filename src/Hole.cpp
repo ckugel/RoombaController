@@ -454,3 +454,11 @@ Hole::Hole(double x1, double y1, double x2, double y2) {
     this->holeSize = cornerOne.distanceTo(cornerTwo) / sqrt(2);
     registerPointsToHole(cornerOne, cornerTwo);
 }
+
+std::vector<Hole> Hole::getSubHolesCopy() const {
+    std::vector<Hole> toReturn;
+    for (uint16_t i = 0; i < this->pointHoles->size(); i++) {
+        toReturn.push_back(this->pointHoles->at(i));
+    }
+    return toReturn;
+}

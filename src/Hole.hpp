@@ -95,6 +95,10 @@ class Hole {
 	 */
 	bool pointCouldBeMemberOfHole(const Pose2D& measurment);
 
+    bool isFoundHole() const {return foundHole;}
+
+    [[nodiscard]] std::vector<Hole> getSubHolesCopy() const;
+
 	/**
 	 * The deafult constructor for a hole.
 	 */

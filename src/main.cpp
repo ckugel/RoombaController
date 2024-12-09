@@ -400,7 +400,15 @@ void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field&
 //     std::cout << "size: " << holes.size() << std::endl; // output 1
     for (Hole hole: holes) {
 		// std::cout << "X1 Y1 X2 Y2: {" << hole.getOneSquareCorner().getX() << " " << hole.getOneSquareCorner().getY() << " " << hole.getSecondSquareCorner().getX() << " " << hole.getSecondSquareCorner().getY() << std::endl;
-		drawRectangle(drawList, offset, scalingFactor, hole.getOneSquareCorner(), hole.getSecondSquareCorner());
+        if (hole.isFoundHole()) {
+            drawRectangle(drawList, offset, scalingFactor, hole.getOneSquareCorner(), hole.getSecondSquareCorner());
+        }
+        else {
+            std::vector<Hole> subHoles = hole.getSubHolesCopy();
+            for (Hole holer: subHoles) {
+                drawRectangle(drawList, offset, scalingFactor, holer.getOneSquareCorner(), holer.getSecondSquareCorner());
+            }
+        }
     }
     
     drawBotPose(drawList, field.getBotPose().getPose(), offset, scalingFactor);
