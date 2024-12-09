@@ -12,7 +12,8 @@ HoleManager::HoleManager() {
 }
 
 void HoleManager::addHole(const Pose2D& cornerOne, const Pose2D& cornerTwo) {
-    this->holes->push_back(Hole(cornerOne, cornerTwo));
+    double size = cornerOne.distanceTo(cornerTwo) / sqrt(2);
+    this->holes->push_back(Hole(cornerOne, cornerTwo, size));
 }
 
 void HoleManager::addHole(const Hole& hole) {
@@ -21,10 +22,10 @@ void HoleManager::addHole(const Hole& hole) {
 
 Hole HoleManager::getHole(uint8_t index) {
     if (index > holes->size()) {
-	return {NAN, NAN, NAN, NAN};
+        return {NAN, NAN, NAN, NAN, NAN};
     }
     else {
-	return holes->data()[index];
+        return holes->data()[index];
     }
 }
 
@@ -47,7 +48,7 @@ void HoleManager::addPoint(const Pose2D& position) {
 		}
     }
 	if (!foundMatch) {
-
+        this->holes->push_back(Hole(position, HOLE_SIZE));
 	}
 }
 
@@ -55,6 +56,7 @@ void HoleManager::addPoint(const Pose2D& position) {
 bool HoleManager::nodeCollides(Pose2D position) {
 
 	// shoot out a small line from the position in the dircection of the heading
+    /*
 	for (uint16_t i = 0; i < this->holeMeasurements->size(); i++) {
 	    Pose2D initial = this->holeMeasurements->at(i);
 	    Pose2D pose2(this->holeMeasurements->at(i)); // should copy
@@ -63,7 +65,7 @@ bool HoleManager::nodeCollides(Pose2D position) {
             return true;
 	    }
 	}
-
+     */
 
 	for (uint8_t i = 0; i < this->holes->size(); i++) {
         //std::cout << this->holes->at(i) << std::endl;

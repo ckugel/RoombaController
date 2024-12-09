@@ -121,6 +121,11 @@ class Pose2D {
     * @return the angle between all of these points
     */
     static double getAngleBetweenPoints(Pose2D corner, Pose2D end1, Pose2D end2);
+
+    /**
+     * Multiplys the x and y components by a scalar
+     */
+    void multiply(double d);
 };
 
 struct Rectangle {
@@ -134,7 +139,7 @@ struct Rectangle {
 * @param width the width of the rectangle
 * @return a rectangle with the the line in the middle and a width of the width passed in
 */
-Rectangle makeRectangleFromLine(Pose2D L1, const Pose2D& L2, double width);
+Rectangle makeRectangleFromLine(const Pose2D& L1, const Pose2D& L2, double width);
 
 #endif //POSE2D_H
 

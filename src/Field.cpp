@@ -9,6 +9,8 @@ Field::Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestinatio
     this->desiredDestination = desiredDestination;
     this->holeManager = HoleManager();
     this->botPose = botPose;
+    this->graph = Graph<Pose2D>();
+    graph.addNode(new Node<Pose2D>(Pose2D(0, 0)));
 }
 
 Field::Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestination) {
@@ -16,6 +18,7 @@ Field::Field(const std::vector<Pillar>& pillars, const Pose2D& desiredDestinatio
     this->holeManager = HoleManager();
     this->desiredDestination = desiredDestination;
     this->botPose = Pillar(0, 0, 0, BOT_RADIUS);
+    graph.addNode(new Node<Pose2D>(Pose2D(0, 0)));
 }
 
 Field::Field() {
@@ -23,10 +26,7 @@ Field::Field() {
   this->desiredDestination = Pose2D(0, 0, 0);
   this->botPose = Pillar(0, 0, 0, BOT_RADIUS);
   this->holeManager = HoleManager();
-}
-
-Field::Field(const std::unique_ptr<std::vector<Pillar>> &pillars, const Pose2D &desired_destination,
-    const Pillar &bot_pose, const Graph<Pose2D> &graph) {
+    graph.addNode(new Node<Pose2D>(Pose2D(0, 0)));
 }
 
 void Field::discretizeGraph() {
@@ -36,6 +36,17 @@ void Field::discretizeGraph() {
 
     // std::vector<Node<Pillar>*> nodes;
     for (Pillar & pillar : newPillars) {
+        std::vector<Node<Pose2D>*> nodes = graph.getNodes();
+        for (uint32_t i = 1; i < nodes.size(); i++) {
+            if (i != desiredIndex) {
+                if (nodes[i]->getData().distanceTo(pillar.getPose()) < pillar.getRadius() + BOT_RADIUS) {
+                    // remove node
+                    graph.removeNode(i);
+                    // nodes = graph.getNodes();
+                }
+            }
+        }
+
         double magnitude = pillar.getRadius() + BOT_RADIUS;
         for (double i = 1.0; i < 5.0; i += 0.75) {
             for (uint16_t angle = 0; angle < 361; angle += 25) {
@@ -53,7 +64,9 @@ void Field::discretizeGraph() {
                 }
             }
         }
+        this->pillars->push_back(pillar);
     }
+    this->newPillars.clear();
 
     graph.addNode(new Node<Pose2D>(desiredDestination));
     desiredIndex = graph.getNodes().size() - 1;
@@ -61,6 +74,7 @@ void Field::discretizeGraph() {
 
 void Field::weightGraph() {
     std::vector<Node<Pose2D>*> nodes = graph.getNodes();
+    // o(n^3) crying
     for (uint16_t nodeIndex = 0; nodeIndex < nodes.size(); nodeIndex++) {
         for (uint16_t nodeIndexTwo = 0; nodeIndexTwo < nodes.size(); nodeIndexTwo++) {
             if (nodeIndex != nodeIndexTwo) {
@@ -101,7 +115,6 @@ std::vector<Pose2D> Field::makePath() {
     return toReturn;
 }
 
-
 bool Field::validLocationForNode(const Pose2D& location) {
     if (outOfBounds(location)) {
         return false;
@@ -117,7 +130,6 @@ bool Field::validLocationForNode(const Pose2D& location) {
 
     return true;
 }
-
 
 HoleManager& Field::getManager() {
     return holeManager;
@@ -146,6 +158,20 @@ Pillar Field::getBotPose() {
 
 void Field::addPillar(Pillar& newPillar) {
     newPillar.setRadius(roundRadius(newPillar.getRadius()));
+
+    for (uint32_t i = 0; i < this->pillars->size(); i++) {
+        if (this->pillars->at(i).getPose().distanceTo(newPillar.getPose()) < newPillar.getRadius() + this->pillars->at(i).getRadius()) {
+            // these are the same pillars
+            Pose2D sum = this->pillars->at(i).getPose();
+            sum.plus(newPillar.getPose());
+            sum.multiply(0.5);
+
+            Pose2D error = Pose2D(sum);
+            error.minus(this->pillars->at(i).getPose());
+            return;
+        }
+    }
+
     this->pillars->push_back(newPillar);
     this->newPillars.push_back(newPillar);
 }
@@ -154,6 +180,9 @@ void Field::updateBotPose(const Pose2D& updatedPosition) {
     this->botPose.setPosition(updatedPosition);
     if (!graph.getNodes().empty()) {
         graph.getNodes()[0]->SetData(updatedPosition);
+    }
+    else {
+        graph.addNode(new Node<Pose2D>(updatedPosition));
     }
 }
 

@@ -108,7 +108,7 @@ std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
     return toSend.str();
 }
 
-void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
+void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Pose2D>& path) {
 	const uint16_t BUFF_SIZE = 1024;
 
 	static char name_buff[50];
@@ -143,11 +143,18 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
 
                 field.discretizeGraph();
                 field.weightGraph();
-                std::vector<Pose2D> path = field.makePath();
+
+                path.clear();
+                std::vector<Pose2D> pathOne = field.makePath();
+                for (uint16_t i = 0; i < pathOne.size(); i++) {
+                    path.push_back(pathOne[i]);
+                }
+
+                /*
                 Pose2D oldCenter = field.getDesiredDestination();
                 if (path.empty()) {
                     // try a new desired position until its not empty
-                    for (uint8_t i = 0; i < 25; i += 5) {
+                    for (uint8_t i = 0; i < 10; i += 5) {
                         for (double j = 0; j < 2 * M_PI; j += M_PI * 1/4) {
                             Pose2D newDesired = Pose2D::fromPolar(i, j);
                             newDesired.plus(oldCenter);
@@ -157,12 +164,14 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
                                 field.weightGraph();
                                 path = field.makePath();
                                 if (!path.empty()) {
+                                    sendQueue.push(parsePathIntoRoutine(path));
                                     break;
                                 }
                             }
                         }
                     }
                 }
+                 */
 
                 fieldMutex.unlock();
             }
@@ -236,7 +245,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
 }
 
 // connect to Roomba server
-void connectTCP(Field& field, std::mutex& fieldMutex) {
+void connectTCP(Field& field, std::mutex& fieldMutex, std::vector<Pose2D>& path) {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
   sockaddr_in serverAddress{
 	.sin_family = AF_INET,
@@ -262,7 +271,7 @@ void connectTCP(Field& field, std::mutex& fieldMutex) {
     }
 
   // spawn read and log thread here
-  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(fieldMutex), std::ref(field));
+  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(fieldMutex), std::ref(field), std::ref(path));
 
   while(!stopClient.load()) {
 	if (!sendQueue.empty()) {
@@ -367,7 +376,7 @@ void drawRectangle(ImDrawList* drawList, ImVec2 offset, ImVec2 scaling, const Po
     drawList->AddQuadFilled(m1, m3, m2, m4, IM_COL32(255, 165, 0, 170));
 }
 
-void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field& field) {
+void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field& field, std::atomic<bool>& showNodes, std::atomic<bool>& showEdges) {
 	ImGui::Begin("Field");
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -391,23 +400,46 @@ void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field&
 //     std::cout << "size: " << holes.size() << std::endl; // output 1
     for (Hole hole: holes) {
 		// std::cout << "X1 Y1 X2 Y2: {" << hole.getOneSquareCorner().getX() << " " << hole.getOneSquareCorner().getY() << " " << hole.getSecondSquareCorner().getX() << " " << hole.getSecondSquareCorner().getY() << std::endl;
-		drawRectangle(drawList, offset, scalingFactor, hole.getOneSquareCorner(), hole.getSecondSquareCorner());
+        if (hole.isFoundHole()) {
+            drawRectangle(drawList, offset, scalingFactor, hole.getOneSquareCorner(), hole.getSecondSquareCorner());
+        }
+        else {
+            std::vector<Hole> subHoles = hole.getSubHolesCopy();
+            for (Hole holer: subHoles) {
+                drawRectangle(drawList, offset, scalingFactor, holer.getOneSquareCorner(), holer.getSecondSquareCorner());
+            }
+        }
     }
     
     drawBotPose(drawList, field.getBotPose().getPose(), offset, scalingFactor);
 
-    std::vector<Node<Pose2D>*> nodes = field.getGraph().getNodes();
+    if (showNodes.load()) {
+        std::vector<Node<Pose2D> *> nodes = field.getGraph().getNodes();
 
-    for (Node<Pose2D>*& node : nodes) {
-		Pose2D position = node->getData();
+        for (Node<Pose2D> *&node: nodes) {
+            Pose2D position = node->getData();
 
-		ImVec2 center = coordsToScreen(offset, scalingFactor, position.getX(), position.getY());
-		float radius = BOT_RADIUS * 2.5;
-		DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
-		// draw a line from every node to the adjacent yes we will double count draws with this
-		//  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
+            ImVec2 center = coordsToScreen(offset, scalingFactor, position.getX(), position.getY());
+            float radius = BOT_RADIUS * 2.5;
+            DrawCircle(drawList, center, radius, IM_COL32(120, 120, 0, 200));
+            // draw a line from every node to the adjacent yes we will double count draws with this
+            //  std::vector<Node<Pose2D>*> adjacent = getAdj(nodes[nodeIndex]);
 
+        }
     }
+
+    if (showEdges.load()) {
+        std::vector<Node<Pose2D> *> nodes = field.getGraph().getNodes();
+        for (Node<Pose2D> *&node: nodes) {
+            std::vector<Node<Pose2D> *> adjacent = field.getGraph().getAdj(node);
+            for (Node<Pose2D> *&adj: adjacent) {
+                ImVec2 p1 = coordsToScreen(offset, scalingFactor, node->getData());
+                ImVec2 p2 = coordsToScreen(offset, scalingFactor, adj->getData());
+                drawList->AddLine(p1, p2, IM_COL32(100, 100, 100, 100), 2);
+            }
+        }
+    }
+
     
     for (uint8_t i = 0; i < path.size(); i++) {
 		if (i > 0) {
@@ -446,6 +478,11 @@ int main() {
     float angleSend = 0;
     int driveForward = 0;
 
+    std::atomic<bool> showNodes;
+    showNodes.store(false);
+    std::atomic<bool> showEdges;
+    showEdges.store(false);
+
     std::mutex pillarsMutex;
     std::vector<Pose2D> path;
 
@@ -453,7 +490,7 @@ int main() {
     // Pose2D toAdd(0, 0, 0);
     // graph.addNode(new Node<Pose2D>(toAdd));
     // connectTCP(pillars, pillarsMutex, desired);
-    std::thread tcpConnect(connectTCP, std::ref(field), std::ref(pillarsMutex));
+    std::thread tcpConnect(connectTCP, std::ref(field), std::ref(pillarsMutex), std::ref(path));
     
     // Main loop
     while (!glfwWindowShouldClose(window)) {
@@ -465,7 +502,7 @@ int main() {
         ImGui::NewFrame();
         // bool open;
         // ImGui::ShowDemoWindow(&open);
-        ShowFieldWindow(&pillarsMutex, path, field);
+        ShowFieldWindow(&pillarsMutex, path, field, showNodes, showEdges);
         // std::cout << "About to begin" << std::endl;
 	
         // Your ImGui code here
@@ -504,6 +541,14 @@ int main() {
             if (ImGui::Button("Quit all")) {
                 addToQueue("q");
             }
+
+            if (ImGui::RadioButton("Show nodes", false)) {
+                showNodes.store(!showNodes.load());
+            }
+
+            if (ImGui::RadioButton("Show edges", false)) {
+                showEdges.store(!showEdges.load());
+            }
         }
 
         if (ImGui::Button("Generate path")) {
@@ -520,6 +565,7 @@ int main() {
             // To: -100, -100
             */
             path =  field.makePath();
+            pillarsMutex.unlock();
             //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
             // path.push_back(botPose.getPose());
 	}

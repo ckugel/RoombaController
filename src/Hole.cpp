@@ -6,14 +6,18 @@
 #include "Hole.hpp"
 
 
-Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo) {
+Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo, double holeSize) {
     Pose2D o1 = positionOne.clone();
     Pose2D o2 = positionTwo.clone();
+    threshold = o1.distanceTo(o2) / sqrt(2);
+    this->holeSize = holeSize;
     this->registerPointsToHole(o1, o2);
     this->points = std::make_unique<std::vector<Pose2D>>();
+    this->pointHoles = std::make_unique<std::vector<Hole>>();
 }
 
-Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, const std::vector<Pose2D>& points) {
+Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, const std::vector<Pose2D>& points, double holeSize) {
+    threshold = positionOne.distanceTo(positionTwo) / sqrt(2);
     if (foundHole) {
         this->registerPointsToHole(positionOne, positionTwo);
     }
@@ -22,9 +26,10 @@ Hole::Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole,
     }
 
     this->points = std::make_unique<std::vector<Pose2D>>();
-    for (uint16_t i = 0; i < points.size(); i++) {
-        this->points->push_back(points[i]);
+    for (const auto & point : points) {
+        this->points->push_back(point);
     }
+    this->pointHoles = std::make_unique<std::vector<Hole>>();
 }
 
 Pose2D Hole::getOneSquareCorner() {
@@ -57,25 +62,25 @@ std::vector<Pose2D> Hole::getSuggestedNodePlacements() {
 	center.setHeading(center.angleTo(this->cornerTwo));
 	Pose2D temp(center);
 	double magnitude = HOLE_SIZE * 1.5;
-	for (uint8_t i = 0; i < 8; i++) {
-	    Pose2D toAdd(temp);
-	    toAdd.translateByMagnitude(magnitude);
-	    toReturn.push_back(toAdd);
-	    temp.addAngle(M_PI / 4);
-	}
+        for (uint8_t i = 0; i < 8; i++) {
+            Pose2D toAdd(temp);
+            toAdd.translateByMagnitude(magnitude);
+            toReturn.push_back(toAdd);
+            temp.addAngle(M_PI / 4);
+        }
     }
     else {
-	for (uint16_t i = 0; i < this->points->size(); i++) {
+        for (uint16_t i = 0; i < this->points->size(); i++) {
 	    Pose2D suggested(this->points->at(i));
 	    suggested.addAngle(M_PI);
 	    suggested.translateByMagnitude(BOT_RADIUS);
 	    toReturn.push_back(suggested);
-	}
+        }
     }
     return toReturn;
-}
+    }
 
-bool Hole::isInSquare(Pose2D& position) const {
+    bool Hole::isInSquare(Pose2D& position) const {
     // std::cout << "starting position: " << position << std::endl;
     // general idea: we use the operations in the object to translate objects for checks
 
@@ -100,156 +105,43 @@ bool Hole::isInSquare(Pose2D& position) const {
     }
     return false;
 
-
-    /*
-    // heres the idea: we generate the cour points. Translate the four points such that the center is around the origin
-    // translate the position by the same offset
-    Pose2D cornerOne(this->cornerOne);
-    Pose2D cornerTwo(this->cornerTwo);
-
-    // calculate center of rectangle
-    Pose2D centerOfRectangle(cornerOne);
-    centerOfRectangle.setHeading(centerOfRectangle.angleTo(cornerTwo));
-    double halfDistance = cornerOne.distanceTo(cornerTwo);
-    centerOfRectangle.translateByMagnitude(halfDistance);
-    // now calculate the translation for the corners
-    double angleTo = centerOfRectangle.angleTo(Pose2D(0, 0));
-    double amount = centerOfRectangle.distanceTo(Pose2D(0, 0));
-
-    cornerOne.setHeading(angleTo);
-    cornerTwo.setHeading(angleTo);
-    position.setHeading(angleTo);
-    cornerOne.translateByMagnitude(amount);
-    cornerTwo.translateByMagnitude(amount);
-    position.translateByMagnitude(amount);
-
-    if (cornerTwo.getX() < 0) {
-        if (cornerTwo.getY() < 0) {
-            // - 90 degree rotation
-            cornerOne.rotateByAngle(- M_PI / 2);
-            cornerTwo.rotateByAngle(-M_PI / 2);
-            position.rotateByAngle(-M_PI / 2);
-        }
-        else {
-            // -180 degree rotation
-            cornerOne.rotateByAngle(M_PI);
-            cornerTwo.rotateByAngle(M_PI);
-            position.rotateByAngle(M_PI);
-        }
-    }
-    if (cornerOne.getX() < 0 && cornerOne.getY() >= 0) {
-        // user cornerOne
-        cornerOne.rotateByAngle(M_PI / 2);
-        cornerTwo.rotateByAngle(M_PI / 2);
-        position.rotateByAngle(M_PI / 2);
-    }
-
-    Pose2D otherCorner(cornerOne);
-    otherCorner.rotateByAngle(M_PI / 2); // really thinky
-    amount = otherCorner.angleTo(otherCorner) / 2;
-
-    cornerOne.rotateByAngle(amount);
-    cornerTwo.rotateByAngle(amount);
-    position.rotateByAngle(amount);
-    angleTo = cornerOne.angleTo(Pose2D(0, 0));
-    cornerOne.setHeading(angleTo);
-    cornerTwo.setHeading(angleTo);
-    position.setHeading(angleTo);
-    cornerOne.translateByMagnitude(halfDistance);
-    cornerTwo.translateByMagnitude(halfDistance);
-    position.translateByMagnitude(halfDistance);
-
-
-    // now we have cornerOne and cornerTwo forming a square with the bottom left on the origin
-    if ((position.getX() + BOT_RADIUS > 0 && position.getX() + BOT_RADIUS < cornerTwo.getX()) || (position.getX() - BOT_RADIUS > 0 && position.getX() - BOT_RADIUS < cornerTwo.getX()) || (position.getX() > 0 && position.getX() < cornerTwo.getX())) {
-        // X coord has collision
-        // now check Y below
-        if ((position.getY() + BOT_RADIUS > 0 && position.getY() + BOT_RADIUS < cornerTwo.getY()) || (position.getY() - BOT_RADIUS > 0 && position.getY() - BOT_RADIUS < cornerTwo.getY()) || (position.getY() > 0 && position.getY() < cornerTwo.getY())) {
-            return true;
-        }
-    }
-    return false;
-
-    // perform a rotation on all the points such that the coordinate are in a stanard rectangle
-    // translate the bottom left coordinate to the origin
-    // translate all the points by that offset
-    // check if the coordinate is in that posiiton
-    // create four points aroung the new posiiton and determine if any of those are in the square
-
-*/
-
-    /*
-    // Calculate the center of the square
-    Pose2D center = {(cornerOne.getX() + cornerTwo.getX()) / 2, (cornerOne.getY() + cornerTwo.getY()) / 2};
-
-    // Calculate the vector representing one side of the square
-    const Pose2D sideVector = cornerTwo.subtractBy(cornerOne);
-    // const double sideLength = cornerOne.distanceTo(cornerTwo) / std::sqrt(2);
-
-    /*
-    if (std::abs(sideLength - HOLE_SIZE) > 5) {
-        std::cerr << "Error: Given corners do not form a square of the specified hole length." << std::endl;
-        return false;
-    }
-    */
-
-    /*
-    Pose2D sideVectorNormalized = sideVector.normalize();
-    Pose2D perpendicularVector = {-sideVectorNormalized.getY(), sideVectorNormalized.getX()};
-
-    // Project the point onto the square's local axes
-    Pose2D toPointVector = position.subtractBy(center);
-    double projSide = toPointVector.dotProduct(sideVectorNormalized);
-    double projPerpendicular = toPointVector.dotProduct(perpendicularVector);
-
-    double halfSize = HOLE_SIZE / 2;
-
-    // Check if the point is within the square
-    if (fabs(projSide) <= halfSize && fabs(projPerpendicular) <= halfSize) {
-        return true;
-    }
-
-    // Check if the point is within RADIUS of the square
-    if (fabs(projSide) <= halfSize + BOT_RADIUS && fabs(projPerpendicular) <= halfSize + BOT_RADIUS) {
-        Pose2D closestPoint = {
-            center.getX() + projSide * sideVectorNormalized.getX() + projPerpendicular * perpendicularVector.getX(),
-            center.getY() + projSide * sideVectorNormalized.getY() + projPerpendicular * perpendicularVector.getY()
-        };
-        return position.distanceTo(closestPoint) <= BOT_RADIUS;
-    }
-
-    return false;
-    */
 }
 
-Hole::Hole(double X1, double Y1, double X2, double Y2) {
+Hole::Hole(double X1, double Y1, double X2, double Y2, double holeSize) {
     Pose2D o1(X1, Y1);
     Pose2D o2(X2, Y2);
+    this->threshold = o1.distanceTo(o2) / sqrt(2);
+    this->holeSize = holeSize;
     registerPointsToHole(o1, o2);
 
     this->points = std::make_unique<std::vector<Pose2D>>();
+    this->pointHoles = std::make_unique<std::vector<Hole>>();
 }
 
 Hole::Hole() {
+    this->holeSize = HOLE_SIZE;
+    this->threshold = HOLE_SIZE;
     this->foundHole = false;
     this->points = std::make_unique<std::vector<Pose2D>>();
+    this->pointHoles = std::make_unique<std::vector<Hole>>();
 }
 
-Hole::Hole(const Pose2D& initialPoint) {
+Hole::Hole(const Pose2D& initialPoint, double holeSize) {
     this->foundHole = false;
     this->points = std::make_unique<std::vector<Pose2D>>();
     this->points->push_back(initialPoint);
+    this->pointHoles = std::make_unique<std::vector<Hole>>();
+    this->holeSize = holeSize;
+    this->threshold = holeSize;
 }
 
 bool Hole::pointCouldBeMemberOfHole(const Pose2D& measurment) {
-    bool viable = true;
-    this->points = std::make_unique<std::vector<Pose2D>>();
-    for (uint16_t i = 0; i < this->points->size(); i++) {
-        if (this->points->data()[i].distanceTo(measurment) > HOLE_SIZE * std::sqrt(2)) {
-            viable = false;
+    for (const auto& point : *this->points) {
+        if (point.distanceTo(measurment) > holeSize * std::sqrt(2)) {
+            return false;
         }
     }
-    return viable;
+    return true;
 }
 
 Hole::Hole(const Hole& hole) {
@@ -262,11 +154,17 @@ Hole::Hole(const Hole& hole) {
     this->y_translation_one = hole.y_translation_one;
     this->x_translation_two = hole.x_translation_two;
     this->y_translation_two = hole.y_translation_two;
+    this->holeSize = hole.holeSize;
 
     this->points = std::make_unique<std::vector<Pose2D>>();
     for (uint16_t i = 0; i < hole.points->size(); i++) {
         this->points->push_back(hole.points->data()[i]);
     }
+    this->pointHoles = std::make_unique<std::vector<Hole>>();
+    for (uint16_t i = 0; i < hole.pointHoles->size(); i++) {
+        this->pointHoles->push_back(hole.pointHoles->data()[i]);
+    }
+
 }
 
 void Hole::addPoint(const Pose2D& position) {
@@ -317,21 +215,21 @@ void Hole::addPoint(const Pose2D& position) {
             // pose 1 and 2 are out of phase
             if (fabs(this->points->at(0).getHeading() + this->points->at(1).getHeading()) < 0.1 || fabs(fabs(this->points->at(0).getHeading()) - fabs(this->points->at(1).getHeading())) < 0.1) {
                 parallelOne = this->points->at(0);
-                parallelOne.translateByMagnitude(HOLE_SIZE);
+                parallelOne.translateByMagnitude(holeSize);
                 parallelTwo = this->points->at(1);
                 perpendicularPosition = this->points->at(2);
             }
             // pose 2 and three are out of phase
             else if (fabs(this->points->at(2).getHeading() + this->points->at(1).getHeading()) < 0.1 || fabs(fabs(this->points->at(2).getHeading()) - fabs(this->points->at(1).getHeading())) < 0.1) {
                 parallelOne = this->points->at(2);
-                parallelOne.translateByMagnitude(HOLE_SIZE);
+                parallelOne.translateByMagnitude(holeSize);
                 parallelTwo = this->points->at(1);
                 perpendicularPosition = this->points->at(0);
             }
             // pose 3 and 1 are out of phase
             else if (fabs(this->points->at(0).getHeading() + this->points->at(2).getHeading()) < 0.1 || fabs(fabs(this->points->at(0).getHeading()) - fabs(this->points->at(2).getHeading())) < 0.1) {
                 parallelOne = this->points->at(0);
-                parallelOne.translateByMagnitude(HOLE_SIZE);
+                parallelOne.translateByMagnitude(holeSize);
                 parallelTwo = this->points->at(2);
                 perpendicularPosition = this->points->at(1);
             }
@@ -355,7 +253,7 @@ void Hole::addPoint(const Pose2D& position) {
             cornerOne = Pose2D(xCornerOne, yCornerOne);
             oppositeCorner = Pose2D(cornerOne);
             oppositeCorner.setHeading((cornerOne.angleTo(parallelOne) + cornerOne.angleTo(parallelTwo)) / 2);
-            oppositeCorner.translateByMagnitude(HOLE_SIZE * sqrt(2));
+            oppositeCorner.translateByMagnitude(holeSize * sqrt(2));
         }
         // horizontal line
         else if (fabs(dy) < 0.01) {
@@ -364,7 +262,7 @@ void Hole::addPoint(const Pose2D& position) {
             cornerOne = Pose2D(xCornerOne, yCornerOne);
             oppositeCorner = Pose2D(cornerOne);
             oppositeCorner.setHeading((parallelOne.getX() + perpendicularPosition.getX()) / 2);
-            oppositeCorner.translateByMagnitude(HOLE_SIZE * sqrt(2));
+            oppositeCorner.translateByMagnitude(holeSize * sqrt(2));
         }
         else {
             double m1 = (parallelTwo.getY() - parallelOne.getY()) / dx;
@@ -380,12 +278,28 @@ void Hole::addPoint(const Pose2D& position) {
             double angleToOther = (cornerOne.angleTo(parallelOne) + cornerOne.angleTo(perpendicularPosition)) / 2;
             oppositeCorner = Pose2D(cornerOne);
             oppositeCorner.setHeading(angleToOther);
-            oppositeCorner.translateByMagnitude(HOLE_SIZE * sqrt(2));
+            oppositeCorner.translateByMagnitude(holeSize * sqrt(2));
         }
 
         this->cornerOne = cornerOne;
         this->cornerTwo = oppositeCorner;
         this->foundHole = true;
+    }
+
+    if (!foundHole) {
+        Pose2D cornerOneNew(position);
+        cornerOneNew.rotateByAngle(M_PI / 4);
+        cornerOneNew.translateByMagnitude(2);
+        Pose2D cornerTwoNew(position);
+        // an astute reader will notice that this is really stupid and that there is a relatively simple
+        // math to accomplish this goal in one operation
+        // however I am stupid
+        cornerTwoNew.rotateByAngle(-M_PI / 4);
+        cornerTwoNew.translateByMagnitude(2);
+        cornerTwoNew.rotateByAngle(M_PI / 2);
+        cornerTwoNew.translateByMagnitude(4);
+        Hole hole(cornerOneNew, cornerTwoNew, 4);
+        this->pointHoles->push_back(hole);
     }
 }
 
@@ -472,45 +386,79 @@ void Hole::offset(const Pose2D& offset) {
     }
     for (uint16_t i = 0; i < this->points->size(); i++) {
         this->points->at(i).plus(offset);
+        this->pointHoles->at(i).offset(offset);
     }
 }
 
 bool Hole::lineIntersectsHole(const Pose2D& posOne, const Pose2D& posTwo) const {
-    Pose2D positionOne;
-    Pose2D positionTwo;
-    if (posOne.getX() < posTwo.getX()) {
-        positionOne = copyDoOperation(posOne);
-        positionTwo = copyDoOperation(posTwo);
+    if (foundHole) {
+        Pose2D positionOne;
+        Pose2D positionTwo;
+        if (posOne.getX() < posTwo.getX()) {
+            positionOne = copyDoOperation(posOne);
+            positionTwo = copyDoOperation(posTwo);
+        } else {
+            positionOne = copyDoOperation(posTwo);
+            positionTwo = copyDoOperation(posOne);
+        }
+
+        // if the line between them, at any point falls between 0 and threshold
+        // annoyingly I think this means that we need to do real math (ew)
+        if (fabs(positionOne.getX() - positionTwo.getX()) < 0.05) {
+            // we have a vertical line
+            // if the vertical line starts below 0 and ends after threshold and X is between 0 and threshold then it intersects
+            return (((positionOne.getX() > 0 && positionOne.getX() < threshold) ||
+                     (positionTwo.getX() > 0 && positionTwo.getX() < threshold)) &&
+                    fmax(positionOne.getY(), positionTwo.getY()) > threshold &&
+                    fmin(positionOne.getY(), positionTwo.getY()) < 0);
+
+        }
+        if (fabs(positionOne.getY() - positionTwo.getY()) < 0.05) {
+            // we have a horizontal line
+            return (((positionOne.getY() > 0 && positionOne.getY() < threshold) ||
+                     (positionTwo.getY() > 0 && positionTwo.getY() < threshold)) &&
+                    fmax(positionOne.getX(), positionTwo.getX()) > threshold &&
+                    fmin(positionOne.getX(), positionTwo.getX()) < 0);
+        }
+
+        // now we gotta make a line, which we can guranteed will exist without a slope of 0
+        double m = (positionTwo.getY() - positionOne.getY()) / (positionTwo.getX() - positionOne.getX());
+        double b = positionOne.getY() - (positionOne.getX() * m);
+
+        // now that we know the equation of the line we can determine if it intersects the x axis, y axis, or y = threshold or x = threshold
+        // yayyyy finding 0's of a function
+        double y2Check = m * positionOne.getX() + b;
+        if ((b < threshold && b > 0) || (y2Check < threshold && y2Check > 0)) {
+            return true; // we intersect with the x axis
+        }
+        double xValueAtYIsZero = (-b / m);
+        double xValueATYIsThreshold = (threshold - b) / m;
+        return (xValueAtYIsZero > 0 && xValueAtYIsZero < threshold) ||
+               (xValueATYIsThreshold > 0 && xValueATYIsThreshold < threshold);
     }
     else {
-        positionOne = copyDoOperation(posTwo);
-        positionTwo = copyDoOperation(posTwo);
+        for (uint16_t i = 0; i < this->pointHoles->size(); i++) {
+            if (this->pointHoles->at(i).lineIntersectsHole(posOne, posTwo)) {
+                return true;
+            }
+        }
     }
+    return false;
+}
 
-    // if the line between them, at any point falls between 0 and threshold
-    // annoyingly I think this means that we need to do real math (ew)
-    if (fabs(positionOne.getX() - positionTwo.getX()) < 0.05) {
-        // we have a vertical line
-        // if the vertical line starts below 0 and ends after threshold and X is between 0 and threshold then it intersects
-        return (((positionOne.getX() > 0 && positionOne.getX() < threshold) || (positionTwo.getX() > 0 && positionTwo.getX() < threshold)) && fmax(positionOne.getY(), positionTwo.getY()) > threshold && fmin(positionOne.getY(), positionTwo.getY()) < 0);
+Hole::Hole(double x1, double y1, double x2, double y2) {
+    this->cornerOne = Pose2D(x1, y1);
+    this->cornerTwo = Pose2D(x2, y2);
+    this->points = std::make_unique<std::vector<Pose2D>>();
+    this->pointHoles = std::make_unique<std::vector<Hole>>();
+    this->holeSize = cornerOne.distanceTo(cornerTwo) / sqrt(2);
+    registerPointsToHole(cornerOne, cornerTwo);
+}
 
+std::vector<Hole> Hole::getSubHolesCopy() const {
+    std::vector<Hole> toReturn;
+    for (uint16_t i = 0; i < this->pointHoles->size(); i++) {
+        toReturn.push_back(this->pointHoles->at(i));
     }
-    if (fabs(positionOne.getY() - positionTwo.getY()) < 0.05) {
-        // we have a horizontal line
-        return (((positionOne.getY() > 0 && positionOne.getY() < threshold) || (positionTwo.getY() > 0 && positionTwo.getY() < threshold)) && fmax(positionOne.getX(), positionTwo.getX()) > threshold && fmin(positionOne.getX(), positionTwo.getX()) < 0);
-    }
-
-    // now we gotta make a line, which we can guranteed will exist without a slope of 0
-    double m = (positionTwo.getY() - positionOne.getY()) / (positionTwo.getX() - positionOne.getX());
-    double b = positionOne.getY() - (positionOne.getX() * m);
-
-    // now that we know the equation of the line we can determine if it intersects the x axis, y axis, or y = threshold or x = threshold
-    // yayyyy finding 0's of a function
-    double y2Check = m * positionOne.getX() + b;
-    if ((b < threshold && b > 0)  || (y2Check < threshold) && (y2Check > 0)) {
-        return true; // we intersect with the x axis
-    }
-    double xValueAtYIsZero = (-b / m);
-    double xValueATYIsThreshold = (threshold - b) / m;
-    return (xValueAtYIsZero > 0 || xValueAtYIsZero < threshold) || (xValueATYIsThreshold > 0 || xValueATYIsThreshold < threshold);
+    return toReturn;
 }

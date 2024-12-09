@@ -17,22 +17,22 @@
  * A Hole is either a complete square where we know the critical points (two vertices of the square).
  * A Hole could also represent a bunch of points that are all within Square Length * Root(2) of eachother
  */
-
-static const double halfHoleDiagonal = HOLE_SIZE * sqrt(2) / 2;
 class Hole {
     private:
 	Pose2D cornerOne;
 	Pose2D cornerTwo;
-    double threshold;
-	double phi;
-	double x_translation_one;
-	double y_translation_one;
-	double x_translation_two;
-	double y_translation_two;
+    double threshold = -1;
+	double phi = -1;
+	double x_translation_one = -1;
+	double y_translation_one = -1;
+	double x_translation_two = -1;
+	double y_translation_two = -1;
+    double holeSize = -1;
 
-	bool foundHole;
+	bool foundHole = false;
 
 	std::unique_ptr<std::vector<Pose2D>> points;
+    std::unique_ptr<std::vector<Hole>> pointHoles;
     public:
     
 	/**
@@ -42,17 +42,19 @@ class Hole {
 	 * @param X2 the other corner's X position
 	 * @param Y2 the other corner's Y position
 	 */
-	Hole(double X1, double Y1, double X2, double Y2);	
+	Hole(double X1, double Y1, double X2, double Y2, double holeSize);
 
 	/**
 	 * Copy  constructor for hole
 	 */
-	Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, const std::vector<Pose2D>& points);
+	Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, const std::vector<Pose2D>& points, double holeSize);
+
+    Hole(double x1, double y1, double x2, double y2);
 
 	/**
 	 * Creates a new Hole object
 	 */
-	Hole(const Pose2D& positionOne, const Pose2D& positionTwo);
+	Hole(const Pose2D& positionOne, const Pose2D& positionTwo, double holeSize);
 
 	/**
 	 * Gets a list of suggested node placements, for nodes in the graph.
@@ -93,6 +95,10 @@ class Hole {
 	 */
 	bool pointCouldBeMemberOfHole(const Pose2D& measurment);
 
+    bool isFoundHole() const {return foundHole;}
+
+    [[nodiscard]] std::vector<Hole> getSubHolesCopy() const;
+
 	/**
 	 * The deafult constructor for a hole.
 	 */
@@ -107,7 +113,7 @@ class Hole {
 	 * Makes a new hole and stores the initial measurment
 	 * @param initialPoint our initial measurment
 	 */
-	explicit Hole(const Pose2D& initialPoint);
+	explicit Hole(const Pose2D& initialPoint, double holeSize);
 
 	/**
 	 * Add a point to this hole/chunk. 
