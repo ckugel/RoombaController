@@ -108,7 +108,7 @@ std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
     return toSend.str();
 }
 
-void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
+void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Pose2D>& path) {
 	const uint16_t BUFF_SIZE = 1024;
 
 	static char name_buff[50];
@@ -143,7 +143,14 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
 
                 field.discretizeGraph();
                 field.weightGraph();
-                std::vector<Pose2D> path = field.makePath();
+
+                path.clear();
+                std::vector<Pose2D> pathOne = field.makePath();
+                for (uint16_t i = 0; i < pathOne.size(); i++) {
+                    path.push_back(pathOne[i]);
+                }
+
+                /*
                 Pose2D oldCenter = field.getDesiredDestination();
                 if (path.empty()) {
                     // try a new desired position until its not empty
@@ -164,6 +171,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
                         }
                     }
                 }
+                 */
 
                 fieldMutex.unlock();
             }
@@ -237,7 +245,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field) {
 }
 
 // connect to Roomba server
-void connectTCP(Field& field, std::mutex& fieldMutex) {
+void connectTCP(Field& field, std::mutex& fieldMutex, std::vector<Pose2D>& path) {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
   sockaddr_in serverAddress{
 	.sin_family = AF_INET,
@@ -263,7 +271,7 @@ void connectTCP(Field& field, std::mutex& fieldMutex) {
     }
 
   // spawn read and log thread here
-  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(fieldMutex), std::ref(field));
+  std::thread readThread(readAndLog, std::ref(clientSocket), std::ref(fieldMutex), std::ref(field), std::ref(path));
 
   while(!stopClient.load()) {
 	if (!sendQueue.empty()) {
@@ -474,7 +482,7 @@ int main() {
     // Pose2D toAdd(0, 0, 0);
     // graph.addNode(new Node<Pose2D>(toAdd));
     // connectTCP(pillars, pillarsMutex, desired);
-    std::thread tcpConnect(connectTCP, std::ref(field), std::ref(pillarsMutex));
+    std::thread tcpConnect(connectTCP, std::ref(field), std::ref(pillarsMutex), std::ref(path));
     
     // Main loop
     while (!glfwWindowShouldClose(window)) {
@@ -549,6 +557,7 @@ int main() {
             // To: -100, -100
             */
             path =  field.makePath();
+            pillarsMutex.unlock();
             //  std::cout << "PATH NODE SIZE: " << pathNodes.size() << std::endl;
             // path.push_back(botPose.getPose());
 	}

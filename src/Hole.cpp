@@ -399,7 +399,7 @@ bool Hole::lineIntersectsHole(const Pose2D& posOne, const Pose2D& posTwo) const 
             positionTwo = copyDoOperation(posTwo);
         } else {
             positionOne = copyDoOperation(posTwo);
-            positionTwo = copyDoOperation(posTwo);
+            positionTwo = copyDoOperation(posOne);
         }
 
         // if the line between them, at any point falls between 0 and threshold
@@ -428,13 +428,13 @@ bool Hole::lineIntersectsHole(const Pose2D& posOne, const Pose2D& posTwo) const 
         // now that we know the equation of the line we can determine if it intersects the x axis, y axis, or y = threshold or x = threshold
         // yayyyy finding 0's of a function
         double y2Check = m * positionOne.getX() + b;
-        if ((b < threshold && b > 0) || (y2Check < threshold) && (y2Check > 0)) {
+        if ((b < threshold && b > 0) || (y2Check < threshold && y2Check > 0)) {
             return true; // we intersect with the x axis
         }
         double xValueAtYIsZero = (-b / m);
         double xValueATYIsThreshold = (threshold - b) / m;
-        return (xValueAtYIsZero > 0 || xValueAtYIsZero < threshold) ||
-               (xValueATYIsThreshold > 0 || xValueATYIsThreshold < threshold);
+        return (xValueAtYIsZero > 0 && xValueAtYIsZero < threshold) ||
+               (xValueATYIsThreshold > 0 && xValueATYIsThreshold < threshold);
     }
     else {
         for (uint16_t i = 0; i < this->pointHoles->size(); i++) {
