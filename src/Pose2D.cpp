@@ -227,7 +227,7 @@ std::ostream &operator<<(std::ostream &os, const Pose2D &d) {
 }
 
 
-Rectangle makeRectangleFromLine(Pose2D L1, const Pose2D& L2, double width) {
+Rectangle makeRectangleFromLine(const Pose2D& L1, const Pose2D& L2, double width) {
     double angleBetweenPoints = L1.angleTo(L2);
     double lengthBetween = L1.distanceTo(L2);
     Pose2D head(L1);
@@ -246,3 +246,7 @@ Rectangle makeRectangleFromLine(Pose2D L1, const Pose2D& L2, double width) {
     return (Rectangle) {r1, r2, r3, head};
 }
 
+void Pose2D::multiply(double d) {
+    this->x *= d;
+    this->y *= d;
+}
