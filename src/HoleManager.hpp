@@ -11,10 +11,21 @@
 #define sideLength 0.6096 // 2 by 2 squares in feet. meters
 #define MEASUREMENT_WIDTH 0.05 // meters
 
+/**
+ * A hole manager handles holes that and the measurments that are associated with them.
+ * Wrapped class for lists of holes
+ */
 class HoleManager {
     private:
-		std::unique_ptr<std::vector<Hole>> holes;
-		std::unique_ptr<std::vector<Pose2D>> holeMeasurements;
+	/**
+	 * The holes that we have found. Calculated.
+	 */
+	std::unique_ptr<std::vector<Hole>> holes;
+
+	/**
+	 * The raw hole measurements that we have read in
+	 */
+	std::unique_ptr<std::vector<Pose2D>> holeMeasurements;
     public:
 		/**
 		 * Creats a new Hole manager

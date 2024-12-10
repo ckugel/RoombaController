@@ -8,14 +8,36 @@
 
 #include "Pose2D.hpp"
 
+/**
+ * Represents a node in a graph.
+ * Really just a wrapped for V
+ * @param V The data that the node encapsulates
+ */
 template <typename V>
 class Node {
     private:
-        V data;
+    /**
+     * The data we store
+     */
+    V data;
+
     public:
-        Node(V data);
-        V getData();
-        void SetData(V newData);
+    /**
+     * Constructs a node from given data
+     * @param data to construct the node from
+     */
+    Node(V data);
+
+    /**
+     * @return the data stored in the node
+     */
+    V getData();
+
+    /**
+     * sets the data we store in the node
+     * @param newData new data to replace current data with
+     */
+    void SetData(V newData);
 };
 
 #include "Node.cpp"

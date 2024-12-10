@@ -21,7 +21,7 @@
 #include <atomic>
 #include <sstream>
 
-#define BOT_CONNECT 1
+#define BOT_CONNECT 0
 #if BOT_CONNECT
     #define ADDRESS "192.168.1.1"
     #define PORT 288
@@ -320,7 +320,7 @@ void connectTCP(Field& field, std::mutex& fieldMutex, std::vector<Pose2D>& path)
 	if (!sendQueue.empty()) {
 	    std::string message = sendQueue.front();
 	    if (message.compare("q") == 0) {
-		stopClient.store(true);
+			stopClient.store(true);
 	    }
 	    sendQueue.pop();
 	    send(clientSocket, message.c_str(), message.length(), 0);
