@@ -49,7 +49,14 @@ class Hole {
 	 */
 	Hole(const Pose2D& positionOne, const Pose2D& positionTwo, bool foundHole, const std::vector<Pose2D>& points, double holeSize);
 
-    Hole(double x1, double y1, double x2, double y2);
+	/**
+	 * Makes  a new hole object with the given coordinates
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 */
+	Hole(double x1, double y1, double x2, double y2);
 
 	/**
 	 * Creates a new Hole object
@@ -70,7 +77,13 @@ class Hole {
 	 */
 	void registerPointsToHole(const Pose2D& positionOne, const Pose2D& positionTwo);
 
-    friend std::ostream &operator<<(std::ostream &os, const Hole &hole);
+	/**
+	 * Override output stream for printing
+	 * @param os output stream
+	 * @param hole the hole to print
+	 * @return the hole printed in the out stream
+	 */
+	friend std::ostream &operator<<(std::ostream &os, const Hole &hole);
 
     /**
      * do the whole operation and copy it into a new object for object collision
@@ -95,9 +108,17 @@ class Hole {
 	 */
 	bool pointCouldBeMemberOfHole(const Pose2D& measurment);
 
-    bool isFoundHole() const {return foundHole;}
+	/**
+	 * whether we have found a hole
+	 * @return whether we found a hole
+	 */
+	bool isFoundHole() const {return foundHole;}
 
-    [[nodiscard]] std::vector<Hole> getSubHolesCopy() const;
+	/**
+	 * get a copy of the holes within holes (measurments)
+	 * @return a vector of the holes within holes
+	 */
+	[[nodiscard]] std::vector<Hole> getSubHolesCopy() const;
 
 	/**
 	 * The deafult constructor for a hole.

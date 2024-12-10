@@ -90,6 +90,18 @@ class Pose2D {
      */
     [[nodiscard]] uint8_t getQuadrant() const;
 
+
+    /**
+     * Wraps a heading to - PI -> PI
+     */
+    void wrapHeading();
+
+    /**
+     * transforms a given pose for another's frame
+     * @param other the other frame
+     */
+    void transformForPose(const Pose2D& other);
+
     static Pose2D parseFromStream(std::istringstream& stream);
 
     /**

@@ -10,17 +10,12 @@
 #include <cstdint> 
 #include <memory>
 
-#define FIELD_LENGTH 0
-#define FIELD_WIDTH  0
-
 #include "Graph.hpp"
 #include "HoleManager.hpp"
 #include "Pose2D.hpp"
-#include "Pillar.hpp"
-#include "util.hpp"
 
-#define MAX_X 426.72
-#define MAX_Y 242.57
+#define MAX_Y 425
+#define MAX_X 250
 
 enum Cardinality {
     N = 'N',
@@ -86,10 +81,23 @@ class Field {
 
     Pose2D getDesiredDestination();
 
+    /**
+     * 
+     * @param other
+     */
     void updateDesired(const Pose2D& other);
 
+    /**
+     * set the index of the desired position to travel to IN THE GRAPH
+     * @param index the index IN the graph
+     */
     void setDesiredIndex(int32_t index);
 
+    /**
+     * round a given radius to possible radii
+     * @param radius the radius to round
+     * @return the rounded radius
+     */
     static double roundRadius(double radius) {
         const double possibleRadii[] = {5.1, 7.62, 10.16, 12.7};
         double closest = possibleRadii[0];

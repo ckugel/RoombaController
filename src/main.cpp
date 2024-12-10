@@ -21,7 +21,7 @@
 #include <atomic>
 #include <sstream>
 
-#define BOT_CONNECT 0
+#define BOT_CONNECT 1
 #if BOT_CONNECT
     #define ADDRESS "192.168.1.1"
     #define PORT 288
@@ -49,37 +49,56 @@ struct Move {
 
 std::atomic<bool> stopClient(false);
 
-
+/**
+ * Add a given string to the thread safe queue, accessed with mutexes
+ * @param message the message to add
+ */
 void addToQueue(const std::string& message) {
     // std::cout << message << std::endl;
     queueMutex.lock();
+	std::cout << message << std::endl;
     sendQueue.push(message);
     queueMutex.unlock();
 }
 
+/**
+ *
+ * @param angle the angle to send
+ */
 void sendAngleToQueue(int16_t angle) {
     char buff[8];
     sprintf(buff, "t%03d", angle);
-
-
     // std::cout << std::string(buff) << std::endl;
     sendQueue.emplace(buff);
 }
 
-void sendDistanceToQueue(uint16_t angle) {
+/**
+ * Adds an distance to a queue to be sent to the bot
+ * @param distance the distance to send
+ */
+void sendDistanceToQueue(uint16_t distance) {
     char buff[8];
-    sprintf(buff, "r%03d", angle);
+    sprintf(buff, "r%03d", distance);
     sendQueue.emplace(buff);
 }
 
+/**
+ * generate a routine from a path
+ * @param path the path to generate a routine from
+ * @param routine the routine to store into
+ */
 void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
     // start at 1 so that we can gurantee that we can look back.
-    for (uint8_t move = 1; move < ((path.size() - 1)*2); move += 2) {
+	double previousEndHeading = path[0].getHeading();
+    for (size_t move = 1; move < ((path.size() - 1)*2); move += 2) {
         // for every point we want to point and move
         Pose2D pointOld = path[move / 2];
         Pose2D pointNew = path[(move / 2) + 1];
         // angle to turn to
-        double angle = pointNew.angleTo(pointOld) + pointNew.getHeading();
+    	double newHeading = pointNew.angleTo(pointOld);
+        double angle = newHeading - previousEndHeading;
+    	previousEndHeading = newHeading;
+
         // magnitude
         double magnitude = pointNew.distanceTo(pointOld);
         routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
@@ -87,6 +106,11 @@ void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
     }
 }
 
+/**
+ * parse a path into a routine
+ * @param path the path to parse
+ * @return the routine from the path
+ */
 std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
     std::stringstream toSend;
     std::vector<Move> routine;
@@ -99,7 +123,7 @@ std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
         static char buffer[50];
         // sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
         // // routine[i] is all 0
-        sprintf(buffer, "p %0.3f %d p", routine[i].quantity, routine[i].type);
+        sprintf(buffer, " %0.3f %c ", routine[i].quantity, routine[i].type + 'a');
         toSend << std::string(buffer);
     }
 
@@ -108,6 +132,13 @@ std::string parsePathIntoRoutine(const std::vector<Pose2D>& path) {
     return toSend.str();
 }
 
+/**
+ * Read and log data that gets sent over the TCP socket
+ * @param socket the socket to listen on
+ * @param fieldMutex the mutex for the field object
+ * @param field reference to the field object
+ * @param path the path to generate
+ */
 void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Pose2D>& path) {
 	const uint16_t BUFF_SIZE = 1024;
 
@@ -181,7 +212,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Po
 			fieldMutex.lock();
 			Pillar toAdd = Pillar::parseFromStream(stream);
 			// std::cout << "x: " << toAdd.getX() << " y: " << toAdd.getY() << " radius: " << toAdd.getRadius() << std::endl;
-			toAdd.getPose().plus(field.getBotPose().getPose());
+			toAdd.getPose().transformForPose(field.getBotPose().getPose());
 			field.addPillar(toAdd);
 			fieldMutex.unlock();
 			}
@@ -207,6 +238,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Po
 			fieldMutex.lock();
 			// data is coming in the format " X Y Theta "
 			Pose2D holeMeasurment = Pose2D::parseFromStream(stream);
+			holeMeasurment.plus(field.getBotPose().getPose());
 			field.getManager().addPoint(holeMeasurment);
 			fieldMutex.unlock();
 		    }
@@ -217,7 +249,11 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Po
 			fieldMutex.lock();
 			double x1, y1, x2, y2;
 			if (stream >> x1 >> y1 >> x2 >> y2) {
-			    Hole hole(x1, y1, x2, y2);
+				Pose2D one(x1, y1);
+				Pose2D two(x2, y2);
+				one.plus(field.getBotPose().getPose());
+				two.plus(field.getBotPose().getPose());
+			    Hole hole(one, two, one.distanceTo(two) / sqrt(2));
 			    field.getManager().addHole(hole);
 			}
 			fieldMutex.unlock();
@@ -227,10 +263,12 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Po
 		    {
 			fieldMutex.lock();
 			field.updateBotPose(Pose2D::parseFromStream(stream));
+			std::cout << "recieved bot pose: " << field.getBotPose().getPose() << std::endl;
 			fieldMutex.unlock();
 		    }
 			break;
 	    default:
+	    	logFile << tag;
 			break;
 	}
 	}
@@ -244,7 +282,12 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Po
 
 }
 
-// connect to Roomba server
+/**
+ * connect to Roomba TCP server or the mock server depending on the configuration
+ * @param field reference to the field object
+ * @param fieldMutex the mutex for the field
+ * @param path reference to a generated path
+ */
 void connectTCP(Field& field, std::mutex& fieldMutex, std::vector<Pose2D>& path) {
  int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
   sockaddr_in serverAddress{
@@ -291,7 +334,10 @@ void connectTCP(Field& field, std::mutex& fieldMutex, std::vector<Pose2D>& path)
   close(clientSocket);
 }
 
-// Simple function to set up OpenGL and ImGui context
+/**
+ * Simple function to set up OpenGL and ImGui context
+ * @param window pointer to the GLFW window
+ */
 void setupImGui(GLFWwindow* window) {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -301,26 +347,64 @@ void setupImGui(GLFWwindow* window) {
     ImGui_ImplOpenGL3_Init("#version 130");
 }
 
+/**
+ * Draw a circle on the window
+ * @param drawList the drawlist for a given window
+ * @param center the center position of the circle
+ * @param radius the radus of the circle
+ * @param color the color of the circle on the screen
+ */
 void DrawCircle(ImDrawList* drawList, const ImVec2& center, float radius, ImU32 color) {
   drawList->AddCircle(center, radius, color, 0, 0.2f);
 }
 
+/**
+ * Computes a Pose2D from given screen coordinates
+ * @param coords the coordinates on the window
+ * @param offset the offset of the position of the window on the screen
+ * @param scaling the scaling factor for the window size
+ * @return
+ */
 Pose2D ScreenToCoords(ImVec2 coords, ImVec2 offset, ImVec2 scaling) {
 	double x = (coords.x - offset.x) / scaling.x;
 	double y = MAX_Y - (coords.y - offset.y) / scaling.y;
 	return {x, y};
 }
 
+/**
+ * Computes screen coordinates from Field coordinates
+ * @param offset the offset the window measuring on is at
+ * @param scaling the amount to scale by
+ * @param x the x component of the pose 2d
+ * @param y the y component of the pose 2d
+ * @return the new screen coordinates
+
+ */
 ImVec2 coordsToScreen(ImVec2 offset, ImVec2 scaling, double x, double y) {
     double xN = offset.x + (scaling.x * x);
     double yN = offset.y + (scaling.y * (MAX_Y - y));
     return ImVec2(xN, yN);
 }
 
+/**
+ * Computes screen coordinates from Field coordinates
+ * @param offset the offset the window measuring on is at
+ * @param scaling the amount to scale by
+ * @param position the position be transformed
+ * @return the new screen coordinates
+ */
 ImVec2 coordsToScreen(ImVec2 offset, ImVec2 scaling, const Pose2D& position) {
     return coordsToScreen(offset, scaling, position.getX(), position.getY());
 }
 
+/**
+ * Show a given pillar on the window.
+ * @param drawList the window to draw a pillar (circle) on
+ * @param pillar the pillar which stores the given position and radius
+ * @param color the color to draw it as
+ * @param offset the offset of the window
+ * @param scaling the sizing ration for the window
+ */
 void ShowPillarOnWindow(ImDrawList* drawList, Pillar pillar, ImU32 color, ImVec2 offset, ImVec2 scaling) {
 	ImVec2 center = coordsToScreen(offset, scaling, pillar.getPose());
 	float radius = pillar.getRadius() * 2.5;
@@ -355,6 +439,14 @@ void drawBotPose(ImDrawList* drawList, const Pose2D& botPose, ImVec2 offset, ImV
     drawList->AddTriangle(p1, p2, p3, color);
 }
 
+/**
+ * Draw a rectangle on the field given by the critical points p1 and p2
+ * @param drawList the draw list for the window to draw on
+ * @param offset the offset of the window
+ * @param scaling the size scaling
+ * @param p1 point one
+ * @param p2 point two (opposite corner)
+ */
 void drawRectangle(ImDrawList* drawList, ImVec2 offset, ImVec2 scaling, const Pose2D& p1, const Pose2D& p2) {
     // const Pose2D MinPosition = Pose2D(std::min(p1.getX(), p2.getX()), std::min(p1.getY(), p2.getY()));
     // const Pose2D MaxPosition = Pose2D(std::max(p1.getX(), p2.getX()), std::max(p1.getY(), p2.getY()));
@@ -376,6 +468,14 @@ void drawRectangle(ImDrawList* drawList, ImVec2 offset, ImVec2 scaling, const Po
     drawList->AddQuadFilled(m1, m3, m2, m4, IM_COL32(255, 165, 0, 170));
 }
 
+/**
+ * Show the field window on a new window
+ * @param pillarsMutex the mutex for pillars
+ * @param path the path to display
+ * @param field the field object
+ * @param showNodes whether to show nodes or not (atomic reference)
+ * @param showEdges  whether to show edges of the graph or not (atmoic reference)
+ */
 void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field& field, std::atomic<bool>& showNodes, std::atomic<bool>& showEdges) {
 	ImGui::Begin("Field");
     
@@ -465,7 +565,10 @@ void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field&
 }
 
 
-
+/**
+ * The main function where the program starts
+ * @return status code of how the program executed
+ */
 int main() {
   if (!glfwInit()) return -1;
     GLFWwindow* window = glfwCreateWindow(1880, 900, "Roomba Dashboard", nullptr, nullptr);
@@ -482,6 +585,9 @@ int main() {
     showNodes.store(false);
     std::atomic<bool> showEdges;
     showEdges.store(false);
+
+	char buffer[100];
+	size_t buffPtr = 0;
 
     std::mutex pillarsMutex;
     std::vector<Pose2D> path;
@@ -577,6 +683,19 @@ int main() {
 
 	ImGui::SliderAngle("Turn angle", &angleSend);
 
+    	ImGui::InputText("message: ", buffer, 100);
+
+	if (ImGui::Button("send component")) {
+		addToQueue(std::string(1, buffer[0]));
+		for (size_t i = 0; i < 99; i++) {
+			if (buffer[i] == 0) {
+				buffPtr = std::min((long) 0, (long) i - 1);
+				break;
+			}
+			std::swap(buffer[i], buffer[i + 1]);
+		}
+		buffer[buffPtr] = 0;
+	}
 
 	if (ImGui::Button("Send turn")) {
 	  sendAngleToQueue((int16_t) (angleSend * 180 / M_PI));

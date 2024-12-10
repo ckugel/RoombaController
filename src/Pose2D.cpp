@@ -91,6 +91,12 @@ double Pose2D::squareOfDistanceTo(const Pose2D& other) const {
   return pow(other.x -this->x, 2) + pow(other.y - this->y, 2);
 }
 
+void Pose2D::transformForPose(const Pose2D& other) {
+    rotateByPose(other);
+    this->x += other.x;
+    this->y += other.y;
+}
+
 void Pose2D::plus(const Pose2D& other) {
     this->x += other.x;
     this->y += other.y;
@@ -224,6 +230,18 @@ double Pose2D::dotProduct(const Pose2D& other) const {
 std::ostream &operator<<(std::ostream &os, const Pose2D &d) {
     os << "x: " << d.x << " y: " << d.y << " heading: " << d.heading;
     return os;
+}
+
+void Pose2D::wrapHeading() {
+    heading = fmod(heading, 2 * M_PI);
+
+    if (heading > M_PI) {
+        heading -= 2 * M_PI;
+    }
+
+    if (heading < - M_PI) {
+        heading += 2 * M_PI;
+    }
 }
 
 

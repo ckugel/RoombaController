@@ -119,8 +119,8 @@ bool Field::validLocationForNode(const Pose2D& location) {
     if (outOfBounds(location)) {
         return false;
     }
-	for (uint8_t i = 0; i < pillars->size(); i++) {
-		if (pillars->at(i).getPose().distanceTo(location) < pillars->at(i).getRadius() + BOT_RADIUS) {
+	for (auto & i : *pillars) {
+		if (i.getPose().distanceTo(location) < i.getRadius() + BOT_RADIUS) {
 			return false;
 		}
     }
@@ -177,12 +177,14 @@ void Field::addPillar(Pillar& newPillar) {
 }
 
 void Field::updateBotPose(const Pose2D& updatedPosition) {
-    this->botPose.setPosition(updatedPosition);
+    Pose2D position(updatedPosition);
+    position.wrapHeading();
+    this->botPose.setPosition(position);
     if (!graph.getNodes().empty()) {
-        graph.getNodes()[0]->SetData(updatedPosition);
+        graph.getNodes()[0]->SetData(position);
     }
     else {
-        graph.addNode(new Node<Pose2D>(updatedPosition));
+        graph.addNode(new Node<Pose2D>(position));
     }
 }
 
