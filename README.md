@@ -47,3 +47,8 @@ Can be found under the WIKI tab and How To Communicate with
 
 # Screen shots of what the app looks like
 ![image](https://github.com/user-attachments/assets/1c1d741a-956f-4118-9f68-b6061a3ca88b)
+
+![BoundsDetectionAndObjectAvoidance](https://github.com/user-attachments/assets/f6b1d3b7-eba9-49c1-acd1-93ad12416681)
+![simplePath](https://github.com/user-attachments/assets/66ec83b2-8f73-4eae-95d7-3a7d709de150)
+![edges](https://github.com/user-attachments/assets/5fa615ea-e816-4b13-b695-5632c97f06c3)
+
