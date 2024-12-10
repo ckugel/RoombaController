@@ -101,9 +101,19 @@ void pathToRoutine(std::vector<Pose2D> path, std::vector<Move>& routine) {
 
         // magnitude
         double magnitude = pointNew.distanceTo(pointOld);
-        routine.push_back((Move) {.quantity = angle, .type = TURN_TO_ANGLE});
+        routine.push_back((Move) {.quantity = angle + M_PI, .type = TURN_TO_ANGLE});
         routine.push_back((Move) {.quantity = magnitude, .type = MOVE_FORWARD_SMART});
     }
+}
+
+void send_move(Move move) {
+		std::stringstream toSend;
+        static char buffer[50];
+        // sprintf(buffer, "p %0.3f %0.3f " , path[i].getX(), path[i].getY());
+        // // routine[i] is all 0
+        sprintf(buffer, " %0.3f %c ", move.quantity, move.type + 'a');
+        toSend << std::string(buffer);
+		addToQueue(toSend.str());
 }
 
 /**
@@ -177,9 +187,12 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Po
 
                 path.clear();
                 std::vector<Pose2D> pathOne = field.makePath();
-                for (uint16_t i = 0; i < pathOne.size(); i++) {
+                for (uint16_t i = 0; i < 2; i++) {
                     path.push_back(pathOne[i]);
                 }
+
+	    	//	std::this_thread::sleep_for(std::chrono::milliseconds(1250));
+	    	    // addToQueue(parsePathIntoRoutine(path));
 
                 /*
                 Pose2D oldCenter = field.getDesiredDestination();
@@ -262,6 +275,7 @@ void readAndLog(int socket, std::mutex& fieldMutex, Field& field, std::vector<Po
 		case 'b':
 		    {
 			fieldMutex.lock();
+			field.clearField();
 			field.updateBotPose(Pose2D::parseFromStream(stream));
 			std::cout << "recieved bot pose: " << field.getBotPose().getPose() << std::endl;
 			fieldMutex.unlock();
@@ -481,11 +495,11 @@ void ShowFieldWindow(std::mutex* pillarsMutex, std::vector<Pose2D>& path, Field&
     
     ImDrawList* drawList = ImGui::GetWindowDrawList();
 	ImVec2 windowSize(MAX_X * 2.5, MAX_Y * 2.5);
-	ImGui::SetWindowSize(windowSize);
+	// ImGui::SetWindowSize(windowSize);
     ImVec2 windowPos = ImGui::GetWindowPos();
-	windowPos.x += windowSize.x / 100;
-	windowPos.y += windowSize.y / 100;
-    ImVec2 offset =  ImVec2(windowPos.x + windowSize.x / 50, windowPos.y - windowSize.y / 50);
+//	windowPos.x += windowSize.x / 100;
+//	windowPos.y += windowSize.y / 100;
+    ImVec2 offset =  ImVec2(windowPos.x, windowPos.y);
     ImVec2 scalingFactor = ImVec2(windowSize.x / MAX_X, windowSize.y / MAX_Y);
     
     pillarsMutex->lock();
@@ -655,6 +669,11 @@ int main() {
             if (ImGui::RadioButton("Show edges", false)) {
                 showEdges.store(!showEdges.load());
             }
+
+        	if (ImGui::Button("spin")) {
+        		Move move = {.quantity = M_PI, .type = TURN_TO_ANGLE};
+        		send_move(move);
+        	}
         }
 
         if (ImGui::Button("Generate path")) {

@@ -116,9 +116,11 @@ std::vector<Pose2D> Field::makePath() {
 }
 
 bool Field::validLocationForNode(const Pose2D& location) {
+/*
     if (outOfBounds(location)) {
         return false;
     }
+    */
 	for (auto & i : *pillars) {
 		if (i.getPose().distanceTo(location) < i.getRadius() + BOT_RADIUS) {
 			return false;
@@ -137,6 +139,7 @@ HoleManager& Field::getManager() {
 
 void Field::clearField() {
     this->pillars->clear();
+    this->graph.clear();
 }
 
 std::unique_ptr<std::vector<Pillar>> Field::getPillars() {

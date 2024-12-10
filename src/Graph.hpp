@@ -61,6 +61,8 @@ class Graph {
 
 	std::vector<Node<V>*> getNodes();
 
+	void clear();
+
 	// void playGround();
 
         Graph();

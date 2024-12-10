@@ -395,3 +395,9 @@ void Graph<V>::removeNode(size_t index) {
     nodes.erase(nodes.begin() + index);
     resize();
 }
+
+template <typename V>
+void Graph<V>::clear() {
+    nodes.clear();
+    matrix.clear();
+}
