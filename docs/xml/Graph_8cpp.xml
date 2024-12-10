@@ -1,0 +1,510 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="Graph_8cpp" kind="file" language="C++">
+    <compoundname>Graph.cpp</compoundname>
+    <includes refid="Graph_8hpp" local="yes">Graph.hpp</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">queue</includes>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">ctime</includes>
+    <includes local="yes">limits.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Graph.cpp</label>
+        <link refid="Graph_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Graph.hpp</label>
+        <link refid="Graph_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Node.cpp</label>
+        <link refid="Node_8cpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Node.hpp</label>
+        <link refid="Node_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Pose2D.hpp</label>
+        <link refid="Pose2D_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>cmath</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="15">
+        <label>cstdlib</label>
+      </node>
+      <node id="16">
+        <label>ctime</label>
+      </node>
+      <node id="13">
+        <label>iostream</label>
+      </node>
+      <node id="17">
+        <label>limits.h</label>
+      </node>
+      <node id="12">
+        <label>map</label>
+      </node>
+      <node id="8">
+        <label>ostream</label>
+      </node>
+      <node id="14">
+        <label>queue</label>
+      </node>
+      <node id="7">
+        <label>sstream</label>
+      </node>
+      <node id="10">
+        <label>stack</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>caleb<sp/>on<sp/>11/9/21.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Graph_8hpp" kindref="compound">Graph.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;queue&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;limits.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="14" refid="classGraph_1a2a55c5945db5ce95020dd32e3df0f094" refkind="member"><highlight class="normal"><ref refid="classGraph_1a2a55c5945db5ce95020dd32e3df0f094" kindref="member">Graph&lt;V&gt;::Graph</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;double&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">temp</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">temp</ref>.push_back(0);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">temp</ref>.push_back(0);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>matrix.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">temp</ref>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>matrix.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">temp</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">template&lt;typename<sp/>V&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">void<sp/>Graph&lt;V&gt;::playGround()<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/><sp/><sp/>Node&lt;V&gt;<sp/>*tempNode<sp/>=<sp/>new<sp/>Node&lt;V&gt;(0);</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(tempNode);</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/><sp/>//<sp/>srand(time(0));</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(1),<sp/>nodes[0],<sp/>2);</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(2),<sp/>nodes[1],<sp/>1);</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(3),<sp/>nodes[2],<sp/>3);</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(4),<sp/>nodes[0],<sp/>2);</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/><sp/>addConnection(nodes[4],<sp/>nodes[2],<sp/>3);</highlight></codeline>
+<codeline lineno="34" refid="classGraph_1a8663524ab6962890aa72d2e146453caf" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(5),<sp/>nodes[1],<sp/>2);</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(6),<sp/>nodes[1],<sp/>1);</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/>addConnection(nodes[5],<sp/>nodes[3],<sp/>7);</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(7),<sp/>nodes[2],<sp/>5);</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(8),<sp/>nodes[6],<sp/>5);</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/>addConnection(nodes[8],<sp/>nodes[3],<sp/>3);</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/>addNode(new<sp/>Node&lt;V&gt;(9),<sp/>nodes[8],<sp/>1);</highlight></codeline>
+<codeline lineno="41" refid="classGraph_1ae83f3bc4bc54319051c7193039a5f00a" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/>addConnection(nodes[9],<sp/>nodes[7],<sp/>8);</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"></highlight></codeline>
+<codeline lineno="43"><highlight class="comment"></highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/>head<sp/>=<sp/>nodes[0];</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment"></highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/>//<sp/>printOut();</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"></highlight></codeline>
+<codeline lineno="49" refid="classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/>printAdjacent(head);</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"></highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/>path<sp/>=<sp/>Dijkstra(nodes[7]);</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"></highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;goal:<sp/>&quot;<sp/>&lt;&lt;<sp/>nodes[7]-&gt;getData()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"></highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;\n\n\n<sp/>Path:<sp/>&quot;;</highlight></codeline>
+<codeline lineno="58" refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/>if<sp/>(!path.empty())<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>looper<sp/>=<sp/>0;<sp/>looper<sp/>&lt;<sp/>path.size();<sp/>looper++)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(looper<sp/>!=<sp/>path.size()<sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>nodeMap.at(path[looper])<sp/>&lt;&lt;<sp/>&quot;-&gt;&quot;;</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>nodeMap.at(path[looper]);</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68" refid="classGraph_1a7d0579f73520bb804c277fb3ae4ba890" refkind="member"><highlight class="comment"></highlight></codeline>
+<codeline lineno="69"><highlight class="comment">/*<sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;\n\n\n<sp/>Vals:<sp/>&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nodes.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/>&quot;<sp/>-&gt;<sp/>&quot;<sp/>&lt;&lt;<sp/>nodes[i]<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/>}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classGraph_1ad4acb5e274229a273f12d940bb4029a1" refkind="member"><highlight class="normal"></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="79" refid="classGraph_1a8663524ab6962890aa72d2e146453caf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a8663524ab6962890aa72d2e146453caf" kindref="member">Graph&lt;V&gt;::resize</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>matrix.resize(nodes.size());</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::vector&lt;double&gt;&amp;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>:<sp/>matrix)<sp/>{</highlight></codeline>
+<codeline lineno="82" refid="classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>.resize(nodes.size());</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="87" refid="classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b" kindref="member">Graph&lt;V&gt;::contains</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">node</ref>,<sp/>std::vector&lt;<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">listOfNodes</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>=<sp/>0;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>&lt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">listOfNodes</ref>.size();<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>++)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">node</ref><sp/>==<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">listOfNodes</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>])<sp/>{</highlight></codeline>
+<codeline lineno="90" refid="classGraph_1a38d9119ee08708322eb5908fac0f244f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="97" refid="classGraph_1a6000c589daea5f4984d10d09877ad149" refkind="member"><highlight class="normal">std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1af1568475acf410ff0d52a2d756929064" kindref="member">Graph&lt;V&gt;::getNodes</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;nodes;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="102" refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" kindref="member">Graph&lt;V&gt;::addNode</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">newNode</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(contains(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">newNode</ref>,<sp/>nodes))<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>head<sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">newNode</ref>;</highlight></codeline>
+<codeline lineno="105" refid="classGraph_1a313a06ec39a21b723f7f0a76c035b8c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>nodes.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">newNode</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>nodeMap[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">newNode</ref>]<sp/>=<sp/>nodes.size()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>resize();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="111" refid="classGraph_1a7d0579f73520bb804c277fb3ae4ba890" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" kindref="member">Graph&lt;V&gt;::addNode</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nextNode</ref>,<sp/>std::vector&lt;<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacentNodes</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">weight</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>addNode(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nextNode</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>=<sp/>0;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>&lt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacentNodes</ref>.size();<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>++)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!contains(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacentNodes</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>],<sp/>nodes))<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodes.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacentNodes</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>]);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeMap[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacentNodes</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>]]<sp/>=<sp/>nodes.size()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="117" refid="classGraph_1a307d8095432434d7e28cfba1bba884cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resize();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currNodeNum<sp/>=<sp/>nodeMap.at(nextNode);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nextNodeNum<sp/>=<sp/>nodeMap.at(adjacentNodes[looper]);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matrix[currNodeNum][nextNodeNum]<sp/>=<sp/>weight;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matrix[nextNodeNum][currNodeNum]<sp/>=<sp/>weight;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125" refid="classGraph_1a959dfd987107a8848c1c5c5da9f5e776" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="127" refid="classGraph_1ad4acb5e274229a273f12d940bb4029a1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" kindref="member">Graph&lt;V&gt;::addNode</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nextNode</ref>,<sp/>std::vector&lt;<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacentNodes</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>addNode(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nextNode</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacentNodes</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classGraph_1a452eeb65d902b4a95c0e8411885b4bc5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="132" refid="classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" kindref="member">Graph&lt;V&gt;::addNode</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nextNode</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nodeITSLATE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nodeITSLATE</ref>);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>addNode(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nextNode</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classGraph_1a4969a395490f7e67cc70a7feb58a0b54" refkind="member"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="139"><highlight class="comment">template&lt;typename<sp/>V&gt;</highlight></codeline>
+<codeline lineno="140"><highlight class="comment">void<sp/>Graph&lt;V&gt;::printOut()<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>looper<sp/>=<sp/>0;<sp/>looper<sp/>&lt;<sp/>nodes.size();<sp/>looper++)<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(looper<sp/>!=<sp/>nodes.size()<sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="143" refid="classGraph_1af1568475acf410ff0d52a2d756929064" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>nodes[looper]-&gt;getData()<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;;</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>nodes[looper]-&gt;getData();</highlight></codeline>
+<codeline lineno="147" refid="classGraph_1a2a55c5945db5ce95020dd32e3df0f094" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"></highlight></codeline>
+<codeline lineno="151" refid="classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>anotherLoop<sp/>=<sp/>0;<sp/>anotherLoop<sp/>&lt;<sp/>nodes.size();<sp/>anotherLoop++)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;-&quot;;</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"></highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>matrix.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>matrix[i].size();<sp/>ii++)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(ii<sp/>!=<sp/>matrix.size()<sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>matrix[i][ii]<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;;</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>matrix[i][ii];</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;\n\n\n&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="168"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="169"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="172" refid="classGraph_1a4969a395490f7e67cc70a7feb58a0b54" refkind="member"><highlight class="normal">std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a4969a395490f7e67cc70a7feb58a0b54" kindref="member">Graph&lt;V&gt;::getAdj</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">next</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacent</ref>;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">index</ref><sp/>=<sp/>nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">next</ref>);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>=<sp/>0;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>&lt;<sp/>matrix.size();<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>++)<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(matrix[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">index</ref>][<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>]<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacent</ref>.push_back(nodes[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>]);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adjacent</ref>;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="185" refid="classGraph_1a4abe34d5dda78d4055a3098773140325" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a4abe34d5dda78d4055a3098773140325" kindref="member">Graph&lt;V&gt;::setHead</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">index</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>head<sp/>=<sp/>getNodes()[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">index</ref>];</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="191" refid="classGraph_1a959dfd987107a8848c1c5c5da9f5e776" refkind="member"><highlight class="normal">std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a959dfd987107a8848c1c5c5da9f5e776" kindref="member">Graph&lt;V&gt;::Dijkstra</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">from</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">find</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">thing</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">from</ref><sp/>==<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">find</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;was<sp/>head&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">thing</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;bool&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">visited</ref>;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">visited</ref>.resize(nodes.size());</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">distances</ref>[nodes.size()];</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">filler</ref><sp/>=<sp/>0;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">filler</ref><sp/>&lt;<sp/>nodes.size();<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">filler</ref>++)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">visited</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">filler</ref>]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">distances</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">filler</ref>]<sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">UINT_MAX</ref>;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">distances</ref>[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>std::priority_queue&lt;pair,<sp/>std::vector&lt;pair&gt;,<sp/><ref refid="structGraph_1_1CustomCompare" kindref="compound">CustomCompare</ref>&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">queue</ref>;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">temp</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">temp</ref>.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">from</ref>);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">queue</ref>.push(std::pair&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">,<sp/>std::vector&lt;<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*&gt;&gt;(0,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">temp</ref>));</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">uint64_t</ref><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">iterations</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">queue</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">iterations</ref>++;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">path</ref><sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">queue</ref>.top().second;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">curr</ref><sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">path</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">path</ref>.size()<sp/>-<sp/>1];</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">currentDistance</ref><sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">queue</ref>.top().first;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">queue</ref>.pop();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">visited</ref>[nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">curr</ref>)]<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">find</ref><sp/>==<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">curr</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;\n\nDistance:<sp/>&quot;<sp/>&lt;&lt;<sp/>currentDistance<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">iterations</ref><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">path</ref>;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref><sp/>=<sp/>getAdj(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">curr</ref>);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>=<sp/>0;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref><sp/>&lt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>.size();<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>++)<sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">possiblePath</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">i</ref><sp/>=<sp/>0;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">i</ref><sp/>&lt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">path</ref>.size();<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">i</ref>++)<sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">possiblePath</ref>.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">path</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">i</ref>]);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>printAdjacent(curr);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">visited</ref>[nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>])]<sp/>&amp;&amp;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">currentDistance</ref><sp/>+<sp/>matrix[nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">curr</ref>)][nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>])]<sp/>&lt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">distances</ref>[nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>])])<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">distances</ref>[nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>])]<sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">currentDistance</ref><sp/>+<sp/>matrix[nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">curr</ref>)][nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>])];</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">possiblePath</ref>.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>]);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">queue</ref>.push(std::pair&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">,<sp/>std::vector&lt;<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*&gt;&gt;(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">currentDistance</ref><sp/>+<sp/>matrix[nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">curr</ref>)][nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">looper</ref>])],<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">possiblePath</ref>));</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">thing</ref><sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">path</ref>;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;ATTEMPT<sp/>TO<sp/>RETURN<sp/>SIZE:<sp/>&quot;<sp/>&lt;&lt;<sp/>thing.size()<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>delete<sp/>queue;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>delete[]<sp/>distances;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">iterations</ref><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">thing</ref>;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="254" refid="classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c" refkind="member"><highlight class="normal"><ref refid="classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c" kindref="member">Graph&lt;V&gt;::~Graph</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>delete<sp/>all<sp/>connections<sp/>and<sp/>nodes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref>*<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">node</ref><sp/>:<sp/>nodes)<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">node</ref>;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="262" refid="classGraph_1a452eeb65d902b4a95c0e8411885b4bc5" refkind="member"><highlight class="normal">std::vector&lt;std::vector&lt;double&gt;&gt;<sp/><ref refid="classGraph_1a452eeb65d902b4a95c0e8411885b4bc5" kindref="member">Graph&lt;V&gt;::getAdjacencyList</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>matrix;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="267" refid="classGraph_1a38d9119ee08708322eb5908fac0f244f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a38d9119ee08708322eb5908fac0f244f" kindref="member">Graph&lt;V&gt;::addConnection</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">one</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">two</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">weight</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">oneIndex</ref><sp/>=<sp/>nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">one</ref>);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">twoIndex</ref><sp/>=<sp/>nodeMap.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">two</ref>);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>matrix[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">oneIndex</ref>][<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">twoIndex</ref>]<sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">weight</ref>;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>matrix[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">twoIndex</ref>][<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">oneIndex</ref>]<sp/>=<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">weight</ref>;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="277" refid="classGraph_1a6000c589daea5f4984d10d09877ad149" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a38d9119ee08708322eb5908fac0f244f" kindref="member">Graph&lt;V&gt;::addConnection</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">one</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">two</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>addConnection(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">one</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">two</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="282" refid="classGraph_1a313a06ec39a21b723f7f0a76c035b8c1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" kindref="member">Graph&lt;V&gt;::addNode</ref>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nextNode</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">Node&lt;V&gt;</ref><sp/>*<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nodeITSLATE</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">weight</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>.push_back(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nodeITSLATE</ref>);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>addNode(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nextNode</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">adj</ref>,<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">weight</ref>);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="289" refid="classGraph_1ae83f3bc4bc54319051c7193039a5f00a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1ae83f3bc4bc54319051c7193039a5f00a" kindref="member">Graph&lt;V&gt;::numVisited</ref>(std::vector&lt;bool&gt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">listOfBools</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">counter</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">i</ref><sp/>=<sp/>0;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">i</ref><sp/>&lt;<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">listOfBools</ref>.size();<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">i</ref>++)<sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">listOfBools</ref>[<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">i</ref>])<sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">counter</ref>++;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">counter</ref>;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="300"><highlight class="comment">template&lt;typename<sp/>V&gt;</highlight></codeline>
+<codeline lineno="301"><highlight class="comment">void<sp/>Graph&lt;V&gt;::printAdjacent(Node&lt;V&gt;*<sp/>next)<sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="comment"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/>list<sp/>=<sp/>getAdj(next);</highlight></codeline>
+<codeline lineno="303"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;current:<sp/>&quot;<sp/>&lt;&lt;<sp/>next-&gt;getData()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="304"><highlight class="comment"></highlight></codeline>
+<codeline lineno="305"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Adjacent<sp/>nodes:<sp/>&quot;;</highlight></codeline>
+<codeline lineno="306"><highlight class="comment"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>looper<sp/>=<sp/>0;<sp/>looper<sp/>&lt;<sp/>list.size();<sp/>looper++)<sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>nodeMap.at(list[looper]);</highlight></codeline>
+<codeline lineno="308"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(looper<sp/>!=<sp/>list.size()<sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="309"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;;</highlight></codeline>
+<codeline lineno="310"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="311"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="312"><highlight class="comment"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="313"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="314"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="316"><highlight class="comment">template&lt;typename<sp/>V&gt;<sp/></highlight></codeline>
+<codeline lineno="317"><highlight class="comment">std::vector&lt;Node&lt;V&gt;*&gt;<sp/>Graph&lt;V&gt;::FrugalKugel(Node&lt;V&gt;*<sp/>find,<sp/>unsigned<sp/>int<sp/>steps)<sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="comment"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/>toReturn;</highlight></codeline>
+<codeline lineno="319"><highlight class="comment"><sp/><sp/><sp/><sp/>if<sp/>(head<sp/>==<sp/>find)<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>toReturn;</highlight></codeline>
+<codeline lineno="321"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="322"><highlight class="comment"><sp/><sp/><sp/><sp/>std::vector&lt;bool&gt;<sp/>visited;</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"><sp/><sp/><sp/><sp/>visited.resize(nodes.size());</highlight></codeline>
+<codeline lineno="324"><highlight class="comment"><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>distances[nodes.size()];</highlight></codeline>
+<codeline lineno="325"><highlight class="comment"></highlight></codeline>
+<codeline lineno="326"><highlight class="comment"><sp/><sp/><sp/><sp/>//<sp/>set<sp/>distances<sp/>except<sp/>for<sp/>the<sp/>first<sp/>one<sp/>to<sp/>infinity</highlight></codeline>
+<codeline lineno="327"><highlight class="comment"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>filler<sp/>=<sp/>1;<sp/>filler<sp/>&lt;<sp/>nodes.size();<sp/>filler++)<sp/>{</highlight></codeline>
+<codeline lineno="328"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>distances[filler]<sp/>=<sp/>UINT_MAX;</highlight></codeline>
+<codeline lineno="329"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="330"><highlight class="comment"><sp/><sp/><sp/><sp/>distances[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="331"><highlight class="comment"></highlight></codeline>
+<codeline lineno="332"><highlight class="comment"><sp/><sp/><sp/><sp/>//<sp/>setup<sp/>a<sp/>prioirty<sp/>queue</highlight></codeline>
+<codeline lineno="333"><highlight class="comment"><sp/><sp/><sp/><sp/>std::priority_queue&lt;pair,<sp/>std::vector&lt;pair&gt;,<sp/>CustomCompare&gt;<sp/>queue;</highlight></codeline>
+<codeline lineno="334"><highlight class="comment"><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/>temp;</highlight></codeline>
+<codeline lineno="335"><highlight class="comment"><sp/><sp/><sp/><sp/>temp.push_back(head);</highlight></codeline>
+<codeline lineno="336"><highlight class="comment"><sp/><sp/><sp/><sp/>queue.push(std::pair&lt;unsigned<sp/>int,<sp/>std::vector&lt;Node&lt;V&gt;*&gt;&gt;(0,<sp/>temp));</highlight></codeline>
+<codeline lineno="337"><highlight class="comment"></highlight></codeline>
+<codeline lineno="338"><highlight class="comment"><sp/><sp/><sp/><sp/>while<sp/>(!queue.empty())<sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>get<sp/>the<sp/>path<sp/>from<sp/>the<sp/>top<sp/>of<sp/>the<sp/>queue</highlight></codeline>
+<codeline lineno="340"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/>path<sp/>=<sp/>queue.top().second;</highlight></codeline>
+<codeline lineno="341"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>get<sp/>the<sp/>most<sp/>recent<sp/>item<sp/>added<sp/>to<sp/>the<sp/>path</highlight></codeline>
+<codeline lineno="342"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Node&lt;V&gt;*<sp/>curr<sp/>=<sp/>path[path.size()<sp/>-<sp/>1];</highlight></codeline>
+<codeline lineno="343"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>currentDistance<sp/>=<sp/>queue.top().first;</highlight></codeline>
+<codeline lineno="344"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>remove<sp/>the<sp/>current<sp/>path<sp/>from<sp/>the<sp/>PQ</highlight></codeline>
+<codeline lineno="345"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue.pop();</highlight></codeline>
+<codeline lineno="346"><highlight class="comment"></highlight></codeline>
+<codeline lineno="347"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>visited[nodeMap.at(curr)]<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="348"><highlight class="comment"></highlight></codeline>
+<codeline lineno="349"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>found<sp/>the<sp/>goal<sp/>node</highlight></codeline>
+<codeline lineno="350"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(find<sp/>==<sp/>curr)<sp/>{</highlight></codeline>
+<codeline lineno="351"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;\nDistance:<sp/>&quot;<sp/>&lt;&lt;<sp/>currentDistance<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="352"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>path;</highlight></codeline>
+<codeline lineno="353"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="354"><highlight class="comment"></highlight></codeline>
+<codeline lineno="355"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;&amp;<sp/>adj<sp/>=<sp/>nodes[nodeMap.at(curr)];</highlight></codeline>
+<codeline lineno="356"><highlight class="comment"></highlight></codeline>
+<codeline lineno="357"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>looper<sp/>=<sp/>0;<sp/>looper<sp/>&lt;<sp/><sp/>adj.size();<sp/>looper++)<sp/>{</highlight></codeline>
+<codeline lineno="358"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(adj[looper]<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;V&gt;*&gt;<sp/>possiblePath;</highlight></codeline>
+<codeline lineno="360"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>copy<sp/>over<sp/>every<sp/>element<sp/>from<sp/>path</highlight></codeline>
+<codeline lineno="361"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>path.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>possiblePath.push_back(path[i]);</highlight></codeline>
+<codeline lineno="363"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="364"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>print<sp/>the<sp/>adjacent<sp/>nodes</highlight></codeline>
+<codeline lineno="365"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printAdjacent(curr);</highlight></codeline>
+<codeline lineno="366"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>cache<sp/>the<sp/>index</highlight></codeline>
+<codeline lineno="367"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>index<sp/>=<sp/>nodeMap.at(adj[looper]);</highlight></codeline>
+<codeline lineno="368"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>the<sp/>weight<sp/>between<sp/>the<sp/>current<sp/>node<sp/>and<sp/>the<sp/>node<sp/>we<sp/>ate<sp/>checking</highlight></codeline>
+<codeline lineno="369"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>tempDistance<sp/><sp/>=<sp/>((path.size()<sp/>&lt;<sp/>2)<sp/>?<sp/>INT_MAX<sp/>:<sp/>matrix[nodeMap.at(curr)][index]);</highlight></codeline>
+<codeline lineno="370"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>sumDistance<sp/>=<sp/>tempDistance<sp/>+<sp/>currentDistance;</highlight></codeline>
+<codeline lineno="371"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>checks<sp/>if<sp/>we<sp/>have<sp/>visited<sp/>the<sp/>node<sp/>we<sp/>are<sp/>inspecting,<sp/>the<sp/>distance<sp/>is<sp/>less<sp/>than<sp/>the<sp/>cirrent<sp/>distance,<sp/>and</highlight></codeline>
+<codeline lineno="372"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!visited[index]<sp/>&amp;&amp;<sp/>sumDistance<sp/>&lt;<sp/>distances[index])<sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>distances[index]<sp/>=<sp/>sumDistance;</highlight></codeline>
+<codeline lineno="374"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>possiblePath.push_back(adj[looper]);</highlight></codeline>
+<codeline lineno="375"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue.push(std::pair&lt;unsigned<sp/>int,<sp/>std::vector&lt;Node&lt;V&gt;*&gt;&gt;(sumDistance,<sp/>possiblePath));</highlight></codeline>
+<codeline lineno="376"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="377"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="378"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="379"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>toReturn<sp/>=<sp/>path;</highlight></codeline>
+<codeline lineno="380"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="comment"><sp/><sp/><sp/><sp/>delete<sp/>queue;</highlight></codeline>
+<codeline lineno="382"><highlight class="comment"><sp/><sp/><sp/><sp/>delete[]<sp/>distances;</highlight></codeline>
+<codeline lineno="383"><highlight class="comment"><sp/><sp/><sp/><sp/>return<sp/>toReturn;</highlight></codeline>
+<codeline lineno="384"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="385"><highlight class="comment"></highlight></codeline>
+<codeline lineno="386"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="390" refid="classGraph_1a307d8095432434d7e28cfba1bba884cb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a307d8095432434d7e28cfba1bba884cb" kindref="member">Graph&lt;V&gt;::removeNode</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">index</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">index</ref><sp/>&gt;=<sp/>nodes.size())<sp/>{</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>nodes.at(<ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">index</ref>);</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>nodes.erase(nodes.begin()<sp/>+<sp/><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">index</ref>);</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/>resize();</highlight></codeline>
+<codeline lineno="397"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp"/>
+  </compounddef>
+</doxygen>

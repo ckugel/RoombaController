@@ -1,0 +1,779 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classField" xml:lang="en-US">
+<title>Field Class Reference</title>
+<indexterm><primary>Field</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Field.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classField_1a0cb97f5f6abc65f46f80a9db40a05f89">Field</link> (const std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &amp;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>, const <link linkend="_classPose2D">Pose2D</link> &amp;<link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link>, const <link linkend="_classPillar">Pillar</link> &amp;<link linkend="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4">botPose</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classField_1a2cbf1be1f006dce87a5f7f9c16f250dc">Field</link> (const std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &amp;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>, const <link linkend="_classPose2D">Pose2D</link> &amp;<link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classField_1a3e804c92273d9159f413f227b535c672">Field</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classField_1a5d6ee1de8a4bf615a3eb2b0ed080479d">Field</link> (const std::unique_ptr&lt; std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &gt; &amp;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>, const <link linkend="_classPose2D">Pose2D</link> &amp;desired_destination, const <link linkend="_classPillar">Pillar</link> &amp;bot_pose, const <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1aba8449d9e693a3542f37c223099464d9">addEdgeMeasurement</link> (double rawPosition, <link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5">Cardinality</link> cardinality)</para>
+</listitem>
+            <listitem><para><link linkend="_classHoleManager">HoleManager</link> &amp; <link linkend="_classField_1a87df29e3618d42c11b886bbcf07b1453">getManager</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1ae3ce826773c17f1e987af8ee4fb64269">applyOffsetToEdge</link> (double x, double y)</para>
+</listitem>
+            <listitem><para>int32_t <link linkend="_classField_1a076b4e7297f788e933b4ee824b930473">getDesiredIndex</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1a753a1dbb8d1e8b6159309bdfeec3d1f1">clearField</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph">Graph</link>&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp; <link linkend="_classField_1ae20c991c2df6d7e863458e181b683140">getGraph</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classPillar">Pillar</link> <link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">getBotPose</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1a3e9096a686ffb177056e24dfb920a610">discretizeGraph</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1ab1945d8274ee391ea813863aa94c5d52">weightGraph</link> ()</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; <link linkend="_classField_1aa988c5de70875dd81c766c9429a4b986">makePath</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1a890d7140a600bed6eb18a549b1a0faf9">addPillar</link> (<link linkend="_classPillar">Pillar</link> &amp;newPillar)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1a099593a58a6edcd2e6e2831abbb8fe89">updateBotPose</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;updatedPosition)</para>
+</listitem>
+            <listitem><para>std::unique_ptr&lt; std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &gt; <link linkend="_classField_1a3c2ce861d894d5ef000293887a2be3bb">getPillars</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1a8a9681dae64b9db32d147ffefd25a78e">setPillars</link> (std::unique_ptr&lt; std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &gt; <link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>)</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; <link linkend="_classField_1a1f3f3b289e23572dc12f9aef6b33817e">getCopyPillars</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classField_1a3ed7a96d07bdc2a21edda0fa7626e6fe">validLocationForNode</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;location)</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classField_1a5fa390f458efc053b4621a991566204f">getDesiredDestination</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2">updateDesired</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classField_1ad3354ff6a0954809aa9e7082778d8c44">setDesiredIndex</link> (int32_t index)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static bool <link linkend="_classField_1ad499baebb2aa49f7467d5d632ed97199">outOfBounds</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;location)</para>
+</listitem>
+            <listitem><para>static bool <link linkend="_classField_1a729114d0b55662bbcb8f21897617e0c1">lineIntersectsCircle</link> (double cx, double cy, double r, double x1, double y1, double x2, double y2)</para>
+</listitem>
+            <listitem><para>static bool <link linkend="_classField_1a1d2b8ed638cd4b785be4156a3638578d">lineIntersectsCircle</link> (<link linkend="_classPillar">Pillar</link> p1, const <link linkend="_classPose2D">Pose2D</link> &amp;one, const <link linkend="_classPose2D">Pose2D</link> &amp;two)</para>
+</listitem>
+            <listitem><para>static double <link linkend="_classField_1ad631e7bd5cdcc7c10d274836ce464e1b">roundRadius</link> (double radius)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::unique_ptr&lt; std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &gt; <link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link></para>
+</listitem>
+            <listitem><para><link linkend="_classHoleManager">HoleManager</link> <link linkend="_classField_1acd1e5fe551b0b0910391b193d29550ca">holeManager</link></para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classField_1adf27e38bcd47cb341328a2339b2c16a3">offset</link></para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link></para>
+</listitem>
+            <listitem><para><link linkend="_classPillar">Pillar</link> <link linkend="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4">botPose</link></para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classField_1a5a6d409dcc5a61d64888f8ca20c6b05f">runningError</link></para>
+</listitem>
+            <listitem><para><link linkend="_classGraph">Graph</link>&lt; <link linkend="_classPose2D">Pose2D</link> &gt; <link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link></para>
+</listitem>
+            <listitem><para>int32_t <link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link> = -1</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; <link linkend="_classField_1a536803e37492ec349eae440878304a00">newPillars</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>A class that represents the objects that can be and are on the field </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00040">40</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classField_1a0cb97f5f6abc65f46f80a9db40a05f89"/><section>
+    <title>Field()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>Field</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>Field</secondary></indexterm>
+<para><computeroutput>Field::Field (const std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &amp; pillars, const <link linkend="_classPose2D">Pose2D</link> &amp; desiredDestination, const <link linkend="_classPillar">Pillar</link> &amp; botPose)</computeroutput></para>
+<para>constructs a new field object 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pillars</entry><entry>
+<para>the pillars that the field stores </para>
+</entry>
+                            </row>
+                            <row>
+<entry>desiredDestination</entry><entry>
+<para>the desired destination for the app to generate a path to </para>
+</entry>
+                            </row>
+                            <row>
+<entry>botPose</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00007">7</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a2cbf1be1f006dce87a5f7f9c16f250dc"/><section>
+    <title>Field()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>Field</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>Field</secondary></indexterm>
+<para><computeroutput>Field::Field (const std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &amp; pillars, const <link linkend="_classPose2D">Pose2D</link> &amp; desiredDestination)</computeroutput></para>
+<para>constructs a new field object 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pillars</entry><entry>
+<para>the pillars that the field stores </para>
+</entry>
+                            </row>
+                            <row>
+<entry>desiredDestination</entry><entry>
+<para>the desired destination for the app to generate a path to </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00016">16</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a3e804c92273d9159f413f227b535c672"/><section>
+    <title>Field()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>Field</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>Field</secondary></indexterm>
+<para><computeroutput>Field::Field ( )</computeroutput></para>
+<para>Constructs a deafult field object </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00024">24</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a5d6ee1de8a4bf615a3eb2b0ed080479d"/><section>
+    <title>Field()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>Field</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>Field</secondary></indexterm>
+<para><computeroutput>Field::Field (const std::unique_ptr&lt; std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &gt; &amp; pillars, const <link linkend="_classPose2D">Pose2D</link> &amp; desired_destination, const <link linkend="_classPillar">Pillar</link> &amp; bot_pose, const <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp; graph)</computeroutput></para>
+<para>Copys the majority of the important parts of the field 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pillars</entry><entry>
+<para>the pillars to store </para>
+</entry>
+                            </row>
+                            <row>
+<entry>desired_destination</entry><entry>
+<para>the desired destination to travel to </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bot_pose</entry><entry>
+<para>the bot position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>graph</entry><entry>
+<para>the graph object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classField_1aba8449d9e693a3542f37c223099464d9"/><section>
+    <title>addEdgeMeasurement()</title>
+<indexterm><primary>addEdgeMeasurement</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>addEdgeMeasurement</secondary></indexterm>
+<para><computeroutput>void Field::addEdgeMeasurement (double rawPosition, <link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5">Cardinality</link> cardinality)</computeroutput></para>
+<para>Add an edge measurement to the field. 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rawPosition</entry><entry>
+<para>the raw position (X or Y) of the measurmenet </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cardinality</entry><entry>
+<para>the direction of the measurement </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00203">203</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a890d7140a600bed6eb18a549b1a0faf9"/><section>
+    <title>addPillar()</title>
+<indexterm><primary>addPillar</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>addPillar</secondary></indexterm>
+<para><computeroutput>void Field::addPillar (<link linkend="_classPillar">Pillar</link> &amp; newPillar)</computeroutput></para>
+<para>Add a pillar measurement to the graph 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>newPillar</entry><entry>
+<para>to add </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00159">159</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1ae3ce826773c17f1e987af8ee4fb64269"/><section>
+    <title>applyOffsetToEdge()</title>
+<indexterm><primary>applyOffsetToEdge</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>applyOffsetToEdge</secondary></indexterm>
+<para><computeroutput>void Field::applyOffsetToEdge (double x, double y)</computeroutput></para>
+<para>Applys some offset from getting the edge of the field 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>component of the offset </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>component of the offset </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00228">228</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a753a1dbb8d1e8b6159309bdfeec3d1f1"/><section>
+    <title>clearField()</title>
+<indexterm><primary>clearField</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>clearField</secondary></indexterm>
+<para><computeroutput>void Field::clearField ( )</computeroutput></para>
+<para>Clears the entire field and cooresponding managers and graphs </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00138">138</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a3e9096a686ffb177056e24dfb920a610"/><section>
+    <title>discretizeGraph()</title>
+<indexterm><primary>discretizeGraph</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>discretizeGraph</secondary></indexterm>
+<para><computeroutput>void Field::discretizeGraph ( )</computeroutput></para>
+<para>add nodes to the graph that are valid places the bot can be at </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00032">32</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a55f738166b3267d7fa313465d2866dd4"/><section>
+    <title>getBotPose()</title>
+<indexterm><primary>getBotPose</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>getBotPose</secondary></indexterm>
+<para><computeroutput><link linkend="_classPillar">Pillar</link> Field::getBotPose ( )</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>the robot pose on the field as a pillar. The radius is the radius of the bot </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00155">155</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a1f3f3b289e23572dc12f9aef6b33817e"/><section>
+    <title>getCopyPillars()</title>
+<indexterm><primary>getCopyPillars</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>getCopyPillars</secondary></indexterm>
+<para><computeroutput>std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; Field::getCopyPillars ( )</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>a copy of the pillars on the field </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00191">191</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a5fa390f458efc053b4621a991566204f"/><section>
+    <title>getDesiredDestination()</title>
+<indexterm><primary>getDesiredDestination</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>getDesiredDestination</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Field::getDesiredDestination ( )</computeroutput></para>
+<para>get the desired destination to travel to <formalpara><title>Returns</title>
+
+<para>the position to get to </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00274">274</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a076b4e7297f788e933b4ee824b930473"/><section>
+    <title>getDesiredIndex()</title>
+<indexterm><primary>getDesiredIndex</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>getDesiredIndex</secondary></indexterm>
+<para><computeroutput>int32_t Field::getDesiredIndex ( ) const</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>the index of the desired pillar in the graph </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00257">257</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1ae20c991c2df6d7e863458e181b683140"/><section>
+    <title>getGraph()</title>
+<indexterm><primary>getGraph</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>getGraph</secondary></indexterm>
+<para><computeroutput><link linkend="_classGraph">Graph</link>&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp; Field::getGraph ( )</computeroutput></para>
+<para>Gets a reference to the graph object on the field <formalpara><title>Returns</title>
+
+<para>a reference to the graph object </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00261">261</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a87df29e3618d42c11b886bbcf07b1453"/><section>
+    <title>getManager()</title>
+<indexterm><primary>getManager</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>getManager</secondary></indexterm>
+<para><computeroutput><link linkend="_classHoleManager">HoleManager</link> &amp; Field::getManager ( )</computeroutput></para>
+<para>Gets a reference to the hole manager <formalpara><title>Returns</title>
+
+<para>a reference to the hole manager </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00134">134</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a3c2ce861d894d5ef000293887a2be3bb"/><section>
+    <title>getPillars()</title>
+<indexterm><primary>getPillars</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>getPillars</secondary></indexterm>
+<para><computeroutput>std::unique_ptr&lt; std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &gt; Field::getPillars ( )</computeroutput></para>
+<para>a unique pointer for the pillars on the field <formalpara><title>Returns</title>
+
+<para>the pillars on the field </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00142">142</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a729114d0b55662bbcb8f21897617e0c1"/><section>
+    <title>lineIntersectsCircle()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>lineIntersectsCircle</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>lineIntersectsCircle</secondary></indexterm>
+<para><computeroutput>bool Field::lineIntersectsCircle (double cx, double cy, double r, double x1, double y1, double x2, double y2)<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>Util function that returns whether a given line intersects a circle </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00236">236</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a1d2b8ed638cd4b785be4156a3638578d"/><section>
+    <title>lineIntersectsCircle()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>lineIntersectsCircle</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>lineIntersectsCircle</secondary></indexterm>
+<para><computeroutput>static bool Field::lineIntersectsCircle (<link linkend="_classPillar">Pillar</link> p1, const <link linkend="_classPose2D">Pose2D</link> &amp; one, const <link linkend="_classPose2D">Pose2D</link> &amp; two)<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput></computeroutput></para>
+<para>Util function that returns whether a given line intersects a circle </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00182">182</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1aa988c5de70875dd81c766c9429a4b986"/><section>
+    <title>makePath()</title>
+<indexterm><primary>makePath</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>makePath</secondary></indexterm>
+<para><computeroutput>std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; Field::makePath ( )</computeroutput></para>
+<para>Generates a path from the graph using Dijkstra&apos;s algorithm <formalpara><title>Returns</title>
+
+<para>a path to the desired destination </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00109">109</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1ad499baebb2aa49f7467d5d632ed97199"/><section>
+    <title>outOfBounds()</title>
+<indexterm><primary>outOfBounds</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>outOfBounds</secondary></indexterm>
+<para><computeroutput>bool Field::outOfBounds (const <link linkend="_classPose2D">Pose2D</link> &amp; location)<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>A static check to determine if a given location in the field coordinate system is out of bounds 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>location</entry><entry>
+<para>the position to check </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>whether that postiion is out of bounds on the field. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00199">199</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1ad631e7bd5cdcc7c10d274836ce464e1b"/><section>
+    <title>roundRadius()</title>
+<indexterm><primary>roundRadius</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>roundRadius</secondary></indexterm>
+<para><computeroutput>static double Field::roundRadius (double radius)<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput></computeroutput></para>
+<para>round a given radius to possible radii 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>radius</entry><entry>
+<para>the radius to round </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the rounded radius </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00258">258</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1ad3354ff6a0954809aa9e7082778d8c44"/><section>
+    <title>setDesiredIndex()</title>
+<indexterm><primary>setDesiredIndex</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>setDesiredIndex</secondary></indexterm>
+<para><computeroutput>void Field::setDesiredIndex (int32_t index)</computeroutput></para>
+<para>set the index of the desired position to travel to IN THE GRAPH 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>index</entry><entry>
+<para>the index IN the graph </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00146">146</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a8a9681dae64b9db32d147ffefd25a78e"/><section>
+    <title>setPillars()</title>
+<indexterm><primary>setPillars</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>setPillars</secondary></indexterm>
+<para><computeroutput>void Field::setPillars (std::unique_ptr&lt; std::vector&lt; <link linkend="_classPillar">Pillar</link> &gt; &gt; pillars)</computeroutput></para>
+<para>sets the pillars on the field 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pillars</entry><entry>
+<para>the pillars that the field stores </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00151">151</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a099593a58a6edcd2e6e2831abbb8fe89"/><section>
+    <title>updateBotPose()</title>
+<indexterm><primary>updateBotPose</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>updateBotPose</secondary></indexterm>
+<para><computeroutput>void Field::updateBotPose (const <link linkend="_classPose2D">Pose2D</link> &amp; updatedPosition)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>updatedPosition</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00179">179</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2"/><section>
+    <title>updateDesired()</title>
+<indexterm><primary>updateDesired</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>updateDesired</secondary></indexterm>
+<para><computeroutput>void Field::updateDesired (const <link linkend="_classPose2D">Pose2D</link> &amp; other)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>the new desired position </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00265">265</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a3ed7a96d07bdc2a21edda0fa7626e6fe"/><section>
+    <title>validLocationForNode()</title>
+<indexterm><primary>validLocationForNode</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>validLocationForNode</secondary></indexterm>
+<para><computeroutput>bool Field::validLocationForNode (const <link linkend="_classPose2D">Pose2D</link> &amp; location)</computeroutput></para>
+<para>Check whether a given position is a valid place for a node in the graph with respect to &quot;this&quot; field 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>location</entry><entry>
+<para>the location of the node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>whether it collides with anything </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00118">118</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1ab1945d8274ee391ea813863aa94c5d52"/><section>
+    <title>weightGraph()</title>
+<indexterm><primary>weightGraph</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>weightGraph</secondary></indexterm>
+<para><computeroutput>void Field::weightGraph ( )</computeroutput></para>
+<para>Weight the graph in a way that the bot does not intersect and objects on the field </para>
+<para>
+Definition at line <link linkend="_Field_8cpp_source_1l00075">75</link> of file <link linkend="_Field_8cpp_source">Field.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4"/><section>
+    <title>botPose</title>
+<indexterm><primary>botPose</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>botPose</secondary></indexterm>
+<para><computeroutput><link linkend="_classPillar">Pillar</link> Field::botPose<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>THe position of the robot on the field </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00067">67</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1afba5f7de976bb8640644ba6cbb7b5e35"/><section>
+    <title>desiredDestination</title>
+<indexterm><primary>desiredDestination</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>desiredDestination</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Field::desiredDestination<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>the desired destination for the robot to get to </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00062">62</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a1d7b5e004850feaa692893d0c46add14"/><section>
+    <title>desiredIndex</title>
+<indexterm><primary>desiredIndex</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>desiredIndex</secondary></indexterm>
+<para><computeroutput>int32_t Field::desiredIndex = -1<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>The index of the desired position in the graph </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00087">87</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1ab69087224439a9f8c3414e7b72383201"/><section>
+    <title>graph</title>
+<indexterm><primary>graph</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>graph</secondary></indexterm>
+<para><computeroutput><link linkend="_classGraph">Graph</link>&lt;<link linkend="_classPose2D">Pose2D</link>&gt; Field::graph<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>The graph object which is used to generate trajectorys from nodes. Nodes represent places we can be on the field. The connections between nodes represents the possible paths we can take. The values of the connections represent the cost of moving between those nodes which is measured as the distance between nodes. </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00082">82</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1acd1e5fe551b0b0910391b193d29550ca"/><section>
+    <title>holeManager</title>
+<indexterm><primary>holeManager</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>holeManager</secondary></indexterm>
+<para><computeroutput><link linkend="_classHoleManager">HoleManager</link> Field::holeManager<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>A hole maanger to manage and check collision with holes </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00051">51</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a536803e37492ec349eae440878304a00"/><section>
+    <title>newPillars</title>
+<indexterm><primary>newPillars</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>newPillars</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="_classPillar">Pillar</link>&gt; Field::newPillars<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>A queue for new pillars that we add to the field. This is used to speed up discretization and weighting of the graph. </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00093">93</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1adf27e38bcd47cb341328a2339b2c16a3"/><section>
+    <title>offset</title>
+<indexterm><primary>offset</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>offset</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Field::offset<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>The amount to offset everything by after reading edges. X value stores the X (N, S) offset, Y value stores the Y (E, W) offset </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00057">57</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a003a6384059a42b3d38bba86f8482bc5"/><section>
+    <title>pillars</title>
+<indexterm><primary>pillars</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>pillars</secondary></indexterm>
+<para><computeroutput>std::unique_ptr&lt;std::vector&lt;<link linkend="_classPillar">Pillar</link>&gt; &gt; Field::pillars<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>the pillars on the field. The physical 3D cylinders get stored here </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00046">46</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_classField_1a5a6d409dcc5a61d64888f8ca20c6b05f"/><section>
+    <title>runningError</title>
+<indexterm><primary>runningError</primary><secondary>Field</secondary></indexterm>
+<indexterm><primary>Field</primary><secondary>runningError</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Field::runningError<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>the running error that we have accumulated over time in our measurements. This is just an approixmation based on read in error from the IPC </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00073">73</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Field_8hpp">Field.hpp</link>/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Field_8cpp">Field.cpp</link></section>
+</section>

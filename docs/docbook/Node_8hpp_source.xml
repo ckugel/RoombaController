@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Node_8hpp_source" xml:lang="en-US">
+<title>Node.hpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Node.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_Node_8hpp_source_1l00001"/>00001 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Node_8hpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Created&#32;by&#32;caleb&#32;on&#32;11/9/21.</emphasis>
+<anchor xml:id="_Node_8hpp_source_1l00003"/>00003 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Node_8hpp_source_1l00004"/>00004 
+<anchor xml:id="_Node_8hpp_source_1l00005"/>00005 <emphasis role="preprocessor">#ifndef&#32;ANOTHERGRAPH_NODE_H</emphasis>
+<anchor xml:id="_Node_8hpp_source_1l00006"/>00006 <emphasis role="preprocessor">#define&#32;ANOTHERGRAPH_NODE_H</emphasis>
+<anchor xml:id="_Node_8hpp_source_1l00007"/>00007 
+<anchor xml:id="_Node_8hpp_source_1l00008"/>00008 
+<anchor xml:id="_Node_8hpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Pose2D_8hpp">Pose2D.hpp</link>&quot;</emphasis>
+<anchor xml:id="_Node_8hpp_source_1l00010"/>00010 
+<anchor xml:id="_Node_8hpp_source_1l00016"/>00016 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Node_8hpp_source_1l00017"/><link linkend="_classNode">00017</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_classNode">Node</link>&#32;{
+<anchor xml:id="_Node_8hpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+<anchor xml:id="_Node_8hpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;V&#32;data;
+<anchor xml:id="_Node_8hpp_source_1l00023"/>00023 
+<anchor xml:id="_Node_8hpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="_Node_8hpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<link linkend="_classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983">Node</link>(V&#32;data);
+<anchor xml:id="_Node_8hpp_source_1l00030"/>00030 
+<anchor xml:id="_Node_8hpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;V&#32;<link linkend="_classNode_1a81895d8b8dfffcc5d220b2d816e7063c">getData</link>();
+<anchor xml:id="_Node_8hpp_source_1l00035"/>00035 
+<anchor xml:id="_Node_8hpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classNode_1ab849a0519ed381feaf341d91e3d87b1f">SetData</link>(V&#32;newData);
+<anchor xml:id="_Node_8hpp_source_1l00041"/>00041 };
+<anchor xml:id="_Node_8hpp_source_1l00042"/>00042 
+<anchor xml:id="_Node_8hpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Node_8cpp">Node.cpp</link>&quot;</emphasis>
+<anchor xml:id="_Node_8hpp_source_1l00044"/>00044 
+<anchor xml:id="_Node_8hpp_source_1l00045"/>00045 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//ANOTHERGRAPH_NODE_H</emphasis>
+</programlisting></section>

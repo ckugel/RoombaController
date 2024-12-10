@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structMove" kind="struct" language="C++" prot="public">
+    <compoundname>Move</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structMove_1a261f6dd2a4399171b95747f32eb4025e" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Move::quantity</definition>
+        <argsstring></argsstring>
+        <name>quantity</name>
+        <qualifiedname>Move::quantity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="46" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMove_1a024fa73d41d4d3830f2565e158a2b521" prot="public" static="no" mutable="no">
+        <type><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493" kindref="member">MovementType</ref></type>
+        <definition>MovementType Move::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Move::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="47" column="18" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="45" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="45" bodyend="48"/>
+    <listofallmembers>
+      <member refid="structMove_1a261f6dd2a4399171b95747f32eb4025e" prot="public" virt="non-virtual"><scope>Move</scope><name>quantity</name></member>
+      <member refid="structMove_1a024fa73d41d4d3830f2565e158a2b521" prot="public" virt="non-virtual"><scope>Move</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

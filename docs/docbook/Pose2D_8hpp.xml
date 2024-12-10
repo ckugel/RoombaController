@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Pose2D_8hpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;cmath&gt;<?linebreak?>#include &lt;cstdint&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?>#include &lt;ostream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classPose2D">Pose2D</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structRectangle">Rectangle</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>&#160;&#160;&#160;6</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structRectangle">Rectangle</link> <link linkend="_Pose2D_8hpp_1af747b1235ddc04741dd30bf4c6a35d3c">makeRectangleFromLine</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;L1, const <link linkend="_classPose2D">Pose2D</link> &amp;L2, double width)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60"/><section>
+    <title>BOT_RADIUS</title>
+<indexterm><primary>BOT_RADIUS</primary><secondary>Pose2D.hpp</secondary></indexterm>
+<indexterm><primary>Pose2D.hpp</primary><secondary>BOT_RADIUS</secondary></indexterm>
+<para><computeroutput>#define BOT_RADIUS&#160;&#160;&#160;6</computeroutput></para>
+<para>The bot radius in centimeters </para>
+<para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00017">17</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_Pose2D_8hpp_1af747b1235ddc04741dd30bf4c6a35d3c"/><section>
+    <title>makeRectangleFromLine()</title>
+<indexterm><primary>makeRectangleFromLine</primary><secondary>Pose2D.hpp</secondary></indexterm>
+<indexterm><primary>Pose2D.hpp</primary><secondary>makeRectangleFromLine</secondary></indexterm>
+<para><computeroutput><link linkend="_structRectangle">Rectangle</link> makeRectangleFromLine (const <link linkend="_classPose2D">Pose2D</link> &amp; L1, const <link linkend="_classPose2D">Pose2D</link> &amp; L2, double width)</computeroutput></para>
+<para>Makes a rectangle from a line 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>L1</entry><entry>
+<para>One bound of the line </para>
+</entry>
+                            </row>
+                            <row>
+<entry>L2</entry><entry>
+<para>Another bound of the line </para>
+</entry>
+                            </row>
+                            <row>
+<entry>width</entry><entry>
+<para>the width of the rectangle </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>a rectangle with the the line in the middle and a width of the width passed in </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00248">248</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+</section>
+</section>

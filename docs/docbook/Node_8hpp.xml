@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Node_8hpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/Node.hpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Node.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;Pose2D.hpp&quot;<?linebreak?>#include &quot;Node.cpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classNode">Node&lt; V &gt;</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

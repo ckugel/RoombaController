@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classNode" xml:lang="en-US">
+<title>Node&lt; V &gt; Class Template Reference</title>
+<indexterm><primary>Node&lt; V &gt;</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Node.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983">Node</link> (V data)</para>
+</listitem>
+            <listitem><para>V <link linkend="_classNode_1a81895d8b8dfffcc5d220b2d816e7063c">getData</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classNode_1ab849a0519ed381feaf341d91e3d87b1f">SetData</link> (V newData)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename V&gt;<?linebreak?>class Node&lt; V &gt;</title></simplesect>
+
+<para>Represents a node in a graph. Really just a wrapped for V 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>V</entry><entry>
+<para>The data that the node encapsulates </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Node_8hpp_source_1l00017">17</link> of file <link linkend="_Node_8hpp_source">Node.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983"/><section>
+    <title>Node()</title>
+<indexterm><primary>Node</primary><secondary>Node&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Node&lt; V &gt;</primary><secondary>Node</secondary></indexterm>
+<computeroutput>template&lt;typename V &gt; </computeroutput><para><computeroutput><link linkend="_classNode">Node</link>&lt; V &gt;<link linkend="_classNode">::Node</link> (V data)</computeroutput></para>
+<para>Constructs a node from given data 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>data</entry><entry>
+<para>to construct the node from </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Node_8cpp_source_1l00009">9</link> of file <link linkend="_Node_8cpp_source">Node.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classNode_1a81895d8b8dfffcc5d220b2d816e7063c"/><section>
+    <title>getData()</title>
+<indexterm><primary>getData</primary><secondary>Node&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Node&lt; V &gt;</primary><secondary>getData</secondary></indexterm>
+<computeroutput>template&lt;typename V &gt; </computeroutput><para><computeroutput>V <link linkend="_classNode">Node</link>&lt; V &gt;::getData ( )</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>the data stored in the node </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Node_8cpp_source_1l00014">14</link> of file <link linkend="_Node_8cpp_source">Node.cpp</link>.</para>
+</section>
+<anchor xml:id="_classNode_1ab849a0519ed381feaf341d91e3d87b1f"/><section>
+    <title>SetData()</title>
+<indexterm><primary>SetData</primary><secondary>Node&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Node&lt; V &gt;</primary><secondary>SetData</secondary></indexterm>
+<computeroutput>template&lt;typename V &gt; </computeroutput><para><computeroutput>void <link linkend="_classNode">Node</link>&lt; V &gt;::SetData (V newData)</computeroutput></para>
+<para>sets the data we store in the node 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>newData</entry><entry>
+<para>new data to replace current data with </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Node_8cpp_source_1l00019">19</link> of file <link linkend="_Node_8cpp_source">Node.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Node_8hpp">Node.hpp</link>/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Node_8cpp">Node.cpp</link></section>
+</section>

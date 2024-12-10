@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Field_8hpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/Field.hpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Field.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;Pillar.hpp&quot;<?linebreak?>#include &quot;vector&quot;<?linebreak?>#include &lt;cstdint&gt;<?linebreak?>#include &lt;memory&gt;<?linebreak?>#include &quot;Graph.hpp&quot;<?linebreak?>#include &quot;HoleManager.hpp&quot;<?linebreak?>#include &quot;Pose2D.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classField">Field</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_Field_8hpp_1a898606140dee9ce0adf096de00824d94">MAX_X</link>&#160;&#160;&#160;426.72</para>
+</listitem>
+            <listitem><para>#define <link linkend="_Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef">MAX_Y</link>&#160;&#160;&#160;242.57</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5">Cardinality</link> { <link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5a2c63acbe79d9f41ba6bb7766e9c37702">N</link> = &apos;N&apos;
+, <link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5af1ce01387d2348f8b858721a7db81670">S</link> = &apos;S&apos;
+, <link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5ab199e021998d49b1f09338d8b9b18ecb">E</link> = &apos;E&apos;
+, <link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5ab722ceeb601c72cd78fbd35f3581fdf7">W</link> = &apos;W&apos;
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_Field_8hpp_1a898606140dee9ce0adf096de00824d94"/><section>
+    <title>MAX_X</title>
+<indexterm><primary>MAX_X</primary><secondary>Field.hpp</secondary></indexterm>
+<indexterm><primary>Field.hpp</primary><secondary>MAX_X</secondary></indexterm>
+<para><computeroutput>#define MAX_X&#160;&#160;&#160;426.72</computeroutput></para>
+<para>THe max x position on the field </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00020">20</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+<anchor xml:id="_Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef"/><section>
+    <title>MAX_Y</title>
+<indexterm><primary>MAX_Y</primary><secondary>Field.hpp</secondary></indexterm>
+<indexterm><primary>Field.hpp</primary><secondary>MAX_Y</secondary></indexterm>
+<para><computeroutput>#define MAX_Y&#160;&#160;&#160;242.57</computeroutput></para>
+<para>The max y position on the field </para>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00025">25</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5"/><section>
+    <title>Cardinality</title>
+<indexterm><primary>Cardinality</primary><secondary>Field.hpp</secondary></indexterm>
+<indexterm><primary>Field.hpp</primary><secondary>Cardinality</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5">Cardinality</link></computeroutput></para>
+<para>Norht, South, East, West </para>
+<informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>N</primary><secondary>Field.hpp</secondary></indexterm>
+<indexterm><primary>Field.hpp</primary><secondary>N</secondary></indexterm>
+<anchor xml:id="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5a2c63acbe79d9f41ba6bb7766e9c37702"/>N</entry><entry></entry></row><row><entry><indexterm><primary>S</primary><secondary>Field.hpp</secondary></indexterm>
+<indexterm><primary>Field.hpp</primary><secondary>S</secondary></indexterm>
+<anchor xml:id="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5af1ce01387d2348f8b858721a7db81670"/>S</entry><entry></entry></row><row><entry><indexterm><primary>E</primary><secondary>Field.hpp</secondary></indexterm>
+<indexterm><primary>Field.hpp</primary><secondary>E</secondary></indexterm>
+<anchor xml:id="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5ab199e021998d49b1f09338d8b9b18ecb"/>E</entry><entry></entry></row><row><entry><indexterm><primary>W</primary><secondary>Field.hpp</secondary></indexterm>
+<indexterm><primary>Field.hpp</primary><secondary>W</secondary></indexterm>
+<anchor xml:id="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5ab722ceeb601c72cd78fbd35f3581fdf7"/>W</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Definition at line <link linkend="_Field_8hpp_source_1l00030">30</link> of file <link linkend="_Field_8hpp_source">Field.hpp</link>.</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,535 @@
+\doxysection{/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{/home/calebk/Documents/coding/RoombaController/src/main.cpp@{/home/calebk/Documents/coding/RoombaController/src/main.cpp}}
+{\ttfamily \#include "{}../include/imgui/imgui.\+h"{}}\newline
+{\ttfamily \#include "{}../include/imgui/backends/imgui\+\_\+impl\+\_\+glfw.\+h"{}}\newline
+{\ttfamily \#include "{}../include/imgui/backends/imgui\+\_\+impl\+\_\+opengl3.\+h"{}}\newline
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include "{}Pose2\+D.\+hpp"{}}\newline
+{\ttfamily \#include "{}Node.\+hpp"{}}\newline
+{\ttfamily \#include "{}Pillar.\+hpp"{}}\newline
+{\ttfamily \#include "{}Hole.\+hpp"{}}\newline
+{\ttfamily \#include "{}Field.\+hpp"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$condition\+\_\+variable$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMove}{Move}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a69549d0bd46cc467083f3554f3f95955}{BOT\+\_\+\+CONNECT}}~0
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a280feb883e9d4a7edcc69c8bcb9f38f2}{ADDRESS}}~"{}127.\+0.\+0.\+1"{}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}}~65432
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493}{Movement\+Type}} \{ \newline
+\mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c}{MOVE\+\_\+\+FORWARD}}
+, \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339}{MOVE\+\_\+\+BACKWARDS}}
+, \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165}{MOVE\+\_\+\+FORWARD\+\_\+\+SMART}}
+, \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd}{TURN\+\_\+\+TO\+\_\+\+ANGLE}}
+, \newline
+\mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d}{SCAN}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6}{stop\+Client}} (false)
+\item 
+void \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{add\+To\+Queue}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{main_8cpp_abe296e2909cfc40a8d7cd431a6dbe459}{send\+Angle\+To\+Queue}} (int16\+\_\+t angle)
+\item 
+void \mbox{\hyperlink{main_8cpp_ab2b6c72d73cb5cdf34a271f97a8d6df5}{send\+Distance\+To\+Queue}} (uint16\+\_\+t distance)
+\item 
+void \mbox{\hyperlink{main_8cpp_aafce9996e79c89401b2797ea5bd5702b}{path\+To\+Routine}} (std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ path, std\+::vector$<$ \mbox{\hyperlink{structMove}{Move}} $>$ \&routine)
+\item 
+std\+::string \mbox{\hyperlink{main_8cpp_a752b76589dc853d37e6bb0f07e6b57c9}{parse\+Path\+Into\+Routine}} (const std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&path)
+\item 
+void \mbox{\hyperlink{main_8cpp_a6e0bf7be42eb96e07b07995bad442501}{read\+And\+Log}} (int socket, std\+::mutex \&field\+Mutex, \mbox{\hyperlink{classField}{Field}} \&field, std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&path)
+\item 
+void \mbox{\hyperlink{main_8cpp_aeb814458701307eaffced2d1f95dc3f9}{connect\+TCP}} (\mbox{\hyperlink{classField}{Field}} \&field, std\+::mutex \&field\+Mutex, std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&path)
+\item 
+void \mbox{\hyperlink{main_8cpp_a8a48614912d7bcdd038ad181235ddcf2}{setup\+Im\+Gui}} (GLFWwindow \texorpdfstring{$\ast$}{*}window)
+\item 
+void \mbox{\hyperlink{main_8cpp_aef05f78be1cf48474bb638b05af91d4e}{Draw\+Circle}} (Im\+Draw\+List \texorpdfstring{$\ast$}{*}draw\+List, const Im\+Vec2 \&center, float radius, Im\+U32 color)
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{main_8cpp_aaa7651b6621852bfdbb91085d2a74d77}{Screen\+To\+Coords}} (Im\+Vec2 coords, Im\+Vec2 offset, Im\+Vec2 scaling)
+\item 
+Im\+Vec2 \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coords\+To\+Screen}} (Im\+Vec2 offset, Im\+Vec2 scaling, double x, double y)
+\item 
+Im\+Vec2 \mbox{\hyperlink{main_8cpp_aadd75f0fd8f5677340c27a7df7c28366}{coords\+To\+Screen}} (Im\+Vec2 offset, Im\+Vec2 scaling, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position)
+\item 
+void \mbox{\hyperlink{main_8cpp_a9d21b7be18e221988e1051a55465f3a2}{Show\+Pillar\+On\+Window}} (Im\+Draw\+List \texorpdfstring{$\ast$}{*}draw\+List, \mbox{\hyperlink{classPillar}{Pillar}} pillar, Im\+U32 color, Im\+Vec2 offset, Im\+Vec2 scaling)
+\item 
+void \mbox{\hyperlink{main_8cpp_a4eb982ee4c09fb7f60fe5247c6a904b7}{draw\+Bot\+Pose}} (Im\+Draw\+List \texorpdfstring{$\ast$}{*}draw\+List, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&bot\+Pose, Im\+Vec2 offset, Im\+Vec2 scaling)
+\item 
+void \mbox{\hyperlink{main_8cpp_a6a0a2f2d8d9d5b25ec8f68b5610d003c}{draw\+Rectangle}} (Im\+Draw\+List \texorpdfstring{$\ast$}{*}draw\+List, Im\+Vec2 offset, Im\+Vec2 scaling, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&p1, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&p2)
+\item 
+void \mbox{\hyperlink{main_8cpp_a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf}{Show\+Field\+Window}} (std\+::mutex \texorpdfstring{$\ast$}{*}pillars\+Mutex, std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&path, \mbox{\hyperlink{classField}{Field}} \&field, std\+::atomic$<$ bool $>$ \&show\+Nodes, std\+::atomic$<$ bool $>$ \&show\+Edges)
+\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::queue$<$ std\+::string $>$ \mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{send\+Queue}}
+\item 
+std\+::mutex \mbox{\hyperlink{main_8cpp_a781e3772674224fa00da70ac8e0bb247}{queue\+Mutex}}
+\item 
+std\+::condition\+\_\+variable \mbox{\hyperlink{main_8cpp_a4bf7290e131c491bb7def53e3d340b95}{send\+Condition}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{main_8cpp_a280feb883e9d4a7edcc69c8bcb9f38f2}\label{main_8cpp_a280feb883e9d4a7edcc69c8bcb9f38f2} 
+\index{main.cpp@{main.cpp}!ADDRESS@{ADDRESS}}
+\index{ADDRESS@{ADDRESS}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ADDRESS}{ADDRESS}}
+{\footnotesize\ttfamily \#define ADDRESS~"{}127.\+0.\+0.\+1"{}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a69549d0bd46cc467083f3554f3f95955}\label{main_8cpp_a69549d0bd46cc467083f3554f3f95955} 
+\index{main.cpp@{main.cpp}!BOT\_CONNECT@{BOT\_CONNECT}}
+\index{BOT\_CONNECT@{BOT\_CONNECT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{BOT\_CONNECT}{BOT\_CONNECT}}
+{\footnotesize\ttfamily \#define BOT\+\_\+\+CONNECT~0}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}\label{main_8cpp_a614217d263be1fb1a5f76e2ff7be19a2} 
+\index{main.cpp@{main.cpp}!PORT@{PORT}}
+\index{PORT@{PORT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{PORT}{PORT}}
+{\footnotesize\ttfamily \#define PORT~65432}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{main_8cpp_a8a93b61bc797a7d1907f42796a252493}\label{main_8cpp_a8a93b61bc797a7d1907f42796a252493} 
+\index{main.cpp@{main.cpp}!MovementType@{MovementType}}
+\index{MovementType@{MovementType}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{MovementType}{MovementType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493}{Movement\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVE\_FORWARD@{MOVE\_FORWARD}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!MOVE\_FORWARD@{MOVE\_FORWARD}}}\Hypertarget{main_8cpp_a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c}\label{main_8cpp_a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c} 
+MOVE\+\_\+\+FORWARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVE\_BACKWARDS@{MOVE\_BACKWARDS}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!MOVE\_BACKWARDS@{MOVE\_BACKWARDS}}}\Hypertarget{main_8cpp_a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339}\label{main_8cpp_a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339} 
+MOVE\+\_\+\+BACKWARDS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVE\_FORWARD\_SMART@{MOVE\_FORWARD\_SMART}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!MOVE\_FORWARD\_SMART@{MOVE\_FORWARD\_SMART}}}\Hypertarget{main_8cpp_a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165}\label{main_8cpp_a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165} 
+MOVE\+\_\+\+FORWARD\+\_\+\+SMART&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TURN\_TO\_ANGLE@{TURN\_TO\_ANGLE}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!TURN\_TO\_ANGLE@{TURN\_TO\_ANGLE}}}\Hypertarget{main_8cpp_a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd}\label{main_8cpp_a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd} 
+TURN\+\_\+\+TO\+\_\+\+ANGLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCAN@{SCAN}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!SCAN@{SCAN}}}\Hypertarget{main_8cpp_a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d}\label{main_8cpp_a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d} 
+SCAN&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0e791708278afd1945bd5e4876b90740}\label{main_8cpp_a0e791708278afd1945bd5e4876b90740} 
+\index{main.cpp@{main.cpp}!addToQueue@{addToQueue}}
+\index{addToQueue@{addToQueue}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{addToQueue()}{addToQueue()}}
+{\footnotesize\ttfamily void add\+To\+Queue (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+Add a given string to the thread safe queue, accessed with mutexes 
+\begin{DoxyParams}{Parameters}
+{\em message} & the message to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_aeb814458701307eaffced2d1f95dc3f9}\label{main_8cpp_aeb814458701307eaffced2d1f95dc3f9} 
+\index{main.cpp@{main.cpp}!connectTCP@{connectTCP}}
+\index{connectTCP@{connectTCP}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{connectTCP()}{connectTCP()}}
+{\footnotesize\ttfamily void connect\+TCP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classField}{Field}} \&}]{field,  }\item[{std\+::mutex \&}]{field\+Mutex,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&}]{path }\end{DoxyParamCaption})}
+
+connect to Roomba TCP server or the mock server depending on the configuration 
+\begin{DoxyParams}{Parameters}
+{\em field} & reference to the field object \\
+\hline
+{\em field\+Mutex} & the mutex for the field \\
+\hline
+{\em path} & reference to a generated path \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00291}{291}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_aadd75f0fd8f5677340c27a7df7c28366}\label{main_8cpp_aadd75f0fd8f5677340c27a7df7c28366} 
+\index{main.cpp@{main.cpp}!coordsToScreen@{coordsToScreen}}
+\index{coordsToScreen@{coordsToScreen}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{coordsToScreen()}{coordsToScreen()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Im\+Vec2 coords\+To\+Screen (\begin{DoxyParamCaption}\item[{Im\+Vec2}]{offset,  }\item[{Im\+Vec2}]{scaling,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position }\end{DoxyParamCaption})}
+
+Computes screen coordinates from \doxylink{classField}{Field} coordinates 
+\begin{DoxyParams}{Parameters}
+{\em offset} & the offset the window measuring on is at \\
+\hline
+{\em scaling} & the amount to scale by \\
+\hline
+{\em position} & the position be transformed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new screen coordinates 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00396}{396}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a3ef8063c34d114204774d6b132c6880c}\label{main_8cpp_a3ef8063c34d114204774d6b132c6880c} 
+\index{main.cpp@{main.cpp}!coordsToScreen@{coordsToScreen}}
+\index{coordsToScreen@{coordsToScreen}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{coordsToScreen()}{coordsToScreen()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Im\+Vec2 coords\+To\+Screen (\begin{DoxyParamCaption}\item[{Im\+Vec2}]{offset,  }\item[{Im\+Vec2}]{scaling,  }\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+Computes screen coordinates from \doxylink{classField}{Field} coordinates 
+\begin{DoxyParams}{Parameters}
+{\em offset} & the offset the window measuring on is at \\
+\hline
+{\em scaling} & the amount to scale by \\
+\hline
+{\em x} & the x component of the pose 2d \\
+\hline
+{\em y} & the y component of the pose 2d \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new screen coordinates 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00383}{383}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a4eb982ee4c09fb7f60fe5247c6a904b7}\label{main_8cpp_a4eb982ee4c09fb7f60fe5247c6a904b7} 
+\index{main.cpp@{main.cpp}!drawBotPose@{drawBotPose}}
+\index{drawBotPose@{drawBotPose}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{drawBotPose()}{drawBotPose()}}
+{\footnotesize\ttfamily void draw\+Bot\+Pose (\begin{DoxyParamCaption}\item[{Im\+Draw\+List \texorpdfstring{$\ast$}{*}}]{draw\+List,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{bot\+Pose,  }\item[{Im\+Vec2}]{offset,  }\item[{Im\+Vec2}]{scaling }\end{DoxyParamCaption})}
+
+Draws a triangle on the bot position facing in the direction that the bot is. The color of the triangle will be lime green.
+
+
+\begin{DoxyParams}{Parameters}
+{\em draw\+List} & the draw list for the window \\
+\hline
+{\em bot\+Pose} & the position of the bot \\
+\hline
+{\em offset} & the offset of the screen for cartesian coordinates \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00423}{423}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_aef05f78be1cf48474bb638b05af91d4e}\label{main_8cpp_aef05f78be1cf48474bb638b05af91d4e} 
+\index{main.cpp@{main.cpp}!DrawCircle@{DrawCircle}}
+\index{DrawCircle@{DrawCircle}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{DrawCircle()}{DrawCircle()}}
+{\footnotesize\ttfamily void Draw\+Circle (\begin{DoxyParamCaption}\item[{Im\+Draw\+List \texorpdfstring{$\ast$}{*}}]{draw\+List,  }\item[{const Im\+Vec2 \&}]{center,  }\item[{float}]{radius,  }\item[{Im\+U32}]{color }\end{DoxyParamCaption})}
+
+Draw a circle on the window 
+\begin{DoxyParams}{Parameters}
+{\em draw\+List} & the drawlist for a given window \\
+\hline
+{\em center} & the center position of the circle \\
+\hline
+{\em radius} & the radus of the circle \\
+\hline
+{\em color} & the color of the circle on the screen \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00357}{357}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a6a0a2f2d8d9d5b25ec8f68b5610d003c}\label{main_8cpp_a6a0a2f2d8d9d5b25ec8f68b5610d003c} 
+\index{main.cpp@{main.cpp}!drawRectangle@{drawRectangle}}
+\index{drawRectangle@{drawRectangle}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{drawRectangle()}{drawRectangle()}}
+{\footnotesize\ttfamily void draw\+Rectangle (\begin{DoxyParamCaption}\item[{Im\+Draw\+List \texorpdfstring{$\ast$}{*}}]{draw\+List,  }\item[{Im\+Vec2}]{offset,  }\item[{Im\+Vec2}]{scaling,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{p1,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{p2 }\end{DoxyParamCaption})}
+
+Draw a rectangle on the field given by the critical points p1 and p2 
+\begin{DoxyParams}{Parameters}
+{\em draw\+List} & the draw list for the window to draw on \\
+\hline
+{\em offset} & the offset of the window \\
+\hline
+{\em scaling} & the size scaling \\
+\hline
+{\em p1} & point one \\
+\hline
+{\em p2} & point two (opposite corner) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00450}{450}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The main function where the program starts \begin{DoxyReturn}{Returns}
+status code of how the program executed 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00572}{572}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a752b76589dc853d37e6bb0f07e6b57c9}\label{main_8cpp_a752b76589dc853d37e6bb0f07e6b57c9} 
+\index{main.cpp@{main.cpp}!parsePathIntoRoutine@{parsePathIntoRoutine}}
+\index{parsePathIntoRoutine@{parsePathIntoRoutine}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{parsePathIntoRoutine()}{parsePathIntoRoutine()}}
+{\footnotesize\ttfamily std\+::string parse\+Path\+Into\+Routine (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&}]{path }\end{DoxyParamCaption})}
+
+parse a path into a routine 
+\begin{DoxyParams}{Parameters}
+{\em path} & the path to parse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the routine from the path 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_aafce9996e79c89401b2797ea5bd5702b}\label{main_8cpp_aafce9996e79c89401b2797ea5bd5702b} 
+\index{main.cpp@{main.cpp}!pathToRoutine@{pathToRoutine}}
+\index{pathToRoutine@{pathToRoutine}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{pathToRoutine()}{pathToRoutine()}}
+{\footnotesize\ttfamily void path\+To\+Routine (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$}]{path,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structMove}{Move}} $>$ \&}]{routine }\end{DoxyParamCaption})}
+
+generate a routine from a path 
+\begin{DoxyParams}{Parameters}
+{\em path} & the path to generate a routine from \\
+\hline
+{\em routine} & the routine to store into \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a6e0bf7be42eb96e07b07995bad442501}\label{main_8cpp_a6e0bf7be42eb96e07b07995bad442501} 
+\index{main.cpp@{main.cpp}!readAndLog@{readAndLog}}
+\index{readAndLog@{readAndLog}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{readAndLog()}{readAndLog()}}
+{\footnotesize\ttfamily void read\+And\+Log (\begin{DoxyParamCaption}\item[{int}]{socket,  }\item[{std\+::mutex \&}]{field\+Mutex,  }\item[{\mbox{\hyperlink{classField}{Field}} \&}]{field,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&}]{path }\end{DoxyParamCaption})}
+
+Read and log data that gets sent over the TCP socket 
+\begin{DoxyParams}{Parameters}
+{\em socket} & the socket to listen on \\
+\hline
+{\em field\+Mutex} & the mutex for the field object \\
+\hline
+{\em field} & reference to the field object \\
+\hline
+{\em path} & the path to generate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_aaa7651b6621852bfdbb91085d2a74d77}\label{main_8cpp_aaa7651b6621852bfdbb91085d2a74d77} 
+\index{main.cpp@{main.cpp}!ScreenToCoords@{ScreenToCoords}}
+\index{ScreenToCoords@{ScreenToCoords}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ScreenToCoords()}{ScreenToCoords()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Screen\+To\+Coords (\begin{DoxyParamCaption}\item[{Im\+Vec2}]{coords,  }\item[{Im\+Vec2}]{offset,  }\item[{Im\+Vec2}]{scaling }\end{DoxyParamCaption})}
+
+Computes a \doxylink{classPose2D}{Pose2D} from given screen coordinates 
+\begin{DoxyParams}{Parameters}
+{\em coords} & the coordinates on the window \\
+\hline
+{\em offset} & the offset of the position of the window on the screen \\
+\hline
+{\em scaling} & the scaling factor for the window size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00368}{368}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_abe296e2909cfc40a8d7cd431a6dbe459}\label{main_8cpp_abe296e2909cfc40a8d7cd431a6dbe459} 
+\index{main.cpp@{main.cpp}!sendAngleToQueue@{sendAngleToQueue}}
+\index{sendAngleToQueue@{sendAngleToQueue}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{sendAngleToQueue()}{sendAngleToQueue()}}
+{\footnotesize\ttfamily void send\+Angle\+To\+Queue (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{angle }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & the angle to send \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_ab2b6c72d73cb5cdf34a271f97a8d6df5}\label{main_8cpp_ab2b6c72d73cb5cdf34a271f97a8d6df5} 
+\index{main.cpp@{main.cpp}!sendDistanceToQueue@{sendDistanceToQueue}}
+\index{sendDistanceToQueue@{sendDistanceToQueue}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{sendDistanceToQueue()}{sendDistanceToQueue()}}
+{\footnotesize\ttfamily void send\+Distance\+To\+Queue (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{distance }\end{DoxyParamCaption})}
+
+Adds an distance to a queue to be sent to the bot 
+\begin{DoxyParams}{Parameters}
+{\em distance} & the distance to send \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a8a48614912d7bcdd038ad181235ddcf2}\label{main_8cpp_a8a48614912d7bcdd038ad181235ddcf2} 
+\index{main.cpp@{main.cpp}!setupImGui@{setupImGui}}
+\index{setupImGui@{setupImGui}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{setupImGui()}{setupImGui()}}
+{\footnotesize\ttfamily void setup\+Im\+Gui (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+
+Simple function to set up Open\+GL and Im\+Gui context 
+\begin{DoxyParams}{Parameters}
+{\em window} & pointer to the GLFW window \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00341}{341}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf}\label{main_8cpp_a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf} 
+\index{main.cpp@{main.cpp}!ShowFieldWindow@{ShowFieldWindow}}
+\index{ShowFieldWindow@{ShowFieldWindow}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ShowFieldWindow()}{ShowFieldWindow()}}
+{\footnotesize\ttfamily void Show\+Field\+Window (\begin{DoxyParamCaption}\item[{std\+::mutex \texorpdfstring{$\ast$}{*}}]{pillars\+Mutex,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&}]{path,  }\item[{\mbox{\hyperlink{classField}{Field}} \&}]{field,  }\item[{std\+::atomic$<$ bool $>$ \&}]{show\+Nodes,  }\item[{std\+::atomic$<$ bool $>$ \&}]{show\+Edges }\end{DoxyParamCaption})}
+
+Show the field window on a new window 
+\begin{DoxyParams}{Parameters}
+{\em pillars\+Mutex} & the mutex for pillars \\
+\hline
+{\em path} & the path to display \\
+\hline
+{\em field} & the field object \\
+\hline
+{\em show\+Nodes} & whether to show nodes or not (atomic reference) \\
+\hline
+{\em show\+Edges} & whether to show edges of the graph or not (atmoic reference) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00479}{479}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a9d21b7be18e221988e1051a55465f3a2}\label{main_8cpp_a9d21b7be18e221988e1051a55465f3a2} 
+\index{main.cpp@{main.cpp}!ShowPillarOnWindow@{ShowPillarOnWindow}}
+\index{ShowPillarOnWindow@{ShowPillarOnWindow}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ShowPillarOnWindow()}{ShowPillarOnWindow()}}
+{\footnotesize\ttfamily void Show\+Pillar\+On\+Window (\begin{DoxyParamCaption}\item[{Im\+Draw\+List \texorpdfstring{$\ast$}{*}}]{draw\+List,  }\item[{\mbox{\hyperlink{classPillar}{Pillar}}}]{pillar,  }\item[{Im\+U32}]{color,  }\item[{Im\+Vec2}]{offset,  }\item[{Im\+Vec2}]{scaling }\end{DoxyParamCaption})}
+
+Show a given pillar on the window. 
+\begin{DoxyParams}{Parameters}
+{\em draw\+List} & the window to draw a pillar (circle) on \\
+\hline
+{\em pillar} & the pillar which stores the given position and radius \\
+\hline
+{\em color} & the color to draw it as \\
+\hline
+{\em offset} & the offset of the window \\
+\hline
+{\em scaling} & the sizing ration for the window \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00408}{408}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6}\label{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6} 
+\index{main.cpp@{main.cpp}!stopClient@{stopClient}}
+\index{stopClient@{stopClient}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{stopClient()}{stopClient()}}
+{\footnotesize\ttfamily std\+::atomic$<$ bool $>$ stop\+Client (\begin{DoxyParamCaption}\item[{false}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_a781e3772674224fa00da70ac8e0bb247}\label{main_8cpp_a781e3772674224fa00da70ac8e0bb247} 
+\index{main.cpp@{main.cpp}!queueMutex@{queueMutex}}
+\index{queueMutex@{queueMutex}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{queueMutex}{queueMutex}}
+{\footnotesize\ttfamily std\+::mutex queue\+Mutex}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_a4bf7290e131c491bb7def53e3d340b95}\label{main_8cpp_a4bf7290e131c491bb7def53e3d340b95} 
+\index{main.cpp@{main.cpp}!sendCondition@{sendCondition}}
+\index{sendCondition@{sendCondition}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{sendCondition}{sendCondition}}
+{\footnotesize\ttfamily std\+::condition\+\_\+variable send\+Condition}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}\label{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3} 
+\index{main.cpp@{main.cpp}!sendQueue@{sendQueue}}
+\index{sendQueue@{sendQueue}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{sendQueue}{sendQueue}}
+{\footnotesize\ttfamily std\+::queue$<$std\+::string$>$ send\+Queue}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+

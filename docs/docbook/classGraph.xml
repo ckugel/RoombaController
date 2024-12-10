@@ -1,0 +1,633 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classGraph" xml:lang="en-US">
+<title>Graph&lt; V &gt; Class Template Reference</title>
+<indexterm><primary>Graph&lt; V &gt;</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Graph.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structGraph_1_1CustomCompare">CustomCompare</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">newNode</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1a7d0579f73520bb804c277fb3ae4ba890">addNode</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nextNode</link>, std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">adjacentNodes</link>, <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">weight</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1ad4acb5e274229a273f12d940bb4029a1">addNode</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nextNode</link>, std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">adjacentNodes</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c">addNode</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nextNode</link>, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nodeITSLATE</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1a38d9119ee08708322eb5908fac0f244f">addConnection</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">one</link>, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">two</link>, <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">weight</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1a6000c589daea5f4984d10d09877ad149">addConnection</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">one</link>, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">two</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1a313a06ec39a21b723f7f0a76c035b8c1">addNode</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nextNode</link>, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nodeITSLATE</link>, <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">weight</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1a4abe34d5dda78d4055a3098773140325">setHead</link> (<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">int</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">index</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1a307d8095432434d7e28cfba1bba884cb">removeNode</link> (<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">size_t</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">index</link>)</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph_1a959dfd987107a8848c1c5c5da9f5e776">Dijkstra</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">from</link>, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">find</link>)</para>
+</listitem>
+            <listitem><para>std::vector&lt; std::vector&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> &gt; &gt; <link linkend="_classGraph_1a452eeb65d902b4a95c0e8411885b4bc5">getAdjacencyList</link> ()</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph_1a4969a395490f7e67cc70a7feb58a0b54">getAdj</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">next</link>)</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a2a55c5945db5ce95020dd32e3df0f094">Graph</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c">~Graph</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Types    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typedef</link> std::pair&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link>, std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; &gt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">pair</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph_1a8663524ab6962890aa72d2e146453caf">resize</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">int</link> <link linkend="_classGraph_1ae83f3bc4bc54319051c7193039a5f00a">numVisited</link> (std::vector&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">bool</link> &gt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">listOfBools</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">bool</link> <link linkend="_classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b">contains</link> (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">node</link>, std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">listOfNodes</link>)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph_1a5de43165fe4948c19cca80698de7daab">nodes</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; std::vector&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> &gt; &gt; <link linkend="_classGraph_1a1696c56a696176c26cb94b075e829ead">matrix</link></para>
+</listitem>
+            <listitem><para><link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * <link linkend="_classGraph_1a326c5e6fe82c176413da20701937e0e7">head</link> = <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nullptr</link></para>
+</listitem>
+            <listitem><para>std::map&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; *, <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">unsigned</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">int</link> &gt; <link linkend="_classGraph_1aeac7d50113228f13fadc0bd85a4daf72">nodeMap</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link>&gt;<?linebreak?>class Graph&lt; V &gt;</title></simplesect>
+<para>
+Definition at line <link linkend="_Graph_8hpp_source_1l00017">17</link> of file <link linkend="_Graph_8hpp_source">Graph.hpp</link>.</para>
+</section>
+<section>
+<title>Member Typedef Documentation</title>
+<anchor xml:id="_classGraph_1a08ffe504d6c612edda7d1d562a577c82"/><section>
+    <title>pair</title>
+<indexterm><primary>pair</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>pair</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typedef</link> std::pair&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link>, std::vector&lt;<link linkend="_classNode">Node</link>&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link>&gt;*&gt; &gt; <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::pair<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_Graph_8hpp_source_1l00019">19</link> of file <link linkend="_Graph_8hpp_source">Graph.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classGraph_1a2a55c5945db5ce95020dd32e3df0f094"/><section>
+    <title>Graph()</title>
+<indexterm><primary>Graph</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>Graph</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;<link linkend="_classGraph">::Graph</link> ( )</computeroutput></para><para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00014">14</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c"/><section>
+    <title>~Graph()</title>
+<indexterm><primary>~Graph</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>~Graph</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::~<link linkend="_classGraph">Graph</link> ( )</computeroutput></para><para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00254">254</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classGraph_1a6000c589daea5f4984d10d09877ad149"/><section>
+    <title>addConnection()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>addConnection</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>addConnection</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::addConnection (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * one, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * two)</computeroutput></para>
+<para>Add a connection between two nodes 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>one</entry><entry>
+<para>node one </para>
+</entry>
+                            </row>
+                            <row>
+<entry>two</entry><entry>
+<para>node two </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00277">277</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a38d9119ee08708322eb5908fac0f244f"/><section>
+    <title>addConnection()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>addConnection</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>addConnection</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::addConnection (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * one, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * two, <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> weight)</computeroutput></para>
+<para>add a weight between nodes 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>one</entry><entry>
+<para>the first node </para>
+</entry>
+                            </row>
+                            <row>
+<entry>two</entry><entry>
+<para>the second node </para>
+</entry>
+                            </row>
+                            <row>
+<entry>weight</entry><entry>
+<para>the weight to put between them </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00267">267</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a57412516ec06d7b21d377dfe73773f37"/><section>
+    <title>addNode()<computeroutput>[1/5]</computeroutput></title>
+<indexterm><primary>addNode</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>addNode</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::addNode (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * newNode)</computeroutput></para>
+<para>Add a node to the graph 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>newNode</entry><entry>
+<para>a new node to add to the graph </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00102">102</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c"/><section>
+    <title>addNode()<computeroutput>[2/5]</computeroutput></title>
+<indexterm><primary>addNode</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>addNode</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::addNode (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * nextNode, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * nodeITSLATE)</computeroutput></para>
+<para>Add a node with a connection 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>nextNode</entry><entry>
+<para>the node to add </para>
+</entry>
+                            </row>
+                            <row>
+<entry>nodeITSLATE</entry><entry>
+<para>a node to add a connection to </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00132">132</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a313a06ec39a21b723f7f0a76c035b8c1"/><section>
+    <title>addNode()<computeroutput>[3/5]</computeroutput></title>
+<indexterm><primary>addNode</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>addNode</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::addNode (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * nextNode, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * nodeITSLATE, <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> weight)</computeroutput></para>
+<para>Add a node with a weight to the graph 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>nextNode</entry><entry>
+<para>the node to add </para>
+</entry>
+                            </row>
+                            <row>
+<entry>nodeITSLATE</entry><entry>
+<para>the node to connect to </para>
+</entry>
+                            </row>
+                            <row>
+<entry>weight</entry><entry>
+<para>the weight between those vertices </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00282">282</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1ad4acb5e274229a273f12d940bb4029a1"/><section>
+    <title>addNode()<computeroutput>[4/5]</computeroutput></title>
+<indexterm><primary>addNode</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>addNode</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::addNode (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * nextNode, std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; adjacentNodes)</computeroutput></para>
+<para>Add a node 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>nextNode</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>adjacentNodes</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00127">127</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a7d0579f73520bb804c277fb3ae4ba890"/><section>
+    <title>addNode()<computeroutput>[5/5]</computeroutput></title>
+<indexterm><primary>addNode</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>addNode</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::addNode (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * nextNode, std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; adjacentNodes, <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> weight)</computeroutput></para>
+<para>Adds a node with adjacent nodes all with the same weight 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>nextNode</entry><entry>
+<para>the node to add </para>
+</entry>
+                            </row>
+                            <row>
+<entry>adjacentNodes</entry><entry>
+<para>the nodes to make a connect for </para>
+</entry>
+                            </row>
+                            <row>
+<entry>weight</entry><entry>
+<para>the weight for all the edges </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00111">111</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b"/><section>
+    <title>contains()</title>
+<indexterm><primary>contains</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>contains</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">bool</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::contains (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * node, std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; listOfNodes)<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>Returns true if the graph containes a node 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>node</entry><entry>
+<para>the node to determine if it&apos;s inside </para>
+</entry>
+                            </row>
+                            <row>
+<entry>listOfNodes</entry><entry>
+<para>the list of nodes to check against </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>whether node is in the list of nodes </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00087">87</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a959dfd987107a8848c1c5c5da9f5e776"/><section>
+    <title>Dijkstra()</title>
+<indexterm><primary>Dijkstra</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>Dijkstra</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput>std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::Dijkstra (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * from, <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * find)</computeroutput></para>
+<para>Dijkstra&apos;s algorithm 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>from</entry><entry>
+<para>the node that you start at </para>
+</entry>
+                            </row>
+                            <row>
+<entry>find</entry><entry>
+<para>the node we want to get to </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>a path for the nodes </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00191">191</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a4969a395490f7e67cc70a7feb58a0b54"/><section>
+    <title>getAdj()</title>
+<indexterm><primary>getAdj</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>getAdj</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput>std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::getAdj (<link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * next)</computeroutput></para>
+<para>Get the adjacent nodes of a node 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>next</entry><entry>
+<para>the node to get its&apos; connected nodes </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the adjacent nodes </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00172">172</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a452eeb65d902b4a95c0e8411885b4bc5"/><section>
+    <title>getAdjacencyList()</title>
+<indexterm><primary>getAdjacencyList</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>getAdjacencyList</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput>std::vector&lt; std::vector&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link> &gt; &gt; <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::getAdjacencyList ( )</computeroutput></para>
+<para>get the adjaceency matrix for the graph whihc contains the weigthings <formalpara><title>Returns</title>
+
+<para>the matrix for the weights </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00262">262</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1af1568475acf410ff0d52a2d756929064"/><section>
+    <title>getNodes()</title>
+<indexterm><primary>getNodes</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>getNodes</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput>std::vector&lt; <link linkend="_classNode">Node</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; * &gt; <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::getNodes ( )</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>All the nodes </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00097">97</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1ae83f3bc4bc54319051c7193039a5f00a"/><section>
+    <title>numVisited()</title>
+<indexterm><primary>numVisited</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>numVisited</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">int</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::numVisited (std::vector&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">bool</link> &gt; listOfBools)<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>get the number of nodes we have visited 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>listOfBools</entry><entry>
+<para>list of bools to combine </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the number of nodes visitied </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00289">289</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a307d8095432434d7e28cfba1bba884cb"/><section>
+    <title>removeNode()</title>
+<indexterm><primary>removeNode</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>removeNode</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::removeNode (<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">size_t</link> index)</computeroutput></para>
+<para>Remove a node from the graph based on index 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>index</entry><entry>
+<para>the index to remove </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00390">390</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a8663524ab6962890aa72d2e146453caf"/><section>
+    <title>resize()</title>
+<indexterm><primary>resize</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>resize</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::resize ( )<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>resize the adjacency matrix </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00079">79</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a4abe34d5dda78d4055a3098773140325"/><section>
+    <title>setHead()</title>
+<indexterm><primary>setHead</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>setHead</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">void</link> <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::setHead (<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">int</link> index)</computeroutput></para>
+<para>Set the head of the graph 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>index</entry><entry>
+<para>the index to become head </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Graph_8cpp_source_1l00185">185</link> of file <link linkend="_Graph_8cpp_source">Graph.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classGraph_1a326c5e6fe82c176413da20701937e0e7"/><section>
+    <title>head</title>
+<indexterm><primary>head</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>head</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput><link linkend="_classNode">Node</link>&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link>&gt;* <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::head = <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nullptr</link><computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_Graph_8hpp_source_1l00027">27</link> of file <link linkend="_Graph_8hpp_source">Graph.hpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a1696c56a696176c26cb94b075e829ead"/><section>
+    <title>matrix</title>
+<indexterm><primary>matrix</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>matrix</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput>std::vector&lt;std::vector&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">double</link>&gt; &gt; <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::matrix<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_Graph_8hpp_source_1l00026">26</link> of file <link linkend="_Graph_8hpp_source">Graph.hpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1aeac7d50113228f13fadc0bd85a4daf72"/><section>
+    <title>nodeMap</title>
+<indexterm><primary>nodeMap</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>nodeMap</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput>std::map&lt;<link linkend="_classNode">Node</link>&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link>&gt;*, <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">unsigned</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">int</link>&gt; <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::nodeMap<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_Graph_8hpp_source_1l00028">28</link> of file <link linkend="_Graph_8hpp_source">Graph.hpp</link>.</para>
+</section>
+<anchor xml:id="_classGraph_1a5de43165fe4948c19cca80698de7daab"/><section>
+    <title>nodes</title>
+<indexterm><primary>nodes</primary><secondary>Graph&lt; V &gt;</secondary></indexterm>
+<indexterm><primary>Graph&lt; V &gt;</primary><secondary>nodes</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">typename</link> <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt; </computeroutput><para><computeroutput>std::vector&lt;<link linkend="_classNode">Node</link>&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link>&gt;*&gt; <link linkend="_classGraph">Graph</link>&lt; <link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">V</link> &gt;::nodes<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_Graph_8hpp_source_1l00025">25</link> of file <link linkend="_Graph_8hpp_source">Graph.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Graph_8hpp">Graph.hpp</link>/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Graph_8cpp">Graph.cpp</link></section>
+</section>

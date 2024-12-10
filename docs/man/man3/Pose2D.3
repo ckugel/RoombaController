@@ -1,0 +1,679 @@
+.TH "Pose2D" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Pose2D
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Pose2D\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPose2D\fP (double \fBx\fP, double \fBy\fP, double \fBheading\fP)"
+.br
+.ti -1c
+.RI "\fBPose2D\fP (double \fBx\fP, double \fBy\fP)"
+.br
+.ti -1c
+.RI "\fBPose2D\fP ()"
+.br
+.ti -1c
+.RI "\fBPose2D\fP (const \fBPose2D\fP &position)"
+.br
+.ti -1c
+.RI "double \fBangleTo\fP (const \fBPose2D\fP &other) const"
+.br
+.ti -1c
+.RI "double \fBdistanceTo\fP (const \fBPose2D\fP &other) const"
+.br
+.ti -1c
+.RI "double \fBsquareOfDistanceTo\fP (const \fBPose2D\fP &other) const"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBclone\fP () const"
+.br
+.ti -1c
+.RI "void \fBrotateByPose\fP (const \fBPose2D\fP &rotation)"
+.br
+.ti -1c
+.RI "void \fBrotateByAngle\fP (double angle)"
+.br
+.ti -1c
+.RI "void \fBtranslateByPose\fP (const \fBPose2D\fP &translation)"
+.br
+.ti -1c
+.RI "void \fBtranslateByMagnitude\fP (double magnitude)"
+.br
+.ti -1c
+.RI "void \fBtransformPose\fP (const \fBPose2D\fP &modifier)"
+.br
+.ti -1c
+.RI "double \fBgetX\fP () const"
+.br
+.ti -1c
+.RI "double \fBgetY\fP () const"
+.br
+.ti -1c
+.RI "double \fBgetHeading\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetHeading\fP (double angle)"
+.br
+.ti -1c
+.RI "void \fBplusCoord\fP (const \fBPose2D\fP &other)"
+.br
+.ti -1c
+.RI "void \fBplus\fP (const \fBPose2D\fP &other)"
+.br
+.ti -1c
+.RI "void \fBminus\fP (\fBPose2D\fP other)"
+.br
+.ti -1c
+.RI "void \fBaddAngle\fP (double angle)"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBsubtractBy\fP (const \fBPose2D\fP &other) const"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBscaleBy\fP (double scaler) const"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBnormalize\fP () const"
+.br
+.ti -1c
+.RI "double \fBdotProduct\fP (const \fBPose2D\fP &other) const"
+.br
+.ti -1c
+.RI "void \fBsetX\fP (double \fBx\fP)"
+.br
+.ti -1c
+.RI "void \fBvecAdd\fP (double angle, double magnitude)"
+.br
+.ti -1c
+.RI "void \fBsetY\fP (double \fBy\fP)"
+.br
+.ti -1c
+.RI "uint8_t \fBgetQuadrant\fP () const"
+.br
+.ti -1c
+.RI "void \fBwrapHeading\fP ()"
+.br
+.ti -1c
+.RI "void \fBtransformForPose\fP (const \fBPose2D\fP &other)"
+.br
+.ti -1c
+.RI "bool \fBisOnLine\fP (\fBPose2D\fP LineEnd1, \fBPose2D\fP LineEnd2)"
+.br
+.ti -1c
+.RI "bool \fBisPerpendicularToLine\fP (double m)"
+.br
+.ti -1c
+.RI "void \fBmultiply\fP (double d)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPose2D\fP \fBfromPolar\fP (double magnitude, double angle)"
+.br
+.ti -1c
+.RI "static double \fBdegreesToRadians\fP (double degrees)"
+.br
+.ti -1c
+.RI "static double \fBradiansToDegrees\fP (double radians)"
+.br
+.ti -1c
+.RI "static \fBPose2D\fP \fBparseFromStream\fP (std::istringstream &stream)"
+.br
+.ti -1c
+.RI "static double \fBgetAngleBetweenPoints\fP (\fBPose2D\fP corner, \fBPose2D\fP end1, \fBPose2D\fP end2)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBx\fP"
+.br
+.ti -1c
+.RI "double \fBy\fP"
+.br
+.ti -1c
+.RI "double \fBheading\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, const \fBPose2D\fP &d)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class representing a 2D position and a heading\&. Implements common vector functions 
+.PP
+Definition at line \fB23\fP of file \fBPose2D\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Pose2D::Pose2D (double x, double y, double heading)"
+Consctructs a new \fBPose2D\fP object 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP the x component 
+.br
+\fIy\fP the y component 
+.br
+\fIheading\fP the heading 
+.RE
+.PP
+
+.PP
+Definition at line \fB7\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "Pose2D::Pose2D (double x, double y)"
+Constructs a new \fBPose2D\fP object 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP component 
+.br
+\fIy\fP component 
+.RE
+.PP
+
+.PP
+Definition at line \fB13\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "Pose2D::Pose2D ()"
+Makes a new \fBPose2D\fP with 0's as default 
+.PP
+Definition at line \fB18\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "Pose2D::Pose2D (const \fBPose2D\fP & position)"
+Constructs a new \fBPose2D\fP\&. Copy constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP the pose to copy 
+.RE
+.PP
+
+.PP
+Definition at line \fB64\fP of file \fBPose2D\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Pose2D::addAngle (double angle)"
+Add the angle to heading 
+.PP
+\fBParameters\fP
+.RS 4
+\fIangle\fP gets added to 'this' heading 
+.RE
+.PP
+
+.PP
+Definition at line \fB82\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "double Pose2D::angleTo (const \fBPose2D\fP & other) const"
+Calculates the angle from one node to another 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP angle to get to 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the angle between two nodes 
+.RE
+.PP
+
+.PP
+Definition at line \fB78\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "\fBPose2D\fP Pose2D::clone () const"
+Makes a copy of this node 
+.PP
+\fBReturns\fP
+.RS 4
+the copy of this node 
+.RE
+.PP
+
+.PP
+Definition at line \fB106\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "double Pose2D::degreesToRadians (double degrees)\fR [static]\fP"
+Calculates the radian equivalent of degrees 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdegrees\fP the angle in degrees 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the angle in radians 
+.RE
+.PP
+
+.PP
+Definition at line \fB200\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "double Pose2D::distanceTo (const \fBPose2D\fP & other) const"
+Calculates the distance between two nodes 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP the other node to calculate the distance to 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the distance between the two nodes 
+.RE
+.PP
+
+.PP
+Definition at line \fB86\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "double Pose2D::dotProduct (const \fBPose2D\fP & other) const"
+Calculate the dot product from the nodes: 'this' and other 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP other node to calculate the dot product with 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a double resembling the dot product 
+.RE
+.PP
+
+.PP
+Definition at line \fB226\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "\fBPose2D\fP Pose2D::fromPolar (double magnitude, double angle)\fR [static]\fP"
+Creates a new \fBPose2D\fP from polar coordinats 
+.PP
+\fBParameters\fP
+.RS 4
+\fImagnitude\fP the magnitude of the position 
+.br
+\fIangle\fP the angle of the position 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A \fBPose2D\fP object representing the polar coordinates 
+.RE
+.PP
+
+.PP
+Definition at line \fB193\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "static double Pose2D::getAngleBetweenPoints (\fBPose2D\fP corner, \fBPose2D\fP end1, \fBPose2D\fP end2)\fR [static]\fP"
+gets the angle between points in radians\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcorner\fP 
+.br
+\fIend1\fP 
+.br
+\fIend2\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the angle between all of these points 
+.RE
+.PP
+
+.SS "double Pose2D::getHeading () const"
+get the heading of the position 
+.PP
+\fBReturns\fP
+.RS 4
+the heading of the bot 
+.RE
+.PP
+
+.PP
+Definition at line \fB155\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "uint8_t Pose2D::getQuadrant () const"
+Gets the quadrant that a Pose is in\&. If the pose is on the origin or on an intercept it return's 0\&. otherwise going from pos pos (1) it travels counter clockwise around in a circle 
+.PP
+\fBReturns\fP
+.RS 4
+(0, 0): 0 (+, +): 1 (-, +): 2 (-, -): 3 (+, -): 4 
+.RE
+.PP
+
+.PP
+Definition at line \fB171\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "double Pose2D::getX () const"
+get the x component of the position 
+.PP
+\fBReturns\fP
+.RS 4
+the c component 
+.RE
+.PP
+
+.PP
+Definition at line \fB147\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "double Pose2D::getY () const"
+gets the y component of the position 
+.PP
+\fBReturns\fP
+.RS 4
+the y component 
+.RE
+.PP
+
+.PP
+Definition at line \fB151\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "bool Pose2D::isOnLine (\fBPose2D\fP LineEnd1, \fBPose2D\fP LineEnd2)"
+Makes a slope intercept object from two pose2Ds 
+.PP
+\fBParameters\fP
+.RS 4
+\fIone\fP the first position 
+.br
+\fItwo\fP the second position 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Slope intercept object that runs through two points Determines whether a pose is on a given bounded line 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fILineEnd1\fP one endpoint of the line 
+.br
+\fILineEnd2\fP the other endpoint of the line 
+.RE
+.PP
+
+.PP
+Definition at line \fB24\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "bool Pose2D::isPerpendicularToLine (double m)"
+Determines whether a position is perpendicular to a given line 
+.SS "void Pose2D::minus (\fBPose2D\fP other)"
+Subtract this by other\&. Subtracts the components 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP the other node to subtract by 
+.RE
+.PP
+
+.PP
+Definition at line \fB187\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::multiply (double d)"
+Multiplys the x and y components by a scalar 
+.PP
+Definition at line \fB267\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "\fBPose2D\fP Pose2D::normalize () const"
+Normalizes a position to a unit vector 
+.PP
+\fBReturns\fP
+.RS 4
+a unit vector representing this position 
+.RE
+.PP
+
+.PP
+Definition at line \fB221\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "\fBPose2D\fP Pose2D::parseFromStream (std::istringstream & stream)\fR [static]\fP"
+Parse a pose 2d from a string stream 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstream\fP the stream to parse from 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a pose2D from the data in the stream 
+.RE
+.PP
+
+.PP
+Definition at line \fB204\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::plus (const \fBPose2D\fP & other)"
+Computes a vector addition\&. Adds components of vectors together 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP the other pose 
+.RE
+.PP
+
+.PP
+Definition at line \fB100\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::plusCoord (const \fBPose2D\fP & other)"
+Sum of two coordinates 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP the node to add 
+.RE
+.PP
+
+.PP
+Definition at line \fB123\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "static double Pose2D::radiansToDegrees (double radians)\fR [static]\fP"
+Calculates the degree equivalent of radians 
+.PP
+\fBParameters\fP
+.RS 4
+\fIradians\fP the angle in radians 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the angle in degrees 
+.RE
+.PP
+
+.SS "void Pose2D::rotateByAngle (double angle)"
+Uses a rotation matrix to rotate a \fBPose2D\fP by an angle\&. Rotates about the origin\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIangle\fP to rotate by\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB116\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::rotateByPose (const \fBPose2D\fP & rotation)"
+Rotate a \fBPose2D\fP by the a rotation cooresponding to the heading of the other pose 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrotation\fP the pose to rotate by 
+.RE
+.PP
+
+.PP
+Definition at line \fB128\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "\fBPose2D\fP Pose2D::scaleBy (double scaler) const"
+Scales a position by another\&. Returs result 
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaler\fP amount to scale this vector as a pose by 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the result of the scaling operation 
+.RE
+.PP
+
+.PP
+Definition at line \fB217\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::setHeading (double angle)"
+Sets the heading of the Pose 
+.PP
+\fBParameters\fP
+.RS 4
+\fIangle\fP the angle to set the Pose at 
+.RE
+.PP
+
+.PP
+Definition at line \fB159\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::setX (double x)"
+Setter for x 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP the new x value 
+.RE
+.PP
+
+.PP
+Definition at line \fB163\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::setY (double y)"
+Setter for y 
+.PP
+\fBParameters\fP
+.RS 4
+\fIy\fP the new y value 
+.RE
+.PP
+
+.PP
+Definition at line \fB167\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "double Pose2D::squareOfDistanceTo (const \fBPose2D\fP & other) const"
+calculate the squared distance to another object 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP the object to get the squared distance to 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the squared distance to the other object 
+.RE
+.PP
+
+.PP
+Definition at line \fB90\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "\fBPose2D\fP Pose2D::subtractBy (const \fBPose2D\fP & other) const"
+Subtract 'this' from other by components and return the result 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP the other node to subtract by 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the result of the subtraction 
+.RE
+.PP
+
+.PP
+Definition at line \fB213\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::transformForPose (const \fBPose2D\fP & other)"
+transforms a given pose for another's frame 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP the other frame 
+.RE
+.PP
+
+.PP
+Definition at line \fB94\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::transformPose (const \fBPose2D\fP & modifier)"
+transform a position with a rotation and a translation 
+.PP
+\fBParameters\fP
+.RS 4
+\fImodifier\fP the heading gets used as the rotation\&. The compoenent get used as the translation 
+.RE
+.PP
+
+.PP
+Definition at line \fB142\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::translateByMagnitude (double magnitude)"
+This is admitedly a bit of a goofy function\&. We take the magnitude of the translation and extend the current position by that much in the heading of the pose\&. I like to think of the \fBPose2D\fP as a vector, then we take the heading and combine it into a pollar coordinate with the magnitude\&. Then we do vector addition on the \fBPose2D\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImagnitude\fP to extend by 
+.RE
+.PP
+
+.PP
+Definition at line \fB137\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::translateByPose (const \fBPose2D\fP & translation)"
+Translation for a pose by another pose\&. Vector addition 
+.PP
+\fBParameters\fP
+.RS 4
+\fItranslation\fP the pose to add 
+.RE
+.PP
+
+.PP
+Definition at line \fB132\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::vecAdd (double angle, double magnitude)"
+Computes a vector addition from an angle and quantity 
+.PP
+\fBParameters\fP
+.RS 4
+\fIangle\fP the angle component of the vector 
+.br
+\fImagnitude\fP the quantity component of the vector 
+.RE
+.PP
+
+.PP
+Definition at line \fB110\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "void Pose2D::wrapHeading ()"
+Wraps a heading to - PI -> PI 
+.PP
+Definition at line \fB235\fP of file \fBPose2D\&.cpp\fP\&.
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "std::ostream & operator<< (std::ostream & os, const \fBPose2D\fP & d)\fR [friend]\fP"
+To string for a pose2D 
+.PP
+\fBParameters\fP
+.RS 4
+\fIos\fP output stream 
+.br
+\fId\fP the pose2D to reference 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line \fB230\fP of file \fBPose2D\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "double Pose2D::heading\fR [protected]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBPose2D\&.hpp\fP\&.
+.SS "double Pose2D::x\fR [protected]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBPose2D\&.hpp\fP\&.
+.SS "double Pose2D::y\fR [protected]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBPose2D\&.hpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

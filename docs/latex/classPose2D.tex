@@ -1,0 +1,779 @@
+\doxysection{Pose2D Class Reference}
+\hypertarget{classPose2D}{}\label{classPose2D}\index{Pose2D@{Pose2D}}
+
+
+{\ttfamily \#include $<$Pose2\+D.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPose2D_a6d70b4f0e17c1f80690c1a4a832238bd}{Pose2D}} (double \mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}}, double \mbox{\hyperlink{classPose2D_a79a6b7de45208d23daa4ec11913a547f}{y}}, double \mbox{\hyperlink{classPose2D_a3d04db1eca820a577c911ca88df12b7d}{heading}})
+\item 
+\mbox{\hyperlink{classPose2D_ad31191da38f3f5e9a4a0e77577389977}{Pose2D}} (double \mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}}, double \mbox{\hyperlink{classPose2D_a79a6b7de45208d23daa4ec11913a547f}{y}})
+\item 
+\mbox{\hyperlink{classPose2D_a216182882a02017665c754b16c1328ae}{Pose2D}} ()
+\item 
+\mbox{\hyperlink{classPose2D_a5b718e40b6dcc3b109128c57d8d78f69}{Pose2D}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position)
+\item 
+double \mbox{\hyperlink{classPose2D_a29526d1eb9c2eafc4b6d3cc2f31a6773}{angle\+To}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other) const
+\item 
+double \mbox{\hyperlink{classPose2D_a9acb14a9b0252c620dfc1e79139b52d3}{distance\+To}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other) const
+\item 
+double \mbox{\hyperlink{classPose2D_a73e8e6fd058a55960da459cdef6d6ffb}{square\+Of\+Distance\+To}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other) const
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classPose2D_a34c15f20448e7efd354c507d38ec2891}{clone}} () const
+\item 
+void \mbox{\hyperlink{classPose2D_add9d11130bbe9e7e66325e98f7ca43f5}{rotate\+By\+Pose}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&rotation)
+\item 
+void \mbox{\hyperlink{classPose2D_a1e220c70ada1586e8e1f9f2387e45e61}{rotate\+By\+Angle}} (double angle)
+\item 
+void \mbox{\hyperlink{classPose2D_a03d229ea165034f3130d158a864ce6aa}{translate\+By\+Pose}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&translation)
+\item 
+void \mbox{\hyperlink{classPose2D_a84216b76ce7d5a554794b43c56574582}{translate\+By\+Magnitude}} (double magnitude)
+\item 
+void \mbox{\hyperlink{classPose2D_a732b26c3659a88456d5fc0e4e1b0a8ea}{transform\+Pose}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&modifier)
+\item 
+double \mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}} () const
+\item 
+double \mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}} () const
+\item 
+double \mbox{\hyperlink{classPose2D_aab0666fc4e510ece6f85a13fbfd6d347}{get\+Heading}} () const
+\item 
+void \mbox{\hyperlink{classPose2D_a07d03a1b06734fa63fcf6ee05befcb51}{set\+Heading}} (double angle)
+\item 
+void \mbox{\hyperlink{classPose2D_ac6afb91ffac9121da23df77f7c975a39}{plus\+Coord}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other)
+\item 
+void \mbox{\hyperlink{classPose2D_a5a031312210c5fd0d88855df26b53c1a}{plus}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other)
+\item 
+void \mbox{\hyperlink{classPose2D_adc44dfc82549ea97d3622052b615bf55}{minus}} (\mbox{\hyperlink{classPose2D}{Pose2D}} other)
+\item 
+void \mbox{\hyperlink{classPose2D_a77b5a2d38fe501e59a8d308b5cfa0508}{add\+Angle}} (double angle)
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classPose2D_ad0b3a99de1a5972d3bed31e4e47e4e09}{subtract\+By}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other) const
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classPose2D_ab2ee3fec06d12adad8bd9c37fe7a8175}{scale\+By}} (double scaler) const
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classPose2D_ab4524355149f49542d83fc144e2438a8}{normalize}} () const
+\item 
+double \mbox{\hyperlink{classPose2D_a359e162b9cb331cd5ccca9739ab31502}{dot\+Product}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other) const
+\item 
+void \mbox{\hyperlink{classPose2D_af2c1bc2df5d8a7d8914f8be52454f01c}{setX}} (double \mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}})
+\item 
+void \mbox{\hyperlink{classPose2D_aae96b589dd219d641a039b8fe1a56d7b}{vec\+Add}} (double angle, double magnitude)
+\item 
+void \mbox{\hyperlink{classPose2D_a2d4fc81aa0bd66e7fe5ad9ef23ca349c}{setY}} (double \mbox{\hyperlink{classPose2D_a79a6b7de45208d23daa4ec11913a547f}{y}})
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classPose2D_aa5f78e433ba60f61ea49b08ec8ff4d08}{get\+Quadrant}} () const
+\item 
+void \mbox{\hyperlink{classPose2D_a52fbe813508bcb22e43c0ba8d1041246}{wrap\+Heading}} ()
+\item 
+void \mbox{\hyperlink{classPose2D_a4fc6977729ef4a4b63e0e9fa0caf1e2e}{transform\+For\+Pose}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other)
+\item 
+bool \mbox{\hyperlink{classPose2D_a4ad9e8c801fb7b2ad934c3f0f4923633}{is\+On\+Line}} (\mbox{\hyperlink{classPose2D}{Pose2D}} Line\+End1, \mbox{\hyperlink{classPose2D}{Pose2D}} Line\+End2)
+\item 
+bool \mbox{\hyperlink{classPose2D_ad6d17f1e93cb0b016aecf871c98a4bc0}{is\+Perpendicular\+To\+Line}} (double m)
+\item 
+void \mbox{\hyperlink{classPose2D_a1cd7e63d410b091dcc89e20afcd65fff}{multiply}} (double d)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classPose2D_a35455cacb295ea54820030b9dbb191f2}{from\+Polar}} (double magnitude, double angle)
+\item 
+static double \mbox{\hyperlink{classPose2D_ad02ce98e6c53fb62bb65eda3cae90a1c}{degrees\+To\+Radians}} (double degrees)
+\item 
+static double \mbox{\hyperlink{classPose2D_a2d6bf4ee90b23c81d4b153af6fd1c453}{radians\+To\+Degrees}} (double radians)
+\item 
+static \mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classPose2D_a5d17898ded76394ed8d4af09b6c79ca2}{parse\+From\+Stream}} (std\+::istringstream \&stream)
+\item 
+static double \mbox{\hyperlink{classPose2D_ac6f628453cf76391fac4ef7b884490d0}{get\+Angle\+Between\+Points}} (\mbox{\hyperlink{classPose2D}{Pose2D}} corner, \mbox{\hyperlink{classPose2D}{Pose2D}} end1, \mbox{\hyperlink{classPose2D}{Pose2D}} end2)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}}
+\item 
+double \mbox{\hyperlink{classPose2D_a79a6b7de45208d23daa4ec11913a547f}{y}}
+\item 
+double \mbox{\hyperlink{classPose2D_a3d04db1eca820a577c911ca88df12b7d}{heading}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classPose2D_a8ee5dca0a6268342b242172f7222756f}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&d)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a 2D position and a heading. Implements common vector functions 
+
+Definition at line \mbox{\hyperlink{Pose2D_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{Pose2D_8hpp_source}{Pose2\+D.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPose2D_a6d70b4f0e17c1f80690c1a4a832238bd}\label{classPose2D_a6d70b4f0e17c1f80690c1a4a832238bd} 
+\index{Pose2D@{Pose2D}!Pose2D@{Pose2D}}
+\index{Pose2D@{Pose2D}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{Pose2D()}{Pose2D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Pose2\+D\+::\+Pose2D (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{heading }\end{DoxyParamCaption})}
+
+Consctructs a new \doxylink{classPose2D}{Pose2D} object 
+\begin{DoxyParams}{Parameters}
+{\em x} & the x component \\
+\hline
+{\em y} & the y component \\
+\hline
+{\em heading} & the heading \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ad31191da38f3f5e9a4a0e77577389977}\label{classPose2D_ad31191da38f3f5e9a4a0e77577389977} 
+\index{Pose2D@{Pose2D}!Pose2D@{Pose2D}}
+\index{Pose2D@{Pose2D}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{Pose2D()}{Pose2D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Pose2\+D\+::\+Pose2D (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+Constructs a new \doxylink{classPose2D}{Pose2D} object 
+\begin{DoxyParams}{Parameters}
+{\em x} & component \\
+\hline
+{\em y} & component \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a216182882a02017665c754b16c1328ae}\label{classPose2D_a216182882a02017665c754b16c1328ae} 
+\index{Pose2D@{Pose2D}!Pose2D@{Pose2D}}
+\index{Pose2D@{Pose2D}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{Pose2D()}{Pose2D()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Pose2\+D\+::\+Pose2D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Makes a new \doxylink{classPose2D}{Pose2D} with 0\textquotesingle{}s as default 
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a5b718e40b6dcc3b109128c57d8d78f69}\label{classPose2D_a5b718e40b6dcc3b109128c57d8d78f69} 
+\index{Pose2D@{Pose2D}!Pose2D@{Pose2D}}
+\index{Pose2D@{Pose2D}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{Pose2D()}{Pose2D()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Pose2\+D\+::\+Pose2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position }\end{DoxyParamCaption})}
+
+Constructs a new \doxylink{classPose2D}{Pose2D}. Copy constructor. 
+\begin{DoxyParams}{Parameters}
+{\em position} & the pose to copy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPose2D_a77b5a2d38fe501e59a8d308b5cfa0508}\label{classPose2D_a77b5a2d38fe501e59a8d308b5cfa0508} 
+\index{Pose2D@{Pose2D}!addAngle@{addAngle}}
+\index{addAngle@{addAngle}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{addAngle()}{addAngle()}}
+{\footnotesize\ttfamily void Pose2\+D\+::add\+Angle (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+Add the angle to heading 
+\begin{DoxyParams}{Parameters}
+{\em angle} & gets added to "{}this"{} heading \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a29526d1eb9c2eafc4b6d3cc2f31a6773}\label{classPose2D_a29526d1eb9c2eafc4b6d3cc2f31a6773} 
+\index{Pose2D@{Pose2D}!angleTo@{angleTo}}
+\index{angleTo@{angleTo}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{angleTo()}{angleTo()}}
+{\footnotesize\ttfamily double Pose2\+D\+::angle\+To (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption}) const}
+
+Calculates the angle from one node to another 
+\begin{DoxyParams}{Parameters}
+{\em other} & angle to get to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angle between two nodes 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a34c15f20448e7efd354c507d38ec2891}\label{classPose2D_a34c15f20448e7efd354c507d38ec2891} 
+\index{Pose2D@{Pose2D}!clone@{clone}}
+\index{clone@{clone}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Pose2\+D\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Makes a copy of this node \begin{DoxyReturn}{Returns}
+the copy of this node 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ad02ce98e6c53fb62bb65eda3cae90a1c}\label{classPose2D_ad02ce98e6c53fb62bb65eda3cae90a1c} 
+\index{Pose2D@{Pose2D}!degreesToRadians@{degreesToRadians}}
+\index{degreesToRadians@{degreesToRadians}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{degreesToRadians()}{degreesToRadians()}}
+{\footnotesize\ttfamily double Pose2\+D\+::degrees\+To\+Radians (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Calculates the radian equivalent of degrees 
+\begin{DoxyParams}{Parameters}
+{\em degrees} & the angle in degrees \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angle in radians 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00200}{200}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a9acb14a9b0252c620dfc1e79139b52d3}\label{classPose2D_a9acb14a9b0252c620dfc1e79139b52d3} 
+\index{Pose2D@{Pose2D}!distanceTo@{distanceTo}}
+\index{distanceTo@{distanceTo}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{distanceTo()}{distanceTo()}}
+{\footnotesize\ttfamily double Pose2\+D\+::distance\+To (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption}) const}
+
+Calculates the distance between two nodes 
+\begin{DoxyParams}{Parameters}
+{\em other} & the other node to calculate the distance to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the distance between the two nodes 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a359e162b9cb331cd5ccca9739ab31502}\label{classPose2D_a359e162b9cb331cd5ccca9739ab31502} 
+\index{Pose2D@{Pose2D}!dotProduct@{dotProduct}}
+\index{dotProduct@{dotProduct}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{dotProduct()}{dotProduct()}}
+{\footnotesize\ttfamily double Pose2\+D\+::dot\+Product (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption}) const}
+
+Calculate the dot product from the nodes\+: "{}this"{} and other 
+\begin{DoxyParams}{Parameters}
+{\em other} & other node to calculate the dot product with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a double resembling the dot product 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00226}{226}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a35455cacb295ea54820030b9dbb191f2}\label{classPose2D_a35455cacb295ea54820030b9dbb191f2} 
+\index{Pose2D@{Pose2D}!fromPolar@{fromPolar}}
+\index{fromPolar@{fromPolar}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{fromPolar()}{fromPolar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Pose2\+D\+::from\+Polar (\begin{DoxyParamCaption}\item[{double}]{magnitude,  }\item[{double}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates a new \doxylink{classPose2D}{Pose2D} from polar coordinats 
+\begin{DoxyParams}{Parameters}
+{\em magnitude} & the magnitude of the position \\
+\hline
+{\em angle} & the angle of the position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classPose2D}{Pose2D} object representing the polar coordinates 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00193}{193}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ac6f628453cf76391fac4ef7b884490d0}\label{classPose2D_ac6f628453cf76391fac4ef7b884490d0} 
+\index{Pose2D@{Pose2D}!getAngleBetweenPoints@{getAngleBetweenPoints}}
+\index{getAngleBetweenPoints@{getAngleBetweenPoints}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{getAngleBetweenPoints()}{getAngleBetweenPoints()}}
+{\footnotesize\ttfamily static double Pose2\+D\+::get\+Angle\+Between\+Points (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPose2D}{Pose2D}}}]{corner,  }\item[{\mbox{\hyperlink{classPose2D}{Pose2D}}}]{end1,  }\item[{\mbox{\hyperlink{classPose2D}{Pose2D}}}]{end2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+gets the angle between points in radians. 
+\begin{DoxyParams}{Parameters}
+{\em corner} & \\
+\hline
+{\em end1} & \\
+\hline
+{\em end2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angle between all of these points 
+\end{DoxyReturn}
+\Hypertarget{classPose2D_aab0666fc4e510ece6f85a13fbfd6d347}\label{classPose2D_aab0666fc4e510ece6f85a13fbfd6d347} 
+\index{Pose2D@{Pose2D}!getHeading@{getHeading}}
+\index{getHeading@{getHeading}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{getHeading()}{getHeading()}}
+{\footnotesize\ttfamily double Pose2\+D\+::get\+Heading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+get the heading of the position \begin{DoxyReturn}{Returns}
+the heading of the bot 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00155}{155}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_aa5f78e433ba60f61ea49b08ec8ff4d08}\label{classPose2D_aa5f78e433ba60f61ea49b08ec8ff4d08} 
+\index{Pose2D@{Pose2D}!getQuadrant@{getQuadrant}}
+\index{getQuadrant@{getQuadrant}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{getQuadrant()}{getQuadrant()}}
+{\footnotesize\ttfamily uint8\+\_\+t Pose2\+D\+::get\+Quadrant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Gets the quadrant that a Pose is in. If the pose is on the origin or on an intercept it return\textquotesingle{}s 0. otherwise going from pos pos (1) it travels counter clockwise around in a circle \begin{DoxyReturn}{Returns}
+(0, 0)\+: 0 (+, +)\+: 1 (-\/, +)\+: 2 (-\/, -\/)\+: 3 (+, -\/)\+: 4 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ad3453560b394884b5b94de1264b946fa}\label{classPose2D_ad3453560b394884b5b94de1264b946fa} 
+\index{Pose2D@{Pose2D}!getX@{getX}}
+\index{getX@{getX}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily double Pose2\+D\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+get the x component of the position \begin{DoxyReturn}{Returns}
+the c component 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}\label{classPose2D_acfc52591b36947d8ead57ada1c12e5c2} 
+\index{Pose2D@{Pose2D}!getY@{getY}}
+\index{getY@{getY}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily double Pose2\+D\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+gets the y component of the position \begin{DoxyReturn}{Returns}
+the y component 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a4ad9e8c801fb7b2ad934c3f0f4923633}\label{classPose2D_a4ad9e8c801fb7b2ad934c3f0f4923633} 
+\index{Pose2D@{Pose2D}!isOnLine@{isOnLine}}
+\index{isOnLine@{isOnLine}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{isOnLine()}{isOnLine()}}
+{\footnotesize\ttfamily bool Pose2\+D\+::is\+On\+Line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPose2D}{Pose2D}}}]{Line\+End1,  }\item[{\mbox{\hyperlink{classPose2D}{Pose2D}}}]{Line\+End2 }\end{DoxyParamCaption})}
+
+Makes a slope intercept object from two pose2\+Ds 
+\begin{DoxyParams}{Parameters}
+{\em one} & the first position \\
+\hline
+{\em two} & the second position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Slope intercept object that runs through two points Determines whether a pose is on a given bounded line 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Line\+End1} & one endpoint of the line \\
+\hline
+{\em Line\+End2} & the other endpoint of the line \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ad6d17f1e93cb0b016aecf871c98a4bc0}\label{classPose2D_ad6d17f1e93cb0b016aecf871c98a4bc0} 
+\index{Pose2D@{Pose2D}!isPerpendicularToLine@{isPerpendicularToLine}}
+\index{isPerpendicularToLine@{isPerpendicularToLine}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{isPerpendicularToLine()}{isPerpendicularToLine()}}
+{\footnotesize\ttfamily bool Pose2\+D\+::is\+Perpendicular\+To\+Line (\begin{DoxyParamCaption}\item[{double}]{m }\end{DoxyParamCaption})}
+
+Determines whether a position is perpendicular to a given line \Hypertarget{classPose2D_adc44dfc82549ea97d3622052b615bf55}\label{classPose2D_adc44dfc82549ea97d3622052b615bf55} 
+\index{Pose2D@{Pose2D}!minus@{minus}}
+\index{minus@{minus}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{minus()}{minus()}}
+{\footnotesize\ttfamily void Pose2\+D\+::minus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPose2D}{Pose2D}}}]{other }\end{DoxyParamCaption})}
+
+Subtract this by other. Subtracts the components 
+\begin{DoxyParams}{Parameters}
+{\em other} & the other node to subtract by \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00187}{187}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a1cd7e63d410b091dcc89e20afcd65fff}\label{classPose2D_a1cd7e63d410b091dcc89e20afcd65fff} 
+\index{Pose2D@{Pose2D}!multiply@{multiply}}
+\index{multiply@{multiply}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{multiply()}{multiply()}}
+{\footnotesize\ttfamily void Pose2\+D\+::multiply (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption})}
+
+Multiplys the x and y components by a scalar 
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00267}{267}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ab4524355149f49542d83fc144e2438a8}\label{classPose2D_ab4524355149f49542d83fc144e2438a8} 
+\index{Pose2D@{Pose2D}!normalize@{normalize}}
+\index{normalize@{normalize}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Pose2\+D\+::normalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Normalizes a position to a unit vector \begin{DoxyReturn}{Returns}
+a unit vector representing this position 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00221}{221}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a5d17898ded76394ed8d4af09b6c79ca2}\label{classPose2D_a5d17898ded76394ed8d4af09b6c79ca2} 
+\index{Pose2D@{Pose2D}!parseFromStream@{parseFromStream}}
+\index{parseFromStream@{parseFromStream}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{parseFromStream()}{parseFromStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Pose2\+D\+::parse\+From\+Stream (\begin{DoxyParamCaption}\item[{std\+::istringstream \&}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Parse a pose 2d from a string stream 
+\begin{DoxyParams}{Parameters}
+{\em stream} & the stream to parse from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pose2D from the data in the stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00204}{204}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a5a031312210c5fd0d88855df26b53c1a}\label{classPose2D_a5a031312210c5fd0d88855df26b53c1a} 
+\index{Pose2D@{Pose2D}!plus@{plus}}
+\index{plus@{plus}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{plus()}{plus()}}
+{\footnotesize\ttfamily void Pose2\+D\+::plus (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption})}
+
+Computes a vector addition. Adds components of vectors together 
+\begin{DoxyParams}{Parameters}
+{\em other} & the other pose \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ac6afb91ffac9121da23df77f7c975a39}\label{classPose2D_ac6afb91ffac9121da23df77f7c975a39} 
+\index{Pose2D@{Pose2D}!plusCoord@{plusCoord}}
+\index{plusCoord@{plusCoord}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{plusCoord()}{plusCoord()}}
+{\footnotesize\ttfamily void Pose2\+D\+::plus\+Coord (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption})}
+
+Sum of two coordinates 
+\begin{DoxyParams}{Parameters}
+{\em other} & the node to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a2d6bf4ee90b23c81d4b153af6fd1c453}\label{classPose2D_a2d6bf4ee90b23c81d4b153af6fd1c453} 
+\index{Pose2D@{Pose2D}!radiansToDegrees@{radiansToDegrees}}
+\index{radiansToDegrees@{radiansToDegrees}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{radiansToDegrees()}{radiansToDegrees()}}
+{\footnotesize\ttfamily static double Pose2\+D\+::radians\+To\+Degrees (\begin{DoxyParamCaption}\item[{double}]{radians }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Calculates the degree equivalent of radians 
+\begin{DoxyParams}{Parameters}
+{\em radians} & the angle in radians \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angle in degrees 
+\end{DoxyReturn}
+\Hypertarget{classPose2D_a1e220c70ada1586e8e1f9f2387e45e61}\label{classPose2D_a1e220c70ada1586e8e1f9f2387e45e61} 
+\index{Pose2D@{Pose2D}!rotateByAngle@{rotateByAngle}}
+\index{rotateByAngle@{rotateByAngle}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{rotateByAngle()}{rotateByAngle()}}
+{\footnotesize\ttfamily void Pose2\+D\+::rotate\+By\+Angle (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+Uses a rotation matrix to rotate a \doxylink{classPose2D}{Pose2D} by an angle. Rotates about the origin. 
+\begin{DoxyParams}{Parameters}
+{\em angle} & to rotate by. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_add9d11130bbe9e7e66325e98f7ca43f5}\label{classPose2D_add9d11130bbe9e7e66325e98f7ca43f5} 
+\index{Pose2D@{Pose2D}!rotateByPose@{rotateByPose}}
+\index{rotateByPose@{rotateByPose}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{rotateByPose()}{rotateByPose()}}
+{\footnotesize\ttfamily void Pose2\+D\+::rotate\+By\+Pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{rotation }\end{DoxyParamCaption})}
+
+Rotate a \doxylink{classPose2D}{Pose2D} by the a rotation cooresponding to the heading of the other pose 
+\begin{DoxyParams}{Parameters}
+{\em rotation} & the pose to rotate by \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00128}{128}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ab2ee3fec06d12adad8bd9c37fe7a8175}\label{classPose2D_ab2ee3fec06d12adad8bd9c37fe7a8175} 
+\index{Pose2D@{Pose2D}!scaleBy@{scaleBy}}
+\index{scaleBy@{scaleBy}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{scaleBy()}{scaleBy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Pose2\+D\+::scale\+By (\begin{DoxyParamCaption}\item[{double}]{scaler }\end{DoxyParamCaption}) const}
+
+Scales a position by another. Returs result 
+\begin{DoxyParams}{Parameters}
+{\em scaler} & amount to scale this vector as a pose by \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the result of the scaling operation 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00217}{217}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a07d03a1b06734fa63fcf6ee05befcb51}\label{classPose2D_a07d03a1b06734fa63fcf6ee05befcb51} 
+\index{Pose2D@{Pose2D}!setHeading@{setHeading}}
+\index{setHeading@{setHeading}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{setHeading()}{setHeading()}}
+{\footnotesize\ttfamily void Pose2\+D\+::set\+Heading (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+Sets the heading of the Pose 
+\begin{DoxyParams}{Parameters}
+{\em angle} & the angle to set the Pose at \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00159}{159}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_af2c1bc2df5d8a7d8914f8be52454f01c}\label{classPose2D_af2c1bc2df5d8a7d8914f8be52454f01c} 
+\index{Pose2D@{Pose2D}!setX@{setX}}
+\index{setX@{setX}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily void Pose2\+D\+::setX (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+Setter for x 
+\begin{DoxyParams}{Parameters}
+{\em x} & the new x value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00163}{163}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a2d4fc81aa0bd66e7fe5ad9ef23ca349c}\label{classPose2D_a2d4fc81aa0bd66e7fe5ad9ef23ca349c} 
+\index{Pose2D@{Pose2D}!setY@{setY}}
+\index{setY@{setY}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily void Pose2\+D\+::setY (\begin{DoxyParamCaption}\item[{double}]{y }\end{DoxyParamCaption})}
+
+Setter for y 
+\begin{DoxyParams}{Parameters}
+{\em y} & the new y value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a73e8e6fd058a55960da459cdef6d6ffb}\label{classPose2D_a73e8e6fd058a55960da459cdef6d6ffb} 
+\index{Pose2D@{Pose2D}!squareOfDistanceTo@{squareOfDistanceTo}}
+\index{squareOfDistanceTo@{squareOfDistanceTo}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{squareOfDistanceTo()}{squareOfDistanceTo()}}
+{\footnotesize\ttfamily double Pose2\+D\+::square\+Of\+Distance\+To (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption}) const}
+
+calculate the squared distance to another object 
+\begin{DoxyParams}{Parameters}
+{\em other} & the object to get the squared distance to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the squared distance to the other object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_ad0b3a99de1a5972d3bed31e4e47e4e09}\label{classPose2D_ad0b3a99de1a5972d3bed31e4e47e4e09} 
+\index{Pose2D@{Pose2D}!subtractBy@{subtractBy}}
+\index{subtractBy@{subtractBy}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{subtractBy()}{subtractBy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Pose2\+D\+::subtract\+By (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption}) const}
+
+Subtract "{}this"{} from other by components and return the result 
+\begin{DoxyParams}{Parameters}
+{\em other} & the other node to subtract by \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the result of the subtraction 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00213}{213}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a4fc6977729ef4a4b63e0e9fa0caf1e2e}\label{classPose2D_a4fc6977729ef4a4b63e0e9fa0caf1e2e} 
+\index{Pose2D@{Pose2D}!transformForPose@{transformForPose}}
+\index{transformForPose@{transformForPose}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{transformForPose()}{transformForPose()}}
+{\footnotesize\ttfamily void Pose2\+D\+::transform\+For\+Pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption})}
+
+transforms a given pose for another\textquotesingle{}s frame 
+\begin{DoxyParams}{Parameters}
+{\em other} & the other frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a732b26c3659a88456d5fc0e4e1b0a8ea}\label{classPose2D_a732b26c3659a88456d5fc0e4e1b0a8ea} 
+\index{Pose2D@{Pose2D}!transformPose@{transformPose}}
+\index{transformPose@{transformPose}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{transformPose()}{transformPose()}}
+{\footnotesize\ttfamily void Pose2\+D\+::transform\+Pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{modifier }\end{DoxyParamCaption})}
+
+transform a position with a rotation and a translation 
+\begin{DoxyParams}{Parameters}
+{\em modifier} & the heading gets used as the rotation. The compoenent get used as the translation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a84216b76ce7d5a554794b43c56574582}\label{classPose2D_a84216b76ce7d5a554794b43c56574582} 
+\index{Pose2D@{Pose2D}!translateByMagnitude@{translateByMagnitude}}
+\index{translateByMagnitude@{translateByMagnitude}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{translateByMagnitude()}{translateByMagnitude()}}
+{\footnotesize\ttfamily void Pose2\+D\+::translate\+By\+Magnitude (\begin{DoxyParamCaption}\item[{double}]{magnitude }\end{DoxyParamCaption})}
+
+This is admitedly a bit of a goofy function. We take the magnitude of the translation and extend the current position by that much in the heading of the pose. I like to think of the \doxylink{classPose2D}{Pose2D} as a vector, then we take the heading and combine it into a pollar coordinate with the magnitude. Then we do vector addition on the \doxylink{classPose2D}{Pose2D}. 
+\begin{DoxyParams}{Parameters}
+{\em magnitude} & to extend by \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a03d229ea165034f3130d158a864ce6aa}\label{classPose2D_a03d229ea165034f3130d158a864ce6aa} 
+\index{Pose2D@{Pose2D}!translateByPose@{translateByPose}}
+\index{translateByPose@{translateByPose}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{translateByPose()}{translateByPose()}}
+{\footnotesize\ttfamily void Pose2\+D\+::translate\+By\+Pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{translation }\end{DoxyParamCaption})}
+
+Translation for a pose by another pose. Vector addition 
+\begin{DoxyParams}{Parameters}
+{\em translation} & the pose to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_aae96b589dd219d641a039b8fe1a56d7b}\label{classPose2D_aae96b589dd219d641a039b8fe1a56d7b} 
+\index{Pose2D@{Pose2D}!vecAdd@{vecAdd}}
+\index{vecAdd@{vecAdd}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{vecAdd()}{vecAdd()}}
+{\footnotesize\ttfamily void Pose2\+D\+::vec\+Add (\begin{DoxyParamCaption}\item[{double}]{angle,  }\item[{double}]{magnitude }\end{DoxyParamCaption})}
+
+Computes a vector addition from an angle and quantity 
+\begin{DoxyParams}{Parameters}
+{\em angle} & the angle component of the vector \\
+\hline
+{\em magnitude} & the quantity component of the vector \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{classPose2D_a52fbe813508bcb22e43c0ba8d1041246}\label{classPose2D_a52fbe813508bcb22e43c0ba8d1041246} 
+\index{Pose2D@{Pose2D}!wrapHeading@{wrapHeading}}
+\index{wrapHeading@{wrapHeading}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{wrapHeading()}{wrapHeading()}}
+{\footnotesize\ttfamily void Pose2\+D\+::wrap\+Heading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Wraps a heading to -\/ PI -\/\texorpdfstring{$>$}{>} PI 
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00235}{235}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classPose2D_a8ee5dca0a6268342b242172f7222756f}\label{classPose2D_a8ee5dca0a6268342b242172f7222756f} 
+\index{Pose2D@{Pose2D}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+To string for a pose2D 
+\begin{DoxyParams}{Parameters}
+{\em os} & output stream \\
+\hline
+{\em d} & the pose2D to reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00230}{230}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPose2D_a3d04db1eca820a577c911ca88df12b7d}\label{classPose2D_a3d04db1eca820a577c911ca88df12b7d} 
+\index{Pose2D@{Pose2D}!heading@{heading}}
+\index{heading@{heading}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{heading}{heading}}
+{\footnotesize\ttfamily double Pose2\+D\+::heading\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{Pose2D_8hpp_source}{Pose2\+D.\+hpp}}.
+
+\Hypertarget{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}\label{classPose2D_a4ea2a4d5ced468e718373ffe07732f60} 
+\index{Pose2D@{Pose2D}!x@{x}}
+\index{x@{x}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily double Pose2\+D\+::x\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{Pose2D_8hpp_source}{Pose2\+D.\+hpp}}.
+
+\Hypertarget{classPose2D_a79a6b7de45208d23daa4ec11913a547f}\label{classPose2D_a79a6b7de45208d23daa4ec11913a547f} 
+\index{Pose2D@{Pose2D}!y@{y}}
+\index{y@{y}!Pose2D@{Pose2D}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily double Pose2\+D\+::y\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{Pose2D_8hpp_source}{Pose2\+D.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Pose2D_8hpp}{Pose2\+D.\+hpp}}\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Pose2D_8cpp}{Pose2\+D.\+cpp}}\end{DoxyCompactItemize}

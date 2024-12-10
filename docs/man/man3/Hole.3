@@ -1,0 +1,320 @@
+.TH "Hole" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Hole
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Hole\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHole\fP (double X1, double Y1, double X2, double Y2, double holeSize)"
+.br
+.ti -1c
+.RI "\fBHole\fP (const \fBPose2D\fP &positionOne, const \fBPose2D\fP &positionTwo, bool foundHole, const std::vector< \fBPose2D\fP > &points, double holeSize)"
+.br
+.ti -1c
+.RI "\fBHole\fP (double x1, double y1, double x2, double y2)"
+.br
+.ti -1c
+.RI "\fBHole\fP (const \fBPose2D\fP &positionOne, const \fBPose2D\fP &positionTwo, double holeSize)"
+.br
+.ti -1c
+.RI "std::vector< \fBPose2D\fP > \fBgetSuggestedNodePlacements\fP ()"
+.br
+.ti -1c
+.RI "void \fBregisterPointsToHole\fP (const \fBPose2D\fP &positionOne, const \fBPose2D\fP &positionTwo)"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBcopyDoOperation\fP (const \fBPose2D\fP &position) const"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBgetOneSquareCorner\fP ()"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBgetSecondSquareCorner\fP ()"
+.br
+.ti -1c
+.RI "bool \fBpointCouldBeMemberOfHole\fP (const \fBPose2D\fP &measurment)"
+.br
+.ti -1c
+.RI "bool \fBisFoundHole\fP () const"
+.br
+.ti -1c
+.RI "std::vector< \fBHole\fP > \fBgetSubHolesCopy\fP () const"
+.br
+.ti -1c
+.RI "\fBHole\fP ()"
+.br
+.ti -1c
+.RI "\fBHole\fP (const \fBHole\fP &hole)"
+.br
+.ti -1c
+.RI "\fBHole\fP (const \fBPose2D\fP &initialPoint, double holeSize)"
+.br
+.ti -1c
+.RI "void \fBaddPoint\fP (const \fBPose2D\fP &position)"
+.br
+.ti -1c
+.RI "bool \fBisInSquare\fP (\fBPose2D\fP &position) const"
+.br
+.ti -1c
+.RI "void \fBoffset\fP (const \fBPose2D\fP &offset)"
+.br
+.ti -1c
+.RI "bool \fBlineIntersectsHole\fP (const \fBPose2D\fP &posOne, const \fBPose2D\fP &posTwo) const"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, const \fBHole\fP &hole)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBHole\fP is either a complete square where we know the critical points (two vertices of the square)\&. A \fBHole\fP could also represent a bunch of points that are all within Square Length * Root(2) of eachother 
+.PP
+Definition at line \fB20\fP of file \fBHole\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Hole::Hole (double X1, double Y1, double X2, double Y2, double holeSize)"
+Make a new hole with the given coordinates 
+.PP
+\fBParameters\fP
+.RS 4
+\fIX1\fP one corner's X position 
+.br
+\fIY1\fP one corner's Y position 
+.br
+\fIX2\fP the other corner's X position 
+.br
+\fIY2\fP the other corner's Y position 
+.RE
+.PP
+
+.PP
+Definition at line \fB110\fP of file \fBHole\&.cpp\fP\&.
+.SS "Hole::Hole (const \fBPose2D\fP & positionOne, const \fBPose2D\fP & positionTwo, bool foundHole, const std::vector< \fBPose2D\fP > & points, double holeSize)"
+Copy constructor for hole 
+.PP
+Definition at line \fB19\fP of file \fBHole\&.cpp\fP\&.
+.SS "Hole::Hole (double x1, double y1, double x2, double y2)"
+Makes a new hole object with the given coordinates 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx1\fP 
+.br
+\fIy1\fP 
+.br
+\fIx2\fP 
+.br
+\fIy2\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB449\fP of file \fBHole\&.cpp\fP\&.
+.SS "Hole::Hole (const \fBPose2D\fP & positionOne, const \fBPose2D\fP & positionTwo, double holeSize)"
+Creates a new \fBHole\fP object
+.PP
+Created by Caleb Kugel on 11/15/2024 
+.PP
+Definition at line \fB9\fP of file \fBHole\&.cpp\fP\&.
+.SS "Hole::Hole ()"
+The deafult constructor for a hole\&. 
+.PP
+Definition at line \fB121\fP of file \fBHole\&.cpp\fP\&.
+.SS "Hole::Hole (const \fBHole\fP & hole)"
+Copy constructor 
+.PP
+Definition at line \fB147\fP of file \fBHole\&.cpp\fP\&.
+.SS "Hole::Hole (const \fBPose2D\fP & initialPoint, double holeSize)\fR [explicit]\fP"
+Makes a new hole and stores the initial measurment 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinitialPoint\fP our initial measurment 
+.RE
+.PP
+
+.PP
+Definition at line \fB129\fP of file \fBHole\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Hole::addPoint (const \fBPose2D\fP & position)"
+Add a point to this hole/chunk\&. Morphs this object into a found hole if possible 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP the position of the measurment 
+.RE
+.PP
+
+.PP
+Definition at line \fB170\fP of file \fBHole\&.cpp\fP\&.
+.SS "\fBPose2D\fP Hole::copyDoOperation (const \fBPose2D\fP & position) const"
+do the whole operation and copy it into a new object for object collision 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP the \fBPose2D\fP to apply the big formula 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the result of the operations 
+.RE
+.PP
+
+.PP
+Definition at line \fB43\fP of file \fBHole\&.cpp\fP\&.
+.SS "\fBPose2D\fP Hole::getOneSquareCorner ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+one of the square's corners 
+.RE
+.PP
+
+.PP
+Definition at line \fB35\fP of file \fBHole\&.cpp\fP\&.
+.SS "\fBPose2D\fP Hole::getSecondSquareCorner ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+the second of the square's corners 
+.RE
+.PP
+
+.PP
+Definition at line \fB39\fP of file \fBHole\&.cpp\fP\&.
+.SS "std::vector< \fBHole\fP > Hole::getSubHolesCopy () const"
+get a copy of the holes within holes (measurments) 
+.PP
+\fBReturns\fP
+.RS 4
+a vector of the holes within holes 
+.RE
+.PP
+
+.PP
+Definition at line \fB458\fP of file \fBHole\&.cpp\fP\&.
+.SS "std::vector< \fBPose2D\fP > Hole::getSuggestedNodePlacements ()"
+Gets a list of suggested node placements, for nodes in the graph\&. These node placements are guranteed to not conflict with a hole, or it's measurements\&. 
+.PP
+\fBReturns\fP
+.RS 4
+a list of suggested node placements 
+.RE
+.PP
+
+.PP
+Definition at line \fB56\fP of file \fBHole\&.cpp\fP\&.
+.SS "bool Hole::isFoundHole () const\fR [inline]\fP"
+whether we have found a hole 
+.PP
+\fBReturns\fP
+.RS 4
+whether we found a hole 
+.RE
+.PP
+
+.PP
+Definition at line \fB115\fP of file \fBHole\&.hpp\fP\&.
+.SS "bool Hole::isInSquare (\fBPose2D\fP & position) const"
+Whether the passed in position is in the square 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP the position to check 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+whether that position is in the square 
+.RE
+.PP
+
+.PP
+Definition at line \fB83\fP of file \fBHole\&.cpp\fP\&.
+.SS "bool Hole::lineIntersectsHole (const \fBPose2D\fP & posOne, const \fBPose2D\fP & posTwo) const"
+Line intersects any hole measurement 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposOne\fP position one of the line 
+.br
+\fIposTwo\fP position two of the line 
+.RE
+.PP
+
+.PP
+Definition at line \fB393\fP of file \fBHole\&.cpp\fP\&.
+.SS "void Hole::offset (const \fBPose2D\fP & offset)"
+Offset all the corners and measurements 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoffset\fP the amount to offset by 
+.RE
+.PP
+
+.PP
+Definition at line \fB381\fP of file \fBHole\&.cpp\fP\&.
+.SS "bool Hole::pointCouldBeMemberOfHole (const \fBPose2D\fP & measurment)"
+returns whether a new point could be within the range of this hole\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImeasurment\fP the position of the point that may or may not be close to this hole 
+.RE
+.PP
+
+.PP
+Definition at line \fB138\fP of file \fBHole\&.cpp\fP\&.
+.SS "void Hole::registerPointsToHole (const \fBPose2D\fP & positionOne, const \fBPose2D\fP & positionTwo)"
+Register the corners of a hole 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpositionOne\fP corner One 
+.br
+\fIpositionTwo\fP Corner Two 
+.RE
+.PP
+
+.PP
+Definition at line \fB306\fP of file \fBHole\&.cpp\fP\&.
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "std::ostream & operator<< (std::ostream & os, const \fBHole\fP & hole)\fR [friend]\fP"
+Override output stream for printing 
+.PP
+\fBParameters\fP
+.RS 4
+\fIos\fP output stream 
+.br
+\fIhole\fP the hole to print 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the hole printed in the out stream 
+.RE
+.PP
+
+.PP
+Definition at line \fB373\fP of file \fBHole\&.cpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

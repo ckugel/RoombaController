@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="Pillar_8hpp" kind="file" language="C++">
+    <compoundname>Pillar.hpp</compoundname>
+    <includes refid="Pose2D_8hpp" local="yes">Pose2D.hpp</includes>
+    <includedby refid="Field_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Field.hpp</includedby>
+    <includedby refid="Pillar_8cpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/main.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp</label>
+        <link refid="Pillar_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Pose2D.hpp</label>
+        <link refid="Pose2D_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cmath</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>ostream</label>
+      </node>
+      <node id="5">
+        <label>sstream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.cpp</label>
+        <link refid="Field_8cpp"/>
+      </node>
+      <node id="2">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.hpp</label>
+        <link refid="Field_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp</label>
+        <link refid="HoleManager_8cpp"/>
+      </node>
+      <node id="6">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp</label>
+        <link refid="Pillar_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp</label>
+        <link refid="Pillar_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/calebk/Documents/coding/RoombaController/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPillar" prot="public">Pillar</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>caleb<sp/>on<sp/>10/24/2024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>PILLAR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PILLAR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Pose2D_8hpp" kindref="compound">Pose2D.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classPillar" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPillar" kindref="compound">Pillar</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19" refid="classPillar_1a74fea03287d330085c4a60f8ba3cc6d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="classPillar_1a74fea03287d330085c4a60f8ba3cc6d3" kindref="member">position</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc" kindref="member">radius</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPillar_1aa8dc2bded98a242ff4957c2604e33ec2" kindref="member">Pillar</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPillar_1aa8dc2bded98a242ff4957c2604e33ec2" kindref="member">Pillar</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/><ref refid="classPillar_1a74fea03287d330085c4a60f8ba3cc6d3" kindref="member">position</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc" kindref="member">radius</ref>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPillar_1aa8dc2bded98a242ff4957c2604e33ec2" kindref="member">Pillar</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>heading,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc" kindref="member">radius</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPillar_1aa8dc2bded98a242ff4957c2604e33ec2" kindref="member">Pillar</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc" kindref="member">radius</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//~Pillar();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/><ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPillar_1adc8c902c96a36b5e8e6642e2b462e927" kindref="member">getX</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPillar_1a6a39e5dac33d94196391caeeb379c48a" kindref="member">getY</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPillar_1a404e92b3ee6005fcd400ae120ce0b560" kindref="member">getRadius</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPillar_1acde6b927c883e0a5720e20d6b7f04ede" kindref="member">setRadius</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>newRadius);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPillar_1a9877735341d7110c3d34633867528dbb" kindref="member">setPosition</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>newPosition);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPillar" kindref="compound">Pillar</ref><sp/><ref refid="classPillar_1a01e5ad8ad29b0637edc291aaff93785e" kindref="member">parseFromStream</ref>(std::istringstream&amp;<sp/>stream);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//PILLAR_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp"/>
+  </compounddef>
+</doxygen>

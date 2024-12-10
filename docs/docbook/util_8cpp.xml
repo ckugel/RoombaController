@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_util_8cpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/util.cpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/util.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;util.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>double <link linkend="_util_8cpp_1a949a93aaf5bad798848b1d6ff4bd7b68">orientation</link> (double px, double py, double qx, double qy, double rx, double ry)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_util_8cpp_1aec2e0e6da52a6460459ffefa1bad0fd3">onSegment</link> (double px, double py, double qx, double qy, double rx, double ry)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_util_8cpp_1a4e5e5d18b9bfa850378af284c05268df">doIntersect</link> (double p1x, double p1y, double q1x, double q1y, double p2x, double p2y, double q2x, double q2y)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_util_8cpp_1a913e3a56bee44293842c0d78d7e56634">lineIntersectsRectangle</link> (double cx1, double cy1, double cx2, double cy2, double rx1, double ry1, double rx2, double ry2, double rx3, double ry3, double rx4, double ry4)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_util_8cpp_1a4e5e5d18b9bfa850378af284c05268df"/><section>
+    <title>doIntersect()</title>
+<indexterm><primary>doIntersect</primary><secondary>util.cpp</secondary></indexterm>
+<indexterm><primary>util.cpp</primary><secondary>doIntersect</secondary></indexterm>
+<para><computeroutput>bool doIntersect (double p1x, double p1y, double q1x, double q1y, double p2x, double p2y, double q2x, double q2y)</computeroutput></para><para>
+Definition at line <link linkend="_util_8cpp_source_1l00018">18</link> of file <link linkend="_util_8cpp_source">util.cpp</link>.</para>
+</section>
+<anchor xml:id="_util_8cpp_1a913e3a56bee44293842c0d78d7e56634"/><section>
+    <title>lineIntersectsRectangle()</title>
+<indexterm><primary>lineIntersectsRectangle</primary><secondary>util.cpp</secondary></indexterm>
+<indexterm><primary>util.cpp</primary><secondary>lineIntersectsRectangle</secondary></indexterm>
+<para><computeroutput>bool lineIntersectsRectangle (double cx1, double cy1, double cx2, double cy2, double rx1, double ry1, double rx2, double ry2, double rx3, double ry3, double rx4, double ry4)</computeroutput></para><para>
+Definition at line <link linkend="_util_8cpp_source_1l00046">46</link> of file <link linkend="_util_8cpp_source">util.cpp</link>.</para>
+</section>
+<anchor xml:id="_util_8cpp_1aec2e0e6da52a6460459ffefa1bad0fd3"/><section>
+    <title>onSegment()</title>
+<indexterm><primary>onSegment</primary><secondary>util.cpp</secondary></indexterm>
+<indexterm><primary>util.cpp</primary><secondary>onSegment</secondary></indexterm>
+<para><computeroutput>bool onSegment (double px, double py, double qx, double qy, double rx, double ry)</computeroutput></para><para>
+Definition at line <link linkend="_util_8cpp_source_1l00013">13</link> of file <link linkend="_util_8cpp_source">util.cpp</link>.</para>
+</section>
+<anchor xml:id="_util_8cpp_1a949a93aaf5bad798848b1d6ff4bd7b68"/><section>
+    <title>orientation()</title>
+<indexterm><primary>orientation</primary><secondary>util.cpp</secondary></indexterm>
+<indexterm><primary>util.cpp</primary><secondary>orientation</secondary></indexterm>
+<para><computeroutput>double orientation (double px, double py, double qx, double qy, double rx, double ry)</computeroutput></para>
+<para>Created by Caleb Kugel 11/21/2024 </para>
+<para>
+Definition at line <link linkend="_util_8cpp_source_1l00007">7</link> of file <link linkend="_util_8cpp_source">util.cpp</link>.</para>
+</section>
+</section>
+</section>

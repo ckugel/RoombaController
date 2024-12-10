@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Graph_8hpp_source" xml:lang="en-US">
+<title>Graph.hpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Graph.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_Graph_8hpp_source_1l00001"/>00001 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Created&#32;by&#32;caleb&#32;on&#32;11/9/21.</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00003"/>00003 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00004"/>00004 
+<anchor xml:id="_Graph_8hpp_source_1l00005"/>00005 <emphasis role="preprocessor">#ifndef&#32;ANOTHERGRAPH_GRAPH_H</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00006"/>00006 <emphasis role="preprocessor">#define&#32;ANOTHERGRAPH_GRAPH_H</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00007"/>00007 
+<anchor xml:id="_Graph_8hpp_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Node_8hpp">Node.hpp</link>&quot;</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Pose2D_8hpp">Pose2D.hpp</link>&quot;</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;stack&gt;</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00011"/>00011 
+<anchor xml:id="_Graph_8hpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&quot;vector&quot;</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&quot;map&quot;</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00014"/>00014 
+<anchor xml:id="_Graph_8hpp_source_1l00015"/>00015 
+<anchor xml:id="_Graph_8hpp_source_1l00016"/>00016 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8hpp_source_1l00017"/><link linkend="_classGraph">00017</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_classGraph">Graph</link>&#32;{
+<anchor xml:id="_Graph_8hpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
+<anchor xml:id="_Graph_8hpp_source_1l00019"/><link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">00019</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;std::pair&lt;double,&#32;std::vector&lt;Node&lt;V&gt;*&gt;&gt;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">pair</link>;
+<anchor xml:id="_Graph_8hpp_source_1l00020"/><link linkend="_structGraph_1_1CustomCompare">00020</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structGraph_1_1CustomCompare">CustomCompare</link>&#32;{
+<anchor xml:id="_Graph_8hpp_source_1l00021"/><link linkend="_structGraph_1_1CustomCompare_1accdd3a73208f598a21d1244a2568e86d">00021</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_structGraph_1_1CustomCompare_1accdd3a73208f598a21d1244a2568e86d">operator()</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">pair</link>&amp;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">first</link>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">pair</link>&amp;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">second</link>)&#32;{
+<anchor xml:id="_Graph_8hpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">first</link>.first&#32;&gt;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">second</link>.first;
+<anchor xml:id="_Graph_8hpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8hpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="_Graph_8hpp_source_1l00025"/><link linkend="_classGraph_1a5de43165fe4948c19cca80698de7daab">00025</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;<link linkend="_classGraph_1a5de43165fe4948c19cca80698de7daab">nodes</link>;
+<anchor xml:id="_Graph_8hpp_source_1l00026"/><link linkend="_classGraph_1a1696c56a696176c26cb94b075e829ead">00026</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;double&gt;&gt;&#32;<link linkend="_classGraph_1a1696c56a696176c26cb94b075e829ead">matrix</link>;
+<anchor xml:id="_Graph_8hpp_source_1l00027"/><link linkend="_classGraph_1a326c5e6fe82c176413da20701937e0e7">00027</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&#32;<link linkend="_classGraph_1a326c5e6fe82c176413da20701937e0e7">head</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+<anchor xml:id="_Graph_8hpp_source_1l00028"/><link linkend="_classGraph_1aeac7d50113228f13fadc0bd85a4daf72">00028</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::map&lt;Node&lt;V&gt;*,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&gt;&#32;<link linkend="_classGraph_1aeac7d50113228f13fadc0bd85a4daf72">nodeMap</link>;
+<anchor xml:id="_Graph_8hpp_source_1l00029"/>00029 
+<anchor xml:id="_Graph_8hpp_source_1l00030"/>00030 
+<anchor xml:id="_Graph_8hpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a8663524ab6962890aa72d2e146453caf">resize</link>();
+<anchor xml:id="_Graph_8hpp_source_1l00035"/>00035 
+<anchor xml:id="_Graph_8hpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classGraph_1ae83f3bc4bc54319051c7193039a5f00a">numVisited</link>(std::vector&lt;bool&gt;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">listOfBools</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00042"/>00042 
+<anchor xml:id="_Graph_8hpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b">contains</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">node</link>,&#32;std::vector&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&gt;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">listOfNodes</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00050"/>00050 
+<anchor xml:id="_Graph_8hpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//void&#32;printAdjacent(Node&lt;V&gt;*&#32;next);</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00052"/>00052 
+<anchor xml:id="_Graph_8hpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="_Graph_8hpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">newNode</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00059"/>00059 
+<anchor xml:id="_Graph_8hpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;void&#32;printOut();</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00061"/>00061 
+<anchor xml:id="_Graph_8hpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nextNode</link>,&#32;std::vector&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&gt;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">adjacentNodes</link>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">weight</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00069"/>00069 
+<anchor xml:id="_Graph_8hpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nextNode</link>,&#32;std::vector&lt;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&gt;&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">adjacentNodes</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00076"/>00076 
+<anchor xml:id="_Graph_8hpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nextNode</link>,&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nodeITSLATE</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00083"/>00083 
+<anchor xml:id="_Graph_8hpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a38d9119ee08708322eb5908fac0f244f">addConnection</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">one</link>,&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">two</link>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">weight</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00091"/>00091 
+<anchor xml:id="_Graph_8hpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a38d9119ee08708322eb5908fac0f244f">addConnection</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">one</link>,&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">two</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00098"/>00098 
+<anchor xml:id="_Graph_8hpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nextNode</link>,&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>&#32;*<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">nodeITSLATE</link>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">weight</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00106"/>00106 
+<anchor xml:id="_Graph_8hpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a4abe34d5dda78d4055a3098773140325">setHead</link>(<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">index</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00112"/>00112 
+<anchor xml:id="_Graph_8hpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a307d8095432434d7e28cfba1bba884cb">removeNode</link>(<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">index</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00118"/>00118 
+<anchor xml:id="_Graph_8hpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;<link linkend="_classGraph_1a959dfd987107a8848c1c5c5da9f5e776">Dijkstra</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">from</link>,&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">find</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00126"/>00126 
+<anchor xml:id="_Graph_8hpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;double&gt;&gt;&#32;<link linkend="_classGraph_1a452eeb65d902b4a95c0e8411885b4bc5">getAdjacencyList</link>();
+<anchor xml:id="_Graph_8hpp_source_1l00132"/>00132 
+<anchor xml:id="_Graph_8hpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;<link linkend="_classGraph_1a4969a395490f7e67cc70a7feb58a0b54">getAdj</link>(<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">Node&lt;V&gt;</link>*&#32;<link linkend="_classGraph_1a08ffe504d6c612edda7d1d562a577c82">next</link>);
+<anchor xml:id="_Graph_8hpp_source_1l00139"/>00139 
+<anchor xml:id="_Graph_8hpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>();
+<anchor xml:id="_Graph_8hpp_source_1l00144"/>00144 
+<anchor xml:id="_Graph_8hpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;void&#32;playGround();</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00146"/>00146 
+<anchor xml:id="_Graph_8hpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classGraph_1a2a55c5945db5ce95020dd32e3df0f094">Graph</link>();
+<anchor xml:id="_Graph_8hpp_source_1l00148"/>00148 
+<anchor xml:id="_Graph_8hpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;FrugalKugel(Node&lt;V&gt;*&#32;find,&#32;unsigned&#32;int&#32;steps);</emphasis>
+<anchor xml:id="_Graph_8hpp_source_1l00150"/>00150 
+<anchor xml:id="_Graph_8hpp_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<link linkend="_classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c">~Graph</link>();
+<anchor xml:id="_Graph_8hpp_source_1l00152"/>00152 
+<anchor xml:id="_Graph_8hpp_source_1l00153"/>00153 };
+<anchor xml:id="_Graph_8hpp_source_1l00154"/>00154 
+<anchor xml:id="_Graph_8hpp_source_1l00155"/>00155 <emphasis role="keyword">template</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_classGraph">Graph&lt;Pose2D&gt;</link>;
+<anchor xml:id="_Graph_8hpp_source_1l00156"/>00156 
+<anchor xml:id="_Graph_8hpp_source_1l00157"/>00157 
+<anchor xml:id="_Graph_8hpp_source_1l00158"/>00158 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//ANOTHERGRAPH_GRAPH_H</emphasis>
+</programlisting></section>

@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classHoleManager" kind="class" language="C++" prot="public">
+    <compoundname>HoleManager</compoundname>
+    <includes refid="HoleManager_8hpp" local="no">HoleManager.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classHoleManager_1afd84526273e6fc2bf5e80160017d2f19" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; std::vector&lt; <ref refid="classHole" kindref="compound">Hole</ref> &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;std::vector&lt;Hole&gt; &gt; HoleManager::holes</definition>
+        <argsstring></argsstring>
+        <name>holes</name>
+        <qualifiedname>HoleManager::holes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The holes that we have found. Calculated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="23" column="17" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHoleManager_1a151ff618546d0cd5a54aa2bd18a49637" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;std::vector&lt;Pose2D&gt; &gt; HoleManager::holeMeasurements</definition>
+        <argsstring></argsstring>
+        <name>holeMeasurements</name>
+        <qualifiedname>HoleManager::holeMeasurements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The raw hole measurements that we have read in </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="28" column="17" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classHoleManager_1a2a70f9e895789105b0b45df164bf6ff6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HoleManager::HoleManager</definition>
+        <argsstring>()</argsstring>
+        <name>HoleManager</name>
+        <qualifiedname>HoleManager::HoleManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creats a new <ref refid="classHole" kindref="compound">Hole</ref> manager</para>
+<para>Created by Caleb Kugel 11/15/2024 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="33" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1a317b24d6b0d2b5f843d3cbc4fcf39dd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HoleManager::addPoint</definition>
+        <argsstring>(const Pose2D &amp;position)</argsstring>
+        <name>addPoint</name>
+        <qualifiedname>HoleManager::addPoint</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a point that we collided on the hole with <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position of the collision </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="39" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="40" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1a50df7cfd1e6e527d16b939769317ec50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classHole" kindref="compound">Hole</ref></type>
+        <definition>Hole HoleManager::getHole</definition>
+        <argsstring>(uint8_t index)</argsstring>
+        <name>getHole</name>
+        <qualifiedname>HoleManager::getHole</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a hole from registered holes <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the hole in the holes list </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the hole that has been registered </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="46" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="23" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HoleManager::addHole</definition>
+        <argsstring>(const Hole &amp;hole)</argsstring>
+        <name>addHole</name>
+        <qualifiedname>HoleManager::addHole</qualifiedname>
+        <param>
+          <type>const <ref refid="classHole" kindref="compound">Hole</ref> &amp;</type>
+          <declname>hole</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a hole to the holes <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hole</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="52" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1a5c2e0ffae18e961f5ba3f18688ef34bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HoleManager::addHole</definition>
+        <argsstring>(const Pose2D &amp;cornerOne, const Pose2D &amp;cornerTwo)</argsstring>
+        <name>addHole</name>
+        <qualifiedname>HoleManager::addHole</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>cornerOne</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>cornerTwo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a hole to the hole manager <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cornerOne</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the first Corner </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cornerTwo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the second Corner </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="59" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="14" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1a586843e9065c89985c3b76bc8a2f9003" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classHole" kindref="compound">Hole</ref> &gt;</type>
+        <definition>std::vector&lt; Hole &gt; HoleManager::getHoles</definition>
+        <argsstring>()</argsstring>
+        <name>getHoles</name>
+        <qualifiedname>HoleManager::getHoles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the holes that we for sure know about </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="64" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="32" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1ab74e44ccae65e04db4f54a9b44d9655d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt;</type>
+        <definition>std::vector&lt; Pose2D &gt; HoleManager::getPointsOnHoles</definition>
+        <argsstring>()</argsstring>
+        <name>getPointsOnHoles</name>
+        <qualifiedname>HoleManager::getPointsOnHoles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the points along unconfirmed holes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="69" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1aa0e47cc875c67f9244088d5c895ec725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt;</type>
+        <definition>std::vector&lt; Pose2D &gt; HoleManager::getSuggestedNodePlacements</definition>
+        <argsstring>()</argsstring>
+        <name>getSuggestedNodePlacements</name>
+        <qualifiedname>HoleManager::getSuggestedNodePlacements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns a list of likely accessible nodes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="74" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="80" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1a3b0b1c780a1ed91646e0bcbf1dd23e70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool HoleManager::nodeCollides</definition>
+        <argsstring>(Pose2D position)</argsstring>
+        <name>nodeCollides</name>
+        <qualifiedname>HoleManager::nodeCollides</qualifiedname>
+        <param>
+          <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether a node collides with the estimated hole or not <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position of the node </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>whether that node is valid from a hole perspective </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="81" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="56" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1a1a77b2aa21fe82b6aa7073aa004e9e6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool HoleManager::lineIntersectsAnyHoleMeasurement</definition>
+        <argsstring>(const Pose2D &amp;positionOne, const Pose2D &amp;positionTwo)</argsstring>
+        <name>lineIntersectsAnyHoleMeasurement</name>
+        <qualifiedname>HoleManager::lineIntersectsAnyHoleMeasurement</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>positionOne</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>positionTwo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determines whether a line is valid for all the hole measurements </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="86" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="94" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classHoleManager_1a0a8f51f0c0c0c3af90b3fd0a90ea062e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HoleManager::offsetAll</definition>
+        <argsstring>(const Pose2D &amp;offset) const</argsstring>
+        <name>offsetAll</name>
+        <qualifiedname>HoleManager::offsetAll</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>provides the offset to all holes and their values </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="91" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp" bodystart="117" bodyend="124"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A hole manager handles holes that and the measurments that are associated with them. Wrapped class for lists of holes </para>
+    </detaileddescription>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="18" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" bodystart="18" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>addHole</name></member>
+      <member refid="classHoleManager_1a5c2e0ffae18e961f5ba3f18688ef34bf" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>addHole</name></member>
+      <member refid="classHoleManager_1a317b24d6b0d2b5f843d3cbc4fcf39dd8" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>addPoint</name></member>
+      <member refid="classHoleManager_1a50df7cfd1e6e527d16b939769317ec50" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>getHole</name></member>
+      <member refid="classHoleManager_1a586843e9065c89985c3b76bc8a2f9003" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>getHoles</name></member>
+      <member refid="classHoleManager_1ab74e44ccae65e04db4f54a9b44d9655d" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>getPointsOnHoles</name></member>
+      <member refid="classHoleManager_1aa0e47cc875c67f9244088d5c895ec725" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>getSuggestedNodePlacements</name></member>
+      <member refid="classHoleManager_1a2a70f9e895789105b0b45df164bf6ff6" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>HoleManager</name></member>
+      <member refid="classHoleManager_1a151ff618546d0cd5a54aa2bd18a49637" prot="private" virt="non-virtual"><scope>HoleManager</scope><name>holeMeasurements</name></member>
+      <member refid="classHoleManager_1afd84526273e6fc2bf5e80160017d2f19" prot="private" virt="non-virtual"><scope>HoleManager</scope><name>holes</name></member>
+      <member refid="classHoleManager_1a1a77b2aa21fe82b6aa7073aa004e9e6f" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>lineIntersectsAnyHoleMeasurement</name></member>
+      <member refid="classHoleManager_1a3b0b1c780a1ed91646e0bcbf1dd23e70" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>nodeCollides</name></member>
+      <member refid="classHoleManager_1a0a8f51f0c0c0c3af90b3fd0a90ea062e" prot="public" virt="non-virtual"><scope>HoleManager</scope><name>offsetAll</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

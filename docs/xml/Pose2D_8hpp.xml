@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="Pose2D_8hpp" kind="file" language="C++">
+    <compoundname>Pose2D.hpp</compoundname>
+    <includes local="no">cmath</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">ostream</includes>
+    <includedby refid="Field_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Field.hpp</includedby>
+    <includedby refid="Graph_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Graph.hpp</includedby>
+    <includedby refid="Hole_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Hole.hpp</includedby>
+    <includedby refid="Node_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Node.hpp</includedby>
+    <includedby refid="Pillar_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp</includedby>
+    <includedby refid="Pose2D_8cpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/main.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp</label>
+        <link refid="Pose2D_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cmath</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>ostream</label>
+      </node>
+      <node id="4">
+        <label>sstream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.cpp</label>
+        <link refid="Field_8cpp"/>
+      </node>
+      <node id="2">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.hpp</label>
+        <link refid="Field_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Graph.cpp</label>
+        <link refid="Graph_8cpp"/>
+      </node>
+      <node id="6">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Graph.hpp</label>
+        <link refid="Graph_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Hole.cpp</label>
+        <link refid="Hole_8cpp"/>
+      </node>
+      <node id="8">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Hole.hpp</label>
+        <link refid="Hole_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp</label>
+        <link refid="HoleManager_8cpp"/>
+      </node>
+      <node id="10">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp</label>
+        <link refid="HoleManager_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Node.cpp</label>
+        <link refid="Node_8cpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Node.hpp</label>
+        <link refid="Node_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp</label>
+        <link refid="Pillar_8cpp"/>
+      </node>
+      <node id="13">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp</label>
+        <link refid="Pillar_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp</label>
+        <link refid="Pose2D_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp</label>
+        <link refid="Pose2D_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/calebk/Documents/coding/RoombaController/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPose2D" prot="public">Pose2D</innerclass>
+    <innerclass refid="structRectangle" prot="public">Rectangle</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60" prot="public" static="no">
+        <name>BOT_RADIUS</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The bot radius in centimeters </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="17" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="Pose2D_8hpp_1af747b1235ddc04741dd30bf4c6a35d3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structRectangle" kindref="compound">Rectangle</ref></type>
+        <definition>Rectangle makeRectangleFromLine</definition>
+        <argsstring>(const Pose2D &amp;L1, const Pose2D &amp;L2, double width)</argsstring>
+        <name>makeRectangleFromLine</name>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>L1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>L2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Makes a rectangle from a line <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>L1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>One bound of the line </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>L2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another bound of the line </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the width of the rectangle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a rectangle with the the line in the middle and a width of the width passed in </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="324" column="11" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="248" bodyend="265" declfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" declline="324" declcolumn="11"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>caleb<sp/>on<sp/>10/24/2024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>POSE2D_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE2D_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOT_RADIUS<sp/>6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classPose2D" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25" refid="classPose2D_1a3d04db1eca820a577c911ca88df12b7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a4ea2a4d5ced468e718373ffe07732f60" kindref="member">x</ref>,<sp/><ref refid="classPose2D_1a79a6b7de45208d23daa4ec11913a547f" kindref="member">y</ref>,<sp/><ref refid="classPose2D_1a3d04db1eca820a577c911ca88df12b7d" kindref="member">heading</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D_1a216182882a02017665c754b16c1328ae" kindref="member">Pose2D</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a4ea2a4d5ced468e718373ffe07732f60" kindref="member">x</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a79a6b7de45208d23daa4ec11913a547f" kindref="member">y</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a3d04db1eca820a577c911ca88df12b7d" kindref="member">heading</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D_1a216182882a02017665c754b16c1328ae" kindref="member">Pose2D</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a4ea2a4d5ced468e718373ffe07732f60" kindref="member">x</ref>,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a79a6b7de45208d23daa4ec11913a547f" kindref="member">y</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D_1a216182882a02017665c754b16c1328ae" kindref="member">Pose2D</ref>();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D_1a216182882a02017665c754b16c1328ae" kindref="member">Pose2D</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>position);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pose2D(Pose2D*<sp/>position);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773" kindref="member">angleTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3" kindref="member">distanceTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a73e8e6fd058a55960da459cdef6d6ffb" kindref="member">squareOfDistanceTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="classPose2D_1a35455cacb295ea54820030b9dbb191f2" kindref="member">fromPolar</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>magnitude,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c" kindref="member">degreesToRadians</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>degrees);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453" kindref="member">radiansToDegrees</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>radians);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="classPose2D_1a34c15f20448e7efd354c507d38ec2891" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1add9d11130bbe9e7e66325e98f7ca43f5" kindref="member">rotateByPose</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>rotation);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a1e220c70ada1586e8e1f9f2387e45e61" kindref="member">rotateByAngle</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a03d229ea165034f3130d158a864ce6aa" kindref="member">translateByPose</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>translation);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a84216b76ce7d5a554794b43c56574582" kindref="member">translateByMagnitude</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>magnitude);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea" kindref="member">transformPose</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>modifier);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kindref="member">getX</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kindref="member">getY</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1aab0666fc4e510ece6f85a13fbfd6d347" kindref="member">getHeading</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a07d03a1b06734fa63fcf6ee05befcb51" kindref="member">setHeading</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1ac6afb91ffac9121da23df77f7c975a39" kindref="member">plusCoord</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a5a031312210c5fd0d88855df26b53c1a" kindref="member">plus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1adc44dfc82549ea97d3622052b615bf55" kindref="member">minus</ref>(<ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>other);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a77b5a2d38fe501e59a8d308b5cfa0508" kindref="member">addAngle</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="classPose2D_1ad0b3a99de1a5972d3bed31e4e47e4e09" kindref="member">subtractBy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="classPose2D_1ab2ee3fec06d12adad8bd9c37fe7a8175" kindref="member">scaleBy</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>scaler)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="classPose2D_1ab4524355149f49542d83fc144e2438a8" kindref="member">normalize</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a359e162b9cb331cd5ccca9739ab31502" kindref="member">dotProduct</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream<sp/>&amp;<ref refid="classPose2D_1a8ee5dca0a6268342b242172f7222756f" kindref="member">operator&lt;&lt;</ref>(std::ostream<sp/>&amp;os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>&amp;d);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c" kindref="member">setX</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a4ea2a4d5ced468e718373ffe07732f60" kindref="member">x</ref>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1aae96b589dd219d641a039b8fe1a56d7b" kindref="member">vecAdd</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>magnitude);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c" kindref="member">setY</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a79a6b7de45208d23daa4ec11913a547f" kindref="member">y</ref>);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>uint8_t<sp/><ref refid="classPose2D_1aa5f78e433ba60f61ea49b08ec8ff4d08" kindref="member">getQuadrant</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a52fbe813508bcb22e43c0ba8d1041246" kindref="member">wrapHeading</ref>();</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e" kindref="member">transformForPose</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>other);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2" kindref="member">parseFromStream</ref>(std::istringstream&amp;<sp/>stream);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>static<sp/>SlopeIntercept<sp/>getSlopeIntercept(Pose2D<sp/>one,<sp/>Pose2D<sp/>two);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a4ad9e8c801fb7b2ad934c3f0f4923633" kindref="member">isOnLine</ref>(<ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>LineEnd1,<sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>LineEnd2);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293" refid="classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0" kindref="member">isPerpendicularToLine</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>m);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="classPose2D_1ac6f628453cf76391fac4ef7b884490d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1ac6f628453cf76391fac4ef7b884490d0" kindref="member">getAngleBetweenPoints</ref>(<ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>corner,<sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>end1,<sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>end2);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPose2D_1a1cd7e63d410b091dcc89e20afcd65fff" kindref="member">multiply</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313" refid="structRectangle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structRectangle" kindref="compound">Rectangle</ref><sp/>{</highlight></codeline>
+<codeline lineno="314" refid="structRectangle_1a9ab0b4bae48e8330e4064bfc2aac696d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="structRectangle_1a9ab0b4bae48e8330e4064bfc2aac696d" kindref="member">r1</ref>,<sp/><ref refid="structRectangle_1ab7c029f35f42207f6cd273c7251ff8fb" kindref="member">r2</ref>,<sp/><ref refid="structRectangle_1a084cafc6917f1a0881e6e111329a4588" kindref="member">r3</ref>,<sp/><ref refid="structRectangle_1ad96df264562ce0b343bc9569ac899b29" kindref="member">r4</ref>;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><ref refid="structRectangle" kindref="compound">Rectangle</ref><sp/><ref refid="Pose2D_8hpp_1af747b1235ddc04741dd30bf4c6a35d3c" kindref="member">makeRectangleFromLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>L1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>L2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>width);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//POSE2D_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp"/>
+  </compounddef>
+</doxygen>

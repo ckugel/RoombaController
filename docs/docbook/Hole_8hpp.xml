@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Hole_8hpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/Hole.hpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Hole.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;vector&quot;<?linebreak?>#include &lt;memory&gt;<?linebreak?>#include &quot;Pose2D.hpp&quot;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;ostream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classHole">Hole</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_Hole_8hpp_1a657e122f8983d0a993ee0266696f1984">HOLE_SIZE</link>&#160;&#160;&#160;69.06</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_Hole_8hpp_1a657e122f8983d0a993ee0266696f1984"/><section>
+    <title>HOLE_SIZE</title>
+<indexterm><primary>HOLE_SIZE</primary><secondary>Hole.hpp</secondary></indexterm>
+<indexterm><primary>Hole.hpp</primary><secondary>HOLE_SIZE</secondary></indexterm>
+<para><computeroutput>#define HOLE_SIZE&#160;&#160;&#160;69.06</computeroutput></para>
+<para>Made by Caleb Kugel on 11/15/2024 </para>
+<para>
+Definition at line <link linkend="_Hole_8hpp_source_1l00014">14</link> of file <link linkend="_Hole_8hpp_source">Hole.hpp</link>.</para>
+</section>
+</section>
+</section>

@@ -19,6 +19,8 @@ If you are using nixos all you need to build the code is to:
 5) ```make```
 6) ```./RoombaController```
 
+If you are trying to run it without a cooresponding bot to connect to, you cna run the python mock server. To do so all you have to do is ensure that in main, Connect to Bot is false. Then run the python script in the root directory of the project. This will start a server that the controller can connect to.
+
 
 ## How to communicate with
 Communication with the controller application uses a TCP websocket. On the roomba controller side this just looks like using uart with putty. We accept data primarily for the field, and primarily return instructutions for the bot to execute.
@@ -34,17 +36,11 @@ this will send a field where there are 3 pillars (one pillar per o). As these ar
 #### Code to accomplish this
 [Graph.c](https://github.com/ckugel/Waste-Cleanup/blob/master/EmbeddedApp/Waste_Management/Graph.c) has a function called **send_pillars_through_putty(Pillar\* pillars, uint8_t size)** which esentially sends a field. I starts and ends the send with F to denote a field.
 
-### Bot position (App receives)
-**TODO: IMPLEMENT**
-
-### Field edge (App receives)
-**TODO: IMPLEMENT**
-
-### Hole (App receives)
-**TODO: IMPLEMENT**
-
 ### Routines (App returns)
 The application will send back instructions to the bot in the form of turn to angle and drive magnitude instructions.
+
+### More communication
+Can be found under the WIKI tab and How To Communicate with
 
 # Screen shots of what the app looks like
 ![image](https://github.com/user-attachments/assets/1c1d741a-956f-4118-9f68-b6061a3ca88b)

@@ -1,0 +1,72 @@
+.TH "/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <cmath>\fP
+.br
+\fR#include <cstdint>\fP
+.br
+\fR#include <sstream>\fP
+.br
+\fR#include <ostream>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBPose2D\fP"
+.br
+.ti -1c
+.RI "struct \fBRectangle\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBBOT_RADIUS\fP   6"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRectangle\fP \fBmakeRectangleFromLine\fP (const \fBPose2D\fP &L1, const \fBPose2D\fP &L2, double width)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BOT_RADIUS   6"
+The bot radius in centimeters 
+.PP
+Definition at line \fB17\fP of file \fBPose2D\&.hpp\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBRectangle\fP makeRectangleFromLine (const \fBPose2D\fP & L1, const \fBPose2D\fP & L2, double width)"
+Makes a rectangle from a line 
+.PP
+\fBParameters\fP
+.RS 4
+\fIL1\fP One bound of the line 
+.br
+\fIL2\fP Another bound of the line 
+.br
+\fIwidth\fP the width of the rectangle 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a rectangle with the the line in the middle and a width of the width passed in 
+.RE
+.PP
+
+.PP
+Definition at line \fB248\fP of file \fBPose2D\&.cpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

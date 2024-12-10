@@ -1,0 +1,703 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classGraph" kind="class" language="C++" prot="public">
+    <compoundname>Graph</compoundname>
+    <includes refid="Graph_8hpp" local="no">Graph.hpp</includes>
+    <innerclass refid="structGraph_1_1CustomCompare" prot="protected">Graph::CustomCompare</innerclass>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">typename</ref> <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref></type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="classGraph_1a08ffe504d6c612edda7d1d562a577c82" prot="protected" static="no">
+        <type>std::pair&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">double</ref>, std::vector&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; * &gt; &gt;</type>
+        <definition>typedef std::pair&lt;double, std::vector&lt;Node&lt;V&gt;*&gt; &gt; Graph&lt; V &gt;::pair</definition>
+        <argsstring></argsstring>
+        <name>pair</name>
+        <qualifiedname>Graph::pair</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="19" column="27" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classGraph_1a5de43165fe4948c19cca80698de7daab" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; * &gt;</type>
+        <definition>std::vector&lt;Node&lt;V&gt;*&gt; Graph&lt; V &gt;::nodes</definition>
+        <argsstring></argsstring>
+        <name>nodes</name>
+        <qualifiedname>Graph::nodes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="25" column="21" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGraph_1a1696c56a696176c26cb94b075e829ead" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">double</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;double&gt; &gt; Graph&lt; V &gt;::matrix</definition>
+        <argsstring></argsstring>
+        <name>matrix</name>
+        <qualifiedname>Graph::matrix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="26" column="21" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGraph_1a326c5e6fe82c176413da20701937e0e7" prot="protected" static="no" mutable="no">
+        <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+        <definition>Node&lt;V&gt;* Graph&lt; V &gt;::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <qualifiedname>Graph::head</qualifiedname>
+        <initializer>= <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">nullptr</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="27" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGraph_1aeac7d50113228f13fadc0bd85a4daf72" prot="protected" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *, <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">unsigned</ref> <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">int</ref> &gt;</type>
+        <definition>std::map&lt;Node&lt;V&gt;*, unsigned int&gt; Graph&lt; V &gt;::nodeMap</definition>
+        <argsstring></argsstring>
+        <name>nodeMap</name>
+        <qualifiedname>Graph::nodeMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="28" column="18" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classGraph_1a8663524ab6962890aa72d2e146453caf" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::resize</definition>
+        <argsstring>()</argsstring>
+        <name>resize</name>
+        <qualifiedname>Graph::resize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>resize the adjacency matrix </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="34" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="79" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1ae83f3bc4bc54319051c7193039a5f00a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">int</ref></type>
+        <definition>int Graph&lt; V &gt;::numVisited</definition>
+        <argsstring>(std::vector&lt; bool &gt; listOfBools)</argsstring>
+        <name>numVisited</name>
+        <qualifiedname>Graph::numVisited</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">bool</ref> &gt;</type>
+          <declname>listOfBools</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the number of nodes we have visited <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>listOfBools</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of bools to combine </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of nodes visitied </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="41" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="289" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">bool</ref></type>
+        <definition>bool Graph&lt; V &gt;::contains</definition>
+        <argsstring>(Node&lt; V &gt; *node, std::vector&lt; Node&lt; V &gt; * &gt; listOfNodes)</argsstring>
+        <name>contains</name>
+        <qualifiedname>Graph::contains</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; * &gt;</type>
+          <declname>listOfNodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the graph containes a node <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node to determine if it&apos;s inside </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>listOfNodes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the list of nodes to check against </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>whether node is in the list of nodes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="49" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="87" bodyend="94"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classGraph_1a57412516ec06d7b21d377dfe73773f37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::addNode</definition>
+        <argsstring>(Node&lt; V &gt; *newNode)</argsstring>
+        <name>addNode</name>
+        <qualifiedname>Graph::addNode</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>newNode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a node to the graph <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newNode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a new node to add to the graph </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="58" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="102" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a7d0579f73520bb804c277fb3ae4ba890" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::addNode</definition>
+        <argsstring>(Node&lt; V &gt; *nextNode, std::vector&lt; Node&lt; V &gt; * &gt; adjacentNodes, double weight)</argsstring>
+        <name>addNode</name>
+        <qualifiedname>Graph::addNode</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>nextNode</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; * &gt;</type>
+          <declname>adjacentNodes</declname>
+        </param>
+        <param>
+          <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">double</ref></type>
+          <declname>weight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a node with adjacent nodes all with the same weight <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nextNode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node to add </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>adjacentNodes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the nodes to make a connect for </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the weight for all the edges </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="68" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="111" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1ad4acb5e274229a273f12d940bb4029a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::addNode</definition>
+        <argsstring>(Node&lt; V &gt; *nextNode, std::vector&lt; Node&lt; V &gt; * &gt; adjacentNodes)</argsstring>
+        <name>addNode</name>
+        <qualifiedname>Graph::addNode</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>nextNode</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; * &gt;</type>
+          <declname>adjacentNodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a node <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nextNode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>adjacentNodes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="75" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::addNode</definition>
+        <argsstring>(Node&lt; V &gt; *nextNode, Node&lt; V &gt; *nodeITSLATE)</argsstring>
+        <name>addNode</name>
+        <qualifiedname>Graph::addNode</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>nextNode</declname>
+        </param>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>nodeITSLATE</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a node with a connection <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nextNode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node to add </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nodeITSLATE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a node to add a connection to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="82" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="132" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a38d9119ee08708322eb5908fac0f244f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::addConnection</definition>
+        <argsstring>(Node&lt; V &gt; *one, Node&lt; V &gt; *two, double weight)</argsstring>
+        <name>addConnection</name>
+        <qualifiedname>Graph::addConnection</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>one</declname>
+        </param>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>two</declname>
+        </param>
+        <param>
+          <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">double</ref></type>
+          <declname>weight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>add a weight between nodes <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>one</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the first node </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>two</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the second node </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the weight to put between them </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="90" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="267" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a6000c589daea5f4984d10d09877ad149" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::addConnection</definition>
+        <argsstring>(Node&lt; V &gt; *one, Node&lt; V &gt; *two)</argsstring>
+        <name>addConnection</name>
+        <qualifiedname>Graph::addConnection</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>one</declname>
+        </param>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>two</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a connection between two nodes <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>one</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>node one </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>two</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>node two </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="97" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="277" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a313a06ec39a21b723f7f0a76c035b8c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::addNode</definition>
+        <argsstring>(Node&lt; V &gt; *nextNode, Node&lt; V &gt; *nodeITSLATE, double weight)</argsstring>
+        <name>addNode</name>
+        <qualifiedname>Graph::addNode</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>nextNode</declname>
+        </param>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>nodeITSLATE</declname>
+        </param>
+        <param>
+          <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">double</ref></type>
+          <declname>weight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a node with a weight to the graph <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nextNode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node to add </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nodeITSLATE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node to connect to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the weight between those vertices </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="105" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="282" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a4abe34d5dda78d4055a3098773140325" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::setHead</definition>
+        <argsstring>(int index)</argsstring>
+        <name>setHead</name>
+        <qualifiedname>Graph::setHead</qualifiedname>
+        <param>
+          <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">int</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the head of the graph <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index to become head </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="111" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="185" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a307d8095432434d7e28cfba1bba884cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">void</ref></type>
+        <definition>void Graph&lt; V &gt;::removeNode</definition>
+        <argsstring>(size_t index)</argsstring>
+        <name>removeNode</name>
+        <qualifiedname>Graph::removeNode</qualifiedname>
+        <param>
+          <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">size_t</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove a node from the graph based on index <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="117" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="390" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a959dfd987107a8848c1c5c5da9f5e776" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; * &gt;</type>
+        <definition>std::vector&lt; Node&lt; V &gt; * &gt; Graph&lt; V &gt;::Dijkstra</definition>
+        <argsstring>(Node&lt; V &gt; *from, Node&lt; V &gt; *find)</argsstring>
+        <name>Dijkstra</name>
+        <qualifiedname>Graph::Dijkstra</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>find</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Dijkstra&apos;s algorithm <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node that you start at </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>find</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node we want to get to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a path for the nodes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="125" column="21" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="191" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a452eeb65d902b4a95c0e8411885b4bc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">double</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::vector&lt; double &gt; &gt; Graph&lt; V &gt;::getAdjacencyList</definition>
+        <argsstring>()</argsstring>
+        <name>getAdjacencyList</name>
+        <qualifiedname>Graph::getAdjacencyList</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the adjaceency matrix for the graph whihc contains the weigthings <simplesect kind="return"><para>the matrix for the weights </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="131" column="21" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="262" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a4969a395490f7e67cc70a7feb58a0b54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; * &gt;</type>
+        <definition>std::vector&lt; Node&lt; V &gt; * &gt; Graph&lt; V &gt;::getAdj</definition>
+        <argsstring>(Node&lt; V &gt; *next)</argsstring>
+        <name>getAdj</name>
+        <qualifiedname>Graph::getAdj</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; *</type>
+          <declname>next</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the adjacent nodes of a node <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>next</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node to get its&apos; connected nodes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the adjacent nodes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="138" column="21" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="172" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1af1568475acf410ff0d52a2d756929064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classNode" kindref="compound">Node</ref>&lt; <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">V</ref> &gt; * &gt;</type>
+        <definition>std::vector&lt; Node&lt; V &gt; * &gt; Graph&lt; V &gt;::getNodes</definition>
+        <argsstring>()</argsstring>
+        <name>getNodes</name>
+        <qualifiedname>Graph::getNodes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>All the nodes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="143" column="21" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="97" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a2a55c5945db5ce95020dd32e3df0f094" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graph&lt; V &gt;::Graph</definition>
+        <argsstring>()</argsstring>
+        <name>Graph</name>
+        <qualifiedname>Graph::Graph</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="147" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="14" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graph&lt; V &gt;::~Graph</definition>
+        <argsstring>()</argsstring>
+        <name>~Graph</name>
+        <qualifiedname>Graph::~Graph</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="151" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.cpp" bodystart="254" bodyend="259"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="17" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" bodystart="17" bodyend="153"/>
+    <listofallmembers>
+      <member refid="classGraph_1a38d9119ee08708322eb5908fac0f244f" prot="public" virt="non-virtual"><scope>Graph</scope><name>addConnection</name></member>
+      <member refid="classGraph_1a6000c589daea5f4984d10d09877ad149" prot="public" virt="non-virtual"><scope>Graph</scope><name>addConnection</name></member>
+      <member refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" prot="public" virt="non-virtual"><scope>Graph</scope><name>addNode</name></member>
+      <member refid="classGraph_1a7d0579f73520bb804c277fb3ae4ba890" prot="public" virt="non-virtual"><scope>Graph</scope><name>addNode</name></member>
+      <member refid="classGraph_1ad4acb5e274229a273f12d940bb4029a1" prot="public" virt="non-virtual"><scope>Graph</scope><name>addNode</name></member>
+      <member refid="classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c" prot="public" virt="non-virtual"><scope>Graph</scope><name>addNode</name></member>
+      <member refid="classGraph_1a313a06ec39a21b723f7f0a76c035b8c1" prot="public" virt="non-virtual"><scope>Graph</scope><name>addNode</name></member>
+      <member refid="classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b" prot="protected" virt="non-virtual"><scope>Graph</scope><name>contains</name></member>
+      <member refid="classGraph_1a959dfd987107a8848c1c5c5da9f5e776" prot="public" virt="non-virtual"><scope>Graph</scope><name>Dijkstra</name></member>
+      <member refid="classGraph_1a4969a395490f7e67cc70a7feb58a0b54" prot="public" virt="non-virtual"><scope>Graph</scope><name>getAdj</name></member>
+      <member refid="classGraph_1a452eeb65d902b4a95c0e8411885b4bc5" prot="public" virt="non-virtual"><scope>Graph</scope><name>getAdjacencyList</name></member>
+      <member refid="classGraph_1af1568475acf410ff0d52a2d756929064" prot="public" virt="non-virtual"><scope>Graph</scope><name>getNodes</name></member>
+      <member refid="classGraph_1a2a55c5945db5ce95020dd32e3df0f094" prot="public" virt="non-virtual"><scope>Graph</scope><name>Graph</name></member>
+      <member refid="classGraph_1a326c5e6fe82c176413da20701937e0e7" prot="protected" virt="non-virtual"><scope>Graph</scope><name>head</name></member>
+      <member refid="classGraph_1a1696c56a696176c26cb94b075e829ead" prot="protected" virt="non-virtual"><scope>Graph</scope><name>matrix</name></member>
+      <member refid="classGraph_1aeac7d50113228f13fadc0bd85a4daf72" prot="protected" virt="non-virtual"><scope>Graph</scope><name>nodeMap</name></member>
+      <member refid="classGraph_1a5de43165fe4948c19cca80698de7daab" prot="protected" virt="non-virtual"><scope>Graph</scope><name>nodes</name></member>
+      <member refid="classGraph_1ae83f3bc4bc54319051c7193039a5f00a" prot="protected" virt="non-virtual"><scope>Graph</scope><name>numVisited</name></member>
+      <member refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" prot="protected" virt="non-virtual"><scope>Graph</scope><name>pair</name></member>
+      <member refid="classGraph_1a307d8095432434d7e28cfba1bba884cb" prot="public" virt="non-virtual"><scope>Graph</scope><name>removeNode</name></member>
+      <member refid="classGraph_1a8663524ab6962890aa72d2e146453caf" prot="protected" virt="non-virtual"><scope>Graph</scope><name>resize</name></member>
+      <member refid="classGraph_1a4abe34d5dda78d4055a3098773140325" prot="public" virt="non-virtual"><scope>Graph</scope><name>setHead</name></member>
+      <member refid="classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c" prot="public" virt="non-virtual"><scope>Graph</scope><name>~Graph</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

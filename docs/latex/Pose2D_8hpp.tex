@@ -1,0 +1,61 @@
+\doxysection{/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\+Pose2D.hpp File Reference}
+\hypertarget{Pose2D_8hpp}{}\label{Pose2D_8hpp}\index{/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp@{/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp}}
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPose2D}{Pose2D}}
+\item 
+struct \mbox{\hyperlink{structRectangle}{Rectangle}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\+\_\+\+RADIUS}}~6
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structRectangle}{Rectangle}} \mbox{\hyperlink{Pose2D_8hpp_af747b1235ddc04741dd30bf4c6a35d3c}{make\+Rectangle\+From\+Line}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&L1, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&L2, double width)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}\label{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60} 
+\index{Pose2D.hpp@{Pose2D.hpp}!BOT\_RADIUS@{BOT\_RADIUS}}
+\index{BOT\_RADIUS@{BOT\_RADIUS}!Pose2D.hpp@{Pose2D.hpp}}
+\doxysubsubsection{\texorpdfstring{BOT\_RADIUS}{BOT\_RADIUS}}
+{\footnotesize\ttfamily \#define BOT\+\_\+\+RADIUS~6}
+
+The bot radius in centimeters 
+
+Definition at line \mbox{\hyperlink{Pose2D_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{Pose2D_8hpp_source}{Pose2\+D.\+hpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Pose2D_8hpp_af747b1235ddc04741dd30bf4c6a35d3c}\label{Pose2D_8hpp_af747b1235ddc04741dd30bf4c6a35d3c} 
+\index{Pose2D.hpp@{Pose2D.hpp}!makeRectangleFromLine@{makeRectangleFromLine}}
+\index{makeRectangleFromLine@{makeRectangleFromLine}!Pose2D.hpp@{Pose2D.hpp}}
+\doxysubsubsection{\texorpdfstring{makeRectangleFromLine()}{makeRectangleFromLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRectangle}{Rectangle}} make\+Rectangle\+From\+Line (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{L1,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{L2,  }\item[{double}]{width }\end{DoxyParamCaption})}
+
+Makes a rectangle from a line 
+\begin{DoxyParams}{Parameters}
+{\em L1} & One bound of the line \\
+\hline
+{\em L2} & Another bound of the line \\
+\hline
+{\em width} & the width of the rectangle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a rectangle with the the line in the middle and a width of the width passed in 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00248}{248}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+

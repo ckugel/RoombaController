@@ -1,0 +1,1269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classPose2D" kind="class" language="C++" prot="public">
+    <compoundname>Pose2D</compoundname>
+    <includes refid="Pose2D_8hpp" local="no">Pose2D.hpp</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classPose2D_1a4ea2a4d5ced468e718373ffe07732f60" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Pose2D::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>Pose2D::x</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="25" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPose2D_1a79a6b7de45208d23daa4ec11913a547f" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Pose2D::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>Pose2D::y</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="25" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPose2D_1a3d04db1eca820a577c911ca88df12b7d" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Pose2D::heading</definition>
+        <argsstring></argsstring>
+        <name>heading</name>
+        <qualifiedname>Pose2D::heading</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="25" column="16" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPose2D_1a6d70b4f0e17c1f80690c1a4a832238bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pose2D::Pose2D</definition>
+        <argsstring>(double x, double y, double heading)</argsstring>
+        <name>Pose2D</name>
+        <qualifiedname>Pose2D::Pose2D</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>heading</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Consctructs a new <ref refid="classPose2D" kindref="compound">Pose2D</ref> object <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the x component </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the y component </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>heading</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the heading </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="34" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="7" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ad31191da38f3f5e9a4a0e77577389977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pose2D::Pose2D</definition>
+        <argsstring>(double x, double y)</argsstring>
+        <name>Pose2D</name>
+        <qualifiedname>Pose2D::Pose2D</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a new <ref refid="classPose2D" kindref="compound">Pose2D</ref> object <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>component </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>component </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="41" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a216182882a02017665c754b16c1328ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pose2D::Pose2D</definition>
+        <argsstring>()</argsstring>
+        <name>Pose2D</name>
+        <qualifiedname>Pose2D::Pose2D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Makes a new <ref refid="classPose2D" kindref="compound">Pose2D</ref> with 0&apos;s as default </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="46" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="18" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a5b718e40b6dcc3b109128c57d8d78f69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pose2D::Pose2D</definition>
+        <argsstring>(const Pose2D &amp;position)</argsstring>
+        <name>Pose2D</name>
+        <qualifiedname>Pose2D::Pose2D</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a new <ref refid="classPose2D" kindref="compound">Pose2D</ref>. Copy constructor. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pose to copy </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="53" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="64" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pose2D::angleTo</definition>
+        <argsstring>(const Pose2D &amp;other) const</argsstring>
+        <name>angleTo</name>
+        <qualifiedname>Pose2D::angleTo</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the angle from one node to another <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>angle to get to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the angle between two nodes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="60" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pose2D::distanceTo</definition>
+        <argsstring>(const Pose2D &amp;other) const</argsstring>
+        <name>distanceTo</name>
+        <qualifiedname>Pose2D::distanceTo</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the distance between two nodes <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other node to calculate the distance to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the distance between the two nodes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="67" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a73e8e6fd058a55960da459cdef6d6ffb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pose2D::squareOfDistanceTo</definition>
+        <argsstring>(const Pose2D &amp;other) const</argsstring>
+        <name>squareOfDistanceTo</name>
+        <qualifiedname>Pose2D::squareOfDistanceTo</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>calculate the squared distance to another object <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the object to get the squared distance to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the squared distance to the other object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="74" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a34c15f20448e7efd354c507d38ec2891" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Pose2D::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <qualifiedname>Pose2D::clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Makes a copy of this node <simplesect kind="return"><para>the copy of this node </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="102" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1add9d11130bbe9e7e66325e98f7ca43f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::rotateByPose</definition>
+        <argsstring>(const Pose2D &amp;rotation)</argsstring>
+        <name>rotateByPose</name>
+        <qualifiedname>Pose2D::rotateByPose</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>rotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Rotate a <ref refid="classPose2D" kindref="compound">Pose2D</ref> by the a rotation cooresponding to the heading of the other pose <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rotation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pose to rotate by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="108" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a1e220c70ada1586e8e1f9f2387e45e61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::rotateByAngle</definition>
+        <argsstring>(double angle)</argsstring>
+        <name>rotateByAngle</name>
+        <qualifiedname>Pose2D::rotateByAngle</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Uses a rotation matrix to rotate a <ref refid="classPose2D" kindref="compound">Pose2D</ref> by an angle. Rotates about the origin. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to rotate by. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="115" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="116" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a03d229ea165034f3130d158a864ce6aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::translateByPose</definition>
+        <argsstring>(const Pose2D &amp;translation)</argsstring>
+        <name>translateByPose</name>
+        <qualifiedname>Pose2D::translateByPose</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>translation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Translation for a pose by another pose. Vector addition <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>translation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pose to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="122" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="132" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a84216b76ce7d5a554794b43c56574582" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::translateByMagnitude</definition>
+        <argsstring>(double magnitude)</argsstring>
+        <name>translateByMagnitude</name>
+        <qualifiedname>Pose2D::translateByMagnitude</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>magnitude</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is admitedly a bit of a goofy function. We take the magnitude of the translation and extend the current position by that much in the heading of the pose. I like to think of the <ref refid="classPose2D" kindref="compound">Pose2D</ref> as a vector, then we take the heading and combine it into a pollar coordinate with the magnitude. Then we do vector addition on the <ref refid="classPose2D" kindref="compound">Pose2D</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>magnitude</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to extend by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="131" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="137" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::transformPose</definition>
+        <argsstring>(const Pose2D &amp;modifier)</argsstring>
+        <name>transformPose</name>
+        <qualifiedname>Pose2D::transformPose</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>modifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>transform a position with a rotation and a translation <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>modifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the heading gets used as the rotation. The compoenent get used as the translation </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="137" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="142" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ad3453560b394884b5b94de1264b946fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pose2D::getX</definition>
+        <argsstring>() const</argsstring>
+        <name>getX</name>
+        <qualifiedname>Pose2D::getX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the x component of the position <simplesect kind="return"><para>the c component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="143" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pose2D::getY</definition>
+        <argsstring>() const</argsstring>
+        <name>getY</name>
+        <qualifiedname>Pose2D::getY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets the y component of the position <simplesect kind="return"><para>the y component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="149" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="151" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1aab0666fc4e510ece6f85a13fbfd6d347" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pose2D::getHeading</definition>
+        <argsstring>() const</argsstring>
+        <name>getHeading</name>
+        <qualifiedname>Pose2D::getHeading</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the heading of the position <simplesect kind="return"><para>the heading of the bot </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="155" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="155" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a07d03a1b06734fa63fcf6ee05befcb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::setHeading</definition>
+        <argsstring>(double angle)</argsstring>
+        <name>setHeading</name>
+        <qualifiedname>Pose2D::setHeading</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the heading of the Pose <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the angle to set the Pose at </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="161" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="159" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ac6afb91ffac9121da23df77f7c975a39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::plusCoord</definition>
+        <argsstring>(const Pose2D &amp;other)</argsstring>
+        <name>plusCoord</name>
+        <qualifiedname>Pose2D::plusCoord</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sum of two coordinates <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="167" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="123" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a5a031312210c5fd0d88855df26b53c1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::plus</definition>
+        <argsstring>(const Pose2D &amp;other)</argsstring>
+        <name>plus</name>
+        <qualifiedname>Pose2D::plus</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes a vector addition. Adds components of vectors together <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other pose </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="174" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="100" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1adc44dfc82549ea97d3622052b615bf55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::minus</definition>
+        <argsstring>(Pose2D other)</argsstring>
+        <name>minus</name>
+        <qualifiedname>Pose2D::minus</qualifiedname>
+        <param>
+          <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Subtract this by other. Subtracts the components <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other node to subtract by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="181" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="187" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a77b5a2d38fe501e59a8d308b5cfa0508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::addAngle</definition>
+        <argsstring>(double angle)</argsstring>
+        <name>addAngle</name>
+        <qualifiedname>Pose2D::addAngle</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add the angle to heading <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>gets added to &quot;this&quot; heading </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="187" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ad0b3a99de1a5972d3bed31e4e47e4e09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Pose2D::subtractBy</definition>
+        <argsstring>(const Pose2D &amp;other) const</argsstring>
+        <name>subtractBy</name>
+        <qualifiedname>Pose2D::subtractBy</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Subtract &quot;this&quot; from other by components and return the result <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other node to subtract by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the result of the subtraction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="194" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="213" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ab2ee3fec06d12adad8bd9c37fe7a8175" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Pose2D::scaleBy</definition>
+        <argsstring>(double scaler) const</argsstring>
+        <name>scaleBy</name>
+        <qualifiedname>Pose2D::scaleBy</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>scaler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scales a position by another. Returs result <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scaler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>amount to scale this vector as a pose by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the result of the scaling operation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="201" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="217" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ab4524355149f49542d83fc144e2438a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Pose2D::normalize</definition>
+        <argsstring>() const</argsstring>
+        <name>normalize</name>
+        <qualifiedname>Pose2D::normalize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Normalizes a position to a unit vector <simplesect kind="return"><para>a unit vector representing this position </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="207" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="221" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a359e162b9cb331cd5ccca9739ab31502" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pose2D::dotProduct</definition>
+        <argsstring>(const Pose2D &amp;other) const</argsstring>
+        <name>dotProduct</name>
+        <qualifiedname>Pose2D::dotProduct</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculate the dot product from the nodes: &quot;this&quot; and other <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>other node to calculate the dot product with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a double resembling the dot product </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="214" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="226" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::setX</definition>
+        <argsstring>(double x)</argsstring>
+        <name>setX</name>
+        <qualifiedname>Pose2D::setX</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setter for x <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new x value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="228" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="163" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1aae96b589dd219d641a039b8fe1a56d7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::vecAdd</definition>
+        <argsstring>(double angle, double magnitude)</argsstring>
+        <name>vecAdd</name>
+        <qualifiedname>Pose2D::vecAdd</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>magnitude</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes a vector addition from an angle and quantity <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the angle component of the vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>magnitude</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the quantity component of the vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="235" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="110" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::setY</definition>
+        <argsstring>(double y)</argsstring>
+        <name>setY</name>
+        <qualifiedname>Pose2D::setY</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setter for y <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new y value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="241" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="167" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1aa5f78e433ba60f61ea49b08ec8ff4d08" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Pose2D::getQuadrant</definition>
+        <argsstring>() const</argsstring>
+        <name>getQuadrant</name>
+        <qualifiedname>Pose2D::getQuadrant</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the quadrant that a Pose is in. If the pose is on the origin or on an intercept it return&apos;s 0. otherwise going from pos pos (1) it travels counter clockwise around in a circle <simplesect kind="return"><para>(0, 0): 0 (+, +): 1 (-, +): 2 (-, -): 3 (+, -): 4 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="254" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="171" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a52fbe813508bcb22e43c0ba8d1041246" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::wrapHeading</definition>
+        <argsstring>()</argsstring>
+        <name>wrapHeading</name>
+        <qualifiedname>Pose2D::wrapHeading</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps a heading to - PI -&gt; PI </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="259" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="235" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::transformForPose</definition>
+        <argsstring>(const Pose2D &amp;other)</argsstring>
+        <name>transformForPose</name>
+        <qualifiedname>Pose2D::transformForPose</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>transforms a given pose for another&apos;s frame <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other frame </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="265" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="94" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a4ad9e8c801fb7b2ad934c3f0f4923633" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Pose2D::isOnLine</definition>
+        <argsstring>(Pose2D LineEnd1, Pose2D LineEnd2)</argsstring>
+        <name>isOnLine</name>
+        <qualifiedname>Pose2D::isOnLine</qualifiedname>
+        <param>
+          <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+          <declname>LineEnd1</declname>
+        </param>
+        <param>
+          <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+          <declname>LineEnd2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Makes a slope intercept object from two pose2Ds <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>one</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the first position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>two</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the second position </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Slope intercept object that runs through two points Determines whether a pose is on a given bounded line </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>LineEnd1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>one endpoint of the line </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>LineEnd2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other endpoint of the line </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="288" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="24" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Pose2D::isPerpendicularToLine</definition>
+        <argsstring>(double m)</argsstring>
+        <name>isPerpendicularToLine</name>
+        <qualifiedname>Pose2D::isPerpendicularToLine</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determines whether a position is perpendicular to a given line </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="293" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a1cd7e63d410b091dcc89e20afcd65fff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pose2D::multiply</definition>
+        <argsstring>(double d)</argsstring>
+        <name>multiply</name>
+        <qualifiedname>Pose2D::multiply</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiplys the x and y components by a scalar </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="307" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="267" bodyend="270"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPose2D_1a35455cacb295ea54820030b9dbb191f2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Pose2D::fromPolar</definition>
+        <argsstring>(double magnitude, double angle)</argsstring>
+        <name>fromPolar</name>
+        <qualifiedname>Pose2D::fromPolar</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>magnitude</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a new <ref refid="classPose2D" kindref="compound">Pose2D</ref> from polar coordinats <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>magnitude</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the magnitude of the position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the angle of the position </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classPose2D" kindref="compound">Pose2D</ref> object representing the polar coordinates </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="82" column="19" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="193" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pose2D::degreesToRadians</definition>
+        <argsstring>(double degrees)</argsstring>
+        <name>degreesToRadians</name>
+        <qualifiedname>Pose2D::degreesToRadians</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>degrees</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the radian equivalent of degrees <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>degrees</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the angle in degrees </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the angle in radians </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="89" column="19" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="200" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Pose2D::radiansToDegrees</definition>
+        <argsstring>(double radians)</argsstring>
+        <name>radiansToDegrees</name>
+        <qualifiedname>Pose2D::radiansToDegrees</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>radians</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the degree equivalent of radians <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>radians</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the angle in radians </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the angle in degrees </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="96" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Pose2D::parseFromStream</definition>
+        <argsstring>(std::istringstream &amp;stream)</argsstring>
+        <name>parseFromStream</name>
+        <qualifiedname>Pose2D::parseFromStream</qualifiedname>
+        <param>
+          <type>std::istringstream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse a pose 2d from a string stream <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the stream to parse from </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a pose2D from the data in the stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="272" column="19" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="204" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classPose2D_1ac6f628453cf76391fac4ef7b884490d0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Pose2D::getAngleBetweenPoints</definition>
+        <argsstring>(Pose2D corner, Pose2D end1, Pose2D end2)</argsstring>
+        <name>getAngleBetweenPoints</name>
+        <qualifiedname>Pose2D::getAngleBetweenPoints</qualifiedname>
+        <param>
+          <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+          <declname>corner</declname>
+        </param>
+        <param>
+          <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+          <declname>end2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets the angle between points in radians. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>corner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the angle between all of these points </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="302" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classPose2D_1a8ee5dca0a6268342b242172f7222756f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const Pose2D &amp;d)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>Pose2D::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>To string for a pose2D <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pose2D to reference </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="222" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" bodystart="230" bodyend="233"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A class representing a 2D position and a heading. Implements common vector functions </para>
+    </detaileddescription>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" line="23" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp" bodystart="23" bodyend="308"/>
+    <listofallmembers>
+      <member refid="classPose2D_1a77b5a2d38fe501e59a8d308b5cfa0508" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>addAngle</name></member>
+      <member refid="classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>angleTo</name></member>
+      <member refid="classPose2D_1a34c15f20448e7efd354c507d38ec2891" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>clone</name></member>
+      <member refid="classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>degreesToRadians</name></member>
+      <member refid="classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>distanceTo</name></member>
+      <member refid="classPose2D_1a359e162b9cb331cd5ccca9739ab31502" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>dotProduct</name></member>
+      <member refid="classPose2D_1a35455cacb295ea54820030b9dbb191f2" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>fromPolar</name></member>
+      <member refid="classPose2D_1ac6f628453cf76391fac4ef7b884490d0" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>getAngleBetweenPoints</name></member>
+      <member refid="classPose2D_1aab0666fc4e510ece6f85a13fbfd6d347" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>getHeading</name></member>
+      <member refid="classPose2D_1aa5f78e433ba60f61ea49b08ec8ff4d08" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>getQuadrant</name></member>
+      <member refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>getX</name></member>
+      <member refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>getY</name></member>
+      <member refid="classPose2D_1a3d04db1eca820a577c911ca88df12b7d" prot="protected" virt="non-virtual"><scope>Pose2D</scope><name>heading</name></member>
+      <member refid="classPose2D_1a4ad9e8c801fb7b2ad934c3f0f4923633" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>isOnLine</name></member>
+      <member refid="classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>isPerpendicularToLine</name></member>
+      <member refid="classPose2D_1adc44dfc82549ea97d3622052b615bf55" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>minus</name></member>
+      <member refid="classPose2D_1a1cd7e63d410b091dcc89e20afcd65fff" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>multiply</name></member>
+      <member refid="classPose2D_1ab4524355149f49542d83fc144e2438a8" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>normalize</name></member>
+      <member refid="classPose2D_1a8ee5dca0a6268342b242172f7222756f" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>parseFromStream</name></member>
+      <member refid="classPose2D_1a5a031312210c5fd0d88855df26b53c1a" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>plus</name></member>
+      <member refid="classPose2D_1ac6afb91ffac9121da23df77f7c975a39" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>plusCoord</name></member>
+      <member refid="classPose2D_1a6d70b4f0e17c1f80690c1a4a832238bd" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>Pose2D</name></member>
+      <member refid="classPose2D_1ad31191da38f3f5e9a4a0e77577389977" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>Pose2D</name></member>
+      <member refid="classPose2D_1a216182882a02017665c754b16c1328ae" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>Pose2D</name></member>
+      <member refid="classPose2D_1a5b718e40b6dcc3b109128c57d8d78f69" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>Pose2D</name></member>
+      <member refid="classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>radiansToDegrees</name></member>
+      <member refid="classPose2D_1a1e220c70ada1586e8e1f9f2387e45e61" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>rotateByAngle</name></member>
+      <member refid="classPose2D_1add9d11130bbe9e7e66325e98f7ca43f5" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>rotateByPose</name></member>
+      <member refid="classPose2D_1ab2ee3fec06d12adad8bd9c37fe7a8175" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>scaleBy</name></member>
+      <member refid="classPose2D_1a07d03a1b06734fa63fcf6ee05befcb51" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>setHeading</name></member>
+      <member refid="classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>setX</name></member>
+      <member refid="classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>setY</name></member>
+      <member refid="classPose2D_1a73e8e6fd058a55960da459cdef6d6ffb" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>squareOfDistanceTo</name></member>
+      <member refid="classPose2D_1ad0b3a99de1a5972d3bed31e4e47e4e09" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>subtractBy</name></member>
+      <member refid="classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>transformForPose</name></member>
+      <member refid="classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>transformPose</name></member>
+      <member refid="classPose2D_1a84216b76ce7d5a554794b43c56574582" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>translateByMagnitude</name></member>
+      <member refid="classPose2D_1a03d229ea165034f3130d158a864ce6aa" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>translateByPose</name></member>
+      <member refid="classPose2D_1aae96b589dd219d641a039b8fe1a56d7b" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>vecAdd</name></member>
+      <member refid="classPose2D_1a52fbe813508bcb22e43c0ba8d1041246" prot="public" virt="non-virtual"><scope>Pose2D</scope><name>wrapHeading</name></member>
+      <member refid="classPose2D_1a4ea2a4d5ced468e718373ffe07732f60" prot="protected" virt="non-virtual"><scope>Pose2D</scope><name>x</name></member>
+      <member refid="classPose2D_1a79a6b7de45208d23daa4ec11913a547f" prot="protected" virt="non-virtual"><scope>Pose2D</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

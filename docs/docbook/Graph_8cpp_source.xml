@@ -1,0 +1,402 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Graph_8cpp_source" xml:lang="en-US">
+<title>Graph.cpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Graph.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_Graph_8cpp_source_1l00001"/>00001 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Created&#32;by&#32;caleb&#32;on&#32;11/9/21.</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00003"/>00003 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_Graph_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Graph_8hpp">Graph.hpp</link>&quot;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00006"/>00006 
+<anchor xml:id="_Graph_8cpp_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&lt;queue&gt;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&lt;cstdlib&gt;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;ctime&gt;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&quot;limits.h&quot;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_Graph_8cpp_source_1l00013"/>00013 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00014"/><link linkend="_classGraph_1a2a55c5945db5ce95020dd32e3df0f094">00014</link> <link linkend="_classGraph_1a2a55c5945db5ce95020dd32e3df0f094">Graph&lt;V&gt;::Graph</link>()&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;std::vector&lt;double&gt;&#32;temp;
+<anchor xml:id="_Graph_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;temp.push_back(0);
+<anchor xml:id="_Graph_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;temp.push_back(0);
+<anchor xml:id="_Graph_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;matrix.push_back(temp);
+<anchor xml:id="_Graph_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;matrix.push_back(temp);
+<anchor xml:id="_Graph_8cpp_source_1l00020"/>00020 }
+<anchor xml:id="_Graph_8cpp_source_1l00021"/>00021 
+<anchor xml:id="_Graph_8cpp_source_1l00022"/>00022 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00023"/>00023 <emphasis role="comment">template&lt;typename&#32;V&gt;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00024"/>00024 <emphasis role="comment">void&#32;Graph&lt;V&gt;::playGround()&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00025"/>00025 <emphasis role="comment">&#32;&#32;&#32;&#32;Node&lt;V&gt;&#32;*tempNode&#32;=&#32;new&#32;Node&lt;V&gt;(0);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00026"/>00026 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(tempNode);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00027"/>00027 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;srand(time(0));</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00028"/>00028 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00029"/>00029 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(1),&#32;nodes[0],&#32;2);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00030"/>00030 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(2),&#32;nodes[1],&#32;1);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00031"/>00031 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(3),&#32;nodes[2],&#32;3);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00032"/>00032 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(4),&#32;nodes[0],&#32;2);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00033"/>00033 <emphasis role="comment">&#32;&#32;&#32;&#32;addConnection(nodes[4],&#32;nodes[2],&#32;3);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00034"/><link linkend="_classGraph_1a8663524ab6962890aa72d2e146453caf">00034</link> <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(5),&#32;nodes[1],&#32;2);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00035"/>00035 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(6),&#32;nodes[1],&#32;1);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00036"/>00036 <emphasis role="comment">&#32;&#32;&#32;&#32;addConnection(nodes[5],&#32;nodes[3],&#32;7);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00037"/>00037 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(7),&#32;nodes[2],&#32;5);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00038"/>00038 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(8),&#32;nodes[6],&#32;5);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00039"/>00039 <emphasis role="comment">&#32;&#32;&#32;&#32;addConnection(nodes[8],&#32;nodes[3],&#32;3);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00040"/>00040 <emphasis role="comment">&#32;&#32;&#32;&#32;addNode(new&#32;Node&lt;V&gt;(9),&#32;nodes[8],&#32;1);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00041"/><link linkend="_classGraph_1ae83f3bc4bc54319051c7193039a5f00a">00041</link> <emphasis role="comment">&#32;&#32;&#32;&#32;addConnection(nodes[9],&#32;nodes[7],&#32;8);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00042"/>00042 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00043"/>00043 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00044"/>00044 <emphasis role="comment">&#32;&#32;&#32;&#32;head&#32;=&#32;nodes[0];</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00045"/>00045 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00046"/>00046 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00047"/>00047 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;printOut();</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00048"/>00048 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00049"/><link linkend="_classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b">00049</link> <emphasis role="comment">&#32;&#32;&#32;&#32;printAdjacent(head);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00050"/>00050 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00051"/>00051 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00052"/>00052 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00053"/>00053 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;path&#32;=&#32;Dijkstra(nodes[7]);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00054"/>00054 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00055"/>00055 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;goal:&#32;&quot;&#32;&lt;&lt;&#32;nodes[7]-&gt;getData()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00056"/>00056 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00057"/>00057 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;\n\n\n&#32;Path:&#32;&quot;;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00058"/><link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">00058</link> <emphasis role="comment">&#32;&#32;&#32;&#32;if&#32;(!path.empty())&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00059"/>00059 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;(int&#32;looper&#32;=&#32;0;&#32;looper&#32;&lt;&#32;path.size();&#32;looper++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00060"/>00060 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(looper&#32;!=&#32;path.size()&#32;-&#32;1)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00061"/>00061 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;nodeMap.at(path[looper])&#32;&lt;&lt;&#32;&quot;-&gt;&quot;;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00062"/>00062 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;else&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00063"/>00063 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;nodeMap.at(path[looper]);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00064"/>00064 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00065"/>00065 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00066"/>00066 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00067"/>00067 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00068"/><link linkend="_classGraph_1a7d0579f73520bb804c277fb3ae4ba890">00068</link> <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00069"/>00069 <emphasis role="comment">/*&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;\n\n\n&#32;Vals:&#32;&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00070"/>00070 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;nodes.size();&#32;i++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00071"/>00071 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;i&#32;&lt;&lt;&#32;&quot;&#32;-&gt;&#32;&quot;&#32;&lt;&lt;&#32;nodes[i]&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00072"/>00072 <emphasis role="comment">&#32;&#32;&#32;&#32;}*/</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00073"/>00073 
+<anchor xml:id="_Graph_8cpp_source_1l00074"/>00074 
+<anchor xml:id="_Graph_8cpp_source_1l00075"/><link linkend="_classGraph_1ad4acb5e274229a273f12d940bb4029a1">00075</link> <emphasis role="comment">//&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00076"/>00076 
+<anchor xml:id="_Graph_8cpp_source_1l00077"/>00077 
+<anchor xml:id="_Graph_8cpp_source_1l00078"/>00078 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00079"/><link linkend="_classGraph_1a8663524ab6962890aa72d2e146453caf">00079</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a8663524ab6962890aa72d2e146453caf">Graph&lt;V&gt;::resize</link>()&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;matrix.resize(nodes.size());
+<anchor xml:id="_Graph_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(std::vector&lt;double&gt;&amp;&#32;looper&#32;:&#32;matrix)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00082"/><link linkend="_classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c">00082</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;looper.resize(nodes.size());
+<anchor xml:id="_Graph_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00084"/>00084 }
+<anchor xml:id="_Graph_8cpp_source_1l00085"/>00085 
+<anchor xml:id="_Graph_8cpp_source_1l00086"/>00086 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00087"/><link linkend="_classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b">00087</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b">Graph&lt;V&gt;::contains</link>(<link linkend="_classNode">Node&lt;V&gt;</link>*&#32;node,&#32;std::vector&lt;<link linkend="_classNode">Node&lt;V&gt;</link>*&gt;&#32;listOfNodes)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;looper&#32;=&#32;0;&#32;looper&#32;&lt;&#32;listOfNodes.size();&#32;looper++)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(node&#32;==&#32;listOfNodes[looper])&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00090"/><link linkend="_classGraph_1a38d9119ee08708322eb5908fac0f244f">00090</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_Graph_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_Graph_8cpp_source_1l00094"/>00094 }
+<anchor xml:id="_Graph_8cpp_source_1l00095"/>00095 
+<anchor xml:id="_Graph_8cpp_source_1l00096"/>00096 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00097"/><link linkend="_classGraph_1a6000c589daea5f4984d10d09877ad149">00097</link> std::vector&lt;Node&lt;V&gt;*&gt;&#32;<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">Graph&lt;V&gt;::getNodes</link>()&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this-&gt;nodes;
+<anchor xml:id="_Graph_8cpp_source_1l00099"/>00099 }
+<anchor xml:id="_Graph_8cpp_source_1l00100"/>00100 
+<anchor xml:id="_Graph_8cpp_source_1l00101"/>00101 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00102"/><link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">00102</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">Graph&lt;V&gt;::addNode</link>(<link linkend="_classNode">Node&lt;V&gt;</link>*&#32;newNode)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(contains(newNode,&#32;nodes))&#32;{<emphasis role="keywordflow">return</emphasis>;}
+<anchor xml:id="_Graph_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;head&#32;=&#32;newNode;
+<anchor xml:id="_Graph_8cpp_source_1l00105"/><link linkend="_classGraph_1a313a06ec39a21b723f7f0a76c035b8c1">00105</link> &#32;&#32;&#32;&#32;nodes.push_back(newNode);
+<anchor xml:id="_Graph_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;nodeMap[newNode]&#32;=&#32;nodes.size()&#32;-&#32;1;
+<anchor xml:id="_Graph_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;resize();
+<anchor xml:id="_Graph_8cpp_source_1l00108"/>00108 }
+<anchor xml:id="_Graph_8cpp_source_1l00109"/>00109 
+<anchor xml:id="_Graph_8cpp_source_1l00110"/>00110 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00111"/><link linkend="_classGraph_1a7d0579f73520bb804c277fb3ae4ba890">00111</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">Graph&lt;V&gt;::addNode</link>(<link linkend="_classNode">Node&lt;V&gt;</link>*&#32;nextNode,&#32;std::vector&lt;<link linkend="_classNode">Node&lt;V&gt;</link>*&gt;&#32;adjacentNodes,&#32;<emphasis role="keywordtype">double</emphasis>&#32;weight)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;addNode(nextNode);
+<anchor xml:id="_Graph_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;looper&#32;=&#32;0;&#32;looper&#32;&lt;&#32;adjacentNodes.size();&#32;looper++)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!contains(adjacentNodes[looper],&#32;nodes))&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nodes.push_back(adjacentNodes[looper]);
+<anchor xml:id="_Graph_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nodeMap[adjacentNodes[looper]]&#32;=&#32;nodes.size()&#32;-&#32;1;
+<anchor xml:id="_Graph_8cpp_source_1l00117"/><link linkend="_classGraph_1a307d8095432434d7e28cfba1bba884cb">00117</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;resize();
+<anchor xml:id="_Graph_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;currNodeNum&#32;=&#32;nodeMap.at(nextNode);
+<anchor xml:id="_Graph_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nextNodeNum&#32;=&#32;nodeMap.at(adjacentNodes[looper]);
+<anchor xml:id="_Graph_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;matrix[currNodeNum][nextNodeNum]&#32;=&#32;weight;
+<anchor xml:id="_Graph_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;matrix[nextNodeNum][currNodeNum]&#32;=&#32;weight;
+<anchor xml:id="_Graph_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00124"/>00124 }
+<anchor xml:id="_Graph_8cpp_source_1l00125"/><link linkend="_classGraph_1a959dfd987107a8848c1c5c5da9f5e776">00125</link> 
+<anchor xml:id="_Graph_8cpp_source_1l00126"/>00126 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00127"/><link linkend="_classGraph_1ad4acb5e274229a273f12d940bb4029a1">00127</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">Graph&lt;V&gt;::addNode</link>(<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*nextNode,&#32;std::vector&lt;<link linkend="_classNode">Node&lt;V&gt;</link>*&gt;&#32;adjacentNodes)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;addNode(nextNode,&#32;adjacentNodes,&#32;1);
+<anchor xml:id="_Graph_8cpp_source_1l00129"/>00129 }
+<anchor xml:id="_Graph_8cpp_source_1l00130"/>00130 
+<anchor xml:id="_Graph_8cpp_source_1l00131"/><link linkend="_classGraph_1a452eeb65d902b4a95c0e8411885b4bc5">00131</link> <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00132"/><link linkend="_classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c">00132</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">Graph&lt;V&gt;::addNode</link>(<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*nextNode,&#32;<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*nodeITSLATE)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;adj;
+<anchor xml:id="_Graph_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;adj.push_back(nodeITSLATE);
+<anchor xml:id="_Graph_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;addNode(nextNode,&#32;adj);
+<anchor xml:id="_Graph_8cpp_source_1l00136"/>00136 }
+<anchor xml:id="_Graph_8cpp_source_1l00137"/>00137 
+<anchor xml:id="_Graph_8cpp_source_1l00138"/><link linkend="_classGraph_1a4969a395490f7e67cc70a7feb58a0b54">00138</link> <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00139"/>00139 <emphasis role="comment">template&lt;typename&#32;V&gt;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00140"/>00140 <emphasis role="comment">void&#32;Graph&lt;V&gt;::printOut()&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00141"/>00141 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;looper&#32;=&#32;0;&#32;looper&#32;&lt;&#32;nodes.size();&#32;looper++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00142"/>00142 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(looper&#32;!=&#32;nodes.size()&#32;-&#32;1)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00143"/><link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">00143</link> <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;nodes[looper]-&gt;getData()&#32;&lt;&lt;&#32;&quot;,&#32;&quot;;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00144"/>00144 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00145"/>00145 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;else&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00146"/>00146 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;nodes[looper]-&gt;getData();</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00147"/><link linkend="_classGraph_1a2a55c5945db5ce95020dd32e3df0f094">00147</link> <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00148"/>00148 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00149"/>00149 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00150"/>00150 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00151"/><link linkend="_classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c">00151</link> <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;anotherLoop&#32;=&#32;0;&#32;anotherLoop&#32;&lt;&#32;nodes.size();&#32;anotherLoop++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00152"/>00152 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;-&quot;;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00153"/>00153 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00154"/>00154 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00155"/>00155 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00156"/>00156 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;matrix.size();&#32;i++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00157"/>00157 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;(int&#32;ii&#32;=&#32;0;&#32;ii&#32;&lt;&#32;matrix[i].size();&#32;ii++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00158"/>00158 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(ii&#32;!=&#32;matrix.size()&#32;-&#32;1)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00159"/>00159 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;matrix[i][ii]&#32;&lt;&lt;&#32;&quot;,&#32;&quot;;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00160"/>00160 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00161"/>00161 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;else&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00162"/>00162 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;matrix[i][ii];</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00163"/>00163 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00164"/>00164 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00165"/>00165 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00166"/>00166 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00167"/>00167 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;\n\n\n&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00168"/>00168 <emphasis role="comment">}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00169"/>00169 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00170"/>00170 
+<anchor xml:id="_Graph_8cpp_source_1l00171"/>00171 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00172"/><link linkend="_classGraph_1a4969a395490f7e67cc70a7feb58a0b54">00172</link> std::vector&lt;Node&lt;V&gt;*&gt;&#32;<link linkend="_classGraph_1a4969a395490f7e67cc70a7feb58a0b54">Graph&lt;V&gt;::getAdj</link>(<link linkend="_classNode">Node&lt;V&gt;</link>*&#32;next)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00173"/>00173 &#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;adjacent;
+<anchor xml:id="_Graph_8cpp_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;index&#32;=&#32;nodeMap.at(next);
+<anchor xml:id="_Graph_8cpp_source_1l00175"/>00175 
+<anchor xml:id="_Graph_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;looper&#32;=&#32;0;&#32;looper&#32;&lt;&#32;matrix.size();&#32;looper++)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(matrix[index][looper]&#32;!=&#32;0)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;adjacent.push_back(nodes[looper]);
+<anchor xml:id="_Graph_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;adjacent;
+<anchor xml:id="_Graph_8cpp_source_1l00182"/>00182 }
+<anchor xml:id="_Graph_8cpp_source_1l00183"/>00183 
+<anchor xml:id="_Graph_8cpp_source_1l00184"/>00184 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00185"/><link linkend="_classGraph_1a4abe34d5dda78d4055a3098773140325">00185</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a4abe34d5dda78d4055a3098773140325">Graph&lt;V&gt;::setHead</link>(<emphasis role="keywordtype">int</emphasis>&#32;index)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;head&#32;=&#32;getNodes()[index];
+<anchor xml:id="_Graph_8cpp_source_1l00187"/>00187 }
+<anchor xml:id="_Graph_8cpp_source_1l00188"/>00188 
+<anchor xml:id="_Graph_8cpp_source_1l00189"/>00189 
+<anchor xml:id="_Graph_8cpp_source_1l00190"/>00190 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00191"/><link linkend="_classGraph_1a959dfd987107a8848c1c5c5da9f5e776">00191</link> std::vector&lt;Node&lt;V&gt;*&gt;&#32;<link linkend="_classGraph_1a959dfd987107a8848c1c5c5da9f5e776">Graph&lt;V&gt;::Dijkstra</link>(<link linkend="_classNode">Node&lt;V&gt;</link>*&#32;from,&#32;<link linkend="_classNode">Node&lt;V&gt;</link>*&#32;find)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;thing;
+<anchor xml:id="_Graph_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(from&#32;==&#32;find)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;was&#32;head&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;thing;
+<anchor xml:id="_Graph_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;std::vector&lt;bool&gt;&#32;visited;
+<anchor xml:id="_Graph_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;visited.resize(nodes.size());
+<anchor xml:id="_Graph_8cpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;distances[nodes.size()];
+<anchor xml:id="_Graph_8cpp_source_1l00200"/>00200 
+<anchor xml:id="_Graph_8cpp_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;filler&#32;=&#32;0;&#32;filler&#32;&lt;&#32;nodes.size();&#32;filler++)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;visited[filler]&#32;=&#32;0;
+<anchor xml:id="_Graph_8cpp_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;distances[filler]&#32;=&#32;UINT_MAX;
+<anchor xml:id="_Graph_8cpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;distances[0]&#32;=&#32;0;
+<anchor xml:id="_Graph_8cpp_source_1l00206"/>00206 
+<anchor xml:id="_Graph_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;std::priority_queue&lt;pair,&#32;std::vector&lt;pair&gt;,&#32;<link linkend="_structGraph_1_1CustomCompare">CustomCompare</link>&gt;&#32;queue;
+<anchor xml:id="_Graph_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;temp;
+<anchor xml:id="_Graph_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;temp.push_back(from);
+<anchor xml:id="_Graph_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;queue.push(std::pair&lt;<emphasis role="keywordtype">double</emphasis>,&#32;std::vector&lt;<link linkend="_classNode">Node&lt;V&gt;</link>*&gt;&gt;(0,&#32;temp));
+<anchor xml:id="_Graph_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;uint64_t&#32;iterations&#32;=&#32;0;
+<anchor xml:id="_Graph_8cpp_source_1l00212"/>00212 
+<anchor xml:id="_Graph_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(!queue.empty())&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;iterations++;
+<anchor xml:id="_Graph_8cpp_source_1l00215"/>00215 
+<anchor xml:id="_Graph_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;path&#32;=&#32;queue.top().second;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_Graph_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*curr&#32;=&#32;path[path.size()&#32;-&#32;1];
+<anchor xml:id="_Graph_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;currentDistance&#32;=&#32;queue.top().first;
+<anchor xml:id="_Graph_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;queue.pop();
+<anchor xml:id="_Graph_8cpp_source_1l00220"/>00220 
+<anchor xml:id="_Graph_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;visited[nodeMap.at(curr)]&#32;=&#32;1;
+<anchor xml:id="_Graph_8cpp_source_1l00222"/>00222 
+<anchor xml:id="_Graph_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(find&#32;==&#32;curr)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;\n\nDistance:&#32;&quot;&#32;&lt;&lt;&#32;currentDistance&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;iterations&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_Graph_8cpp_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;path;
+<anchor xml:id="_Graph_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00228"/>00228 
+<anchor xml:id="_Graph_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;adj&#32;=&#32;getAdj(curr);
+<anchor xml:id="_Graph_8cpp_source_1l00230"/>00230 
+<anchor xml:id="_Graph_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;looper&#32;=&#32;0;&#32;looper&#32;&lt;&#32;adj.size();&#32;looper++)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;possiblePath;
+<anchor xml:id="_Graph_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;path.size();&#32;i++)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;possiblePath.push_back(path[i]);
+<anchor xml:id="_Graph_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;printAdjacent(curr);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!visited[nodeMap.at(adj[looper])]&#32;&amp;&amp;&#32;currentDistance&#32;+&#32;matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])]&#32;&lt;&#32;distances[nodeMap.at(adj[looper])])&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;distances[nodeMap.at(adj[looper])]&#32;=&#32;currentDistance&#32;+&#32;matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])];
+<anchor xml:id="_Graph_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;possiblePath.push_back(adj[looper]);
+<anchor xml:id="_Graph_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;queue.push(std::pair&lt;<emphasis role="keywordtype">double</emphasis>,&#32;std::vector&lt;<link linkend="_classNode">Node&lt;V&gt;</link>*&gt;&gt;(currentDistance&#32;+&#32;matrix[nodeMap.at(curr)][nodeMap.at(adj[looper])],&#32;possiblePath));
+<anchor xml:id="_Graph_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing&#32;=&#32;path;
+<anchor xml:id="_Graph_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00245"/>00245 
+<anchor xml:id="_Graph_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;ATTEMPT&#32;TO&#32;RETURN&#32;SIZE:&#32;&quot;&#32;&lt;&lt;&#32;thing.size()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;delete&#32;queue;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;delete[]&#32;distances;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;iterations&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_Graph_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;thing;
+<anchor xml:id="_Graph_8cpp_source_1l00251"/>00251 }
+<anchor xml:id="_Graph_8cpp_source_1l00252"/>00252 
+<anchor xml:id="_Graph_8cpp_source_1l00253"/>00253 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00254"/><link linkend="_classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c">00254</link> <link linkend="_classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c">Graph&lt;V&gt;::~Graph</link>()&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;delete&#32;all&#32;connections&#32;and&#32;nodes</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_classNode">Node&lt;V&gt;</link>*&#32;node&#32;:&#32;nodes)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;node;
+<anchor xml:id="_Graph_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00259"/>00259 }
+<anchor xml:id="_Graph_8cpp_source_1l00260"/>00260 
+<anchor xml:id="_Graph_8cpp_source_1l00261"/>00261 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00262"/><link linkend="_classGraph_1a452eeb65d902b4a95c0e8411885b4bc5">00262</link> std::vector&lt;std::vector&lt;double&gt;&gt;&#32;<link linkend="_classGraph_1a452eeb65d902b4a95c0e8411885b4bc5">Graph&lt;V&gt;::getAdjacencyList</link>()&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;matrix;
+<anchor xml:id="_Graph_8cpp_source_1l00264"/>00264 }
+<anchor xml:id="_Graph_8cpp_source_1l00265"/>00265 
+<anchor xml:id="_Graph_8cpp_source_1l00266"/>00266 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00267"/><link linkend="_classGraph_1a38d9119ee08708322eb5908fac0f244f">00267</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a38d9119ee08708322eb5908fac0f244f">Graph&lt;V&gt;::addConnection</link>(<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*one,&#32;<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*two,&#32;<emphasis role="keywordtype">double</emphasis>&#32;weight)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;oneIndex&#32;=&#32;nodeMap.at(one);
+<anchor xml:id="_Graph_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;twoIndex&#32;=&#32;nodeMap.at(two);
+<anchor xml:id="_Graph_8cpp_source_1l00270"/>00270 
+<anchor xml:id="_Graph_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;matrix[oneIndex][twoIndex]&#32;=&#32;weight;
+<anchor xml:id="_Graph_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;matrix[twoIndex][oneIndex]&#32;=&#32;weight;
+<anchor xml:id="_Graph_8cpp_source_1l00273"/>00273 
+<anchor xml:id="_Graph_8cpp_source_1l00274"/>00274 }
+<anchor xml:id="_Graph_8cpp_source_1l00275"/>00275 
+<anchor xml:id="_Graph_8cpp_source_1l00276"/>00276 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00277"/><link linkend="_classGraph_1a6000c589daea5f4984d10d09877ad149">00277</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a38d9119ee08708322eb5908fac0f244f">Graph&lt;V&gt;::addConnection</link>(<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*one,&#32;<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*two)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;addConnection(one,&#32;two,&#32;1);
+<anchor xml:id="_Graph_8cpp_source_1l00279"/>00279 }
+<anchor xml:id="_Graph_8cpp_source_1l00280"/>00280 
+<anchor xml:id="_Graph_8cpp_source_1l00281"/>00281 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00282"/><link linkend="_classGraph_1a313a06ec39a21b723f7f0a76c035b8c1">00282</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">Graph&lt;V&gt;::addNode</link>(<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*nextNode,&#32;<link linkend="_classNode">Node&lt;V&gt;</link>&#32;*nodeITSLATE,&#32;<emphasis role="keywordtype">double</emphasis>&#32;weight)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;adj;
+<anchor xml:id="_Graph_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;adj.push_back(nodeITSLATE);
+<anchor xml:id="_Graph_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;addNode(nextNode,&#32;adj,&#32;weight);
+<anchor xml:id="_Graph_8cpp_source_1l00286"/>00286 }
+<anchor xml:id="_Graph_8cpp_source_1l00287"/>00287 
+<anchor xml:id="_Graph_8cpp_source_1l00288"/>00288 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00289"/><link linkend="_classGraph_1ae83f3bc4bc54319051c7193039a5f00a">00289</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classGraph_1ae83f3bc4bc54319051c7193039a5f00a">Graph&lt;V&gt;::numVisited</link>(std::vector&lt;bool&gt;&#32;listOfBools)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;counter&#32;=&#32;0;
+<anchor xml:id="_Graph_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;listOfBools.size();&#32;i++)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(listOfBools[i])&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;counter++;
+<anchor xml:id="_Graph_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00295"/>00295 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00296"/>00296 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;counter;
+<anchor xml:id="_Graph_8cpp_source_1l00297"/>00297 }
+<anchor xml:id="_Graph_8cpp_source_1l00298"/>00298 
+<anchor xml:id="_Graph_8cpp_source_1l00299"/>00299 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00300"/>00300 <emphasis role="comment">template&lt;typename&#32;V&gt;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00301"/>00301 <emphasis role="comment">void&#32;Graph&lt;V&gt;::printAdjacent(Node&lt;V&gt;*&#32;next)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00302"/>00302 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;list&#32;=&#32;getAdj(next);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00303"/>00303 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;current:&#32;&quot;&#32;&lt;&lt;&#32;next-&gt;getData()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00304"/>00304 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00305"/>00305 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Adjacent&#32;nodes:&#32;&quot;;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00306"/>00306 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;looper&#32;=&#32;0;&#32;looper&#32;&lt;&#32;list.size();&#32;looper++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00307"/>00307 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;nodeMap.at(list[looper]);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00308"/>00308 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(looper&#32;!=&#32;list.size()&#32;-&#32;1)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00309"/>00309 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;,&#32;&quot;;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00310"/>00310 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00311"/>00311 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00312"/>00312 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00313"/>00313 <emphasis role="comment">}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00314"/>00314 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00315"/>00315 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00316"/>00316 <emphasis role="comment">template&lt;typename&#32;V&gt;&#32;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00317"/>00317 <emphasis role="comment">std::vector&lt;Node&lt;V&gt;*&gt;&#32;Graph&lt;V&gt;::FrugalKugel(Node&lt;V&gt;*&#32;find,&#32;unsigned&#32;int&#32;steps)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00318"/>00318 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;toReturn;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00319"/>00319 <emphasis role="comment">&#32;&#32;&#32;&#32;if&#32;(head&#32;==&#32;find)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00320"/>00320 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;toReturn;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00321"/>00321 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00322"/>00322 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;bool&gt;&#32;visited;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00323"/>00323 <emphasis role="comment">&#32;&#32;&#32;&#32;visited.resize(nodes.size());</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00324"/>00324 <emphasis role="comment">&#32;&#32;&#32;&#32;unsigned&#32;int&#32;distances[nodes.size()];</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00325"/>00325 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00326"/>00326 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;set&#32;distances&#32;except&#32;for&#32;the&#32;first&#32;one&#32;to&#32;infinity</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00327"/>00327 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;filler&#32;=&#32;1;&#32;filler&#32;&lt;&#32;nodes.size();&#32;filler++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00328"/>00328 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;distances[filler]&#32;=&#32;UINT_MAX;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00329"/>00329 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00330"/>00330 <emphasis role="comment">&#32;&#32;&#32;&#32;distances[0]&#32;=&#32;0;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00331"/>00331 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00332"/>00332 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;setup&#32;a&#32;prioirty&#32;queue</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00333"/>00333 <emphasis role="comment">&#32;&#32;&#32;&#32;std::priority_queue&lt;pair,&#32;std::vector&lt;pair&gt;,&#32;CustomCompare&gt;&#32;queue;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00334"/>00334 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;temp;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00335"/>00335 <emphasis role="comment">&#32;&#32;&#32;&#32;temp.push_back(head);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00336"/>00336 <emphasis role="comment">&#32;&#32;&#32;&#32;queue.push(std::pair&lt;unsigned&#32;int,&#32;std::vector&lt;Node&lt;V&gt;*&gt;&gt;(0,&#32;temp));</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00337"/>00337 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00338"/>00338 <emphasis role="comment">&#32;&#32;&#32;&#32;while&#32;(!queue.empty())&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00339"/>00339 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;get&#32;the&#32;path&#32;from&#32;the&#32;top&#32;of&#32;the&#32;queue</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00340"/>00340 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;path&#32;=&#32;queue.top().second;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00341"/>00341 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;get&#32;the&#32;most&#32;recent&#32;item&#32;added&#32;to&#32;the&#32;path</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00342"/>00342 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Node&lt;V&gt;*&#32;curr&#32;=&#32;path[path.size()&#32;-&#32;1];</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00343"/>00343 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;unsigned&#32;int&#32;currentDistance&#32;=&#32;queue.top().first;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00344"/>00344 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;remove&#32;the&#32;current&#32;path&#32;from&#32;the&#32;PQ</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00345"/>00345 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;queue.pop();</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00346"/>00346 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00347"/>00347 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;visited[nodeMap.at(curr)]&#32;=&#32;1;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00348"/>00348 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00349"/>00349 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;found&#32;the&#32;goal&#32;node</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00350"/>00350 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(find&#32;==&#32;curr)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00351"/>00351 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;\nDistance:&#32;&quot;&#32;&lt;&lt;&#32;currentDistance&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00352"/>00352 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;path;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00353"/>00353 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00354"/>00354 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00355"/>00355 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&amp;&#32;adj&#32;=&#32;nodes[nodeMap.at(curr)];</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00356"/>00356 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00357"/>00357 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;(int&#32;looper&#32;=&#32;0;&#32;looper&#32;&lt;&#32;&#32;adj.size();&#32;looper++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00358"/>00358 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(adj[looper]&#32;!=&#32;0)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00359"/>00359 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;V&gt;*&gt;&#32;possiblePath;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00360"/>00360 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;copy&#32;over&#32;every&#32;element&#32;from&#32;path</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00361"/>00361 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;path.size();&#32;i++)&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00362"/>00362 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;possiblePath.push_back(path[i]);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00363"/>00363 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00364"/>00364 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;print&#32;the&#32;adjacent&#32;nodes</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00365"/>00365 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printAdjacent(curr);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00366"/>00366 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;cache&#32;the&#32;index</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00367"/>00367 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;index&#32;=&#32;nodeMap.at(adj[looper]);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00368"/>00368 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;the&#32;weight&#32;between&#32;the&#32;current&#32;node&#32;and&#32;the&#32;node&#32;we&#32;ate&#32;checking</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00369"/>00369 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;double&#32;tempDistance&#32;&#32;=&#32;((path.size()&#32;&lt;&#32;2)&#32;?&#32;INT_MAX&#32;:&#32;matrix[nodeMap.at(curr)][index]);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00370"/>00370 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;double&#32;sumDistance&#32;=&#32;tempDistance&#32;+&#32;currentDistance;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00371"/>00371 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;checks&#32;if&#32;we&#32;have&#32;visited&#32;the&#32;node&#32;we&#32;are&#32;inspecting,&#32;the&#32;distance&#32;is&#32;less&#32;than&#32;the&#32;cirrent&#32;distance,&#32;and</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00372"/>00372 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(!visited[index]&#32;&amp;&amp;&#32;sumDistance&#32;&lt;&#32;distances[index])&#32;{</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00373"/>00373 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;distances[index]&#32;=&#32;sumDistance;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00374"/>00374 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;possiblePath.push_back(adj[looper]);</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00375"/>00375 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;queue.push(std::pair&lt;unsigned&#32;int,&#32;std::vector&lt;Node&lt;V&gt;*&gt;&gt;(sumDistance,&#32;possiblePath));</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00376"/>00376 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00377"/>00377 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00378"/>00378 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00379"/>00379 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toReturn&#32;=&#32;path;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00380"/>00380 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00381"/>00381 <emphasis role="comment">&#32;&#32;&#32;&#32;delete&#32;queue;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00382"/>00382 <emphasis role="comment">&#32;&#32;&#32;&#32;delete[]&#32;distances;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00383"/>00383 <emphasis role="comment">&#32;&#32;&#32;&#32;return&#32;toReturn;</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00384"/>00384 <emphasis role="comment">}</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00385"/>00385 <emphasis role="comment"></emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00386"/>00386 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_Graph_8cpp_source_1l00387"/>00387 
+<anchor xml:id="_Graph_8cpp_source_1l00388"/>00388 
+<anchor xml:id="_Graph_8cpp_source_1l00389"/>00389 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Graph_8cpp_source_1l00390"/><link linkend="_classGraph_1a307d8095432434d7e28cfba1bba884cb">00390</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classGraph_1a307d8095432434d7e28cfba1bba884cb">Graph&lt;V&gt;::removeNode</link>(<emphasis role="keywordtype">size_t</emphasis>&#32;index)&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00391"/>00391 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(index&#32;&gt;=&#32;nodes.size())&#32;{
+<anchor xml:id="_Graph_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="_Graph_8cpp_source_1l00393"/>00393 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Graph_8cpp_source_1l00394"/>00394 &#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;nodes.at(index);
+<anchor xml:id="_Graph_8cpp_source_1l00395"/>00395 &#32;&#32;&#32;&#32;nodes.erase(nodes.begin()&#32;+&#32;index);
+<anchor xml:id="_Graph_8cpp_source_1l00396"/>00396 &#32;&#32;&#32;&#32;resize();
+<anchor xml:id="_Graph_8cpp_source_1l00397"/>00397 }
+</programlisting></section>

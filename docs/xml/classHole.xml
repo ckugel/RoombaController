@@ -1,0 +1,841 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classHole" kind="class" language="C++" prot="public">
+    <compoundname>Hole</compoundname>
+    <includes refid="Hole_8hpp" local="no">Hole.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classHole_1a184d244ff17c5987ccbd720fd3d1e584" prot="private" static="no" mutable="no">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Hole::cornerOne</definition>
+        <argsstring></argsstring>
+        <name>cornerOne</name>
+        <qualifiedname>Hole::cornerOne</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="22" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1afd3568722670bc8e1be655eec7620142" prot="private" static="no" mutable="no">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Hole::cornerTwo</definition>
+        <argsstring></argsstring>
+        <name>cornerTwo</name>
+        <qualifiedname>Hole::cornerTwo</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="23" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1acb066f964413988b8362050a89a3a5a7" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Hole::threshold</definition>
+        <argsstring></argsstring>
+        <name>threshold</name>
+        <qualifiedname>Hole::threshold</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="24" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1a7784b20e4a87d3e69d384257629090bc" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Hole::phi</definition>
+        <argsstring></argsstring>
+        <name>phi</name>
+        <qualifiedname>Hole::phi</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="25" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1abe5cdb5b2311baad62dc6d72d2007185" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Hole::x_translation_one</definition>
+        <argsstring></argsstring>
+        <name>x_translation_one</name>
+        <qualifiedname>Hole::x_translation_one</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="26" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1a72142d29fdaf7b65239534862cef783b" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Hole::y_translation_one</definition>
+        <argsstring></argsstring>
+        <name>y_translation_one</name>
+        <qualifiedname>Hole::y_translation_one</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="27" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1a520464efc3cf5d38e964573cd188c7ce" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Hole::x_translation_two</definition>
+        <argsstring></argsstring>
+        <name>x_translation_two</name>
+        <qualifiedname>Hole::x_translation_two</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="28" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1ad99c233dd68e7c57b73c666eb1bfb288" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Hole::y_translation_two</definition>
+        <argsstring></argsstring>
+        <name>y_translation_two</name>
+        <qualifiedname>Hole::y_translation_two</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="29" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1abbd466462cea32d0a00be78a59120525" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Hole::holeSize</definition>
+        <argsstring></argsstring>
+        <name>holeSize</name>
+        <qualifiedname>Hole::holeSize</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="30" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1aefed587cb4790ef594740219f9390977" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Hole::foundHole</definition>
+        <argsstring></argsstring>
+        <name>foundHole</name>
+        <qualifiedname>Hole::foundHole</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="32" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1a73a5d42a787e5503a4640e8de05b123a" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;std::vector&lt;Pose2D&gt; &gt; Hole::points</definition>
+        <argsstring></argsstring>
+        <name>points</name>
+        <qualifiedname>Hole::points</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="34" column="17" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHole_1acb525c23eac9aa86a3a47ebb3b08a1da" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; std::vector&lt; <ref refid="classHole" kindref="compound">Hole</ref> &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;std::vector&lt;Hole&gt; &gt; Hole::pointHoles</definition>
+        <argsstring></argsstring>
+        <name>pointHoles</name>
+        <qualifiedname>Hole::pointHoles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="35" column="21" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classHole_1a4ea8b237954a3decf415e384b042eacd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Hole::Hole</definition>
+        <argsstring>(double X1, double Y1, double X2, double Y2, double holeSize)</argsstring>
+        <name>Hole</name>
+        <qualifiedname>Hole::Hole</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>X1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>Y1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>X2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>Y2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>holeSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Make a new hole with the given coordinates <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>X1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>one corner&apos;s X position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Y1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>one corner&apos;s Y position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>X2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other corner&apos;s X position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Y2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other corner&apos;s Y position </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="45" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="110" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a653b2d43ddca456e31c6be921d7077df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Hole::Hole</definition>
+        <argsstring>(const Pose2D &amp;positionOne, const Pose2D &amp;positionTwo, bool foundHole, const std::vector&lt; Pose2D &gt; &amp;points, double holeSize)</argsstring>
+        <name>Hole</name>
+        <qualifiedname>Hole::Hole</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>positionOne</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>positionTwo</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>foundHole</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>holeSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy constructor for hole </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="50" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="19" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1ac73d25f280d747ba04a6e9b90d587d94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Hole::Hole</definition>
+        <argsstring>(double x1, double y1, double x2, double y2)</argsstring>
+        <name>Hole</name>
+        <qualifiedname>Hole::Hole</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Makes a new hole object with the given coordinates <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="59" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="449" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a079e74ec763052a10fedea61a6a5088b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Hole::Hole</definition>
+        <argsstring>(const Pose2D &amp;positionOne, const Pose2D &amp;positionTwo, double holeSize)</argsstring>
+        <name>Hole</name>
+        <qualifiedname>Hole::Hole</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>positionOne</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>positionTwo</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>holeSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a new <ref refid="classHole" kindref="compound">Hole</ref> object</para>
+<para>Created by Caleb Kugel on 11/15/2024 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="64" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="9" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a519b0f73c960b116403ee937a8fb0a3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt;</type>
+        <definition>std::vector&lt; Pose2D &gt; Hole::getSuggestedNodePlacements</definition>
+        <argsstring>()</argsstring>
+        <name>getSuggestedNodePlacements</name>
+        <qualifiedname>Hole::getSuggestedNodePlacements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a list of suggested node placements, for nodes in the graph. These node placements are guranteed to not conflict with a hole, or it&apos;s measurements. <simplesect kind="return"><para>a list of suggested node placements </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="71" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="56" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1adc6df39c2118fd21749786927800de4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Hole::registerPointsToHole</definition>
+        <argsstring>(const Pose2D &amp;positionOne, const Pose2D &amp;positionTwo)</argsstring>
+        <name>registerPointsToHole</name>
+        <qualifiedname>Hole::registerPointsToHole</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>positionOne</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>positionTwo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register the corners of a hole <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>positionOne</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>corner One </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>positionTwo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Corner Two </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="78" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="306" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1ad224d20fbe2037b97e19344b8f0157e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Hole::copyDoOperation</definition>
+        <argsstring>(const Pose2D &amp;position) const</argsstring>
+        <name>copyDoOperation</name>
+        <qualifiedname>Hole::copyDoOperation</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>do the whole operation and copy it into a new object for object collision <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="classPose2D" kindref="compound">Pose2D</ref> to apply the big formula </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the result of the operations </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="93" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="43" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a1b9d48a850759ae1b826b7476c304785" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Hole::getOneSquareCorner</definition>
+        <argsstring>()</argsstring>
+        <name>getOneSquareCorner</name>
+        <qualifiedname>Hole::getOneSquareCorner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>one of the square&apos;s corners </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="98" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1ae5ba1de89591495ee62c784c8bcc4b72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Hole::getSecondSquareCorner</definition>
+        <argsstring>()</argsstring>
+        <name>getSecondSquareCorner</name>
+        <qualifiedname>Hole::getSecondSquareCorner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the second of the square&apos;s corners </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="103" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1afb912f0b7b58f2074fcbbc50184e39c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Hole::pointCouldBeMemberOfHole</definition>
+        <argsstring>(const Pose2D &amp;measurment)</argsstring>
+        <name>pointCouldBeMemberOfHole</name>
+        <qualifiedname>Hole::pointCouldBeMemberOfHole</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>measurment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns whether a new point could be within the range of this hole. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>measurment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position of the point that may or may not be close to this hole </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="109" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="138" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1aec56b428187b4a6f5a952463b4029d00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Hole::isFoundHole</definition>
+        <argsstring>() const</argsstring>
+        <name>isFoundHole</name>
+        <qualifiedname>Hole::isFoundHole</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>whether we have found a hole <simplesect kind="return"><para>whether we found a hole </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="115" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="115" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a863918993a62cc90b99a66c48e9e0bdc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classHole" kindref="compound">Hole</ref> &gt;</type>
+        <definition>std::vector&lt; Hole &gt; Hole::getSubHolesCopy</definition>
+        <argsstring>() const</argsstring>
+        <name>getSubHolesCopy</name>
+        <qualifiedname>Hole::getSubHolesCopy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a copy of the holes within holes (measurments) <simplesect kind="return"><para>a vector of the holes within holes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="121" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="458" bodyend="464"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a90b129019613cc439b9834058f8727b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Hole::Hole</definition>
+        <argsstring>()</argsstring>
+        <name>Hole</name>
+        <qualifiedname>Hole::Hole</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The deafult constructor for a hole. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="126" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="121" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a4ddff9cebed0fa967b3a8ea12aac1195" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Hole::Hole</definition>
+        <argsstring>(const Hole &amp;hole)</argsstring>
+        <name>Hole</name>
+        <qualifiedname>Hole::Hole</qualifiedname>
+        <param>
+          <type>const <ref refid="classHole" kindref="compound">Hole</ref> &amp;</type>
+          <declname>hole</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="131" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="147" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a6c5cc5e4efbe73711dab187e00a0a171" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Hole::Hole</definition>
+        <argsstring>(const Pose2D &amp;initialPoint, double holeSize)</argsstring>
+        <name>Hole</name>
+        <qualifiedname>Hole::Hole</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>initialPoint</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>holeSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Makes a new hole and stores the initial measurment <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>initialPoint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>our initial measurment </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="137" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="129" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a39673dc613c45644ff844c7b81709ab9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Hole::addPoint</definition>
+        <argsstring>(const Pose2D &amp;position)</argsstring>
+        <name>addPoint</name>
+        <qualifiedname>Hole::addPoint</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a point to this hole/chunk. Morphs this object into a found hole if possible <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position of the measurment </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="144" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="170" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1afd4c5c949e5c37e58ff10927e475fcdf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Hole::isInSquare</definition>
+        <argsstring>(Pose2D &amp;position) const</argsstring>
+        <name>isInSquare</name>
+        <qualifiedname>Hole::isInSquare</qualifiedname>
+        <param>
+          <type><ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether the passed in position is in the square <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>whether that position is in the square </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="151" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="83" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1a73735b03496aad26f53879b2c50fcc71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Hole::offset</definition>
+        <argsstring>(const Pose2D &amp;offset)</argsstring>
+        <name>offset</name>
+        <qualifiedname>Hole::offset</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Offset all the corners and measurements <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the amount to offset by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="157" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="381" bodyend="391"/>
+      </memberdef>
+      <memberdef kind="function" id="classHole_1ae7c69bf5e1d37a1230b50187e7442506" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Hole::lineIntersectsHole</definition>
+        <argsstring>(const Pose2D &amp;posOne, const Pose2D &amp;posTwo) const</argsstring>
+        <name>lineIntersectsHole</name>
+        <qualifiedname>Hole::lineIntersectsHole</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>posOne</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>posTwo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Line intersects any hole measurement <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>posOne</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>position one of the line </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>posTwo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>position two of the line </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="164" column="11" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="393" bodyend="447"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classHole_1a371c0f905489a21d9276bb383a572487" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const Hole &amp;hole)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>Hole::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classHole" kindref="compound">Hole</ref> &amp;</type>
+          <declname>hole</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Override output stream for printing <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>os</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hole</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the hole to print </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the hole printed in the out stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="86" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.cpp" bodystart="373" bodyend="379"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="classHole" kindref="compound">Hole</ref> is either a complete square where we know the critical points (two vertices of the square). A <ref refid="classHole" kindref="compound">Hole</ref> could also represent a bunch of points that are all within Square Length * Root(2) of eachother </para>
+    </detaileddescription>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" line="20" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Hole.hpp" bodystart="20" bodyend="165"/>
+    <listofallmembers>
+      <member refid="classHole_1a39673dc613c45644ff844c7b81709ab9" prot="public" virt="non-virtual"><scope>Hole</scope><name>addPoint</name></member>
+      <member refid="classHole_1ad224d20fbe2037b97e19344b8f0157e0" prot="public" virt="non-virtual"><scope>Hole</scope><name>copyDoOperation</name></member>
+      <member refid="classHole_1a184d244ff17c5987ccbd720fd3d1e584" prot="private" virt="non-virtual"><scope>Hole</scope><name>cornerOne</name></member>
+      <member refid="classHole_1afd3568722670bc8e1be655eec7620142" prot="private" virt="non-virtual"><scope>Hole</scope><name>cornerTwo</name></member>
+      <member refid="classHole_1aefed587cb4790ef594740219f9390977" prot="private" virt="non-virtual"><scope>Hole</scope><name>foundHole</name></member>
+      <member refid="classHole_1a1b9d48a850759ae1b826b7476c304785" prot="public" virt="non-virtual"><scope>Hole</scope><name>getOneSquareCorner</name></member>
+      <member refid="classHole_1ae5ba1de89591495ee62c784c8bcc4b72" prot="public" virt="non-virtual"><scope>Hole</scope><name>getSecondSquareCorner</name></member>
+      <member refid="classHole_1a863918993a62cc90b99a66c48e9e0bdc" prot="public" virt="non-virtual"><scope>Hole</scope><name>getSubHolesCopy</name></member>
+      <member refid="classHole_1a519b0f73c960b116403ee937a8fb0a3e" prot="public" virt="non-virtual"><scope>Hole</scope><name>getSuggestedNodePlacements</name></member>
+      <member refid="classHole_1a4ea8b237954a3decf415e384b042eacd" prot="public" virt="non-virtual"><scope>Hole</scope><name>Hole</name></member>
+      <member refid="classHole_1a653b2d43ddca456e31c6be921d7077df" prot="public" virt="non-virtual"><scope>Hole</scope><name>Hole</name></member>
+      <member refid="classHole_1ac73d25f280d747ba04a6e9b90d587d94" prot="public" virt="non-virtual"><scope>Hole</scope><name>Hole</name></member>
+      <member refid="classHole_1a079e74ec763052a10fedea61a6a5088b" prot="public" virt="non-virtual"><scope>Hole</scope><name>Hole</name></member>
+      <member refid="classHole_1a90b129019613cc439b9834058f8727b1" prot="public" virt="non-virtual"><scope>Hole</scope><name>Hole</name></member>
+      <member refid="classHole_1a4ddff9cebed0fa967b3a8ea12aac1195" prot="public" virt="non-virtual"><scope>Hole</scope><name>Hole</name></member>
+      <member refid="classHole_1a6c5cc5e4efbe73711dab187e00a0a171" prot="public" virt="non-virtual"><scope>Hole</scope><name>Hole</name></member>
+      <member refid="classHole_1abbd466462cea32d0a00be78a59120525" prot="private" virt="non-virtual"><scope>Hole</scope><name>holeSize</name></member>
+      <member refid="classHole_1aec56b428187b4a6f5a952463b4029d00" prot="public" virt="non-virtual"><scope>Hole</scope><name>isFoundHole</name></member>
+      <member refid="classHole_1afd4c5c949e5c37e58ff10927e475fcdf" prot="public" virt="non-virtual"><scope>Hole</scope><name>isInSquare</name></member>
+      <member refid="classHole_1ae7c69bf5e1d37a1230b50187e7442506" prot="public" virt="non-virtual"><scope>Hole</scope><name>lineIntersectsHole</name></member>
+      <member refid="classHole_1a73735b03496aad26f53879b2c50fcc71" prot="public" virt="non-virtual"><scope>Hole</scope><name>offset</name></member>
+      <member refid="classHole_1a371c0f905489a21d9276bb383a572487" prot="public" virt="non-virtual"><scope>Hole</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classHole_1a7784b20e4a87d3e69d384257629090bc" prot="private" virt="non-virtual"><scope>Hole</scope><name>phi</name></member>
+      <member refid="classHole_1afb912f0b7b58f2074fcbbc50184e39c2" prot="public" virt="non-virtual"><scope>Hole</scope><name>pointCouldBeMemberOfHole</name></member>
+      <member refid="classHole_1acb525c23eac9aa86a3a47ebb3b08a1da" prot="private" virt="non-virtual"><scope>Hole</scope><name>pointHoles</name></member>
+      <member refid="classHole_1a73a5d42a787e5503a4640e8de05b123a" prot="private" virt="non-virtual"><scope>Hole</scope><name>points</name></member>
+      <member refid="classHole_1adc6df39c2118fd21749786927800de4b" prot="public" virt="non-virtual"><scope>Hole</scope><name>registerPointsToHole</name></member>
+      <member refid="classHole_1acb066f964413988b8362050a89a3a5a7" prot="private" virt="non-virtual"><scope>Hole</scope><name>threshold</name></member>
+      <member refid="classHole_1abe5cdb5b2311baad62dc6d72d2007185" prot="private" virt="non-virtual"><scope>Hole</scope><name>x_translation_one</name></member>
+      <member refid="classHole_1a520464efc3cf5d38e964573cd188c7ce" prot="private" virt="non-virtual"><scope>Hole</scope><name>x_translation_two</name></member>
+      <member refid="classHole_1a72142d29fdaf7b65239534862cef783b" prot="private" virt="non-virtual"><scope>Hole</scope><name>y_translation_one</name></member>
+      <member refid="classHole_1ad99c233dd68e7c57b73c666eb1bfb288" prot="private" virt="non-virtual"><scope>Hole</scope><name>y_translation_two</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

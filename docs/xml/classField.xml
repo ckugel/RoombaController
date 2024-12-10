@@ -1,0 +1,971 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classField" kind="class" language="C++" prot="public">
+    <compoundname>Field</compoundname>
+    <includes refid="Field_8hpp" local="no">Field.hpp</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classField_1a003a6384059a42b3d38bba86f8482bc5" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; std::vector&lt; <ref refid="classPillar" kindref="compound">Pillar</ref> &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;std::vector&lt;Pillar&gt; &gt; Field::pillars</definition>
+        <argsstring></argsstring>
+        <name>pillars</name>
+        <qualifiedname>Field::pillars</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the pillars on the field. The physical 3D cylinders get stored here </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="46" column="18" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classField_1acd1e5fe551b0b0910391b193d29550ca" prot="protected" static="no" mutable="no">
+        <type><ref refid="classHoleManager" kindref="compound">HoleManager</ref></type>
+        <definition>HoleManager Field::holeManager</definition>
+        <argsstring></argsstring>
+        <name>holeManager</name>
+        <qualifiedname>Field::holeManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A hole maanger to manage and check collision with holes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="51" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classField_1adf27e38bcd47cb341328a2339b2c16a3" prot="protected" static="no" mutable="no">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Field::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>Field::offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The amount to offset everything by after reading edges. X value stores the X (N, S) offset, Y value stores the Y (E, W) offset </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="57" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classField_1afba5f7de976bb8640644ba6cbb7b5e35" prot="protected" static="no" mutable="no">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Field::desiredDestination</definition>
+        <argsstring></argsstring>
+        <name>desiredDestination</name>
+        <qualifiedname>Field::desiredDestination</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the desired destination for the robot to get to </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="62" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classField_1aa714dd29f5248a7de11e20c8c67f6bb4" prot="protected" static="no" mutable="no">
+        <type><ref refid="classPillar" kindref="compound">Pillar</ref></type>
+        <definition>Pillar Field::botPose</definition>
+        <argsstring></argsstring>
+        <name>botPose</name>
+        <qualifiedname>Field::botPose</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>THe position of the robot on the field </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="67" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classField_1a5a6d409dcc5a61d64888f8ca20c6b05f" prot="protected" static="no" mutable="no">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Field::runningError</definition>
+        <argsstring></argsstring>
+        <name>runningError</name>
+        <qualifiedname>Field::runningError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the running error that we have accumulated over time in our measurements. This is just an approixmation based on read in error from the IPC </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="73" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classField_1ab69087224439a9f8c3414e7b72383201" prot="protected" static="no" mutable="no">
+        <type><ref refid="classGraph" kindref="compound">Graph</ref>&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt;</type>
+        <definition>Graph&lt;Pose2D&gt; Field::graph</definition>
+        <argsstring></argsstring>
+        <name>graph</name>
+        <qualifiedname>Field::graph</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The graph object which is used to generate trajectorys from nodes. Nodes represent places we can be on the field. The connections between nodes represents the possible paths we can take. The values of the connections represent the cost of moving between those nodes which is measured as the distance between nodes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="82" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classField_1a1d7b5e004850feaa692893d0c46add14" prot="protected" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t Field::desiredIndex</definition>
+        <argsstring></argsstring>
+        <name>desiredIndex</name>
+        <qualifiedname>Field::desiredIndex</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The index of the desired position in the graph </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="87" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classField_1a536803e37492ec349eae440878304a00" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classPillar" kindref="compound">Pillar</ref> &gt;</type>
+        <definition>std::vector&lt;Pillar&gt; Field::newPillars</definition>
+        <argsstring></argsstring>
+        <name>newPillars</name>
+        <qualifiedname>Field::newPillars</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A queue for new pillars that we add to the field. This is used to speed up discretization and weighting of the graph. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="93" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classField_1a0cb97f5f6abc65f46f80a9db40a05f89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Field::Field</definition>
+        <argsstring>(const std::vector&lt; Pillar &gt; &amp;pillars, const Pose2D &amp;desiredDestination, const Pillar &amp;botPose)</argsstring>
+        <name>Field</name>
+        <qualifiedname>Field::Field</qualifiedname>
+        <param>
+          <type>const std::vector&lt; <ref refid="classPillar" kindref="compound">Pillar</ref> &gt; &amp;</type>
+          <declname>pillars</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>desiredDestination</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPillar" kindref="compound">Pillar</ref> &amp;</type>
+          <declname>botPose</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a new field object <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pillars</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pillars that the field stores </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>desiredDestination</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the desired destination for the app to generate a path to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>botPose</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="102" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="7" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a2cbf1be1f006dce87a5f7f9c16f250dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Field::Field</definition>
+        <argsstring>(const std::vector&lt; Pillar &gt; &amp;pillars, const Pose2D &amp;desiredDestination)</argsstring>
+        <name>Field</name>
+        <qualifiedname>Field::Field</qualifiedname>
+        <param>
+          <type>const std::vector&lt; <ref refid="classPillar" kindref="compound">Pillar</ref> &gt; &amp;</type>
+          <declname>pillars</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>desiredDestination</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constructs a new field object <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pillars</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pillars that the field stores </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>desiredDestination</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the desired destination for the app to generate a path to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="109" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="16" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a3e804c92273d9159f413f227b535c672" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Field::Field</definition>
+        <argsstring>()</argsstring>
+        <name>Field</name>
+        <qualifiedname>Field::Field</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a deafult field object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="114" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="24" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a5d6ee1de8a4bf615a3eb2b0ed080479d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Field::Field</definition>
+        <argsstring>(const std::unique_ptr&lt; std::vector&lt; Pillar &gt; &gt; &amp;pillars, const Pose2D &amp;desired_destination, const Pillar &amp;bot_pose, const Graph&lt; Pose2D &gt; &amp;graph)</argsstring>
+        <name>Field</name>
+        <qualifiedname>Field::Field</qualifiedname>
+        <param>
+          <type>const std::unique_ptr&lt; std::vector&lt; <ref refid="classPillar" kindref="compound">Pillar</ref> &gt; &gt; &amp;</type>
+          <declname>pillars</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>desired_destination</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPillar" kindref="compound">Pillar</ref> &amp;</type>
+          <declname>bot_pose</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classGraph" kindref="compound">Graph</ref>&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &amp;</type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copys the majority of the important parts of the field <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pillars</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pillars to store </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>desired_destination</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the desired destination to travel to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bot_pose</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the bot position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>graph</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the graph object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="123" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1aba8449d9e693a3542f37c223099464d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::addEdgeMeasurement</definition>
+        <argsstring>(double rawPosition, Cardinality cardinality)</argsstring>
+        <name>addEdgeMeasurement</name>
+        <qualifiedname>Field::addEdgeMeasurement</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>rawPosition</declname>
+        </param>
+        <param>
+          <type><ref refid="Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5" kindref="member">Cardinality</ref></type>
+          <declname>cardinality</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add an edge measurement to the field. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rawPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the raw position (X or Y) of the measurmenet </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cardinality</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the direction of the measurement </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="131" column="7" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="203" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a87df29e3618d42c11b886bbcf07b1453" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classHoleManager" kindref="compound">HoleManager</ref> &amp;</type>
+        <definition>HoleManager &amp; Field::getManager</definition>
+        <argsstring>()</argsstring>
+        <name>getManager</name>
+        <qualifiedname>Field::getManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a reference to the hole manager <simplesect kind="return"><para>a reference to the hole manager </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="137" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1ae3ce826773c17f1e987af8ee4fb64269" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::applyOffsetToEdge</definition>
+        <argsstring>(double x, double y)</argsstring>
+        <name>applyOffsetToEdge</name>
+        <qualifiedname>Field::applyOffsetToEdge</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Applys some offset from getting the edge of the field <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>component of the offset </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>component of the offset </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="144" column="7" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="228" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a076b4e7297f788e933b4ee824b930473" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t Field::getDesiredIndex</definition>
+        <argsstring>() const</argsstring>
+        <name>getDesiredIndex</name>
+        <qualifiedname>Field::getDesiredIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the index of the desired pillar in the graph </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="149" column="11" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="257" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a753a1dbb8d1e8b6159309bdfeec3d1f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::clearField</definition>
+        <argsstring>()</argsstring>
+        <name>clearField</name>
+        <qualifiedname>Field::clearField</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears the entire field and cooresponding managers and graphs </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="154" column="7" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1ae20c991c2df6d7e863458e181b683140" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraph" kindref="compound">Graph</ref>&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &amp;</type>
+        <definition>Graph&lt; Pose2D &gt; &amp; Field::getGraph</definition>
+        <argsstring>()</argsstring>
+        <name>getGraph</name>
+        <qualifiedname>Field::getGraph</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a reference to the graph object on the field <simplesect kind="return"><para>a reference to the graph object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="160" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="261" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a55f738166b3267d7fa313465d2866dd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPillar" kindref="compound">Pillar</ref></type>
+        <definition>Pillar Field::getBotPose</definition>
+        <argsstring>()</argsstring>
+        <name>getBotPose</name>
+        <qualifiedname>Field::getBotPose</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the robot pose on the field as a pillar. The radius is the radius of the bot </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="165" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="155" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a3e9096a686ffb177056e24dfb920a610" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::discretizeGraph</definition>
+        <argsstring>()</argsstring>
+        <name>discretizeGraph</name>
+        <qualifiedname>Field::discretizeGraph</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>add nodes to the graph that are valid places the bot can be at </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="187" column="7" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="32" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1ab1945d8274ee391ea813863aa94c5d52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::weightGraph</definition>
+        <argsstring>()</argsstring>
+        <name>weightGraph</name>
+        <qualifiedname>Field::weightGraph</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Weight the graph in a way that the bot does not intersect and objects on the field </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="192" column="7" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="75" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1aa988c5de70875dd81c766c9429a4b986" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt;</type>
+        <definition>std::vector&lt; Pose2D &gt; Field::makePath</definition>
+        <argsstring>()</argsstring>
+        <name>makePath</name>
+        <qualifiedname>Field::makePath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generates a path from the graph using Dijkstra&apos;s algorithm <simplesect kind="return"><para>a path to the desired destination </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="198" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="109" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a890d7140a600bed6eb18a549b1a0faf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::addPillar</definition>
+        <argsstring>(Pillar &amp;newPillar)</argsstring>
+        <name>addPillar</name>
+        <qualifiedname>Field::addPillar</qualifiedname>
+        <param>
+          <type><ref refid="classPillar" kindref="compound">Pillar</ref> &amp;</type>
+          <declname>newPillar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a pillar measurement to the graph <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newPillar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="204" column="7" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="159" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a099593a58a6edcd2e6e2831abbb8fe89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::updateBotPose</definition>
+        <argsstring>(const Pose2D &amp;updatedPosition)</argsstring>
+        <name>updateBotPose</name>
+        <qualifiedname>Field::updateBotPose</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>updatedPosition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>updatedPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="210" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="179" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a3c2ce861d894d5ef000293887a2be3bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; std::vector&lt; <ref refid="classPillar" kindref="compound">Pillar</ref> &gt; &gt;</type>
+        <definition>std::unique_ptr&lt; std::vector&lt; Pillar &gt; &gt; Field::getPillars</definition>
+        <argsstring>()</argsstring>
+        <name>getPillars</name>
+        <qualifiedname>Field::getPillars</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a unique pointer for the pillars on the field <simplesect kind="return"><para>the pillars on the field </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="216" column="21" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a8a9681dae64b9db32d147ffefd25a78e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::setPillars</definition>
+        <argsstring>(std::unique_ptr&lt; std::vector&lt; Pillar &gt; &gt; pillars)</argsstring>
+        <name>setPillars</name>
+        <qualifiedname>Field::setPillars</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; std::vector&lt; <ref refid="classPillar" kindref="compound">Pillar</ref> &gt; &gt;</type>
+          <declname>pillars</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sets the pillars on the field <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pillars</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pillars that the field stores </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="222" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="151" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a1f3f3b289e23572dc12f9aef6b33817e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classPillar" kindref="compound">Pillar</ref> &gt;</type>
+        <definition>std::vector&lt; Pillar &gt; Field::getCopyPillars</definition>
+        <argsstring>()</argsstring>
+        <name>getCopyPillars</name>
+        <qualifiedname>Field::getCopyPillars</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a copy of the pillars on the field </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="227" column="17" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="191" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a3ed7a96d07bdc2a21edda0fa7626e6fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Field::validLocationForNode</definition>
+        <argsstring>(const Pose2D &amp;location)</argsstring>
+        <name>validLocationForNode</name>
+        <qualifiedname>Field::validLocationForNode</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check whether a given position is a valid place for a node in the graph with respect to &quot;this&quot; field <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location of the node </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>whether it collides with anything </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="234" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="118" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a5fa390f458efc053b4621a991566204f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Field::getDesiredDestination</definition>
+        <argsstring>()</argsstring>
+        <name>getDesiredDestination</name>
+        <qualifiedname>Field::getDesiredDestination</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the desired destination to travel to <simplesect kind="return"><para>the position to get to </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="240" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="274" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::updateDesired</definition>
+        <argsstring>(const Pose2D &amp;other)</argsstring>
+        <name>updateDesired</name>
+        <qualifiedname>Field::updateDesired</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new desired position </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="245" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="265" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1ad3354ff6a0954809aa9e7082778d8c44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Field::setDesiredIndex</definition>
+        <argsstring>(int32_t index)</argsstring>
+        <name>setDesiredIndex</name>
+        <qualifiedname>Field::setDesiredIndex</qualifiedname>
+        <param>
+          <type>int32_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the index of the desired position to travel to IN THE GRAPH <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index IN the graph </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="251" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="146" bodyend="148"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classField_1ad499baebb2aa49f7467d5d632ed97199" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Field::outOfBounds</definition>
+        <argsstring>(const Pose2D &amp;location)</argsstring>
+        <name>outOfBounds</name>
+        <qualifiedname>Field::outOfBounds</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A static check to determine if a given location in the field coordinate system is out of bounds <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>whether that postiion is out of bounds on the field. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="172" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a729114d0b55662bbcb8f21897617e0c1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Field::lineIntersectsCircle</definition>
+        <argsstring>(double cx, double cy, double r, double x1, double y1, double x2, double y2)</argsstring>
+        <name>lineIntersectsCircle</name>
+        <qualifiedname>Field::lineIntersectsCircle</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>cx</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>cy</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Util function that returns whether a given line intersects a circle </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="177" column="17" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.cpp" bodystart="236" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1a1d2b8ed638cd4b785be4156a3638578d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Field::lineIntersectsCircle</definition>
+        <argsstring>(Pillar p1, const Pose2D &amp;one, const Pose2D &amp;two)</argsstring>
+        <name>lineIntersectsCircle</name>
+        <qualifiedname>Field::lineIntersectsCircle</qualifiedname>
+        <param>
+          <type><ref refid="classPillar" kindref="compound">Pillar</ref></type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>one</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>two</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Util function that returns whether a given line intersects a circle </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="182" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="182" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classField_1ad631e7bd5cdcc7c10d274836ce464e1b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Field::roundRadius</definition>
+        <argsstring>(double radius)</argsstring>
+        <name>roundRadius</name>
+        <qualifiedname>Field::roundRadius</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>round a given radius to possible radii <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the radius to round </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the rounded radius </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="258" column="19" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="258" bodyend="271"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A class that represents the objects that can be and are on the field </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Field</label>
+        <link refid="classField"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>holeManager</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>desiredDestination</edgelabel>
+          <edgelabel>offset</edgelabel>
+          <edgelabel>runningError</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>botPose</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>graph</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Graph&lt; Pose2D &gt;</label>
+        <link refid="classGraph"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>head</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HoleManager</label>
+        <link refid="classHoleManager"/>
+      </node>
+      <node id="6">
+        <label>Node&lt; Pose2D &gt;</label>
+        <link refid="classNode"/>
+      </node>
+      <node id="4">
+        <label>Pillar</label>
+        <link refid="classPillar"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Pose2D</label>
+        <link refid="classPose2D"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" line="40" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Field.hpp" bodystart="40" bodyend="273"/>
+    <listofallmembers>
+      <member refid="classField_1aba8449d9e693a3542f37c223099464d9" prot="public" virt="non-virtual"><scope>Field</scope><name>addEdgeMeasurement</name></member>
+      <member refid="classField_1a890d7140a600bed6eb18a549b1a0faf9" prot="public" virt="non-virtual"><scope>Field</scope><name>addPillar</name></member>
+      <member refid="classField_1ae3ce826773c17f1e987af8ee4fb64269" prot="public" virt="non-virtual"><scope>Field</scope><name>applyOffsetToEdge</name></member>
+      <member refid="classField_1aa714dd29f5248a7de11e20c8c67f6bb4" prot="protected" virt="non-virtual"><scope>Field</scope><name>botPose</name></member>
+      <member refid="classField_1a753a1dbb8d1e8b6159309bdfeec3d1f1" prot="public" virt="non-virtual"><scope>Field</scope><name>clearField</name></member>
+      <member refid="classField_1afba5f7de976bb8640644ba6cbb7b5e35" prot="protected" virt="non-virtual"><scope>Field</scope><name>desiredDestination</name></member>
+      <member refid="classField_1a1d7b5e004850feaa692893d0c46add14" prot="protected" virt="non-virtual"><scope>Field</scope><name>desiredIndex</name></member>
+      <member refid="classField_1a3e9096a686ffb177056e24dfb920a610" prot="public" virt="non-virtual"><scope>Field</scope><name>discretizeGraph</name></member>
+      <member refid="classField_1a0cb97f5f6abc65f46f80a9db40a05f89" prot="public" virt="non-virtual"><scope>Field</scope><name>Field</name></member>
+      <member refid="classField_1a2cbf1be1f006dce87a5f7f9c16f250dc" prot="public" virt="non-virtual"><scope>Field</scope><name>Field</name></member>
+      <member refid="classField_1a3e804c92273d9159f413f227b535c672" prot="public" virt="non-virtual"><scope>Field</scope><name>Field</name></member>
+      <member refid="classField_1a5d6ee1de8a4bf615a3eb2b0ed080479d" prot="public" virt="non-virtual"><scope>Field</scope><name>Field</name></member>
+      <member refid="classField_1a55f738166b3267d7fa313465d2866dd4" prot="public" virt="non-virtual"><scope>Field</scope><name>getBotPose</name></member>
+      <member refid="classField_1a1f3f3b289e23572dc12f9aef6b33817e" prot="public" virt="non-virtual"><scope>Field</scope><name>getCopyPillars</name></member>
+      <member refid="classField_1a5fa390f458efc053b4621a991566204f" prot="public" virt="non-virtual"><scope>Field</scope><name>getDesiredDestination</name></member>
+      <member refid="classField_1a076b4e7297f788e933b4ee824b930473" prot="public" virt="non-virtual"><scope>Field</scope><name>getDesiredIndex</name></member>
+      <member refid="classField_1ae20c991c2df6d7e863458e181b683140" prot="public" virt="non-virtual"><scope>Field</scope><name>getGraph</name></member>
+      <member refid="classField_1a87df29e3618d42c11b886bbcf07b1453" prot="public" virt="non-virtual"><scope>Field</scope><name>getManager</name></member>
+      <member refid="classField_1a3c2ce861d894d5ef000293887a2be3bb" prot="public" virt="non-virtual"><scope>Field</scope><name>getPillars</name></member>
+      <member refid="classField_1ab69087224439a9f8c3414e7b72383201" prot="protected" virt="non-virtual"><scope>Field</scope><name>graph</name></member>
+      <member refid="classField_1acd1e5fe551b0b0910391b193d29550ca" prot="protected" virt="non-virtual"><scope>Field</scope><name>holeManager</name></member>
+      <member refid="classField_1a729114d0b55662bbcb8f21897617e0c1" prot="public" virt="non-virtual"><scope>Field</scope><name>lineIntersectsCircle</name></member>
+      <member refid="classField_1a1d2b8ed638cd4b785be4156a3638578d" prot="public" virt="non-virtual"><scope>Field</scope><name>lineIntersectsCircle</name></member>
+      <member refid="classField_1aa988c5de70875dd81c766c9429a4b986" prot="public" virt="non-virtual"><scope>Field</scope><name>makePath</name></member>
+      <member refid="classField_1a536803e37492ec349eae440878304a00" prot="protected" virt="non-virtual"><scope>Field</scope><name>newPillars</name></member>
+      <member refid="classField_1adf27e38bcd47cb341328a2339b2c16a3" prot="protected" virt="non-virtual"><scope>Field</scope><name>offset</name></member>
+      <member refid="classField_1ad499baebb2aa49f7467d5d632ed97199" prot="public" virt="non-virtual"><scope>Field</scope><name>outOfBounds</name></member>
+      <member refid="classField_1a003a6384059a42b3d38bba86f8482bc5" prot="protected" virt="non-virtual"><scope>Field</scope><name>pillars</name></member>
+      <member refid="classField_1ad631e7bd5cdcc7c10d274836ce464e1b" prot="public" virt="non-virtual"><scope>Field</scope><name>roundRadius</name></member>
+      <member refid="classField_1a5a6d409dcc5a61d64888f8ca20c6b05f" prot="protected" virt="non-virtual"><scope>Field</scope><name>runningError</name></member>
+      <member refid="classField_1ad3354ff6a0954809aa9e7082778d8c44" prot="public" virt="non-virtual"><scope>Field</scope><name>setDesiredIndex</name></member>
+      <member refid="classField_1a8a9681dae64b9db32d147ffefd25a78e" prot="public" virt="non-virtual"><scope>Field</scope><name>setPillars</name></member>
+      <member refid="classField_1a099593a58a6edcd2e6e2831abbb8fe89" prot="public" virt="non-virtual"><scope>Field</scope><name>updateBotPose</name></member>
+      <member refid="classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2" prot="public" virt="non-virtual"><scope>Field</scope><name>updateDesired</name></member>
+      <member refid="classField_1a3ed7a96d07bdc2a21edda0fa7626e6fe" prot="public" virt="non-virtual"><scope>Field</scope><name>validLocationForNode</name></member>
+      <member refid="classField_1ab1945d8274ee391ea813863aa94c5d52" prot="public" virt="non-virtual"><scope>Field</scope><name>weightGraph</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

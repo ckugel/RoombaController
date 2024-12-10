@@ -1,0 +1,817 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8cpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/main.cpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/main.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;../include/imgui/imgui.h&quot;<?linebreak?>#include &quot;../include/imgui/backends/imgui_impl_glfw.h&quot;<?linebreak?>#include &quot;../include/imgui/backends/imgui_impl_opengl3.h&quot;<?linebreak?>#include &lt;GLFW/glfw3.h&gt;<?linebreak?>#include &quot;Pose2D.hpp&quot;<?linebreak?>#include &quot;Node.hpp&quot;<?linebreak?>#include &quot;Pillar.hpp&quot;<?linebreak?>#include &quot;Hole.hpp&quot;<?linebreak?>#include &quot;Field.hpp&quot;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;netinet/in.h&gt;<?linebreak?>#include &lt;chrono&gt;<?linebreak?>#include &lt;sys/socket.h&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;arpa/inet.h&gt;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;thread&gt;<?linebreak?>#include &lt;queue&gt;<?linebreak?>#include &lt;condition_variable&gt;<?linebreak?>#include &lt;atomic&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structMove">Move</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_main_8cpp_1a69549d0bd46cc467083f3554f3f95955">BOT_CONNECT</link>&#160;&#160;&#160;0</para>
+</listitem>
+            <listitem><para>#define <link linkend="_main_8cpp_1a280feb883e9d4a7edcc69c8bcb9f38f2">ADDRESS</link>&#160;&#160;&#160;&quot;127.0.0.1&quot;</para>
+</listitem>
+            <listitem><para>#define <link linkend="_main_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2">PORT</link>&#160;&#160;&#160;65432</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493">MovementType</link> { <?linebreak?><link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c">MOVE_FORWARD</link>
+, <link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339">MOVE_BACKWARDS</link>
+, <link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165">MOVE_FORWARD_SMART</link>
+, <link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd">TURN_TO_ANGLE</link>
+, <?linebreak?><link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d">SCAN</link>
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::atomic&lt; bool &gt; <link linkend="_main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6">stopClient</link> (false)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link> (const std::string &amp;message)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459">sendAngleToQueue</link> (int16_t angle)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5">sendDistanceToQueue</link> (uint16_t distance)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1aafce9996e79c89401b2797ea5bd5702b">pathToRoutine</link> (std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; path, std::vector&lt; <link linkend="_structMove">Move</link> &gt; &amp;routine)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9">parsePathIntoRoutine</link> (const std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp;path)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1a6e0bf7be42eb96e07b07995bad442501">readAndLog</link> (int socket, std::mutex &amp;fieldMutex, <link linkend="_classField">Field</link> &amp;field, std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp;path)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1aeb814458701307eaffced2d1f95dc3f9">connectTCP</link> (<link linkend="_classField">Field</link> &amp;field, std::mutex &amp;fieldMutex, std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp;path)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2">setupImGui</link> (GLFWwindow *window)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1aef05f78be1cf48474bb638b05af91d4e">DrawCircle</link> (ImDrawList *drawList, const ImVec2 &amp;center, float radius, ImU32 color)</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77">ScreenToCoords</link> (ImVec2 coords, ImVec2 offset, ImVec2 scaling)</para>
+</listitem>
+            <listitem><para>ImVec2 <link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link> (ImVec2 offset, ImVec2 scaling, double x, double y)</para>
+</listitem>
+            <listitem><para>ImVec2 <link linkend="_main_8cpp_1aadd75f0fd8f5677340c27a7df7c28366">coordsToScreen</link> (ImVec2 offset, ImVec2 scaling, const <link linkend="_classPose2D">Pose2D</link> &amp;position)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1a9d21b7be18e221988e1051a55465f3a2">ShowPillarOnWindow</link> (ImDrawList *drawList, <link linkend="_classPillar">Pillar</link> pillar, ImU32 color, ImVec2 offset, ImVec2 scaling)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7">drawBotPose</link> (ImDrawList *drawList, const <link linkend="_classPose2D">Pose2D</link> &amp;botPose, ImVec2 offset, ImVec2 scaling)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c">drawRectangle</link> (ImDrawList *drawList, ImVec2 offset, ImVec2 scaling, const <link linkend="_classPose2D">Pose2D</link> &amp;p1, const <link linkend="_classPose2D">Pose2D</link> &amp;p2)</para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf">ShowFieldWindow</link> (std::mutex *pillarsMutex, std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp;path, <link linkend="_classField">Field</link> &amp;field, std::atomic&lt; bool &gt; &amp;showNodes, std::atomic&lt; bool &gt; &amp;showEdges)</para>
+</listitem>
+            <listitem><para>int <link linkend="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>std::queue&lt; std::string &gt; <link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">sendQueue</link></para>
+</listitem>
+            <listitem><para>std::mutex <link linkend="_main_8cpp_1a781e3772674224fa00da70ac8e0bb247">queueMutex</link></para>
+</listitem>
+            <listitem><para>std::condition_variable <link linkend="_main_8cpp_1a4bf7290e131c491bb7def53e3d340b95">sendCondition</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_main_8cpp_1a280feb883e9d4a7edcc69c8bcb9f38f2"/><section>
+    <title>ADDRESS</title>
+<indexterm><primary>ADDRESS</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>ADDRESS</secondary></indexterm>
+<para><computeroutput>#define ADDRESS&#160;&#160;&#160;&quot;127.0.0.1&quot;</computeroutput></para><para>
+Definition at line <link linkend="_main_8cpp_source_1l00029">29</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a69549d0bd46cc467083f3554f3f95955"/><section>
+    <title>BOT_CONNECT</title>
+<indexterm><primary>BOT_CONNECT</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>BOT_CONNECT</secondary></indexterm>
+<para><computeroutput>#define BOT_CONNECT&#160;&#160;&#160;0</computeroutput></para><para>
+Definition at line <link linkend="_main_8cpp_source_1l00024">24</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2"/><section>
+    <title>PORT</title>
+<indexterm><primary>PORT</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>PORT</secondary></indexterm>
+<para><computeroutput>#define PORT&#160;&#160;&#160;65432</computeroutput></para><para>
+Definition at line <link linkend="_main_8cpp_source_1l00030">30</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493"/><section>
+    <title>MovementType</title>
+<indexterm><primary>MovementType</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>MovementType</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493">MovementType</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>MOVE_FORWARD</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>MOVE_FORWARD</secondary></indexterm>
+<anchor xml:id="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c"/>MOVE_FORWARD</entry><entry></entry></row><row><entry><indexterm><primary>MOVE_BACKWARDS</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>MOVE_BACKWARDS</secondary></indexterm>
+<anchor xml:id="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339"/>MOVE_BACKWARDS</entry><entry></entry></row><row><entry><indexterm><primary>MOVE_FORWARD_SMART</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>MOVE_FORWARD_SMART</secondary></indexterm>
+<anchor xml:id="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165"/>MOVE_FORWARD_SMART</entry><entry></entry></row><row><entry><indexterm><primary>TURN_TO_ANGLE</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>TURN_TO_ANGLE</secondary></indexterm>
+<anchor xml:id="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd"/>TURN_TO_ANGLE</entry><entry></entry></row><row><entry><indexterm><primary>SCAN</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>SCAN</secondary></indexterm>
+<anchor xml:id="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d"/>SCAN</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00033">33</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_main_8cpp_1a0e791708278afd1945bd5e4876b90740"/><section>
+    <title>addToQueue()</title>
+<indexterm><primary>addToQueue</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>addToQueue</secondary></indexterm>
+<para><computeroutput>void addToQueue (const std::string &amp; message)</computeroutput></para>
+<para>Add a given string to the thread safe queue, accessed with mutexes 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>message</entry><entry>
+<para>the message to add </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00056">56</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1aeb814458701307eaffced2d1f95dc3f9"/><section>
+    <title>connectTCP()</title>
+<indexterm><primary>connectTCP</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>connectTCP</secondary></indexterm>
+<para><computeroutput>void connectTCP (<link linkend="_classField">Field</link> &amp; field, std::mutex &amp; fieldMutex, std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp; path)</computeroutput></para>
+<para>connect to Roomba TCP server or the mock server depending on the configuration 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>field</entry><entry>
+<para>reference to the field object </para>
+</entry>
+                            </row>
+                            <row>
+<entry>fieldMutex</entry><entry>
+<para>the mutex for the field </para>
+</entry>
+                            </row>
+                            <row>
+<entry>path</entry><entry>
+<para>reference to a generated path </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00291">291</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1aadd75f0fd8f5677340c27a7df7c28366"/><section>
+    <title>coordsToScreen()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>coordsToScreen</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>coordsToScreen</secondary></indexterm>
+<para><computeroutput>ImVec2 coordsToScreen (ImVec2 offset, ImVec2 scaling, const <link linkend="_classPose2D">Pose2D</link> &amp; position)</computeroutput></para>
+<para>Computes screen coordinates from <link linkend="_classField">Field</link> coordinates 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>offset</entry><entry>
+<para>the offset the window measuring on is at </para>
+</entry>
+                            </row>
+                            <row>
+<entry>scaling</entry><entry>
+<para>the amount to scale by </para>
+</entry>
+                            </row>
+                            <row>
+<entry>position</entry><entry>
+<para>the position be transformed </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the new screen coordinates </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00396">396</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c"/><section>
+    <title>coordsToScreen()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>coordsToScreen</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>coordsToScreen</secondary></indexterm>
+<para><computeroutput>ImVec2 coordsToScreen (ImVec2 offset, ImVec2 scaling, double x, double y)</computeroutput></para>
+<para>Computes screen coordinates from <link linkend="_classField">Field</link> coordinates 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>offset</entry><entry>
+<para>the offset the window measuring on is at </para>
+</entry>
+                            </row>
+                            <row>
+<entry>scaling</entry><entry>
+<para>the amount to scale by </para>
+</entry>
+                            </row>
+                            <row>
+<entry>x</entry><entry>
+<para>the x component of the pose 2d </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>the y component of the pose 2d </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the new screen coordinates </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00383">383</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7"/><section>
+    <title>drawBotPose()</title>
+<indexterm><primary>drawBotPose</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>drawBotPose</secondary></indexterm>
+<para><computeroutput>void drawBotPose (ImDrawList * drawList, const <link linkend="_classPose2D">Pose2D</link> &amp; botPose, ImVec2 offset, ImVec2 scaling)</computeroutput></para>
+<para>Draws a triangle on the bot position facing in the direction that the bot is. The color of the triangle will be lime green.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>drawList</entry><entry>
+<para>the draw list for the window </para>
+</entry>
+                            </row>
+                            <row>
+<entry>botPose</entry><entry>
+<para>the position of the bot </para>
+</entry>
+                            </row>
+                            <row>
+<entry>offset</entry><entry>
+<para>the offset of the screen for cartesian coordinates </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00423">423</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1aef05f78be1cf48474bb638b05af91d4e"/><section>
+    <title>DrawCircle()</title>
+<indexterm><primary>DrawCircle</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>DrawCircle</secondary></indexterm>
+<para><computeroutput>void DrawCircle (ImDrawList * drawList, const ImVec2 &amp; center, float radius, ImU32 color)</computeroutput></para>
+<para>Draw a circle on the window 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>drawList</entry><entry>
+<para>the drawlist for a given window </para>
+</entry>
+                            </row>
+                            <row>
+<entry>center</entry><entry>
+<para>the center position of the circle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>radius</entry><entry>
+<para>the radus of the circle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>the color of the circle on the screen </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00357">357</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c"/><section>
+    <title>drawRectangle()</title>
+<indexterm><primary>drawRectangle</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>drawRectangle</secondary></indexterm>
+<para><computeroutput>void drawRectangle (ImDrawList * drawList, ImVec2 offset, ImVec2 scaling, const <link linkend="_classPose2D">Pose2D</link> &amp; p1, const <link linkend="_classPose2D">Pose2D</link> &amp; p2)</computeroutput></para>
+<para>Draw a rectangle on the field given by the critical points p1 and p2 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>drawList</entry><entry>
+<para>the draw list for the window to draw on </para>
+</entry>
+                            </row>
+                            <row>
+<entry>offset</entry><entry>
+<para>the offset of the window </para>
+</entry>
+                            </row>
+                            <row>
+<entry>scaling</entry><entry>
+<para>the size scaling </para>
+</entry>
+                            </row>
+                            <row>
+<entry>p1</entry><entry>
+<para>point one </para>
+</entry>
+                            </row>
+                            <row>
+<entry>p2</entry><entry>
+<para>point two (opposite corner) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00450">450</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para>
+<para>The main function where the program starts <formalpara><title>Returns</title>
+
+<para>status code of how the program executed </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00572">572</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9"/><section>
+    <title>parsePathIntoRoutine()</title>
+<indexterm><primary>parsePathIntoRoutine</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>parsePathIntoRoutine</secondary></indexterm>
+<para><computeroutput>std::string parsePathIntoRoutine (const std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp; path)</computeroutput></para>
+<para>parse a path into a routine 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>path</entry><entry>
+<para>the path to parse </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the routine from the path </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00114">114</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1aafce9996e79c89401b2797ea5bd5702b"/><section>
+    <title>pathToRoutine()</title>
+<indexterm><primary>pathToRoutine</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>pathToRoutine</secondary></indexterm>
+<para><computeroutput>void pathToRoutine (std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; path, std::vector&lt; <link linkend="_structMove">Move</link> &gt; &amp; routine)</computeroutput></para>
+<para>generate a routine from a path 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>path</entry><entry>
+<para>the path to generate a routine from </para>
+</entry>
+                            </row>
+                            <row>
+<entry>routine</entry><entry>
+<para>the routine to store into </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00090">90</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a6e0bf7be42eb96e07b07995bad442501"/><section>
+    <title>readAndLog()</title>
+<indexterm><primary>readAndLog</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>readAndLog</secondary></indexterm>
+<para><computeroutput>void readAndLog (int socket, std::mutex &amp; fieldMutex, <link linkend="_classField">Field</link> &amp; field, std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp; path)</computeroutput></para>
+<para>Read and log data that gets sent over the TCP socket 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>socket</entry><entry>
+<para>the socket to listen on </para>
+</entry>
+                            </row>
+                            <row>
+<entry>fieldMutex</entry><entry>
+<para>the mutex for the field object </para>
+</entry>
+                            </row>
+                            <row>
+<entry>field</entry><entry>
+<para>reference to the field object </para>
+</entry>
+                            </row>
+                            <row>
+<entry>path</entry><entry>
+<para>the path to generate </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00142">142</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77"/><section>
+    <title>ScreenToCoords()</title>
+<indexterm><primary>ScreenToCoords</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>ScreenToCoords</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> ScreenToCoords (ImVec2 coords, ImVec2 offset, ImVec2 scaling)</computeroutput></para>
+<para>Computes a <link linkend="_classPose2D">Pose2D</link> from given screen coordinates 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coords</entry><entry>
+<para>the coordinates on the window </para>
+</entry>
+                            </row>
+                            <row>
+<entry>offset</entry><entry>
+<para>the offset of the position of the window on the screen </para>
+</entry>
+                            </row>
+                            <row>
+<entry>scaling</entry><entry>
+<para>the scaling factor for the window size </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00368">368</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459"/><section>
+    <title>sendAngleToQueue()</title>
+<indexterm><primary>sendAngleToQueue</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>sendAngleToQueue</secondary></indexterm>
+<para><computeroutput>void sendAngleToQueue (int16_t angle)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>angle</entry><entry>
+<para>the angle to send </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00068">68</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5"/><section>
+    <title>sendDistanceToQueue()</title>
+<indexterm><primary>sendDistanceToQueue</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>sendDistanceToQueue</secondary></indexterm>
+<para><computeroutput>void sendDistanceToQueue (uint16_t distance)</computeroutput></para>
+<para>Adds an distance to a queue to be sent to the bot 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>distance</entry><entry>
+<para>the distance to send </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00079">79</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2"/><section>
+    <title>setupImGui()</title>
+<indexterm><primary>setupImGui</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>setupImGui</secondary></indexterm>
+<para><computeroutput>void setupImGui (GLFWwindow * window)</computeroutput></para>
+<para>Simple function to set up OpenGL and ImGui context 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>window</entry><entry>
+<para>pointer to the GLFW window </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00341">341</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf"/><section>
+    <title>ShowFieldWindow()</title>
+<indexterm><primary>ShowFieldWindow</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>ShowFieldWindow</secondary></indexterm>
+<para><computeroutput>void ShowFieldWindow (std::mutex * pillarsMutex, std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp; path, <link linkend="_classField">Field</link> &amp; field, std::atomic&lt; bool &gt; &amp; showNodes, std::atomic&lt; bool &gt; &amp; showEdges)</computeroutput></para>
+<para>Show the field window on a new window 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pillarsMutex</entry><entry>
+<para>the mutex for pillars </para>
+</entry>
+                            </row>
+                            <row>
+<entry>path</entry><entry>
+<para>the path to display </para>
+</entry>
+                            </row>
+                            <row>
+<entry>field</entry><entry>
+<para>the field object </para>
+</entry>
+                            </row>
+                            <row>
+<entry>showNodes</entry><entry>
+<para>whether to show nodes or not (atomic reference) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>showEdges</entry><entry>
+<para>whether to show edges of the graph or not (atmoic reference) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00479">479</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a9d21b7be18e221988e1051a55465f3a2"/><section>
+    <title>ShowPillarOnWindow()</title>
+<indexterm><primary>ShowPillarOnWindow</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>ShowPillarOnWindow</secondary></indexterm>
+<para><computeroutput>void ShowPillarOnWindow (ImDrawList * drawList, <link linkend="_classPillar">Pillar</link> pillar, ImU32 color, ImVec2 offset, ImVec2 scaling)</computeroutput></para>
+<para>Show a given pillar on the window. 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>drawList</entry><entry>
+<para>the window to draw a pillar (circle) on </para>
+</entry>
+                            </row>
+                            <row>
+<entry>pillar</entry><entry>
+<para>the pillar which stores the given position and radius </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>the color to draw it as </para>
+</entry>
+                            </row>
+                            <row>
+<entry>offset</entry><entry>
+<para>the offset of the window </para>
+</entry>
+                            </row>
+                            <row>
+<entry>scaling</entry><entry>
+<para>the sizing ration for the window </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8cpp_source_1l00408">408</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6"/><section>
+    <title>stopClient()</title>
+<indexterm><primary>stopClient</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>stopClient</secondary></indexterm>
+<para><computeroutput>std::atomic&lt; bool &gt; stopClient (false )</computeroutput></para></section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_main_8cpp_1a781e3772674224fa00da70ac8e0bb247"/><section>
+    <title>queueMutex</title>
+<indexterm><primary>queueMutex</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>queueMutex</secondary></indexterm>
+<para><computeroutput>std::mutex queueMutex</computeroutput></para><para>
+Definition at line <link linkend="_main_8cpp_source_1l00042">42</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1a4bf7290e131c491bb7def53e3d340b95"/><section>
+    <title>sendCondition</title>
+<indexterm><primary>sendCondition</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>sendCondition</secondary></indexterm>
+<para><computeroutput>std::condition_variable sendCondition</computeroutput></para><para>
+Definition at line <link linkend="_main_8cpp_source_1l00043">43</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+<anchor xml:id="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3"/><section>
+    <title>sendQueue</title>
+<indexterm><primary>sendQueue</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>sendQueue</secondary></indexterm>
+<para><computeroutput>std::queue&lt;std::string&gt; sendQueue</computeroutput></para><para>
+Definition at line <link linkend="_main_8cpp_source_1l00041">41</link> of file <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Pillar_8cpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;Pillar.hpp&quot;<?linebreak?></programlisting></section>

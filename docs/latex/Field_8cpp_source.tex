@@ -1,0 +1,282 @@
+\doxysection{Field.\+cpp}
+\hypertarget{Field_8cpp_source}{}\label{Field_8cpp_source}\index{/home/calebk/Documents/coding/RoombaController/src/Field.cpp@{/home/calebk/Documents/coding/RoombaController/src/Field.cpp}}
+\mbox{\hyperlink{Field_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ caleb\ on\ 10/25/2024}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Field_8hpp}{Field.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00007}\mbox{\hyperlink{classField_a0cb97f5f6abc65f46f80a9db40a05f89}{00007}}\ \mbox{\hyperlink{classField_a3e804c92273d9159f413f227b535c672}{Field::Field}}(\textcolor{keyword}{const}\ std::vector<Pillar>\&\ pillars,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ desiredDestination,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPillar}{Pillar}}\&\ botPose)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00008}00008\ \ \ this-\/>pillars\ =\ std::make\_unique<std::vector<Pillar>>(\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}});}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00009}00009\ \ \ \ \ this-\/>desiredDestination\ =\ \mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desiredDestination}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00010}00010\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_acd1e5fe551b0b0910391b193d29550ca}{holeManager}}\ =\ \mbox{\hyperlink{classHoleManager}{HoleManager}}();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00011}00011\ \ \ \ \ this-\/>botPose\ =\ \mbox{\hyperlink{classField_aa714dd29f5248a7de11e20c8c67f6bb4}{botPose}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00012}00012\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}\ =\ \mbox{\hyperlink{classGraph}{Graph<Pose2D>}}();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{addNode}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classNode}{Node<Pose2D>}}(\mbox{\hyperlink{classPose2D}{Pose2D}}(0,\ 0)));}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00016}\mbox{\hyperlink{classField_a2cbf1be1f006dce87a5f7f9c16f250dc}{00016}}\ \mbox{\hyperlink{classField_a3e804c92273d9159f413f227b535c672}{Field::Field}}(\textcolor{keyword}{const}\ std::vector<Pillar>\&\ pillars,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ desiredDestination)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00017}00017\ \ \ \ \ this-\/>pillars\ =\ std::make\_unique<std::vector<Pillar>>(\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}});}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00018}00018\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_acd1e5fe551b0b0910391b193d29550ca}{holeManager}}\ =\ \mbox{\hyperlink{classHoleManager}{HoleManager}}();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00019}00019\ \ \ \ \ this-\/>desiredDestination\ =\ \mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desiredDestination}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00020}00020\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_aa714dd29f5248a7de11e20c8c67f6bb4}{botPose}}\ =\ \mbox{\hyperlink{classPillar}{Pillar}}(0,\ 0,\ 0,\ \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}});}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{addNode}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classNode}{Node<Pose2D>}}(\mbox{\hyperlink{classPose2D}{Pose2D}}(0,\ 0)));}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00024}\mbox{\hyperlink{classField_a3e804c92273d9159f413f227b535c672}{00024}}\ \mbox{\hyperlink{classField_a3e804c92273d9159f413f227b535c672}{Field::Field}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00025}00025\ \ \ this-\/>\ \mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}\ =\ std::make\_unique<std::vector<Pillar>>();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00026}00026\ \ \ this-\/>\mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desiredDestination}}\ =\ \mbox{\hyperlink{classPose2D}{Pose2D}}(0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00027}00027\ \ \ this-\/>\mbox{\hyperlink{classField_aa714dd29f5248a7de11e20c8c67f6bb4}{botPose}}\ =\ \mbox{\hyperlink{classPillar}{Pillar}}(0,\ 0,\ 0,\ \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}});}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00028}00028\ \ \ this-\/>\mbox{\hyperlink{classField_acd1e5fe551b0b0910391b193d29550ca}{holeManager}}\ =\ \mbox{\hyperlink{classHoleManager}{HoleManager}}();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{addNode}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classNode}{Node<Pose2D>}}(\mbox{\hyperlink{classPose2D}{Pose2D}}(0,\ 0)));}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00032}\mbox{\hyperlink{classField_a3e9096a686ffb177056e24dfb920a610}{00032}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_a3e9096a686ffb177056e24dfb920a610}{Field::discretizeGraph}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}().empty())\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{addNode}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classNode}{Node<Pose2D>}}(\mbox{\hyperlink{classField_aa714dd29f5248a7de11e20c8c67f6bb4}{botPose}}.\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}()));}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ std::vector<Node<Pillar>*>\ nodes;}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPillar}{Pillar}}\ \&\ pillar\ :\ \mbox{\hyperlink{classField_a536803e37492ec349eae440878304a00}{newPillars}})\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ std::vector<Node<Pose2D>*>\ nodes\ =\ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 1;\ i\ <\ nodes.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ !=\ \mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desiredIndex}})\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nodes[i]-\/>getData().distanceTo(pillar.getPose())\ <\ pillar.getRadius()\ +\ \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}})\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ node}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a307d8095432434d7e28cfba1bba884cb}{removeNode}}(i);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ nodes\ =\ graph.getNodes();}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ magnitude\ =\ pillar.getRadius()\ +\ \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{double}\ i\ =\ 1.0;\ i\ <\ 5.0;\ i\ +=\ 0.75)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint16\_t\ angle\ =\ 0;\ angle\ <\ 361;\ angle\ +=\ 25)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ radian\ =\ angle\ *\ M\_PI\ /\ 180.0;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ attemptAdd\ =\ \mbox{\hyperlink{classPose2D_a35455cacb295ea54820030b9dbb191f2}{Pose2D::fromPolar}}(magnitude\ *\ i,\ radian);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attemptAdd.\mbox{\hyperlink{classPose2D_a5a031312210c5fd0d88855df26b53c1a}{plus}}(pillar.getPose());}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classField_a3ed7a96d07bdc2a21edda0fa7626e6fe}{validLocationForNode}}(attemptAdd))\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ to\ list}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classNode}{Node<Pose2D>}}*\ toAdd\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classNode}{Node<Pose2D>}}(attemptAdd);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{addNode}}(toAdd);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ nodes\ =\ graph.getNodes();}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>push\_back(pillar);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00069}00069\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_a536803e37492ec349eae440878304a00}{newPillars}}.clear();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{addNode}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classNode}{Node<Pose2D>}}(\mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desiredDestination}}));}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desiredIndex}}\ =\ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}().size()\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00075}\mbox{\hyperlink{classField_ab1945d8274ee391ea813863aa94c5d52}{00075}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_ab1945d8274ee391ea813863aa94c5d52}{Field::weightGraph}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00076}00076\ \ \ \ \ std::vector<Node<Pose2D>*>\ nodes\ =\ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ o(n\string^3)\ crying}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint16\_t\ nodeIndex\ =\ 0;\ nodeIndex\ <\ nodes.size();\ nodeIndex++)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint16\_t\ nodeIndexTwo\ =\ 0;\ nodeIndexTwo\ <\ nodes.size();\ nodeIndexTwo++)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nodeIndex\ !=\ nodeIndexTwo)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ positionOne\ =\ nodes[nodeIndex]-\/>getData();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ positionTwo\ =\ nodes[nodeIndexTwo]-\/>getData();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ length\ =\ positionOne.\mbox{\hyperlink{classPose2D_a9acb14a9b0252c620dfc1e79139b52d3}{distanceTo}}(positionTwo);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dy\ =\ (positionTwo.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}()\ -\/\ positionOne.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}());}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dx\ =\ (positionTwo.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}()\ -\/\ positionTwo.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}());}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ gotThrough\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ pillarIndex\ =\ 0;\ pillarIndex\ <\ \mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>size();\ pillarIndex++)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classField_a729114d0b55662bbcb8f21897617e0c1}{lineIntersectsCircle}}(\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>at(pillarIndex),\ positionOne,\ positionTwo))\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uh\ oh\ we\ hit\ the\ circle}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gotThrough\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classField_acd1e5fe551b0b0910391b193d29550ca}{holeManager}}.\mbox{\hyperlink{classHoleManager_a1a77b2aa21fe82b6aa7073aa004e9e6f}{lineIntersectsAnyHoleMeasurement}}(positionOne,\ positionTwo))\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gotThrough\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gotThrough)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ a\ weight\ between\ nodes[nodeIndex]\ and\ nodes[nodeIndexTwo]}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a38d9119ee08708322eb5908fac0f244f}{addConnection}}(nodes[nodeIndex],\ nodes[nodeIndexTwo],\ length);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ print\ out\ attempt\ to\ add}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00109}\mbox{\hyperlink{classField_aa988c5de70875dd81c766c9429a4b986}{00109}}\ std::vector<Pose2D>\ \mbox{\hyperlink{classField_aa988c5de70875dd81c766c9429a4b986}{Field::makePath}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00110}00110\ \ \ \ \ std::vector<Node<Pose2D>*>\ path\ =\ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a959dfd987107a8848c1c5c5da9f5e776}{Dijkstra}}(\mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}()[0],\ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}()[\mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desiredIndex}}]);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00111}00111\ \ \ \ \ std::vector<Pose2D>\ toReturn;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint16\_t\ i\ =\ 0;\ i\ <\ path.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ toReturn.push\_back(path[i]-\/>getData());}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordflow}{return}\ toReturn;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00116}00116\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00118}\mbox{\hyperlink{classField_a3ed7a96d07bdc2a21edda0fa7626e6fe}{00118}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classField_a3ed7a96d07bdc2a21edda0fa7626e6fe}{Field::validLocationForNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ location)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classField_ad499baebb2aa49f7467d5d632ed97199}{outOfBounds}}(location))\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&\ i\ :\ *\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}})\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i.getPose().distanceTo(location)\ <\ i.getRadius()\ +\ \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}})\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classField_acd1e5fe551b0b0910391b193d29550ca}{holeManager}}.\mbox{\hyperlink{classHoleManager_a3b0b1c780a1ed91646e0bcbf1dd23e70}{nodeCollides}}(location))\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00132}00132\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00134}\mbox{\hyperlink{classField_a87df29e3618d42c11b886bbcf07b1453}{00134}}\ \mbox{\hyperlink{classHoleManager}{HoleManager}}\&\ \mbox{\hyperlink{classField_a87df29e3618d42c11b886bbcf07b1453}{Field::getManager}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00135}00135\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classField_acd1e5fe551b0b0910391b193d29550ca}{holeManager}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00138}\mbox{\hyperlink{classField_a753a1dbb8d1e8b6159309bdfeec3d1f1}{00138}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_a753a1dbb8d1e8b6159309bdfeec3d1f1}{Field::clearField}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00139}00139\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>clear();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00140}00140\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00142}\mbox{\hyperlink{classField_a3c2ce861d894d5ef000293887a2be3bb}{00142}}\ std::unique\_ptr<std::vector<Pillar>>\ \mbox{\hyperlink{classField_a3c2ce861d894d5ef000293887a2be3bb}{Field::getPillars}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{keywordflow}{return}\ std::move(\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}});\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00146}\mbox{\hyperlink{classField_ad3354ff6a0954809aa9e7082778d8c44}{00146}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_ad3354ff6a0954809aa9e7082778d8c44}{Field::setDesiredIndex}}(int32\_t\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00147}00147\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desiredIndex}}\ =\ index;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00148}00148\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00151}\mbox{\hyperlink{classField_a8a9681dae64b9db32d147ffefd25a78e}{00151}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_a8a9681dae64b9db32d147ffefd25a78e}{Field::setPillars}}(std::unique\_ptr<std::vector<Pillar>>\ pillars)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00152}00152\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}\ =\ std::move(\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}});}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00153}00153\ \}\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00155}\mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{00155}}\ \mbox{\hyperlink{classPillar}{Pillar}}\ \mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{Field::getBotPose}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classField_aa714dd29f5248a7de11e20c8c67f6bb4}{botPose}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00157}00157\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00159}\mbox{\hyperlink{classField_a890d7140a600bed6eb18a549b1a0faf9}{00159}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_a890d7140a600bed6eb18a549b1a0faf9}{Field::addPillar}}(\mbox{\hyperlink{classPillar}{Pillar}}\&\ newPillar)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00160}00160\ \ \ \ \ newPillar.\mbox{\hyperlink{classPillar_acde6b927c883e0a5720e20d6b7f04ede}{setRadius}}(\mbox{\hyperlink{classField_ad631e7bd5cdcc7c10d274836ce464e1b}{roundRadius}}(newPillar.\mbox{\hyperlink{classPillar_a404e92b3ee6005fcd400ae120ce0b560}{getRadius}}()));}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>at(i).getPose().distanceTo(newPillar.\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}())\ <\ newPillar.\mbox{\hyperlink{classPillar_a404e92b3ee6005fcd400ae120ce0b560}{getRadius}}()\ +\ this-\/>pillars-\/>at(i).getRadius())\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ these\ are\ the\ same\ pillars}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ sum\ =\ this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>at(i).getPose();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ sum.\mbox{\hyperlink{classPose2D_a5a031312210c5fd0d88855df26b53c1a}{plus}}(newPillar.\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}());}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ sum.\mbox{\hyperlink{classPose2D_a1cd7e63d410b091dcc89e20afcd65fff}{multiply}}(0.5);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ error\ =\ \mbox{\hyperlink{classPose2D}{Pose2D}}(sum);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ error.\mbox{\hyperlink{classPose2D_adc44dfc82549ea97d3622052b615bf55}{minus}}(this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>at(i).getPose());}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00173}00173\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00175}00175\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>push\_back(newPillar);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00176}00176\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_a536803e37492ec349eae440878304a00}{newPillars}}.push\_back(newPillar);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00177}00177\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00179}\mbox{\hyperlink{classField_a099593a58a6edcd2e6e2831abbb8fe89}{00179}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_a099593a58a6edcd2e6e2831abbb8fe89}{Field::updateBotPose}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ updatedPosition)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00180}00180\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ position(updatedPosition);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00181}00181\ \ \ \ \ position.\mbox{\hyperlink{classPose2D_a52fbe813508bcb22e43c0ba8d1041246}{wrapHeading}}();}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00182}00182\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_aa714dd29f5248a7de11e20c8c67f6bb4}{botPose}}.\mbox{\hyperlink{classPillar_a9877735341d7110c3d34633867528dbb}{setPosition}}(position);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}().empty())\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}()[0]-\/>SetData(position);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00186}00186\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{addNode}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classNode}{Node<Pose2D>}}(position));}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00188}00188\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00189}00189\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00191}\mbox{\hyperlink{classField_a1f3f3b289e23572dc12f9aef6b33817e}{00191}}\ std::vector<Pillar>\ \mbox{\hyperlink{classField_a1f3f3b289e23572dc12f9aef6b33817e}{Field::getCopyPillars}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00192}00192\ \ \ \ \ std::vector<Pillar>\ copy;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&\ i\ :\ *\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}})\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ copy.push\_back(i);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{return}\ copy;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00197}00197\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00199}\mbox{\hyperlink{classField_ad499baebb2aa49f7467d5d632ed97199}{00199}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classField_ad499baebb2aa49f7467d5d632ed97199}{Field::outOfBounds}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ location)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{return}\ (location.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}()\ <\ 0\ ||\ location.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}()\ <\ 0\ ||\ location.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}()\ >\ \mbox{\hyperlink{Field_8hpp_a898606140dee9ce0adf096de00824d94}{MAX\_X}}\ ||\ location.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}()\ >\ \mbox{\hyperlink{Field_8hpp_a985cc18be96dda7f59fd0400725e4aef}{MAX\_Y}});}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00201}00201\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00203}\mbox{\hyperlink{classField_aba8449d9e693a3542f37c223099464d9}{00203}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_aba8449d9e693a3542f37c223099464d9}{Field::addEdgeMeasurement}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rawPosition,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5}{Cardinality}}\ cardinality)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordflow}{switch}\ (cardinality)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5a2c63acbe79d9f41ba6bb7766e9c37702}{N}}:}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_adf27e38bcd47cb341328a2339b2c16a3}{offset}}.\mbox{\hyperlink{classPose2D_a2d4fc81aa0bd66e7fe5ad9ef23ca349c}{setY}}(rawPosition);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5af1ce01387d2348f8b858721a7db81670}{S}}:}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_adf27e38bcd47cb341328a2339b2c16a3}{offset}}.\mbox{\hyperlink{classPose2D_a2d4fc81aa0bd66e7fe5ad9ef23ca349c}{setY}}(-\/rawPosition);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5ab199e021998d49b1f09338d8b9b18ecb}{E}}:}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_adf27e38bcd47cb341328a2339b2c16a3}{offset}}.\mbox{\hyperlink{classPose2D_af2c1bc2df5d8a7d8914f8be52454f01c}{setX}}(rawPosition);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5ab722ceeb601c72cd78fbd35f3581fdf7}{W}}:}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_adf27e38bcd47cb341328a2339b2c16a3}{offset}}.\mbox{\hyperlink{classPose2D_af2c1bc2df5d8a7d8914f8be52454f01c}{setX}}(-\/rawPosition);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00225}00225\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00226}00226\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00228}\mbox{\hyperlink{classField_ae3ce826773c17f1e987af8ee4fb64269}{00228}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_ae3ce826773c17f1e987af8ee4fb64269}{Field::applyOffsetToEdge}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00229}00229\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classField_adf27e38bcd47cb341328a2339b2c16a3}{offset}}\ =\ \mbox{\hyperlink{classPose2D}{Pose2D}}(x,\ y);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00230}00230\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint16\_t\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}-\/>at(i).getPose().plus(\mbox{\hyperlink{classField_adf27e38bcd47cb341328a2339b2c16a3}{offset}});}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classField_acd1e5fe551b0b0910391b193d29550ca}{holeManager}}.\mbox{\hyperlink{classHoleManager_a0a8f51f0c0c0c3af90b3fd0a90ea062e}{offsetAll}}(offset);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00233}00233\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00234}00234\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00236}\mbox{\hyperlink{classField_a729114d0b55662bbcb8f21897617e0c1}{00236}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classField_a729114d0b55662bbcb8f21897617e0c1}{Field::lineIntersectsCircle}}(\textcolor{keywordtype}{double}\ cx,\ \textcolor{keywordtype}{double}\ cy,\ \textcolor{keywordtype}{double}\ r,\ \textcolor{keywordtype}{double}\ x1,\ \textcolor{keywordtype}{double}\ y1,\ \textcolor{keywordtype}{double}\ x2,\ \textcolor{keywordtype}{double}\ y2)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00237}00237\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ line\ direction\ vector}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00238}00238\ \ \ \ \ \textcolor{keywordtype}{double}\ dx\ =\ x2\ -\/\ x1;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00239}00239\ \ \ \ \ \textcolor{keywordtype}{double}\ dy\ =\ y2\ -\/\ y1;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00241}00241\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ projection\ of\ the\ circle\ center\ onto\ the\ line}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00242}00242\ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ ((cx\ -\/\ x1)\ *\ dx\ +\ (cy\ -\/\ y1)\ *\ dy)\ /\ (dx\ *\ dx\ +\ dy\ *\ dy);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00244}00244\ \ \ \ \ \textcolor{comment}{//\ Find\ the\ closest\ point\ on\ the\ line\ to\ the\ circle\ center}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00245}00245\ \ \ \ \ \textcolor{keywordtype}{double}\ closestX\ =\ x1\ +\ t\ *\ dx;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00246}00246\ \ \ \ \ \textcolor{keywordtype}{double}\ closestY\ =\ y1\ +\ t\ *\ dy;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00248}00248\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ distance\ from\ the\ circle\ center\ to\ the\ closest\ point}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00249}00249\ \ \ \ \ \textcolor{keywordtype}{double}\ distX\ =\ closestX\ -\/\ cx;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00250}00250\ \ \ \ \ \textcolor{keywordtype}{double}\ distY\ =\ closestY\ -\/\ cy;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00251}00251\ \ \ \ \ \textcolor{keywordtype}{double}\ distanceToLine\ =\ std::sqrt(distX\ *\ distX\ +\ distY\ *\ distY);}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00253}00253\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ distance\ is\ less\ than\ or\ equal\ to\ the\ radius}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00254}00254\ \ \ \ \ \textcolor{keywordflow}{return}\ distanceToLine\ <=\ r;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00255}00255\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00257}\mbox{\hyperlink{classField_a076b4e7297f788e933b4ee824b930473}{00257}}\ int32\_t\ \mbox{\hyperlink{classField_a076b4e7297f788e933b4ee824b930473}{Field::getDesiredIndex}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00258}00258\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desiredIndex}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00259}00259\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00261}\mbox{\hyperlink{classField_ae20c991c2df6d7e863458e181b683140}{00261}}\ \mbox{\hyperlink{classGraph}{Graph<Pose2D>}}\ \&\mbox{\hyperlink{classField_ae20c991c2df6d7e863458e181b683140}{Field::getGraph}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00262}00262\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00263}00263\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00265}\mbox{\hyperlink{classField_a9448f436dd4e1e2d6bf1d82bf18c86a2}{00265}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classField_a9448f436dd4e1e2d6bf1d82bf18c86a2}{Field::updateDesired}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00266}00266\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desiredIndex}}\ !=\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a307d8095432434d7e28cfba1bba884cb}{removeNode}}(\mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desiredIndex}});}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00268}00268\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00269}00269\ \ \ \ \ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{addNode}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classNode}{Node<Pose2D>}}(other));}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00270}00270\ \ \ \ \ \mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desiredIndex}}\ =\ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}.\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}().size()\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00271}00271\ \ \ \ \ this-\/>\mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desiredDestination}}\ =\ other;}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00272}00272\ \}}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00274}\mbox{\hyperlink{classField_a5fa390f458efc053b4621a991566204f}{00274}}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classField_a5fa390f458efc053b4621a991566204f}{Field::getDesiredDestination}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00275}00275\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desiredDestination}};}
+\DoxyCodeLine{\Hypertarget{Field_8cpp_source_l00276}00276\ \}}
+
+\end{DoxyCode}

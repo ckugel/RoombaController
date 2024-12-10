@@ -1,0 +1,215 @@
+.TH "Pillar" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Pillar
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Pillar\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPillar\fP ()"
+.br
+.ti -1c
+.RI "\fBPillar\fP (const \fBPose2D\fP &\fBposition\fP, double \fBradius\fP)"
+.br
+.ti -1c
+.RI "\fBPillar\fP (double x, double y, double heading, double \fBradius\fP)"
+.br
+.ti -1c
+.RI "\fBPillar\fP (double x, double y, double \fBradius\fP)"
+.br
+.ti -1c
+.RI "\fBPose2D\fP & \fBgetPose\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetX\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetY\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetRadius\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetRadius\fP (double newRadius)"
+.br
+.ti -1c
+.RI "void \fBsetPosition\fP (const \fBPose2D\fP &newPosition)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPillar\fP \fBparseFromStream\fP (std::istringstream &stream)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBPose2D\fP \fBposition\fP"
+.br
+.ti -1c
+.RI "double \fBradius\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBPillar\fP is a cyclinder on the field\&. It has both a position and a radius\&. 
+.PP
+Definition at line \fB14\fP of file \fBPillar\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Pillar::Pillar ()"
+Constructs a new pillar object 
+.PP
+Definition at line \fB7\fP of file \fBPillar\&.cpp\fP\&.
+.SS "Pillar::Pillar (const \fBPose2D\fP & position, double radius)"
+Makes a new pillar with given position and radius 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP the position of the pillar on the field 
+.br
+\fIradius\fP the radius of the pillar on the field 
+.RE
+.PP
+
+.PP
+Definition at line \fB18\fP of file \fBPillar\&.cpp\fP\&.
+.SS "Pillar::Pillar (double x, double y, double heading, double radius)"
+Constructs a new pillar from components 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP component of position 
+.br
+\fIy\fP component of position 
+.br
+\fIheading\fP component of position 
+.br
+\fIradius\fP of the pillar 
+.RE
+.PP
+
+.PP
+Definition at line \fB12\fP of file \fBPillar\&.cpp\fP\&.
+.SS "Pillar::Pillar (double x, double y, double radius)"
+Constructs a new pillar from components\&. ignores heading 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP the x component of the position 
+.br
+\fIy\fP the y component of the position 
+.br
+\fIradius\fP the radius of the pillar 
+.RE
+.PP
+
+.PP
+Definition at line \fB23\fP of file \fBPillar\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBPose2D\fP & Pillar::getPose ()"
+Gets a reference to the position of the pillar\&. If \fBPose2D\fP functions are called on that reference it will effect this pillars position 
+.PP
+\fBReturns\fP
+.RS 4
+the position of the pillar 
+.RE
+.PP
+
+.PP
+Definition at line \fB29\fP of file \fBPillar\&.cpp\fP\&.
+.SS "double Pillar::getRadius () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the radius of the pillar 
+.RE
+.PP
+
+.PP
+Definition at line \fB41\fP of file \fBPillar\&.cpp\fP\&.
+.SS "double Pillar::getX ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+The X compoenent of the position 
+.RE
+.PP
+
+.PP
+Definition at line \fB33\fP of file \fBPillar\&.cpp\fP\&.
+.SS "double Pillar::getY ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+The y component of the positoon 
+.RE
+.PP
+
+.PP
+Definition at line \fB37\fP of file \fBPillar\&.cpp\fP\&.
+.SS "\fBPillar\fP Pillar::parseFromStream (std::istringstream & stream)\fR [static]\fP"
+Makes a pillar from a given string stream\&. Formatted as: X Y theta R 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstream\fP the stream in which to parse the pillar from 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the pillar from the data in the stream 
+.RE
+.PP
+
+.PP
+Definition at line \fB50\fP of file \fBPillar\&.cpp\fP\&.
+.SS "void Pillar::setPosition (const \fBPose2D\fP & newPosition)"
+Sets the position of the pillar 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewPosition\fP the new position to set to 
+.RE
+.PP
+
+.PP
+Definition at line \fB58\fP of file \fBPillar\&.cpp\fP\&.
+.SS "void Pillar::setRadius (double newRadius)"
+Sets the radius of the pillar 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewRadius\fP the radius to set to 
+.RE
+.PP
+
+.PP
+Definition at line \fB45\fP of file \fBPillar\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBPose2D\fP Pillar::position\fR [protected]\fP"
+Pose to handle position and related math 
+.PP
+Definition at line \fB19\fP of file \fBPillar\&.hpp\fP\&.
+.SS "double Pillar::radius\fR [protected]\fP"
+The radius of the pillar 
+.PP
+Definition at line \fB24\fP of file \fBPillar\&.hpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

@@ -1,0 +1,305 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="util_8hpp" kind="file" language="C++">
+    <compoundname>util.hpp</compoundname>
+    <includes local="no">cmath</includes>
+    <includedby refid="HoleManager_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp</includedby>
+    <includedby refid="util_8cpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/util.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/util.hpp</label>
+        <link refid="util_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cmath</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.cpp</label>
+        <link refid="Field_8cpp"/>
+      </node>
+      <node id="3">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.hpp</label>
+        <link refid="Field_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp</label>
+        <link refid="HoleManager_8cpp"/>
+      </node>
+      <node id="2">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp</label>
+        <link refid="HoleManager_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/home/calebk/Documents/coding/RoombaController/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="7">
+        <label>/home/calebk/Documents/coding/RoombaController/src/util.cpp</label>
+        <link refid="util_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/util.hpp</label>
+        <link refid="util_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="util_8hpp_1aeaeef2ccb49a89c827eeeb25d89a1ff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double orientation</definition>
+        <argsstring>(double px2, double py, double qx, double qy, double rx, double ry)</argsstring>
+        <name>orientation</name>
+        <param>
+          <type>double</type>
+          <declname>px2</declname>
+          <defname>px</defname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>py</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>qx</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>qy</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rx</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Created by Caleb Kugel 11/21/2024 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/util.hpp" line="18" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/util.cpp" bodystart="7" bodyend="11" declfile="/home/calebk/Documents/coding/RoombaController/src/util.hpp" declline="18" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1aec2e0e6da52a6460459ffefa1bad0fd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool onSegment</definition>
+        <argsstring>(double px, double py, double qx, double qy, double rx, double ry)</argsstring>
+        <name>onSegment</name>
+        <param>
+          <type>double</type>
+          <declname>px</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>py</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>qx</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>qy</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rx</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/util.hpp" line="24" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/util.cpp" bodystart="13" bodyend="16" declfile="/home/calebk/Documents/coding/RoombaController/src/util.hpp" declline="24" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a4e5e5d18b9bfa850378af284c05268df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool doIntersect</definition>
+        <argsstring>(double p1x, double p1y, double q1x, double q1y, double p2x, double p2y, double q2x, double q2y)</argsstring>
+        <name>doIntersect</name>
+        <param>
+          <type>double</type>
+          <declname>p1x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>p1y</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>q1x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>q1y</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>p2x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>p2y</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>q2x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>q2y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/util.hpp" line="30" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/util.cpp" bodystart="18" bodyend="41" declfile="/home/calebk/Documents/coding/RoombaController/src/util.hpp" declline="30" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8hpp_1a913e3a56bee44293842c0d78d7e56634" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool lineIntersectsRectangle</definition>
+        <argsstring>(double cx1, double cy1, double cx2, double cy2, double rx1, double ry1, double rx2, double ry2, double rx3, double ry3, double rx4, double ry4)</argsstring>
+        <name>lineIntersectsRectangle</name>
+        <param>
+          <type>double</type>
+          <declname>cx1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>cy1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>cx2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>cy2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rx1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ry1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rx2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ry2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rx3</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ry3</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rx4</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ry4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/util.hpp" line="48" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/util.cpp" bodystart="46" bodyend="49" declfile="/home/calebk/Documents/coding/RoombaController/src/util.hpp" declline="48" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>UTIL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UTIL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>calculates<sp/>the<sp/>orientation<sp/>of<sp/>the<sp/>ordered<sp/>triplet<sp/>(p,<sp/>q,<sp/>r)</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*<sp/>@return</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/><sp/><sp/><sp/>*<sp/>0<sp/>-&gt;<sp/>p,<sp/>q,<sp/>r<sp/>are<sp/>collinear</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/><sp/><sp/><sp/>*<sp/>1<sp/>-&gt;<sp/>Clockwise</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/><sp/><sp/>*<sp/>2<sp/>-&gt;<sp/>Counterclockwise</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="util_8hpp_1aeaeef2ccb49a89c827eeeb25d89a1ff8" kindref="member">orientation</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>px2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>py,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>qx,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>qy,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rx,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ry);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>checks<sp/>if<sp/>point<sp/>q<sp/>lies<sp/>on<sp/>the<sp/>line<sp/>segment<sp/>&apos;pr&apos;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="util_8hpp_1aec2e0e6da52a6460459ffefa1bad0fd3" kindref="member">onSegment</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>px,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>py,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>qx,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>qy,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rx,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ry);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>determines<sp/>if<sp/>line<sp/>segments<sp/>(p1,<sp/>q1)<sp/>and<sp/>(p2,<sp/>q2)<sp/>intersect</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="util_8hpp_1a4e5e5d18b9bfa850378af284c05268df" kindref="member">doIntersect</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>p1x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>p1y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>q1x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>q1y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>p2x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>p2y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>q2x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>q2y);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">*<sp/>function<sp/>to<sp/>check<sp/>if<sp/>the<sp/>line<sp/>intersects<sp/>a<sp/>given<sp/>rectangle</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">*<sp/>@param<sp/>cx1<sp/>the<sp/>x<sp/>position<sp/>of<sp/>the<sp/>first<sp/>bound<sp/>of<sp/>the<sp/>line</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">*<sp/>@param<sp/>cy1<sp/>the<sp/>y<sp/>position<sp/>of<sp/>the<sp/>first<sp/>bound<sp/>of<sp/>the<sp/>line</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">*<sp/>@param<sp/>cx2<sp/>the<sp/>x<sp/>position<sp/>of<sp/>the<sp/>second<sp/>bound<sp/>of<sp/>the<sp/>line</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">*<sp/>@param<sp/>cy2<sp/>the<sp/>y<sp/>position<sp/>of<sp/>the<sp/>second<sp/>bound<sp/>of<sp/>the<sp/>line</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">*<sp/>@param<sp/>rx1<sp/>the<sp/>x<sp/>position<sp/>of<sp/>the<sp/>first<sp/>rectangular<sp/>X<sp/>coordinate</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">*<sp/>@param<sp/>ry1<sp/>the<sp/>y<sp/>position<sp/>of<sp/>the<sp/>first<sp/>rectangular<sp/>Y<sp/>coordinate</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">*<sp/>@param<sp/>rx2<sp/>the<sp/>x<sp/>position<sp/>of<sp/>the<sp/>second<sp/>rectangular<sp/>X<sp/>coordinate</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">*<sp/>@param<sp/>ry2<sp/>the<sp/>y<sp/>position<sp/>of<sp/>the<sp/>second<sp/>rectangular<sp/>Y<sp/>coordinate</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">*<sp/>@param<sp/>rx3<sp/>the<sp/>x<sp/>position<sp/>of<sp/>the<sp/>third<sp/>rectangular<sp/>X<sp/>coordinate</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*<sp/>@param<sp/>ry3<sp/>the<sp/>y<sp/>position<sp/>of<sp/>the<sp/>third<sp/>rectangular<sp/>Y<sp/>coordinate</highlight></codeline>
+<codeline lineno="44"><highlight class="comment">*<sp/>@param<sp/>rx4<sp/>the<sp/>x<sp/>position<sp/>of<sp/>the<sp/>fourth<sp/>rectangular<sp/>X<sp/>coordinate</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">*<sp/>@param<sp/>ry4<sp/>the<sp/>y<sp/>position<sp/>of<sp/>the<sp/>fourth<sp/>rectangular<sp/>Y<sp/>coordinate</highlight></codeline>
+<codeline lineno="46"><highlight class="comment">*<sp/>@return<sp/>whether<sp/>the<sp/>line<sp/>intersects<sp/>the<sp/>position</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="util_8hpp_1a913e3a56bee44293842c0d78d7e56634" kindref="member">lineIntersectsRectangle</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cx1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cy1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cx2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cy2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rx1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ry1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rx2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ry2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rx3,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ry3,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rx4,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ry4);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>UTIL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/util.hpp"/>
+  </compounddef>
+</doxygen>

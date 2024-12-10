@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_HoleManager_8hpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;Hole.hpp&quot;<?linebreak?>#include &quot;util.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classHoleManager">HoleManager</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_HoleManager_8hpp_1a9e3667c9425085b498f4b8ee21a19595">sideLength</link>&#160;&#160;&#160;0.6096</para>
+</listitem>
+            <listitem><para>#define <link linkend="_HoleManager_8hpp_1a98743a6e40590a591f14abd4bbe2b675">MEASUREMENT_WIDTH</link>&#160;&#160;&#160;0.05</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_HoleManager_8hpp_1a98743a6e40590a591f14abd4bbe2b675"/><section>
+    <title>MEASUREMENT_WIDTH</title>
+<indexterm><primary>MEASUREMENT_WIDTH</primary><secondary>HoleManager.hpp</secondary></indexterm>
+<indexterm><primary>HoleManager.hpp</primary><secondary>MEASUREMENT_WIDTH</secondary></indexterm>
+<para><computeroutput>#define MEASUREMENT_WIDTH&#160;&#160;&#160;0.05</computeroutput></para><para>
+Definition at line <link linkend="_HoleManager_8hpp_source_1l00012">12</link> of file <link linkend="_HoleManager_8hpp_source">HoleManager.hpp</link>.</para>
+</section>
+<anchor xml:id="_HoleManager_8hpp_1a9e3667c9425085b498f4b8ee21a19595"/><section>
+    <title>sideLength</title>
+<indexterm><primary>sideLength</primary><secondary>HoleManager.hpp</secondary></indexterm>
+<indexterm><primary>HoleManager.hpp</primary><secondary>sideLength</secondary></indexterm>
+<para><computeroutput>#define sideLength&#160;&#160;&#160;0.6096</computeroutput></para>
+<para>Created by Caleb Kugel 11/15/2024 </para>
+<para>
+Definition at line <link linkend="_HoleManager_8hpp_source_1l00011">11</link> of file <link linkend="_HoleManager_8hpp_source">HoleManager.hpp</link>.</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,118 @@
+\doxysection{Pose2\+D.\+hpp}
+\hypertarget{Pose2D_8hpp_source}{}\label{Pose2D_8hpp_source}\index{/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp@{/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp}}
+\mbox{\hyperlink{Pose2D_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ caleb\ on\ 10/24/2024}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#ifndef\ POSE2D\_H}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#define\ POSE2D\_H}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00017}\mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{00017}}\ \textcolor{preprocessor}{\#define\ BOT\_RADIUS\ 6}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00023}\mbox{\hyperlink{classPose2D}{00023}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPose2D}{Pose2D}}\ \{}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00024}00024\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00025}\mbox{\hyperlink{classPose2D_a3d04db1eca820a577c911ca88df12b7d}{00025}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}},\ \mbox{\hyperlink{classPose2D_a79a6b7de45208d23daa4ec11913a547f}{y}},\ \mbox{\hyperlink{classPose2D_a3d04db1eca820a577c911ca88df12b7d}{heading}};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00027}00027\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{classPose2D_a216182882a02017665c754b16c1328ae}{Pose2D}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a79a6b7de45208d23daa4ec11913a547f}{y}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a3d04db1eca820a577c911ca88df12b7d}{heading}});}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{classPose2D_a216182882a02017665c754b16c1328ae}{Pose2D}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a79a6b7de45208d23daa4ec11913a547f}{y}});}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{classPose2D_a216182882a02017665c754b16c1328ae}{Pose2D}}();}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00053}00053\ \ \ \ \ \mbox{\hyperlink{classPose2D_a216182882a02017665c754b16c1328ae}{Pose2D}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ position);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Pose2D(Pose2D*\ position);}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00060}00060\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a29526d1eb9c2eafc4b6d3cc2f31a6773}{angleTo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00067}00067\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a9acb14a9b0252c620dfc1e79139b52d3}{distanceTo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00074}00074\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a73e8e6fd058a55960da459cdef6d6ffb}{squareOfDistanceTo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classPose2D_a35455cacb295ea54820030b9dbb191f2}{fromPolar}}(\textcolor{keywordtype}{double}\ magnitude,\ \textcolor{keywordtype}{double}\ angle);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_ad02ce98e6c53fb62bb65eda3cae90a1c}{degreesToRadians}}(\textcolor{keywordtype}{double}\ degrees);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00096}\mbox{\hyperlink{classPose2D_a2d6bf4ee90b23c81d4b153af6fd1c453}{00096}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a2d6bf4ee90b23c81d4b153af6fd1c453}{radiansToDegrees}}(\textcolor{keywordtype}{double}\ radians);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00102}00102\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classPose2D_a34c15f20448e7efd354c507d38ec2891}{clone}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_add9d11130bbe9e7e66325e98f7ca43f5}{rotateByPose}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ rotation);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a1e220c70ada1586e8e1f9f2387e45e61}{rotateByAngle}}(\textcolor{keywordtype}{double}\ angle);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a03d229ea165034f3130d158a864ce6aa}{translateByPose}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ translation);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a84216b76ce7d5a554794b43c56574582}{translateByMagnitude}}(\textcolor{keywordtype}{double}\ magnitude);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00137}00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a732b26c3659a88456d5fc0e4e1b0a8ea}{transformPose}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ modifier);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00143}00143\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00149}00149\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00155}00155\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_aab0666fc4e510ece6f85a13fbfd6d347}{getHeading}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00161}00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a07d03a1b06734fa63fcf6ee05befcb51}{setHeading}}(\textcolor{keywordtype}{double}\ angle);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_ac6afb91ffac9121da23df77f7c975a39}{plusCoord}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00174}00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a5a031312210c5fd0d88855df26b53c1a}{plus}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00181}00181\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_adc44dfc82549ea97d3622052b615bf55}{minus}}(\mbox{\hyperlink{classPose2D}{Pose2D}}\ other);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00187}00187\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a77b5a2d38fe501e59a8d308b5cfa0508}{addAngle}}(\textcolor{keywordtype}{double}\ angle);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00194}00194\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classPose2D_ad0b3a99de1a5972d3bed31e4e47e4e09}{subtractBy}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00201}00201\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classPose2D_ab2ee3fec06d12adad8bd9c37fe7a8175}{scaleBy}}(\textcolor{keywordtype}{double}\ scaler)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00207}00207\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classPose2D_ab4524355149f49542d83fc144e2438a8}{normalize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00214}00214\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a359e162b9cb331cd5ccca9739ab31502}{dotProduct}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00222}00222\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\mbox{\hyperlink{classPose2D_a8ee5dca0a6268342b242172f7222756f}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \&d);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00228}00228\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_af2c1bc2df5d8a7d8914f8be52454f01c}{setX}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}});}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00235}00235\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_aae96b589dd219d641a039b8fe1a56d7b}{vecAdd}}(\textcolor{keywordtype}{double}\ angle,\ \textcolor{keywordtype}{double}\ magnitude);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00241}00241\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a2d4fc81aa0bd66e7fe5ad9ef23ca349c}{setY}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_a79a6b7de45208d23daa4ec11913a547f}{y}});}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00254}00254\ \ \ \ \ [[nodiscard]]\ uint8\_t\ \mbox{\hyperlink{classPose2D_aa5f78e433ba60f61ea49b08ec8ff4d08}{getQuadrant}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00259}00259\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a52fbe813508bcb22e43c0ba8d1041246}{wrapHeading}}();}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00265}00265\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a4fc6977729ef4a4b63e0e9fa0caf1e2e}{transformForPose}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ other);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00272}00272\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classPose2D_a5d17898ded76394ed8d4af09b6c79ca2}{parseFromStream}}(std::istringstream\&\ stream);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00280}00280\ \ \ \ \ \textcolor{comment}{//\ static\ SlopeIntercept\ getSlopeIntercept(Pose2D\ one,\ Pose2D\ two);}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00281}00281\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00288}00288\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPose2D_a4ad9e8c801fb7b2ad934c3f0f4923633}{isOnLine}}(\mbox{\hyperlink{classPose2D}{Pose2D}}\ LineEnd1,\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ LineEnd2);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00293}\mbox{\hyperlink{classPose2D_ad6d17f1e93cb0b016aecf871c98a4bc0}{00293}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPose2D_ad6d17f1e93cb0b016aecf871c98a4bc0}{isPerpendicularToLine}}(\textcolor{keywordtype}{double}\ m);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00302}\mbox{\hyperlink{classPose2D_ac6f628453cf76391fac4ef7b884490d0}{00302}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPose2D_ac6f628453cf76391fac4ef7b884490d0}{getAngleBetweenPoints}}(\mbox{\hyperlink{classPose2D}{Pose2D}}\ corner,\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ end1,\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ end2);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00307}00307\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPose2D_a1cd7e63d410b091dcc89e20afcd65fff}{multiply}}(\textcolor{keywordtype}{double}\ d);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00308}00308\ \};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00313}\mbox{\hyperlink{structRectangle}{00313}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRectangle}{Rectangle}}\ \{}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00314}\mbox{\hyperlink{structRectangle_a9ab0b4bae48e8330e4064bfc2aac696d}{00314}}\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{structRectangle_a9ab0b4bae48e8330e4064bfc2aac696d}{r1}},\ \mbox{\hyperlink{structRectangle_ab7c029f35f42207f6cd273c7251ff8fb}{r2}},\ \mbox{\hyperlink{structRectangle_a084cafc6917f1a0881e6e111329a4588}{r3}},\ \mbox{\hyperlink{structRectangle_ad96df264562ce0b343bc9569ac899b29}{r4}};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00315}00315\ \};}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00324}00324\ \mbox{\hyperlink{structRectangle}{Rectangle}}\ \mbox{\hyperlink{Pose2D_8hpp_af747b1235ddc04741dd30bf4c6a35d3c}{makeRectangleFromLine}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ L1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ L2,\ \textcolor{keywordtype}{double}\ width);}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00326}00326\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//POSE2D\_H}}
+\DoxyCodeLine{\Hypertarget{Pose2D_8hpp_source_l00327}00327\ }
+
+\end{DoxyCode}

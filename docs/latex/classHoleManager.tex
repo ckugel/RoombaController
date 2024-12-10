@@ -1,0 +1,191 @@
+\doxysection{Hole\+Manager Class Reference}
+\hypertarget{classHoleManager}{}\label{classHoleManager}\index{HoleManager@{HoleManager}}
+
+
+{\ttfamily \#include $<$Hole\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHoleManager_a2a70f9e895789105b0b45df164bf6ff6}{Hole\+Manager}} ()
+\item 
+void \mbox{\hyperlink{classHoleManager_a317b24d6b0d2b5f843d3cbc4fcf39dd8}{add\+Point}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position)
+\item 
+\mbox{\hyperlink{classHole}{Hole}} \mbox{\hyperlink{classHoleManager_a50df7cfd1e6e527d16b939769317ec50}{get\+Hole}} (uint8\+\_\+t index)
+\item 
+void \mbox{\hyperlink{classHoleManager_ae4fc057aea5dbfc0596b48455beed1e7}{add\+Hole}} (const \mbox{\hyperlink{classHole}{Hole}} \&hole)
+\item 
+void \mbox{\hyperlink{classHoleManager_a5c2e0ffae18e961f5ba3f18688ef34bf}{add\+Hole}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&corner\+One, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&corner\+Two)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classHole}{Hole}} $>$ \mbox{\hyperlink{classHoleManager_a586843e9065c89985c3b76bc8a2f9003}{get\+Holes}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \mbox{\hyperlink{classHoleManager_ab74e44ccae65e04db4f54a9b44d9655d}{get\+Points\+On\+Holes}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \mbox{\hyperlink{classHoleManager_aa0e47cc875c67f9244088d5c895ec725}{get\+Suggested\+Node\+Placements}} ()
+\item 
+bool \mbox{\hyperlink{classHoleManager_a3b0b1c780a1ed91646e0bcbf1dd23e70}{node\+Collides}} (\mbox{\hyperlink{classPose2D}{Pose2D}} position)
+\item 
+bool \mbox{\hyperlink{classHoleManager_a1a77b2aa21fe82b6aa7073aa004e9e6f}{line\+Intersects\+Any\+Hole\+Measurement}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position\+One, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position\+Two)
+\item 
+void \mbox{\hyperlink{classHoleManager_a0a8f51f0c0c0c3af90b3fd0a90ea062e}{offset\+All}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&offset) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A hole manager handles holes that and the measurments that are associated with them. Wrapped class for lists of holes 
+
+Definition at line \mbox{\hyperlink{HoleManager_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{HoleManager_8hpp_source}{Hole\+Manager.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classHoleManager_a2a70f9e895789105b0b45df164bf6ff6}\label{classHoleManager_a2a70f9e895789105b0b45df164bf6ff6} 
+\index{HoleManager@{HoleManager}!HoleManager@{HoleManager}}
+\index{HoleManager@{HoleManager}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{HoleManager()}{HoleManager()}}
+{\footnotesize\ttfamily Hole\+Manager\+::\+Hole\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creats a new \doxylink{classHole}{Hole} manager
+
+Created by Caleb Kugel 11/15/2024 
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classHoleManager_ae4fc057aea5dbfc0596b48455beed1e7}\label{classHoleManager_ae4fc057aea5dbfc0596b48455beed1e7} 
+\index{HoleManager@{HoleManager}!addHole@{addHole}}
+\index{addHole@{addHole}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{addHole()}{addHole()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Hole\+Manager\+::add\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classHole}{Hole}} \&}]{hole }\end{DoxyParamCaption})}
+
+Adds a hole to the holes 
+\begin{DoxyParams}{Parameters}
+{\em hole} & to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+\Hypertarget{classHoleManager_a5c2e0ffae18e961f5ba3f18688ef34bf}\label{classHoleManager_a5c2e0ffae18e961f5ba3f18688ef34bf} 
+\index{HoleManager@{HoleManager}!addHole@{addHole}}
+\index{addHole@{addHole}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{addHole()}{addHole()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Hole\+Manager\+::add\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{corner\+One,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{corner\+Two }\end{DoxyParamCaption})}
+
+Adds a hole to the hole manager 
+\begin{DoxyParams}{Parameters}
+{\em corner\+One} & the first Corner \\
+\hline
+{\em corner\+Two} & the second Corner \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+\Hypertarget{classHoleManager_a317b24d6b0d2b5f843d3cbc4fcf39dd8}\label{classHoleManager_a317b24d6b0d2b5f843d3cbc4fcf39dd8} 
+\index{HoleManager@{HoleManager}!addPoint@{addPoint}}
+\index{addPoint@{addPoint}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{addPoint()}{addPoint()}}
+{\footnotesize\ttfamily void Hole\+Manager\+::add\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position }\end{DoxyParamCaption})}
+
+Adds a point that we collided on the hole with 
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of the collision \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+\Hypertarget{classHoleManager_a50df7cfd1e6e527d16b939769317ec50}\label{classHoleManager_a50df7cfd1e6e527d16b939769317ec50} 
+\index{HoleManager@{HoleManager}!getHole@{getHole}}
+\index{getHole@{getHole}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{getHole()}{getHole()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classHole}{Hole}} Hole\+Manager\+::get\+Hole (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+get a hole from registered holes 
+\begin{DoxyParams}{Parameters}
+{\em index} & of the hole in the holes list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the hole that has been registered 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+\Hypertarget{classHoleManager_a586843e9065c89985c3b76bc8a2f9003}\label{classHoleManager_a586843e9065c89985c3b76bc8a2f9003} 
+\index{HoleManager@{HoleManager}!getHoles@{getHoles}}
+\index{getHoles@{getHoles}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{getHoles()}{getHoles()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classHole}{Hole}} $>$ Hole\+Manager\+::get\+Holes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+get the holes that we for sure know about 
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+\Hypertarget{classHoleManager_ab74e44ccae65e04db4f54a9b44d9655d}\label{classHoleManager_ab74e44ccae65e04db4f54a9b44d9655d} 
+\index{HoleManager@{HoleManager}!getPointsOnHoles@{getPointsOnHoles}}
+\index{getPointsOnHoles@{getPointsOnHoles}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{getPointsOnHoles()}{getPointsOnHoles()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ Hole\+Manager\+::get\+Points\+On\+Holes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+get the points along unconfirmed holes \Hypertarget{classHoleManager_aa0e47cc875c67f9244088d5c895ec725}\label{classHoleManager_aa0e47cc875c67f9244088d5c895ec725} 
+\index{HoleManager@{HoleManager}!getSuggestedNodePlacements@{getSuggestedNodePlacements}}
+\index{getSuggestedNodePlacements@{getSuggestedNodePlacements}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{getSuggestedNodePlacements()}{getSuggestedNodePlacements()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ Hole\+Manager\+::get\+Suggested\+Node\+Placements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+returns a list of likely accessible nodes 
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+\Hypertarget{classHoleManager_a1a77b2aa21fe82b6aa7073aa004e9e6f}\label{classHoleManager_a1a77b2aa21fe82b6aa7073aa004e9e6f} 
+\index{HoleManager@{HoleManager}!lineIntersectsAnyHoleMeasurement@{lineIntersectsAnyHoleMeasurement}}
+\index{lineIntersectsAnyHoleMeasurement@{lineIntersectsAnyHoleMeasurement}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{lineIntersectsAnyHoleMeasurement()}{lineIntersectsAnyHoleMeasurement()}}
+{\footnotesize\ttfamily bool Hole\+Manager\+::line\+Intersects\+Any\+Hole\+Measurement (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position\+One,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position\+Two }\end{DoxyParamCaption})}
+
+Determines whether a line is valid for all the hole measurements 
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+\Hypertarget{classHoleManager_a3b0b1c780a1ed91646e0bcbf1dd23e70}\label{classHoleManager_a3b0b1c780a1ed91646e0bcbf1dd23e70} 
+\index{HoleManager@{HoleManager}!nodeCollides@{nodeCollides}}
+\index{nodeCollides@{nodeCollides}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{nodeCollides()}{nodeCollides()}}
+{\footnotesize\ttfamily bool Hole\+Manager\+::node\+Collides (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPose2D}{Pose2D}}}]{position }\end{DoxyParamCaption})}
+
+Whether a node collides with the estimated hole or not 
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of the node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether that node is valid from a hole perspective 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+\Hypertarget{classHoleManager_a0a8f51f0c0c0c3af90b3fd0a90ea062e}\label{classHoleManager_a0a8f51f0c0c0c3af90b3fd0a90ea062e} 
+\index{HoleManager@{HoleManager}!offsetAll@{offsetAll}}
+\index{offsetAll@{offsetAll}!HoleManager@{HoleManager}}
+\doxysubsubsection{\texorpdfstring{offsetAll()}{offsetAll()}}
+{\footnotesize\ttfamily void Hole\+Manager\+::offset\+All (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{offset }\end{DoxyParamCaption}) const}
+
+provides the offset to all holes and their values 
+
+Definition at line \mbox{\hyperlink{HoleManager_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{HoleManager_8cpp_source}{Hole\+Manager.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{HoleManager_8hpp}{Hole\+Manager.\+hpp}}\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{HoleManager_8cpp}{Hole\+Manager.\+cpp}}\end{DoxyCompactItemize}

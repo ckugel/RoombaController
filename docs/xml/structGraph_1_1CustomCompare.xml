@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structGraph_1_1CustomCompare" kind="struct" language="C++" prot="protected">
+    <compoundname>Graph::CustomCompare</compoundname>
+    <includes refid="Graph_8hpp" local="no">Graph.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structGraph_1_1CustomCompare_1accdd3a73208f598a21d1244a2568e86d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">bool</ref></type>
+        <definition>bool Graph&lt; V &gt;::CustomCompare::operator()</definition>
+        <argsstring>(const pair &amp;first, const pair &amp;second)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Graph::CustomCompare::operator()</qualifiedname>
+        <param>
+          <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">const</ref> <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">pair</ref> &amp;</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type><ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">const</ref> <ref refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kindref="member">pair</ref> &amp;</type>
+          <declname>second</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="21" column="18" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" bodystart="21" bodyend="23"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" line="20" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Graph.hpp" bodystart="20" bodyend="24"/>
+    <listofallmembers>
+      <member refid="structGraph_1_1CustomCompare_1accdd3a73208f598a21d1244a2568e86d" prot="public" virt="non-virtual"><scope>Graph::CustomCompare</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

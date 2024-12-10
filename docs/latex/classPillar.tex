@@ -1,0 +1,250 @@
+\doxysection{Pillar Class Reference}
+\hypertarget{classPillar}{}\label{classPillar}\index{Pillar@{Pillar}}
+
+
+{\ttfamily \#include $<$Pillar.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPillar_aa8dc2bded98a242ff4957c2604e33ec2}{Pillar}} ()
+\item 
+\mbox{\hyperlink{classPillar_aa3c5156fb822cf9ca4014ca8e3510fd4}{Pillar}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&\mbox{\hyperlink{classPillar_a74fea03287d330085c4a60f8ba3cc6d3}{position}}, double \mbox{\hyperlink{classPillar_a39d7d2ab79fc9a515e0c1d1f490947fc}{radius}})
+\item 
+\mbox{\hyperlink{classPillar_a9c9992655592342b529b765c6de0e462}{Pillar}} (double x, double y, double heading, double \mbox{\hyperlink{classPillar_a39d7d2ab79fc9a515e0c1d1f490947fc}{radius}})
+\item 
+\mbox{\hyperlink{classPillar_ad994a5ff8afddb6ac0d52d573b8f31bd}{Pillar}} (double x, double y, double \mbox{\hyperlink{classPillar_a39d7d2ab79fc9a515e0c1d1f490947fc}{radius}})
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \& \mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{get\+Pose}} ()
+\item 
+double \mbox{\hyperlink{classPillar_adc8c902c96a36b5e8e6642e2b462e927}{getX}} ()
+\item 
+double \mbox{\hyperlink{classPillar_a6a39e5dac33d94196391caeeb379c48a}{getY}} ()
+\item 
+double \mbox{\hyperlink{classPillar_a404e92b3ee6005fcd400ae120ce0b560}{get\+Radius}} () const
+\item 
+void \mbox{\hyperlink{classPillar_acde6b927c883e0a5720e20d6b7f04ede}{set\+Radius}} (double new\+Radius)
+\item 
+void \mbox{\hyperlink{classPillar_a9877735341d7110c3d34633867528dbb}{set\+Position}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&new\+Position)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classPillar}{Pillar}} \mbox{\hyperlink{classPillar_a01e5ad8ad29b0637edc291aaff93785e}{parse\+From\+Stream}} (std\+::istringstream \&stream)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classPillar_a74fea03287d330085c4a60f8ba3cc6d3}{position}}
+\item 
+double \mbox{\hyperlink{classPillar_a39d7d2ab79fc9a515e0c1d1f490947fc}{radius}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classPillar}{Pillar} is a cyclinder on the field. It has both a position and a radius. 
+
+Definition at line \mbox{\hyperlink{Pillar_8hpp_source_l00014}{14}} of file \mbox{\hyperlink{Pillar_8hpp_source}{Pillar.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPillar_aa8dc2bded98a242ff4957c2604e33ec2}\label{classPillar_aa8dc2bded98a242ff4957c2604e33ec2} 
+\index{Pillar@{Pillar}!Pillar@{Pillar}}
+\index{Pillar@{Pillar}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{Pillar()}{Pillar()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Pillar\+::\+Pillar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs a new pillar object 
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_aa3c5156fb822cf9ca4014ca8e3510fd4}\label{classPillar_aa3c5156fb822cf9ca4014ca8e3510fd4} 
+\index{Pillar@{Pillar}!Pillar@{Pillar}}
+\index{Pillar@{Pillar}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{Pillar()}{Pillar()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Pillar\+::\+Pillar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+
+Makes a new pillar with given position and radius 
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of the pillar on the field \\
+\hline
+{\em radius} & the radius of the pillar on the field \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_a9c9992655592342b529b765c6de0e462}\label{classPillar_a9c9992655592342b529b765c6de0e462} 
+\index{Pillar@{Pillar}!Pillar@{Pillar}}
+\index{Pillar@{Pillar}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{Pillar()}{Pillar()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Pillar\+::\+Pillar (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{heading,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+
+Constructs a new pillar from components 
+\begin{DoxyParams}{Parameters}
+{\em x} & component of position \\
+\hline
+{\em y} & component of position \\
+\hline
+{\em heading} & component of position \\
+\hline
+{\em radius} & of the pillar \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_ad994a5ff8afddb6ac0d52d573b8f31bd}\label{classPillar_ad994a5ff8afddb6ac0d52d573b8f31bd} 
+\index{Pillar@{Pillar}!Pillar@{Pillar}}
+\index{Pillar@{Pillar}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{Pillar()}{Pillar()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Pillar\+::\+Pillar (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+
+Constructs a new pillar from components. ignores heading 
+\begin{DoxyParams}{Parameters}
+{\em x} & the x component of the position \\
+\hline
+{\em y} & the y component of the position \\
+\hline
+{\em radius} & the radius of the pillar \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPillar_a6643c4f436b8264606fd1ef9adfafc75}\label{classPillar_a6643c4f436b8264606fd1ef9adfafc75} 
+\index{Pillar@{Pillar}!getPose@{getPose}}
+\index{getPose@{getPose}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{getPose()}{getPose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} \& Pillar\+::get\+Pose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets a reference to the position of the pillar. If \doxylink{classPose2D}{Pose2D} functions are called on that reference it will effect this pillars position \begin{DoxyReturn}{Returns}
+the position of the pillar 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_a404e92b3ee6005fcd400ae120ce0b560}\label{classPillar_a404e92b3ee6005fcd400ae120ce0b560} 
+\index{Pillar@{Pillar}!getRadius@{getRadius}}
+\index{getRadius@{getRadius}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{getRadius()}{getRadius()}}
+{\footnotesize\ttfamily double Pillar\+::get\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the radius of the pillar 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_adc8c902c96a36b5e8e6642e2b462e927}\label{classPillar_adc8c902c96a36b5e8e6642e2b462e927} 
+\index{Pillar@{Pillar}!getX@{getX}}
+\index{getX@{getX}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily double Pillar\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The X compoenent of the position 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_a6a39e5dac33d94196391caeeb379c48a}\label{classPillar_a6a39e5dac33d94196391caeeb379c48a} 
+\index{Pillar@{Pillar}!getY@{getY}}
+\index{getY@{getY}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily double Pillar\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The y component of the positoon 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_a01e5ad8ad29b0637edc291aaff93785e}\label{classPillar_a01e5ad8ad29b0637edc291aaff93785e} 
+\index{Pillar@{Pillar}!parseFromStream@{parseFromStream}}
+\index{parseFromStream@{parseFromStream}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{parseFromStream()}{parseFromStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPillar}{Pillar}} Pillar\+::parse\+From\+Stream (\begin{DoxyParamCaption}\item[{std\+::istringstream \&}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Makes a pillar from a given string stream. Formatted as\+: X Y theta R 
+\begin{DoxyParams}{Parameters}
+{\em stream} & the stream in which to parse the pillar from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the pillar from the data in the stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_a9877735341d7110c3d34633867528dbb}\label{classPillar_a9877735341d7110c3d34633867528dbb} 
+\index{Pillar@{Pillar}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Pillar\+::set\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{new\+Position }\end{DoxyParamCaption})}
+
+Sets the position of the pillar 
+\begin{DoxyParams}{Parameters}
+{\em new\+Position} & the new position to set to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+\Hypertarget{classPillar_acde6b927c883e0a5720e20d6b7f04ede}\label{classPillar_acde6b927c883e0a5720e20d6b7f04ede} 
+\index{Pillar@{Pillar}!setRadius@{setRadius}}
+\index{setRadius@{setRadius}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{setRadius()}{setRadius()}}
+{\footnotesize\ttfamily void Pillar\+::set\+Radius (\begin{DoxyParamCaption}\item[{double}]{new\+Radius }\end{DoxyParamCaption})}
+
+Sets the radius of the pillar 
+\begin{DoxyParams}{Parameters}
+{\em new\+Radius} & the radius to set to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Pillar_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{Pillar_8cpp_source}{Pillar.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPillar_a74fea03287d330085c4a60f8ba3cc6d3}\label{classPillar_a74fea03287d330085c4a60f8ba3cc6d3} 
+\index{Pillar@{Pillar}!position@{position}}
+\index{position@{position}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Pillar\+::position\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pose to handle position and related math 
+
+Definition at line \mbox{\hyperlink{Pillar_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{Pillar_8hpp_source}{Pillar.\+hpp}}.
+
+\Hypertarget{classPillar_a39d7d2ab79fc9a515e0c1d1f490947fc}\label{classPillar_a39d7d2ab79fc9a515e0c1d1f490947fc} 
+\index{Pillar@{Pillar}!radius@{radius}}
+\index{radius@{radius}!Pillar@{Pillar}}
+\doxysubsubsection{\texorpdfstring{radius}{radius}}
+{\footnotesize\ttfamily double Pillar\+::radius\hspace{0.3cm}{\ttfamily [protected]}}
+
+The radius of the pillar 
+
+Definition at line \mbox{\hyperlink{Pillar_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{Pillar_8hpp_source}{Pillar.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Pillar_8hpp}{Pillar.\+hpp}}\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Pillar_8cpp}{Pillar.\+cpp}}\end{DoxyCompactItemize}

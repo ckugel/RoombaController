@@ -1,0 +1,1256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classPose2D" xml:lang="en-US">
+<title>Pose2D Class Reference</title>
+<indexterm><primary>Pose2D</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Pose2D.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classPose2D_1a6d70b4f0e17c1f80690c1a4a832238bd">Pose2D</link> (double <link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link>, double <link linkend="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f">y</link>, double <link linkend="_classPose2D_1a3d04db1eca820a577c911ca88df12b7d">heading</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D_1ad31191da38f3f5e9a4a0e77577389977">Pose2D</link> (double <link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link>, double <link linkend="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f">y</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D_1a216182882a02017665c754b16c1328ae">Pose2D</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D_1a5b718e40b6dcc3b109128c57d8d78f69">Pose2D</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;position)</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773">angleTo</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other) const</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3">distanceTo</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other) const</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1a73e8e6fd058a55960da459cdef6d6ffb">squareOfDistanceTo</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other) const</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classPose2D_1a34c15f20448e7efd354c507d38ec2891">clone</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1add9d11130bbe9e7e66325e98f7ca43f5">rotateByPose</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;rotation)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a1e220c70ada1586e8e1f9f2387e45e61">rotateByAngle</link> (double angle)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a03d229ea165034f3130d158a864ce6aa">translateByPose</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;translation)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a84216b76ce7d5a554794b43c56574582">translateByMagnitude</link> (double magnitude)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea">transformPose</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;modifier)</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link> () const</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link> () const</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1aab0666fc4e510ece6f85a13fbfd6d347">getHeading</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a07d03a1b06734fa63fcf6ee05befcb51">setHeading</link> (double angle)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1ac6afb91ffac9121da23df77f7c975a39">plusCoord</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a5a031312210c5fd0d88855df26b53c1a">plus</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1adc44dfc82549ea97d3622052b615bf55">minus</link> (<link linkend="_classPose2D">Pose2D</link> other)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a77b5a2d38fe501e59a8d308b5cfa0508">addAngle</link> (double angle)</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classPose2D_1ad0b3a99de1a5972d3bed31e4e47e4e09">subtractBy</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other) const</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classPose2D_1ab2ee3fec06d12adad8bd9c37fe7a8175">scaleBy</link> (double scaler) const</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classPose2D_1ab4524355149f49542d83fc144e2438a8">normalize</link> () const</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1a359e162b9cb331cd5ccca9739ab31502">dotProduct</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other) const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c">setX</link> (double <link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link>)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1aae96b589dd219d641a039b8fe1a56d7b">vecAdd</link> (double angle, double magnitude)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c">setY</link> (double <link linkend="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f">y</link>)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_classPose2D_1aa5f78e433ba60f61ea49b08ec8ff4d08">getQuadrant</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a52fbe813508bcb22e43c0ba8d1041246">wrapHeading</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e">transformForPose</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;other)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classPose2D_1a4ad9e8c801fb7b2ad934c3f0f4923633">isOnLine</link> (<link linkend="_classPose2D">Pose2D</link> LineEnd1, <link linkend="_classPose2D">Pose2D</link> LineEnd2)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0">isPerpendicularToLine</link> (double m)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPose2D_1a1cd7e63d410b091dcc89e20afcd65fff">multiply</link> (double d)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_classPose2D">Pose2D</link> <link linkend="_classPose2D_1a35455cacb295ea54820030b9dbb191f2">fromPolar</link> (double magnitude, double angle)</para>
+</listitem>
+            <listitem><para>static double <link linkend="_classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c">degreesToRadians</link> (double degrees)</para>
+</listitem>
+            <listitem><para>static double <link linkend="_classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453">radiansToDegrees</link> (double radians)</para>
+</listitem>
+            <listitem><para>static <link linkend="_classPose2D">Pose2D</link> <link linkend="_classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2">parseFromStream</link> (std::istringstream &amp;stream)</para>
+</listitem>
+            <listitem><para>static double <link linkend="_classPose2D_1ac6f628453cf76391fac4ef7b884490d0">getAngleBetweenPoints</link> (<link linkend="_classPose2D">Pose2D</link> corner, <link linkend="_classPose2D">Pose2D</link> end1, <link linkend="_classPose2D">Pose2D</link> end2)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>double <link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f">y</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_classPose2D_1a3d04db1eca820a577c911ca88df12b7d">heading</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>std::ostream &amp; <link linkend="_classPose2D_1a8ee5dca0a6268342b242172f7222756f">operator&lt;&lt;</link> (std::ostream &amp;os, const <link linkend="_classPose2D">Pose2D</link> &amp;d)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>A class representing a 2D position and a heading. Implements common vector functions </para>
+<para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00023">23</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classPose2D_1a6d70b4f0e17c1f80690c1a4a832238bd"/><section>
+    <title>Pose2D()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>Pose2D</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>Pose2D</secondary></indexterm>
+<para><computeroutput>Pose2D::Pose2D (double x, double y, double heading)</computeroutput></para>
+<para>Consctructs a new <link linkend="_classPose2D">Pose2D</link> object 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>the x component </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>the y component </para>
+</entry>
+                            </row>
+                            <row>
+<entry>heading</entry><entry>
+<para>the heading </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00007">7</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ad31191da38f3f5e9a4a0e77577389977"/><section>
+    <title>Pose2D()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>Pose2D</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>Pose2D</secondary></indexterm>
+<para><computeroutput>Pose2D::Pose2D (double x, double y)</computeroutput></para>
+<para>Constructs a new <link linkend="_classPose2D">Pose2D</link> object 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>component </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>component </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00013">13</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a216182882a02017665c754b16c1328ae"/><section>
+    <title>Pose2D()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>Pose2D</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>Pose2D</secondary></indexterm>
+<para><computeroutput>Pose2D::Pose2D ( )</computeroutput></para>
+<para>Makes a new <link linkend="_classPose2D">Pose2D</link> with 0&apos;s as default </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00018">18</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a5b718e40b6dcc3b109128c57d8d78f69"/><section>
+    <title>Pose2D()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>Pose2D</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>Pose2D</secondary></indexterm>
+<para><computeroutput>Pose2D::Pose2D (const <link linkend="_classPose2D">Pose2D</link> &amp; position)</computeroutput></para>
+<para>Constructs a new <link linkend="_classPose2D">Pose2D</link>. Copy constructor. 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>the pose to copy </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00064">64</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classPose2D_1a77b5a2d38fe501e59a8d308b5cfa0508"/><section>
+    <title>addAngle()</title>
+<indexterm><primary>addAngle</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>addAngle</secondary></indexterm>
+<para><computeroutput>void Pose2D::addAngle (double angle)</computeroutput></para>
+<para>Add the angle to heading 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>angle</entry><entry>
+<para>gets added to &quot;this&quot; heading </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00082">82</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773"/><section>
+    <title>angleTo()</title>
+<indexterm><primary>angleTo</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>angleTo</secondary></indexterm>
+<para><computeroutput>double Pose2D::angleTo (const <link linkend="_classPose2D">Pose2D</link> &amp; other) const</computeroutput></para>
+<para>Calculates the angle from one node to another 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>angle to get to </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the angle between two nodes </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00078">78</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a34c15f20448e7efd354c507d38ec2891"/><section>
+    <title>clone()</title>
+<indexterm><primary>clone</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>clone</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Pose2D::clone ( ) const</computeroutput></para>
+<para>Makes a copy of this node <formalpara><title>Returns</title>
+
+<para>the copy of this node </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00106">106</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c"/><section>
+    <title>degreesToRadians()</title>
+<indexterm><primary>degreesToRadians</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>degreesToRadians</secondary></indexterm>
+<para><computeroutput>double Pose2D::degreesToRadians (double degrees)<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>Calculates the radian equivalent of degrees 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>degrees</entry><entry>
+<para>the angle in degrees </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the angle in radians </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00200">200</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3"/><section>
+    <title>distanceTo()</title>
+<indexterm><primary>distanceTo</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>distanceTo</secondary></indexterm>
+<para><computeroutput>double Pose2D::distanceTo (const <link linkend="_classPose2D">Pose2D</link> &amp; other) const</computeroutput></para>
+<para>Calculates the distance between two nodes 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>the other node to calculate the distance to </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the distance between the two nodes </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00086">86</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a359e162b9cb331cd5ccca9739ab31502"/><section>
+    <title>dotProduct()</title>
+<indexterm><primary>dotProduct</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>dotProduct</secondary></indexterm>
+<para><computeroutput>double Pose2D::dotProduct (const <link linkend="_classPose2D">Pose2D</link> &amp; other) const</computeroutput></para>
+<para>Calculate the dot product from the nodes: &quot;this&quot; and other 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>other node to calculate the dot product with </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>a double resembling the dot product </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00226">226</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a35455cacb295ea54820030b9dbb191f2"/><section>
+    <title>fromPolar()</title>
+<indexterm><primary>fromPolar</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>fromPolar</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Pose2D::fromPolar (double magnitude, double angle)<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>Creates a new <link linkend="_classPose2D">Pose2D</link> from polar coordinats 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>magnitude</entry><entry>
+<para>the magnitude of the position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>angle</entry><entry>
+<para>the angle of the position </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>A <link linkend="_classPose2D">Pose2D</link> object representing the polar coordinates </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00193">193</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ac6f628453cf76391fac4ef7b884490d0"/><section>
+    <title>getAngleBetweenPoints()</title>
+<indexterm><primary>getAngleBetweenPoints</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>getAngleBetweenPoints</secondary></indexterm>
+<para><computeroutput>static double Pose2D::getAngleBetweenPoints (<link linkend="_classPose2D">Pose2D</link> corner, <link linkend="_classPose2D">Pose2D</link> end1, <link linkend="_classPose2D">Pose2D</link> end2)<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>gets the angle between points in radians. 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>corner</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>end1</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>end2</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the angle between all of these points </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classPose2D_1aab0666fc4e510ece6f85a13fbfd6d347"/><section>
+    <title>getHeading()</title>
+<indexterm><primary>getHeading</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>getHeading</secondary></indexterm>
+<para><computeroutput>double Pose2D::getHeading ( ) const</computeroutput></para>
+<para>get the heading of the position <formalpara><title>Returns</title>
+
+<para>the heading of the bot </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00155">155</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1aa5f78e433ba60f61ea49b08ec8ff4d08"/><section>
+    <title>getQuadrant()</title>
+<indexterm><primary>getQuadrant</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>getQuadrant</secondary></indexterm>
+<para><computeroutput>uint8_t Pose2D::getQuadrant ( ) const</computeroutput></para>
+<para>Gets the quadrant that a Pose is in. If the pose is on the origin or on an intercept it return&apos;s 0. otherwise going from pos pos (1) it travels counter clockwise around in a circle <formalpara><title>Returns</title>
+
+<para>(0, 0): 0 (+, +): 1 (-, +): 2 (-, -): 3 (+, -): 4 </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00171">171</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ad3453560b394884b5b94de1264b946fa"/><section>
+    <title>getX()</title>
+<indexterm><primary>getX</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>getX</secondary></indexterm>
+<para><computeroutput>double Pose2D::getX ( ) const</computeroutput></para>
+<para>get the x component of the position <formalpara><title>Returns</title>
+
+<para>the c component </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00147">147</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2"/><section>
+    <title>getY()</title>
+<indexterm><primary>getY</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>getY</secondary></indexterm>
+<para><computeroutput>double Pose2D::getY ( ) const</computeroutput></para>
+<para>gets the y component of the position <formalpara><title>Returns</title>
+
+<para>the y component </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00151">151</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a4ad9e8c801fb7b2ad934c3f0f4923633"/><section>
+    <title>isOnLine()</title>
+<indexterm><primary>isOnLine</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>isOnLine</secondary></indexterm>
+<para><computeroutput>bool Pose2D::isOnLine (<link linkend="_classPose2D">Pose2D</link> LineEnd1, <link linkend="_classPose2D">Pose2D</link> LineEnd2)</computeroutput></para>
+<para>Makes a slope intercept object from two pose2Ds 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>one</entry><entry>
+<para>the first position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>two</entry><entry>
+<para>the second position </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Slope intercept object that runs through two points Determines whether a pose is on a given bounded line </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>LineEnd1</entry><entry>
+<para>one endpoint of the line </para>
+</entry>
+                            </row>
+                            <row>
+<entry>LineEnd2</entry><entry>
+<para>the other endpoint of the line </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00024">24</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0"/><section>
+    <title>isPerpendicularToLine()</title>
+<indexterm><primary>isPerpendicularToLine</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>isPerpendicularToLine</secondary></indexterm>
+<para><computeroutput>bool Pose2D::isPerpendicularToLine (double m)</computeroutput></para>
+<para>Determines whether a position is perpendicular to a given line </para>
+</section>
+<anchor xml:id="_classPose2D_1adc44dfc82549ea97d3622052b615bf55"/><section>
+    <title>minus()</title>
+<indexterm><primary>minus</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>minus</secondary></indexterm>
+<para><computeroutput>void Pose2D::minus (<link linkend="_classPose2D">Pose2D</link> other)</computeroutput></para>
+<para>Subtract this by other. Subtracts the components 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>the other node to subtract by </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00187">187</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a1cd7e63d410b091dcc89e20afcd65fff"/><section>
+    <title>multiply()</title>
+<indexterm><primary>multiply</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>multiply</secondary></indexterm>
+<para><computeroutput>void Pose2D::multiply (double d)</computeroutput></para>
+<para>Multiplys the x and y components by a scalar </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00267">267</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ab4524355149f49542d83fc144e2438a8"/><section>
+    <title>normalize()</title>
+<indexterm><primary>normalize</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>normalize</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Pose2D::normalize ( ) const</computeroutput></para>
+<para>Normalizes a position to a unit vector <formalpara><title>Returns</title>
+
+<para>a unit vector representing this position </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00221">221</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2"/><section>
+    <title>parseFromStream()</title>
+<indexterm><primary>parseFromStream</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>parseFromStream</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Pose2D::parseFromStream (std::istringstream &amp; stream)<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>Parse a pose 2d from a string stream 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>stream</entry><entry>
+<para>the stream to parse from </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>a pose2D from the data in the stream </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00204">204</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a5a031312210c5fd0d88855df26b53c1a"/><section>
+    <title>plus()</title>
+<indexterm><primary>plus</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>plus</secondary></indexterm>
+<para><computeroutput>void Pose2D::plus (const <link linkend="_classPose2D">Pose2D</link> &amp; other)</computeroutput></para>
+<para>Computes a vector addition. Adds components of vectors together 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>the other pose </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00100">100</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ac6afb91ffac9121da23df77f7c975a39"/><section>
+    <title>plusCoord()</title>
+<indexterm><primary>plusCoord</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>plusCoord</secondary></indexterm>
+<para><computeroutput>void Pose2D::plusCoord (const <link linkend="_classPose2D">Pose2D</link> &amp; other)</computeroutput></para>
+<para>Sum of two coordinates 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>the node to add </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00123">123</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453"/><section>
+    <title>radiansToDegrees()</title>
+<indexterm><primary>radiansToDegrees</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>radiansToDegrees</secondary></indexterm>
+<para><computeroutput>static double Pose2D::radiansToDegrees (double radians)<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>Calculates the degree equivalent of radians 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>radians</entry><entry>
+<para>the angle in radians </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the angle in degrees </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classPose2D_1a1e220c70ada1586e8e1f9f2387e45e61"/><section>
+    <title>rotateByAngle()</title>
+<indexterm><primary>rotateByAngle</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>rotateByAngle</secondary></indexterm>
+<para><computeroutput>void Pose2D::rotateByAngle (double angle)</computeroutput></para>
+<para>Uses a rotation matrix to rotate a <link linkend="_classPose2D">Pose2D</link> by an angle. Rotates about the origin. 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>angle</entry><entry>
+<para>to rotate by. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00116">116</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1add9d11130bbe9e7e66325e98f7ca43f5"/><section>
+    <title>rotateByPose()</title>
+<indexterm><primary>rotateByPose</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>rotateByPose</secondary></indexterm>
+<para><computeroutput>void Pose2D::rotateByPose (const <link linkend="_classPose2D">Pose2D</link> &amp; rotation)</computeroutput></para>
+<para>Rotate a <link linkend="_classPose2D">Pose2D</link> by the a rotation cooresponding to the heading of the other pose 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rotation</entry><entry>
+<para>the pose to rotate by </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00128">128</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ab2ee3fec06d12adad8bd9c37fe7a8175"/><section>
+    <title>scaleBy()</title>
+<indexterm><primary>scaleBy</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>scaleBy</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Pose2D::scaleBy (double scaler) const</computeroutput></para>
+<para>Scales a position by another. Returs result 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>scaler</entry><entry>
+<para>amount to scale this vector as a pose by </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the result of the scaling operation </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00217">217</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a07d03a1b06734fa63fcf6ee05befcb51"/><section>
+    <title>setHeading()</title>
+<indexterm><primary>setHeading</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>setHeading</secondary></indexterm>
+<para><computeroutput>void Pose2D::setHeading (double angle)</computeroutput></para>
+<para>Sets the heading of the Pose 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>angle</entry><entry>
+<para>the angle to set the Pose at </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00159">159</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c"/><section>
+    <title>setX()</title>
+<indexterm><primary>setX</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>setX</secondary></indexterm>
+<para><computeroutput>void Pose2D::setX (double x)</computeroutput></para>
+<para>Setter for x 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>the new x value </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00163">163</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c"/><section>
+    <title>setY()</title>
+<indexterm><primary>setY</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>setY</secondary></indexterm>
+<para><computeroutput>void Pose2D::setY (double y)</computeroutput></para>
+<para>Setter for y 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>y</entry><entry>
+<para>the new y value </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00167">167</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a73e8e6fd058a55960da459cdef6d6ffb"/><section>
+    <title>squareOfDistanceTo()</title>
+<indexterm><primary>squareOfDistanceTo</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>squareOfDistanceTo</secondary></indexterm>
+<para><computeroutput>double Pose2D::squareOfDistanceTo (const <link linkend="_classPose2D">Pose2D</link> &amp; other) const</computeroutput></para>
+<para>calculate the squared distance to another object 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>the object to get the squared distance to </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the squared distance to the other object </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00090">90</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1ad0b3a99de1a5972d3bed31e4e47e4e09"/><section>
+    <title>subtractBy()</title>
+<indexterm><primary>subtractBy</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>subtractBy</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Pose2D::subtractBy (const <link linkend="_classPose2D">Pose2D</link> &amp; other) const</computeroutput></para>
+<para>Subtract &quot;this&quot; from other by components and return the result 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>the other node to subtract by </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the result of the subtraction </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00213">213</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e"/><section>
+    <title>transformForPose()</title>
+<indexterm><primary>transformForPose</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>transformForPose</secondary></indexterm>
+<para><computeroutput>void Pose2D::transformForPose (const <link linkend="_classPose2D">Pose2D</link> &amp; other)</computeroutput></para>
+<para>transforms a given pose for another&apos;s frame 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>other</entry><entry>
+<para>the other frame </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00094">94</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea"/><section>
+    <title>transformPose()</title>
+<indexterm><primary>transformPose</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>transformPose</secondary></indexterm>
+<para><computeroutput>void Pose2D::transformPose (const <link linkend="_classPose2D">Pose2D</link> &amp; modifier)</computeroutput></para>
+<para>transform a position with a rotation and a translation 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>modifier</entry><entry>
+<para>the heading gets used as the rotation. The compoenent get used as the translation </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00142">142</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a84216b76ce7d5a554794b43c56574582"/><section>
+    <title>translateByMagnitude()</title>
+<indexterm><primary>translateByMagnitude</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>translateByMagnitude</secondary></indexterm>
+<para><computeroutput>void Pose2D::translateByMagnitude (double magnitude)</computeroutput></para>
+<para>This is admitedly a bit of a goofy function. We take the magnitude of the translation and extend the current position by that much in the heading of the pose. I like to think of the <link linkend="_classPose2D">Pose2D</link> as a vector, then we take the heading and combine it into a pollar coordinate with the magnitude. Then we do vector addition on the <link linkend="_classPose2D">Pose2D</link>. 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>magnitude</entry><entry>
+<para>to extend by </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00137">137</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a03d229ea165034f3130d158a864ce6aa"/><section>
+    <title>translateByPose()</title>
+<indexterm><primary>translateByPose</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>translateByPose</secondary></indexterm>
+<para><computeroutput>void Pose2D::translateByPose (const <link linkend="_classPose2D">Pose2D</link> &amp; translation)</computeroutput></para>
+<para>Translation for a pose by another pose. Vector addition 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>translation</entry><entry>
+<para>the pose to add </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00132">132</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1aae96b589dd219d641a039b8fe1a56d7b"/><section>
+    <title>vecAdd()</title>
+<indexterm><primary>vecAdd</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>vecAdd</secondary></indexterm>
+<para><computeroutput>void Pose2D::vecAdd (double angle, double magnitude)</computeroutput></para>
+<para>Computes a vector addition from an angle and quantity 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>angle</entry><entry>
+<para>the angle component of the vector </para>
+</entry>
+                            </row>
+                            <row>
+<entry>magnitude</entry><entry>
+<para>the quantity component of the vector </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00110">110</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a52fbe813508bcb22e43c0ba8d1041246"/><section>
+    <title>wrapHeading()</title>
+<indexterm><primary>wrapHeading</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>wrapHeading</secondary></indexterm>
+<para><computeroutput>void Pose2D::wrapHeading ( )</computeroutput></para>
+<para>Wraps a heading to - PI -&gt; PI </para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00235">235</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Symbol Documentation</title>
+<anchor xml:id="_classPose2D_1a8ee5dca0a6268342b242172f7222756f"/><section>
+    <title>operator&lt;&lt;</title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<para><computeroutput>std::ostream &amp; operator&lt;&lt; (std::ostream &amp; os, const <link linkend="_classPose2D">Pose2D</link> &amp; d)<computeroutput>[friend]</computeroutput></computeroutput></para>
+<para>To string for a pose2D 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>os</entry><entry>
+<para>output stream </para>
+</entry>
+                            </row>
+                            <row>
+<entry>d</entry><entry>
+<para>the pose2D to reference </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pose2D_8cpp_source_1l00230">230</link> of file <link linkend="_Pose2D_8cpp_source">Pose2D.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classPose2D_1a3d04db1eca820a577c911ca88df12b7d"/><section>
+    <title>heading</title>
+<indexterm><primary>heading</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>heading</secondary></indexterm>
+<para><computeroutput>double Pose2D::heading<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00025">25</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60"/><section>
+    <title>x</title>
+<indexterm><primary>x</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>x</secondary></indexterm>
+<para><computeroutput>double Pose2D::x<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00025">25</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<anchor xml:id="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f"/><section>
+    <title>y</title>
+<indexterm><primary>y</primary><secondary>Pose2D</secondary></indexterm>
+<indexterm><primary>Pose2D</primary><secondary>y</secondary></indexterm>
+<para><computeroutput>double Pose2D::y<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00025">25</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Pose2D_8hpp">Pose2D.hpp</link>/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Pose2D_8cpp">Pose2D.cpp</link></section>
+</section>

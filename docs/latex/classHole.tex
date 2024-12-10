@@ -1,0 +1,373 @@
+\doxysection{Hole Class Reference}
+\hypertarget{classHole}{}\label{classHole}\index{Hole@{Hole}}
+
+
+{\ttfamily \#include $<$Hole.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHole_a4ea8b237954a3decf415e384b042eacd}{Hole}} (double X1, double Y1, double X2, double Y2, double hole\+Size)
+\item 
+\mbox{\hyperlink{classHole_a653b2d43ddca456e31c6be921d7077df}{Hole}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position\+One, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position\+Two, bool found\+Hole, const std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&points, double hole\+Size)
+\item 
+\mbox{\hyperlink{classHole_ac73d25f280d747ba04a6e9b90d587d94}{Hole}} (double x1, double y1, double x2, double y2)
+\item 
+\mbox{\hyperlink{classHole_a079e74ec763052a10fedea61a6a5088b}{Hole}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position\+One, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position\+Two, double hole\+Size)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \mbox{\hyperlink{classHole_a519b0f73c960b116403ee937a8fb0a3e}{get\+Suggested\+Node\+Placements}} ()
+\item 
+void \mbox{\hyperlink{classHole_adc6df39c2118fd21749786927800de4b}{register\+Points\+To\+Hole}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position\+One, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position\+Two)
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classHole_ad224d20fbe2037b97e19344b8f0157e0}{copy\+Do\+Operation}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position) const
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classHole_a1b9d48a850759ae1b826b7476c304785}{get\+One\+Square\+Corner}} ()
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classHole_ae5ba1de89591495ee62c784c8bcc4b72}{get\+Second\+Square\+Corner}} ()
+\item 
+bool \mbox{\hyperlink{classHole_afb912f0b7b58f2074fcbbc50184e39c2}{point\+Could\+Be\+Member\+Of\+Hole}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&measurment)
+\item 
+bool \mbox{\hyperlink{classHole_aec56b428187b4a6f5a952463b4029d00}{is\+Found\+Hole}} () const
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classHole}{Hole}} $>$ \mbox{\hyperlink{classHole_a863918993a62cc90b99a66c48e9e0bdc}{get\+Sub\+Holes\+Copy}} () const
+\item 
+\mbox{\hyperlink{classHole_a90b129019613cc439b9834058f8727b1}{Hole}} ()
+\item 
+\mbox{\hyperlink{classHole_a4ddff9cebed0fa967b3a8ea12aac1195}{Hole}} (const \mbox{\hyperlink{classHole}{Hole}} \&hole)
+\item 
+\mbox{\hyperlink{classHole_a6c5cc5e4efbe73711dab187e00a0a171}{Hole}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&initial\+Point, double hole\+Size)
+\item 
+void \mbox{\hyperlink{classHole_a39673dc613c45644ff844c7b81709ab9}{add\+Point}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&position)
+\item 
+bool \mbox{\hyperlink{classHole_afd4c5c949e5c37e58ff10927e475fcdf}{is\+In\+Square}} (\mbox{\hyperlink{classPose2D}{Pose2D}} \&position) const
+\item 
+void \mbox{\hyperlink{classHole_a73735b03496aad26f53879b2c50fcc71}{offset}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&offset)
+\item 
+bool \mbox{\hyperlink{classHole_ae7c69bf5e1d37a1230b50187e7442506}{line\+Intersects\+Hole}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&pos\+One, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&pos\+Two) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classHole_a371c0f905489a21d9276bb383a572487}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classHole}{Hole}} \&hole)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classHole}{Hole} is either a complete square where we know the critical points (two vertices of the square). A \doxylink{classHole}{Hole} could also represent a bunch of points that are all within Square Length \texorpdfstring{$\ast$}{*} Root(2) of eachother 
+
+Definition at line \mbox{\hyperlink{Hole_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{Hole_8hpp_source}{Hole.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classHole_a4ea8b237954a3decf415e384b042eacd}\label{classHole_a4ea8b237954a3decf415e384b042eacd} 
+\index{Hole@{Hole}!Hole@{Hole}}
+\index{Hole@{Hole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{Hole()}{Hole()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily Hole\+::\+Hole (\begin{DoxyParamCaption}\item[{double}]{X1,  }\item[{double}]{Y1,  }\item[{double}]{X2,  }\item[{double}]{Y2,  }\item[{double}]{hole\+Size }\end{DoxyParamCaption})}
+
+Make a new hole with the given coordinates 
+\begin{DoxyParams}{Parameters}
+{\em X1} & one corner\textquotesingle{}s X position \\
+\hline
+{\em Y1} & one corner\textquotesingle{}s Y position \\
+\hline
+{\em X2} & the other corner\textquotesingle{}s X position \\
+\hline
+{\em Y2} & the other corner\textquotesingle{}s Y position \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a653b2d43ddca456e31c6be921d7077df}\label{classHole_a653b2d43ddca456e31c6be921d7077df} 
+\index{Hole@{Hole}!Hole@{Hole}}
+\index{Hole@{Hole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{Hole()}{Hole()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily Hole\+::\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position\+One,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position\+Two,  }\item[{bool}]{found\+Hole,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&}]{points,  }\item[{double}]{hole\+Size }\end{DoxyParamCaption})}
+
+Copy constructor for hole 
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_ac73d25f280d747ba04a6e9b90d587d94}\label{classHole_ac73d25f280d747ba04a6e9b90d587d94} 
+\index{Hole@{Hole}!Hole@{Hole}}
+\index{Hole@{Hole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{Hole()}{Hole()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily Hole\+::\+Hole (\begin{DoxyParamCaption}\item[{double}]{x1,  }\item[{double}]{y1,  }\item[{double}]{x2,  }\item[{double}]{y2 }\end{DoxyParamCaption})}
+
+Makes a new hole object with the given coordinates 
+\begin{DoxyParams}{Parameters}
+{\em x1} & \\
+\hline
+{\em y1} & \\
+\hline
+{\em x2} & \\
+\hline
+{\em y2} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00449}{449}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a079e74ec763052a10fedea61a6a5088b}\label{classHole_a079e74ec763052a10fedea61a6a5088b} 
+\index{Hole@{Hole}!Hole@{Hole}}
+\index{Hole@{Hole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{Hole()}{Hole()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily Hole\+::\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position\+One,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position\+Two,  }\item[{double}]{hole\+Size }\end{DoxyParamCaption})}
+
+Creates a new \doxylink{classHole}{Hole} object
+
+Created by Caleb Kugel on 11/15/2024 
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a90b129019613cc439b9834058f8727b1}\label{classHole_a90b129019613cc439b9834058f8727b1} 
+\index{Hole@{Hole}!Hole@{Hole}}
+\index{Hole@{Hole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{Hole()}{Hole()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily Hole\+::\+Hole (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The deafult constructor for a hole. 
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a4ddff9cebed0fa967b3a8ea12aac1195}\label{classHole_a4ddff9cebed0fa967b3a8ea12aac1195} 
+\index{Hole@{Hole}!Hole@{Hole}}
+\index{Hole@{Hole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{Hole()}{Hole()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily Hole\+::\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classHole}{Hole}} \&}]{hole }\end{DoxyParamCaption})}
+
+Copy constructor 
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a6c5cc5e4efbe73711dab187e00a0a171}\label{classHole_a6c5cc5e4efbe73711dab187e00a0a171} 
+\index{Hole@{Hole}!Hole@{Hole}}
+\index{Hole@{Hole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{Hole()}{Hole()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily Hole\+::\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{initial\+Point,  }\item[{double}]{hole\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Makes a new hole and stores the initial measurment 
+\begin{DoxyParams}{Parameters}
+{\em initial\+Point} & our initial measurment \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00129}{129}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classHole_a39673dc613c45644ff844c7b81709ab9}\label{classHole_a39673dc613c45644ff844c7b81709ab9} 
+\index{Hole@{Hole}!addPoint@{addPoint}}
+\index{addPoint@{addPoint}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{addPoint()}{addPoint()}}
+{\footnotesize\ttfamily void Hole\+::add\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position }\end{DoxyParamCaption})}
+
+Add a point to this hole/chunk. Morphs this object into a found hole if possible 
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of the measurment \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_ad224d20fbe2037b97e19344b8f0157e0}\label{classHole_ad224d20fbe2037b97e19344b8f0157e0} 
+\index{Hole@{Hole}!copyDoOperation@{copyDoOperation}}
+\index{copyDoOperation@{copyDoOperation}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{copyDoOperation()}{copyDoOperation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Hole\+::copy\+Do\+Operation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position }\end{DoxyParamCaption}) const}
+
+do the whole operation and copy it into a new object for object collision 
+\begin{DoxyParams}{Parameters}
+{\em position} & the \doxylink{classPose2D}{Pose2D} to apply the big formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the result of the operations 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a1b9d48a850759ae1b826b7476c304785}\label{classHole_a1b9d48a850759ae1b826b7476c304785} 
+\index{Hole@{Hole}!getOneSquareCorner@{getOneSquareCorner}}
+\index{getOneSquareCorner@{getOneSquareCorner}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{getOneSquareCorner()}{getOneSquareCorner()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Hole\+::get\+One\+Square\+Corner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+one of the square\textquotesingle{}s corners 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_ae5ba1de89591495ee62c784c8bcc4b72}\label{classHole_ae5ba1de89591495ee62c784c8bcc4b72} 
+\index{Hole@{Hole}!getSecondSquareCorner@{getSecondSquareCorner}}
+\index{getSecondSquareCorner@{getSecondSquareCorner}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{getSecondSquareCorner()}{getSecondSquareCorner()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Hole\+::get\+Second\+Square\+Corner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the second of the square\textquotesingle{}s corners 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a863918993a62cc90b99a66c48e9e0bdc}\label{classHole_a863918993a62cc90b99a66c48e9e0bdc} 
+\index{Hole@{Hole}!getSubHolesCopy@{getSubHolesCopy}}
+\index{getSubHolesCopy@{getSubHolesCopy}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{getSubHolesCopy()}{getSubHolesCopy()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classHole}{Hole}} $>$ Hole\+::get\+Sub\+Holes\+Copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+get a copy of the holes within holes (measurments) \begin{DoxyReturn}{Returns}
+a vector of the holes within holes 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00458}{458}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a519b0f73c960b116403ee937a8fb0a3e}\label{classHole_a519b0f73c960b116403ee937a8fb0a3e} 
+\index{Hole@{Hole}!getSuggestedNodePlacements@{getSuggestedNodePlacements}}
+\index{getSuggestedNodePlacements@{getSuggestedNodePlacements}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{getSuggestedNodePlacements()}{getSuggestedNodePlacements()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ Hole\+::get\+Suggested\+Node\+Placements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets a list of suggested node placements, for nodes in the graph. These node placements are guranteed to not conflict with a hole, or it\textquotesingle{}s measurements. \begin{DoxyReturn}{Returns}
+a list of suggested node placements 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_aec56b428187b4a6f5a952463b4029d00}\label{classHole_aec56b428187b4a6f5a952463b4029d00} 
+\index{Hole@{Hole}!isFoundHole@{isFoundHole}}
+\index{isFoundHole@{isFoundHole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{isFoundHole()}{isFoundHole()}}
+{\footnotesize\ttfamily bool Hole\+::is\+Found\+Hole (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+whether we have found a hole \begin{DoxyReturn}{Returns}
+whether we found a hole 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Hole_8hpp_source_l00115}{115}} of file \mbox{\hyperlink{Hole_8hpp_source}{Hole.\+hpp}}.
+
+\Hypertarget{classHole_afd4c5c949e5c37e58ff10927e475fcdf}\label{classHole_afd4c5c949e5c37e58ff10927e475fcdf} 
+\index{Hole@{Hole}!isInSquare@{isInSquare}}
+\index{isInSquare@{isInSquare}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{isInSquare()}{isInSquare()}}
+{\footnotesize\ttfamily bool Hole\+::is\+In\+Square (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position }\end{DoxyParamCaption}) const}
+
+Whether the passed in position is in the square 
+\begin{DoxyParams}{Parameters}
+{\em position} & the position to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether that position is in the square 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_ae7c69bf5e1d37a1230b50187e7442506}\label{classHole_ae7c69bf5e1d37a1230b50187e7442506} 
+\index{Hole@{Hole}!lineIntersectsHole@{lineIntersectsHole}}
+\index{lineIntersectsHole@{lineIntersectsHole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{lineIntersectsHole()}{lineIntersectsHole()}}
+{\footnotesize\ttfamily bool Hole\+::line\+Intersects\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{pos\+One,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{pos\+Two }\end{DoxyParamCaption}) const}
+
+Line intersects any hole measurement 
+\begin{DoxyParams}{Parameters}
+{\em pos\+One} & position one of the line \\
+\hline
+{\em pos\+Two} & position two of the line \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00393}{393}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_a73735b03496aad26f53879b2c50fcc71}\label{classHole_a73735b03496aad26f53879b2c50fcc71} 
+\index{Hole@{Hole}!offset@{offset}}
+\index{offset@{offset}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily void Hole\+::offset (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{offset }\end{DoxyParamCaption})}
+
+Offset all the corners and measurements 
+\begin{DoxyParams}{Parameters}
+{\em offset} & the amount to offset by \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00381}{381}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_afb912f0b7b58f2074fcbbc50184e39c2}\label{classHole_afb912f0b7b58f2074fcbbc50184e39c2} 
+\index{Hole@{Hole}!pointCouldBeMemberOfHole@{pointCouldBeMemberOfHole}}
+\index{pointCouldBeMemberOfHole@{pointCouldBeMemberOfHole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{pointCouldBeMemberOfHole()}{pointCouldBeMemberOfHole()}}
+{\footnotesize\ttfamily bool Hole\+::point\+Could\+Be\+Member\+Of\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{measurment }\end{DoxyParamCaption})}
+
+returns whether a new point could be within the range of this hole. 
+\begin{DoxyParams}{Parameters}
+{\em measurment} & the position of the point that may or may not be close to this hole \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+\Hypertarget{classHole_adc6df39c2118fd21749786927800de4b}\label{classHole_adc6df39c2118fd21749786927800de4b} 
+\index{Hole@{Hole}!registerPointsToHole@{registerPointsToHole}}
+\index{registerPointsToHole@{registerPointsToHole}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{registerPointsToHole()}{registerPointsToHole()}}
+{\footnotesize\ttfamily void Hole\+::register\+Points\+To\+Hole (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position\+One,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{position\+Two }\end{DoxyParamCaption})}
+
+Register the corners of a hole 
+\begin{DoxyParams}{Parameters}
+{\em position\+One} & corner One \\
+\hline
+{\em position\+Two} & Corner Two \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00306}{306}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classHole_a371c0f905489a21d9276bb383a572487}\label{classHole_a371c0f905489a21d9276bb383a572487} 
+\index{Hole@{Hole}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Hole@{Hole}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classHole}{Hole}} \&}]{hole }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Override output stream for printing 
+\begin{DoxyParams}{Parameters}
+{\em os} & output stream \\
+\hline
+{\em hole} & the hole to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the hole printed in the out stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Hole_8cpp_source_l00373}{373}} of file \mbox{\hyperlink{Hole_8cpp_source}{Hole.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Hole_8hpp}{Hole.\+hpp}}\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Hole_8cpp}{Hole.\+cpp}}\end{DoxyCompactItemize}

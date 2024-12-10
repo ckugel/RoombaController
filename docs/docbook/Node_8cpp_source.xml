@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Node_8cpp_source" xml:lang="en-US">
+<title>Node.cpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Node.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_Node_8cpp_source_1l00001"/>00001 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Node_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Created&#32;by&#32;caleb&#32;on&#32;11/9/21.</emphasis>
+<anchor xml:id="_Node_8cpp_source_1l00003"/>00003 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Node_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_Node_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Node_8hpp">Node.hpp</link>&quot;</emphasis>
+<anchor xml:id="_Node_8cpp_source_1l00006"/>00006 
+<anchor xml:id="_Node_8cpp_source_1l00007"/>00007 
+<anchor xml:id="_Node_8cpp_source_1l00008"/>00008 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Node_8cpp_source_1l00009"/><link linkend="_classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983">00009</link> <link linkend="_classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983">Node&lt;V&gt;::Node</link>(V&#32;data)&#32;{
+<anchor xml:id="_Node_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;this-&gt;data&#32;=&#32;data;
+<anchor xml:id="_Node_8cpp_source_1l00011"/>00011 }
+<anchor xml:id="_Node_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_Node_8cpp_source_1l00013"/>00013 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Node_8cpp_source_1l00014"/><link linkend="_classNode_1a81895d8b8dfffcc5d220b2d816e7063c">00014</link> V&#32;<link linkend="_classNode_1a81895d8b8dfffcc5d220b2d816e7063c">Node&lt;V&gt;::getData</link>()&#32;{
+<anchor xml:id="_Node_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;data;
+<anchor xml:id="_Node_8cpp_source_1l00016"/>00016 }
+<anchor xml:id="_Node_8cpp_source_1l00017"/>00017 
+<anchor xml:id="_Node_8cpp_source_1l00018"/>00018 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;V&gt;
+<anchor xml:id="_Node_8cpp_source_1l00019"/><link linkend="_classNode_1ab849a0519ed381feaf341d91e3d87b1f">00019</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classNode_1ab849a0519ed381feaf341d91e3d87b1f">Node&lt;V&gt;::SetData</link>(V&#32;newData)&#32;{
+<anchor xml:id="_Node_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;data&#32;=&#32;newData;
+<anchor xml:id="_Node_8cpp_source_1l00021"/>00021 }
+</programlisting></section>

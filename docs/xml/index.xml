@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.10.0" xml:lang="en-US">
+  <compound refid="structGraph_1_1CustomCompare" kind="struct"><name>Graph::CustomCompare</name>
+    <member refid="structGraph_1_1CustomCompare_1accdd3a73208f598a21d1244a2568e86d" kind="function"><name>operator()</name></member>
+  </compound>
+  <compound refid="classField" kind="class"><name>Field</name>
+    <member refid="classField_1a003a6384059a42b3d38bba86f8482bc5" kind="variable"><name>pillars</name></member>
+    <member refid="classField_1acd1e5fe551b0b0910391b193d29550ca" kind="variable"><name>holeManager</name></member>
+    <member refid="classField_1adf27e38bcd47cb341328a2339b2c16a3" kind="variable"><name>offset</name></member>
+    <member refid="classField_1afba5f7de976bb8640644ba6cbb7b5e35" kind="variable"><name>desiredDestination</name></member>
+    <member refid="classField_1aa714dd29f5248a7de11e20c8c67f6bb4" kind="variable"><name>botPose</name></member>
+    <member refid="classField_1a5a6d409dcc5a61d64888f8ca20c6b05f" kind="variable"><name>runningError</name></member>
+    <member refid="classField_1ab69087224439a9f8c3414e7b72383201" kind="variable"><name>graph</name></member>
+    <member refid="classField_1a1d7b5e004850feaa692893d0c46add14" kind="variable"><name>desiredIndex</name></member>
+    <member refid="classField_1a536803e37492ec349eae440878304a00" kind="variable"><name>newPillars</name></member>
+    <member refid="classField_1a0cb97f5f6abc65f46f80a9db40a05f89" kind="function"><name>Field</name></member>
+    <member refid="classField_1a2cbf1be1f006dce87a5f7f9c16f250dc" kind="function"><name>Field</name></member>
+    <member refid="classField_1a3e804c92273d9159f413f227b535c672" kind="function"><name>Field</name></member>
+    <member refid="classField_1a5d6ee1de8a4bf615a3eb2b0ed080479d" kind="function"><name>Field</name></member>
+    <member refid="classField_1aba8449d9e693a3542f37c223099464d9" kind="function"><name>addEdgeMeasurement</name></member>
+    <member refid="classField_1a87df29e3618d42c11b886bbcf07b1453" kind="function"><name>getManager</name></member>
+    <member refid="classField_1ae3ce826773c17f1e987af8ee4fb64269" kind="function"><name>applyOffsetToEdge</name></member>
+    <member refid="classField_1a076b4e7297f788e933b4ee824b930473" kind="function"><name>getDesiredIndex</name></member>
+    <member refid="classField_1a753a1dbb8d1e8b6159309bdfeec3d1f1" kind="function"><name>clearField</name></member>
+    <member refid="classField_1ae20c991c2df6d7e863458e181b683140" kind="function"><name>getGraph</name></member>
+    <member refid="classField_1a55f738166b3267d7fa313465d2866dd4" kind="function"><name>getBotPose</name></member>
+    <member refid="classField_1a3e9096a686ffb177056e24dfb920a610" kind="function"><name>discretizeGraph</name></member>
+    <member refid="classField_1ab1945d8274ee391ea813863aa94c5d52" kind="function"><name>weightGraph</name></member>
+    <member refid="classField_1aa988c5de70875dd81c766c9429a4b986" kind="function"><name>makePath</name></member>
+    <member refid="classField_1a890d7140a600bed6eb18a549b1a0faf9" kind="function"><name>addPillar</name></member>
+    <member refid="classField_1a099593a58a6edcd2e6e2831abbb8fe89" kind="function"><name>updateBotPose</name></member>
+    <member refid="classField_1a3c2ce861d894d5ef000293887a2be3bb" kind="function"><name>getPillars</name></member>
+    <member refid="classField_1a8a9681dae64b9db32d147ffefd25a78e" kind="function"><name>setPillars</name></member>
+    <member refid="classField_1a1f3f3b289e23572dc12f9aef6b33817e" kind="function"><name>getCopyPillars</name></member>
+    <member refid="classField_1a3ed7a96d07bdc2a21edda0fa7626e6fe" kind="function"><name>validLocationForNode</name></member>
+    <member refid="classField_1a5fa390f458efc053b4621a991566204f" kind="function"><name>getDesiredDestination</name></member>
+    <member refid="classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2" kind="function"><name>updateDesired</name></member>
+    <member refid="classField_1ad3354ff6a0954809aa9e7082778d8c44" kind="function"><name>setDesiredIndex</name></member>
+    <member refid="classField_1ad499baebb2aa49f7467d5d632ed97199" kind="function"><name>outOfBounds</name></member>
+    <member refid="classField_1a729114d0b55662bbcb8f21897617e0c1" kind="function"><name>lineIntersectsCircle</name></member>
+    <member refid="classField_1a1d2b8ed638cd4b785be4156a3638578d" kind="function"><name>lineIntersectsCircle</name></member>
+    <member refid="classField_1ad631e7bd5cdcc7c10d274836ce464e1b" kind="function"><name>roundRadius</name></member>
+  </compound>
+  <compound refid="classGraph" kind="class"><name>Graph</name>
+    <member refid="classGraph_1a08ffe504d6c612edda7d1d562a577c82" kind="typedef"><name>pair</name></member>
+    <member refid="classGraph_1a5de43165fe4948c19cca80698de7daab" kind="variable"><name>nodes</name></member>
+    <member refid="classGraph_1a1696c56a696176c26cb94b075e829ead" kind="variable"><name>matrix</name></member>
+    <member refid="classGraph_1a326c5e6fe82c176413da20701937e0e7" kind="variable"><name>head</name></member>
+    <member refid="classGraph_1aeac7d50113228f13fadc0bd85a4daf72" kind="variable"><name>nodeMap</name></member>
+    <member refid="classGraph_1a8663524ab6962890aa72d2e146453caf" kind="function"><name>resize</name></member>
+    <member refid="classGraph_1ae83f3bc4bc54319051c7193039a5f00a" kind="function"><name>numVisited</name></member>
+    <member refid="classGraph_1afbc6316c3b1b5ca0c1cdf226bc62ab0b" kind="function"><name>contains</name></member>
+    <member refid="classGraph_1a57412516ec06d7b21d377dfe73773f37" kind="function"><name>addNode</name></member>
+    <member refid="classGraph_1a7d0579f73520bb804c277fb3ae4ba890" kind="function"><name>addNode</name></member>
+    <member refid="classGraph_1ad4acb5e274229a273f12d940bb4029a1" kind="function"><name>addNode</name></member>
+    <member refid="classGraph_1ab042bcd3d06bf18579c8e96652bb4f9c" kind="function"><name>addNode</name></member>
+    <member refid="classGraph_1a38d9119ee08708322eb5908fac0f244f" kind="function"><name>addConnection</name></member>
+    <member refid="classGraph_1a6000c589daea5f4984d10d09877ad149" kind="function"><name>addConnection</name></member>
+    <member refid="classGraph_1a313a06ec39a21b723f7f0a76c035b8c1" kind="function"><name>addNode</name></member>
+    <member refid="classGraph_1a4abe34d5dda78d4055a3098773140325" kind="function"><name>setHead</name></member>
+    <member refid="classGraph_1a307d8095432434d7e28cfba1bba884cb" kind="function"><name>removeNode</name></member>
+    <member refid="classGraph_1a959dfd987107a8848c1c5c5da9f5e776" kind="function"><name>Dijkstra</name></member>
+    <member refid="classGraph_1a452eeb65d902b4a95c0e8411885b4bc5" kind="function"><name>getAdjacencyList</name></member>
+    <member refid="classGraph_1a4969a395490f7e67cc70a7feb58a0b54" kind="function"><name>getAdj</name></member>
+    <member refid="classGraph_1af1568475acf410ff0d52a2d756929064" kind="function"><name>getNodes</name></member>
+    <member refid="classGraph_1a2a55c5945db5ce95020dd32e3df0f094" kind="function"><name>Graph</name></member>
+    <member refid="classGraph_1a0ef4cf033d61a224e79e62f8d2ae974c" kind="function"><name>~Graph</name></member>
+  </compound>
+  <compound refid="classHole" kind="class"><name>Hole</name>
+    <member refid="classHole_1a184d244ff17c5987ccbd720fd3d1e584" kind="variable"><name>cornerOne</name></member>
+    <member refid="classHole_1afd3568722670bc8e1be655eec7620142" kind="variable"><name>cornerTwo</name></member>
+    <member refid="classHole_1acb066f964413988b8362050a89a3a5a7" kind="variable"><name>threshold</name></member>
+    <member refid="classHole_1a7784b20e4a87d3e69d384257629090bc" kind="variable"><name>phi</name></member>
+    <member refid="classHole_1abe5cdb5b2311baad62dc6d72d2007185" kind="variable"><name>x_translation_one</name></member>
+    <member refid="classHole_1a72142d29fdaf7b65239534862cef783b" kind="variable"><name>y_translation_one</name></member>
+    <member refid="classHole_1a520464efc3cf5d38e964573cd188c7ce" kind="variable"><name>x_translation_two</name></member>
+    <member refid="classHole_1ad99c233dd68e7c57b73c666eb1bfb288" kind="variable"><name>y_translation_two</name></member>
+    <member refid="classHole_1abbd466462cea32d0a00be78a59120525" kind="variable"><name>holeSize</name></member>
+    <member refid="classHole_1aefed587cb4790ef594740219f9390977" kind="variable"><name>foundHole</name></member>
+    <member refid="classHole_1a73a5d42a787e5503a4640e8de05b123a" kind="variable"><name>points</name></member>
+    <member refid="classHole_1acb525c23eac9aa86a3a47ebb3b08a1da" kind="variable"><name>pointHoles</name></member>
+    <member refid="classHole_1a4ea8b237954a3decf415e384b042eacd" kind="function"><name>Hole</name></member>
+    <member refid="classHole_1a653b2d43ddca456e31c6be921d7077df" kind="function"><name>Hole</name></member>
+    <member refid="classHole_1ac73d25f280d747ba04a6e9b90d587d94" kind="function"><name>Hole</name></member>
+    <member refid="classHole_1a079e74ec763052a10fedea61a6a5088b" kind="function"><name>Hole</name></member>
+    <member refid="classHole_1a519b0f73c960b116403ee937a8fb0a3e" kind="function"><name>getSuggestedNodePlacements</name></member>
+    <member refid="classHole_1adc6df39c2118fd21749786927800de4b" kind="function"><name>registerPointsToHole</name></member>
+    <member refid="classHole_1ad224d20fbe2037b97e19344b8f0157e0" kind="function"><name>copyDoOperation</name></member>
+    <member refid="classHole_1a1b9d48a850759ae1b826b7476c304785" kind="function"><name>getOneSquareCorner</name></member>
+    <member refid="classHole_1ae5ba1de89591495ee62c784c8bcc4b72" kind="function"><name>getSecondSquareCorner</name></member>
+    <member refid="classHole_1afb912f0b7b58f2074fcbbc50184e39c2" kind="function"><name>pointCouldBeMemberOfHole</name></member>
+    <member refid="classHole_1aec56b428187b4a6f5a952463b4029d00" kind="function"><name>isFoundHole</name></member>
+    <member refid="classHole_1a863918993a62cc90b99a66c48e9e0bdc" kind="function"><name>getSubHolesCopy</name></member>
+    <member refid="classHole_1a90b129019613cc439b9834058f8727b1" kind="function"><name>Hole</name></member>
+    <member refid="classHole_1a4ddff9cebed0fa967b3a8ea12aac1195" kind="function"><name>Hole</name></member>
+    <member refid="classHole_1a6c5cc5e4efbe73711dab187e00a0a171" kind="function"><name>Hole</name></member>
+    <member refid="classHole_1a39673dc613c45644ff844c7b81709ab9" kind="function"><name>addPoint</name></member>
+    <member refid="classHole_1afd4c5c949e5c37e58ff10927e475fcdf" kind="function"><name>isInSquare</name></member>
+    <member refid="classHole_1a73735b03496aad26f53879b2c50fcc71" kind="function"><name>offset</name></member>
+    <member refid="classHole_1ae7c69bf5e1d37a1230b50187e7442506" kind="function"><name>lineIntersectsHole</name></member>
+    <member refid="classHole_1a371c0f905489a21d9276bb383a572487" kind="friend"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="classHoleManager" kind="class"><name>HoleManager</name>
+    <member refid="classHoleManager_1afd84526273e6fc2bf5e80160017d2f19" kind="variable"><name>holes</name></member>
+    <member refid="classHoleManager_1a151ff618546d0cd5a54aa2bd18a49637" kind="variable"><name>holeMeasurements</name></member>
+    <member refid="classHoleManager_1a2a70f9e895789105b0b45df164bf6ff6" kind="function"><name>HoleManager</name></member>
+    <member refid="classHoleManager_1a317b24d6b0d2b5f843d3cbc4fcf39dd8" kind="function"><name>addPoint</name></member>
+    <member refid="classHoleManager_1a50df7cfd1e6e527d16b939769317ec50" kind="function"><name>getHole</name></member>
+    <member refid="classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7" kind="function"><name>addHole</name></member>
+    <member refid="classHoleManager_1a5c2e0ffae18e961f5ba3f18688ef34bf" kind="function"><name>addHole</name></member>
+    <member refid="classHoleManager_1a586843e9065c89985c3b76bc8a2f9003" kind="function"><name>getHoles</name></member>
+    <member refid="classHoleManager_1ab74e44ccae65e04db4f54a9b44d9655d" kind="function"><name>getPointsOnHoles</name></member>
+    <member refid="classHoleManager_1aa0e47cc875c67f9244088d5c895ec725" kind="function"><name>getSuggestedNodePlacements</name></member>
+    <member refid="classHoleManager_1a3b0b1c780a1ed91646e0bcbf1dd23e70" kind="function"><name>nodeCollides</name></member>
+    <member refid="classHoleManager_1a1a77b2aa21fe82b6aa7073aa004e9e6f" kind="function"><name>lineIntersectsAnyHoleMeasurement</name></member>
+    <member refid="classHoleManager_1a0a8f51f0c0c0c3af90b3fd0a90ea062e" kind="function"><name>offsetAll</name></member>
+  </compound>
+  <compound refid="structMove" kind="struct"><name>Move</name>
+    <member refid="structMove_1a261f6dd2a4399171b95747f32eb4025e" kind="variable"><name>quantity</name></member>
+    <member refid="structMove_1a024fa73d41d4d3830f2565e158a2b521" kind="variable"><name>type</name></member>
+  </compound>
+  <compound refid="classNode" kind="class"><name>Node</name>
+    <member refid="classNode_1a35376923cad4d844bc6294cb4543017b" kind="variable"><name>data</name></member>
+    <member refid="classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983" kind="function"><name>Node</name></member>
+    <member refid="classNode_1a81895d8b8dfffcc5d220b2d816e7063c" kind="function"><name>getData</name></member>
+    <member refid="classNode_1ab849a0519ed381feaf341d91e3d87b1f" kind="function"><name>SetData</name></member>
+  </compound>
+  <compound refid="classPillar" kind="class"><name>Pillar</name>
+    <member refid="classPillar_1a74fea03287d330085c4a60f8ba3cc6d3" kind="variable"><name>position</name></member>
+    <member refid="classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc" kind="variable"><name>radius</name></member>
+    <member refid="classPillar_1aa8dc2bded98a242ff4957c2604e33ec2" kind="function"><name>Pillar</name></member>
+    <member refid="classPillar_1aa3c5156fb822cf9ca4014ca8e3510fd4" kind="function"><name>Pillar</name></member>
+    <member refid="classPillar_1a9c9992655592342b529b765c6de0e462" kind="function"><name>Pillar</name></member>
+    <member refid="classPillar_1ad994a5ff8afddb6ac0d52d573b8f31bd" kind="function"><name>Pillar</name></member>
+    <member refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kind="function"><name>getPose</name></member>
+    <member refid="classPillar_1adc8c902c96a36b5e8e6642e2b462e927" kind="function"><name>getX</name></member>
+    <member refid="classPillar_1a6a39e5dac33d94196391caeeb379c48a" kind="function"><name>getY</name></member>
+    <member refid="classPillar_1a404e92b3ee6005fcd400ae120ce0b560" kind="function"><name>getRadius</name></member>
+    <member refid="classPillar_1acde6b927c883e0a5720e20d6b7f04ede" kind="function"><name>setRadius</name></member>
+    <member refid="classPillar_1a9877735341d7110c3d34633867528dbb" kind="function"><name>setPosition</name></member>
+    <member refid="classPillar_1a01e5ad8ad29b0637edc291aaff93785e" kind="function"><name>parseFromStream</name></member>
+  </compound>
+  <compound refid="classPose2D" kind="class"><name>Pose2D</name>
+    <member refid="classPose2D_1a4ea2a4d5ced468e718373ffe07732f60" kind="variable"><name>x</name></member>
+    <member refid="classPose2D_1a79a6b7de45208d23daa4ec11913a547f" kind="variable"><name>y</name></member>
+    <member refid="classPose2D_1a3d04db1eca820a577c911ca88df12b7d" kind="variable"><name>heading</name></member>
+    <member refid="classPose2D_1a6d70b4f0e17c1f80690c1a4a832238bd" kind="function"><name>Pose2D</name></member>
+    <member refid="classPose2D_1ad31191da38f3f5e9a4a0e77577389977" kind="function"><name>Pose2D</name></member>
+    <member refid="classPose2D_1a216182882a02017665c754b16c1328ae" kind="function"><name>Pose2D</name></member>
+    <member refid="classPose2D_1a5b718e40b6dcc3b109128c57d8d78f69" kind="function"><name>Pose2D</name></member>
+    <member refid="classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773" kind="function"><name>angleTo</name></member>
+    <member refid="classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3" kind="function"><name>distanceTo</name></member>
+    <member refid="classPose2D_1a73e8e6fd058a55960da459cdef6d6ffb" kind="function"><name>squareOfDistanceTo</name></member>
+    <member refid="classPose2D_1a34c15f20448e7efd354c507d38ec2891" kind="function"><name>clone</name></member>
+    <member refid="classPose2D_1add9d11130bbe9e7e66325e98f7ca43f5" kind="function"><name>rotateByPose</name></member>
+    <member refid="classPose2D_1a1e220c70ada1586e8e1f9f2387e45e61" kind="function"><name>rotateByAngle</name></member>
+    <member refid="classPose2D_1a03d229ea165034f3130d158a864ce6aa" kind="function"><name>translateByPose</name></member>
+    <member refid="classPose2D_1a84216b76ce7d5a554794b43c56574582" kind="function"><name>translateByMagnitude</name></member>
+    <member refid="classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea" kind="function"><name>transformPose</name></member>
+    <member refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kind="function"><name>getX</name></member>
+    <member refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kind="function"><name>getY</name></member>
+    <member refid="classPose2D_1aab0666fc4e510ece6f85a13fbfd6d347" kind="function"><name>getHeading</name></member>
+    <member refid="classPose2D_1a07d03a1b06734fa63fcf6ee05befcb51" kind="function"><name>setHeading</name></member>
+    <member refid="classPose2D_1ac6afb91ffac9121da23df77f7c975a39" kind="function"><name>plusCoord</name></member>
+    <member refid="classPose2D_1a5a031312210c5fd0d88855df26b53c1a" kind="function"><name>plus</name></member>
+    <member refid="classPose2D_1adc44dfc82549ea97d3622052b615bf55" kind="function"><name>minus</name></member>
+    <member refid="classPose2D_1a77b5a2d38fe501e59a8d308b5cfa0508" kind="function"><name>addAngle</name></member>
+    <member refid="classPose2D_1ad0b3a99de1a5972d3bed31e4e47e4e09" kind="function"><name>subtractBy</name></member>
+    <member refid="classPose2D_1ab2ee3fec06d12adad8bd9c37fe7a8175" kind="function"><name>scaleBy</name></member>
+    <member refid="classPose2D_1ab4524355149f49542d83fc144e2438a8" kind="function"><name>normalize</name></member>
+    <member refid="classPose2D_1a359e162b9cb331cd5ccca9739ab31502" kind="function"><name>dotProduct</name></member>
+    <member refid="classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c" kind="function"><name>setX</name></member>
+    <member refid="classPose2D_1aae96b589dd219d641a039b8fe1a56d7b" kind="function"><name>vecAdd</name></member>
+    <member refid="classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c" kind="function"><name>setY</name></member>
+    <member refid="classPose2D_1aa5f78e433ba60f61ea49b08ec8ff4d08" kind="function"><name>getQuadrant</name></member>
+    <member refid="classPose2D_1a52fbe813508bcb22e43c0ba8d1041246" kind="function"><name>wrapHeading</name></member>
+    <member refid="classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e" kind="function"><name>transformForPose</name></member>
+    <member refid="classPose2D_1a4ad9e8c801fb7b2ad934c3f0f4923633" kind="function"><name>isOnLine</name></member>
+    <member refid="classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0" kind="function"><name>isPerpendicularToLine</name></member>
+    <member refid="classPose2D_1a1cd7e63d410b091dcc89e20afcd65fff" kind="function"><name>multiply</name></member>
+    <member refid="classPose2D_1a35455cacb295ea54820030b9dbb191f2" kind="function"><name>fromPolar</name></member>
+    <member refid="classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c" kind="function"><name>degreesToRadians</name></member>
+    <member refid="classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453" kind="function"><name>radiansToDegrees</name></member>
+    <member refid="classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2" kind="function"><name>parseFromStream</name></member>
+    <member refid="classPose2D_1ac6f628453cf76391fac4ef7b884490d0" kind="function"><name>getAngleBetweenPoints</name></member>
+    <member refid="classPose2D_1a8ee5dca0a6268342b242172f7222756f" kind="friend"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="structRectangle" kind="struct"><name>Rectangle</name>
+    <member refid="structRectangle_1a9ab0b4bae48e8330e4064bfc2aac696d" kind="variable"><name>r1</name></member>
+    <member refid="structRectangle_1ab7c029f35f42207f6cd273c7251ff8fb" kind="variable"><name>r2</name></member>
+    <member refid="structRectangle_1a084cafc6917f1a0881e6e111329a4588" kind="variable"><name>r3</name></member>
+    <member refid="structRectangle_1ad96df264562ce0b343bc9569ac899b29" kind="variable"><name>r4</name></member>
+  </compound>
+  <compound refid="Field_8cpp" kind="file"><name>Field.cpp</name>
+  </compound>
+  <compound refid="Field_8hpp" kind="file"><name>Field.hpp</name>
+    <member refid="Field_8hpp_1a898606140dee9ce0adf096de00824d94" kind="define"><name>MAX_X</name></member>
+    <member refid="Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef" kind="define"><name>MAX_Y</name></member>
+    <member refid="Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5" kind="enum"><name>Cardinality</name></member>
+    <member refid="Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5a2c63acbe79d9f41ba6bb7766e9c37702" kind="enumvalue"><name>N</name></member>
+    <member refid="Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5af1ce01387d2348f8b858721a7db81670" kind="enumvalue"><name>S</name></member>
+    <member refid="Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5ab199e021998d49b1f09338d8b9b18ecb" kind="enumvalue"><name>E</name></member>
+    <member refid="Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5ab722ceeb601c72cd78fbd35f3581fdf7" kind="enumvalue"><name>W</name></member>
+  </compound>
+  <compound refid="Graph_8cpp" kind="file"><name>Graph.cpp</name>
+  </compound>
+  <compound refid="Graph_8hpp" kind="file"><name>Graph.hpp</name>
+  </compound>
+  <compound refid="Hole_8cpp" kind="file"><name>Hole.cpp</name>
+    <member refid="Hole_8cpp_1a371c0f905489a21d9276bb383a572487" kind="function"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="Hole_8hpp" kind="file"><name>Hole.hpp</name>
+    <member refid="Hole_8hpp_1a657e122f8983d0a993ee0266696f1984" kind="define"><name>HOLE_SIZE</name></member>
+  </compound>
+  <compound refid="HoleManager_8cpp" kind="file"><name>HoleManager.cpp</name>
+  </compound>
+  <compound refid="HoleManager_8hpp" kind="file"><name>HoleManager.hpp</name>
+    <member refid="HoleManager_8hpp_1a9e3667c9425085b498f4b8ee21a19595" kind="define"><name>sideLength</name></member>
+    <member refid="HoleManager_8hpp_1a98743a6e40590a591f14abd4bbe2b675" kind="define"><name>MEASUREMENT_WIDTH</name></member>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1a69549d0bd46cc467083f3554f3f95955" kind="define"><name>BOT_CONNECT</name></member>
+    <member refid="main_8cpp_1a280feb883e9d4a7edcc69c8bcb9f38f2" kind="define"><name>ADDRESS</name></member>
+    <member refid="main_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2" kind="define"><name>PORT</name></member>
+    <member refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493" kind="enum"><name>MovementType</name></member>
+    <member refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c" kind="enumvalue"><name>MOVE_FORWARD</name></member>
+    <member refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339" kind="enumvalue"><name>MOVE_BACKWARDS</name></member>
+    <member refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165" kind="enumvalue"><name>MOVE_FORWARD_SMART</name></member>
+    <member refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd" kind="enumvalue"><name>TURN_TO_ANGLE</name></member>
+    <member refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d" kind="enumvalue"><name>SCAN</name></member>
+    <member refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" kind="variable"><name>sendQueue</name></member>
+    <member refid="main_8cpp_1a781e3772674224fa00da70ac8e0bb247" kind="variable"><name>queueMutex</name></member>
+    <member refid="main_8cpp_1a4bf7290e131c491bb7def53e3d340b95" kind="variable"><name>sendCondition</name></member>
+    <member refid="main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6" kind="function"><name>stopClient</name></member>
+    <member refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kind="function"><name>addToQueue</name></member>
+    <member refid="main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459" kind="function"><name>sendAngleToQueue</name></member>
+    <member refid="main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5" kind="function"><name>sendDistanceToQueue</name></member>
+    <member refid="main_8cpp_1aafce9996e79c89401b2797ea5bd5702b" kind="function"><name>pathToRoutine</name></member>
+    <member refid="main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9" kind="function"><name>parsePathIntoRoutine</name></member>
+    <member refid="main_8cpp_1a6e0bf7be42eb96e07b07995bad442501" kind="function"><name>readAndLog</name></member>
+    <member refid="main_8cpp_1aeb814458701307eaffced2d1f95dc3f9" kind="function"><name>connectTCP</name></member>
+    <member refid="main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2" kind="function"><name>setupImGui</name></member>
+    <member refid="main_8cpp_1aef05f78be1cf48474bb638b05af91d4e" kind="function"><name>DrawCircle</name></member>
+    <member refid="main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77" kind="function"><name>ScreenToCoords</name></member>
+    <member refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kind="function"><name>coordsToScreen</name></member>
+    <member refid="main_8cpp_1aadd75f0fd8f5677340c27a7df7c28366" kind="function"><name>coordsToScreen</name></member>
+    <member refid="main_8cpp_1a9d21b7be18e221988e1051a55465f3a2" kind="function"><name>ShowPillarOnWindow</name></member>
+    <member refid="main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7" kind="function"><name>drawBotPose</name></member>
+    <member refid="main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c" kind="function"><name>drawRectangle</name></member>
+    <member refid="main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf" kind="function"><name>ShowFieldWindow</name></member>
+    <member refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Node_8cpp" kind="file"><name>Node.cpp</name>
+  </compound>
+  <compound refid="Node_8hpp" kind="file"><name>Node.hpp</name>
+  </compound>
+  <compound refid="Pillar_8cpp" kind="file"><name>Pillar.cpp</name>
+  </compound>
+  <compound refid="Pillar_8hpp" kind="file"><name>Pillar.hpp</name>
+  </compound>
+  <compound refid="Pose2D_8cpp" kind="file"><name>Pose2D.cpp</name>
+    <member refid="Pose2D_8cpp_1a8ee5dca0a6268342b242172f7222756f" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="Pose2D_8cpp_1af747b1235ddc04741dd30bf4c6a35d3c" kind="function"><name>makeRectangleFromLine</name></member>
+  </compound>
+  <compound refid="Pose2D_8hpp" kind="file"><name>Pose2D.hpp</name>
+    <member refid="Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60" kind="define"><name>BOT_RADIUS</name></member>
+    <member refid="Pose2D_8hpp_1af747b1235ddc04741dd30bf4c6a35d3c" kind="function"><name>makeRectangleFromLine</name></member>
+  </compound>
+  <compound refid="util_8cpp" kind="file"><name>util.cpp</name>
+    <member refid="util_8cpp_1a949a93aaf5bad798848b1d6ff4bd7b68" kind="function"><name>orientation</name></member>
+    <member refid="util_8cpp_1aec2e0e6da52a6460459ffefa1bad0fd3" kind="function"><name>onSegment</name></member>
+    <member refid="util_8cpp_1a4e5e5d18b9bfa850378af284c05268df" kind="function"><name>doIntersect</name></member>
+    <member refid="util_8cpp_1a913e3a56bee44293842c0d78d7e56634" kind="function"><name>lineIntersectsRectangle</name></member>
+  </compound>
+  <compound refid="util_8hpp" kind="file"><name>util.hpp</name>
+    <member refid="util_8hpp_1aeaeef2ccb49a89c827eeeb25d89a1ff8" kind="function"><name>orientation</name></member>
+    <member refid="util_8hpp_1aec2e0e6da52a6460459ffefa1bad0fd3" kind="function"><name>onSegment</name></member>
+    <member refid="util_8hpp_1a4e5e5d18b9bfa850378af284c05268df" kind="function"><name>doIntersect</name></member>
+    <member refid="util_8hpp_1a913e3a56bee44293842c0d78d7e56634" kind="function"><name>lineIntersectsRectangle</name></member>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/calebk/Documents/coding/RoombaController/src</name>
+  </compound>
+</doxygenindex>

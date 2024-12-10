@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classHoleManager" xml:lang="en-US">
+<title>HoleManager Class Reference</title>
+<indexterm><primary>HoleManager</primary></indexterm>
+<para>
+<computeroutput>#include &lt;HoleManager.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classHoleManager_1a2a70f9e895789105b0b45df164bf6ff6">HoleManager</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classHoleManager_1a317b24d6b0d2b5f843d3cbc4fcf39dd8">addPoint</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;position)</para>
+</listitem>
+            <listitem><para><link linkend="_classHole">Hole</link> <link linkend="_classHoleManager_1a50df7cfd1e6e527d16b939769317ec50">getHole</link> (uint8_t index)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7">addHole</link> (const <link linkend="_classHole">Hole</link> &amp;hole)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classHoleManager_1a5c2e0ffae18e961f5ba3f18688ef34bf">addHole</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;cornerOne, const <link linkend="_classPose2D">Pose2D</link> &amp;cornerTwo)</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classHole">Hole</link> &gt; <link linkend="_classHoleManager_1a586843e9065c89985c3b76bc8a2f9003">getHoles</link> ()</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; <link linkend="_classHoleManager_1ab74e44ccae65e04db4f54a9b44d9655d">getPointsOnHoles</link> ()</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; <link linkend="_classHoleManager_1aa0e47cc875c67f9244088d5c895ec725">getSuggestedNodePlacements</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classHoleManager_1a3b0b1c780a1ed91646e0bcbf1dd23e70">nodeCollides</link> (<link linkend="_classPose2D">Pose2D</link> position)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classHoleManager_1a1a77b2aa21fe82b6aa7073aa004e9e6f">lineIntersectsAnyHoleMeasurement</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;positionOne, const <link linkend="_classPose2D">Pose2D</link> &amp;positionTwo)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classHoleManager_1a0a8f51f0c0c0c3af90b3fd0a90ea062e">offsetAll</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;offset) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>A hole manager handles holes that and the measurments that are associated with them. Wrapped class for lists of holes </para>
+<para>
+Definition at line <link linkend="_HoleManager_8hpp_source_1l00018">18</link> of file <link linkend="_HoleManager_8hpp_source">HoleManager.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classHoleManager_1a2a70f9e895789105b0b45df164bf6ff6"/><section>
+    <title>HoleManager()</title>
+<indexterm><primary>HoleManager</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>HoleManager</secondary></indexterm>
+<para><computeroutput>HoleManager::HoleManager ( )</computeroutput></para>
+<para>Creats a new <link linkend="_classHole">Hole</link> manager</para>
+
+<para>Created by Caleb Kugel 11/15/2024 </para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00009">9</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7"/><section>
+    <title>addHole()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>addHole</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>addHole</secondary></indexterm>
+<para><computeroutput>void HoleManager::addHole (const <link linkend="_classHole">Hole</link> &amp; hole)</computeroutput></para>
+<para>Adds a hole to the holes 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>hole</entry><entry>
+<para>to add </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00019">19</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHoleManager_1a5c2e0ffae18e961f5ba3f18688ef34bf"/><section>
+    <title>addHole()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>addHole</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>addHole</secondary></indexterm>
+<para><computeroutput>void HoleManager::addHole (const <link linkend="_classPose2D">Pose2D</link> &amp; cornerOne, const <link linkend="_classPose2D">Pose2D</link> &amp; cornerTwo)</computeroutput></para>
+<para>Adds a hole to the hole manager 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>cornerOne</entry><entry>
+<para>the first Corner </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cornerTwo</entry><entry>
+<para>the second Corner </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00014">14</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHoleManager_1a317b24d6b0d2b5f843d3cbc4fcf39dd8"/><section>
+    <title>addPoint()</title>
+<indexterm><primary>addPoint</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>addPoint</secondary></indexterm>
+<para><computeroutput>void HoleManager::addPoint (const <link linkend="_classPose2D">Pose2D</link> &amp; position)</computeroutput></para>
+<para>Adds a point that we collided on the hole with 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>the position of the collision </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00040">40</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHoleManager_1a50df7cfd1e6e527d16b939769317ec50"/><section>
+    <title>getHole()</title>
+<indexterm><primary>getHole</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>getHole</secondary></indexterm>
+<para><computeroutput><link linkend="_classHole">Hole</link> HoleManager::getHole (uint8_t index)</computeroutput></para>
+<para>get a hole from registered holes 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>index</entry><entry>
+<para>of the hole in the holes list </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the hole that has been registered </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00023">23</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHoleManager_1a586843e9065c89985c3b76bc8a2f9003"/><section>
+    <title>getHoles()</title>
+<indexterm><primary>getHoles</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>getHoles</secondary></indexterm>
+<para><computeroutput>std::vector&lt; <link linkend="_classHole">Hole</link> &gt; HoleManager::getHoles ( )</computeroutput></para>
+<para>get the holes that we for sure know about </para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00032">32</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHoleManager_1ab74e44ccae65e04db4f54a9b44d9655d"/><section>
+    <title>getPointsOnHoles()</title>
+<indexterm><primary>getPointsOnHoles</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>getPointsOnHoles</secondary></indexterm>
+<para><computeroutput>std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; HoleManager::getPointsOnHoles ( )</computeroutput></para>
+<para>get the points along unconfirmed holes </para>
+</section>
+<anchor xml:id="_classHoleManager_1aa0e47cc875c67f9244088d5c895ec725"/><section>
+    <title>getSuggestedNodePlacements()</title>
+<indexterm><primary>getSuggestedNodePlacements</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>getSuggestedNodePlacements</secondary></indexterm>
+<para><computeroutput>std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; HoleManager::getSuggestedNodePlacements ( )</computeroutput></para>
+<para>returns a list of likely accessible nodes </para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00080">80</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHoleManager_1a1a77b2aa21fe82b6aa7073aa004e9e6f"/><section>
+    <title>lineIntersectsAnyHoleMeasurement()</title>
+<indexterm><primary>lineIntersectsAnyHoleMeasurement</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>lineIntersectsAnyHoleMeasurement</secondary></indexterm>
+<para><computeroutput>bool HoleManager::lineIntersectsAnyHoleMeasurement (const <link linkend="_classPose2D">Pose2D</link> &amp; positionOne, const <link linkend="_classPose2D">Pose2D</link> &amp; positionTwo)</computeroutput></para>
+<para>Determines whether a line is valid for all the hole measurements </para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00094">94</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHoleManager_1a3b0b1c780a1ed91646e0bcbf1dd23e70"/><section>
+    <title>nodeCollides()</title>
+<indexterm><primary>nodeCollides</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>nodeCollides</secondary></indexterm>
+<para><computeroutput>bool HoleManager::nodeCollides (<link linkend="_classPose2D">Pose2D</link> position)</computeroutput></para>
+<para>Whether a node collides with the estimated hole or not 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>the position of the node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>whether that node is valid from a hole perspective </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00056">56</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHoleManager_1a0a8f51f0c0c0c3af90b3fd0a90ea062e"/><section>
+    <title>offsetAll()</title>
+<indexterm><primary>offsetAll</primary><secondary>HoleManager</secondary></indexterm>
+<indexterm><primary>HoleManager</primary><secondary>offsetAll</secondary></indexterm>
+<para><computeroutput>void HoleManager::offsetAll (const <link linkend="_classPose2D">Pose2D</link> &amp; offset) const</computeroutput></para>
+<para>provides the offset to all holes and their values </para>
+<para>
+Definition at line <link linkend="_HoleManager_8cpp_source_1l00117">117</link> of file <link linkend="_HoleManager_8cpp_source">HoleManager.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/calebk/Documents/coding/RoombaController/src/<link linkend="_HoleManager_8hpp">HoleManager.hpp</link>/home/calebk/Documents/coding/RoombaController/src/<link linkend="_HoleManager_8cpp">HoleManager.cpp</link></section>
+</section>

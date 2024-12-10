@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Pillar_8hpp_source" xml:lang="en-US">
+<title>Pillar.hpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_Pillar_8hpp_source_1l00001"/>00001 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Pillar_8hpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Created&#32;by&#32;caleb&#32;on&#32;10/24/2024</emphasis>
+<anchor xml:id="_Pillar_8hpp_source_1l00003"/>00003 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Pillar_8hpp_source_1l00004"/>00004 
+<anchor xml:id="_Pillar_8hpp_source_1l00005"/>00005 <emphasis role="preprocessor">#ifndef&#32;PILLAR_H</emphasis>
+<anchor xml:id="_Pillar_8hpp_source_1l00006"/>00006 <emphasis role="preprocessor">#define&#32;PILLAR_H</emphasis>
+<anchor xml:id="_Pillar_8hpp_source_1l00007"/>00007 
+<anchor xml:id="_Pillar_8hpp_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Pose2D_8hpp">Pose2D.hpp</link>&quot;</emphasis>
+<anchor xml:id="_Pillar_8hpp_source_1l00009"/>00009 
+<anchor xml:id="_Pillar_8hpp_source_1l00014"/><link linkend="_classPillar">00014</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_classPillar">Pillar</link>&#32;{
+<anchor xml:id="_Pillar_8hpp_source_1l00015"/>00015 &#32;&#32;<emphasis role="keyword">protected</emphasis>:
+<anchor xml:id="_Pillar_8hpp_source_1l00019"/><link linkend="_classPillar_1a74fea03287d330085c4a60f8ba3cc6d3">00019</link> &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classPillar_1a74fea03287d330085c4a60f8ba3cc6d3">position</link>;
+<anchor xml:id="_Pillar_8hpp_source_1l00020"/>00020 
+<anchor xml:id="_Pillar_8hpp_source_1l00024"/><link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">00024</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">radius</link>;
+<anchor xml:id="_Pillar_8hpp_source_1l00025"/>00025 
+<anchor xml:id="_Pillar_8hpp_source_1l00026"/>00026 &#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="_Pillar_8hpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<link linkend="_classPillar_1aa8dc2bded98a242ff4957c2604e33ec2">Pillar</link>();
+<anchor xml:id="_Pillar_8hpp_source_1l00031"/>00031 
+<anchor xml:id="_Pillar_8hpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<link linkend="_classPillar_1aa8dc2bded98a242ff4957c2604e33ec2">Pillar</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;<link linkend="_classPillar_1a74fea03287d330085c4a60f8ba3cc6d3">position</link>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">radius</link>);
+<anchor xml:id="_Pillar_8hpp_source_1l00038"/>00038 
+<anchor xml:id="_Pillar_8hpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<link linkend="_classPillar_1aa8dc2bded98a242ff4957c2604e33ec2">Pillar</link>(<emphasis role="keywordtype">double</emphasis>&#32;x,&#32;<emphasis role="keywordtype">double</emphasis>&#32;y,&#32;<emphasis role="keywordtype">double</emphasis>&#32;heading,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">radius</link>);
+<anchor xml:id="_Pillar_8hpp_source_1l00047"/>00047 
+<anchor xml:id="_Pillar_8hpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<link linkend="_classPillar_1aa8dc2bded98a242ff4957c2604e33ec2">Pillar</link>(<emphasis role="keywordtype">double</emphasis>&#32;x,&#32;<emphasis role="keywordtype">double</emphasis>&#32;y,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">radius</link>);
+<anchor xml:id="_Pillar_8hpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="comment">//~Pillar();</emphasis>
+<anchor xml:id="_Pillar_8hpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>();
+<anchor xml:id="_Pillar_8hpp_source_1l00062"/>00062 
+<anchor xml:id="_Pillar_8hpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPillar_1adc8c902c96a36b5e8e6642e2b462e927">getX</link>();
+<anchor xml:id="_Pillar_8hpp_source_1l00067"/>00067 
+<anchor xml:id="_Pillar_8hpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPillar_1a6a39e5dac33d94196391caeeb379c48a">getY</link>();
+<anchor xml:id="_Pillar_8hpp_source_1l00072"/>00072 
+<anchor xml:id="_Pillar_8hpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPillar_1a404e92b3ee6005fcd400ae120ce0b560">getRadius</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pillar_8hpp_source_1l00077"/>00077 
+<anchor xml:id="_Pillar_8hpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPillar_1acde6b927c883e0a5720e20d6b7f04ede">setRadius</link>(<emphasis role="keywordtype">double</emphasis>&#32;newRadius);
+<anchor xml:id="_Pillar_8hpp_source_1l00083"/>00083 
+<anchor xml:id="_Pillar_8hpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPillar_1a9877735341d7110c3d34633867528dbb">setPosition</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;newPosition);
+<anchor xml:id="_Pillar_8hpp_source_1l00089"/>00089 
+<anchor xml:id="_Pillar_8hpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_classPillar">Pillar</link>&#32;<link linkend="_classPillar_1a01e5ad8ad29b0637edc291aaff93785e">parseFromStream</link>(std::istringstream&amp;&#32;stream);
+<anchor xml:id="_Pillar_8hpp_source_1l00097"/>00097 };
+<anchor xml:id="_Pillar_8hpp_source_1l00098"/>00098 
+<anchor xml:id="_Pillar_8hpp_source_1l00099"/>00099 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//PILLAR_H</emphasis>
+</programlisting></section>

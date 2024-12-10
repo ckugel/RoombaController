@@ -1,0 +1,465 @@
+.TH "Field" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Field
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Field\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBField\fP (const std::vector< \fBPillar\fP > &\fBpillars\fP, const \fBPose2D\fP &\fBdesiredDestination\fP, const \fBPillar\fP &\fBbotPose\fP)"
+.br
+.ti -1c
+.RI "\fBField\fP (const std::vector< \fBPillar\fP > &\fBpillars\fP, const \fBPose2D\fP &\fBdesiredDestination\fP)"
+.br
+.ti -1c
+.RI "\fBField\fP ()"
+.br
+.ti -1c
+.RI "\fBField\fP (const std::unique_ptr< std::vector< \fBPillar\fP > > &\fBpillars\fP, const \fBPose2D\fP &desired_destination, const \fBPillar\fP &bot_pose, const \fBGraph\fP< \fBPose2D\fP > &\fBgraph\fP)"
+.br
+.ti -1c
+.RI "void \fBaddEdgeMeasurement\fP (double rawPosition, \fBCardinality\fP cardinality)"
+.br
+.ti -1c
+.RI "\fBHoleManager\fP & \fBgetManager\fP ()"
+.br
+.ti -1c
+.RI "void \fBapplyOffsetToEdge\fP (double x, double y)"
+.br
+.ti -1c
+.RI "int32_t \fBgetDesiredIndex\fP () const"
+.br
+.ti -1c
+.RI "void \fBclearField\fP ()"
+.br
+.ti -1c
+.RI "\fBGraph\fP< \fBPose2D\fP > & \fBgetGraph\fP ()"
+.br
+.ti -1c
+.RI "\fBPillar\fP \fBgetBotPose\fP ()"
+.br
+.ti -1c
+.RI "void \fBdiscretizeGraph\fP ()"
+.br
+.ti -1c
+.RI "void \fBweightGraph\fP ()"
+.br
+.ti -1c
+.RI "std::vector< \fBPose2D\fP > \fBmakePath\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddPillar\fP (\fBPillar\fP &newPillar)"
+.br
+.ti -1c
+.RI "void \fBupdateBotPose\fP (const \fBPose2D\fP &updatedPosition)"
+.br
+.ti -1c
+.RI "std::unique_ptr< std::vector< \fBPillar\fP > > \fBgetPillars\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPillars\fP (std::unique_ptr< std::vector< \fBPillar\fP > > \fBpillars\fP)"
+.br
+.ti -1c
+.RI "std::vector< \fBPillar\fP > \fBgetCopyPillars\fP ()"
+.br
+.ti -1c
+.RI "bool \fBvalidLocationForNode\fP (const \fBPose2D\fP &location)"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBgetDesiredDestination\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateDesired\fP (const \fBPose2D\fP &other)"
+.br
+.ti -1c
+.RI "void \fBsetDesiredIndex\fP (int32_t index)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBoutOfBounds\fP (const \fBPose2D\fP &location)"
+.br
+.ti -1c
+.RI "static bool \fBlineIntersectsCircle\fP (double cx, double cy, double r, double x1, double y1, double x2, double y2)"
+.br
+.ti -1c
+.RI "static bool \fBlineIntersectsCircle\fP (\fBPillar\fP p1, const \fBPose2D\fP &one, const \fBPose2D\fP &two)"
+.br
+.ti -1c
+.RI "static double \fBroundRadius\fP (double radius)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::unique_ptr< std::vector< \fBPillar\fP > > \fBpillars\fP"
+.br
+.ti -1c
+.RI "\fBHoleManager\fP \fBholeManager\fP"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBoffset\fP"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBdesiredDestination\fP"
+.br
+.ti -1c
+.RI "\fBPillar\fP \fBbotPose\fP"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBrunningError\fP"
+.br
+.ti -1c
+.RI "\fBGraph\fP< \fBPose2D\fP > \fBgraph\fP"
+.br
+.ti -1c
+.RI "int32_t \fBdesiredIndex\fP = \-1"
+.br
+.ti -1c
+.RI "std::vector< \fBPillar\fP > \fBnewPillars\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class that represents the objects that can be and are on the field 
+.PP
+Definition at line \fB40\fP of file \fBField\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Field::Field (const std::vector< \fBPillar\fP > & pillars, const \fBPose2D\fP & desiredDestination, const \fBPillar\fP & botPose)"
+constructs a new field object 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpillars\fP the pillars that the field stores 
+.br
+\fIdesiredDestination\fP the desired destination for the app to generate a path to 
+.br
+\fIbotPose\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB7\fP of file \fBField\&.cpp\fP\&.
+.SS "Field::Field (const std::vector< \fBPillar\fP > & pillars, const \fBPose2D\fP & desiredDestination)"
+constructs a new field object 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpillars\fP the pillars that the field stores 
+.br
+\fIdesiredDestination\fP the desired destination for the app to generate a path to 
+.RE
+.PP
+
+.PP
+Definition at line \fB16\fP of file \fBField\&.cpp\fP\&.
+.SS "Field::Field ()"
+Constructs a deafult field object 
+.PP
+Definition at line \fB24\fP of file \fBField\&.cpp\fP\&.
+.SS "Field::Field (const std::unique_ptr< std::vector< \fBPillar\fP > > & pillars, const \fBPose2D\fP & desired_destination, const \fBPillar\fP & bot_pose, const \fBGraph\fP< \fBPose2D\fP > & graph)"
+Copys the majority of the important parts of the field 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpillars\fP the pillars to store 
+.br
+\fIdesired_destination\fP the desired destination to travel to 
+.br
+\fIbot_pose\fP the bot position 
+.br
+\fIgraph\fP the graph object 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Field::addEdgeMeasurement (double rawPosition, \fBCardinality\fP cardinality)"
+Add an edge measurement to the field\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrawPosition\fP the raw position (X or Y) of the measurmenet 
+.br
+\fIcardinality\fP the direction of the measurement 
+.RE
+.PP
+
+.PP
+Definition at line \fB203\fP of file \fBField\&.cpp\fP\&.
+.SS "void Field::addPillar (\fBPillar\fP & newPillar)"
+Add a pillar measurement to the graph 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewPillar\fP to add 
+.RE
+.PP
+
+.PP
+Definition at line \fB159\fP of file \fBField\&.cpp\fP\&.
+.SS "void Field::applyOffsetToEdge (double x, double y)"
+Applys some offset from getting the edge of the field 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP component of the offset 
+.br
+\fIy\fP component of the offset 
+.RE
+.PP
+
+.PP
+Definition at line \fB228\fP of file \fBField\&.cpp\fP\&.
+.SS "void Field::clearField ()"
+Clears the entire field and cooresponding managers and graphs 
+.PP
+Definition at line \fB138\fP of file \fBField\&.cpp\fP\&.
+.SS "void Field::discretizeGraph ()"
+add nodes to the graph that are valid places the bot can be at 
+.PP
+Definition at line \fB32\fP of file \fBField\&.cpp\fP\&.
+.SS "\fBPillar\fP Field::getBotPose ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+the robot pose on the field as a pillar\&. The radius is the radius of the bot 
+.RE
+.PP
+
+.PP
+Definition at line \fB155\fP of file \fBField\&.cpp\fP\&.
+.SS "std::vector< \fBPillar\fP > Field::getCopyPillars ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+a copy of the pillars on the field 
+.RE
+.PP
+
+.PP
+Definition at line \fB191\fP of file \fBField\&.cpp\fP\&.
+.SS "\fBPose2D\fP Field::getDesiredDestination ()"
+get the desired destination to travel to 
+.PP
+\fBReturns\fP
+.RS 4
+the position to get to 
+.RE
+.PP
+
+.PP
+Definition at line \fB274\fP of file \fBField\&.cpp\fP\&.
+.SS "int32_t Field::getDesiredIndex () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the index of the desired pillar in the graph 
+.RE
+.PP
+
+.PP
+Definition at line \fB257\fP of file \fBField\&.cpp\fP\&.
+.SS "\fBGraph\fP< \fBPose2D\fP > & Field::getGraph ()"
+Gets a reference to the graph object on the field 
+.PP
+\fBReturns\fP
+.RS 4
+a reference to the graph object 
+.RE
+.PP
+
+.PP
+Definition at line \fB261\fP of file \fBField\&.cpp\fP\&.
+.SS "\fBHoleManager\fP & Field::getManager ()"
+Gets a reference to the hole manager 
+.PP
+\fBReturns\fP
+.RS 4
+a reference to the hole manager 
+.RE
+.PP
+
+.PP
+Definition at line \fB134\fP of file \fBField\&.cpp\fP\&.
+.SS "std::unique_ptr< std::vector< \fBPillar\fP > > Field::getPillars ()"
+a unique pointer for the pillars on the field 
+.PP
+\fBReturns\fP
+.RS 4
+the pillars on the field 
+.RE
+.PP
+
+.PP
+Definition at line \fB142\fP of file \fBField\&.cpp\fP\&.
+.SS "bool Field::lineIntersectsCircle (double cx, double cy, double r, double x1, double y1, double x2, double y2)\fR [static]\fP"
+Util function that returns whether a given line intersects a circle 
+.PP
+Definition at line \fB236\fP of file \fBField\&.cpp\fP\&.
+.SS "static bool Field::lineIntersectsCircle (\fBPillar\fP p1, const \fBPose2D\fP & one, const \fBPose2D\fP & two)\fR [inline]\fP, \fR [static]\fP"
+Util function that returns whether a given line intersects a circle 
+.PP
+Definition at line \fB182\fP of file \fBField\&.hpp\fP\&.
+.SS "std::vector< \fBPose2D\fP > Field::makePath ()"
+Generates a path from the graph using Dijkstra's algorithm 
+.PP
+\fBReturns\fP
+.RS 4
+a path to the desired destination 
+.RE
+.PP
+
+.PP
+Definition at line \fB109\fP of file \fBField\&.cpp\fP\&.
+.SS "bool Field::outOfBounds (const \fBPose2D\fP & location)\fR [static]\fP"
+A static check to determine if a given location in the field coordinate system is out of bounds 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlocation\fP the position to check 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+whether that postiion is out of bounds on the field\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB199\fP of file \fBField\&.cpp\fP\&.
+.SS "static double Field::roundRadius (double radius)\fR [inline]\fP, \fR [static]\fP"
+round a given radius to possible radii 
+.PP
+\fBParameters\fP
+.RS 4
+\fIradius\fP the radius to round 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the rounded radius 
+.RE
+.PP
+
+.PP
+Definition at line \fB258\fP of file \fBField\&.hpp\fP\&.
+.SS "void Field::setDesiredIndex (int32_t index)"
+set the index of the desired position to travel to IN THE GRAPH 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP the index IN the graph 
+.RE
+.PP
+
+.PP
+Definition at line \fB146\fP of file \fBField\&.cpp\fP\&.
+.SS "void Field::setPillars (std::unique_ptr< std::vector< \fBPillar\fP > > pillars)"
+sets the pillars on the field 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpillars\fP the pillars that the field stores 
+.RE
+.PP
+
+.PP
+Definition at line \fB151\fP of file \fBField\&.cpp\fP\&.
+.SS "void Field::updateBotPose (const \fBPose2D\fP & updatedPosition)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIupdatedPosition\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB179\fP of file \fBField\&.cpp\fP\&.
+.SS "void Field::updateDesired (const \fBPose2D\fP & other)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP the new desired position 
+.RE
+.PP
+
+.PP
+Definition at line \fB265\fP of file \fBField\&.cpp\fP\&.
+.SS "bool Field::validLocationForNode (const \fBPose2D\fP & location)"
+Check whether a given position is a valid place for a node in the graph with respect to 'this' field 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlocation\fP the location of the node 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+whether it collides with anything 
+.RE
+.PP
+
+.PP
+Definition at line \fB118\fP of file \fBField\&.cpp\fP\&.
+.SS "void Field::weightGraph ()"
+Weight the graph in a way that the bot does not intersect and objects on the field 
+.PP
+Definition at line \fB75\fP of file \fBField\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBPillar\fP Field::botPose\fR [protected]\fP"
+THe position of the robot on the field 
+.PP
+Definition at line \fB67\fP of file \fBField\&.hpp\fP\&.
+.SS "\fBPose2D\fP Field::desiredDestination\fR [protected]\fP"
+the desired destination for the robot to get to 
+.PP
+Definition at line \fB62\fP of file \fBField\&.hpp\fP\&.
+.SS "int32_t Field::desiredIndex = \-1\fR [protected]\fP"
+The index of the desired position in the graph 
+.PP
+Definition at line \fB87\fP of file \fBField\&.hpp\fP\&.
+.SS "\fBGraph\fP<\fBPose2D\fP> Field::graph\fR [protected]\fP"
+The graph object which is used to generate trajectorys from nodes\&. Nodes represent places we can be on the field\&. The connections between nodes represents the possible paths we can take\&. The values of the connections represent the cost of moving between those nodes which is measured as the distance between nodes\&. 
+.PP
+Definition at line \fB82\fP of file \fBField\&.hpp\fP\&.
+.SS "\fBHoleManager\fP Field::holeManager\fR [protected]\fP"
+A hole maanger to manage and check collision with holes 
+.PP
+Definition at line \fB51\fP of file \fBField\&.hpp\fP\&.
+.SS "std::vector<\fBPillar\fP> Field::newPillars\fR [protected]\fP"
+A queue for new pillars that we add to the field\&. This is used to speed up discretization and weighting of the graph\&. 
+.PP
+Definition at line \fB93\fP of file \fBField\&.hpp\fP\&.
+.SS "\fBPose2D\fP Field::offset\fR [protected]\fP"
+The amount to offset everything by after reading edges\&. X value stores the X (N, S) offset, Y value stores the Y (E, W) offset 
+.PP
+Definition at line \fB57\fP of file \fBField\&.hpp\fP\&.
+.SS "std::unique_ptr<std::vector<\fBPillar\fP> > Field::pillars\fR [protected]\fP"
+the pillars on the field\&. The physical 3D cylinders get stored here 
+.PP
+Definition at line \fB46\fP of file \fBField\&.hpp\fP\&.
+.SS "\fBPose2D\fP Field::runningError\fR [protected]\fP"
+the running error that we have accumulated over time in our measurements\&. This is just an approixmation based on read in error from the IPC 
+.PP
+Definition at line \fB73\fP of file \fBField\&.hpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

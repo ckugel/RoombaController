@@ -1,0 +1,151 @@
+.TH "HoleManager" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HoleManager
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <HoleManager\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHoleManager\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddPoint\fP (const \fBPose2D\fP &position)"
+.br
+.ti -1c
+.RI "\fBHole\fP \fBgetHole\fP (uint8_t index)"
+.br
+.ti -1c
+.RI "void \fBaddHole\fP (const \fBHole\fP &hole)"
+.br
+.ti -1c
+.RI "void \fBaddHole\fP (const \fBPose2D\fP &cornerOne, const \fBPose2D\fP &cornerTwo)"
+.br
+.ti -1c
+.RI "std::vector< \fBHole\fP > \fBgetHoles\fP ()"
+.br
+.ti -1c
+.RI "std::vector< \fBPose2D\fP > \fBgetPointsOnHoles\fP ()"
+.br
+.ti -1c
+.RI "std::vector< \fBPose2D\fP > \fBgetSuggestedNodePlacements\fP ()"
+.br
+.ti -1c
+.RI "bool \fBnodeCollides\fP (\fBPose2D\fP position)"
+.br
+.ti -1c
+.RI "bool \fBlineIntersectsAnyHoleMeasurement\fP (const \fBPose2D\fP &positionOne, const \fBPose2D\fP &positionTwo)"
+.br
+.ti -1c
+.RI "void \fBoffsetAll\fP (const \fBPose2D\fP &offset) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A hole manager handles holes that and the measurments that are associated with them\&. Wrapped class for lists of holes 
+.PP
+Definition at line \fB18\fP of file \fBHoleManager\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HoleManager::HoleManager ()"
+Creats a new \fBHole\fP manager
+.PP
+Created by Caleb Kugel 11/15/2024 
+.PP
+Definition at line \fB9\fP of file \fBHoleManager\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void HoleManager::addHole (const \fBHole\fP & hole)"
+Adds a hole to the holes 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhole\fP to add 
+.RE
+.PP
+
+.PP
+Definition at line \fB19\fP of file \fBHoleManager\&.cpp\fP\&.
+.SS "void HoleManager::addHole (const \fBPose2D\fP & cornerOne, const \fBPose2D\fP & cornerTwo)"
+Adds a hole to the hole manager 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcornerOne\fP the first Corner 
+.br
+\fIcornerTwo\fP the second Corner 
+.RE
+.PP
+
+.PP
+Definition at line \fB14\fP of file \fBHoleManager\&.cpp\fP\&.
+.SS "void HoleManager::addPoint (const \fBPose2D\fP & position)"
+Adds a point that we collided on the hole with 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP the position of the collision 
+.RE
+.PP
+
+.PP
+Definition at line \fB40\fP of file \fBHoleManager\&.cpp\fP\&.
+.SS "\fBHole\fP HoleManager::getHole (uint8_t index)"
+get a hole from registered holes 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP of the hole in the holes list 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the hole that has been registered 
+.RE
+.PP
+
+.PP
+Definition at line \fB23\fP of file \fBHoleManager\&.cpp\fP\&.
+.SS "std::vector< \fBHole\fP > HoleManager::getHoles ()"
+get the holes that we for sure know about 
+.PP
+Definition at line \fB32\fP of file \fBHoleManager\&.cpp\fP\&.
+.SS "std::vector< \fBPose2D\fP > HoleManager::getPointsOnHoles ()"
+get the points along unconfirmed holes 
+.SS "std::vector< \fBPose2D\fP > HoleManager::getSuggestedNodePlacements ()"
+returns a list of likely accessible nodes 
+.PP
+Definition at line \fB80\fP of file \fBHoleManager\&.cpp\fP\&.
+.SS "bool HoleManager::lineIntersectsAnyHoleMeasurement (const \fBPose2D\fP & positionOne, const \fBPose2D\fP & positionTwo)"
+Determines whether a line is valid for all the hole measurements 
+.PP
+Definition at line \fB94\fP of file \fBHoleManager\&.cpp\fP\&.
+.SS "bool HoleManager::nodeCollides (\fBPose2D\fP position)"
+Whether a node collides with the estimated hole or not 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP the position of the node 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+whether that node is valid from a hole perspective 
+.RE
+.PP
+
+.PP
+Definition at line \fB56\fP of file \fBHoleManager\&.cpp\fP\&.
+.SS "void HoleManager::offsetAll (const \fBPose2D\fP & offset) const"
+provides the offset to all holes and their values 
+.PP
+Definition at line \fB117\fP of file \fBHoleManager\&.cpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

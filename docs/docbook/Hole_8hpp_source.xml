@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Hole_8hpp_source" xml:lang="en-US">
+<title>Hole.hpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Hole.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_Hole_8hpp_source_1l00001"/>00001 
+<anchor xml:id="_Hole_8hpp_source_1l00005"/>00005 <emphasis role="preprocessor">#ifndef&#32;HOLE_H</emphasis>
+<anchor xml:id="_Hole_8hpp_source_1l00006"/>00006 <emphasis role="preprocessor">#define&#32;HOLE_H</emphasis>
+<anchor xml:id="_Hole_8hpp_source_1l00007"/>00007 
+<anchor xml:id="_Hole_8hpp_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;vector&quot;</emphasis>
+<anchor xml:id="_Hole_8hpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+<anchor xml:id="_Hole_8hpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Pose2D_8hpp">Pose2D.hpp</link>&quot;</emphasis>
+<anchor xml:id="_Hole_8hpp_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+<anchor xml:id="_Hole_8hpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&lt;ostream&gt;</emphasis>
+<anchor xml:id="_Hole_8hpp_source_1l00013"/>00013 
+<anchor xml:id="_Hole_8hpp_source_1l00014"/><link linkend="_Hole_8hpp_1a657e122f8983d0a993ee0266696f1984">00014</link> <emphasis role="preprocessor">#define&#32;HOLE_SIZE&#32;69.06&#32;</emphasis><emphasis role="comment">//&#32;centimeters</emphasis>
+<anchor xml:id="_Hole_8hpp_source_1l00015"/>00015 
+<anchor xml:id="_Hole_8hpp_source_1l00020"/><link linkend="_classHole">00020</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_classHole">Hole</link>&#32;{
+<anchor xml:id="_Hole_8hpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+<anchor xml:id="_Hole_8hpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;cornerOne;
+<anchor xml:id="_Hole_8hpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;cornerTwo;
+<anchor xml:id="_Hole_8hpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;threshold&#32;=&#32;-1;
+<anchor xml:id="_Hole_8hpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;phi&#32;=&#32;-1;
+<anchor xml:id="_Hole_8hpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;x_translation_one&#32;=&#32;-1;
+<anchor xml:id="_Hole_8hpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;y_translation_one&#32;=&#32;-1;
+<anchor xml:id="_Hole_8hpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;x_translation_two&#32;=&#32;-1;
+<anchor xml:id="_Hole_8hpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;y_translation_two&#32;=&#32;-1;
+<anchor xml:id="_Hole_8hpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;holeSize&#32;=&#32;-1;
+<anchor xml:id="_Hole_8hpp_source_1l00031"/>00031 
+<anchor xml:id="_Hole_8hpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;foundHole&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_Hole_8hpp_source_1l00033"/>00033 
+<anchor xml:id="_Hole_8hpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;std::unique_ptr&lt;std::vector&lt;Pose2D&gt;&gt;&#32;points;
+<anchor xml:id="_Hole_8hpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;std::unique_ptr&lt;std::vector&lt;Hole&gt;&gt;&#32;pointHoles;
+<anchor xml:id="_Hole_8hpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="_Hole_8hpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;
+<anchor xml:id="_Hole_8hpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<link linkend="_classHole_1a90b129019613cc439b9834058f8727b1">Hole</link>(<emphasis role="keywordtype">double</emphasis>&#32;X1,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Y1,&#32;<emphasis role="keywordtype">double</emphasis>&#32;X2,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Y2,&#32;<emphasis role="keywordtype">double</emphasis>&#32;holeSize);
+<anchor xml:id="_Hole_8hpp_source_1l00046"/>00046 
+<anchor xml:id="_Hole_8hpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<link linkend="_classHole_1a90b129019613cc439b9834058f8727b1">Hole</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;positionOne,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;positionTwo,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;foundHole,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;Pose2D&gt;&amp;&#32;points,&#32;<emphasis role="keywordtype">double</emphasis>&#32;holeSize);
+<anchor xml:id="_Hole_8hpp_source_1l00051"/>00051 
+<anchor xml:id="_Hole_8hpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<link linkend="_classHole_1a90b129019613cc439b9834058f8727b1">Hole</link>(<emphasis role="keywordtype">double</emphasis>&#32;x1,&#32;<emphasis role="keywordtype">double</emphasis>&#32;y1,&#32;<emphasis role="keywordtype">double</emphasis>&#32;x2,&#32;<emphasis role="keywordtype">double</emphasis>&#32;y2);
+<anchor xml:id="_Hole_8hpp_source_1l00060"/>00060 
+<anchor xml:id="_Hole_8hpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<link linkend="_classHole_1a90b129019613cc439b9834058f8727b1">Hole</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;positionOne,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;positionTwo,&#32;<emphasis role="keywordtype">double</emphasis>&#32;holeSize);
+<anchor xml:id="_Hole_8hpp_source_1l00065"/>00065 
+<anchor xml:id="_Hole_8hpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;std::vector&lt;Pose2D&gt;&#32;<link linkend="_classHole_1a519b0f73c960b116403ee937a8fb0a3e">getSuggestedNodePlacements</link>();
+<anchor xml:id="_Hole_8hpp_source_1l00072"/>00072 
+<anchor xml:id="_Hole_8hpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classHole_1adc6df39c2118fd21749786927800de4b">registerPointsToHole</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;positionOne,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;positionTwo);
+<anchor xml:id="_Hole_8hpp_source_1l00079"/>00079 
+<anchor xml:id="_Hole_8hpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;<emphasis role="keyword">friend</emphasis>&#32;std::ostream&#32;&amp;<link linkend="_classHole_1a371c0f905489a21d9276bb383a572487">operator&lt;&lt;</link>(std::ostream&#32;&amp;os,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classHole">Hole</link>&#32;&amp;hole);
+<anchor xml:id="_Hole_8hpp_source_1l00087"/>00087 
+<anchor xml:id="_Hole_8hpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classHole_1ad224d20fbe2037b97e19344b8f0157e0">copyDoOperation</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;position)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Hole_8hpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;
+<anchor xml:id="_Hole_8hpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classHole_1a1b9d48a850759ae1b826b7476c304785">getOneSquareCorner</link>();
+<anchor xml:id="_Hole_8hpp_source_1l00099"/>00099 
+<anchor xml:id="_Hole_8hpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classHole_1ae5ba1de89591495ee62c784c8bcc4b72">getSecondSquareCorner</link>();
+<anchor xml:id="_Hole_8hpp_source_1l00104"/>00104 
+<anchor xml:id="_Hole_8hpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classHole_1afb912f0b7b58f2074fcbbc50184e39c2">pointCouldBeMemberOfHole</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;measurment);
+<anchor xml:id="_Hole_8hpp_source_1l00110"/>00110 
+<anchor xml:id="_Hole_8hpp_source_1l00115"/><link linkend="_classHole_1aec56b428187b4a6f5a952463b4029d00">00115</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classHole_1aec56b428187b4a6f5a952463b4029d00">isFoundHole</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{<emphasis role="keywordflow">return</emphasis>&#32;foundHole;}
+<anchor xml:id="_Hole_8hpp_source_1l00116"/>00116 
+<anchor xml:id="_Hole_8hpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;std::vector&lt;Hole&gt;&#32;<link linkend="_classHole_1a863918993a62cc90b99a66c48e9e0bdc">getSubHolesCopy</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Hole_8hpp_source_1l00122"/>00122 
+<anchor xml:id="_Hole_8hpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<link linkend="_classHole_1a90b129019613cc439b9834058f8727b1">Hole</link>();
+<anchor xml:id="_Hole_8hpp_source_1l00127"/>00127 
+<anchor xml:id="_Hole_8hpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;<link linkend="_classHole_1a90b129019613cc439b9834058f8727b1">Hole</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classHole">Hole</link>&amp;&#32;hole);
+<anchor xml:id="_Hole_8hpp_source_1l00132"/>00132 
+<anchor xml:id="_Hole_8hpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;<emphasis role="keyword">explicit</emphasis>&#32;<link linkend="_classHole_1a90b129019613cc439b9834058f8727b1">Hole</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;initialPoint,&#32;<emphasis role="keywordtype">double</emphasis>&#32;holeSize);
+<anchor xml:id="_Hole_8hpp_source_1l00138"/>00138 
+<anchor xml:id="_Hole_8hpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classHole_1a39673dc613c45644ff844c7b81709ab9">addPoint</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;position);
+<anchor xml:id="_Hole_8hpp_source_1l00145"/>00145 
+<anchor xml:id="_Hole_8hpp_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classHole_1afd4c5c949e5c37e58ff10927e475fcdf">isInSquare</link>(<link linkend="_classPose2D">Pose2D</link>&amp;&#32;position)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Hole_8hpp_source_1l00152"/>00152 
+<anchor xml:id="_Hole_8hpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classHole_1a73735b03496aad26f53879b2c50fcc71">offset</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;<link linkend="_classHole_1a73735b03496aad26f53879b2c50fcc71">offset</link>);
+<anchor xml:id="_Hole_8hpp_source_1l00158"/>00158 
+<anchor xml:id="_Hole_8hpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classHole_1ae7c69bf5e1d37a1230b50187e7442506">lineIntersectsHole</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;posOne,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;posTwo)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Hole_8hpp_source_1l00165"/>00165 };
+<anchor xml:id="_Hole_8hpp_source_1l00166"/>00166 
+<anchor xml:id="_Hole_8hpp_source_1l00167"/>00167 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;HOLE_H</emphasis>
+</programlisting></section>

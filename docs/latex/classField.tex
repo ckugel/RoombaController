@@ -1,0 +1,579 @@
+\doxysection{Field Class Reference}
+\hypertarget{classField}{}\label{classField}\index{Field@{Field}}
+
+
+{\ttfamily \#include $<$Field.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classField_a0cb97f5f6abc65f46f80a9db40a05f89}{Field}} (const std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ \&\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&\mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desired\+Destination}}, const \mbox{\hyperlink{classPillar}{Pillar}} \&\mbox{\hyperlink{classField_aa714dd29f5248a7de11e20c8c67f6bb4}{bot\+Pose}})
+\item 
+\mbox{\hyperlink{classField_a2cbf1be1f006dce87a5f7f9c16f250dc}{Field}} (const std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ \&\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&\mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desired\+Destination}})
+\item 
+\mbox{\hyperlink{classField_a3e804c92273d9159f413f227b535c672}{Field}} ()
+\item 
+\mbox{\hyperlink{classField_a5d6ee1de8a4bf615a3eb2b0ed080479d}{Field}} (const std\+::unique\+\_\+ptr$<$ std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ $>$ \&\mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&desired\+\_\+destination, const \mbox{\hyperlink{classPillar}{Pillar}} \&bot\+\_\+pose, const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&\mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}})
+\item 
+void \mbox{\hyperlink{classField_aba8449d9e693a3542f37c223099464d9}{add\+Edge\+Measurement}} (double raw\+Position, \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5}{Cardinality}} cardinality)
+\item 
+\mbox{\hyperlink{classHoleManager}{Hole\+Manager}} \& \mbox{\hyperlink{classField_a87df29e3618d42c11b886bbcf07b1453}{get\+Manager}} ()
+\item 
+void \mbox{\hyperlink{classField_ae3ce826773c17f1e987af8ee4fb64269}{apply\+Offset\+To\+Edge}} (double x, double y)
+\item 
+int32\+\_\+t \mbox{\hyperlink{classField_a076b4e7297f788e933b4ee824b930473}{get\+Desired\+Index}} () const
+\item 
+void \mbox{\hyperlink{classField_a753a1dbb8d1e8b6159309bdfeec3d1f1}{clear\+Field}} ()
+\item 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \& \mbox{\hyperlink{classField_ae20c991c2df6d7e863458e181b683140}{get\+Graph}} ()
+\item 
+\mbox{\hyperlink{classPillar}{Pillar}} \mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{get\+Bot\+Pose}} ()
+\item 
+void \mbox{\hyperlink{classField_a3e9096a686ffb177056e24dfb920a610}{discretize\+Graph}} ()
+\item 
+void \mbox{\hyperlink{classField_ab1945d8274ee391ea813863aa94c5d52}{weight\+Graph}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \mbox{\hyperlink{classField_aa988c5de70875dd81c766c9429a4b986}{make\+Path}} ()
+\item 
+void \mbox{\hyperlink{classField_a890d7140a600bed6eb18a549b1a0faf9}{add\+Pillar}} (\mbox{\hyperlink{classPillar}{Pillar}} \&new\+Pillar)
+\item 
+void \mbox{\hyperlink{classField_a099593a58a6edcd2e6e2831abbb8fe89}{update\+Bot\+Pose}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&updated\+Position)
+\item 
+std\+::unique\+\_\+ptr$<$ std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ $>$ \mbox{\hyperlink{classField_a3c2ce861d894d5ef000293887a2be3bb}{get\+Pillars}} ()
+\item 
+void \mbox{\hyperlink{classField_a8a9681dae64b9db32d147ffefd25a78e}{set\+Pillars}} (std\+::unique\+\_\+ptr$<$ std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ $>$ \mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}})
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ \mbox{\hyperlink{classField_a1f3f3b289e23572dc12f9aef6b33817e}{get\+Copy\+Pillars}} ()
+\item 
+bool \mbox{\hyperlink{classField_a3ed7a96d07bdc2a21edda0fa7626e6fe}{valid\+Location\+For\+Node}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&location)
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classField_a5fa390f458efc053b4621a991566204f}{get\+Desired\+Destination}} ()
+\item 
+void \mbox{\hyperlink{classField_a9448f436dd4e1e2d6bf1d82bf18c86a2}{update\+Desired}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&other)
+\item 
+void \mbox{\hyperlink{classField_ad3354ff6a0954809aa9e7082778d8c44}{set\+Desired\+Index}} (int32\+\_\+t index)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classField_ad499baebb2aa49f7467d5d632ed97199}{out\+Of\+Bounds}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&location)
+\item 
+static bool \mbox{\hyperlink{classField_a729114d0b55662bbcb8f21897617e0c1}{line\+Intersects\+Circle}} (double cx, double cy, double r, double x1, double y1, double x2, double y2)
+\item 
+static bool \mbox{\hyperlink{classField_a1d2b8ed638cd4b785be4156a3638578d}{line\+Intersects\+Circle}} (\mbox{\hyperlink{classPillar}{Pillar}} p1, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&one, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&two)
+\item 
+static double \mbox{\hyperlink{classField_ad631e7bd5cdcc7c10d274836ce464e1b}{round\+Radius}} (double radius)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ $>$ \mbox{\hyperlink{classField_a003a6384059a42b3d38bba86f8482bc5}{pillars}}
+\item 
+\mbox{\hyperlink{classHoleManager}{Hole\+Manager}} \mbox{\hyperlink{classField_acd1e5fe551b0b0910391b193d29550ca}{hole\+Manager}}
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classField_adf27e38bcd47cb341328a2339b2c16a3}{offset}}
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classField_afba5f7de976bb8640644ba6cbb7b5e35}{desired\+Destination}}
+\item 
+\mbox{\hyperlink{classPillar}{Pillar}} \mbox{\hyperlink{classField_aa714dd29f5248a7de11e20c8c67f6bb4}{bot\+Pose}}
+\item 
+\mbox{\hyperlink{classPose2D}{Pose2D}} \mbox{\hyperlink{classField_a5a6d409dcc5a61d64888f8ca20c6b05f}{running\+Error}}
+\item 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \mbox{\hyperlink{classField_ab69087224439a9f8c3414e7b72383201}{graph}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{classField_a1d7b5e004850feaa692893d0c46add14}{desired\+Index}} = -\/1
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ \mbox{\hyperlink{classField_a536803e37492ec349eae440878304a00}{new\+Pillars}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that represents the objects that can be and are on the field 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classField_a0cb97f5f6abc65f46f80a9db40a05f89}\label{classField_a0cb97f5f6abc65f46f80a9db40a05f89} 
+\index{Field@{Field}!Field@{Field}}
+\index{Field@{Field}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{Field()}{Field()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Field\+::\+Field (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ \&}]{pillars,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{desired\+Destination,  }\item[{const \mbox{\hyperlink{classPillar}{Pillar}} \&}]{bot\+Pose }\end{DoxyParamCaption})}
+
+constructs a new field object 
+\begin{DoxyParams}{Parameters}
+{\em pillars} & the pillars that the field stores \\
+\hline
+{\em desired\+Destination} & the desired destination for the app to generate a path to \\
+\hline
+{\em bot\+Pose} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a2cbf1be1f006dce87a5f7f9c16f250dc}\label{classField_a2cbf1be1f006dce87a5f7f9c16f250dc} 
+\index{Field@{Field}!Field@{Field}}
+\index{Field@{Field}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{Field()}{Field()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Field\+::\+Field (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ \&}]{pillars,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{desired\+Destination }\end{DoxyParamCaption})}
+
+constructs a new field object 
+\begin{DoxyParams}{Parameters}
+{\em pillars} & the pillars that the field stores \\
+\hline
+{\em desired\+Destination} & the desired destination for the app to generate a path to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a3e804c92273d9159f413f227b535c672}\label{classField_a3e804c92273d9159f413f227b535c672} 
+\index{Field@{Field}!Field@{Field}}
+\index{Field@{Field}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{Field()}{Field()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Field\+::\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs a deafult field object 
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a5d6ee1de8a4bf615a3eb2b0ed080479d}\label{classField_a5d6ee1de8a4bf615a3eb2b0ed080479d} 
+\index{Field@{Field}!Field@{Field}}
+\index{Field@{Field}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{Field()}{Field()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Field\+::\+Field (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ $>$ \&}]{pillars,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{desired\+\_\+destination,  }\item[{const \mbox{\hyperlink{classPillar}{Pillar}} \&}]{bot\+\_\+pose,  }\item[{const \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \&}]{graph }\end{DoxyParamCaption})}
+
+Copys the majority of the important parts of the field 
+\begin{DoxyParams}{Parameters}
+{\em pillars} & the pillars to store \\
+\hline
+{\em desired\+\_\+destination} & the desired destination to travel to \\
+\hline
+{\em bot\+\_\+pose} & the bot position \\
+\hline
+{\em graph} & the graph object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classField_aba8449d9e693a3542f37c223099464d9}\label{classField_aba8449d9e693a3542f37c223099464d9} 
+\index{Field@{Field}!addEdgeMeasurement@{addEdgeMeasurement}}
+\index{addEdgeMeasurement@{addEdgeMeasurement}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{addEdgeMeasurement()}{addEdgeMeasurement()}}
+{\footnotesize\ttfamily void Field\+::add\+Edge\+Measurement (\begin{DoxyParamCaption}\item[{double}]{raw\+Position,  }\item[{\mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5}{Cardinality}}}]{cardinality }\end{DoxyParamCaption})}
+
+Add an edge measurement to the field. 
+\begin{DoxyParams}{Parameters}
+{\em raw\+Position} & the raw position (X or Y) of the measurmenet \\
+\hline
+{\em cardinality} & the direction of the measurement \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a890d7140a600bed6eb18a549b1a0faf9}\label{classField_a890d7140a600bed6eb18a549b1a0faf9} 
+\index{Field@{Field}!addPillar@{addPillar}}
+\index{addPillar@{addPillar}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{addPillar()}{addPillar()}}
+{\footnotesize\ttfamily void Field\+::add\+Pillar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPillar}{Pillar}} \&}]{new\+Pillar }\end{DoxyParamCaption})}
+
+Add a pillar measurement to the graph 
+\begin{DoxyParams}{Parameters}
+{\em new\+Pillar} & to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00159}{159}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_ae3ce826773c17f1e987af8ee4fb64269}\label{classField_ae3ce826773c17f1e987af8ee4fb64269} 
+\index{Field@{Field}!applyOffsetToEdge@{applyOffsetToEdge}}
+\index{applyOffsetToEdge@{applyOffsetToEdge}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{applyOffsetToEdge()}{applyOffsetToEdge()}}
+{\footnotesize\ttfamily void Field\+::apply\+Offset\+To\+Edge (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+Applys some offset from getting the edge of the field 
+\begin{DoxyParams}{Parameters}
+{\em x} & component of the offset \\
+\hline
+{\em y} & component of the offset \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a753a1dbb8d1e8b6159309bdfeec3d1f1}\label{classField_a753a1dbb8d1e8b6159309bdfeec3d1f1} 
+\index{Field@{Field}!clearField@{clearField}}
+\index{clearField@{clearField}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{clearField()}{clearField()}}
+{\footnotesize\ttfamily void Field\+::clear\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clears the entire field and cooresponding managers and graphs 
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a3e9096a686ffb177056e24dfb920a610}\label{classField_a3e9096a686ffb177056e24dfb920a610} 
+\index{Field@{Field}!discretizeGraph@{discretizeGraph}}
+\index{discretizeGraph@{discretizeGraph}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{discretizeGraph()}{discretizeGraph()}}
+{\footnotesize\ttfamily void Field\+::discretize\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+add nodes to the graph that are valid places the bot can be at 
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a55f738166b3267d7fa313465d2866dd4}\label{classField_a55f738166b3267d7fa313465d2866dd4} 
+\index{Field@{Field}!getBotPose@{getBotPose}}
+\index{getBotPose@{getBotPose}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getBotPose()}{getBotPose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPillar}{Pillar}} Field\+::get\+Bot\+Pose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the robot pose on the field as a pillar. The radius is the radius of the bot 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00155}{155}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a1f3f3b289e23572dc12f9aef6b33817e}\label{classField_a1f3f3b289e23572dc12f9aef6b33817e} 
+\index{Field@{Field}!getCopyPillars@{getCopyPillars}}
+\index{getCopyPillars@{getCopyPillars}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getCopyPillars()}{getCopyPillars()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ Field\+::get\+Copy\+Pillars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a copy of the pillars on the field 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00191}{191}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a5fa390f458efc053b4621a991566204f}\label{classField_a5fa390f458efc053b4621a991566204f} 
+\index{Field@{Field}!getDesiredDestination@{getDesiredDestination}}
+\index{getDesiredDestination@{getDesiredDestination}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getDesiredDestination()}{getDesiredDestination()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Field\+::get\+Desired\+Destination (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+get the desired destination to travel to \begin{DoxyReturn}{Returns}
+the position to get to 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00274}{274}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a076b4e7297f788e933b4ee824b930473}\label{classField_a076b4e7297f788e933b4ee824b930473} 
+\index{Field@{Field}!getDesiredIndex@{getDesiredIndex}}
+\index{getDesiredIndex@{getDesiredIndex}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getDesiredIndex()}{getDesiredIndex()}}
+{\footnotesize\ttfamily int32\+\_\+t Field\+::get\+Desired\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the index of the desired pillar in the graph 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00257}{257}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_ae20c991c2df6d7e863458e181b683140}\label{classField_ae20c991c2df6d7e863458e181b683140} 
+\index{Field@{Field}!getGraph@{getGraph}}
+\index{getGraph@{getGraph}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getGraph()}{getGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ \& Field\+::get\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets a reference to the graph object on the field \begin{DoxyReturn}{Returns}
+a reference to the graph object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00261}{261}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a87df29e3618d42c11b886bbcf07b1453}\label{classField_a87df29e3618d42c11b886bbcf07b1453} 
+\index{Field@{Field}!getManager@{getManager}}
+\index{getManager@{getManager}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getManager()}{getManager()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classHoleManager}{Hole\+Manager}} \& Field\+::get\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets a reference to the hole manager \begin{DoxyReturn}{Returns}
+a reference to the hole manager 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a3c2ce861d894d5ef000293887a2be3bb}\label{classField_a3c2ce861d894d5ef000293887a2be3bb} 
+\index{Field@{Field}!getPillars@{getPillars}}
+\index{getPillars@{getPillars}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getPillars()}{getPillars()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ $>$ Field\+::get\+Pillars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+a unique pointer for the pillars on the field \begin{DoxyReturn}{Returns}
+the pillars on the field 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a729114d0b55662bbcb8f21897617e0c1}\label{classField_a729114d0b55662bbcb8f21897617e0c1} 
+\index{Field@{Field}!lineIntersectsCircle@{lineIntersectsCircle}}
+\index{lineIntersectsCircle@{lineIntersectsCircle}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{lineIntersectsCircle()}{lineIntersectsCircle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Field\+::line\+Intersects\+Circle (\begin{DoxyParamCaption}\item[{double}]{cx,  }\item[{double}]{cy,  }\item[{double}]{r,  }\item[{double}]{x1,  }\item[{double}]{y1,  }\item[{double}]{x2,  }\item[{double}]{y2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Util function that returns whether a given line intersects a circle 
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00236}{236}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a1d2b8ed638cd4b785be4156a3638578d}\label{classField_a1d2b8ed638cd4b785be4156a3638578d} 
+\index{Field@{Field}!lineIntersectsCircle@{lineIntersectsCircle}}
+\index{lineIntersectsCircle@{lineIntersectsCircle}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{lineIntersectsCircle()}{lineIntersectsCircle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static bool Field\+::line\+Intersects\+Circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPillar}{Pillar}}}]{p1,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{one,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{two }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Util function that returns whether a given line intersects a circle 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00182}{182}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_aa988c5de70875dd81c766c9429a4b986}\label{classField_aa988c5de70875dd81c766c9429a4b986} 
+\index{Field@{Field}!makePath@{makePath}}
+\index{makePath@{makePath}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{makePath()}{makePath()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classPose2D}{Pose2D}} $>$ Field\+::make\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Generates a path from the graph using Dijkstra\textquotesingle{}s algorithm \begin{DoxyReturn}{Returns}
+a path to the desired destination 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_ad499baebb2aa49f7467d5d632ed97199}\label{classField_ad499baebb2aa49f7467d5d632ed97199} 
+\index{Field@{Field}!outOfBounds@{outOfBounds}}
+\index{outOfBounds@{outOfBounds}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{outOfBounds()}{outOfBounds()}}
+{\footnotesize\ttfamily bool Field\+::out\+Of\+Bounds (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{location }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A static check to determine if a given location in the field coordinate system is out of bounds 
+\begin{DoxyParams}{Parameters}
+{\em location} & the position to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether that postiion is out of bounds on the field. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_ad631e7bd5cdcc7c10d274836ce464e1b}\label{classField_ad631e7bd5cdcc7c10d274836ce464e1b} 
+\index{Field@{Field}!roundRadius@{roundRadius}}
+\index{roundRadius@{roundRadius}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{roundRadius()}{roundRadius()}}
+{\footnotesize\ttfamily static double Field\+::round\+Radius (\begin{DoxyParamCaption}\item[{double}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+round a given radius to possible radii 
+\begin{DoxyParams}{Parameters}
+{\em radius} & the radius to round \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the rounded radius 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00258}{258}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_ad3354ff6a0954809aa9e7082778d8c44}\label{classField_ad3354ff6a0954809aa9e7082778d8c44} 
+\index{Field@{Field}!setDesiredIndex@{setDesiredIndex}}
+\index{setDesiredIndex@{setDesiredIndex}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{setDesiredIndex()}{setDesiredIndex()}}
+{\footnotesize\ttfamily void Field\+::set\+Desired\+Index (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+set the index of the desired position to travel to IN THE GRAPH 
+\begin{DoxyParams}{Parameters}
+{\em index} & the index IN the graph \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a8a9681dae64b9db32d147ffefd25a78e}\label{classField_a8a9681dae64b9db32d147ffefd25a78e} 
+\index{Field@{Field}!setPillars@{setPillars}}
+\index{setPillars@{setPillars}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{setPillars()}{setPillars()}}
+{\footnotesize\ttfamily void Field\+::set\+Pillars (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ std\+::vector$<$ \mbox{\hyperlink{classPillar}{Pillar}} $>$ $>$}]{pillars }\end{DoxyParamCaption})}
+
+sets the pillars on the field 
+\begin{DoxyParams}{Parameters}
+{\em pillars} & the pillars that the field stores \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a099593a58a6edcd2e6e2831abbb8fe89}\label{classField_a099593a58a6edcd2e6e2831abbb8fe89} 
+\index{Field@{Field}!updateBotPose@{updateBotPose}}
+\index{updateBotPose@{updateBotPose}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{updateBotPose()}{updateBotPose()}}
+{\footnotesize\ttfamily void Field\+::update\+Bot\+Pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{updated\+Position }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em updated\+Position} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00179}{179}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a9448f436dd4e1e2d6bf1d82bf18c86a2}\label{classField_a9448f436dd4e1e2d6bf1d82bf18c86a2} 
+\index{Field@{Field}!updateDesired@{updateDesired}}
+\index{updateDesired@{updateDesired}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{updateDesired()}{updateDesired()}}
+{\footnotesize\ttfamily void Field\+::update\+Desired (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{other }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the new desired position \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00265}{265}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_a3ed7a96d07bdc2a21edda0fa7626e6fe}\label{classField_a3ed7a96d07bdc2a21edda0fa7626e6fe} 
+\index{Field@{Field}!validLocationForNode@{validLocationForNode}}
+\index{validLocationForNode@{validLocationForNode}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{validLocationForNode()}{validLocationForNode()}}
+{\footnotesize\ttfamily bool Field\+::valid\+Location\+For\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{location }\end{DoxyParamCaption})}
+
+Check whether a given position is a valid place for a node in the graph with respect to "{}this"{} field 
+\begin{DoxyParams}{Parameters}
+{\em location} & the location of the node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether it collides with anything 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+\Hypertarget{classField_ab1945d8274ee391ea813863aa94c5d52}\label{classField_ab1945d8274ee391ea813863aa94c5d52} 
+\index{Field@{Field}!weightGraph@{weightGraph}}
+\index{weightGraph@{weightGraph}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{weightGraph()}{weightGraph()}}
+{\footnotesize\ttfamily void Field\+::weight\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Weight the graph in a way that the bot does not intersect and objects on the field 
+
+Definition at line \mbox{\hyperlink{Field_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{Field_8cpp_source}{Field.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classField_aa714dd29f5248a7de11e20c8c67f6bb4}\label{classField_aa714dd29f5248a7de11e20c8c67f6bb4} 
+\index{Field@{Field}!botPose@{botPose}}
+\index{botPose@{botPose}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{botPose}{botPose}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPillar}{Pillar}} Field\+::bot\+Pose\hspace{0.3cm}{\ttfamily [protected]}}
+
+THe position of the robot on the field 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_afba5f7de976bb8640644ba6cbb7b5e35}\label{classField_afba5f7de976bb8640644ba6cbb7b5e35} 
+\index{Field@{Field}!desiredDestination@{desiredDestination}}
+\index{desiredDestination@{desiredDestination}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{desiredDestination}{desiredDestination}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Field\+::desired\+Destination\hspace{0.3cm}{\ttfamily [protected]}}
+
+the desired destination for the robot to get to 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_a1d7b5e004850feaa692893d0c46add14}\label{classField_a1d7b5e004850feaa692893d0c46add14} 
+\index{Field@{Field}!desiredIndex@{desiredIndex}}
+\index{desiredIndex@{desiredIndex}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{desiredIndex}{desiredIndex}}
+{\footnotesize\ttfamily int32\+\_\+t Field\+::desired\+Index = -\/1\hspace{0.3cm}{\ttfamily [protected]}}
+
+The index of the desired position in the graph 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_ab69087224439a9f8c3414e7b72383201}\label{classField_ab69087224439a9f8c3414e7b72383201} 
+\index{Field@{Field}!graph@{graph}}
+\index{graph@{graph}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{graph}{graph}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}}$<$\mbox{\hyperlink{classPose2D}{Pose2D}}$>$ Field\+::graph\hspace{0.3cm}{\ttfamily [protected]}}
+
+The graph object which is used to generate trajectorys from nodes. Nodes represent places we can be on the field. The connections between nodes represents the possible paths we can take. The values of the connections represent the cost of moving between those nodes which is measured as the distance between nodes. 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_acd1e5fe551b0b0910391b193d29550ca}\label{classField_acd1e5fe551b0b0910391b193d29550ca} 
+\index{Field@{Field}!holeManager@{holeManager}}
+\index{holeManager@{holeManager}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{holeManager}{holeManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classHoleManager}{Hole\+Manager}} Field\+::hole\+Manager\hspace{0.3cm}{\ttfamily [protected]}}
+
+A hole maanger to manage and check collision with holes 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_a536803e37492ec349eae440878304a00}\label{classField_a536803e37492ec349eae440878304a00} 
+\index{Field@{Field}!newPillars@{newPillars}}
+\index{newPillars@{newPillars}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{newPillars}{newPillars}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classPillar}{Pillar}}$>$ Field\+::new\+Pillars\hspace{0.3cm}{\ttfamily [protected]}}
+
+A queue for new pillars that we add to the field. This is used to speed up discretization and weighting of the graph. 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_adf27e38bcd47cb341328a2339b2c16a3}\label{classField_adf27e38bcd47cb341328a2339b2c16a3} 
+\index{Field@{Field}!offset@{offset}}
+\index{offset@{offset}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Field\+::offset\hspace{0.3cm}{\ttfamily [protected]}}
+
+The amount to offset everything by after reading edges. X value stores the X (N, S) offset, Y value stores the Y (E, W) offset 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_a003a6384059a42b3d38bba86f8482bc5}\label{classField_a003a6384059a42b3d38bba86f8482bc5} 
+\index{Field@{Field}!pillars@{pillars}}
+\index{pillars@{pillars}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{pillars}{pillars}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$std\+::vector$<$\mbox{\hyperlink{classPillar}{Pillar}}$>$ $>$ Field\+::pillars\hspace{0.3cm}{\ttfamily [protected]}}
+
+the pillars on the field. The physical 3D cylinders get stored here 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{classField_a5a6d409dcc5a61d64888f8ca20c6b05f}\label{classField_a5a6d409dcc5a61d64888f8ca20c6b05f} 
+\index{Field@{Field}!runningError@{runningError}}
+\index{runningError@{runningError}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{runningError}{runningError}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose2D}{Pose2D}} Field\+::running\+Error\hspace{0.3cm}{\ttfamily [protected]}}
+
+the running error that we have accumulated over time in our measurements. This is just an approixmation based on read in error from the IPC 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Field_8hpp}{Field.\+hpp}}\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Field_8cpp}{Field.\+cpp}}\end{DoxyCompactItemize}

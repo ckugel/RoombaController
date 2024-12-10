@@ -1,0 +1,648 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}\index{/home/calebk/Documents/coding/RoombaController/src/main.cpp@{/home/calebk/Documents/coding/RoombaController/src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}../include/imgui/imgui.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}../include/imgui/backends/imgui\_impl\_glfw.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../include/imgui/backends/imgui\_impl\_opengl3.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pose2D_8hpp}{Pose2D.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Node_8hpp}{Node.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pillar_8hpp}{Pillar.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Hole_8hpp}{Hole.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Field_8hpp}{Field.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <netinet/in.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <sys/socket.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <arpa/inet.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <condition\_variable>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}\mbox{\hyperlink{main_8cpp_a69549d0bd46cc467083f3554f3f95955}{00024}}\ \textcolor{preprocessor}{\#define\ BOT\_CONNECT\ 0}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#if\ BOT\_CONNECT}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\ \ \ \ \#define\ ADDRESS\ "{}192.168.1.1"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\ \ \ \ \#define\ PORT\ 288}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}\mbox{\hyperlink{main_8cpp_a280feb883e9d4a7edcc69c8bcb9f38f2}{00029}}\ \textcolor{preprocessor}{\ \ \ \ \#define\ ADDRESS\ "{}127.0.0.1"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}\mbox{\hyperlink{main_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}{00030}}\ \textcolor{preprocessor}{\ \ \ \ \#define\ PORT\ \ 65432}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}\mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493}{00033}}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493}{MovementType}}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}\mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c}{00034}}\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c}{MOVE\_FORWARD}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}\mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339}{00035}}\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339}{MOVE\_BACKWARDS}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}\mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165}{00036}}\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165}{MOVE\_FORWARD\_SMART}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}\mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd}{00037}}\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd}{TURN\_TO\_ANGLE}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d}{SCAN}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}\mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d}{00039}}\ \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}\mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{00041}}\ std::queue<std::string>\ \mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{sendQueue}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}\mbox{\hyperlink{main_8cpp_a781e3772674224fa00da70ac8e0bb247}{00042}}\ std::mutex\ \mbox{\hyperlink{main_8cpp_a781e3772674224fa00da70ac8e0bb247}{queueMutex}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}\mbox{\hyperlink{main_8cpp_a4bf7290e131c491bb7def53e3d340b95}{00043}}\ std::condition\_variable\ \mbox{\hyperlink{main_8cpp_a4bf7290e131c491bb7def53e3d340b95}{sendCondition}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}\mbox{\hyperlink{structMove}{00045}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMove}{Move}}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}\mbox{\hyperlink{structMove_a261f6dd2a4399171b95747f32eb4025e}{00046}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structMove_a261f6dd2a4399171b95747f32eb4025e}{quantity}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}\mbox{\hyperlink{structMove_a024fa73d41d4d3830f2565e158a2b521}{00047}}\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493}{MovementType}}\ \mbox{\hyperlink{structMove_a024fa73d41d4d3830f2565e158a2b521}{type}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048\ \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}\mbox{\hyperlink{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6}{00050}}\ std::atomic<bool>\ \mbox{\hyperlink{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6}{stopClient}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}\mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{00056}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{keyword}{const}\ std::string\&\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ message\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a781e3772674224fa00da70ac8e0bb247}{queueMutex}}.lock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059\ \ \ \ \ std::cout\ <<\ message\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{sendQueue}}.push(message);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a781e3772674224fa00da70ac8e0bb247}{queueMutex}}.unlock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}\mbox{\hyperlink{main_8cpp_abe296e2909cfc40a8d7cd431a6dbe459}{00068}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_abe296e2909cfc40a8d7cd431a6dbe459}{sendAngleToQueue}}(int16\_t\ angle)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{char}\ buff[8];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070\ \ \ \ \ sprintf(buff,\ \textcolor{stringliteral}{"{}t\%03d"{}},\ angle);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ std::string(buff)\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{sendQueue}}.emplace(buff);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}\mbox{\hyperlink{main_8cpp_ab2b6c72d73cb5cdf34a271f97a8d6df5}{00079}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_ab2b6c72d73cb5cdf34a271f97a8d6df5}{sendDistanceToQueue}}(uint16\_t\ distance)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{char}\ buff[8];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081\ \ \ \ \ sprintf(buff,\ \textcolor{stringliteral}{"{}r\%03d"{}},\ distance);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{sendQueue}}.emplace(buff);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}\mbox{\hyperlink{main_8cpp_aafce9996e79c89401b2797ea5bd5702b}{00090}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_aafce9996e79c89401b2797ea5bd5702b}{pathToRoutine}}(std::vector<Pose2D>\ path,\ std::vector<Move>\&\ routine)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ start\ at\ 1\ so\ that\ we\ can\ gurantee\ that\ we\ can\ look\ back.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{double}\ previousEndHeading\ =\ path[0].getHeading();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ move\ =\ 1;\ move\ <\ ((path.size()\ -\/\ 1)*2);\ move\ +=\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ every\ point\ we\ want\ to\ point\ and\ move}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ pointOld\ =\ path[move\ /\ 2];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ pointNew\ =\ path[(move\ /\ 2)\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ angle\ to\ turn\ to}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ newHeading\ =\ pointNew.\mbox{\hyperlink{classPose2D_a29526d1eb9c2eafc4b6d3cc2f31a6773}{angleTo}}(pointOld);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ angle\ =\ newHeading\ -\/\ previousEndHeading;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ previousEndHeading\ =\ newHeading;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ magnitude}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ magnitude\ =\ pointNew.\mbox{\hyperlink{classPose2D_a9acb14a9b0252c620dfc1e79139b52d3}{distanceTo}}(pointOld);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ routine.push\_back((\mbox{\hyperlink{structMove}{Move}})\ \{.quantity\ =\ angle,\ .type\ =\ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd}{TURN\_TO\_ANGLE}}\});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ routine.push\_back((\mbox{\hyperlink{structMove}{Move}})\ \{.quantity\ =\ magnitude,\ .type\ =\ \mbox{\hyperlink{main_8cpp_a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165}{MOVE\_FORWARD\_SMART}}\});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}\mbox{\hyperlink{main_8cpp_a752b76589dc853d37e6bb0f07e6b57c9}{00114}}\ std::string\ \mbox{\hyperlink{main_8cpp_a752b76589dc853d37e6bb0f07e6b57c9}{parsePathIntoRoutine}}(\textcolor{keyword}{const}\ std::vector<Pose2D>\&\ path)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115\ \ \ \ \ std::stringstream\ toSend;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116\ \ \ \ \ std::vector<Move>\ routine;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}routine\ length:\ "{}\ <<\ routine.size()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118\ \ \ \ \ \mbox{\hyperlink{main_8cpp_aafce9996e79c89401b2797ea5bd5702b}{pathToRoutine}}(path,\ routine);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120\ \ \ \ \ toSend\ <<\ \textcolor{stringliteral}{"{}R"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\ =\ 0;\ i\ <\ routine.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ buffer[50];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sprintf(buffer,\ "{}p\ \%0.3f\ \%0.3f\ "{}\ ,\ path[i].getX(),\ path[i].getY());}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ //\ routine[i]\ is\ all\ 0}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ sprintf(buffer,\ \textcolor{stringliteral}{"{}\ \%0.3f\ \%c\ "{}},\ routine[i].quantity,\ routine[i].type\ +\ \textcolor{charliteral}{'a'});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ toSend\ <<\ std::string(buffer);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130\ \ \ \ \ toSend\ <<\ \textcolor{stringliteral}{"{}R"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{return}\ toSend.str();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}\mbox{\hyperlink{main_8cpp_a6e0bf7be42eb96e07b07995bad442501}{00142}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a6e0bf7be42eb96e07b07995bad442501}{readAndLog}}(\textcolor{keywordtype}{int}\ socket,\ std::mutex\&\ fieldMutex,\ \mbox{\hyperlink{classField}{Field}}\&\ field,\ std::vector<Pose2D>\&\ path)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t\ BUFF\_SIZE\ =\ 1024;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ name\_buff[50];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146\ \ \ time\_t\ now\ =\ time(0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147\ \ \ strftime(name\_buff,\ \textcolor{keyword}{sizeof}(name\_buff),\ \textcolor{stringliteral}{"{}log/\%Y\%m\%d\_\%H\%M\%S.log"{}},\ localtime(\&now));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148\ \ \ std::string\ str\_name(name\_buff);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00150}00150\ \ \ std::ofstream\ logFile(str\_name);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00152}00152\ \ \ \textcolor{keywordflow}{while}\ (!(\mbox{\hyperlink{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6}{stopClient}}.load()))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}00154\ \ \ \ \ \textcolor{keywordtype}{char}\ buff[BUFF\_SIZE];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ expect\ a\ "{}Handshake"{}\ response\ to\ be\ echoed}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ bytesRead\ =\ read(socket,\ buff,\ BUFF\_SIZE);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159\ \ \ \ \ std::string\ response(buff,\ bytesRead);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161\ \ \ \ \ \textcolor{keywordflow}{if}\ (bytesRead\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ logFile\ <<\ response;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165\ \ \ \ \ std::istringstream\ stream(response);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordtype}{char}\ tag;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{while}\ (stream\ >>\ tag)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{keywordflow}{switch}(tag)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'F'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ send\ the\ routine}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ generate\ path\ and\ return\ it}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.lock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_a3e9096a686ffb177056e24dfb920a610}{discretizeGraph}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_ab1945d8274ee391ea813863aa94c5d52}{weightGraph}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.clear();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Pose2D>\ pathOne\ =\ field.\mbox{\hyperlink{classField_aa988c5de70875dd81c766c9429a4b986}{makePath}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint16\_t\ i\ =\ 0;\ i\ <\ pathOne.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.push\_back(pathOne[i]);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Pose2D\ oldCenter\ =\ field.getDesiredDestination();}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (path.empty())\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00187}00187\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ try\ a\ new\ desired\ position\ until\ its\ not\ empty}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00188}00188\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ (uint8\_t\ i\ =\ 0;\ i\ <\ 10;\ i\ +=\ 5)\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00189}00189\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ (double\ j\ =\ 0;\ j\ <\ 2\ *\ M\_PI;\ j\ +=\ M\_PI\ *\ 1/4)\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00190}00190\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Pose2D\ newDesired\ =\ Pose2D::fromPolar(i,\ j);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00191}00191\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newDesired.plus(oldCenter);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00192}00192\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!Field::outOfBounds(newDesired))\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00193}00193\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ field.updateDesired(newDesired);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00194}00194\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ field.discretizeGraph();}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00195}00195\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ field.weightGraph();}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00196}00196\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path\ =\ field.makePath();}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00197}00197\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!path.empty())\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00198}00198\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sendQueue.push(parsePathIntoRoutine(path));}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00199}00199\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00200}00200\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00201}00201\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00202}00202\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00203}00203\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00204}00204\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00205}00205\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.unlock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'o'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.lock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPillar}{Pillar}}\ toAdd\ =\ \mbox{\hyperlink{classPillar_a01e5ad8ad29b0637edc291aaff93785e}{Pillar::parseFromStream}}(stream);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}x:\ "{}\ <<\ toAdd.getX()\ <<\ "{}\ y:\ "{}\ <<\ toAdd.getY()\ <<\ "{}\ radius:\ "{}\ <<\ toAdd.getRadius()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ toAdd.\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}().\mbox{\hyperlink{classPose2D_a4fc6977729ef4a4b63e0e9fa0caf1e2e}{transformForPose}}(field.\mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{getBotPose}}().\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_a890d7140a600bed6eb18a549b1a0faf9}{addPillar}}(toAdd);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.unlock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'d'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ other\ =\ \mbox{\hyperlink{classPose2D_a5d17898ded76394ed8d4af09b6c79ca2}{Pose2D::parseFromStream}}(stream);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_a9448f436dd4e1e2d6bf1d82bf18c86a2}{updateDesired}}(other);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'E'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ m;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ cardinality;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stream\ >>\ m\ >>\ cardinality)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_aba8449d9e693a3542f37c223099464d9}{addEdgeMeasurement}}(m,\ (\mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5}{Cardinality}})\ cardinality);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ first\ term\ is\ the\ raw\ X\ or\ Y\ value\ next\ value\ is\ the\ direction}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'h'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.lock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ data\ is\ coming\ in\ the\ format\ "{}\ X\ Y\ Theta\ "{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ holeMeasurment\ =\ \mbox{\hyperlink{classPose2D_a5d17898ded76394ed8d4af09b6c79ca2}{Pose2D::parseFromStream}}(stream);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ holeMeasurment.\mbox{\hyperlink{classPose2D_a5a031312210c5fd0d88855df26b53c1a}{plus}}(field.\mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{getBotPose}}().\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_a87df29e3618d42c11b886bbcf07b1453}{getManager}}().\mbox{\hyperlink{classHoleManager_a317b24d6b0d2b5f843d3cbc4fcf39dd8}{addPoint}}(holeMeasurment);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.unlock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'H'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ data\ is\ coming\ in\ the\ format\ "{}\ X1\ Y1\ X2\ Y2\ "{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.lock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x1,\ y1,\ x2,\ y2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stream\ >>\ x1\ >>\ y1\ >>\ x2\ >>\ y2)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ one(x1,\ y1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ two(x2,\ y2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ one.\mbox{\hyperlink{classPose2D_a5a031312210c5fd0d88855df26b53c1a}{plus}}(field.\mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{getBotPose}}().\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ two.\mbox{\hyperlink{classPose2D_a5a031312210c5fd0d88855df26b53c1a}{plus}}(field.\mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{getBotPose}}().\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classHole}{Hole}}\ hole(one,\ two,\ one.\mbox{\hyperlink{classPose2D_a9acb14a9b0252c620dfc1e79139b52d3}{distanceTo}}(two)\ /\ sqrt(2));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_a87df29e3618d42c11b886bbcf07b1453}{getManager}}().\mbox{\hyperlink{classHoleManager_ae4fc057aea5dbfc0596b48455beed1e7}{addHole}}(hole);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.unlock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'b'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.lock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_a099593a58a6edcd2e6e2831abbb8fe89}{updateBotPose}}(\mbox{\hyperlink{classPose2D_a5d17898ded76394ed8d4af09b6c79ca2}{Pose2D::parseFromStream}}(stream));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}recieved\ bot\ pose:\ "{}}\ <<\ field.\mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{getBotPose}}().\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ fieldMutex.unlock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ logFile\ <<\ tag;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00273}00273\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00274}00274\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00276}00276\ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(5));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00277}00277\ \ \ \ \ \textcolor{comment}{//\ no\ matter\ what\ we\ are\ going\ to\ log\ this\ in\ a\ file,\ however\ we\ should\ also\ update\ certain\ fields}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00279}00279\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00281}00281\ \ \ logFile.close();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00283}00283\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00291}\mbox{\hyperlink{main_8cpp_aeb814458701307eaffced2d1f95dc3f9}{00291}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_aeb814458701307eaffced2d1f95dc3f9}{connectTCP}}(\mbox{\hyperlink{classField}{Field}}\&\ field,\ std::mutex\&\ fieldMutex,\ std::vector<Pose2D>\&\ path)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00292}00292\ \ \textcolor{keywordtype}{int}\ clientSocket\ =\ socket(AF\_INET,\ SOCK\_STREAM,\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00293}00293\ \ \ sockaddr\_in\ serverAddress\{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00294}00294\ \ \ \ \ .sin\_family\ =\ AF\_INET,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00295}00295\ \ \ \ \ .sin\_port\ =\ htons(\mbox{\hyperlink{main_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}}),}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00296}00296\ \ \ \ \ .sin\_addr\ =\ inet\_addr(\mbox{\hyperlink{main_8cpp_a280feb883e9d4a7edcc69c8bcb9f38f2}{ADDRESS}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00297}00297\ \ \ \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00299}00299\ \ \ \textcolor{comment}{//\ https://beej.us/guide/bgnet/html/\#blocking}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00300}00300\ \ \ \textcolor{comment}{//\ fcntl(clientSocket,\ F\_SETFL,\ O\_NONBLOCK);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00301}00301\ \ \ \ \ \textcolor{keywordtype}{bool}\ connected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00302}00302\ \ \ \ \ \textcolor{keywordflow}{while}\ (!connected)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00303}00303\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(connect(clientSocket,\ (\textcolor{keyword}{struct}\ sockaddr*)\&\ serverAddress,\ \textcolor{keyword}{sizeof}(serverAddress)))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::exception();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ connected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00308}00308\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00309}00309\ \ \ \ \ \textcolor{keywordflow}{catch}\ (std::exception\&\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(500));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ connected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00312}00312\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00314}00314\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00316}00316\ \ \ \textcolor{comment}{//\ spawn\ read\ and\ log\ thread\ here}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00317}00317\ \ \ std::thread\ readThread(\mbox{\hyperlink{main_8cpp_a6e0bf7be42eb96e07b07995bad442501}{readAndLog}},\ std::ref(clientSocket),\ std::ref(fieldMutex),\ std::ref(field),\ std::ref(path));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00319}00319\ \ \ \textcolor{keywordflow}{while}(!\mbox{\hyperlink{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6}{stopClient}}.load())\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00320}00320\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{sendQueue}}.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ std::string\ message\ =\ \mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{sendQueue}}.front();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (message.compare(\textcolor{stringliteral}{"{}q"{}})\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6}{stopClient}}.store(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_aa1dd612fc3a4eaae839fbcb1fc0489f3}{sendQueue}}.pop();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ send(clientSocket,\ message.c\_str(),\ message.length(),\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00327}00327\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00329}00329\ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(20));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00330}00330\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00333}00333\ \ \ readThread.join();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00334}00334\ \ \ close(clientSocket);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00335}00335\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00341}\mbox{\hyperlink{main_8cpp_a8a48614912d7bcdd038ad181235ddcf2}{00341}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a8a48614912d7bcdd038ad181235ddcf2}{setupImGui}}(GLFWwindow*\ window)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00342}00342\ \ \ \ \ IMGUI\_CHECKVERSION();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00343}00343\ \ \ \ \ ImGui::CreateContext();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00344}00344\ \ \ \ \ ImGuiIO\&\ io\ =\ ImGui::GetIO();\ (void)io;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00345}00345\ \ \ \ \ ImGui::StyleColorsDark();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00346}00346\ \ \ \ \ ImGui\_ImplGlfw\_InitForOpenGL(window,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00347}00347\ \ \ \ \ ImGui\_ImplOpenGL3\_Init(\textcolor{stringliteral}{"{}\#version\ 130"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00348}00348\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00357}\mbox{\hyperlink{main_8cpp_aef05f78be1cf48474bb638b05af91d4e}{00357}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_aef05f78be1cf48474bb638b05af91d4e}{DrawCircle}}(ImDrawList*\ drawList,\ \textcolor{keyword}{const}\ ImVec2\&\ center,\ \textcolor{keywordtype}{float}\ radius,\ ImU32\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00358}00358\ \ \ drawList-\/>AddCircle(center,\ radius,\ color,\ 0,\ 0.2f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00359}00359\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00368}\mbox{\hyperlink{main_8cpp_aaa7651b6621852bfdbb91085d2a74d77}{00368}}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{main_8cpp_aaa7651b6621852bfdbb91085d2a74d77}{ScreenToCoords}}(ImVec2\ coords,\ ImVec2\ offset,\ ImVec2\ scaling)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00369}00369\ \ \ \ \ \textcolor{keywordtype}{double}\ x\ =\ (coords.x\ -\/\ offset.x)\ /\ scaling.\mbox{\hyperlink{classPose2D_a4ea2a4d5ced468e718373ffe07732f60}{x}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00370}00370\ \ \ \ \ \textcolor{keywordtype}{double}\ y\ =\ \mbox{\hyperlink{Field_8hpp_a985cc18be96dda7f59fd0400725e4aef}{MAX\_Y}}\ -\/\ (coords.y\ -\/\ offset.y)\ /\ scaling.y;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00371}00371\ \ \ \ \ \textcolor{keywordflow}{return}\ \{x,\ y\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00372}00372\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00383}\mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{00383}}\ ImVec2\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(ImVec2\ offset,\ ImVec2\ scaling,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00384}00384\ \ \ \ \ \textcolor{keywordtype}{double}\ xN\ =\ offset.x\ +\ (scaling.x\ *\ x);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00385}00385\ \ \ \ \ \textcolor{keywordtype}{double}\ yN\ =\ offset.y\ +\ (scaling.y\ *\ (\mbox{\hyperlink{Field_8hpp_a985cc18be96dda7f59fd0400725e4aef}{MAX\_Y}}\ -\/\ y));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00386}00386\ \ \ \ \ \textcolor{keywordflow}{return}\ ImVec2(xN,\ yN);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00387}00387\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00396}\mbox{\hyperlink{main_8cpp_aadd75f0fd8f5677340c27a7df7c28366}{00396}}\ ImVec2\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(ImVec2\ offset,\ ImVec2\ scaling,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00397}00397\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ position.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}(),\ position.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00398}00398\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00408}\mbox{\hyperlink{main_8cpp_a9d21b7be18e221988e1051a55465f3a2}{00408}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a9d21b7be18e221988e1051a55465f3a2}{ShowPillarOnWindow}}(ImDrawList*\ drawList,\ \mbox{\hyperlink{classPillar}{Pillar}}\ pillar,\ ImU32\ color,\ ImVec2\ offset,\ ImVec2\ scaling)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00409}00409\ \ \ \ \ ImVec2\ center\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ pillar.\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00410}00410\ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ pillar.\mbox{\hyperlink{classPillar_a404e92b3ee6005fcd400ae120ce0b560}{getRadius}}()\ *\ 2.5;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00411}00411\ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}haven't\ drawn\ yet"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00412}00412\ \ \ \ \ \mbox{\hyperlink{main_8cpp_aef05f78be1cf48474bb638b05af91d4e}{DrawCircle}}(drawList,\ center,\ radius,\ color);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00413}00413\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00423}\mbox{\hyperlink{main_8cpp_a4eb982ee4c09fb7f60fe5247c6a904b7}{00423}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a4eb982ee4c09fb7f60fe5247c6a904b7}{drawBotPose}}(ImDrawList*\ drawList,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ botPose,\ ImVec2\ offset,\ ImVec2\ scaling)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00424}00424\ \ \ \ \ ImU32\ color\ =\ IM\_COL32(144,\ 238,\ 144,\ 200);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00425}00425\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00426}00426\ \ \ \ \ \textcolor{comment}{//\ calculate\ the\ position\ of\ the\ first\ point}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00427}00427\ \ \ \ \ \textcolor{comment}{//\ should\ be\ botPose\ +\ (botRadius\ *\ 1.5\ @\ bot\ heading)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00428}00428\ \ \ \ \ \textcolor{keywordtype}{double}\ scaleAmount\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00429}00429\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ lineOutOfCenter\ =\ \mbox{\hyperlink{classPose2D_a35455cacb295ea54820030b9dbb191f2}{Pose2D::fromPolar}}(\mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}}\ *\ 1.5\ *\ scaleAmount,\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00430}00430\ \ \ \ \ lineOutOfCenter.\mbox{\hyperlink{classPose2D_a732b26c3659a88456d5fc0e4e1b0a8ea}{transformPose}}(botPose);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00431}00431\ \ \ \ \ \textcolor{keyword}{const}\ ImVec2\ p1\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ lineOutOfCenter);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00432}00432\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ sideLine\ =\ \mbox{\hyperlink{classPose2D_a35455cacb295ea54820030b9dbb191f2}{Pose2D::fromPolar}}(scaleAmount\ *\ \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}}\ *\ 0.75,\ \mbox{\hyperlink{classPose2D_ad02ce98e6c53fb62bb65eda3cae90a1c}{Pose2D::degreesToRadians}}(120));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00433}00433\ \ \ \ \ sideLine.\mbox{\hyperlink{classPose2D_a732b26c3659a88456d5fc0e4e1b0a8ea}{transformPose}}(botPose);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00434}00434\ \ \ \ \ \textcolor{keyword}{const}\ ImVec2\ p2\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ sideLine);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00435}00435\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ otherSide\ =\ \mbox{\hyperlink{classPose2D_a35455cacb295ea54820030b9dbb191f2}{Pose2D::fromPolar}}(\mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}}\ *\ scaleAmount\ *\ 0.75,\ \mbox{\hyperlink{classPose2D_ad02ce98e6c53fb62bb65eda3cae90a1c}{Pose2D::degreesToRadians}}(240));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00436}00436\ \ \ \ \ otherSide.\mbox{\hyperlink{classPose2D_a732b26c3659a88456d5fc0e4e1b0a8ea}{transformPose}}(botPose);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00437}00437\ \ \ \ \ \textcolor{keyword}{const}\ ImVec2\ p3\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ otherSide);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00438}00438\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00439}00439\ \ \ \ \ drawList-\/>AddTriangle(p1,\ p2,\ p3,\ color);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00440}00440\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00450}\mbox{\hyperlink{main_8cpp_a6a0a2f2d8d9d5b25ec8f68b5610d003c}{00450}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a6a0a2f2d8d9d5b25ec8f68b5610d003c}{drawRectangle}}(ImDrawList*\ drawList,\ ImVec2\ offset,\ ImVec2\ scaling,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ p1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ p2)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00451}00451\ \ \ \ \ \textcolor{comment}{//\ const\ Pose2D\ MinPosition\ =\ Pose2D(std::min(p1.getX(),\ p2.getX()),\ std::min(p1.getY(),\ p2.getY()));}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00452}00452\ \ \ \ \ \textcolor{comment}{//\ const\ Pose2D\ MaxPosition\ =\ Pose2D(std::max(p1.getX(),\ p2.getX()),\ std::max(p1.getY(),\ p2.getY()));}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00453}00453\ \ \ \ \ \textcolor{comment}{//\ fun\ math\ time}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00454}00454\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ xCenter\ =\ (p1.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}()\ +\ p2.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00455}00455\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ yCenter\ =\ (p1.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}()\ +\ p2.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00456}00456\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ xDiagonal\ =\ (p1.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}()\ -\/\ p2.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00457}00457\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ yDiagonal\ =\ (p1.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}()\ -\/\ p2.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00458}00458\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00459}00459\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ p3(xCenter\ -\/\ yDiagonal,\ yCenter\ +\ xDiagonal);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00460}00460\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ p4(xCenter\ +\ yDiagonal,\ yCenter\ -\/\ xDiagonal);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00462}00462\ \ \ \ \ \textcolor{keyword}{const}\ ImVec2\ m1\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ p1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00463}00463\ \ \ \ \ \textcolor{keyword}{const}\ ImVec2\ m2\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ p2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00464}00464\ \ \ \ \ \textcolor{keyword}{const}\ ImVec2\ m3\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ p3);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00465}00465\ \ \ \ \ \textcolor{keyword}{const}\ ImVec2\ m4\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scaling,\ p4);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00466}00466\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ std::\ \ \ \ cout\ <<\ "{}p2\ position:\ "{}\ <<\ p2.getY()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00468}00468\ \ \ \ \ drawList-\/>AddQuadFilled(m1,\ m3,\ m2,\ m4,\ IM\_COL32(255,\ 165,\ 0,\ 170));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00469}00469\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00470}00470\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00479}\mbox{\hyperlink{main_8cpp_a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf}{00479}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf}{ShowFieldWindow}}(std::mutex*\ pillarsMutex,\ std::vector<Pose2D>\&\ path,\ \mbox{\hyperlink{classField}{Field}}\&\ field,\ std::atomic<bool>\&\ showNodes,\ std::atomic<bool>\&\ showEdges)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00480}00480\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Field"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00481}00481\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00482}00482\ \ \ \ \ ImDrawList*\ drawList\ =\ ImGui::GetWindowDrawList();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00483}00483\ \ \ \ \ ImVec2\ windowSize(\mbox{\hyperlink{Field_8hpp_a898606140dee9ce0adf096de00824d94}{MAX\_X}}\ *\ 2.5,\ \mbox{\hyperlink{Field_8hpp_a985cc18be96dda7f59fd0400725e4aef}{MAX\_Y}}\ *\ 2.5);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00484}00484\ \ \ \ \ ImGui::SetWindowSize(windowSize);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00485}00485\ \ \ \ \ ImVec2\ windowPos\ =\ ImGui::GetWindowPos();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00486}00486\ \ \ \ \ windowPos.x\ +=\ windowSize.x\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00487}00487\ \ \ \ \ windowPos.y\ +=\ windowSize.y\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00488}00488\ \ \ \ \ ImVec2\ offset\ =\ \ ImVec2(windowPos.x\ +\ windowSize.x\ /\ 50,\ windowPos.y\ -\/\ windowSize.y\ /\ 50);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00489}00489\ \ \ \ \ ImVec2\ scalingFactor\ =\ ImVec2(windowSize.x\ /\ \mbox{\hyperlink{Field_8hpp_a898606140dee9ce0adf096de00824d94}{MAX\_X}},\ windowSize.y\ /\ \mbox{\hyperlink{Field_8hpp_a985cc18be96dda7f59fd0400725e4aef}{MAX\_Y}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00490}00490\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00491}00491\ \ \ \ \ pillarsMutex-\/>lock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00493}00493\ \ \ \ \ std::vector<Pillar>\ pillars\ =\ field.\mbox{\hyperlink{classField_a1f3f3b289e23572dc12f9aef6b33817e}{getCopyPillars}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00494}00494\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00495}00495\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classPillar}{Pillar}}\&\ pillar:\ pillars)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a9d21b7be18e221988e1051a55465f3a2}{ShowPillarOnWindow}}(drawList,\ pillar,\ IM\_COL32(255,\ 0,\ 0,\ 200),\ offset,\ scalingFactor);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00497}00497\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00498}00498\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00499}00499\ \ \ \ \ std::vector<Hole>\ holes\ =\ field.\mbox{\hyperlink{classField_a87df29e3618d42c11b886bbcf07b1453}{getManager}}().\mbox{\hyperlink{classHoleManager_a586843e9065c89985c3b76bc8a2f9003}{getHoles}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00500}00500\ \textcolor{comment}{//\ \ \ \ \ std::cout\ <<\ "{}size:\ "{}\ <<\ holes.size()\ <<\ std::endl;\ //\ output\ 1}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00501}00501\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classHole}{Hole}}\ hole:\ holes)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}X1\ Y1\ X2\ Y2:\ \{"{}\ <<\ hole.getOneSquareCorner().getX()\ <<\ "{}\ "{}\ <<\ hole.getOneSquareCorner().getY()\ <<\ "{}\ "{}\ <<\ hole.getSecondSquareCorner().getX()\ <<\ "{}\ "{}\ <<\ hole.getSecondSquareCorner().getY()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hole.isFoundHole())\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a6a0a2f2d8d9d5b25ec8f68b5610d003c}{drawRectangle}}(drawList,\ offset,\ scalingFactor,\ hole.getOneSquareCorner(),\ hole.getSecondSquareCorner());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Hole>\ subHoles\ =\ hole.getSubHolesCopy();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classHole}{Hole}}\ holer:\ subHoles)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a6a0a2f2d8d9d5b25ec8f68b5610d003c}{drawRectangle}}(drawList,\ offset,\ scalingFactor,\ holer.getOneSquareCorner(),\ holer.getSecondSquareCorner());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00512}00512\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00513}00513\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00514}00514\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a4eb982ee4c09fb7f60fe5247c6a904b7}{drawBotPose}}(drawList,\ field.\mbox{\hyperlink{classField_a55f738166b3267d7fa313465d2866dd4}{getBotPose}}().\mbox{\hyperlink{classPillar_a6643c4f436b8264606fd1ef9adfafc75}{getPose}}(),\ offset,\ scalingFactor);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00516}00516\ \ \ \ \ \textcolor{keywordflow}{if}\ (showNodes.load())\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ std::vector<Node<Pose2D>\ *>\ nodes\ =\ field.\mbox{\hyperlink{classField_ae20c991c2df6d7e863458e181b683140}{getGraph}}().\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00518}00518\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classNode}{Node<Pose2D>}}\ *\&node:\ nodes)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ position\ =\ node-\/>getData();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00521}00521\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ ImVec2\ center\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scalingFactor,\ position.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}(),\ position.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}}\ *\ 2.5;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_aef05f78be1cf48474bb638b05af91d4e}{DrawCircle}}(drawList,\ center,\ radius,\ IM\_COL32(120,\ 120,\ 0,\ 200));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ a\ line\ from\ every\ node\ to\ the\ adjacent\ yes\ we\ will\ double\ count\ draws\ with\ this}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ std::vector<Node<Pose2D>*>\ adjacent\ =\ getAdj(nodes[nodeIndex]);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00527}00527\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00529}00529\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00530}00530\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00531}00531\ \ \ \ \ \textcolor{keywordflow}{if}\ (showEdges.load())\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ std::vector<Node<Pose2D>\ *>\ nodes\ =\ field.\mbox{\hyperlink{classField_ae20c991c2df6d7e863458e181b683140}{getGraph}}().\mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{getNodes}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classNode}{Node<Pose2D>}}\ *\&node:\ nodes)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Node<Pose2D>\ *>\ adjacent\ =\ field.\mbox{\hyperlink{classField_ae20c991c2df6d7e863458e181b683140}{getGraph}}().\mbox{\hyperlink{classGraph_a4969a395490f7e67cc70a7feb58a0b54}{getAdj}}(node);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classNode}{Node<Pose2D>}}\ *\&adj:\ adjacent)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImVec2\ p1\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scalingFactor,\ node-\/>getData());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImVec2\ p2\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scalingFactor,\ adj-\/>getData());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ drawList-\/>AddLine(p1,\ p2,\ IM\_COL32(100,\ 100,\ 100,\ 100),\ 2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00541}00541\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00542}00542\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00543}00543\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00544}00544\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\ =\ 0;\ i\ <\ path.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ ImVec2\ p1\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scalingFactor,\ path[i\ -\/\ 1].getX(),\ path[i\ -\/\ 1].getY());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ ImVec2\ p2\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scalingFactor,\ path[i].getX(),\ path[i].getY());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ drawList-\/>AddLine(p1,\ p2,\ IM\_COL32(100,\ 100,\ 100,\ 100),\ 2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00550}00550\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ ImVec2\ center\ =\ \mbox{\hyperlink{main_8cpp_a3ef8063c34d114204774d6b132c6880c}{coordsToScreen}}(offset,\ scalingFactor,\ path[i].getX(),\ path[i].getY());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ \mbox{\hyperlink{Pose2D_8hpp_aa214e157b90ee2b54649c3bb808b4d60}{BOT\_RADIUS}}\ *\ 2.5;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00553}00553\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_aef05f78be1cf48474bb638b05af91d4e}{DrawCircle}}(drawList,\ center,\ radius,\ IM\_COL32(30,\ 120,\ 220,\ 150));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00554}00554\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00555}00555\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00556}00556\ \ \ \ \ pillarsMutex-\/>unlock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00557}00557\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00558}00558\ \ \ \ \ ImVec2\ mousePos\ =\ ImGui::GetMousePos();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00559}00559\ \textcolor{comment}{//\ \ std::string\ mousePosStr\ =\ std::to\_string((int)mousePos.x)\ +\ "{},\ "{}\ +\ std::to\_string((int)mousePos.y);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00560}00560\ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}mouse:\ \%d,\ \%d"{}},\ (\textcolor{keywordtype}{int})mousePos.x,\ (\textcolor{keywordtype}{int})mousePos.y);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00561}00561\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ transformed\ =\ \mbox{\hyperlink{main_8cpp_aaa7651b6621852bfdbb91085d2a74d77}{ScreenToCoords}}(ImVec2((\textcolor{keywordtype}{int})\ mousePos.x,\ (\textcolor{keywordtype}{int})\ mousePos.y),\ offset,\ scalingFactor);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00562}00562\ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Pose\ on\ field:\ \%d,\ \%d"{}},\ (\textcolor{keywordtype}{int})\ transformed.\mbox{\hyperlink{classPose2D_ad3453560b394884b5b94de1264b946fa}{getX}}(),\ (\textcolor{keywordtype}{int})\ transformed.\mbox{\hyperlink{classPose2D_acfc52591b36947d8ead57ada1c12e5c2}{getY}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00564}00564\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00565}00565\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00566}00566\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00567}00567\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00572}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00572}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00573}00573\ \ \ \textcolor{keywordflow}{if}\ (!glfwInit())\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00574}00574\ \ \ \ \ GLFWwindow*\ window\ =\ glfwCreateWindow(1880,\ 900,\ \textcolor{stringliteral}{"{}Roomba\ Dashboard"{}},\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00575}00575\ \ \ \ \ \textcolor{keywordflow}{if}\ (!window)\ \{\ glfwTerminate();\ \textcolor{keywordflow}{return}\ -\/1;\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00576}00576\ \ \ \ \ glfwMakeContextCurrent(window);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00577}00577\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a8a48614912d7bcdd038ad181235ddcf2}{setupImGui}}(window);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00578}00578\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ desired(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00579}00579\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00580}00580\ \ \ \ \ \textcolor{comment}{//\ used\ to\ hold\ GUI\ slider\ values}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00581}00581\ \ \ \ \ \textcolor{keywordtype}{float}\ angleSend\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00582}00582\ \ \ \ \ \textcolor{keywordtype}{int}\ driveForward\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00584}00584\ \ \ \ \ std::atomic<bool>\ showNodes;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00585}00585\ \ \ \ \ showNodes.store(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00586}00586\ \ \ \ \ std::atomic<bool>\ showEdges;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00587}00587\ \ \ \ \ showEdges.store(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00588}00588\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00589}00589\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[100];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00590}00590\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ buffPtr\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00591}00591\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00592}00592\ \ \ \ \ std::mutex\ pillarsMutex;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00593}00593\ \ \ \ \ std::vector<Pose2D>\ path;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00594}00594\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00595}00595\ \ \ \ \ \mbox{\hyperlink{classField}{Field}}\ field;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00596}00596\ \ \ \ \ \textcolor{comment}{//\ Pose2D\ toAdd(0,\ 0,\ 0);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00597}00597\ \ \ \ \ \textcolor{comment}{//\ graph.addNode(new\ Node<Pose2D>(toAdd));}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00598}00598\ \ \ \ \ \textcolor{comment}{//\ connectTCP(pillars,\ pillarsMutex,\ desired);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00599}00599\ \ \ \ \ std::thread\ tcpConnect(\mbox{\hyperlink{main_8cpp_aeb814458701307eaffced2d1f95dc3f9}{connectTCP}},\ std::ref(field),\ std::ref(pillarsMutex),\ std::ref(path));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00600}00600\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00601}00601\ \ \ \ \ \textcolor{comment}{//\ Main\ loop}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00602}00602\ \ \ \ \ \textcolor{keywordflow}{while}\ (!glfwWindowShouldClose(window))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ glfwPollEvents();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00604}00604\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00605}00605\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ the\ ImGui\ frame}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00606}00606\ \ \ \ \ \ \ \ \ ImGui\_ImplOpenGL3\_NewFrame();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00607}00607\ \ \ \ \ \ \ \ \ ImGui\_ImplGlfw\_NewFrame();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ ImGui::NewFrame();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bool\ open;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGui::ShowDemoWindow(\&open);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf}{ShowFieldWindow}}(\&pillarsMutex,\ path,\ field,\ showNodes,\ showEdges);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}About\ to\ begin"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00613}00613\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00614}00614\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Your\ ImGui\ code\ here}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00615}00615\ \ \ \ \ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Control\ Panel"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00616}00616\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ std::cout\ <<\ "{}began"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00617}00617\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ImGui::Text("{}This\ is\ some\ text"{});}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00618}00618\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00619}00619\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Forward"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00622}00622\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Backward"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{stringliteral}{"{}s"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00626}00626\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Counter\ Clockwise"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{stringliteral}{"{}a"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00630}00630\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Clockwise"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{stringliteral}{"{}d"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00634}00634\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Stop"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00638}00638\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Scan"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{stringliteral}{"{}g"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00642}00642\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Auton"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{stringliteral}{"{}h"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00646}00646\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Quit\ all"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\textcolor{stringliteral}{"{}q"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00650}00650\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::RadioButton(\textcolor{stringliteral}{"{}Show\ nodes"{}},\ \textcolor{keyword}{false}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ showNodes.store(!showNodes.load());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::RadioButton(\textcolor{stringliteral}{"{}Show\ edges"{}},\ \textcolor{keyword}{false}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ showEdges.store(!showEdges.load());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00657}00657\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00659}00659\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Generate\ path"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ pillarsMutex.lock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00663}00663\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}desire:\ "{}\ <<\ desired\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00664}00664\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ (int\ i\ =\ 0;\ i\ <\ graph-\/>getNodes().size();\ i++)\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00665}00665\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}node:\ "{}\ <<\ i\ <<\ "{}.\ \ "{}\ <<\ graph-\/>getNodes()[i]-\/>getData().getX()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00666}00666\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00667}00667\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00668}00668\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Attempting\ to\ make\ a\ path\ between:\ "{}\ <<\ graph-\/>getNodes().front()-\/>getData().getX()\ <<\ "{},\ "{}\ <<\ graph-\/>getNodes().front()-\/>getData().getY()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00669}00669\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}To:\ "{}\ <<graph-\/>getNodes().back()-\/>getData().getX()\ <<\ "{},\ "{}\ <<\ graph-\/>getNodes().back()-\/>getData().getY()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00670}00670\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ //\ Attempting\ to\ make\ a\ path\ between:\ 0,\ 0}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00671}00671\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ //\ To:\ -\/100,\ -\/100}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00672}00672\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ path\ =\ \ field.\mbox{\hyperlink{classField_aa988c5de70875dd81c766c9429a4b986}{makePath}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ pillarsMutex.unlock();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ std::cout\ <<\ "{}PATH\ NODE\ SIZE:\ "{}\ <<\ pathNodes.size()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ path.push\_back(botPose.getPose());}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00677}00677\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00678}00678\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00679}00679\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}send\ planned\ path"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00680}00680\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ string\ message\ =\ parsePathIntoRoutine(path);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00681}00681\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(\mbox{\hyperlink{main_8cpp_a752b76589dc853d37e6bb0f07e6b57c9}{parsePathIntoRoutine}}(path));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00682}00682\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00683}00683\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00684}00684\ \ \ \ \ ImGui::SliderAngle(\textcolor{stringliteral}{"{}Turn\ angle"{}},\ \&angleSend);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00685}00685\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00686}00686\ \ \ \ \ \ \ \ \ ImGui::InputText(\textcolor{stringliteral}{"{}message:\ "{}},\ buffer,\ 100);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00687}00687\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00688}00688\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}send\ component"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00689}00689\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a0e791708278afd1945bd5e4876b90740}{addToQueue}}(std::string(1,\ buffer[0]));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00690}00690\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ 99;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00691}00691\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buffer[i]\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffPtr\ =\ std::min((\textcolor{keywordtype}{long})\ 0,\ (\textcolor{keywordtype}{long})\ i\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00693}00693\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00694}00694\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \ \ \ \ std::swap(buffer[i],\ buffer[i\ +\ 1]);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00696}00696\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00697}00697\ \ \ \ \ \ \ \ \ buffer[buffPtr]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00698}00698\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00699}00699\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00700}00700\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Send\ turn"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00701}00701\ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_abe296e2909cfc40a8d7cd431a6dbe459}{sendAngleToQueue}}((int16\_t)\ (angleSend\ *\ 180\ /\ M\_PI));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00702}00702\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00703}00703\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00704}00704\ \ \ \ \ ImGui::SliderInt(\textcolor{stringliteral}{"{}Drive\ x\ cm"{}},\ \&driveForward,\ 0,\ 999);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00705}00705\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00706}00706\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Drive\ x"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_ab2b6c72d73cb5cdf34a271f97a8d6df5}{sendDistanceToQueue}}(driveForward);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00708}00708\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00709}00709\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00710}00710\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Discretize"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00711}00711\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}HUH:\ "{}\ <<\ pillars[0].getX()\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_a3e9096a686ffb177056e24dfb920a610}{discretizeGraph}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00713}00713\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00714}00714\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00715}00715\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Weight"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00716}00716\ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{classField_ab1945d8274ee391ea813863aa94c5d52}{weightGraph}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00717}00717\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00718}00718\ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}About\ to\ end"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00719}00719\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00720}00720\ \ \ \ \ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00721}00721\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Render}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00722}00722\ \ \ \ \ \ \ \ \ ImGui::Render();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00723}00723\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ display\_w,\ display\_h;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00724}00724\ \ \ \ \ \ \ \ \ glfwGetFramebufferSize(window,\ \&display\_w,\ \&display\_h);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00725}00725\ \ \ \ \ \ \ \ \ glViewport(0,\ 0,\ display\_w,\ display\_h);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00726}00726\ \ \ \ \ \ \ \ \ glClearColor(0.1f,\ 0.1f,\ 0.1f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00727}00727\ \ \ \ \ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00728}00728\ \ \ \ \ \ \ \ \ ImGui\_ImplOpenGL3\_RenderDrawData(ImGui::GetDrawData());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00729}00729\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00730}00730\ \ \ \ \ \ \ \ \ glfwSwapBuffers(window);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00731}00731\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00732}00732\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(16));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00733}00733\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00734}00734\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00735}00735\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a98630ac7b141e5c9e3e7dd9cd24269a6}{stopClient}}.store(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00736}00736\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00737}00737\ \ \ \ \ tcpConnect.join();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00738}00738\ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00739}00739\ \ \ \ \ \textcolor{comment}{//\ Cleanup}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00740}00740\ \ \ \ \ ImGui\_ImplOpenGL3\_Shutdown();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00741}00741\ \ \ \ \ ImGui\_ImplGlfw\_Shutdown();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00742}00742\ \ \ \ \ ImGui::DestroyContext();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00743}00743\ \ \ \ \ glfwDestroyWindow(window);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00744}00744\ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00745}00745\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00746}00746\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00747}00747\ \}}
+
+\end{DoxyCode}

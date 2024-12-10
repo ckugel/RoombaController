@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="Node_8cpp" kind="file" language="C++">
+    <compoundname>Node.cpp</compoundname>
+    <includes refid="Node_8hpp" local="yes">Node.hpp</includes>
+    <includedby refid="Node_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Node.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Node.cpp</label>
+        <link refid="Node_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Node.hpp</label>
+        <link refid="Node_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Pose2D.hpp</label>
+        <link refid="Pose2D_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>cmath</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>ostream</label>
+      </node>
+      <node id="6">
+        <label>sstream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.cpp</label>
+        <link refid="Field_8cpp"/>
+      </node>
+      <node id="4">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.hpp</label>
+        <link refid="Field_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Graph.cpp</label>
+        <link refid="Graph_8cpp"/>
+      </node>
+      <node id="3">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Graph.hpp</label>
+        <link refid="Graph_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp</label>
+        <link refid="HoleManager_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Node.cpp</label>
+        <link refid="Node_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Node.hpp</label>
+        <link refid="Node_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/home/calebk/Documents/coding/RoombaController/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>caleb<sp/>on<sp/>11/9/21.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Node_8hpp" kindref="compound">Node.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="9" refid="classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983" refkind="member"><highlight class="normal"><ref refid="classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983" kindref="member">Node&lt;V&gt;::Node</ref>(V<sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;data<sp/>=<sp/>data;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="14" refid="classNode_1a81895d8b8dfffcc5d220b2d816e7063c" refkind="member"><highlight class="normal">V<sp/><ref refid="classNode_1a81895d8b8dfffcc5d220b2d816e7063c" kindref="member">Node&lt;V&gt;::getData</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="19" refid="classNode_1ab849a0519ed381feaf341d91e3d87b1f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_1ab849a0519ed381feaf341d91e3d87b1f" kindref="member">Node&lt;V&gt;::SetData</ref>(V<sp/>newData)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>data<sp/>=<sp/>newData;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Node.cpp"/>
+  </compounddef>
+</doxygen>

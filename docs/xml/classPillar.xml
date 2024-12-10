@@ -1,0 +1,402 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classPillar" kind="class" language="C++" prot="public">
+    <compoundname>Pillar</compoundname>
+    <includes refid="Pillar_8hpp" local="no">Pillar.hpp</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classPillar_1a74fea03287d330085c4a60f8ba3cc6d3" prot="protected" static="no" mutable="no">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D Pillar::position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <qualifiedname>Pillar::position</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pose to handle position and related math </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="19" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Pillar::radius</definition>
+        <argsstring></argsstring>
+        <name>radius</name>
+        <qualifiedname>Pillar::radius</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The radius of the pillar </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="24" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPillar_1aa8dc2bded98a242ff4957c2604e33ec2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pillar::Pillar</definition>
+        <argsstring>()</argsstring>
+        <name>Pillar</name>
+        <qualifiedname>Pillar::Pillar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a new pillar object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="30" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="7" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1aa3c5156fb822cf9ca4014ca8e3510fd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pillar::Pillar</definition>
+        <argsstring>(const Pose2D &amp;position, double radius)</argsstring>
+        <name>Pillar</name>
+        <qualifiedname>Pillar::Pillar</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Makes a new pillar with given position and radius <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position of the pillar on the field </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the radius of the pillar on the field </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="37" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1a9c9992655592342b529b765c6de0e462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pillar::Pillar</definition>
+        <argsstring>(double x, double y, double heading, double radius)</argsstring>
+        <name>Pillar</name>
+        <qualifiedname>Pillar::Pillar</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>heading</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a new pillar from components <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>component of position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>component of position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>heading</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>component of position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the pillar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="46" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="12" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1ad994a5ff8afddb6ac0d52d573b8f31bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pillar::Pillar</definition>
+        <argsstring>(double x, double y, double radius)</argsstring>
+        <name>Pillar</name>
+        <qualifiedname>Pillar::Pillar</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a new pillar from components. ignores heading <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the x component of the position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the y component of the position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the radius of the pillar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="54" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="23" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+        <definition>Pose2D &amp; Pillar::getPose</definition>
+        <argsstring>()</argsstring>
+        <name>getPose</name>
+        <qualifiedname>Pillar::getPose</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a reference to the position of the pillar. If <ref refid="classPose2D" kindref="compound">Pose2D</ref> functions are called on that reference it will effect this pillars position <simplesect kind="return"><para>the position of the pillar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="61" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1adc8c902c96a36b5e8e6642e2b462e927" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pillar::getX</definition>
+        <argsstring>()</argsstring>
+        <name>getX</name>
+        <qualifiedname>Pillar::getX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The X compoenent of the position </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="66" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1a6a39e5dac33d94196391caeeb379c48a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pillar::getY</definition>
+        <argsstring>()</argsstring>
+        <name>getY</name>
+        <qualifiedname>Pillar::getY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The y component of the positoon </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="71" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1a404e92b3ee6005fcd400ae120ce0b560" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Pillar::getRadius</definition>
+        <argsstring>() const</argsstring>
+        <name>getRadius</name>
+        <qualifiedname>Pillar::getRadius</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the radius of the pillar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="76" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1acde6b927c883e0a5720e20d6b7f04ede" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pillar::setRadius</definition>
+        <argsstring>(double newRadius)</argsstring>
+        <name>setRadius</name>
+        <qualifiedname>Pillar::setRadius</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>newRadius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the radius of the pillar <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newRadius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the radius to set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="82" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classPillar_1a9877735341d7110c3d34633867528dbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pillar::setPosition</definition>
+        <argsstring>(const Pose2D &amp;newPosition)</argsstring>
+        <name>setPosition</name>
+        <qualifiedname>Pillar::setPosition</qualifiedname>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>newPosition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the position of the pillar <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new position to set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="88" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="58" bodyend="60"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPillar_1a01e5ad8ad29b0637edc291aaff93785e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPillar" kindref="compound">Pillar</ref></type>
+        <definition>Pillar Pillar::parseFromStream</definition>
+        <argsstring>(std::istringstream &amp;stream)</argsstring>
+        <name>parseFromStream</name>
+        <qualifiedname>Pillar::parseFromStream</qualifiedname>
+        <param>
+          <type>std::istringstream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Makes a pillar from a given string stream. Formatted as: X Y theta R <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the stream in which to parse the pillar from </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the pillar from the data in the stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="96" column="19" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.cpp" bodystart="50" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="classPillar" kindref="compound">Pillar</ref> is a cyclinder on the field. It has both a position and a radius. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Pillar</label>
+        <link refid="classPillar"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Pose2D</label>
+        <link refid="classPose2D"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" line="14" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Pillar.hpp" bodystart="14" bodyend="97"/>
+    <listofallmembers>
+      <member refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" prot="public" virt="non-virtual"><scope>Pillar</scope><name>getPose</name></member>
+      <member refid="classPillar_1a404e92b3ee6005fcd400ae120ce0b560" prot="public" virt="non-virtual"><scope>Pillar</scope><name>getRadius</name></member>
+      <member refid="classPillar_1adc8c902c96a36b5e8e6642e2b462e927" prot="public" virt="non-virtual"><scope>Pillar</scope><name>getX</name></member>
+      <member refid="classPillar_1a6a39e5dac33d94196391caeeb379c48a" prot="public" virt="non-virtual"><scope>Pillar</scope><name>getY</name></member>
+      <member refid="classPillar_1a01e5ad8ad29b0637edc291aaff93785e" prot="public" virt="non-virtual"><scope>Pillar</scope><name>parseFromStream</name></member>
+      <member refid="classPillar_1aa8dc2bded98a242ff4957c2604e33ec2" prot="public" virt="non-virtual"><scope>Pillar</scope><name>Pillar</name></member>
+      <member refid="classPillar_1aa3c5156fb822cf9ca4014ca8e3510fd4" prot="public" virt="non-virtual"><scope>Pillar</scope><name>Pillar</name></member>
+      <member refid="classPillar_1a9c9992655592342b529b765c6de0e462" prot="public" virt="non-virtual"><scope>Pillar</scope><name>Pillar</name></member>
+      <member refid="classPillar_1ad994a5ff8afddb6ac0d52d573b8f31bd" prot="public" virt="non-virtual"><scope>Pillar</scope><name>Pillar</name></member>
+      <member refid="classPillar_1a74fea03287d330085c4a60f8ba3cc6d3" prot="protected" virt="non-virtual"><scope>Pillar</scope><name>position</name></member>
+      <member refid="classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc" prot="protected" virt="non-virtual"><scope>Pillar</scope><name>radius</name></member>
+      <member refid="classPillar_1a9877735341d7110c3d34633867528dbb" prot="public" virt="non-virtual"><scope>Pillar</scope><name>setPosition</name></member>
+      <member refid="classPillar_1acde6b927c883e0a5720e20d6b7f04ede" prot="public" virt="non-virtual"><scope>Pillar</scope><name>setRadius</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

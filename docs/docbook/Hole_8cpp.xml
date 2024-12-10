@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Hole_8cpp" xml:lang="en-US">
+<title>/home/calebk/Documents/coding/RoombaController/src/Hole.cpp File Reference</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Hole.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &quot;Hole.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::ostream &amp; <link linkend="_Hole_8cpp_1a371c0f905489a21d9276bb383a572487">operator&lt;&lt;</link> (std::ostream &amp;os, const <link linkend="_classHole">Hole</link> &amp;hole)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_Hole_8cpp_1a371c0f905489a21d9276bb383a572487"/><section>
+    <title>operator&lt;&lt;()</title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>Hole.cpp</secondary></indexterm>
+<indexterm><primary>Hole.cpp</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<para><computeroutput>std::ostream &amp; operator&lt;&lt; (std::ostream &amp; os, const <link linkend="_classHole">Hole</link> &amp; hole)</computeroutput></para>
+<para>Override output stream for printing 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>os</entry><entry>
+<para>output stream </para>
+</entry>
+                            </row>
+                            <row>
+<entry>hole</entry><entry>
+<para>the hole to print </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the hole printed in the out stream </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00373">373</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+</section>
+</section>

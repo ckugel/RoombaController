@@ -1,0 +1,454 @@
+\doxysection{Graph\texorpdfstring{$<$}{<} V \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classGraph}{}\label{classGraph}\index{Graph$<$ V $>$@{Graph$<$ V $>$}}
+
+
+{\ttfamily \#include $<$Graph.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGraph_1_1CustomCompare}{Custom\+Compare}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_a57412516ec06d7b21d377dfe73773f37}{add\+Node}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{new\+Node}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_a7d0579f73520bb804c277fb3ae4ba890}{add\+Node}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{next\+Node}}, std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{adjacent\+Nodes}}, \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{weight}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_ad4acb5e274229a273f12d940bb4029a1}{add\+Node}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{next\+Node}}, std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{adjacent\+Nodes}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_ab042bcd3d06bf18579c8e96652bb4f9c}{add\+Node}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{next\+Node}}, \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{node\+ITSLATE}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_a38d9119ee08708322eb5908fac0f244f}{add\+Connection}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{one}}, \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{two}}, \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{weight}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_a6000c589daea5f4984d10d09877ad149}{add\+Connection}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{one}}, \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{two}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_a313a06ec39a21b723f7f0a76c035b8c1}{add\+Node}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{next\+Node}}, \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{node\+ITSLATE}}, \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{weight}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_a4abe34d5dda78d4055a3098773140325}{set\+Head}} (\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{int}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{index}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_a307d8095432434d7e28cfba1bba884cb}{remove\+Node}} (\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{size\+\_\+t}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{index}})
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph_a959dfd987107a8848c1c5c5da9f5e776}{Dijkstra}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{from}}, \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{find}})
+\item 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}} $>$ $>$ \mbox{\hyperlink{classGraph_a452eeb65d902b4a95c0e8411885b4bc5}{get\+Adjacency\+List}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph_a4969a395490f7e67cc70a7feb58a0b54}{get\+Adj}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{next}})
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph_af1568475acf410ff0d52a2d756929064}{get\+Nodes}} ()
+\item 
+\mbox{\hyperlink{classGraph_a2a55c5945db5ce95020dd32e3df0f094}{Graph}} ()
+\item 
+\mbox{\hyperlink{classGraph_a0ef4cf033d61a224e79e62f8d2ae974c}{\texorpdfstring{$\sim$}{\string~}\+Graph}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typedef}} std\+::pair$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}}, std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ $>$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{pair}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph_a8663524ab6962890aa72d2e146453caf}{resize}} ()
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{int}} \mbox{\hyperlink{classGraph_ae83f3bc4bc54319051c7193039a5f00a}{num\+Visited}} (std\+::vector$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{bool}} $>$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{list\+Of\+Bools}})
+\item 
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{bool}} \mbox{\hyperlink{classGraph_afbc6316c3b1b5ca0c1cdf226bc62ab0b}{contains}} (\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{node}}, std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{list\+Of\+Nodes}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph_a5de43165fe4948c19cca80698de7daab}{nodes}}
+\item 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}} $>$ $>$ \mbox{\hyperlink{classGraph_a1696c56a696176c26cb94b075e829ead}{matrix}}
+\item 
+\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraph_a326c5e6fe82c176413da20701937e0e7}{head}} = \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{nullptr}}
+\item 
+std\+::map$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{unsigned}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{int}} $>$ \mbox{\hyperlink{classGraph_aeac7d50113228f13fadc0bd85a4daf72}{node\+Map}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}}$>$\newline
+class Graph$<$ V $>$}
+
+
+Definition at line \mbox{\hyperlink{Graph_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{Graph_8hpp_source}{Graph.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classGraph_a08ffe504d6c612edda7d1d562a577c82}\label{classGraph_a08ffe504d6c612edda7d1d562a577c82} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!pair@{pair}}
+\index{pair@{pair}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{pair}{pair}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typedef}} std\+::pair$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}}, std\+::vector$<$\mbox{\hyperlink{classNode}{Node}}$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}}$>$\texorpdfstring{$\ast$}{*}$>$ $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::pair\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{Graph_8hpp_source}{Graph.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGraph_a2a55c5945db5ce95020dd32e3df0f094}\label{classGraph_a2a55c5945db5ce95020dd32e3df0f094} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\mbox{\hyperlink{classGraph}{\+::\+Graph}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a0ef4cf033d61a224e79e62f8d2ae974c}\label{classGraph_a0ef4cf033d61a224e79e62f8d2ae974c} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!````~Graph@{\texorpdfstring{$\sim$}{\string~}Graph}}
+\index{````~Graph@{\texorpdfstring{$\sim$}{\string~}Graph}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Graph()}{\string~Graph()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classGraph}{Graph}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00254}{254}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGraph_a6000c589daea5f4984d10d09877ad149}\label{classGraph_a6000c589daea5f4984d10d09877ad149} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!addConnection@{addConnection}}
+\index{addConnection@{addConnection}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{addConnection()}{addConnection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::add\+Connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{one,  }\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{two }\end{DoxyParamCaption})}
+
+Add a connection between two nodes 
+\begin{DoxyParams}{Parameters}
+{\em one} & node one \\
+\hline
+{\em two} & node two \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a38d9119ee08708322eb5908fac0f244f}\label{classGraph_a38d9119ee08708322eb5908fac0f244f} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!addConnection@{addConnection}}
+\index{addConnection@{addConnection}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{addConnection()}{addConnection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::add\+Connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{one,  }\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{two,  }\item[{\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}}}]{weight }\end{DoxyParamCaption})}
+
+add a weight between nodes 
+\begin{DoxyParams}{Parameters}
+{\em one} & the first node \\
+\hline
+{\em two} & the second node \\
+\hline
+{\em weight} & the weight to put between them \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00267}{267}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a57412516ec06d7b21d377dfe73773f37}\label{classGraph_a57412516ec06d7b21d377dfe73773f37} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!addNode@{addNode}}
+\index{addNode@{addNode}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::add\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{new\+Node }\end{DoxyParamCaption})}
+
+Add a node to the graph 
+\begin{DoxyParams}{Parameters}
+{\em new\+Node} & a new node to add to the graph \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_ab042bcd3d06bf18579c8e96652bb4f9c}\label{classGraph_ab042bcd3d06bf18579c8e96652bb4f9c} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!addNode@{addNode}}
+\index{addNode@{addNode}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::add\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{next\+Node,  }\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{node\+ITSLATE }\end{DoxyParamCaption})}
+
+Add a node with a connection 
+\begin{DoxyParams}{Parameters}
+{\em next\+Node} & the node to add \\
+\hline
+{\em node\+ITSLATE} & a node to add a connection to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a313a06ec39a21b723f7f0a76c035b8c1}\label{classGraph_a313a06ec39a21b723f7f0a76c035b8c1} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!addNode@{addNode}}
+\index{addNode@{addNode}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::add\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{next\+Node,  }\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{node\+ITSLATE,  }\item[{\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}}}]{weight }\end{DoxyParamCaption})}
+
+Add a node with a weight to the graph 
+\begin{DoxyParams}{Parameters}
+{\em next\+Node} & the node to add \\
+\hline
+{\em node\+ITSLATE} & the node to connect to \\
+\hline
+{\em weight} & the weight between those vertices \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00282}{282}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_ad4acb5e274229a273f12d940bb4029a1}\label{classGraph_ad4acb5e274229a273f12d940bb4029a1} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!addNode@{addNode}}
+\index{addNode@{addNode}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::add\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{next\+Node,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$}]{adjacent\+Nodes }\end{DoxyParamCaption})}
+
+Add a node 
+\begin{DoxyParams}{Parameters}
+{\em next\+Node} & \\
+\hline
+{\em adjacent\+Nodes} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00127}{127}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a7d0579f73520bb804c277fb3ae4ba890}\label{classGraph_a7d0579f73520bb804c277fb3ae4ba890} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!addNode@{addNode}}
+\index{addNode@{addNode}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::add\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{next\+Node,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$}]{adjacent\+Nodes,  }\item[{\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}}}]{weight }\end{DoxyParamCaption})}
+
+Adds a node with adjacent nodes all with the same weight 
+\begin{DoxyParams}{Parameters}
+{\em next\+Node} & the node to add \\
+\hline
+{\em adjacent\+Nodes} & the nodes to make a connect for \\
+\hline
+{\em weight} & the weight for all the edges \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_afbc6316c3b1b5ca0c1cdf226bc62ab0b}\label{classGraph_afbc6316c3b1b5ca0c1cdf226bc62ab0b} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!contains@{contains}}
+\index{contains@{contains}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{bool}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::contains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{node,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$}]{list\+Of\+Nodes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Returns true if the graph containes a node 
+\begin{DoxyParams}{Parameters}
+{\em node} & the node to determine if it\textquotesingle{}s inside \\
+\hline
+{\em list\+Of\+Nodes} & the list of nodes to check against \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether node is in the list of nodes 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a959dfd987107a8848c1c5c5da9f5e776}\label{classGraph_a959dfd987107a8848c1c5c5da9f5e776} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!Dijkstra@{Dijkstra}}
+\index{Dijkstra@{Dijkstra}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{Dijkstra()}{Dijkstra()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::\+Dijkstra (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{from,  }\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{find }\end{DoxyParamCaption})}
+
+Dijkstra\textquotesingle{}s algorithm 
+\begin{DoxyParams}{Parameters}
+{\em from} & the node that you start at \\
+\hline
+{\em find} & the node we want to get to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a path for the nodes 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00191}{191}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a4969a395490f7e67cc70a7feb58a0b54}\label{classGraph_a4969a395490f7e67cc70a7feb58a0b54} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!getAdj@{getAdj}}
+\index{getAdj@{getAdj}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{getAdj()}{getAdj()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::get\+Adj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*}}]{next }\end{DoxyParamCaption})}
+
+Get the adjacent nodes of a node 
+\begin{DoxyParams}{Parameters}
+{\em next} & the node to get its\textquotesingle{} connected nodes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the adjacent nodes 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00172}{172}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a452eeb65d902b4a95c0e8411885b4bc5}\label{classGraph_a452eeb65d902b4a95c0e8411885b4bc5} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!getAdjacencyList@{getAdjacencyList}}
+\index{getAdjacencyList@{getAdjacencyList}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{getAdjacencyList()}{getAdjacencyList()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}} $>$ $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::get\+Adjacency\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+get the adjaceency matrix for the graph whihc contains the weigthings \begin{DoxyReturn}{Returns}
+the matrix for the weights 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00262}{262}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_af1568475acf410ff0d52a2d756929064}\label{classGraph_af1568475acf410ff0d52a2d756929064} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!getNodes@{getNodes}}
+\index{getNodes@{getNodes}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{getNodes()}{getNodes()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::get\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+All the nodes 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_ae83f3bc4bc54319051c7193039a5f00a}\label{classGraph_ae83f3bc4bc54319051c7193039a5f00a} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!numVisited@{numVisited}}
+\index{numVisited@{numVisited}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{numVisited()}{numVisited()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{int}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::num\+Visited (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{bool}} $>$}]{list\+Of\+Bools }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+get the number of nodes we have visited 
+\begin{DoxyParams}{Parameters}
+{\em list\+Of\+Bools} & list of bools to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of nodes visitied 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00289}{289}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a307d8095432434d7e28cfba1bba884cb}\label{classGraph_a307d8095432434d7e28cfba1bba884cb} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!removeNode@{removeNode}}
+\index{removeNode@{removeNode}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{removeNode()}{removeNode()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::remove\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{size\+\_\+t}}}]{index }\end{DoxyParamCaption})}
+
+Remove a node from the graph based on index 
+\begin{DoxyParams}{Parameters}
+{\em index} & the index to remove \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00390}{390}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a8663524ab6962890aa72d2e146453caf}\label{classGraph_a8663524ab6962890aa72d2e146453caf} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!resize@{resize}}
+\index{resize@{resize}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::resize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+resize the adjacency matrix 
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+\Hypertarget{classGraph_a4abe34d5dda78d4055a3098773140325}\label{classGraph_a4abe34d5dda78d4055a3098773140325} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!setHead@{setHead}}
+\index{setHead@{setHead}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{setHead()}{setHead()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{void}} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::set\+Head (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{int}}}]{index }\end{DoxyParamCaption})}
+
+Set the head of the graph 
+\begin{DoxyParams}{Parameters}
+{\em index} & the index to become head \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGraph_a326c5e6fe82c176413da20701937e0e7}\label{classGraph_a326c5e6fe82c176413da20701937e0e7} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!head@{head}}
+\index{head@{head}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{head}{head}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+\mbox{\hyperlink{classNode}{Node}}$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}}$>$\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::head = \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{nullptr}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{Graph_8hpp_source}{Graph.\+hpp}}.
+
+\Hypertarget{classGraph_a1696c56a696176c26cb94b075e829ead}\label{classGraph_a1696c56a696176c26cb94b075e829ead} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!matrix@{matrix}}
+\index{matrix@{matrix}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{matrix}{matrix}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+std\+::vector$<$std\+::vector$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{double}}$>$ $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::matrix\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{Graph_8hpp_source}{Graph.\+hpp}}.
+
+\Hypertarget{classGraph_aeac7d50113228f13fadc0bd85a4daf72}\label{classGraph_aeac7d50113228f13fadc0bd85a4daf72} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!nodeMap@{nodeMap}}
+\index{nodeMap@{nodeMap}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{nodeMap}{nodeMap}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+std\+::map$<$\mbox{\hyperlink{classNode}{Node}}$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}}$>$\texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{unsigned}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{int}}$>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::node\+Map\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{Graph_8hpp_source}{Graph.\+hpp}}.
+
+\Hypertarget{classGraph_a5de43165fe4948c19cca80698de7daab}\label{classGraph_a5de43165fe4948c19cca80698de7daab} 
+\index{Graph$<$ V $>$@{Graph$<$ V $>$}!nodes@{nodes}}
+\index{nodes@{nodes}!Graph$<$ V $>$@{Graph$<$ V $>$}}
+\doxysubsubsection{\texorpdfstring{nodes}{nodes}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{typename}} \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$ \\
+std\+::vector$<$\mbox{\hyperlink{classNode}{Node}}$<$\mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}}$>$\texorpdfstring{$\ast$}{*}$>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classGraph_a08ffe504d6c612edda7d1d562a577c82}{V}} $>$\+::nodes\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{Graph_8hpp_source}{Graph.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Graph_8hpp}{Graph.\+hpp}}\item 
+/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\mbox{\hyperlink{Graph_8cpp}{Graph.\+cpp}}\end{DoxyCompactItemize}

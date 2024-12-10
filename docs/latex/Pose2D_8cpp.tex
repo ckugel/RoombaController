@@ -1,0 +1,55 @@
+\doxysection{/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\+Pose2D.cpp File Reference}
+\hypertarget{Pose2D_8cpp}{}\label{Pose2D_8cpp}\index{/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp@{/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp}}
+{\ttfamily \#include "{}Pose2\+D.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{Pose2D_8cpp_a8ee5dca0a6268342b242172f7222756f}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&d)
+\item 
+\mbox{\hyperlink{structRectangle}{Rectangle}} \mbox{\hyperlink{Pose2D_8cpp_af747b1235ddc04741dd30bf4c6a35d3c}{make\+Rectangle\+From\+Line}} (const \mbox{\hyperlink{classPose2D}{Pose2D}} \&L1, const \mbox{\hyperlink{classPose2D}{Pose2D}} \&L2, double width)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Pose2D_8cpp_af747b1235ddc04741dd30bf4c6a35d3c}\label{Pose2D_8cpp_af747b1235ddc04741dd30bf4c6a35d3c} 
+\index{Pose2D.cpp@{Pose2D.cpp}!makeRectangleFromLine@{makeRectangleFromLine}}
+\index{makeRectangleFromLine@{makeRectangleFromLine}!Pose2D.cpp@{Pose2D.cpp}}
+\doxysubsubsection{\texorpdfstring{makeRectangleFromLine()}{makeRectangleFromLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRectangle}{Rectangle}} make\+Rectangle\+From\+Line (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{L1,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{L2,  }\item[{double}]{width }\end{DoxyParamCaption})}
+
+Makes a rectangle from a line 
+\begin{DoxyParams}{Parameters}
+{\em L1} & One bound of the line \\
+\hline
+{\em L2} & Another bound of the line \\
+\hline
+{\em width} & the width of the rectangle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a rectangle with the the line in the middle and a width of the width passed in 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00248}{248}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+
+\Hypertarget{Pose2D_8cpp_a8ee5dca0a6268342b242172f7222756f}\label{Pose2D_8cpp_a8ee5dca0a6268342b242172f7222756f} 
+\index{Pose2D.cpp@{Pose2D.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Pose2D.cpp@{Pose2D.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classPose2D}{Pose2D}} \&}]{d }\end{DoxyParamCaption})}
+
+To string for a pose2D 
+\begin{DoxyParams}{Parameters}
+{\em os} & output stream \\
+\hline
+{\em d} & the pose2D to reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Pose2D_8cpp_source_l00230}{230}} of file \mbox{\hyperlink{Pose2D_8cpp_source}{Pose2\+D.\+cpp}}.
+

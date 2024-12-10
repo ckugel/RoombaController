@@ -1,0 +1,647 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8cpp_source" xml:lang="en-US">
+<title>main.cpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/main.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_main_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;../include/imgui/imgui.h&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;../include/imgui/backends/imgui_impl_glfw.h&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;../include/imgui/backends/imgui_impl_opengl3.h&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;GLFW/glfw3.h&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Pose2D_8hpp">Pose2D.hpp</link>&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Node_8hpp">Node.hpp</link>&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Pillar_8hpp">Pillar.hpp</link>&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Hole_8hpp">Hole.hpp</link>&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Field_8hpp">Field.hpp</link>&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&lt;netinet/in.h&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&lt;chrono&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&lt;sys/socket.h&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;unistd.h&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00015"/>00015 <emphasis role="preprocessor">#include&#32;&lt;arpa/inet.h&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00016"/>00016 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00017"/>00017 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00018"/>00018 <emphasis role="preprocessor">#include&#32;&lt;thread&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;queue&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&lt;condition_variable&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;atomic&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00022"/>00022 <emphasis role="preprocessor">#include&#32;&lt;sstream&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00023"/>00023 
+<anchor xml:id="_main_8cpp_source_1l00024"/><link linkend="_main_8cpp_1a69549d0bd46cc467083f3554f3f95955">00024</link> <emphasis role="preprocessor">#define&#32;BOT_CONNECT&#32;0</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00025"/>00025 <emphasis role="preprocessor">#if&#32;BOT_CONNECT</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00026"/>00026 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;ADDRESS&#32;&quot;192.168.1.1&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00027"/>00027 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;PORT&#32;288</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00028"/>00028 <emphasis role="preprocessor">#else</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00029"/><link linkend="_main_8cpp_1a280feb883e9d4a7edcc69c8bcb9f38f2">00029</link> <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;ADDRESS&#32;&quot;127.0.0.1&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00030"/><link linkend="_main_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2">00030</link> <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;PORT&#32;&#32;65432</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00031"/>00031 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00032"/>00032 
+<anchor xml:id="_main_8cpp_source_1l00033"/><link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493">00033</link> <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493">MovementType</link>&#32;{
+<anchor xml:id="_main_8cpp_source_1l00034"/><link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c">00034</link> &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c">MOVE_FORWARD</link>,
+<anchor xml:id="_main_8cpp_source_1l00035"/><link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339">00035</link> &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339">MOVE_BACKWARDS</link>,
+<anchor xml:id="_main_8cpp_source_1l00036"/><link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165">00036</link> &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165">MOVE_FORWARD_SMART</link>,
+<anchor xml:id="_main_8cpp_source_1l00037"/><link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd">00037</link> &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd">TURN_TO_ANGLE</link>,
+<anchor xml:id="_main_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d">SCAN</link>
+<anchor xml:id="_main_8cpp_source_1l00039"/><link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d">00039</link> };
+<anchor xml:id="_main_8cpp_source_1l00040"/>00040 
+<anchor xml:id="_main_8cpp_source_1l00041"/><link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">00041</link> std::queue&lt;std::string&gt;&#32;<link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">sendQueue</link>;
+<anchor xml:id="_main_8cpp_source_1l00042"/><link linkend="_main_8cpp_1a781e3772674224fa00da70ac8e0bb247">00042</link> std::mutex&#32;<link linkend="_main_8cpp_1a781e3772674224fa00da70ac8e0bb247">queueMutex</link>;
+<anchor xml:id="_main_8cpp_source_1l00043"/><link linkend="_main_8cpp_1a4bf7290e131c491bb7def53e3d340b95">00043</link> std::condition_variable&#32;<link linkend="_main_8cpp_1a4bf7290e131c491bb7def53e3d340b95">sendCondition</link>;
+<anchor xml:id="_main_8cpp_source_1l00044"/>00044 
+<anchor xml:id="_main_8cpp_source_1l00045"/><link linkend="_structMove">00045</link> <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structMove">Move</link>&#32;{
+<anchor xml:id="_main_8cpp_source_1l00046"/><link linkend="_structMove_1a261f6dd2a4399171b95747f32eb4025e">00046</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_structMove_1a261f6dd2a4399171b95747f32eb4025e">quantity</link>;
+<anchor xml:id="_main_8cpp_source_1l00047"/><link linkend="_structMove_1a024fa73d41d4d3830f2565e158a2b521">00047</link> &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493">MovementType</link>&#32;<link linkend="_structMove_1a024fa73d41d4d3830f2565e158a2b521">type</link>;
+<anchor xml:id="_main_8cpp_source_1l00048"/>00048 };
+<anchor xml:id="_main_8cpp_source_1l00049"/>00049 
+<anchor xml:id="_main_8cpp_source_1l00050"/><link linkend="_main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6">00050</link> std::atomic&lt;bool&gt;&#32;<link linkend="_main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6">stopClient</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00051"/>00051 
+<anchor xml:id="_main_8cpp_source_1l00056"/><link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">00056</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;message)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;message&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a781e3772674224fa00da70ac8e0bb247">queueMutex</link>.lock();
+<anchor xml:id="_main_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;message&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_main_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">sendQueue</link>.push(message);
+<anchor xml:id="_main_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a781e3772674224fa00da70ac8e0bb247">queueMutex</link>.unlock();
+<anchor xml:id="_main_8cpp_source_1l00062"/>00062 }
+<anchor xml:id="_main_8cpp_source_1l00063"/>00063 
+<anchor xml:id="_main_8cpp_source_1l00068"/><link linkend="_main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459">00068</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459">sendAngleToQueue</link>(int16_t&#32;angle)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;buff[8];
+<anchor xml:id="_main_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;sprintf(buff,&#32;<emphasis role="stringliteral">&quot;t%03d&quot;</emphasis>,&#32;angle);
+<anchor xml:id="_main_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;std::string(buff)&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">sendQueue</link>.emplace(buff);
+<anchor xml:id="_main_8cpp_source_1l00073"/>00073 }
+<anchor xml:id="_main_8cpp_source_1l00074"/>00074 
+<anchor xml:id="_main_8cpp_source_1l00079"/><link linkend="_main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5">00079</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5">sendDistanceToQueue</link>(uint16_t&#32;distance)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;buff[8];
+<anchor xml:id="_main_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;sprintf(buff,&#32;<emphasis role="stringliteral">&quot;r%03d&quot;</emphasis>,&#32;distance);
+<anchor xml:id="_main_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">sendQueue</link>.emplace(buff);
+<anchor xml:id="_main_8cpp_source_1l00083"/>00083 }
+<anchor xml:id="_main_8cpp_source_1l00084"/>00084 
+<anchor xml:id="_main_8cpp_source_1l00090"/><link linkend="_main_8cpp_1aafce9996e79c89401b2797ea5bd5702b">00090</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1aafce9996e79c89401b2797ea5bd5702b">pathToRoutine</link>(std::vector&lt;Pose2D&gt;&#32;path,&#32;std::vector&lt;Move&gt;&amp;&#32;routine)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;start&#32;at&#32;1&#32;so&#32;that&#32;we&#32;can&#32;gurantee&#32;that&#32;we&#32;can&#32;look&#32;back.</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;previousEndHeading&#32;=&#32;path[0].getHeading();
+<anchor xml:id="_main_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;move&#32;=&#32;1;&#32;move&#32;&lt;&#32;((path.size()&#32;-&#32;1)*2);&#32;move&#32;+=&#32;2)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;for&#32;every&#32;point&#32;we&#32;want&#32;to&#32;point&#32;and&#32;move</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;pointOld&#32;=&#32;path[move&#32;/&#32;2];
+<anchor xml:id="_main_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;pointNew&#32;=&#32;path[(move&#32;/&#32;2)&#32;+&#32;1];
+<anchor xml:id="_main_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;angle&#32;to&#32;turn&#32;to</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;newHeading&#32;=&#32;pointNew.<link linkend="_classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773">angleTo</link>(pointOld);
+<anchor xml:id="_main_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;angle&#32;=&#32;newHeading&#32;-&#32;previousEndHeading;
+<anchor xml:id="_main_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;previousEndHeading&#32;=&#32;newHeading;
+<anchor xml:id="_main_8cpp_source_1l00101"/>00101 
+<anchor xml:id="_main_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;magnitude</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;magnitude&#32;=&#32;pointNew.<link linkend="_classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3">distanceTo</link>(pointOld);
+<anchor xml:id="_main_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routine.push_back((<link linkend="_structMove">Move</link>)&#32;{.quantity&#32;=&#32;angle,&#32;.type&#32;=&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd">TURN_TO_ANGLE</link>});
+<anchor xml:id="_main_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routine.push_back((<link linkend="_structMove">Move</link>)&#32;{.quantity&#32;=&#32;magnitude,&#32;.type&#32;=&#32;<link linkend="_main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165">MOVE_FORWARD_SMART</link>});
+<anchor xml:id="_main_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00107"/>00107 }
+<anchor xml:id="_main_8cpp_source_1l00108"/>00108 
+<anchor xml:id="_main_8cpp_source_1l00114"/><link linkend="_main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9">00114</link> std::string&#32;<link linkend="_main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9">parsePathIntoRoutine</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;Pose2D&gt;&amp;&#32;path)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;std::stringstream&#32;toSend;
+<anchor xml:id="_main_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;std::vector&lt;Move&gt;&#32;routine;
+<anchor xml:id="_main_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;routine&#32;length:&#32;&quot;&#32;&lt;&lt;&#32;routine.size()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1aafce9996e79c89401b2797ea5bd5702b">pathToRoutine</link>(path,&#32;routine);
+<anchor xml:id="_main_8cpp_source_1l00119"/>00119 
+<anchor xml:id="_main_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;toSend&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;R&quot;</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00121"/>00121 
+<anchor xml:id="_main_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint8_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;routine.size();&#32;i++)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;buffer[50];
+<anchor xml:id="_main_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;sprintf(buffer,&#32;&quot;p&#32;%0.3f&#32;%0.3f&#32;&quot;&#32;,&#32;path[i].getX(),&#32;path[i].getY());</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;//&#32;routine[i]&#32;is&#32;all&#32;0</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sprintf(buffer,&#32;<emphasis role="stringliteral">&quot;&#32;%0.3f&#32;%c&#32;&quot;</emphasis>,&#32;routine[i].quantity,&#32;routine[i].type&#32;+&#32;<emphasis role="charliteral">&apos;a&apos;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toSend&#32;&lt;&lt;&#32;std::string(buffer);
+<anchor xml:id="_main_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00129"/>00129 
+<anchor xml:id="_main_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;toSend&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;R&quot;</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00131"/>00131 
+<anchor xml:id="_main_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;toSend.str();
+<anchor xml:id="_main_8cpp_source_1l00133"/>00133 }
+<anchor xml:id="_main_8cpp_source_1l00134"/>00134 
+<anchor xml:id="_main_8cpp_source_1l00142"/><link linkend="_main_8cpp_1a6e0bf7be42eb96e07b07995bad442501">00142</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a6e0bf7be42eb96e07b07995bad442501">readAndLog</link>(<emphasis role="keywordtype">int</emphasis>&#32;socket,&#32;std::mutex&amp;&#32;fieldMutex,&#32;<link linkend="_classField">Field</link>&amp;&#32;field,&#32;std::vector&lt;Pose2D&gt;&amp;&#32;path)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint16_t&#32;BUFF_SIZE&#32;=&#32;1024;
+<anchor xml:id="_main_8cpp_source_1l00144"/>00144 
+<anchor xml:id="_main_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;name_buff[50];
+<anchor xml:id="_main_8cpp_source_1l00146"/>00146 &#32;&#32;time_t&#32;now&#32;=&#32;time(0);
+<anchor xml:id="_main_8cpp_source_1l00147"/>00147 &#32;&#32;strftime(name_buff,&#32;<emphasis role="keyword">sizeof</emphasis>(name_buff),&#32;<emphasis role="stringliteral">&quot;log/%Y%m%d_%H%M%S.log&quot;</emphasis>,&#32;localtime(&amp;now));
+<anchor xml:id="_main_8cpp_source_1l00148"/>00148 &#32;&#32;std::string&#32;str_name(name_buff);
+<anchor xml:id="_main_8cpp_source_1l00149"/>00149 
+<anchor xml:id="_main_8cpp_source_1l00150"/>00150 &#32;&#32;std::ofstream&#32;logFile(str_name);
+<anchor xml:id="_main_8cpp_source_1l00151"/>00151 
+<anchor xml:id="_main_8cpp_source_1l00152"/>00152 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(!(<link linkend="_main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6">stopClient</link>.load()))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00153"/>00153 
+<anchor xml:id="_main_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;buff[BUFF_SIZE];
+<anchor xml:id="_main_8cpp_source_1l00155"/>00155 
+<anchor xml:id="_main_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;expect&#32;a&#32;&quot;Handshake&quot;&#32;response&#32;to&#32;be&#32;echoed</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;bytesRead&#32;=&#32;read(socket,&#32;buff,&#32;BUFF_SIZE);
+<anchor xml:id="_main_8cpp_source_1l00158"/>00158 
+<anchor xml:id="_main_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;std::string&#32;response(buff,&#32;bytesRead);
+<anchor xml:id="_main_8cpp_source_1l00160"/>00160 
+<anchor xml:id="_main_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(bytesRead&#32;&gt;&#32;0)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;logFile&#32;&lt;&lt;&#32;response;
+<anchor xml:id="_main_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00164"/>00164 
+<anchor xml:id="_main_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;std::istringstream&#32;stream(response);
+<anchor xml:id="_main_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;tag;
+<anchor xml:id="_main_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(stream&#32;&gt;&gt;&#32;tag)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>(tag)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="charliteral">&apos;F&apos;</emphasis>:
+<anchor xml:id="_main_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;send&#32;the&#32;routine</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;generate&#32;path&#32;and&#32;return&#32;it</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.lock();
+<anchor xml:id="_main_8cpp_source_1l00174"/>00174 
+<anchor xml:id="_main_8cpp_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1a3e9096a686ffb177056e24dfb920a610">discretizeGraph</link>();
+<anchor xml:id="_main_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1ab1945d8274ee391ea813863aa94c5d52">weightGraph</link>();
+<anchor xml:id="_main_8cpp_source_1l00177"/>00177 
+<anchor xml:id="_main_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;path.clear();
+<anchor xml:id="_main_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Pose2D&gt;&#32;pathOne&#32;=&#32;field.<link linkend="_classField_1aa988c5de70875dd81c766c9429a4b986">makePath</link>();
+<anchor xml:id="_main_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint16_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;pathOne.size();&#32;i++)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;path.push_back(pathOne[i]);
+<anchor xml:id="_main_8cpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00183"/>00183 
+<anchor xml:id="_main_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00185"/>00185 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Pose2D&#32;oldCenter&#32;=&#32;field.getDesiredDestination();</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00186"/>00186 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(path.empty())&#32;{</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00187"/>00187 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;try&#32;a&#32;new&#32;desired&#32;position&#32;until&#32;its&#32;not&#32;empty</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00188"/>00188 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;(uint8_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;10;&#32;i&#32;+=&#32;5)&#32;{</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00189"/>00189 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;(double&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;2&#32;*&#32;M_PI;&#32;j&#32;+=&#32;M_PI&#32;*&#32;1/4)&#32;{</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00190"/>00190 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Pose2D&#32;newDesired&#32;=&#32;Pose2D::fromPolar(i,&#32;j);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00191"/>00191 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newDesired.plus(oldCenter);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00192"/>00192 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(!Field::outOfBounds(newDesired))&#32;{</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00193"/>00193 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.updateDesired(newDesired);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00194"/>00194 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.discretizeGraph();</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00195"/>00195 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.weightGraph();</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00196"/>00196 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;path&#32;=&#32;field.makePath();</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00197"/>00197 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(!path.empty())&#32;{</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00198"/>00198 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sendQueue.push(parsePathIntoRoutine(path));</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00199"/>00199 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;break;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00200"/>00200 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00201"/>00201 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00202"/>00202 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00203"/>00203 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00204"/>00204 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00205"/>00205 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00206"/>00206 
+<anchor xml:id="_main_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.unlock();
+<anchor xml:id="_main_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="charliteral">&apos;o&apos;</emphasis>:
+<anchor xml:id="_main_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.lock();
+<anchor xml:id="_main_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPillar">Pillar</link>&#32;toAdd&#32;=&#32;<link linkend="_classPillar_1a01e5ad8ad29b0637edc291aaff93785e">Pillar::parseFromStream</link>(stream);
+<anchor xml:id="_main_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;x:&#32;&quot;&#32;&lt;&lt;&#32;toAdd.getX()&#32;&lt;&lt;&#32;&quot;&#32;y:&#32;&quot;&#32;&lt;&lt;&#32;toAdd.getY()&#32;&lt;&lt;&#32;&quot;&#32;radius:&#32;&quot;&#32;&lt;&lt;&#32;toAdd.getRadius()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toAdd.<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>().<link linkend="_classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e">transformForPose</link>(field.<link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">getBotPose</link>().<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>());
+<anchor xml:id="_main_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1a890d7140a600bed6eb18a549b1a0faf9">addPillar</link>(toAdd);
+<anchor xml:id="_main_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.unlock();
+<anchor xml:id="_main_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="charliteral">&apos;d&apos;</emphasis>:
+<anchor xml:id="_main_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;other&#32;=&#32;<link linkend="_classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2">Pose2D::parseFromStream</link>(stream);
+<anchor xml:id="_main_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2">updateDesired</link>(other);
+<anchor xml:id="_main_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="charliteral">&apos;E&apos;</emphasis>:
+<anchor xml:id="_main_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;m;
+<anchor xml:id="_main_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;cardinality;
+<anchor xml:id="_main_8cpp_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(stream&#32;&gt;&gt;&#32;m&#32;&gt;&gt;&#32;cardinality)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1aba8449d9e693a3542f37c223099464d9">addEdgeMeasurement</link>(m,&#32;(<link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5">Cardinality</link>)&#32;cardinality);
+<anchor xml:id="_main_8cpp_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;first&#32;term&#32;is&#32;the&#32;raw&#32;X&#32;or&#32;Y&#32;value&#32;next&#32;value&#32;is&#32;the&#32;direction</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="charliteral">&apos;h&apos;</emphasis>:
+<anchor xml:id="_main_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.lock();
+<anchor xml:id="_main_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;data&#32;is&#32;coming&#32;in&#32;the&#32;format&#32;&quot;&#32;X&#32;Y&#32;Theta&#32;&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;holeMeasurment&#32;=&#32;<link linkend="_classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2">Pose2D::parseFromStream</link>(stream);
+<anchor xml:id="_main_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;holeMeasurment.<link linkend="_classPose2D_1a5a031312210c5fd0d88855df26b53c1a">plus</link>(field.<link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">getBotPose</link>().<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>());
+<anchor xml:id="_main_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1a87df29e3618d42c11b886bbcf07b1453">getManager</link>().<link linkend="_classHoleManager_1a317b24d6b0d2b5f843d3cbc4fcf39dd8">addPoint</link>(holeMeasurment);
+<anchor xml:id="_main_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.unlock();
+<anchor xml:id="_main_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="charliteral">&apos;H&apos;</emphasis>:
+<anchor xml:id="_main_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;data&#32;is&#32;coming&#32;in&#32;the&#32;format&#32;&quot;&#32;X1&#32;Y1&#32;X2&#32;Y2&#32;&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.lock();
+<anchor xml:id="_main_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;x1,&#32;y1,&#32;x2,&#32;y2;
+<anchor xml:id="_main_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(stream&#32;&gt;&gt;&#32;x1&#32;&gt;&gt;&#32;y1&#32;&gt;&gt;&#32;x2&#32;&gt;&gt;&#32;y2)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;one(x1,&#32;y1);
+<anchor xml:id="_main_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;two(x2,&#32;y2);
+<anchor xml:id="_main_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;one.<link linkend="_classPose2D_1a5a031312210c5fd0d88855df26b53c1a">plus</link>(field.<link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">getBotPose</link>().<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>());
+<anchor xml:id="_main_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;two.<link linkend="_classPose2D_1a5a031312210c5fd0d88855df26b53c1a">plus</link>(field.<link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">getBotPose</link>().<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>());
+<anchor xml:id="_main_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classHole">Hole</link>&#32;hole(one,&#32;two,&#32;one.<link linkend="_classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3">distanceTo</link>(two)&#32;/&#32;sqrt(2));
+<anchor xml:id="_main_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1a87df29e3618d42c11b886bbcf07b1453">getManager</link>().<link linkend="_classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7">addHole</link>(hole);
+<anchor xml:id="_main_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.unlock();
+<anchor xml:id="_main_8cpp_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<emphasis role="charliteral">&apos;b&apos;</emphasis>:
+<anchor xml:id="_main_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.lock();
+<anchor xml:id="_main_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1a099593a58a6edcd2e6e2831abbb8fe89">updateBotPose</link>(<link linkend="_classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2">Pose2D::parseFromStream</link>(stream));
+<anchor xml:id="_main_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;recieved&#32;bot&#32;pose:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;field.<link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">getBotPose</link>().<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>()&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_main_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldMutex.unlock();
+<anchor xml:id="_main_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+<anchor xml:id="_main_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;logFile&#32;&lt;&lt;&#32;tag;
+<anchor xml:id="_main_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00275"/>00275 
+<anchor xml:id="_main_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;std::this_thread::sleep_for(std::chrono::milliseconds(5));
+<anchor xml:id="_main_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;no&#32;matter&#32;what&#32;we&#32;are&#32;going&#32;to&#32;log&#32;this&#32;in&#32;a&#32;file,&#32;however&#32;we&#32;should&#32;also&#32;update&#32;certain&#32;fields</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00278"/>00278 
+<anchor xml:id="_main_8cpp_source_1l00279"/>00279 &#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00280"/>00280 
+<anchor xml:id="_main_8cpp_source_1l00281"/>00281 &#32;&#32;logFile.close();
+<anchor xml:id="_main_8cpp_source_1l00282"/>00282 
+<anchor xml:id="_main_8cpp_source_1l00283"/>00283 }
+<anchor xml:id="_main_8cpp_source_1l00284"/>00284 
+<anchor xml:id="_main_8cpp_source_1l00291"/><link linkend="_main_8cpp_1aeb814458701307eaffced2d1f95dc3f9">00291</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1aeb814458701307eaffced2d1f95dc3f9">connectTCP</link>(<link linkend="_classField">Field</link>&amp;&#32;field,&#32;std::mutex&amp;&#32;fieldMutex,&#32;std::vector&lt;Pose2D&gt;&amp;&#32;path)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00292"/>00292 &#32;<emphasis role="keywordtype">int</emphasis>&#32;clientSocket&#32;=&#32;socket(AF_INET,&#32;SOCK_STREAM,&#32;0);
+<anchor xml:id="_main_8cpp_source_1l00293"/>00293 &#32;&#32;sockaddr_in&#32;serverAddress{
+<anchor xml:id="_main_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;.sin_family&#32;=&#32;AF_INET,
+<anchor xml:id="_main_8cpp_source_1l00295"/>00295 &#32;&#32;&#32;&#32;.sin_port&#32;=&#32;htons(<link linkend="_main_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2">PORT</link>),
+<anchor xml:id="_main_8cpp_source_1l00296"/>00296 &#32;&#32;&#32;&#32;.sin_addr&#32;=&#32;inet_addr(<link linkend="_main_8cpp_1a280feb883e9d4a7edcc69c8bcb9f38f2">ADDRESS</link>)
+<anchor xml:id="_main_8cpp_source_1l00297"/>00297 &#32;&#32;};
+<anchor xml:id="_main_8cpp_source_1l00298"/>00298 
+<anchor xml:id="_main_8cpp_source_1l00299"/>00299 &#32;&#32;<emphasis role="comment">//&#32;https://beej.us/guide/bgnet/html/#blocking</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00300"/>00300 &#32;&#32;<emphasis role="comment">//&#32;fcntl(clientSocket,&#32;F_SETFL,&#32;O_NONBLOCK);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;connected&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(!connected)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00303"/>00303 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>&#32;{
+<anchor xml:id="_main_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(connect(clientSocket,&#32;(<emphasis role="keyword">struct</emphasis>&#32;sockaddr*)&amp;&#32;serverAddress,&#32;<emphasis role="keyword">sizeof</emphasis>(serverAddress)))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::exception();
+<anchor xml:id="_main_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;connected&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00308"/>00308 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>&#32;(std::exception&amp;&#32;e)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::this_thread::sleep_for(std::chrono::milliseconds(500));
+<anchor xml:id="_main_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;connected&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00312"/>00312 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00313"/>00313 
+<anchor xml:id="_main_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00315"/>00315 
+<anchor xml:id="_main_8cpp_source_1l00316"/>00316 &#32;&#32;<emphasis role="comment">//&#32;spawn&#32;read&#32;and&#32;log&#32;thread&#32;here</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00317"/>00317 &#32;&#32;std::thread&#32;readThread(<link linkend="_main_8cpp_1a6e0bf7be42eb96e07b07995bad442501">readAndLog</link>,&#32;std::ref(clientSocket),&#32;std::ref(fieldMutex),&#32;std::ref(field),&#32;std::ref(path));
+<anchor xml:id="_main_8cpp_source_1l00318"/>00318 
+<anchor xml:id="_main_8cpp_source_1l00319"/>00319 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(!<link linkend="_main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6">stopClient</link>.load())&#32;{
+<anchor xml:id="_main_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">sendQueue</link>.empty())&#32;{
+<anchor xml:id="_main_8cpp_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;message&#32;=&#32;<link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">sendQueue</link>.front();
+<anchor xml:id="_main_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(message.compare(<emphasis role="stringliteral">&quot;q&quot;</emphasis>)&#32;==&#32;0)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6">stopClient</link>.store(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3">sendQueue</link>.pop();
+<anchor xml:id="_main_8cpp_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;send(clientSocket,&#32;message.c_str(),&#32;message.length(),&#32;0);
+<anchor xml:id="_main_8cpp_source_1l00327"/>00327 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00328"/>00328 
+<anchor xml:id="_main_8cpp_source_1l00329"/>00329 &#32;&#32;&#32;&#32;std::this_thread::sleep_for(std::chrono::milliseconds(20));
+<anchor xml:id="_main_8cpp_source_1l00330"/>00330 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00331"/>00331 
+<anchor xml:id="_main_8cpp_source_1l00332"/>00332 
+<anchor xml:id="_main_8cpp_source_1l00333"/>00333 &#32;&#32;readThread.join();
+<anchor xml:id="_main_8cpp_source_1l00334"/>00334 &#32;&#32;close(clientSocket);
+<anchor xml:id="_main_8cpp_source_1l00335"/>00335 }
+<anchor xml:id="_main_8cpp_source_1l00336"/>00336 
+<anchor xml:id="_main_8cpp_source_1l00341"/><link linkend="_main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2">00341</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2">setupImGui</link>(GLFWwindow*&#32;window)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00342"/>00342 &#32;&#32;&#32;&#32;IMGUI_CHECKVERSION();
+<anchor xml:id="_main_8cpp_source_1l00343"/>00343 &#32;&#32;&#32;&#32;ImGui::CreateContext();
+<anchor xml:id="_main_8cpp_source_1l00344"/>00344 &#32;&#32;&#32;&#32;ImGuiIO&amp;&#32;io&#32;=&#32;ImGui::GetIO();&#32;(void)io;
+<anchor xml:id="_main_8cpp_source_1l00345"/>00345 &#32;&#32;&#32;&#32;ImGui::StyleColorsDark();
+<anchor xml:id="_main_8cpp_source_1l00346"/>00346 &#32;&#32;&#32;&#32;ImGui_ImplGlfw_InitForOpenGL(window,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00347"/>00347 &#32;&#32;&#32;&#32;ImGui_ImplOpenGL3_Init(<emphasis role="stringliteral">&quot;#version&#32;130&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00348"/>00348 }
+<anchor xml:id="_main_8cpp_source_1l00349"/>00349 
+<anchor xml:id="_main_8cpp_source_1l00357"/><link linkend="_main_8cpp_1aef05f78be1cf48474bb638b05af91d4e">00357</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1aef05f78be1cf48474bb638b05af91d4e">DrawCircle</link>(ImDrawList*&#32;drawList,&#32;<emphasis role="keyword">const</emphasis>&#32;ImVec2&amp;&#32;center,&#32;<emphasis role="keywordtype">float</emphasis>&#32;radius,&#32;ImU32&#32;color)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00358"/>00358 &#32;&#32;drawList-&gt;AddCircle(center,&#32;radius,&#32;color,&#32;0,&#32;0.2f);
+<anchor xml:id="_main_8cpp_source_1l00359"/>00359 }
+<anchor xml:id="_main_8cpp_source_1l00360"/>00360 
+<anchor xml:id="_main_8cpp_source_1l00368"/><link linkend="_main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77">00368</link> <link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77">ScreenToCoords</link>(ImVec2&#32;coords,&#32;ImVec2&#32;offset,&#32;ImVec2&#32;scaling)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;x&#32;=&#32;(coords.x&#32;-&#32;offset.x)&#32;/&#32;scaling.<link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link>;
+<anchor xml:id="_main_8cpp_source_1l00370"/>00370 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;y&#32;=&#32;<link linkend="_Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef">MAX_Y</link>&#32;-&#32;(coords.y&#32;-&#32;offset.y)&#32;/&#32;scaling.y;
+<anchor xml:id="_main_8cpp_source_1l00371"/>00371 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;{x,&#32;y};
+<anchor xml:id="_main_8cpp_source_1l00372"/>00372 }
+<anchor xml:id="_main_8cpp_source_1l00373"/>00373 
+<anchor xml:id="_main_8cpp_source_1l00383"/><link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">00383</link> ImVec2&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(ImVec2&#32;offset,&#32;ImVec2&#32;scaling,&#32;<emphasis role="keywordtype">double</emphasis>&#32;x,&#32;<emphasis role="keywordtype">double</emphasis>&#32;y)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00384"/>00384 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;xN&#32;=&#32;offset.x&#32;+&#32;(scaling.x&#32;*&#32;x);
+<anchor xml:id="_main_8cpp_source_1l00385"/>00385 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;yN&#32;=&#32;offset.y&#32;+&#32;(scaling.y&#32;*&#32;(<link linkend="_Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef">MAX_Y</link>&#32;-&#32;y));
+<anchor xml:id="_main_8cpp_source_1l00386"/>00386 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ImVec2(xN,&#32;yN);
+<anchor xml:id="_main_8cpp_source_1l00387"/>00387 }
+<anchor xml:id="_main_8cpp_source_1l00388"/>00388 
+<anchor xml:id="_main_8cpp_source_1l00396"/><link linkend="_main_8cpp_1aadd75f0fd8f5677340c27a7df7c28366">00396</link> ImVec2&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(ImVec2&#32;offset,&#32;ImVec2&#32;scaling,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;position)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00397"/>00397 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;position.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>(),&#32;position.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>());
+<anchor xml:id="_main_8cpp_source_1l00398"/>00398 }
+<anchor xml:id="_main_8cpp_source_1l00399"/>00399 
+<anchor xml:id="_main_8cpp_source_1l00408"/><link linkend="_main_8cpp_1a9d21b7be18e221988e1051a55465f3a2">00408</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a9d21b7be18e221988e1051a55465f3a2">ShowPillarOnWindow</link>(ImDrawList*&#32;drawList,&#32;<link linkend="_classPillar">Pillar</link>&#32;pillar,&#32;ImU32&#32;color,&#32;ImVec2&#32;offset,&#32;ImVec2&#32;scaling)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00409"/>00409 &#32;&#32;&#32;&#32;ImVec2&#32;center&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;pillar.<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>());
+<anchor xml:id="_main_8cpp_source_1l00410"/>00410 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;radius&#32;=&#32;pillar.<link linkend="_classPillar_1a404e92b3ee6005fcd400ae120ce0b560">getRadius</link>()&#32;*&#32;2.5;
+<anchor xml:id="_main_8cpp_source_1l00411"/>00411 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;haven&apos;t&#32;drawn&#32;yet&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00412"/>00412 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1aef05f78be1cf48474bb638b05af91d4e">DrawCircle</link>(drawList,&#32;center,&#32;radius,&#32;color);
+<anchor xml:id="_main_8cpp_source_1l00413"/>00413 }
+<anchor xml:id="_main_8cpp_source_1l00414"/>00414 
+<anchor xml:id="_main_8cpp_source_1l00423"/><link linkend="_main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7">00423</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7">drawBotPose</link>(ImDrawList*&#32;drawList,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;botPose,&#32;ImVec2&#32;offset,&#32;ImVec2&#32;scaling)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00424"/>00424 &#32;&#32;&#32;&#32;ImU32&#32;color&#32;=&#32;IM_COL32(144,&#32;238,&#32;144,&#32;200);
+<anchor xml:id="_main_8cpp_source_1l00425"/>00425 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00426"/>00426 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;calculate&#32;the&#32;position&#32;of&#32;the&#32;first&#32;point</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00427"/>00427 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;should&#32;be&#32;botPose&#32;+&#32;(botRadius&#32;*&#32;1.5&#32;@&#32;bot&#32;heading)</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00428"/>00428 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;scaleAmount&#32;=&#32;2;
+<anchor xml:id="_main_8cpp_source_1l00429"/>00429 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;lineOutOfCenter&#32;=&#32;<link linkend="_classPose2D_1a35455cacb295ea54820030b9dbb191f2">Pose2D::fromPolar</link>(<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>&#32;*&#32;1.5&#32;*&#32;scaleAmount,&#32;0);
+<anchor xml:id="_main_8cpp_source_1l00430"/>00430 &#32;&#32;&#32;&#32;lineOutOfCenter.<link linkend="_classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea">transformPose</link>(botPose);
+<anchor xml:id="_main_8cpp_source_1l00431"/>00431 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ImVec2&#32;p1&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;lineOutOfCenter);
+<anchor xml:id="_main_8cpp_source_1l00432"/>00432 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;sideLine&#32;=&#32;<link linkend="_classPose2D_1a35455cacb295ea54820030b9dbb191f2">Pose2D::fromPolar</link>(scaleAmount&#32;*&#32;<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>&#32;*&#32;0.75,&#32;<link linkend="_classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c">Pose2D::degreesToRadians</link>(120));
+<anchor xml:id="_main_8cpp_source_1l00433"/>00433 &#32;&#32;&#32;&#32;sideLine.<link linkend="_classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea">transformPose</link>(botPose);
+<anchor xml:id="_main_8cpp_source_1l00434"/>00434 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ImVec2&#32;p2&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;sideLine);
+<anchor xml:id="_main_8cpp_source_1l00435"/>00435 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;otherSide&#32;=&#32;<link linkend="_classPose2D_1a35455cacb295ea54820030b9dbb191f2">Pose2D::fromPolar</link>(<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>&#32;*&#32;scaleAmount&#32;*&#32;0.75,&#32;<link linkend="_classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c">Pose2D::degreesToRadians</link>(240));
+<anchor xml:id="_main_8cpp_source_1l00436"/>00436 &#32;&#32;&#32;&#32;otherSide.<link linkend="_classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea">transformPose</link>(botPose);
+<anchor xml:id="_main_8cpp_source_1l00437"/>00437 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ImVec2&#32;p3&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;otherSide);
+<anchor xml:id="_main_8cpp_source_1l00438"/>00438 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00439"/>00439 &#32;&#32;&#32;&#32;drawList-&gt;AddTriangle(p1,&#32;p2,&#32;p3,&#32;color);
+<anchor xml:id="_main_8cpp_source_1l00440"/>00440 }
+<anchor xml:id="_main_8cpp_source_1l00441"/>00441 
+<anchor xml:id="_main_8cpp_source_1l00450"/><link linkend="_main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c">00450</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c">drawRectangle</link>(ImDrawList*&#32;drawList,&#32;ImVec2&#32;offset,&#32;ImVec2&#32;scaling,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;p1,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;p2)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00451"/>00451 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;const&#32;Pose2D&#32;MinPosition&#32;=&#32;Pose2D(std::min(p1.getX(),&#32;p2.getX()),&#32;std::min(p1.getY(),&#32;p2.getY()));</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00452"/>00452 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;const&#32;Pose2D&#32;MaxPosition&#32;=&#32;Pose2D(std::max(p1.getX(),&#32;p2.getX()),&#32;std::max(p1.getY(),&#32;p2.getY()));</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00453"/>00453 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;fun&#32;math&#32;time</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00454"/>00454 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;xCenter&#32;=&#32;(p1.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>()&#32;+&#32;p2.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>())&#32;/&#32;2;
+<anchor xml:id="_main_8cpp_source_1l00455"/>00455 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;yCenter&#32;=&#32;(p1.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>()&#32;+&#32;p2.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>())&#32;/&#32;2;
+<anchor xml:id="_main_8cpp_source_1l00456"/>00456 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;xDiagonal&#32;=&#32;(p1.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>()&#32;-&#32;p2.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>())&#32;/&#32;2;
+<anchor xml:id="_main_8cpp_source_1l00457"/>00457 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;yDiagonal&#32;=&#32;(p1.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>()&#32;-&#32;p2.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>())&#32;/&#32;2;
+<anchor xml:id="_main_8cpp_source_1l00458"/>00458 
+<anchor xml:id="_main_8cpp_source_1l00459"/>00459 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&#32;p3(xCenter&#32;-&#32;yDiagonal,&#32;yCenter&#32;+&#32;xDiagonal);
+<anchor xml:id="_main_8cpp_source_1l00460"/>00460 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&#32;p4(xCenter&#32;+&#32;yDiagonal,&#32;yCenter&#32;-&#32;xDiagonal);
+<anchor xml:id="_main_8cpp_source_1l00461"/>00461 
+<anchor xml:id="_main_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ImVec2&#32;m1&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;p1);
+<anchor xml:id="_main_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ImVec2&#32;m2&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;p2);
+<anchor xml:id="_main_8cpp_source_1l00464"/>00464 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ImVec2&#32;m3&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;p3);
+<anchor xml:id="_main_8cpp_source_1l00465"/>00465 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ImVec2&#32;m4&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scaling,&#32;p4);
+<anchor xml:id="_main_8cpp_source_1l00466"/>00466 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;std::&#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;&quot;p2&#32;position:&#32;&quot;&#32;&lt;&lt;&#32;p2.getY()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00467"/>00467 
+<anchor xml:id="_main_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;drawList-&gt;AddQuadFilled(m1,&#32;m3,&#32;m2,&#32;m4,&#32;IM_COL32(255,&#32;165,&#32;0,&#32;170));
+<anchor xml:id="_main_8cpp_source_1l00469"/>00469 }
+<anchor xml:id="_main_8cpp_source_1l00470"/>00470 
+<anchor xml:id="_main_8cpp_source_1l00479"/><link linkend="_main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf">00479</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf">ShowFieldWindow</link>(std::mutex*&#32;pillarsMutex,&#32;std::vector&lt;Pose2D&gt;&amp;&#32;path,&#32;<link linkend="_classField">Field</link>&amp;&#32;field,&#32;std::atomic&lt;bool&gt;&amp;&#32;showNodes,&#32;std::atomic&lt;bool&gt;&amp;&#32;showEdges)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00480"/>00480 &#32;&#32;&#32;&#32;ImGui::Begin(<emphasis role="stringliteral">&quot;Field&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00481"/>00481 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00482"/>00482 &#32;&#32;&#32;&#32;ImDrawList*&#32;drawList&#32;=&#32;ImGui::GetWindowDrawList();
+<anchor xml:id="_main_8cpp_source_1l00483"/>00483 &#32;&#32;&#32;&#32;ImVec2&#32;windowSize(<link linkend="_Field_8hpp_1a898606140dee9ce0adf096de00824d94">MAX_X</link>&#32;*&#32;2.5,&#32;<link linkend="_Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef">MAX_Y</link>&#32;*&#32;2.5);
+<anchor xml:id="_main_8cpp_source_1l00484"/>00484 &#32;&#32;&#32;&#32;ImGui::SetWindowSize(windowSize);
+<anchor xml:id="_main_8cpp_source_1l00485"/>00485 &#32;&#32;&#32;&#32;ImVec2&#32;windowPos&#32;=&#32;ImGui::GetWindowPos();
+<anchor xml:id="_main_8cpp_source_1l00486"/>00486 &#32;&#32;&#32;&#32;windowPos.x&#32;+=&#32;windowSize.x&#32;/&#32;100;
+<anchor xml:id="_main_8cpp_source_1l00487"/>00487 &#32;&#32;&#32;&#32;windowPos.y&#32;+=&#32;windowSize.y&#32;/&#32;100;
+<anchor xml:id="_main_8cpp_source_1l00488"/>00488 &#32;&#32;&#32;&#32;ImVec2&#32;offset&#32;=&#32;&#32;ImVec2(windowPos.x&#32;+&#32;windowSize.x&#32;/&#32;50,&#32;windowPos.y&#32;-&#32;windowSize.y&#32;/&#32;50);
+<anchor xml:id="_main_8cpp_source_1l00489"/>00489 &#32;&#32;&#32;&#32;ImVec2&#32;scalingFactor&#32;=&#32;ImVec2(windowSize.x&#32;/&#32;<link linkend="_Field_8hpp_1a898606140dee9ce0adf096de00824d94">MAX_X</link>,&#32;windowSize.y&#32;/&#32;<link linkend="_Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef">MAX_Y</link>);
+<anchor xml:id="_main_8cpp_source_1l00490"/>00490 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;pillarsMutex-&gt;lock();
+<anchor xml:id="_main_8cpp_source_1l00492"/>00492 
+<anchor xml:id="_main_8cpp_source_1l00493"/>00493 &#32;&#32;&#32;&#32;std::vector&lt;Pillar&gt;&#32;pillars&#32;=&#32;field.<link linkend="_classField_1a1f3f3b289e23572dc12f9aef6b33817e">getCopyPillars</link>();
+<anchor xml:id="_main_8cpp_source_1l00494"/>00494 
+<anchor xml:id="_main_8cpp_source_1l00495"/>00495 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPillar">Pillar</link>&amp;&#32;pillar:&#32;pillars)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00496"/>00496 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a9d21b7be18e221988e1051a55465f3a2">ShowPillarOnWindow</link>(drawList,&#32;pillar,&#32;IM_COL32(255,&#32;0,&#32;0,&#32;200),&#32;offset,&#32;scalingFactor);
+<anchor xml:id="_main_8cpp_source_1l00497"/>00497 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00498"/>00498 
+<anchor xml:id="_main_8cpp_source_1l00499"/>00499 &#32;&#32;&#32;&#32;std::vector&lt;Hole&gt;&#32;holes&#32;=&#32;field.<link linkend="_classField_1a87df29e3618d42c11b886bbcf07b1453">getManager</link>().<link linkend="_classHoleManager_1a586843e9065c89985c3b76bc8a2f9003">getHoles</link>();
+<anchor xml:id="_main_8cpp_source_1l00500"/>00500 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;size:&#32;&quot;&#32;&lt;&lt;&#32;holes.size()&#32;&lt;&lt;&#32;std::endl;&#32;//&#32;output&#32;1</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00501"/>00501 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_classHole">Hole</link>&#32;hole:&#32;holes)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;X1&#32;Y1&#32;X2&#32;Y2:&#32;{&quot;&#32;&lt;&lt;&#32;hole.getOneSquareCorner().getX()&#32;&lt;&lt;&#32;&quot;&#32;&quot;&#32;&lt;&lt;&#32;hole.getOneSquareCorner().getY()&#32;&lt;&lt;&#32;&quot;&#32;&quot;&#32;&lt;&lt;&#32;hole.getSecondSquareCorner().getX()&#32;&lt;&lt;&#32;&quot;&#32;&quot;&#32;&lt;&lt;&#32;hole.getSecondSquareCorner().getY()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00503"/>00503 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(hole.isFoundHole())&#32;{
+<anchor xml:id="_main_8cpp_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c">drawRectangle</link>(drawList,&#32;offset,&#32;scalingFactor,&#32;hole.getOneSquareCorner(),&#32;hole.getSecondSquareCorner());
+<anchor xml:id="_main_8cpp_source_1l00505"/>00505 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00506"/>00506 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_main_8cpp_source_1l00507"/>00507 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Hole&gt;&#32;subHoles&#32;=&#32;hole.getSubHolesCopy();
+<anchor xml:id="_main_8cpp_source_1l00508"/>00508 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_classHole">Hole</link>&#32;holer:&#32;subHoles)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00509"/>00509 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c">drawRectangle</link>(drawList,&#32;offset,&#32;scalingFactor,&#32;holer.getOneSquareCorner(),&#32;holer.getSecondSquareCorner());
+<anchor xml:id="_main_8cpp_source_1l00510"/>00510 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00511"/>00511 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00512"/>00512 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00513"/>00513 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00514"/>00514 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7">drawBotPose</link>(drawList,&#32;field.<link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">getBotPose</link>().<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>(),&#32;offset,&#32;scalingFactor);
+<anchor xml:id="_main_8cpp_source_1l00515"/>00515 
+<anchor xml:id="_main_8cpp_source_1l00516"/>00516 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(showNodes.load())&#32;{
+<anchor xml:id="_main_8cpp_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;Pose2D&gt;&#32;*&gt;&#32;nodes&#32;=&#32;field.<link linkend="_classField_1ae20c991c2df6d7e863458e181b683140">getGraph</link>().<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>();
+<anchor xml:id="_main_8cpp_source_1l00518"/>00518 
+<anchor xml:id="_main_8cpp_source_1l00519"/>00519 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_classNode">Node&lt;Pose2D&gt;</link>&#32;*&amp;node:&#32;nodes)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00520"/>00520 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;position&#32;=&#32;node-&gt;getData();
+<anchor xml:id="_main_8cpp_source_1l00521"/>00521 
+<anchor xml:id="_main_8cpp_source_1l00522"/>00522 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImVec2&#32;center&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scalingFactor,&#32;position.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>(),&#32;position.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>());
+<anchor xml:id="_main_8cpp_source_1l00523"/>00523 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;radius&#32;=&#32;<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>&#32;*&#32;2.5;
+<anchor xml:id="_main_8cpp_source_1l00524"/>00524 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1aef05f78be1cf48474bb638b05af91d4e">DrawCircle</link>(drawList,&#32;center,&#32;radius,&#32;IM_COL32(120,&#32;120,&#32;0,&#32;200));
+<anchor xml:id="_main_8cpp_source_1l00525"/>00525 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;draw&#32;a&#32;line&#32;from&#32;every&#32;node&#32;to&#32;the&#32;adjacent&#32;yes&#32;we&#32;will&#32;double&#32;count&#32;draws&#32;with&#32;this</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00526"/>00526 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;std::vector&lt;Node&lt;Pose2D&gt;*&gt;&#32;adjacent&#32;=&#32;getAdj(nodes[nodeIndex]);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00527"/>00527 
+<anchor xml:id="_main_8cpp_source_1l00528"/>00528 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00529"/>00529 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00530"/>00530 
+<anchor xml:id="_main_8cpp_source_1l00531"/>00531 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(showEdges.load())&#32;{
+<anchor xml:id="_main_8cpp_source_1l00532"/>00532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;Pose2D&gt;&#32;*&gt;&#32;nodes&#32;=&#32;field.<link linkend="_classField_1ae20c991c2df6d7e863458e181b683140">getGraph</link>().<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>();
+<anchor xml:id="_main_8cpp_source_1l00533"/>00533 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_classNode">Node&lt;Pose2D&gt;</link>&#32;*&amp;node:&#32;nodes)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00534"/>00534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;Pose2D&gt;&#32;*&gt;&#32;adjacent&#32;=&#32;field.<link linkend="_classField_1ae20c991c2df6d7e863458e181b683140">getGraph</link>().<link linkend="_classGraph_1a4969a395490f7e67cc70a7feb58a0b54">getAdj</link>(node);
+<anchor xml:id="_main_8cpp_source_1l00535"/>00535 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_classNode">Node&lt;Pose2D&gt;</link>&#32;*&amp;adj:&#32;adjacent)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00536"/>00536 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImVec2&#32;p1&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scalingFactor,&#32;node-&gt;getData());
+<anchor xml:id="_main_8cpp_source_1l00537"/>00537 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImVec2&#32;p2&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scalingFactor,&#32;adj-&gt;getData());
+<anchor xml:id="_main_8cpp_source_1l00538"/>00538 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drawList-&gt;AddLine(p1,&#32;p2,&#32;IM_COL32(100,&#32;100,&#32;100,&#32;100),&#32;2);
+<anchor xml:id="_main_8cpp_source_1l00539"/>00539 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00540"/>00540 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00541"/>00541 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00542"/>00542 
+<anchor xml:id="_main_8cpp_source_1l00543"/>00543 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00544"/>00544 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint8_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;path.size();&#32;i++)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(i&#32;&gt;&#32;0)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00546"/>00546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImVec2&#32;p1&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scalingFactor,&#32;path[i&#32;-&#32;1].getX(),&#32;path[i&#32;-&#32;1].getY());
+<anchor xml:id="_main_8cpp_source_1l00547"/>00547 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImVec2&#32;p2&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scalingFactor,&#32;path[i].getX(),&#32;path[i].getY());
+<anchor xml:id="_main_8cpp_source_1l00548"/>00548 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drawList-&gt;AddLine(p1,&#32;p2,&#32;IM_COL32(100,&#32;100,&#32;100,&#32;100),&#32;2);
+<anchor xml:id="_main_8cpp_source_1l00549"/>00549 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00550"/>00550 
+<anchor xml:id="_main_8cpp_source_1l00551"/>00551 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImVec2&#32;center&#32;=&#32;<link linkend="_main_8cpp_1a3ef8063c34d114204774d6b132c6880c">coordsToScreen</link>(offset,&#32;scalingFactor,&#32;path[i].getX(),&#32;path[i].getY());
+<anchor xml:id="_main_8cpp_source_1l00552"/>00552 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;radius&#32;=&#32;<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>&#32;*&#32;2.5;
+<anchor xml:id="_main_8cpp_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1aef05f78be1cf48474bb638b05af91d4e">DrawCircle</link>(drawList,&#32;center,&#32;radius,&#32;IM_COL32(30,&#32;120,&#32;220,&#32;150));
+<anchor xml:id="_main_8cpp_source_1l00554"/>00554 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00555"/>00555 
+<anchor xml:id="_main_8cpp_source_1l00556"/>00556 &#32;&#32;&#32;&#32;pillarsMutex-&gt;unlock();
+<anchor xml:id="_main_8cpp_source_1l00557"/>00557 
+<anchor xml:id="_main_8cpp_source_1l00558"/>00558 &#32;&#32;&#32;&#32;ImVec2&#32;mousePos&#32;=&#32;ImGui::GetMousePos();
+<anchor xml:id="_main_8cpp_source_1l00559"/>00559 <emphasis role="comment">//&#32;&#32;std::string&#32;mousePosStr&#32;=&#32;std::to_string((int)mousePos.x)&#32;+&#32;&quot;,&#32;&quot;&#32;+&#32;std::to_string((int)mousePos.y);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00560"/>00560 &#32;&#32;&#32;&#32;ImGui::Text(<emphasis role="stringliteral">&quot;mouse:&#32;%d,&#32;%d&quot;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)mousePos.x,&#32;(<emphasis role="keywordtype">int</emphasis>)mousePos.y);
+<anchor xml:id="_main_8cpp_source_1l00561"/>00561 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;transformed&#32;=&#32;<link linkend="_main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77">ScreenToCoords</link>(ImVec2((<emphasis role="keywordtype">int</emphasis>)&#32;mousePos.x,&#32;(<emphasis role="keywordtype">int</emphasis>)&#32;mousePos.y),&#32;offset,&#32;scalingFactor);
+<anchor xml:id="_main_8cpp_source_1l00562"/>00562 &#32;&#32;&#32;&#32;ImGui::Text(<emphasis role="stringliteral">&quot;Pose&#32;on&#32;field:&#32;%d,&#32;%d&quot;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)&#32;transformed.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>(),&#32;(<emphasis role="keywordtype">int</emphasis>)&#32;transformed.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>());
+<anchor xml:id="_main_8cpp_source_1l00563"/>00563 
+<anchor xml:id="_main_8cpp_source_1l00564"/>00564 &#32;&#32;&#32;&#32;ImGui::End();
+<anchor xml:id="_main_8cpp_source_1l00565"/>00565 }
+<anchor xml:id="_main_8cpp_source_1l00566"/>00566 
+<anchor xml:id="_main_8cpp_source_1l00567"/>00567 
+<anchor xml:id="_main_8cpp_source_1l00572"/><link linkend="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00572</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_main_8cpp_source_1l00573"/>00573 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!glfwInit())&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_main_8cpp_source_1l00574"/>00574 &#32;&#32;&#32;&#32;GLFWwindow*&#32;window&#32;=&#32;glfwCreateWindow(1880,&#32;900,&#32;<emphasis role="stringliteral">&quot;Roomba&#32;Dashboard&quot;</emphasis>,&#32;<emphasis role="keyword">nullptr</emphasis>,&#32;<emphasis role="keyword">nullptr</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00575"/>00575 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!window)&#32;{&#32;glfwTerminate();&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00576"/>00576 &#32;&#32;&#32;&#32;glfwMakeContextCurrent(window);
+<anchor xml:id="_main_8cpp_source_1l00577"/>00577 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2">setupImGui</link>(window);
+<anchor xml:id="_main_8cpp_source_1l00578"/>00578 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;desired(0,&#32;0);
+<anchor xml:id="_main_8cpp_source_1l00579"/>00579 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00580"/>00580 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;used&#32;to&#32;hold&#32;GUI&#32;slider&#32;values</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00581"/>00581 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;angleSend&#32;=&#32;0;
+<anchor xml:id="_main_8cpp_source_1l00582"/>00582 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;driveForward&#32;=&#32;0;
+<anchor xml:id="_main_8cpp_source_1l00583"/>00583 
+<anchor xml:id="_main_8cpp_source_1l00584"/>00584 &#32;&#32;&#32;&#32;std::atomic&lt;bool&gt;&#32;showNodes;
+<anchor xml:id="_main_8cpp_source_1l00585"/>00585 &#32;&#32;&#32;&#32;showNodes.store(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00586"/>00586 &#32;&#32;&#32;&#32;std::atomic&lt;bool&gt;&#32;showEdges;
+<anchor xml:id="_main_8cpp_source_1l00587"/>00587 &#32;&#32;&#32;&#32;showEdges.store(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00588"/>00588 
+<anchor xml:id="_main_8cpp_source_1l00589"/>00589 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;buffer[100];
+<anchor xml:id="_main_8cpp_source_1l00590"/>00590 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;buffPtr&#32;=&#32;0;
+<anchor xml:id="_main_8cpp_source_1l00591"/>00591 
+<anchor xml:id="_main_8cpp_source_1l00592"/>00592 &#32;&#32;&#32;&#32;std::mutex&#32;pillarsMutex;
+<anchor xml:id="_main_8cpp_source_1l00593"/>00593 &#32;&#32;&#32;&#32;std::vector&lt;Pose2D&gt;&#32;path;
+<anchor xml:id="_main_8cpp_source_1l00594"/>00594 
+<anchor xml:id="_main_8cpp_source_1l00595"/>00595 &#32;&#32;&#32;&#32;<link linkend="_classField">Field</link>&#32;field;
+<anchor xml:id="_main_8cpp_source_1l00596"/>00596 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Pose2D&#32;toAdd(0,&#32;0,&#32;0);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00597"/>00597 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;graph.addNode(new&#32;Node&lt;Pose2D&gt;(toAdd));</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00598"/>00598 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;connectTCP(pillars,&#32;pillarsMutex,&#32;desired);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00599"/>00599 &#32;&#32;&#32;&#32;std::thread&#32;tcpConnect(<link linkend="_main_8cpp_1aeb814458701307eaffced2d1f95dc3f9">connectTCP</link>,&#32;std::ref(field),&#32;std::ref(pillarsMutex),&#32;std::ref(path));
+<anchor xml:id="_main_8cpp_source_1l00600"/>00600 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00601"/>00601 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Main&#32;loop</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00602"/>00602 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(!glfwWindowShouldClose(window))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00603"/>00603 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;glfwPollEvents();
+<anchor xml:id="_main_8cpp_source_1l00604"/>00604 
+<anchor xml:id="_main_8cpp_source_1l00605"/>00605 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Start&#32;the&#32;ImGui&#32;frame</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00606"/>00606 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImGui_ImplOpenGL3_NewFrame();
+<anchor xml:id="_main_8cpp_source_1l00607"/>00607 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImGui_ImplGlfw_NewFrame();
+<anchor xml:id="_main_8cpp_source_1l00608"/>00608 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImGui::NewFrame();
+<anchor xml:id="_main_8cpp_source_1l00609"/>00609 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;bool&#32;open;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00610"/>00610 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;ImGui::ShowDemoWindow(&amp;open);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00611"/>00611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf">ShowFieldWindow</link>(&amp;pillarsMutex,&#32;path,&#32;field,&#32;showNodes,&#32;showEdges);
+<anchor xml:id="_main_8cpp_source_1l00612"/>00612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;About&#32;to&#32;begin&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00613"/>00613 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Your&#32;ImGui&#32;code&#32;here</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00615"/>00615 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImGui::Begin(<emphasis role="stringliteral">&quot;Control&#32;Panel&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00616"/>00616 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;began&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00617"/>00617 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//ImGui::Text(&quot;This&#32;is&#32;some&#32;text&quot;);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00618"/>00618 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00619"/>00619 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Forward&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00620"/>00620 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="stringliteral">&quot;w&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00621"/>00621 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00622"/>00622 
+<anchor xml:id="_main_8cpp_source_1l00623"/>00623 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Backward&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00624"/>00624 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="stringliteral">&quot;s&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00625"/>00625 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00626"/>00626 
+<anchor xml:id="_main_8cpp_source_1l00627"/>00627 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Counter&#32;Clockwise&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00628"/>00628 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="stringliteral">&quot;a&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00629"/>00629 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00630"/>00630 
+<anchor xml:id="_main_8cpp_source_1l00631"/>00631 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Clockwise&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00632"/>00632 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="stringliteral">&quot;d&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00633"/>00633 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00634"/>00634 
+<anchor xml:id="_main_8cpp_source_1l00635"/>00635 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Stop&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00636"/>00636 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00637"/>00637 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00638"/>00638 
+<anchor xml:id="_main_8cpp_source_1l00639"/>00639 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Scan&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00640"/>00640 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="stringliteral">&quot;g&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00641"/>00641 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00642"/>00642 
+<anchor xml:id="_main_8cpp_source_1l00643"/>00643 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Auton&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00644"/>00644 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="stringliteral">&quot;h&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00645"/>00645 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00646"/>00646 
+<anchor xml:id="_main_8cpp_source_1l00647"/>00647 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Quit&#32;all&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00648"/>00648 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<emphasis role="stringliteral">&quot;q&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00649"/>00649 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00650"/>00650 
+<anchor xml:id="_main_8cpp_source_1l00651"/>00651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::RadioButton(<emphasis role="stringliteral">&quot;Show&#32;nodes&quot;</emphasis>,&#32;<emphasis role="keyword">false</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00652"/>00652 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;showNodes.store(!showNodes.load());
+<anchor xml:id="_main_8cpp_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00654"/>00654 
+<anchor xml:id="_main_8cpp_source_1l00655"/>00655 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::RadioButton(<emphasis role="stringliteral">&quot;Show&#32;edges&quot;</emphasis>,&#32;<emphasis role="keyword">false</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00656"/>00656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;showEdges.store(!showEdges.load());
+<anchor xml:id="_main_8cpp_source_1l00657"/>00657 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00658"/>00658 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00659"/>00659 
+<anchor xml:id="_main_8cpp_source_1l00660"/>00660 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Generate&#32;path&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00661"/>00661 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pillarsMutex.lock();
+<anchor xml:id="_main_8cpp_source_1l00662"/>00662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00663"/>00663 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;desire:&#32;&quot;&#32;&lt;&lt;&#32;desired&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00664"/>00664 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;graph-&gt;getNodes().size();&#32;i++)&#32;{</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00665"/>00665 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;node:&#32;&quot;&#32;&lt;&lt;&#32;i&#32;&lt;&lt;&#32;&quot;.&#32;&#32;&quot;&#32;&lt;&lt;&#32;graph-&gt;getNodes()[i]-&gt;getData().getX()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00666"/>00666 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00667"/>00667 <emphasis role="comment"></emphasis>
+<anchor xml:id="_main_8cpp_source_1l00668"/>00668 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Attempting&#32;to&#32;make&#32;a&#32;path&#32;between:&#32;&quot;&#32;&lt;&lt;&#32;graph-&gt;getNodes().front()-&gt;getData().getX()&#32;&lt;&lt;&#32;&quot;,&#32;&quot;&#32;&lt;&lt;&#32;graph-&gt;getNodes().front()-&gt;getData().getY()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00669"/>00669 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;To:&#32;&quot;&#32;&lt;&lt;graph-&gt;getNodes().back()-&gt;getData().getX()&#32;&lt;&lt;&#32;&quot;,&#32;&quot;&#32;&lt;&lt;&#32;graph-&gt;getNodes().back()-&gt;getData().getY()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00670"/>00670 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Attempting&#32;to&#32;make&#32;a&#32;path&#32;between:&#32;0,&#32;0</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00671"/>00671 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;To:&#32;-100,&#32;-100</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00672"/>00672 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00673"/>00673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;path&#32;=&#32;&#32;field.<link linkend="_classField_1aa988c5de70875dd81c766c9429a4b986">makePath</link>();
+<anchor xml:id="_main_8cpp_source_1l00674"/>00674 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pillarsMutex.unlock();
+<anchor xml:id="_main_8cpp_source_1l00675"/>00675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;PATH&#32;NODE&#32;SIZE:&#32;&quot;&#32;&lt;&lt;&#32;pathNodes.size()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00676"/>00676 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;path.push_back(botPose.getPose());</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00677"/>00677 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00678"/>00678 
+<anchor xml:id="_main_8cpp_source_1l00679"/>00679 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;send&#32;planned&#32;path&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00680"/>00680 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;string&#32;message&#32;=&#32;parsePathIntoRoutine(path);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00681"/>00681 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(<link linkend="_main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9">parsePathIntoRoutine</link>(path));
+<anchor xml:id="_main_8cpp_source_1l00682"/>00682 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00683"/>00683 
+<anchor xml:id="_main_8cpp_source_1l00684"/>00684 &#32;&#32;&#32;&#32;ImGui::SliderAngle(<emphasis role="stringliteral">&quot;Turn&#32;angle&quot;</emphasis>,&#32;&amp;angleSend);
+<anchor xml:id="_main_8cpp_source_1l00685"/>00685 
+<anchor xml:id="_main_8cpp_source_1l00686"/>00686 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImGui::InputText(<emphasis role="stringliteral">&quot;message:&#32;&quot;</emphasis>,&#32;buffer,&#32;100);
+<anchor xml:id="_main_8cpp_source_1l00687"/>00687 
+<anchor xml:id="_main_8cpp_source_1l00688"/>00688 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;send&#32;component&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00689"/>00689 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a0e791708278afd1945bd5e4876b90740">addToQueue</link>(std::string(1,&#32;buffer[0]));
+<anchor xml:id="_main_8cpp_source_1l00690"/>00690 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;99;&#32;i++)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00691"/>00691 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(buffer[i]&#32;==&#32;0)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00692"/>00692 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buffPtr&#32;=&#32;std::min((<emphasis role="keywordtype">long</emphasis>)&#32;0,&#32;(<emphasis role="keywordtype">long</emphasis>)&#32;i&#32;-&#32;1);
+<anchor xml:id="_main_8cpp_source_1l00693"/>00693 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00694"/>00694 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00695"/>00695 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::swap(buffer[i],&#32;buffer[i&#32;+&#32;1]);
+<anchor xml:id="_main_8cpp_source_1l00696"/>00696 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00697"/>00697 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buffer[buffPtr]&#32;=&#32;0;
+<anchor xml:id="_main_8cpp_source_1l00698"/>00698 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00699"/>00699 
+<anchor xml:id="_main_8cpp_source_1l00700"/>00700 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Send&#32;turn&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00701"/>00701 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459">sendAngleToQueue</link>((int16_t)&#32;(angleSend&#32;*&#32;180&#32;/&#32;M_PI));
+<anchor xml:id="_main_8cpp_source_1l00702"/>00702 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00703"/>00703 
+<anchor xml:id="_main_8cpp_source_1l00704"/>00704 &#32;&#32;&#32;&#32;ImGui::SliderInt(<emphasis role="stringliteral">&quot;Drive&#32;x&#32;cm&quot;</emphasis>,&#32;&amp;driveForward,&#32;0,&#32;999);
+<anchor xml:id="_main_8cpp_source_1l00705"/>00705 
+<anchor xml:id="_main_8cpp_source_1l00706"/>00706 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Drive&#32;x&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00707"/>00707 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5">sendDistanceToQueue</link>(driveForward);
+<anchor xml:id="_main_8cpp_source_1l00708"/>00708 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00709"/>00709 
+<anchor xml:id="_main_8cpp_source_1l00710"/>00710 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Discretize&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00711"/>00711 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;HUH:&#32;&quot;&#32;&lt;&lt;&#32;pillars[0].getX()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00712"/>00712 &#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1a3e9096a686ffb177056e24dfb920a610">discretizeGraph</link>();
+<anchor xml:id="_main_8cpp_source_1l00713"/>00713 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00714"/>00714 
+<anchor xml:id="_main_8cpp_source_1l00715"/>00715 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ImGui::Button(<emphasis role="stringliteral">&quot;Weight&quot;</emphasis>))&#32;{
+<anchor xml:id="_main_8cpp_source_1l00716"/>00716 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;field.<link linkend="_classField_1ab1945d8274ee391ea813863aa94c5d52">weightGraph</link>();
+<anchor xml:id="_main_8cpp_source_1l00717"/>00717 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00718"/>00718 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;&quot;About&#32;to&#32;end&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00719"/>00719 
+<anchor xml:id="_main_8cpp_source_1l00720"/>00720 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImGui::End();
+<anchor xml:id="_main_8cpp_source_1l00721"/>00721 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Render</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00722"/>00722 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImGui::Render();
+<anchor xml:id="_main_8cpp_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;display_w,&#32;display_h;
+<anchor xml:id="_main_8cpp_source_1l00724"/>00724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;glfwGetFramebufferSize(window,&#32;&amp;display_w,&#32;&amp;display_h);
+<anchor xml:id="_main_8cpp_source_1l00725"/>00725 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;glViewport(0,&#32;0,&#32;display_w,&#32;display_h);
+<anchor xml:id="_main_8cpp_source_1l00726"/>00726 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;glClearColor(0.1f,&#32;0.1f,&#32;0.1f,&#32;1.0f);
+<anchor xml:id="_main_8cpp_source_1l00727"/>00727 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;glClear(GL_COLOR_BUFFER_BIT);
+<anchor xml:id="_main_8cpp_source_1l00728"/>00728 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+<anchor xml:id="_main_8cpp_source_1l00729"/>00729 
+<anchor xml:id="_main_8cpp_source_1l00730"/>00730 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;glfwSwapBuffers(window);
+<anchor xml:id="_main_8cpp_source_1l00731"/>00731 
+<anchor xml:id="_main_8cpp_source_1l00732"/>00732 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::this_thread::sleep_for(std::chrono::milliseconds(16));
+<anchor xml:id="_main_8cpp_source_1l00733"/>00733 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00734"/>00734 
+<anchor xml:id="_main_8cpp_source_1l00735"/>00735 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6">stopClient</link>.store(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00736"/>00736 
+<anchor xml:id="_main_8cpp_source_1l00737"/>00737 &#32;&#32;&#32;&#32;tcpConnect.join();
+<anchor xml:id="_main_8cpp_source_1l00738"/>00738 &#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00739"/>00739 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Cleanup</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00740"/>00740 &#32;&#32;&#32;&#32;ImGui_ImplOpenGL3_Shutdown();
+<anchor xml:id="_main_8cpp_source_1l00741"/>00741 &#32;&#32;&#32;&#32;ImGui_ImplGlfw_Shutdown();
+<anchor xml:id="_main_8cpp_source_1l00742"/>00742 &#32;&#32;&#32;&#32;ImGui::DestroyContext();
+<anchor xml:id="_main_8cpp_source_1l00743"/>00743 &#32;&#32;&#32;&#32;glfwDestroyWindow(window);
+<anchor xml:id="_main_8cpp_source_1l00744"/>00744 &#32;&#32;&#32;&#32;glfwTerminate();
+<anchor xml:id="_main_8cpp_source_1l00745"/>00745 
+<anchor xml:id="_main_8cpp_source_1l00746"/>00746 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_main_8cpp_source_1l00747"/>00747 }
+</programlisting></section>

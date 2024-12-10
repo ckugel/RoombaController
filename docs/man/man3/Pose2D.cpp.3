@@ -1,0 +1,63 @@
+.TH "/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/calebk/Documents/coding/RoombaController/src/Pose2D.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fR#include 'Pose2D\&.hpp'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, const \fBPose2D\fP &d)"
+.br
+.ti -1c
+.RI "\fBRectangle\fP \fBmakeRectangleFromLine\fP (const \fBPose2D\fP &L1, const \fBPose2D\fP &L2, double width)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBRectangle\fP makeRectangleFromLine (const \fBPose2D\fP & L1, const \fBPose2D\fP & L2, double width)"
+Makes a rectangle from a line 
+.PP
+\fBParameters\fP
+.RS 4
+\fIL1\fP One bound of the line 
+.br
+\fIL2\fP Another bound of the line 
+.br
+\fIwidth\fP the width of the rectangle 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a rectangle with the the line in the middle and a width of the width passed in 
+.RE
+.PP
+
+.PP
+Definition at line \fB248\fP of file \fBPose2D\&.cpp\fP\&.
+.SS "std::ostream & operator<< (std::ostream & os, const \fBPose2D\fP & d)"
+To string for a pose2D 
+.PP
+\fBParameters\fP
+.RS 4
+\fIos\fP output stream 
+.br
+\fId\fP the pose2D to reference 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line \fB230\fP of file \fBPose2D\&.cpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

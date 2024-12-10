@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Field_8cpp_source" xml:lang="en-US">
+<title>Field.cpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Field.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_Field_8cpp_source_1l00001"/>00001 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Created&#32;by&#32;caleb&#32;on&#32;10/25/2024</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00003"/>00003 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_Field_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Field_8hpp">Field.hpp</link>&quot;</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00006"/>00006 
+<anchor xml:id="_Field_8cpp_source_1l00007"/><link linkend="_classField_1a0cb97f5f6abc65f46f80a9db40a05f89">00007</link> <link linkend="_classField_1a3e804c92273d9159f413f227b535c672">Field::Field</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;Pillar&gt;&amp;&#32;pillars,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;desiredDestination,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPillar">Pillar</link>&amp;&#32;botPose)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00008"/>00008 &#32;&#32;this-&gt;pillars&#32;=&#32;std::make_unique&lt;std::vector&lt;Pillar&gt;&gt;(<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>);
+<anchor xml:id="_Field_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;this-&gt;desiredDestination&#32;=&#32;<link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link>;
+<anchor xml:id="_Field_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1acd1e5fe551b0b0910391b193d29550ca">holeManager</link>&#32;=&#32;<link linkend="_classHoleManager">HoleManager</link>();
+<anchor xml:id="_Field_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;this-&gt;botPose&#32;=&#32;<link linkend="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4">botPose</link>;
+<anchor xml:id="_Field_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>&#32;=&#32;<link linkend="_classGraph">Graph&lt;Pose2D&gt;</link>();
+<anchor xml:id="_Field_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>(<link linkend="_classPose2D">Pose2D</link>(0,&#32;0)));
+<anchor xml:id="_Field_8cpp_source_1l00014"/>00014 }
+<anchor xml:id="_Field_8cpp_source_1l00015"/>00015 
+<anchor xml:id="_Field_8cpp_source_1l00016"/><link linkend="_classField_1a2cbf1be1f006dce87a5f7f9c16f250dc">00016</link> <link linkend="_classField_1a3e804c92273d9159f413f227b535c672">Field::Field</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;Pillar&gt;&amp;&#32;pillars,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;desiredDestination)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;this-&gt;pillars&#32;=&#32;std::make_unique&lt;std::vector&lt;Pillar&gt;&gt;(<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>);
+<anchor xml:id="_Field_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1acd1e5fe551b0b0910391b193d29550ca">holeManager</link>&#32;=&#32;<link linkend="_classHoleManager">HoleManager</link>();
+<anchor xml:id="_Field_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;this-&gt;desiredDestination&#32;=&#32;<link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link>;
+<anchor xml:id="_Field_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4">botPose</link>&#32;=&#32;<link linkend="_classPillar">Pillar</link>(0,&#32;0,&#32;0,&#32;<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>);
+<anchor xml:id="_Field_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>(<link linkend="_classPose2D">Pose2D</link>(0,&#32;0)));
+<anchor xml:id="_Field_8cpp_source_1l00022"/>00022 }
+<anchor xml:id="_Field_8cpp_source_1l00023"/>00023 
+<anchor xml:id="_Field_8cpp_source_1l00024"/><link linkend="_classField_1a3e804c92273d9159f413f227b535c672">00024</link> <link linkend="_classField_1a3e804c92273d9159f413f227b535c672">Field::Field</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00025"/>00025 &#32;&#32;this-&gt;&#32;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>&#32;=&#32;std::make_unique&lt;std::vector&lt;Pillar&gt;&gt;();
+<anchor xml:id="_Field_8cpp_source_1l00026"/>00026 &#32;&#32;this-&gt;<link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link>&#32;=&#32;<link linkend="_classPose2D">Pose2D</link>(0,&#32;0,&#32;0);
+<anchor xml:id="_Field_8cpp_source_1l00027"/>00027 &#32;&#32;this-&gt;<link linkend="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4">botPose</link>&#32;=&#32;<link linkend="_classPillar">Pillar</link>(0,&#32;0,&#32;0,&#32;<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>);
+<anchor xml:id="_Field_8cpp_source_1l00028"/>00028 &#32;&#32;this-&gt;<link linkend="_classField_1acd1e5fe551b0b0910391b193d29550ca">holeManager</link>&#32;=&#32;<link linkend="_classHoleManager">HoleManager</link>();
+<anchor xml:id="_Field_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>(<link linkend="_classPose2D">Pose2D</link>(0,&#32;0)));
+<anchor xml:id="_Field_8cpp_source_1l00030"/>00030 }
+<anchor xml:id="_Field_8cpp_source_1l00031"/>00031 
+<anchor xml:id="_Field_8cpp_source_1l00032"/><link linkend="_classField_1a3e9096a686ffb177056e24dfb920a610">00032</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1a3e9096a686ffb177056e24dfb920a610">Field::discretizeGraph</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>().empty())&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>(<link linkend="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4">botPose</link>.<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>()));
+<anchor xml:id="_Field_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00036"/>00036 
+<anchor xml:id="_Field_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::vector&lt;Node&lt;Pillar&gt;*&gt;&#32;nodes;</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_classPillar">Pillar</link>&#32;&amp;&#32;pillar&#32;:&#32;<link linkend="_classField_1a536803e37492ec349eae440878304a00">newPillars</link>)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Node&lt;Pose2D&gt;*&gt;&#32;nodes&#32;=&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>();
+<anchor xml:id="_Field_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint32_t&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;nodes.size();&#32;i++)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(i&#32;!=&#32;<link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link>)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(nodes[i]-&gt;getData().distanceTo(pillar.getPose())&#32;&lt;&#32;pillar.getRadius()&#32;+&#32;<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;remove&#32;node</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a307d8095432434d7e28cfba1bba884cb">removeNode</link>(i);
+<anchor xml:id="_Field_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;nodes&#32;=&#32;graph.getNodes();</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00049"/>00049 
+<anchor xml:id="_Field_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;magnitude&#32;=&#32;pillar.getRadius()&#32;+&#32;<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>;
+<anchor xml:id="_Field_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">double</emphasis>&#32;i&#32;=&#32;1.0;&#32;i&#32;&lt;&#32;5.0;&#32;i&#32;+=&#32;0.75)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint16_t&#32;angle&#32;=&#32;0;&#32;angle&#32;&lt;&#32;361;&#32;angle&#32;+=&#32;25)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;radian&#32;=&#32;angle&#32;*&#32;M_PI&#32;/&#32;180.0;
+<anchor xml:id="_Field_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;attemptAdd&#32;=&#32;<link linkend="_classPose2D_1a35455cacb295ea54820030b9dbb191f2">Pose2D::fromPolar</link>(magnitude&#32;*&#32;i,&#32;radian);
+<anchor xml:id="_Field_8cpp_source_1l00055"/>00055 
+<anchor xml:id="_Field_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;attemptAdd.<link linkend="_classPose2D_1a5a031312210c5fd0d88855df26b53c1a">plus</link>(pillar.getPose());
+<anchor xml:id="_Field_8cpp_source_1l00057"/>00057 
+<anchor xml:id="_Field_8cpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_classField_1a3ed7a96d07bdc2a21edda0fa7626e6fe">validLocationForNode</link>(attemptAdd))&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;to&#32;list</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>*&#32;toAdd&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>(attemptAdd);
+<anchor xml:id="_Field_8cpp_source_1l00061"/>00061 
+<anchor xml:id="_Field_8cpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(toAdd);
+<anchor xml:id="_Field_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;nodes&#32;=&#32;graph.getNodes();</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;push_back(pillar);
+<anchor xml:id="_Field_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1a536803e37492ec349eae440878304a00">newPillars</link>.clear();
+<anchor xml:id="_Field_8cpp_source_1l00070"/>00070 
+<anchor xml:id="_Field_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>(<link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link>));
+<anchor xml:id="_Field_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link>&#32;=&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>().size()&#32;-&#32;1;
+<anchor xml:id="_Field_8cpp_source_1l00073"/>00073 }
+<anchor xml:id="_Field_8cpp_source_1l00074"/>00074 
+<anchor xml:id="_Field_8cpp_source_1l00075"/><link linkend="_classField_1ab1945d8274ee391ea813863aa94c5d52">00075</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1ab1945d8274ee391ea813863aa94c5d52">Field::weightGraph</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;std::vector&lt;Node&lt;Pose2D&gt;*&gt;&#32;nodes&#32;=&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>();
+<anchor xml:id="_Field_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;o(n^3)&#32;crying</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint16_t&#32;nodeIndex&#32;=&#32;0;&#32;nodeIndex&#32;&lt;&#32;nodes.size();&#32;nodeIndex++)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint16_t&#32;nodeIndexTwo&#32;=&#32;0;&#32;nodeIndexTwo&#32;&lt;&#32;nodes.size();&#32;nodeIndexTwo++)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(nodeIndex&#32;!=&#32;nodeIndexTwo)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;positionOne&#32;=&#32;nodes[nodeIndex]-&gt;getData();
+<anchor xml:id="_Field_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;positionTwo&#32;=&#32;nodes[nodeIndexTwo]-&gt;getData();
+<anchor xml:id="_Field_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;length&#32;=&#32;positionOne.<link linkend="_classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3">distanceTo</link>(positionTwo);
+<anchor xml:id="_Field_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;dy&#32;=&#32;(positionTwo.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>()&#32;-&#32;positionOne.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>());
+<anchor xml:id="_Field_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;dx&#32;=&#32;(positionTwo.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>()&#32;-&#32;positionTwo.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>());
+<anchor xml:id="_Field_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;gotThrough&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00087"/>00087 
+<anchor xml:id="_Field_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint8_t&#32;pillarIndex&#32;=&#32;0;&#32;pillarIndex&#32;&lt;&#32;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;size();&#32;pillarIndex++)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_classField_1a729114d0b55662bbcb8f21897617e0c1">lineIntersectsCircle</link>(<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;at(pillarIndex),&#32;positionOne,&#32;positionTwo))&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;uh&#32;oh&#32;we&#32;hit&#32;the&#32;circle</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;gotThrough&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00094"/>00094 
+<anchor xml:id="_Field_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_classField_1acd1e5fe551b0b0910391b193d29550ca">holeManager</link>.<link linkend="_classHoleManager_1a1a77b2aa21fe82b6aa7073aa004e9e6f">lineIntersectsAnyHoleMeasurement</link>(positionOne,&#32;positionTwo))&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;gotThrough&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00098"/>00098 
+<anchor xml:id="_Field_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(gotThrough)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;a&#32;weight&#32;between&#32;nodes[nodeIndex]&#32;and&#32;nodes[nodeIndexTwo]</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a38d9119ee08708322eb5908fac0f244f">addConnection</link>(nodes[nodeIndex],&#32;nodes[nodeIndexTwo],&#32;length);
+<anchor xml:id="_Field_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;print&#32;out&#32;attempt&#32;to&#32;add</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00107"/>00107 }
+<anchor xml:id="_Field_8cpp_source_1l00108"/>00108 
+<anchor xml:id="_Field_8cpp_source_1l00109"/><link linkend="_classField_1aa988c5de70875dd81c766c9429a4b986">00109</link> std::vector&lt;Pose2D&gt;&#32;<link linkend="_classField_1aa988c5de70875dd81c766c9429a4b986">Field::makePath</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;std::vector&lt;Node&lt;Pose2D&gt;*&gt;&#32;path&#32;=&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a959dfd987107a8848c1c5c5da9f5e776">Dijkstra</link>(<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>()[0],&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>()[<link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link>]);
+<anchor xml:id="_Field_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;std::vector&lt;Pose2D&gt;&#32;toReturn;
+<anchor xml:id="_Field_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint16_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;path.size();&#32;i++)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toReturn.push_back(path[i]-&gt;getData());
+<anchor xml:id="_Field_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;toReturn;
+<anchor xml:id="_Field_8cpp_source_1l00116"/>00116 }
+<anchor xml:id="_Field_8cpp_source_1l00117"/>00117 
+<anchor xml:id="_Field_8cpp_source_1l00118"/><link linkend="_classField_1a3ed7a96d07bdc2a21edda0fa7626e6fe">00118</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classField_1a3ed7a96d07bdc2a21edda0fa7626e6fe">Field::validLocationForNode</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;location)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_classField_1ad499baebb2aa49f7467d5d632ed97199">outOfBounds</link>(location))&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;&amp;&#32;i&#32;:&#32;*<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(i.getPose().distanceTo(location)&#32;&lt;&#32;i.getRadius()&#32;+&#32;<link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">BOT_RADIUS</link>)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_classField_1acd1e5fe551b0b0910391b193d29550ca">holeManager</link>.<link linkend="_classHoleManager_1a3b0b1c780a1ed91646e0bcbf1dd23e70">nodeCollides</link>(location))&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00130"/>00130 
+<anchor xml:id="_Field_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00132"/>00132 }
+<anchor xml:id="_Field_8cpp_source_1l00133"/>00133 
+<anchor xml:id="_Field_8cpp_source_1l00134"/><link linkend="_classField_1a87df29e3618d42c11b886bbcf07b1453">00134</link> <link linkend="_classHoleManager">HoleManager</link>&amp;&#32;<link linkend="_classField_1a87df29e3618d42c11b886bbcf07b1453">Field::getManager</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classField_1acd1e5fe551b0b0910391b193d29550ca">holeManager</link>;
+<anchor xml:id="_Field_8cpp_source_1l00136"/>00136 }
+<anchor xml:id="_Field_8cpp_source_1l00137"/>00137 
+<anchor xml:id="_Field_8cpp_source_1l00138"/><link linkend="_classField_1a753a1dbb8d1e8b6159309bdfeec3d1f1">00138</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1a753a1dbb8d1e8b6159309bdfeec3d1f1">Field::clearField</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;clear();
+<anchor xml:id="_Field_8cpp_source_1l00140"/>00140 }
+<anchor xml:id="_Field_8cpp_source_1l00141"/>00141 
+<anchor xml:id="_Field_8cpp_source_1l00142"/><link linkend="_classField_1a3c2ce861d894d5ef000293887a2be3bb">00142</link> std::unique_ptr&lt;std::vector&lt;Pillar&gt;&gt;&#32;<link linkend="_classField_1a3c2ce861d894d5ef000293887a2be3bb">Field::getPillars</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::move(<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>);&#32;
+<anchor xml:id="_Field_8cpp_source_1l00144"/>00144 }
+<anchor xml:id="_Field_8cpp_source_1l00145"/>00145 
+<anchor xml:id="_Field_8cpp_source_1l00146"/><link linkend="_classField_1ad3354ff6a0954809aa9e7082778d8c44">00146</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1ad3354ff6a0954809aa9e7082778d8c44">Field::setDesiredIndex</link>(int32_t&#32;index)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link>&#32;=&#32;index;
+<anchor xml:id="_Field_8cpp_source_1l00148"/>00148 }
+<anchor xml:id="_Field_8cpp_source_1l00149"/>00149 
+<anchor xml:id="_Field_8cpp_source_1l00150"/>00150 
+<anchor xml:id="_Field_8cpp_source_1l00151"/><link linkend="_classField_1a8a9681dae64b9db32d147ffefd25a78e">00151</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1a8a9681dae64b9db32d147ffefd25a78e">Field::setPillars</link>(std::unique_ptr&lt;std::vector&lt;Pillar&gt;&gt;&#32;pillars)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>&#32;=&#32;std::move(<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>);
+<anchor xml:id="_Field_8cpp_source_1l00153"/>00153 }&#32;
+<anchor xml:id="_Field_8cpp_source_1l00154"/>00154 
+<anchor xml:id="_Field_8cpp_source_1l00155"/><link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">00155</link> <link linkend="_classPillar">Pillar</link>&#32;<link linkend="_classField_1a55f738166b3267d7fa313465d2866dd4">Field::getBotPose</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4">botPose</link>;
+<anchor xml:id="_Field_8cpp_source_1l00157"/>00157 }
+<anchor xml:id="_Field_8cpp_source_1l00158"/>00158 
+<anchor xml:id="_Field_8cpp_source_1l00159"/><link linkend="_classField_1a890d7140a600bed6eb18a549b1a0faf9">00159</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1a890d7140a600bed6eb18a549b1a0faf9">Field::addPillar</link>(<link linkend="_classPillar">Pillar</link>&amp;&#32;newPillar)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;newPillar.<link linkend="_classPillar_1acde6b927c883e0a5720e20d6b7f04ede">setRadius</link>(<link linkend="_classField_1ad631e7bd5cdcc7c10d274836ce464e1b">roundRadius</link>(newPillar.<link linkend="_classPillar_1a404e92b3ee6005fcd400ae120ce0b560">getRadius</link>()));
+<anchor xml:id="_Field_8cpp_source_1l00161"/>00161 
+<anchor xml:id="_Field_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint32_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;size();&#32;i++)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;at(i).getPose().distanceTo(newPillar.<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>())&#32;&lt;&#32;newPillar.<link linkend="_classPillar_1a404e92b3ee6005fcd400ae120ce0b560">getRadius</link>()&#32;+&#32;this-&gt;pillars-&gt;at(i).getRadius())&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;these&#32;are&#32;the&#32;same&#32;pillars</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;sum&#32;=&#32;this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;at(i).getPose();
+<anchor xml:id="_Field_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sum.<link linkend="_classPose2D_1a5a031312210c5fd0d88855df26b53c1a">plus</link>(newPillar.<link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link>());
+<anchor xml:id="_Field_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sum.<link linkend="_classPose2D_1a1cd7e63d410b091dcc89e20afcd65fff">multiply</link>(0.5);
+<anchor xml:id="_Field_8cpp_source_1l00168"/>00168 
+<anchor xml:id="_Field_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;error&#32;=&#32;<link linkend="_classPose2D">Pose2D</link>(sum);
+<anchor xml:id="_Field_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;error.<link linkend="_classPose2D_1adc44dfc82549ea97d3622052b615bf55">minus</link>(this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;at(i).getPose());
+<anchor xml:id="_Field_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00173"/>00173 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00174"/>00174 
+<anchor xml:id="_Field_8cpp_source_1l00175"/>00175 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;push_back(newPillar);
+<anchor xml:id="_Field_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1a536803e37492ec349eae440878304a00">newPillars</link>.push_back(newPillar);
+<anchor xml:id="_Field_8cpp_source_1l00177"/>00177 }
+<anchor xml:id="_Field_8cpp_source_1l00178"/>00178 
+<anchor xml:id="_Field_8cpp_source_1l00179"/><link linkend="_classField_1a099593a58a6edcd2e6e2831abbb8fe89">00179</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1a099593a58a6edcd2e6e2831abbb8fe89">Field::updateBotPose</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;updatedPosition)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;position(updatedPosition);
+<anchor xml:id="_Field_8cpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;position.<link linkend="_classPose2D_1a52fbe813508bcb22e43c0ba8d1041246">wrapHeading</link>();
+<anchor xml:id="_Field_8cpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1aa714dd29f5248a7de11e20c8c67f6bb4">botPose</link>.<link linkend="_classPillar_1a9877735341d7110c3d34633867528dbb">setPosition</link>(position);
+<anchor xml:id="_Field_8cpp_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>().empty())&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>()[0]-&gt;SetData(position);
+<anchor xml:id="_Field_8cpp_source_1l00185"/>00185 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>(position));
+<anchor xml:id="_Field_8cpp_source_1l00188"/>00188 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00189"/>00189 }
+<anchor xml:id="_Field_8cpp_source_1l00190"/>00190 
+<anchor xml:id="_Field_8cpp_source_1l00191"/><link linkend="_classField_1a1f3f3b289e23572dc12f9aef6b33817e">00191</link> std::vector&lt;Pillar&gt;&#32;<link linkend="_classField_1a1f3f3b289e23572dc12f9aef6b33817e">Field::getCopyPillars</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;std::vector&lt;Pillar&gt;&#32;copy;
+<anchor xml:id="_Field_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&#32;&amp;&#32;i&#32;:&#32;*<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;copy.push_back(i);
+<anchor xml:id="_Field_8cpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;copy;
+<anchor xml:id="_Field_8cpp_source_1l00197"/>00197 }
+<anchor xml:id="_Field_8cpp_source_1l00198"/>00198 
+<anchor xml:id="_Field_8cpp_source_1l00199"/><link linkend="_classField_1ad499baebb2aa49f7467d5d632ed97199">00199</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classField_1ad499baebb2aa49f7467d5d632ed97199">Field::outOfBounds</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;location)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(location.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>()&#32;&lt;&#32;0&#32;||&#32;location.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>()&#32;&lt;&#32;0&#32;||&#32;location.<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>()&#32;&gt;&#32;<link linkend="_Field_8hpp_1a898606140dee9ce0adf096de00824d94">MAX_X</link>&#32;||&#32;location.<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>()&#32;&gt;&#32;<link linkend="_Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef">MAX_Y</link>);
+<anchor xml:id="_Field_8cpp_source_1l00201"/>00201 }
+<anchor xml:id="_Field_8cpp_source_1l00202"/>00202 
+<anchor xml:id="_Field_8cpp_source_1l00203"/><link linkend="_classField_1aba8449d9e693a3542f37c223099464d9">00203</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1aba8449d9e693a3542f37c223099464d9">Field::addEdgeMeasurement</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;rawPosition,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5">Cardinality</link>&#32;cardinality)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(cardinality)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5a2c63acbe79d9f41ba6bb7766e9c37702">N</link>:
+<anchor xml:id="_Field_8cpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1adf27e38bcd47cb341328a2339b2c16a3">offset</link>.<link linkend="_classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c">setY</link>(rawPosition);
+<anchor xml:id="_Field_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5af1ce01387d2348f8b858721a7db81670">S</link>:
+<anchor xml:id="_Field_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1adf27e38bcd47cb341328a2339b2c16a3">offset</link>.<link linkend="_classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c">setY</link>(-rawPosition);
+<anchor xml:id="_Field_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5ab199e021998d49b1f09338d8b9b18ecb">E</link>:
+<anchor xml:id="_Field_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1adf27e38bcd47cb341328a2339b2c16a3">offset</link>.<link linkend="_classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c">setX</link>(rawPosition);
+<anchor xml:id="_Field_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5ab722ceeb601c72cd78fbd35f3581fdf7">W</link>:
+<anchor xml:id="_Field_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1adf27e38bcd47cb341328a2339b2c16a3">offset</link>.<link linkend="_classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c">setX</link>(-rawPosition);
+<anchor xml:id="_Field_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_Field_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00226"/>00226 }
+<anchor xml:id="_Field_8cpp_source_1l00227"/>00227 
+<anchor xml:id="_Field_8cpp_source_1l00228"/><link linkend="_classField_1ae3ce826773c17f1e987af8ee4fb64269">00228</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1ae3ce826773c17f1e987af8ee4fb64269">Field::applyOffsetToEdge</link>(<emphasis role="keywordtype">double</emphasis>&#32;x,&#32;<emphasis role="keywordtype">double</emphasis>&#32;y)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classField_1adf27e38bcd47cb341328a2339b2c16a3">offset</link>&#32;=&#32;<link linkend="_classPose2D">Pose2D</link>(x,&#32;y);
+<anchor xml:id="_Field_8cpp_source_1l00230"/>00230 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint16_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;size();&#32;i++)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1a003a6384059a42b3d38bba86f8482bc5">pillars</link>-&gt;at(i).getPose().plus(<link linkend="_classField_1adf27e38bcd47cb341328a2339b2c16a3">offset</link>);
+<anchor xml:id="_Field_8cpp_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1acd1e5fe551b0b0910391b193d29550ca">holeManager</link>.<link linkend="_classHoleManager_1a0a8f51f0c0c0c3af90b3fd0a90ea062e">offsetAll</link>(offset);
+<anchor xml:id="_Field_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00234"/>00234 }
+<anchor xml:id="_Field_8cpp_source_1l00235"/>00235 
+<anchor xml:id="_Field_8cpp_source_1l00236"/><link linkend="_classField_1a729114d0b55662bbcb8f21897617e0c1">00236</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classField_1a729114d0b55662bbcb8f21897617e0c1">Field::lineIntersectsCircle</link>(<emphasis role="keywordtype">double</emphasis>&#32;cx,&#32;<emphasis role="keywordtype">double</emphasis>&#32;cy,&#32;<emphasis role="keywordtype">double</emphasis>&#32;r,&#32;<emphasis role="keywordtype">double</emphasis>&#32;x1,&#32;<emphasis role="keywordtype">double</emphasis>&#32;y1,&#32;<emphasis role="keywordtype">double</emphasis>&#32;x2,&#32;<emphasis role="keywordtype">double</emphasis>&#32;y2)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Calculate&#32;the&#32;line&#32;direction&#32;vector</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;dx&#32;=&#32;x2&#32;-&#32;x1;
+<anchor xml:id="_Field_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;dy&#32;=&#32;y2&#32;-&#32;y1;
+<anchor xml:id="_Field_8cpp_source_1l00240"/>00240 
+<anchor xml:id="_Field_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Calculate&#32;the&#32;projection&#32;of&#32;the&#32;circle&#32;center&#32;onto&#32;the&#32;line</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;t&#32;=&#32;((cx&#32;-&#32;x1)&#32;*&#32;dx&#32;+&#32;(cy&#32;-&#32;y1)&#32;*&#32;dy)&#32;/&#32;(dx&#32;*&#32;dx&#32;+&#32;dy&#32;*&#32;dy);
+<anchor xml:id="_Field_8cpp_source_1l00243"/>00243 
+<anchor xml:id="_Field_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Find&#32;the&#32;closest&#32;point&#32;on&#32;the&#32;line&#32;to&#32;the&#32;circle&#32;center</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;closestX&#32;=&#32;x1&#32;+&#32;t&#32;*&#32;dx;
+<anchor xml:id="_Field_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;closestY&#32;=&#32;y1&#32;+&#32;t&#32;*&#32;dy;
+<anchor xml:id="_Field_8cpp_source_1l00247"/>00247 
+<anchor xml:id="_Field_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Calculate&#32;the&#32;distance&#32;from&#32;the&#32;circle&#32;center&#32;to&#32;the&#32;closest&#32;point</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;distX&#32;=&#32;closestX&#32;-&#32;cx;
+<anchor xml:id="_Field_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;distY&#32;=&#32;closestY&#32;-&#32;cy;
+<anchor xml:id="_Field_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;distanceToLine&#32;=&#32;std::sqrt(distX&#32;*&#32;distX&#32;+&#32;distY&#32;*&#32;distY);
+<anchor xml:id="_Field_8cpp_source_1l00252"/>00252 
+<anchor xml:id="_Field_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Check&#32;if&#32;the&#32;distance&#32;is&#32;less&#32;than&#32;or&#32;equal&#32;to&#32;the&#32;radius</emphasis>
+<anchor xml:id="_Field_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;distanceToLine&#32;&lt;=&#32;r;
+<anchor xml:id="_Field_8cpp_source_1l00255"/>00255 }
+<anchor xml:id="_Field_8cpp_source_1l00256"/>00256 
+<anchor xml:id="_Field_8cpp_source_1l00257"/><link linkend="_classField_1a076b4e7297f788e933b4ee824b930473">00257</link> int32_t&#32;<link linkend="_classField_1a076b4e7297f788e933b4ee824b930473">Field::getDesiredIndex</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+<anchor xml:id="_Field_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link>;
+<anchor xml:id="_Field_8cpp_source_1l00259"/>00259 }
+<anchor xml:id="_Field_8cpp_source_1l00260"/>00260 
+<anchor xml:id="_Field_8cpp_source_1l00261"/><link linkend="_classField_1ae20c991c2df6d7e863458e181b683140">00261</link> <link linkend="_classGraph">Graph&lt;Pose2D&gt;</link>&#32;&amp;<link linkend="_classField_1ae20c991c2df6d7e863458e181b683140">Field::getGraph</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>;
+<anchor xml:id="_Field_8cpp_source_1l00263"/>00263 }
+<anchor xml:id="_Field_8cpp_source_1l00264"/>00264 
+<anchor xml:id="_Field_8cpp_source_1l00265"/><link linkend="_classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2">00265</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2">Field::updateDesired</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link>&#32;!=&#32;-1)&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a307d8095432434d7e28cfba1bba884cb">removeNode</link>(<link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link>);
+<anchor xml:id="_Field_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_Field_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1a57412516ec06d7b21d377dfe73773f37">addNode</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classNode">Node&lt;Pose2D&gt;</link>(other));
+<anchor xml:id="_Field_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;<link linkend="_classField_1a1d7b5e004850feaa692893d0c46add14">desiredIndex</link>&#32;=&#32;<link linkend="_classField_1ab69087224439a9f8c3414e7b72383201">graph</link>.<link linkend="_classGraph_1af1568475acf410ff0d52a2d756929064">getNodes</link>().size()&#32;-&#32;1;
+<anchor xml:id="_Field_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;this-&gt;<link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link>&#32;=&#32;other;
+<anchor xml:id="_Field_8cpp_source_1l00272"/>00272 }
+<anchor xml:id="_Field_8cpp_source_1l00273"/>00273 
+<anchor xml:id="_Field_8cpp_source_1l00274"/><link linkend="_classField_1a5fa390f458efc053b4621a991566204f">00274</link> <link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classField_1a5fa390f458efc053b4621a991566204f">Field::getDesiredDestination</link>()&#32;{
+<anchor xml:id="_Field_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this-&gt;<link linkend="_classField_1afba5f7de976bb8640644ba6cbb7b5e35">desiredDestination</link>;
+<anchor xml:id="_Field_8cpp_source_1l00276"/>00276 }
+</programlisting></section>

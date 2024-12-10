@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
+<title>Class List</title>
+Here are the classes, structs, unions and interfaces with brief descriptions:<link linkend="_structGraph_1_1CustomCompare">Graph&lt; V &gt;::CustomCompare</link><link linkend="_classField">Field</link><link linkend="_classGraph">Graph&lt; V &gt;</link><link linkend="_classHole">Hole</link><link linkend="_classHoleManager">HoleManager</link><link linkend="_structMove">Move</link><link linkend="_classNode">Node&lt; V &gt;</link><link linkend="_classPillar">Pillar</link><link linkend="_classPose2D">Pose2D</link><link linkend="_structRectangle">Rectangle</link></section>

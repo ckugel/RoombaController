@@ -1,0 +1,48 @@
+\doxysection{Hole\+Manager.\+hpp}
+\hypertarget{HoleManager_8hpp_source}{}\label{HoleManager_8hpp_source}\index{/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp@{/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp}}
+\mbox{\hyperlink{HoleManager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ HOLE\_MANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#define\ HOLE\_MANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Hole_8hpp}{Hole.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{util_8hpp}{util.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00011}\mbox{\hyperlink{HoleManager_8hpp_a9e3667c9425085b498f4b8ee21a19595}{00011}}\ \textcolor{preprocessor}{\#define\ sideLength\ 0.6096\ }\textcolor{comment}{//\ 2\ by\ 2\ squares\ in\ feet.\ meters}}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00012}\mbox{\hyperlink{HoleManager_8hpp_a98743a6e40590a591f14abd4bbe2b675}{00012}}\ \textcolor{preprocessor}{\#define\ MEASUREMENT\_WIDTH\ 0.05\ }\textcolor{comment}{//\ meters}}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00018}\mbox{\hyperlink{classHoleManager}{00018}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classHoleManager}{HoleManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00023}00023\ \ \ \ \ std::unique\_ptr<std::vector<Hole>>\ holes;}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00028}00028\ \ \ \ \ std::unique\_ptr<std::vector<Pose2D>>\ holeMeasurements;}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classHoleManager_a2a70f9e895789105b0b45df164bf6ff6}{HoleManager}}();}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHoleManager_a317b24d6b0d2b5f843d3cbc4fcf39dd8}{addPoint}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ position);}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classHole}{Hole}}\ \mbox{\hyperlink{classHoleManager_a50df7cfd1e6e527d16b939769317ec50}{getHole}}(uint8\_t\ index);}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHoleManager_ae4fc057aea5dbfc0596b48455beed1e7}{addHole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classHole}{Hole}}\&\ hole);}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHoleManager_ae4fc057aea5dbfc0596b48455beed1e7}{addHole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ cornerOne,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ cornerTwo);}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00064}00064\ \ \ \ \ \ \ \ \ std::vector<Hole>\ \mbox{\hyperlink{classHoleManager_a586843e9065c89985c3b76bc8a2f9003}{getHoles}}();}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00069}\mbox{\hyperlink{classHoleManager_ab74e44ccae65e04db4f54a9b44d9655d}{00069}}\ \ \ \ \ \ \ \ \ std::vector<Pose2D>\ \mbox{\hyperlink{classHoleManager_ab74e44ccae65e04db4f54a9b44d9655d}{getPointsOnHoles}}();}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00074}00074\ \ \ \ \ \ \ \ \ std::vector<Pose2D>\ \mbox{\hyperlink{classHoleManager_aa0e47cc875c67f9244088d5c895ec725}{getSuggestedNodePlacements}}();}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classHoleManager_a3b0b1c780a1ed91646e0bcbf1dd23e70}{nodeCollides}}(\mbox{\hyperlink{classPose2D}{Pose2D}}\ position);}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classHoleManager_a1a77b2aa21fe82b6aa7073aa004e9e6f}{lineIntersectsAnyHoleMeasurement}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ positionOne,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ positionTwo);}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHoleManager_a0a8f51f0c0c0c3af90b3fd0a90ea062e}{offsetAll}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ offset)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00093}00093\ \};}
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{HoleManager_8hpp_source_l00096}00096\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//HOLE\_MANAGER\_H}}
+
+\end{DoxyCode}

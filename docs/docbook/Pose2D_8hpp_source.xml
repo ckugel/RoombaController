@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Pose2D_8hpp_source" xml:lang="en-US">
+<title>Pose2D.hpp</title>
+<indexterm><primary>/home/calebk/Documents/coding/RoombaController/src/Pose2D.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_Pose2D_8hpp_source_1l00001"/>00001 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Created&#32;by&#32;caleb&#32;on&#32;10/24/2024</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00003"/>00003 <emphasis role="comment">//</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00004"/>00004 
+<anchor xml:id="_Pose2D_8hpp_source_1l00005"/>00005 
+<anchor xml:id="_Pose2D_8hpp_source_1l00006"/>00006 <emphasis role="preprocessor">#ifndef&#32;POSE2D_H</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00007"/>00007 <emphasis role="preprocessor">#define&#32;POSE2D_H</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00008"/>00008 
+<anchor xml:id="_Pose2D_8hpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;cstdint&gt;</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&lt;sstream&gt;</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&lt;ostream&gt;</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00013"/>00013 
+<anchor xml:id="_Pose2D_8hpp_source_1l00017"/><link linkend="_Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60">00017</link> <emphasis role="preprocessor">#define&#32;BOT_RADIUS&#32;6</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00018"/>00018 
+<anchor xml:id="_Pose2D_8hpp_source_1l00023"/><link linkend="_classPose2D">00023</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_classPose2D">Pose2D</link>&#32;{
+<anchor xml:id="_Pose2D_8hpp_source_1l00024"/>00024 &#32;&#32;<emphasis role="keyword">protected</emphasis>:
+<anchor xml:id="_Pose2D_8hpp_source_1l00025"/><link linkend="_classPose2D_1a3d04db1eca820a577c911ca88df12b7d">00025</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link>,&#32;<link linkend="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f">y</link>,&#32;<link linkend="_classPose2D_1a3d04db1eca820a577c911ca88df12b7d">heading</link>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00026"/>00026 
+<anchor xml:id="_Pose2D_8hpp_source_1l00027"/>00027 &#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="_Pose2D_8hpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<link linkend="_classPose2D_1a216182882a02017665c754b16c1328ae">Pose2D</link>(<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f">y</link>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a3d04db1eca820a577c911ca88df12b7d">heading</link>);
+<anchor xml:id="_Pose2D_8hpp_source_1l00035"/>00035 
+<anchor xml:id="_Pose2D_8hpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<link linkend="_classPose2D_1a216182882a02017665c754b16c1328ae">Pose2D</link>(<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f">y</link>);
+<anchor xml:id="_Pose2D_8hpp_source_1l00042"/>00042 
+<anchor xml:id="_Pose2D_8hpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<link linkend="_classPose2D_1a216182882a02017665c754b16c1328ae">Pose2D</link>();
+<anchor xml:id="_Pose2D_8hpp_source_1l00047"/>00047 
+<anchor xml:id="_Pose2D_8hpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<link linkend="_classPose2D_1a216182882a02017665c754b16c1328ae">Pose2D</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;position);
+<anchor xml:id="_Pose2D_8hpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Pose2D(Pose2D*&#32;position);</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773">angleTo</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00061"/>00061 
+<anchor xml:id="_Pose2D_8hpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3">distanceTo</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00068"/>00068 
+<anchor xml:id="_Pose2D_8hpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a73e8e6fd058a55960da459cdef6d6ffb">squareOfDistanceTo</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00075"/>00075 
+<anchor xml:id="_Pose2D_8hpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classPose2D_1a35455cacb295ea54820030b9dbb191f2">fromPolar</link>(<emphasis role="keywordtype">double</emphasis>&#32;magnitude,&#32;<emphasis role="keywordtype">double</emphasis>&#32;angle);
+<anchor xml:id="_Pose2D_8hpp_source_1l00083"/>00083 
+<anchor xml:id="_Pose2D_8hpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c">degreesToRadians</link>(<emphasis role="keywordtype">double</emphasis>&#32;degrees);
+<anchor xml:id="_Pose2D_8hpp_source_1l00090"/>00090 
+<anchor xml:id="_Pose2D_8hpp_source_1l00096"/><link linkend="_classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453">00096</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a2d6bf4ee90b23c81d4b153af6fd1c453">radiansToDegrees</link>(<emphasis role="keywordtype">double</emphasis>&#32;radians);
+<anchor xml:id="_Pose2D_8hpp_source_1l00097"/>00097 
+<anchor xml:id="_Pose2D_8hpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classPose2D_1a34c15f20448e7efd354c507d38ec2891">clone</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00103"/>00103 
+<anchor xml:id="_Pose2D_8hpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1add9d11130bbe9e7e66325e98f7ca43f5">rotateByPose</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;rotation);
+<anchor xml:id="_Pose2D_8hpp_source_1l00109"/>00109 
+<anchor xml:id="_Pose2D_8hpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a1e220c70ada1586e8e1f9f2387e45e61">rotateByAngle</link>(<emphasis role="keywordtype">double</emphasis>&#32;angle);
+<anchor xml:id="_Pose2D_8hpp_source_1l00116"/>00116 
+<anchor xml:id="_Pose2D_8hpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a03d229ea165034f3130d158a864ce6aa">translateByPose</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;translation);
+<anchor xml:id="_Pose2D_8hpp_source_1l00123"/>00123 
+<anchor xml:id="_Pose2D_8hpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a84216b76ce7d5a554794b43c56574582">translateByMagnitude</link>(<emphasis role="keywordtype">double</emphasis>&#32;magnitude);
+<anchor xml:id="_Pose2D_8hpp_source_1l00132"/>00132 
+<anchor xml:id="_Pose2D_8hpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea">transformPose</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;modifier);
+<anchor xml:id="_Pose2D_8hpp_source_1l00138"/>00138 
+<anchor xml:id="_Pose2D_8hpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1ad3453560b394884b5b94de1264b946fa">getX</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00144"/>00144 
+<anchor xml:id="_Pose2D_8hpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1acfc52591b36947d8ead57ada1c12e5c2">getY</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00150"/>00150 
+<anchor xml:id="_Pose2D_8hpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1aab0666fc4e510ece6f85a13fbfd6d347">getHeading</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00156"/>00156 
+<anchor xml:id="_Pose2D_8hpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a07d03a1b06734fa63fcf6ee05befcb51">setHeading</link>(<emphasis role="keywordtype">double</emphasis>&#32;angle);
+<anchor xml:id="_Pose2D_8hpp_source_1l00162"/>00162 
+<anchor xml:id="_Pose2D_8hpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1ac6afb91ffac9121da23df77f7c975a39">plusCoord</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other);
+<anchor xml:id="_Pose2D_8hpp_source_1l00168"/>00168 
+<anchor xml:id="_Pose2D_8hpp_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a5a031312210c5fd0d88855df26b53c1a">plus</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other);
+<anchor xml:id="_Pose2D_8hpp_source_1l00175"/>00175 
+<anchor xml:id="_Pose2D_8hpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1adc44dfc82549ea97d3622052b615bf55">minus</link>(<link linkend="_classPose2D">Pose2D</link>&#32;other);
+<anchor xml:id="_Pose2D_8hpp_source_1l00182"/>00182 
+<anchor xml:id="_Pose2D_8hpp_source_1l00187"/>00187 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a77b5a2d38fe501e59a8d308b5cfa0508">addAngle</link>(<emphasis role="keywordtype">double</emphasis>&#32;angle);
+<anchor xml:id="_Pose2D_8hpp_source_1l00188"/>00188 
+<anchor xml:id="_Pose2D_8hpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classPose2D_1ad0b3a99de1a5972d3bed31e4e47e4e09">subtractBy</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00195"/>00195 
+<anchor xml:id="_Pose2D_8hpp_source_1l00201"/>00201 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classPose2D_1ab2ee3fec06d12adad8bd9c37fe7a8175">scaleBy</link>(<emphasis role="keywordtype">double</emphasis>&#32;scaler)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00202"/>00202 
+<anchor xml:id="_Pose2D_8hpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classPose2D_1ab4524355149f49542d83fc144e2438a8">normalize</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00208"/>00208 
+<anchor xml:id="_Pose2D_8hpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a359e162b9cb331cd5ccca9739ab31502">dotProduct</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other)&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00215"/>00215 
+<anchor xml:id="_Pose2D_8hpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;<emphasis role="keyword">friend</emphasis>&#32;std::ostream&#32;&amp;<link linkend="_classPose2D_1a8ee5dca0a6268342b242172f7222756f">operator&lt;&lt;</link>(std::ostream&#32;&amp;os,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&#32;&amp;d);
+<anchor xml:id="_Pose2D_8hpp_source_1l00223"/>00223 
+<anchor xml:id="_Pose2D_8hpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1af2c1bc2df5d8a7d8914f8be52454f01c">setX</link>(<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a4ea2a4d5ced468e718373ffe07732f60">x</link>);
+<anchor xml:id="_Pose2D_8hpp_source_1l00229"/>00229 
+<anchor xml:id="_Pose2D_8hpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1aae96b589dd219d641a039b8fe1a56d7b">vecAdd</link>(<emphasis role="keywordtype">double</emphasis>&#32;angle,&#32;<emphasis role="keywordtype">double</emphasis>&#32;magnitude);
+<anchor xml:id="_Pose2D_8hpp_source_1l00236"/>00236 
+<anchor xml:id="_Pose2D_8hpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a2d4fc81aa0bd66e7fe5ad9ef23ca349c">setY</link>(<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1a79a6b7de45208d23daa4ec11913a547f">y</link>);
+<anchor xml:id="_Pose2D_8hpp_source_1l00242"/>00242 
+<anchor xml:id="_Pose2D_8hpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;[[nodiscard]]&#32;uint8_t&#32;<link linkend="_classPose2D_1aa5f78e433ba60f61ea49b08ec8ff4d08">getQuadrant</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00255"/>00255 
+<anchor xml:id="_Pose2D_8hpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a52fbe813508bcb22e43c0ba8d1041246">wrapHeading</link>();
+<anchor xml:id="_Pose2D_8hpp_source_1l00260"/>00260 
+<anchor xml:id="_Pose2D_8hpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e">transformForPose</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;other);
+<anchor xml:id="_Pose2D_8hpp_source_1l00266"/>00266 
+<anchor xml:id="_Pose2D_8hpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2">parseFromStream</link>(std::istringstream&amp;&#32;stream);
+<anchor xml:id="_Pose2D_8hpp_source_1l00273"/>00273 
+<anchor xml:id="_Pose2D_8hpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;static&#32;SlopeIntercept&#32;getSlopeIntercept(Pose2D&#32;one,&#32;Pose2D&#32;two);</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;
+<anchor xml:id="_Pose2D_8hpp_source_1l00282"/>00282 
+<anchor xml:id="_Pose2D_8hpp_source_1l00288"/>00288 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classPose2D_1a4ad9e8c801fb7b2ad934c3f0f4923633">isOnLine</link>(<link linkend="_classPose2D">Pose2D</link>&#32;LineEnd1,&#32;<link linkend="_classPose2D">Pose2D</link>&#32;LineEnd2);
+<anchor xml:id="_Pose2D_8hpp_source_1l00289"/>00289 
+<anchor xml:id="_Pose2D_8hpp_source_1l00293"/><link linkend="_classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0">00293</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classPose2D_1ad6d17f1e93cb0b016aecf871c98a4bc0">isPerpendicularToLine</link>(<emphasis role="keywordtype">double</emphasis>&#32;m);
+<anchor xml:id="_Pose2D_8hpp_source_1l00294"/>00294 
+<anchor xml:id="_Pose2D_8hpp_source_1l00302"/><link linkend="_classPose2D_1ac6f628453cf76391fac4ef7b884490d0">00302</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_classPose2D_1ac6f628453cf76391fac4ef7b884490d0">getAngleBetweenPoints</link>(<link linkend="_classPose2D">Pose2D</link>&#32;corner,&#32;<link linkend="_classPose2D">Pose2D</link>&#32;end1,&#32;<link linkend="_classPose2D">Pose2D</link>&#32;end2);
+<anchor xml:id="_Pose2D_8hpp_source_1l00303"/>00303 
+<anchor xml:id="_Pose2D_8hpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classPose2D_1a1cd7e63d410b091dcc89e20afcd65fff">multiply</link>(<emphasis role="keywordtype">double</emphasis>&#32;d);
+<anchor xml:id="_Pose2D_8hpp_source_1l00308"/>00308 };
+<anchor xml:id="_Pose2D_8hpp_source_1l00309"/>00309 
+<anchor xml:id="_Pose2D_8hpp_source_1l00313"/><link linkend="_structRectangle">00313</link> <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structRectangle">Rectangle</link>&#32;{
+<anchor xml:id="_Pose2D_8hpp_source_1l00314"/><link linkend="_structRectangle_1a9ab0b4bae48e8330e4064bfc2aac696d">00314</link> &#32;&#32;&#32;&#32;<link linkend="_classPose2D">Pose2D</link>&#32;<link linkend="_structRectangle_1a9ab0b4bae48e8330e4064bfc2aac696d">r1</link>,&#32;<link linkend="_structRectangle_1ab7c029f35f42207f6cd273c7251ff8fb">r2</link>,&#32;<link linkend="_structRectangle_1a084cafc6917f1a0881e6e111329a4588">r3</link>,&#32;<link linkend="_structRectangle_1ad96df264562ce0b343bc9569ac899b29">r4</link>;
+<anchor xml:id="_Pose2D_8hpp_source_1l00315"/>00315 };
+<anchor xml:id="_Pose2D_8hpp_source_1l00316"/>00316 
+<anchor xml:id="_Pose2D_8hpp_source_1l00324"/>00324 <link linkend="_structRectangle">Rectangle</link>&#32;<link linkend="_Pose2D_8hpp_1af747b1235ddc04741dd30bf4c6a35d3c">makeRectangleFromLine</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;L1,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classPose2D">Pose2D</link>&amp;&#32;L2,&#32;<emphasis role="keywordtype">double</emphasis>&#32;width);
+<anchor xml:id="_Pose2D_8hpp_source_1l00325"/>00325 
+<anchor xml:id="_Pose2D_8hpp_source_1l00326"/>00326 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//POSE2D_H</emphasis>
+<anchor xml:id="_Pose2D_8hpp_source_1l00327"/>00327 
+</programlisting></section>

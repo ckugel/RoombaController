@@ -1,0 +1,471 @@
+.TH "/home/calebk/Documents/coding/RoombaController/src/main.cpp" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/calebk/Documents/coding/RoombaController/src/main.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fR#include '\&.\&./include/imgui/imgui\&.h'\fP
+.br
+\fR#include '\&.\&./include/imgui/backends/imgui_impl_glfw\&.h'\fP
+.br
+\fR#include '\&.\&./include/imgui/backends/imgui_impl_opengl3\&.h'\fP
+.br
+\fR#include <GLFW/glfw3\&.h>\fP
+.br
+\fR#include 'Pose2D\&.hpp'\fP
+.br
+\fR#include 'Node\&.hpp'\fP
+.br
+\fR#include 'Pillar\&.hpp'\fP
+.br
+\fR#include 'Hole\&.hpp'\fP
+.br
+\fR#include 'Field\&.hpp'\fP
+.br
+\fR#include <vector>\fP
+.br
+\fR#include <netinet/in\&.h>\fP
+.br
+\fR#include <chrono>\fP
+.br
+\fR#include <sys/socket\&.h>\fP
+.br
+\fR#include <unistd\&.h>\fP
+.br
+\fR#include <arpa/inet\&.h>\fP
+.br
+\fR#include <fstream>\fP
+.br
+\fR#include <iostream>\fP
+.br
+\fR#include <thread>\fP
+.br
+\fR#include <queue>\fP
+.br
+\fR#include <condition_variable>\fP
+.br
+\fR#include <atomic>\fP
+.br
+\fR#include <sstream>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBMove\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBBOT_CONNECT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBADDRESS\fP   '127\&.0\&.0\&.1'"
+.br
+.ti -1c
+.RI "#define \fBPORT\fP   65432"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMovementType\fP { \fBMOVE_FORWARD\fP, \fBMOVE_BACKWARDS\fP, \fBMOVE_FORWARD_SMART\fP, \fBTURN_TO_ANGLE\fP, \fBSCAN\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::atomic< bool > \fBstopClient\fP (false)"
+.br
+.ti -1c
+.RI "void \fBaddToQueue\fP (const std::string &message)"
+.br
+.ti -1c
+.RI "void \fBsendAngleToQueue\fP (int16_t angle)"
+.br
+.ti -1c
+.RI "void \fBsendDistanceToQueue\fP (uint16_t distance)"
+.br
+.ti -1c
+.RI "void \fBpathToRoutine\fP (std::vector< \fBPose2D\fP > path, std::vector< \fBMove\fP > &routine)"
+.br
+.ti -1c
+.RI "std::string \fBparsePathIntoRoutine\fP (const std::vector< \fBPose2D\fP > &path)"
+.br
+.ti -1c
+.RI "void \fBreadAndLog\fP (int socket, std::mutex &fieldMutex, \fBField\fP &field, std::vector< \fBPose2D\fP > &path)"
+.br
+.ti -1c
+.RI "void \fBconnectTCP\fP (\fBField\fP &field, std::mutex &fieldMutex, std::vector< \fBPose2D\fP > &path)"
+.br
+.ti -1c
+.RI "void \fBsetupImGui\fP (GLFWwindow *window)"
+.br
+.ti -1c
+.RI "void \fBDrawCircle\fP (ImDrawList *drawList, const ImVec2 &center, float radius, ImU32 color)"
+.br
+.ti -1c
+.RI "\fBPose2D\fP \fBScreenToCoords\fP (ImVec2 coords, ImVec2 offset, ImVec2 scaling)"
+.br
+.ti -1c
+.RI "ImVec2 \fBcoordsToScreen\fP (ImVec2 offset, ImVec2 scaling, double x, double y)"
+.br
+.ti -1c
+.RI "ImVec2 \fBcoordsToScreen\fP (ImVec2 offset, ImVec2 scaling, const \fBPose2D\fP &position)"
+.br
+.ti -1c
+.RI "void \fBShowPillarOnWindow\fP (ImDrawList *drawList, \fBPillar\fP pillar, ImU32 color, ImVec2 offset, ImVec2 scaling)"
+.br
+.ti -1c
+.RI "void \fBdrawBotPose\fP (ImDrawList *drawList, const \fBPose2D\fP &botPose, ImVec2 offset, ImVec2 scaling)"
+.br
+.ti -1c
+.RI "void \fBdrawRectangle\fP (ImDrawList *drawList, ImVec2 offset, ImVec2 scaling, const \fBPose2D\fP &p1, const \fBPose2D\fP &p2)"
+.br
+.ti -1c
+.RI "void \fBShowFieldWindow\fP (std::mutex *pillarsMutex, std::vector< \fBPose2D\fP > &path, \fBField\fP &field, std::atomic< bool > &showNodes, std::atomic< bool > &showEdges)"
+.br
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "std::queue< std::string > \fBsendQueue\fP"
+.br
+.ti -1c
+.RI "std::mutex \fBqueueMutex\fP"
+.br
+.ti -1c
+.RI "std::condition_variable \fBsendCondition\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ADDRESS   '127\&.0\&.0\&.1'"
+
+.PP
+Definition at line \fB29\fP of file \fBmain\&.cpp\fP\&.
+.SS "#define BOT_CONNECT   0"
+
+.PP
+Definition at line \fB24\fP of file \fBmain\&.cpp\fP\&.
+.SS "#define PORT   65432"
+
+.PP
+Definition at line \fB30\fP of file \fBmain\&.cpp\fP\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBMovementType\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMOVE_FORWARD \fP\fP
+.TP
+\fB\fIMOVE_BACKWARDS \fP\fP
+.TP
+\fB\fIMOVE_FORWARD_SMART \fP\fP
+.TP
+\fB\fITURN_TO_ANGLE \fP\fP
+.TP
+\fB\fISCAN \fP\fP
+.PP
+Definition at line \fB33\fP of file \fBmain\&.cpp\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "void addToQueue (const std::string & message)"
+Add a given string to the thread safe queue, accessed with mutexes 
+.PP
+\fBParameters\fP
+.RS 4
+\fImessage\fP the message to add 
+.RE
+.PP
+
+.PP
+Definition at line \fB56\fP of file \fBmain\&.cpp\fP\&.
+.SS "void connectTCP (\fBField\fP & field, std::mutex & fieldMutex, std::vector< \fBPose2D\fP > & path)"
+connect to Roomba TCP server or the mock server depending on the configuration 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfield\fP reference to the field object 
+.br
+\fIfieldMutex\fP the mutex for the field 
+.br
+\fIpath\fP reference to a generated path 
+.RE
+.PP
+
+.PP
+Definition at line \fB291\fP of file \fBmain\&.cpp\fP\&.
+.SS "ImVec2 coordsToScreen (ImVec2 offset, ImVec2 scaling, const \fBPose2D\fP & position)"
+Computes screen coordinates from \fBField\fP coordinates 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoffset\fP the offset the window measuring on is at 
+.br
+\fIscaling\fP the amount to scale by 
+.br
+\fIposition\fP the position be transformed 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the new screen coordinates 
+.RE
+.PP
+
+.PP
+Definition at line \fB396\fP of file \fBmain\&.cpp\fP\&.
+.SS "ImVec2 coordsToScreen (ImVec2 offset, ImVec2 scaling, double x, double y)"
+Computes screen coordinates from \fBField\fP coordinates 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoffset\fP the offset the window measuring on is at 
+.br
+\fIscaling\fP the amount to scale by 
+.br
+\fIx\fP the x component of the pose 2d 
+.br
+\fIy\fP the y component of the pose 2d 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the new screen coordinates 
+.RE
+.PP
+
+.PP
+Definition at line \fB383\fP of file \fBmain\&.cpp\fP\&.
+.SS "void drawBotPose (ImDrawList * drawList, const \fBPose2D\fP & botPose, ImVec2 offset, ImVec2 scaling)"
+Draws a triangle on the bot position facing in the direction that the bot is\&. The color of the triangle will be lime green\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIdrawList\fP the draw list for the window 
+.br
+\fIbotPose\fP the position of the bot 
+.br
+\fIoffset\fP the offset of the screen for cartesian coordinates 
+.RE
+.PP
+
+.PP
+Definition at line \fB423\fP of file \fBmain\&.cpp\fP\&.
+.SS "void DrawCircle (ImDrawList * drawList, const ImVec2 & center, float radius, ImU32 color)"
+Draw a circle on the window 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdrawList\fP the drawlist for a given window 
+.br
+\fIcenter\fP the center position of the circle 
+.br
+\fIradius\fP the radus of the circle 
+.br
+\fIcolor\fP the color of the circle on the screen 
+.RE
+.PP
+
+.PP
+Definition at line \fB357\fP of file \fBmain\&.cpp\fP\&.
+.SS "void drawRectangle (ImDrawList * drawList, ImVec2 offset, ImVec2 scaling, const \fBPose2D\fP & p1, const \fBPose2D\fP & p2)"
+Draw a rectangle on the field given by the critical points p1 and p2 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdrawList\fP the draw list for the window to draw on 
+.br
+\fIoffset\fP the offset of the window 
+.br
+\fIscaling\fP the size scaling 
+.br
+\fIp1\fP point one 
+.br
+\fIp2\fP point two (opposite corner) 
+.RE
+.PP
+
+.PP
+Definition at line \fB450\fP of file \fBmain\&.cpp\fP\&.
+.SS "int main ()"
+The main function where the program starts 
+.PP
+\fBReturns\fP
+.RS 4
+status code of how the program executed 
+.RE
+.PP
+
+.PP
+Definition at line \fB572\fP of file \fBmain\&.cpp\fP\&.
+.SS "std::string parsePathIntoRoutine (const std::vector< \fBPose2D\fP > & path)"
+parse a path into a routine 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP the path to parse 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the routine from the path 
+.RE
+.PP
+
+.PP
+Definition at line \fB114\fP of file \fBmain\&.cpp\fP\&.
+.SS "void pathToRoutine (std::vector< \fBPose2D\fP > path, std::vector< \fBMove\fP > & routine)"
+generate a routine from a path 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP the path to generate a routine from 
+.br
+\fIroutine\fP the routine to store into 
+.RE
+.PP
+
+.PP
+Definition at line \fB90\fP of file \fBmain\&.cpp\fP\&.
+.SS "void readAndLog (int socket, std::mutex & fieldMutex, \fBField\fP & field, std::vector< \fBPose2D\fP > & path)"
+Read and log data that gets sent over the TCP socket 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsocket\fP the socket to listen on 
+.br
+\fIfieldMutex\fP the mutex for the field object 
+.br
+\fIfield\fP reference to the field object 
+.br
+\fIpath\fP the path to generate 
+.RE
+.PP
+
+.PP
+Definition at line \fB142\fP of file \fBmain\&.cpp\fP\&.
+.SS "\fBPose2D\fP ScreenToCoords (ImVec2 coords, ImVec2 offset, ImVec2 scaling)"
+Computes a \fBPose2D\fP from given screen coordinates 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoords\fP the coordinates on the window 
+.br
+\fIoffset\fP the offset of the position of the window on the screen 
+.br
+\fIscaling\fP the scaling factor for the window size 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line \fB368\fP of file \fBmain\&.cpp\fP\&.
+.SS "void sendAngleToQueue (int16_t angle)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIangle\fP the angle to send 
+.RE
+.PP
+
+.PP
+Definition at line \fB68\fP of file \fBmain\&.cpp\fP\&.
+.SS "void sendDistanceToQueue (uint16_t distance)"
+Adds an distance to a queue to be sent to the bot 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdistance\fP the distance to send 
+.RE
+.PP
+
+.PP
+Definition at line \fB79\fP of file \fBmain\&.cpp\fP\&.
+.SS "void setupImGui (GLFWwindow * window)"
+Simple function to set up OpenGL and ImGui context 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwindow\fP pointer to the GLFW window 
+.RE
+.PP
+
+.PP
+Definition at line \fB341\fP of file \fBmain\&.cpp\fP\&.
+.SS "void ShowFieldWindow (std::mutex * pillarsMutex, std::vector< \fBPose2D\fP > & path, \fBField\fP & field, std::atomic< bool > & showNodes, std::atomic< bool > & showEdges)"
+Show the field window on a new window 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpillarsMutex\fP the mutex for pillars 
+.br
+\fIpath\fP the path to display 
+.br
+\fIfield\fP the field object 
+.br
+\fIshowNodes\fP whether to show nodes or not (atomic reference) 
+.br
+\fIshowEdges\fP whether to show edges of the graph or not (atmoic reference) 
+.RE
+.PP
+
+.PP
+Definition at line \fB479\fP of file \fBmain\&.cpp\fP\&.
+.SS "void ShowPillarOnWindow (ImDrawList * drawList, \fBPillar\fP pillar, ImU32 color, ImVec2 offset, ImVec2 scaling)"
+Show a given pillar on the window\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdrawList\fP the window to draw a pillar (circle) on 
+.br
+\fIpillar\fP the pillar which stores the given position and radius 
+.br
+\fIcolor\fP the color to draw it as 
+.br
+\fIoffset\fP the offset of the window 
+.br
+\fIscaling\fP the sizing ration for the window 
+.RE
+.PP
+
+.PP
+Definition at line \fB408\fP of file \fBmain\&.cpp\fP\&.
+.SS "std::atomic< bool > stopClient (false)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "std::mutex queueMutex"
+
+.PP
+Definition at line \fB42\fP of file \fBmain\&.cpp\fP\&.
+.SS "std::condition_variable sendCondition"
+
+.PP
+Definition at line \fB43\fP of file \fBmain\&.cpp\fP\&.
+.SS "std::queue<std::string> sendQueue"
+
+.PP
+Definition at line \fB41\fP of file \fBmain\&.cpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

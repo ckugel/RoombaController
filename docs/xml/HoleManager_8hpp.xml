@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="HoleManager_8hpp" kind="file" language="C++">
+    <compoundname>HoleManager.hpp</compoundname>
+    <includes refid="Hole_8hpp" local="yes">Hole.hpp</includes>
+    <includes refid="util_8hpp" local="yes">util.hpp</includes>
+    <includedby refid="Field_8hpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/Field.hpp</includedby>
+    <includedby refid="HoleManager_8cpp" local="yes">/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Hole.hpp</label>
+        <link refid="Hole_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp</label>
+        <link refid="HoleManager_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Pose2D.hpp</label>
+        <link refid="Pose2D_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>util.hpp</label>
+        <link refid="util_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>cmath</label>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="9">
+        <label>ostream</label>
+      </node>
+      <node id="8">
+        <label>sstream</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.cpp</label>
+        <link refid="Field_8cpp"/>
+      </node>
+      <node id="2">
+        <label>/home/calebk/Documents/coding/RoombaController/src/Field.hpp</label>
+        <link refid="Field_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.cpp</label>
+        <link refid="HoleManager_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp</label>
+        <link refid="HoleManager_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/calebk/Documents/coding/RoombaController/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classHoleManager" prot="public">HoleManager</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="HoleManager_8hpp_1a9e3667c9425085b498f4b8ee21a19595" prot="public" static="no">
+        <name>sideLength</name>
+        <initializer>0.6096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Created by Caleb Kugel 11/15/2024 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="11" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="HoleManager_8hpp_1a98743a6e40590a591f14abd4bbe2b675" prot="public" static="no">
+        <name>MEASUREMENT_WIDTH</name>
+        <initializer>0.05</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" line="12" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HOLE_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HOLE_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Hole_8hpp" kindref="compound">Hole.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_8hpp" kindref="compound">util.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="HoleManager_8hpp_1a9e3667c9425085b498f4b8ee21a19595" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>sideLength<sp/>0.6096<sp/></highlight><highlight class="comment">//<sp/>2<sp/>by<sp/>2<sp/>squares<sp/>in<sp/>feet.<sp/>meters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="HoleManager_8hpp_1a98743a6e40590a591f14abd4bbe2b675" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MEASUREMENT_WIDTH<sp/>0.05<sp/></highlight><highlight class="comment">//<sp/>meters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classHoleManager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classHoleManager" kindref="compound">HoleManager</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;std::vector&lt;Hole&gt;&gt;<sp/>holes;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;std::vector&lt;Pose2D&gt;&gt;<sp/>holeMeasurements;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classHoleManager_1a2a70f9e895789105b0b45df164bf6ff6" kindref="member">HoleManager</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHoleManager_1a317b24d6b0d2b5f843d3cbc4fcf39dd8" kindref="member">addPoint</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>position);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classHole" kindref="compound">Hole</ref><sp/><ref refid="classHoleManager_1a50df7cfd1e6e527d16b939769317ec50" kindref="member">getHole</ref>(uint8_t<sp/>index);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7" kindref="member">addHole</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classHole" kindref="compound">Hole</ref>&amp;<sp/>hole);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7" kindref="member">addHole</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>cornerOne,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>cornerTwo);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Hole&gt;<sp/><ref refid="classHoleManager_1a586843e9065c89985c3b76bc8a2f9003" kindref="member">getHoles</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classHoleManager_1ab74e44ccae65e04db4f54a9b44d9655d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Pose2D&gt;<sp/><ref refid="classHoleManager_1ab74e44ccae65e04db4f54a9b44d9655d" kindref="member">getPointsOnHoles</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Pose2D&gt;<sp/><ref refid="classHoleManager_1aa0e47cc875c67f9244088d5c895ec725" kindref="member">getSuggestedNodePlacements</ref>();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classHoleManager_1a3b0b1c780a1ed91646e0bcbf1dd23e70" kindref="member">nodeCollides</ref>(<ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>position);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classHoleManager_1a1a77b2aa21fe82b6aa7073aa004e9e6f" kindref="member">lineIntersectsAnyHoleMeasurement</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>positionOne,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>positionTwo);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHoleManager_1a0a8f51f0c0c0c3af90b3fd0a90ea062e" kindref="member">offsetAll</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>offset)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//HOLE_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/HoleManager.hpp"/>
+  </compounddef>
+</doxygen>

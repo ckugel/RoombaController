@@ -1,0 +1,78 @@
+\doxysection{Hole.\+hpp}
+\hypertarget{Hole_8hpp_source}{}\label{Hole_8hpp_source}\index{/home/calebk/Documents/coding/RoombaController/src/Hole.hpp@{/home/calebk/Documents/coding/RoombaController/src/Hole.hpp}}
+\mbox{\hyperlink{Hole_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ HOLE\_H}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#define\ HOLE\_H}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}vector"{}}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pose2D_8hpp}{Pose2D.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00014}\mbox{\hyperlink{Hole_8hpp_a657e122f8983d0a993ee0266696f1984}{00014}}\ \textcolor{preprocessor}{\#define\ HOLE\_SIZE\ 69.06\ }\textcolor{comment}{//\ centimeters}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00020}\mbox{\hyperlink{classHole}{00020}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classHole}{Hole}}\ \{}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ cornerOne;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ cornerTwo;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{double}\ threshold\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{double}\ phi\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{double}\ x\_translation\_one\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{double}\ y\_translation\_one\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{double}\ x\_translation\_two\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{double}\ y\_translation\_two\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{double}\ holeSize\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ foundHole\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00034}00034\ \ \ \ \ std::unique\_ptr<std::vector<Pose2D>>\ points;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00035}00035\ \ \ \ \ std::unique\_ptr<std::vector<Hole>>\ pointHoles;}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00037}00037\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classHole_a90b129019613cc439b9834058f8727b1}{Hole}}(\textcolor{keywordtype}{double}\ X1,\ \textcolor{keywordtype}{double}\ Y1,\ \textcolor{keywordtype}{double}\ X2,\ \textcolor{keywordtype}{double}\ Y2,\ \textcolor{keywordtype}{double}\ holeSize);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{classHole_a90b129019613cc439b9834058f8727b1}{Hole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ positionOne,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ positionTwo,\ \textcolor{keywordtype}{bool}\ foundHole,\ \textcolor{keyword}{const}\ std::vector<Pose2D>\&\ points,\ \textcolor{keywordtype}{double}\ holeSize);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{classHole_a90b129019613cc439b9834058f8727b1}{Hole}}(\textcolor{keywordtype}{double}\ x1,\ \textcolor{keywordtype}{double}\ y1,\ \textcolor{keywordtype}{double}\ x2,\ \textcolor{keywordtype}{double}\ y2);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{classHole_a90b129019613cc439b9834058f8727b1}{Hole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ positionOne,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ positionTwo,\ \textcolor{keywordtype}{double}\ holeSize);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00071}00071\ \ \ \ \ std::vector<Pose2D>\ \mbox{\hyperlink{classHole_a519b0f73c960b116403ee937a8fb0a3e}{getSuggestedNodePlacements}}();}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHole_adc6df39c2118fd21749786927800de4b}{registerPointsToHole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ positionOne,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ positionTwo);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00086}00086\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\mbox{\hyperlink{classHole_a371c0f905489a21d9276bb383a572487}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classHole}{Hole}}\ \&hole);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00093}00093\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classHole_ad224d20fbe2037b97e19344b8f0157e0}{copyDoOperation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00094}00094\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classHole_a1b9d48a850759ae1b826b7476c304785}{getOneSquareCorner}}();}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{classPose2D}{Pose2D}}\ \mbox{\hyperlink{classHole_ae5ba1de89591495ee62c784c8bcc4b72}{getSecondSquareCorner}}();}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classHole_afb912f0b7b58f2074fcbbc50184e39c2}{pointCouldBeMemberOfHole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ measurment);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00115}\mbox{\hyperlink{classHole_aec56b428187b4a6f5a952463b4029d00}{00115}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classHole_aec56b428187b4a6f5a952463b4029d00}{isFoundHole}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ foundHole;\}}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00121}00121\ \ \ \ \ [[nodiscard]]\ std::vector<Hole>\ \mbox{\hyperlink{classHole_a863918993a62cc90b99a66c48e9e0bdc}{getSubHolesCopy}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00126}00126\ \ \ \ \ \mbox{\hyperlink{classHole_a90b129019613cc439b9834058f8727b1}{Hole}}();}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00131}00131\ \ \ \ \ \mbox{\hyperlink{classHole_a90b129019613cc439b9834058f8727b1}{Hole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classHole}{Hole}}\&\ hole);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00137}00137\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classHole_a90b129019613cc439b9834058f8727b1}{Hole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ initialPoint,\ \textcolor{keywordtype}{double}\ holeSize);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHole_a39673dc613c45644ff844c7b81709ab9}{addPoint}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ position);}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classHole_afd4c5c949e5c37e58ff10927e475fcdf}{isInSquare}}(\mbox{\hyperlink{classPose2D}{Pose2D}}\&\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classHole_a73735b03496aad26f53879b2c50fcc71}{offset}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ \mbox{\hyperlink{classHole_a73735b03496aad26f53879b2c50fcc71}{offset}});}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00164}00164\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classHole_ae7c69bf5e1d37a1230b50187e7442506}{lineIntersectsHole}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ posOne,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPose2D}{Pose2D}}\&\ posTwo)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00165}00165\ \};}
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{Hole_8hpp_source_l00167}00167\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HOLE\_H}}
+
+\end{DoxyCode}

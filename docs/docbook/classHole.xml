@@ -1,0 +1,555 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classHole" xml:lang="en-US">
+<title>Hole Class Reference</title>
+<indexterm><primary>Hole</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Hole.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classHole_1a4ea8b237954a3decf415e384b042eacd">Hole</link> (double X1, double Y1, double X2, double Y2, double holeSize)</para>
+</listitem>
+            <listitem><para><link linkend="_classHole_1a653b2d43ddca456e31c6be921d7077df">Hole</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;positionOne, const <link linkend="_classPose2D">Pose2D</link> &amp;positionTwo, bool foundHole, const std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp;points, double holeSize)</para>
+</listitem>
+            <listitem><para><link linkend="_classHole_1ac73d25f280d747ba04a6e9b90d587d94">Hole</link> (double x1, double y1, double x2, double y2)</para>
+</listitem>
+            <listitem><para><link linkend="_classHole_1a079e74ec763052a10fedea61a6a5088b">Hole</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;positionOne, const <link linkend="_classPose2D">Pose2D</link> &amp;positionTwo, double holeSize)</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; <link linkend="_classHole_1a519b0f73c960b116403ee937a8fb0a3e">getSuggestedNodePlacements</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classHole_1adc6df39c2118fd21749786927800de4b">registerPointsToHole</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;positionOne, const <link linkend="_classPose2D">Pose2D</link> &amp;positionTwo)</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classHole_1ad224d20fbe2037b97e19344b8f0157e0">copyDoOperation</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;position) const</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classHole_1a1b9d48a850759ae1b826b7476c304785">getOneSquareCorner</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classHole_1ae5ba1de89591495ee62c784c8bcc4b72">getSecondSquareCorner</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classHole_1afb912f0b7b58f2074fcbbc50184e39c2">pointCouldBeMemberOfHole</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;measurment)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classHole_1aec56b428187b4a6f5a952463b4029d00">isFoundHole</link> () const</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_classHole">Hole</link> &gt; <link linkend="_classHole_1a863918993a62cc90b99a66c48e9e0bdc">getSubHolesCopy</link> () const</para>
+</listitem>
+            <listitem><para><link linkend="_classHole_1a90b129019613cc439b9834058f8727b1">Hole</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classHole_1a4ddff9cebed0fa967b3a8ea12aac1195">Hole</link> (const <link linkend="_classHole">Hole</link> &amp;hole)</para>
+</listitem>
+            <listitem><para><link linkend="_classHole_1a6c5cc5e4efbe73711dab187e00a0a171">Hole</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;initialPoint, double holeSize)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classHole_1a39673dc613c45644ff844c7b81709ab9">addPoint</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;position)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classHole_1afd4c5c949e5c37e58ff10927e475fcdf">isInSquare</link> (<link linkend="_classPose2D">Pose2D</link> &amp;position) const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classHole_1a73735b03496aad26f53879b2c50fcc71">offset</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;offset)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classHole_1ae7c69bf5e1d37a1230b50187e7442506">lineIntersectsHole</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;posOne, const <link linkend="_classPose2D">Pose2D</link> &amp;posTwo) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>std::ostream &amp; <link linkend="_classHole_1a371c0f905489a21d9276bb383a572487">operator&lt;&lt;</link> (std::ostream &amp;os, const <link linkend="_classHole">Hole</link> &amp;hole)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>A <link linkend="_classHole">Hole</link> is either a complete square where we know the critical points (two vertices of the square). A <link linkend="_classHole">Hole</link> could also represent a bunch of points that are all within Square Length * Root(2) of eachother </para>
+<para>
+Definition at line <link linkend="_Hole_8hpp_source_1l00020">20</link> of file <link linkend="_Hole_8hpp_source">Hole.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classHole_1a4ea8b237954a3decf415e384b042eacd"/><section>
+    <title>Hole()<computeroutput>[1/7]</computeroutput></title>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<para><computeroutput>Hole::Hole (double X1, double Y1, double X2, double Y2, double holeSize)</computeroutput></para>
+<para>Make a new hole with the given coordinates 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>X1</entry><entry>
+<para>one corner&apos;s X position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Y1</entry><entry>
+<para>one corner&apos;s Y position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>X2</entry><entry>
+<para>the other corner&apos;s X position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Y2</entry><entry>
+<para>the other corner&apos;s Y position </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00110">110</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a653b2d43ddca456e31c6be921d7077df"/><section>
+    <title>Hole()<computeroutput>[2/7]</computeroutput></title>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<para><computeroutput>Hole::Hole (const <link linkend="_classPose2D">Pose2D</link> &amp; positionOne, const <link linkend="_classPose2D">Pose2D</link> &amp; positionTwo, bool foundHole, const std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; &amp; points, double holeSize)</computeroutput></para>
+<para>Copy constructor for hole </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00019">19</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1ac73d25f280d747ba04a6e9b90d587d94"/><section>
+    <title>Hole()<computeroutput>[3/7]</computeroutput></title>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<para><computeroutput>Hole::Hole (double x1, double y1, double x2, double y2)</computeroutput></para>
+<para>Makes a new hole object with the given coordinates 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x1</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>y1</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>x2</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>y2</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00449">449</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a079e74ec763052a10fedea61a6a5088b"/><section>
+    <title>Hole()<computeroutput>[4/7]</computeroutput></title>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<para><computeroutput>Hole::Hole (const <link linkend="_classPose2D">Pose2D</link> &amp; positionOne, const <link linkend="_classPose2D">Pose2D</link> &amp; positionTwo, double holeSize)</computeroutput></para>
+<para>Creates a new <link linkend="_classHole">Hole</link> object</para>
+
+<para>Created by Caleb Kugel on 11/15/2024 </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00009">9</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a90b129019613cc439b9834058f8727b1"/><section>
+    <title>Hole()<computeroutput>[5/7]</computeroutput></title>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<para><computeroutput>Hole::Hole ( )</computeroutput></para>
+<para>The deafult constructor for a hole. </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00121">121</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a4ddff9cebed0fa967b3a8ea12aac1195"/><section>
+    <title>Hole()<computeroutput>[6/7]</computeroutput></title>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<para><computeroutput>Hole::Hole (const <link linkend="_classHole">Hole</link> &amp; hole)</computeroutput></para>
+<para>Copy constructor </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00147">147</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a6c5cc5e4efbe73711dab187e00a0a171"/><section>
+    <title>Hole()<computeroutput>[7/7]</computeroutput></title>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>Hole</secondary></indexterm>
+<para><computeroutput>Hole::Hole (const <link linkend="_classPose2D">Pose2D</link> &amp; initialPoint, double holeSize)<computeroutput>[explicit]</computeroutput></computeroutput></para>
+<para>Makes a new hole and stores the initial measurment 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>initialPoint</entry><entry>
+<para>our initial measurment </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00129">129</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classHole_1a39673dc613c45644ff844c7b81709ab9"/><section>
+    <title>addPoint()</title>
+<indexterm><primary>addPoint</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>addPoint</secondary></indexterm>
+<para><computeroutput>void Hole::addPoint (const <link linkend="_classPose2D">Pose2D</link> &amp; position)</computeroutput></para>
+<para>Add a point to this hole/chunk. Morphs this object into a found hole if possible 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>the position of the measurment </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00170">170</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1ad224d20fbe2037b97e19344b8f0157e0"/><section>
+    <title>copyDoOperation()</title>
+<indexterm><primary>copyDoOperation</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>copyDoOperation</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Hole::copyDoOperation (const <link linkend="_classPose2D">Pose2D</link> &amp; position) const</computeroutput></para>
+<para>do the whole operation and copy it into a new object for object collision 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>the <link linkend="_classPose2D">Pose2D</link> to apply the big formula </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the result of the operations </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00043">43</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a1b9d48a850759ae1b826b7476c304785"/><section>
+    <title>getOneSquareCorner()</title>
+<indexterm><primary>getOneSquareCorner</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>getOneSquareCorner</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Hole::getOneSquareCorner ( )</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>one of the square&apos;s corners </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00035">35</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1ae5ba1de89591495ee62c784c8bcc4b72"/><section>
+    <title>getSecondSquareCorner()</title>
+<indexterm><primary>getSecondSquareCorner</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>getSecondSquareCorner</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Hole::getSecondSquareCorner ( )</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>the second of the square&apos;s corners </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00039">39</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a863918993a62cc90b99a66c48e9e0bdc"/><section>
+    <title>getSubHolesCopy()</title>
+<indexterm><primary>getSubHolesCopy</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>getSubHolesCopy</secondary></indexterm>
+<para><computeroutput>std::vector&lt; <link linkend="_classHole">Hole</link> &gt; Hole::getSubHolesCopy ( ) const</computeroutput></para>
+<para>get a copy of the holes within holes (measurments) <formalpara><title>Returns</title>
+
+<para>a vector of the holes within holes </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00458">458</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a519b0f73c960b116403ee937a8fb0a3e"/><section>
+    <title>getSuggestedNodePlacements()</title>
+<indexterm><primary>getSuggestedNodePlacements</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>getSuggestedNodePlacements</secondary></indexterm>
+<para><computeroutput>std::vector&lt; <link linkend="_classPose2D">Pose2D</link> &gt; Hole::getSuggestedNodePlacements ( )</computeroutput></para>
+<para>Gets a list of suggested node placements, for nodes in the graph. These node placements are guranteed to not conflict with a hole, or it&apos;s measurements. <formalpara><title>Returns</title>
+
+<para>a list of suggested node placements </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00056">56</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1aec56b428187b4a6f5a952463b4029d00"/><section>
+    <title>isFoundHole()</title>
+<indexterm><primary>isFoundHole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>isFoundHole</secondary></indexterm>
+<para><computeroutput>bool Hole::isFoundHole ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>whether we have found a hole <formalpara><title>Returns</title>
+
+<para>whether we found a hole </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8hpp_source_1l00115">115</link> of file <link linkend="_Hole_8hpp_source">Hole.hpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1afd4c5c949e5c37e58ff10927e475fcdf"/><section>
+    <title>isInSquare()</title>
+<indexterm><primary>isInSquare</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>isInSquare</secondary></indexterm>
+<para><computeroutput>bool Hole::isInSquare (<link linkend="_classPose2D">Pose2D</link> &amp; position) const</computeroutput></para>
+<para>Whether the passed in position is in the square 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>the position to check </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>whether that position is in the square </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00083">83</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1ae7c69bf5e1d37a1230b50187e7442506"/><section>
+    <title>lineIntersectsHole()</title>
+<indexterm><primary>lineIntersectsHole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>lineIntersectsHole</secondary></indexterm>
+<para><computeroutput>bool Hole::lineIntersectsHole (const <link linkend="_classPose2D">Pose2D</link> &amp; posOne, const <link linkend="_classPose2D">Pose2D</link> &amp; posTwo) const</computeroutput></para>
+<para>Line intersects any hole measurement 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>posOne</entry><entry>
+<para>position one of the line </para>
+</entry>
+                            </row>
+                            <row>
+<entry>posTwo</entry><entry>
+<para>position two of the line </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00393">393</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1a73735b03496aad26f53879b2c50fcc71"/><section>
+    <title>offset()</title>
+<indexterm><primary>offset</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>offset</secondary></indexterm>
+<para><computeroutput>void Hole::offset (const <link linkend="_classPose2D">Pose2D</link> &amp; offset)</computeroutput></para>
+<para>Offset all the corners and measurements 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>offset</entry><entry>
+<para>the amount to offset by </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00381">381</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1afb912f0b7b58f2074fcbbc50184e39c2"/><section>
+    <title>pointCouldBeMemberOfHole()</title>
+<indexterm><primary>pointCouldBeMemberOfHole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>pointCouldBeMemberOfHole</secondary></indexterm>
+<para><computeroutput>bool Hole::pointCouldBeMemberOfHole (const <link linkend="_classPose2D">Pose2D</link> &amp; measurment)</computeroutput></para>
+<para>returns whether a new point could be within the range of this hole. 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>measurment</entry><entry>
+<para>the position of the point that may or may not be close to this hole </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00138">138</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<anchor xml:id="_classHole_1adc6df39c2118fd21749786927800de4b"/><section>
+    <title>registerPointsToHole()</title>
+<indexterm><primary>registerPointsToHole</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>registerPointsToHole</secondary></indexterm>
+<para><computeroutput>void Hole::registerPointsToHole (const <link linkend="_classPose2D">Pose2D</link> &amp; positionOne, const <link linkend="_classPose2D">Pose2D</link> &amp; positionTwo)</computeroutput></para>
+<para>Register the corners of a hole 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>positionOne</entry><entry>
+<para>corner One </para>
+</entry>
+                            </row>
+                            <row>
+<entry>positionTwo</entry><entry>
+<para>Corner Two </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00306">306</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Symbol Documentation</title>
+<anchor xml:id="_classHole_1a371c0f905489a21d9276bb383a572487"/><section>
+    <title>operator&lt;&lt;</title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>Hole</secondary></indexterm>
+<indexterm><primary>Hole</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<para><computeroutput>std::ostream &amp; operator&lt;&lt; (std::ostream &amp; os, const <link linkend="_classHole">Hole</link> &amp; hole)<computeroutput>[friend]</computeroutput></computeroutput></para>
+<para>Override output stream for printing 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>os</entry><entry>
+<para>output stream </para>
+</entry>
+                            </row>
+                            <row>
+<entry>hole</entry><entry>
+<para>the hole to print </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the hole printed in the out stream </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Hole_8cpp_source_1l00373">373</link> of file <link linkend="_Hole_8cpp_source">Hole.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Hole_8hpp">Hole.hpp</link>/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Hole_8cpp">Hole.cpp</link></section>
+</section>

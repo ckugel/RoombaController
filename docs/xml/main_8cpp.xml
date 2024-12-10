@@ -1,0 +1,1852 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes local="yes">../include/imgui/imgui.h</includes>
+    <includes local="yes">../include/imgui/backends/imgui_impl_glfw.h</includes>
+    <includes local="yes">../include/imgui/backends/imgui_impl_opengl3.h</includes>
+    <includes local="no">GLFW/glfw3.h</includes>
+    <includes refid="Pose2D_8hpp" local="yes">Pose2D.hpp</includes>
+    <includes refid="Node_8hpp" local="yes">Node.hpp</includes>
+    <includes refid="Pillar_8hpp" local="yes">Pillar.hpp</includes>
+    <includes refid="Hole_8hpp" local="yes">Hole.hpp</includes>
+    <includes refid="Field_8hpp" local="yes">Field.hpp</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">netinet/in.h</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">sys/socket.h</includes>
+    <includes local="no">unistd.h</includes>
+    <includes local="no">arpa/inet.h</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">thread</includes>
+    <includes local="no">queue</includes>
+    <includes local="no">condition_variable</includes>
+    <includes local="no">atomic</includes>
+    <includes local="no">sstream</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>../include/imgui/backends/imgui_impl_glfw.h</label>
+      </node>
+      <node id="4">
+        <label>../include/imgui/backends/imgui_impl_opengl3.h</label>
+      </node>
+      <node id="2">
+        <label>../include/imgui/imgui.h</label>
+      </node>
+      <node id="17">
+        <label>Field.hpp</label>
+        <link refid="Field_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Graph.hpp</label>
+        <link refid="Graph_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>Hole.hpp</label>
+        <link refid="Hole_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>HoleManager.hpp</label>
+        <link refid="HoleManager_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Node.cpp</label>
+        <link refid="Node_8cpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Node.hpp</label>
+        <link refid="Node_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>Pillar.hpp</label>
+        <link refid="Pillar_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Pose2D.hpp</label>
+        <link refid="Pose2D_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/calebk/Documents/coding/RoombaController/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>util.hpp</label>
+        <link refid="util_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>GLFW/glfw3.h</label>
+      </node>
+      <node id="27">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="33">
+        <label>atomic</label>
+      </node>
+      <node id="24">
+        <label>chrono</label>
+      </node>
+      <node id="7">
+        <label>cmath</label>
+      </node>
+      <node id="32">
+        <label>condition_variable</label>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="28">
+        <label>fstream</label>
+      </node>
+      <node id="29">
+        <label>iostream</label>
+      </node>
+      <node id="20">
+        <label>map</label>
+      </node>
+      <node id="16">
+        <label>memory</label>
+      </node>
+      <node id="23">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="10">
+        <label>ostream</label>
+      </node>
+      <node id="31">
+        <label>queue</label>
+      </node>
+      <node id="9">
+        <label>sstream</label>
+      </node>
+      <node id="19">
+        <label>stack</label>
+      </node>
+      <node id="25">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="30">
+        <label>thread</label>
+      </node>
+      <node id="26">
+        <label>unistd.h</label>
+      </node>
+      <node id="15">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structMove" prot="public">Move</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="main_8cpp_1a69549d0bd46cc467083f3554f3f95955" prot="public" static="no">
+        <name>BOT_CONNECT</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="24" column="9" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="main_8cpp_1a280feb883e9d4a7edcc69c8bcb9f38f2" prot="public" static="no">
+        <name>ADDRESS</name>
+        <initializer>&quot;127.0.0.1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="29" column="14" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="main_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2" prot="public" static="no">
+        <name>PORT</name>
+        <initializer>65432</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="30" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="main_8cpp_1a8a93b61bc797a7d1907f42796a252493" prot="public" static="no" strong="no">
+        <type></type>
+        <name>MovementType</name>
+        <enumvalue id="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c" prot="public">
+          <name>MOVE_FORWARD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339" prot="public">
+          <name>MOVE_BACKWARDS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165" prot="public">
+          <name>MOVE_FORWARD_SMART</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd" prot="public">
+          <name>TURN_TO_ANGLE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="main_8cpp_1a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d" prot="public">
+          <name>SCAN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="33" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="33" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" prot="public" static="no" mutable="no">
+        <type>std::queue&lt; std::string &gt;</type>
+        <definition>std::queue&lt;std::string&gt; sendQueue</definition>
+        <argsstring></argsstring>
+        <name>sendQueue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="41" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a781e3772674224fa00da70ac8e0bb247" prot="public" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex queueMutex</definition>
+        <argsstring></argsstring>
+        <name>queueMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="42" column="12" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a4bf7290e131c491bb7def53e3d340b95" prot="public" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable sendCondition</definition>
+        <argsstring></argsstring>
+        <name>sendCondition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="43" column="25" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt; bool &gt; stopClient</definition>
+        <argsstring>(false)</argsstring>
+        <name>stopClient</name>
+        <param>
+          <type>false</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="50" column="13" declfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" declline="50" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a0e791708278afd1945bd5e4876b90740" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void addToQueue</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>addToQueue</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a given string to the thread safe queue, accessed with mutexes <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the message to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="56" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendAngleToQueue</definition>
+        <argsstring>(int16_t angle)</argsstring>
+        <name>sendAngleToQueue</name>
+        <param>
+          <type>int16_t</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the angle to send </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="68" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="68" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendDistanceToQueue</definition>
+        <argsstring>(uint16_t distance)</argsstring>
+        <name>sendDistanceToQueue</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds an distance to a queue to be sent to the bot <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the distance to send </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="79" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="79" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1aafce9996e79c89401b2797ea5bd5702b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathToRoutine</definition>
+        <argsstring>(std::vector&lt; Pose2D &gt; path, std::vector&lt; Move &gt; &amp;routine)</argsstring>
+        <name>pathToRoutine</name>
+        <param>
+          <type>std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structMove" kindref="compound">Move</ref> &gt; &amp;</type>
+          <declname>routine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generate a routine from a path <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path to generate a routine from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>routine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the routine to store into </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="90" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="90" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string parsePathIntoRoutine</definition>
+        <argsstring>(const std::vector&lt; Pose2D &gt; &amp;path)</argsstring>
+        <name>parsePathIntoRoutine</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>parse a path into a routine <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path to parse </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the routine from the path </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="114" column="13" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="114" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a6e0bf7be42eb96e07b07995bad442501" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void readAndLog</definition>
+        <argsstring>(int socket, std::mutex &amp;fieldMutex, Field &amp;field, std::vector&lt; Pose2D &gt; &amp;path)</argsstring>
+        <name>readAndLog</name>
+        <param>
+          <type>int</type>
+          <declname>socket</declname>
+        </param>
+        <param>
+          <type>std::mutex &amp;</type>
+          <declname>fieldMutex</declname>
+        </param>
+        <param>
+          <type><ref refid="classField" kindref="compound">Field</ref> &amp;</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read and log data that gets sent over the TCP socket <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the socket to listen on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldMutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mutex for the field object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to the field object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path to generate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="142" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="142" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1aeb814458701307eaffced2d1f95dc3f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void connectTCP</definition>
+        <argsstring>(Field &amp;field, std::mutex &amp;fieldMutex, std::vector&lt; Pose2D &gt; &amp;path)</argsstring>
+        <name>connectTCP</name>
+        <param>
+          <type><ref refid="classField" kindref="compound">Field</ref> &amp;</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>std::mutex &amp;</type>
+          <declname>fieldMutex</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>connect to Roomba TCP server or the mock server depending on the configuration <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to the field object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldMutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mutex for the field </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to a generated path </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="291" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="291" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setupImGui</definition>
+        <argsstring>(GLFWwindow *window)</argsstring>
+        <name>setupImGui</name>
+        <param>
+          <type>GLFWwindow *</type>
+          <declname>window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Simple function to set up OpenGL and ImGui context <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>window</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the GLFW window </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="341" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="341" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1aef05f78be1cf48474bb638b05af91d4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DrawCircle</definition>
+        <argsstring>(ImDrawList *drawList, const ImVec2 &amp;center, float radius, ImU32 color)</argsstring>
+        <name>DrawCircle</name>
+        <param>
+          <type>ImDrawList *</type>
+          <declname>drawList</declname>
+        </param>
+        <param>
+          <type>const ImVec2 &amp;</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>ImU32</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draw a circle on the window <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>drawList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the drawlist for a given window </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>center</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the center position of the circle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the radus of the circle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the color of the circle on the screen </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="357" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="357" bodyend="359"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPose2D" kindref="compound">Pose2D</ref></type>
+        <definition>Pose2D ScreenToCoords</definition>
+        <argsstring>(ImVec2 coords, ImVec2 offset, ImVec2 scaling)</argsstring>
+        <name>ScreenToCoords</name>
+        <param>
+          <type>ImVec2</type>
+          <declname>coords</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>scaling</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes a <ref refid="classPose2D" kindref="compound">Pose2D</ref> from given screen coordinates <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coords</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the coordinates on the window </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the offset of the position of the window on the screen </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scaling</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the scaling factor for the window size </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="368" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="368" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ImVec2</type>
+        <definition>ImVec2 coordsToScreen</definition>
+        <argsstring>(ImVec2 offset, ImVec2 scaling, double x, double y)</argsstring>
+        <name>coordsToScreen</name>
+        <param>
+          <type>ImVec2</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>scaling</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes screen coordinates from <ref refid="classField" kindref="compound">Field</ref> coordinates <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the offset the window measuring on is at </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scaling</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the amount to scale by </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the x component of the pose 2d </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the y component of the pose 2d </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the new screen coordinates </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="383" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="383" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1aadd75f0fd8f5677340c27a7df7c28366" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ImVec2</type>
+        <definition>ImVec2 coordsToScreen</definition>
+        <argsstring>(ImVec2 offset, ImVec2 scaling, const Pose2D &amp;position)</argsstring>
+        <name>coordsToScreen</name>
+        <param>
+          <type>ImVec2</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>scaling</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes screen coordinates from <ref refid="classField" kindref="compound">Field</ref> coordinates <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the offset the window measuring on is at </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scaling</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the amount to scale by </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position be transformed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the new screen coordinates </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="396" column="8" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="396" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a9d21b7be18e221988e1051a55465f3a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ShowPillarOnWindow</definition>
+        <argsstring>(ImDrawList *drawList, Pillar pillar, ImU32 color, ImVec2 offset, ImVec2 scaling)</argsstring>
+        <name>ShowPillarOnWindow</name>
+        <param>
+          <type>ImDrawList *</type>
+          <declname>drawList</declname>
+        </param>
+        <param>
+          <type><ref refid="classPillar" kindref="compound">Pillar</ref></type>
+          <declname>pillar</declname>
+        </param>
+        <param>
+          <type>ImU32</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>scaling</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Show a given pillar on the window. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>drawList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the window to draw a pillar (circle) on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pillar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pillar which stores the given position and radius </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the color to draw it as </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the offset of the window </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scaling</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the sizing ration for the window </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="408" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="408" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void drawBotPose</definition>
+        <argsstring>(ImDrawList *drawList, const Pose2D &amp;botPose, ImVec2 offset, ImVec2 scaling)</argsstring>
+        <name>drawBotPose</name>
+        <param>
+          <type>ImDrawList *</type>
+          <declname>drawList</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>botPose</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>scaling</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draws a triangle on the bot position facing in the direction that the bot is. The color of the triangle will be lime green.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>drawList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the draw list for the window </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>botPose</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position of the bot </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the offset of the screen for cartesian coordinates </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="423" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="423" bodyend="440"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void drawRectangle</definition>
+        <argsstring>(ImDrawList *drawList, ImVec2 offset, ImVec2 scaling, const Pose2D &amp;p1, const Pose2D &amp;p2)</argsstring>
+        <name>drawRectangle</name>
+        <param>
+          <type>ImDrawList *</type>
+          <declname>drawList</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ImVec2</type>
+          <declname>scaling</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classPose2D" kindref="compound">Pose2D</ref> &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draw a rectangle on the field given by the critical points p1 and p2 <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>drawList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the draw list for the window to draw on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the offset of the window </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scaling</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the size scaling </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>point one </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>point two (opposite corner) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="450" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="450" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ShowFieldWindow</definition>
+        <argsstring>(std::mutex *pillarsMutex, std::vector&lt; Pose2D &gt; &amp;path, Field &amp;field, std::atomic&lt; bool &gt; &amp;showNodes, std::atomic&lt; bool &gt; &amp;showEdges)</argsstring>
+        <name>ShowFieldWindow</name>
+        <param>
+          <type>std::mutex *</type>
+          <declname>pillarsMutex</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classPose2D" kindref="compound">Pose2D</ref> &gt; &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type><ref refid="classField" kindref="compound">Field</ref> &amp;</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>std::atomic&lt; bool &gt; &amp;</type>
+          <declname>showNodes</declname>
+        </param>
+        <param>
+          <type>std::atomic&lt; bool &gt; &amp;</type>
+          <declname>showEdges</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Show the field window on a new window <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pillarsMutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mutex for pillars </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path to display </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the field object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>showNodes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>whether to show nodes or not (atomic reference) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>showEdges</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>whether to show edges of the graph or not (atmoic reference) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="479" column="6" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="479" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The main function where the program starts <simplesect kind="return"><para>status code of how the program executed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp" line="572" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/main.cpp" bodystart="572" bodyend="747"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;../include/imgui/imgui.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../include/imgui/backends/imgui_impl_glfw.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../include/imgui/backends/imgui_impl_opengl3.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;GLFW/glfw3.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Pose2D_8hpp" kindref="compound">Pose2D.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Node_8hpp" kindref="compound">Node.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Pillar_8hpp" kindref="compound">Pillar.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Hole_8hpp" kindref="compound">Hole.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Field_8hpp" kindref="compound">Field.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;netinet/in.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;arpa/inet.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;queue&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;condition_variable&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="main_8cpp_1a69549d0bd46cc467083f3554f3f95955" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOT_CONNECT<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>BOT_CONNECT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>ADDRESS<sp/>&quot;192.168.1.1&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>PORT<sp/>288</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="main_8cpp_1a280feb883e9d4a7edcc69c8bcb9f38f2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>ADDRESS<sp/>&quot;127.0.0.1&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="main_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>PORT<sp/><sp/>65432</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493" kindref="member">MovementType</ref><sp/>{</highlight></codeline>
+<codeline lineno="34" refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a99906f0ddded6cfdab57271cd33e308c" kindref="member">MOVE_FORWARD</ref>,</highlight></codeline>
+<codeline lineno="35" refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a0e098fde4d08a507e58b3d6fdcc6a339" kindref="member">MOVE_BACKWARDS</ref>,</highlight></codeline>
+<codeline lineno="36" refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165" kindref="member">MOVE_FORWARD_SMART</ref>,</highlight></codeline>
+<codeline lineno="37" refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd" kindref="member">TURN_TO_ANGLE</ref>,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d" kindref="member">SCAN</ref></highlight></codeline>
+<codeline lineno="39" refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493ad94678be726a02dc0089d328487a3c2d" refkind="member"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" refkind="member"><highlight class="normal">std::queue&lt;std::string&gt;<sp/><ref refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" kindref="member">sendQueue</ref>;</highlight></codeline>
+<codeline lineno="42" refid="main_8cpp_1a781e3772674224fa00da70ac8e0bb247" refkind="member"><highlight class="normal">std::mutex<sp/><ref refid="main_8cpp_1a781e3772674224fa00da70ac8e0bb247" kindref="member">queueMutex</ref>;</highlight></codeline>
+<codeline lineno="43" refid="main_8cpp_1a4bf7290e131c491bb7def53e3d340b95" refkind="member"><highlight class="normal">std::condition_variable<sp/><ref refid="main_8cpp_1a4bf7290e131c491bb7def53e3d340b95" kindref="member">sendCondition</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="structMove" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structMove" kindref="compound">Move</ref><sp/>{</highlight></codeline>
+<codeline lineno="46" refid="structMove_1a261f6dd2a4399171b95747f32eb4025e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structMove_1a261f6dd2a4399171b95747f32eb4025e" kindref="member">quantity</ref>;</highlight></codeline>
+<codeline lineno="47" refid="structMove_1a024fa73d41d4d3830f2565e158a2b521" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493" kindref="member">MovementType</ref><sp/><ref refid="structMove_1a024fa73d41d4d3830f2565e158a2b521" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6" refkind="member"><highlight class="normal">std::atomic&lt;bool&gt;<sp/><ref refid="main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6" kindref="member">stopClient</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>message<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a781e3772674224fa00da70ac8e0bb247" kindref="member">queueMutex</ref>.lock();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>message<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" kindref="member">sendQueue</ref>.push(message);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a781e3772674224fa00da70ac8e0bb247" kindref="member">queueMutex</ref>.unlock();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459" kindref="member">sendAngleToQueue</ref>(int16_t<sp/>angle)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buff[8];</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>sprintf(buff,<sp/></highlight><highlight class="stringliteral">&quot;t%03d&quot;</highlight><highlight class="normal">,<sp/>angle);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>std::string(buff)<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" kindref="member">sendQueue</ref>.emplace(buff);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5" kindref="member">sendDistanceToQueue</ref>(uint16_t<sp/>distance)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buff[8];</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>sprintf(buff,<sp/></highlight><highlight class="stringliteral">&quot;r%03d&quot;</highlight><highlight class="normal">,<sp/>distance);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" kindref="member">sendQueue</ref>.emplace(buff);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="main_8cpp_1aafce9996e79c89401b2797ea5bd5702b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1aafce9996e79c89401b2797ea5bd5702b" kindref="member">pathToRoutine</ref>(std::vector&lt;Pose2D&gt;<sp/>path,<sp/>std::vector&lt;Move&gt;&amp;<sp/>routine)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>at<sp/>1<sp/>so<sp/>that<sp/>we<sp/>can<sp/>gurantee<sp/>that<sp/>we<sp/>can<sp/>look<sp/>back.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>previousEndHeading<sp/>=<sp/>path[0].getHeading();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>move<sp/>=<sp/>1;<sp/>move<sp/>&lt;<sp/>((path.size()<sp/>-<sp/>1)*2);<sp/>move<sp/>+=<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>every<sp/>point<sp/>we<sp/>want<sp/>to<sp/>point<sp/>and<sp/>move</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>pointOld<sp/>=<sp/>path[move<sp/>/<sp/>2];</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>pointNew<sp/>=<sp/>path[(move<sp/>/<sp/>2)<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>angle<sp/>to<sp/>turn<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>newHeading<sp/>=<sp/>pointNew.<ref refid="classPose2D_1a29526d1eb9c2eafc4b6d3cc2f31a6773" kindref="member">angleTo</ref>(pointOld);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle<sp/>=<sp/>newHeading<sp/>-<sp/>previousEndHeading;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>previousEndHeading<sp/>=<sp/>newHeading;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>magnitude</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>magnitude<sp/>=<sp/>pointNew.<ref refid="classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3" kindref="member">distanceTo</ref>(pointOld);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>routine.push_back((<ref refid="structMove" kindref="compound">Move</ref>)<sp/>{.quantity<sp/>=<sp/>angle,<sp/>.type<sp/>=<sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493a635e840b2e84da27d2efacd48278c0fd" kindref="member">TURN_TO_ANGLE</ref>});</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>routine.push_back((<ref refid="structMove" kindref="compound">Move</ref>)<sp/>{.quantity<sp/>=<sp/>magnitude,<sp/>.type<sp/>=<sp/><ref refid="main_8cpp_1a8a93b61bc797a7d1907f42796a252493aa9258bf6fcae0558b2839516a171e165" kindref="member">MOVE_FORWARD_SMART</ref>});</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9" refkind="member"><highlight class="normal">std::string<sp/><ref refid="main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9" kindref="member">parsePathIntoRoutine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Pose2D&gt;&amp;<sp/>path)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>toSend;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Move&gt;<sp/>routine;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;routine<sp/>length:<sp/>&quot;<sp/>&lt;&lt;<sp/>routine.size()<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aafce9996e79c89401b2797ea5bd5702b" kindref="member">pathToRoutine</ref>(path,<sp/>routine);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>toSend<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;R&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>routine.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[50];</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sprintf(buffer,<sp/>&quot;p<sp/>%0.3f<sp/>%0.3f<sp/>&quot;<sp/>,<sp/>path[i].getX(),<sp/>path[i].getY());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>//<sp/>routine[i]<sp/>is<sp/>all<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sprintf(buffer,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>%0.3f<sp/>%c<sp/>&quot;</highlight><highlight class="normal">,<sp/>routine[i].quantity,<sp/>routine[i].type<sp/>+<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>toSend<sp/>&lt;&lt;<sp/>std::string(buffer);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>toSend<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;R&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>toSend.str();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="main_8cpp_1a6e0bf7be42eb96e07b07995bad442501" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a6e0bf7be42eb96e07b07995bad442501" kindref="member">readAndLog</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>socket,<sp/>std::mutex&amp;<sp/>fieldMutex,<sp/><ref refid="classField" kindref="compound">Field</ref>&amp;<sp/>field,<sp/>std::vector&lt;Pose2D&gt;&amp;<sp/>path)<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>BUFF_SIZE<sp/>=<sp/>1024;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>name_buff[50];</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>time_t<sp/>now<sp/>=<sp/>time(0);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>strftime(name_buff,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(name_buff),<sp/></highlight><highlight class="stringliteral">&quot;log/%Y%m%d_%H%M%S.log&quot;</highlight><highlight class="normal">,<sp/>localtime(&amp;now));</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>std::string<sp/>str_name(name_buff);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>std::ofstream<sp/>logFile(str_name);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!(<ref refid="main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6" kindref="member">stopClient</ref>.load()))<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buff[BUFF_SIZE];</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>expect<sp/>a<sp/>&quot;Handshake&quot;<sp/>response<sp/>to<sp/>be<sp/>echoed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bytesRead<sp/>=<sp/>read(socket,<sp/>buff,<sp/>BUFF_SIZE);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>response(buff,<sp/>bytesRead);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bytesRead<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logFile<sp/>&lt;&lt;<sp/>response;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>std::istringstream<sp/>stream(response);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>tag;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(stream<sp/>&gt;&gt;<sp/>tag)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(tag)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;F&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>send<sp/>the<sp/>routine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>generate<sp/>path<sp/>and<sp/>return<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.lock();</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1a3e9096a686ffb177056e24dfb920a610" kindref="member">discretizeGraph</ref>();</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1ab1945d8274ee391ea813863aa94c5d52" kindref="member">weightGraph</ref>();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path.clear();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Pose2D&gt;<sp/>pathOne<sp/>=<sp/>field.<ref refid="classField_1aa988c5de70875dd81c766c9429a4b986" kindref="member">makePath</ref>();</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>pathOne.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path.push_back(pathOne[i]);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Pose2D<sp/>oldCenter<sp/>=<sp/>field.getDesiredDestination();</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(path.empty())<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>try<sp/>a<sp/>new<sp/>desired<sp/>position<sp/>until<sp/>its<sp/>not<sp/>empty</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>10;<sp/>i<sp/>+=<sp/>5)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(double<sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>2<sp/>*<sp/>M_PI;<sp/>j<sp/>+=<sp/>M_PI<sp/>*<sp/>1/4)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Pose2D<sp/>newDesired<sp/>=<sp/>Pose2D::fromPolar(i,<sp/>j);</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>newDesired.plus(oldCenter);</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!Field::outOfBounds(newDesired))<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.updateDesired(newDesired);</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.discretizeGraph();</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.weightGraph();</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path<sp/>=<sp/>field.makePath();</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!path.empty())<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sendQueue.push(parsePathIntoRoutine(path));</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.unlock();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;o&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.lock();</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPillar" kindref="compound">Pillar</ref><sp/>toAdd<sp/>=<sp/><ref refid="classPillar_1a01e5ad8ad29b0637edc291aaff93785e" kindref="member">Pillar::parseFromStream</ref>(stream);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;x:<sp/>&quot;<sp/>&lt;&lt;<sp/>toAdd.getX()<sp/>&lt;&lt;<sp/>&quot;<sp/>y:<sp/>&quot;<sp/>&lt;&lt;<sp/>toAdd.getY()<sp/>&lt;&lt;<sp/>&quot;<sp/>radius:<sp/>&quot;<sp/>&lt;&lt;<sp/>toAdd.getRadius()<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>toAdd.<ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>().<ref refid="classPose2D_1a4fc6977729ef4a4b63e0e9fa0caf1e2e" kindref="member">transformForPose</ref>(field.<ref refid="classField_1a55f738166b3267d7fa313465d2866dd4" kindref="member">getBotPose</ref>().<ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>());</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1a890d7140a600bed6eb18a549b1a0faf9" kindref="member">addPillar</ref>(toAdd);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.unlock();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;d&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>other<sp/>=<sp/><ref refid="classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2" kindref="member">Pose2D::parseFromStream</ref>(stream);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1a9448f436dd4e1e2d6bf1d82bf18c86a2" kindref="member">updateDesired</ref>(other);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;E&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>m;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>cardinality;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(stream<sp/>&gt;&gt;<sp/>m<sp/>&gt;&gt;<sp/>cardinality)<sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1aba8449d9e693a3542f37c223099464d9" kindref="member">addEdgeMeasurement</ref>(m,<sp/>(<ref refid="Field_8hpp_1a8926bbad0c6fb22d1c85cb4fdcd286d5" kindref="member">Cardinality</ref>)<sp/>cardinality);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>first<sp/>term<sp/>is<sp/>the<sp/>raw<sp/>X<sp/>or<sp/>Y<sp/>value<sp/>next<sp/>value<sp/>is<sp/>the<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;h&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.lock();</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>data<sp/>is<sp/>coming<sp/>in<sp/>the<sp/>format<sp/>&quot;<sp/>X<sp/>Y<sp/>Theta<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>holeMeasurment<sp/>=<sp/><ref refid="classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2" kindref="member">Pose2D::parseFromStream</ref>(stream);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>holeMeasurment.<ref refid="classPose2D_1a5a031312210c5fd0d88855df26b53c1a" kindref="member">plus</ref>(field.<ref refid="classField_1a55f738166b3267d7fa313465d2866dd4" kindref="member">getBotPose</ref>().<ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>());</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1a87df29e3618d42c11b886bbcf07b1453" kindref="member">getManager</ref>().<ref refid="classHoleManager_1a317b24d6b0d2b5f843d3cbc4fcf39dd8" kindref="member">addPoint</ref>(holeMeasurment);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.unlock();</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;H&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>data<sp/>is<sp/>coming<sp/>in<sp/>the<sp/>format<sp/>&quot;<sp/>X1<sp/>Y1<sp/>X2<sp/>Y2<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.lock();</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x1,<sp/>y1,<sp/>x2,<sp/>y2;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(stream<sp/>&gt;&gt;<sp/>x1<sp/>&gt;&gt;<sp/>y1<sp/>&gt;&gt;<sp/>x2<sp/>&gt;&gt;<sp/>y2)<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>one(x1,<sp/>y1);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>two(x2,<sp/>y2);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>one.<ref refid="classPose2D_1a5a031312210c5fd0d88855df26b53c1a" kindref="member">plus</ref>(field.<ref refid="classField_1a55f738166b3267d7fa313465d2866dd4" kindref="member">getBotPose</ref>().<ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>());</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>two.<ref refid="classPose2D_1a5a031312210c5fd0d88855df26b53c1a" kindref="member">plus</ref>(field.<ref refid="classField_1a55f738166b3267d7fa313465d2866dd4" kindref="member">getBotPose</ref>().<ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>());</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classHole" kindref="compound">Hole</ref><sp/>hole(one,<sp/>two,<sp/>one.<ref refid="classPose2D_1a9acb14a9b0252c620dfc1e79139b52d3" kindref="member">distanceTo</ref>(two)<sp/>/<sp/>sqrt(2));</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1a87df29e3618d42c11b886bbcf07b1453" kindref="member">getManager</ref>().<ref refid="classHoleManager_1ae4fc057aea5dbfc0596b48455beed1e7" kindref="member">addHole</ref>(hole);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.unlock();</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;b&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.lock();</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1a099593a58a6edcd2e6e2831abbb8fe89" kindref="member">updateBotPose</ref>(<ref refid="classPose2D_1a5d17898ded76394ed8d4af09b6c79ca2" kindref="member">Pose2D::parseFromStream</ref>(stream));</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;recieved<sp/>bot<sp/>pose:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>field.<ref refid="classField_1a55f738166b3267d7fa313465d2866dd4" kindref="member">getBotPose</ref>().<ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fieldMutex.unlock();</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logFile<sp/>&lt;&lt;<sp/>tag;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>std::this_thread::sleep_for(std::chrono::milliseconds(5));</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>matter<sp/>what<sp/>we<sp/>are<sp/>going<sp/>to<sp/>log<sp/>this<sp/>in<sp/>a<sp/>file,<sp/>however<sp/>we<sp/>should<sp/>also<sp/>update<sp/>certain<sp/>fields</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/>logFile.close();</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291" refid="main_8cpp_1aeb814458701307eaffced2d1f95dc3f9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1aeb814458701307eaffced2d1f95dc3f9" kindref="member">connectTCP</ref>(<ref refid="classField" kindref="compound">Field</ref>&amp;<sp/>field,<sp/>std::mutex&amp;<sp/>fieldMutex,<sp/>std::vector&lt;Pose2D&gt;&amp;<sp/>path)<sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>clientSocket<sp/>=<sp/>socket(AF_INET,<sp/>SOCK_STREAM,<sp/>0);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/>sockaddr_in<sp/>serverAddress{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>.sin_family<sp/>=<sp/>AF_INET,</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>.sin_port<sp/>=<sp/>htons(<ref refid="main_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2" kindref="member">PORT</ref>),</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>.sin_addr<sp/>=<sp/>inet_addr(<ref refid="main_8cpp_1a280feb883e9d4a7edcc69c8bcb9f38f2" kindref="member">ADDRESS</ref>)</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>https://beej.us/guide/bgnet/html/#blocking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fcntl(clientSocket,<sp/>F_SETFL,<sp/>O_NONBLOCK);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>connected<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!connected)<sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(connect(clientSocket,<sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>sockaddr*)&amp;<sp/>serverAddress,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(serverAddress)))<sp/>{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::exception();</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connected<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::this_thread::sleep_for(std::chrono::milliseconds(500));</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connected<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>spawn<sp/>read<sp/>and<sp/>log<sp/>thread<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/>std::thread<sp/>readThread(<ref refid="main_8cpp_1a6e0bf7be42eb96e07b07995bad442501" kindref="member">readAndLog</ref>,<sp/>std::ref(clientSocket),<sp/>std::ref(fieldMutex),<sp/>std::ref(field),<sp/>std::ref(path));</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(!<ref refid="main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6" kindref="member">stopClient</ref>.load())<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" kindref="member">sendQueue</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>message<sp/>=<sp/><ref refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" kindref="member">sendQueue</ref>.front();</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(message.compare(</highlight><highlight class="stringliteral">&quot;q&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6" kindref="member">stopClient</ref>.store(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aa1dd612fc3a4eaae839fbcb1fc0489f3" kindref="member">sendQueue</ref>.pop();</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>send(clientSocket,<sp/>message.c_str(),<sp/>message.length(),<sp/>0);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>std::this_thread::sleep_for(std::chrono::milliseconds(20));</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/>readThread.join();</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/>close(clientSocket);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341" refid="main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2" kindref="member">setupImGui</ref>(GLFWwindow*<sp/>window)<sp/>{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>IMGUI_CHECKVERSION();</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::CreateContext();</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGuiIO&amp;<sp/>io<sp/>=<sp/>ImGui::GetIO();<sp/>(void)io;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::StyleColorsDark();</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui_ImplGlfw_InitForOpenGL(window,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui_ImplOpenGL3_Init(</highlight><highlight class="stringliteral">&quot;#version<sp/>130&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357" refid="main_8cpp_1aef05f78be1cf48474bb638b05af91d4e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1aef05f78be1cf48474bb638b05af91d4e" kindref="member">DrawCircle</ref>(ImDrawList*<sp/>drawList,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ImVec2&amp;<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius,<sp/>ImU32<sp/>color)<sp/>{</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/>drawList-&gt;AddCircle(center,<sp/>radius,<sp/>color,<sp/>0,<sp/>0.2f);</highlight></codeline>
+<codeline lineno="359"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368" refid="main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77" refkind="member"><highlight class="normal"><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/><ref refid="main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77" kindref="member">ScreenToCoords</ref>(ImVec2<sp/>coords,<sp/>ImVec2<sp/>offset,<sp/>ImVec2<sp/>scaling)<sp/>{</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>(coords.x<sp/>-<sp/>offset.x)<sp/>/<sp/>scaling.<ref refid="classPose2D_1a4ea2a4d5ced468e718373ffe07732f60" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y<sp/>=<sp/><ref refid="Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef" kindref="member">MAX_Y</ref><sp/>-<sp/>(coords.y<sp/>-<sp/>offset.y)<sp/>/<sp/>scaling.y;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{x,<sp/>y};</highlight></codeline>
+<codeline lineno="372"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383" refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" refkind="member"><highlight class="normal">ImVec2<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(ImVec2<sp/>offset,<sp/>ImVec2<sp/>scaling,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>xN<sp/>=<sp/>offset.x<sp/>+<sp/>(scaling.x<sp/>*<sp/>x);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yN<sp/>=<sp/>offset.y<sp/>+<sp/>(scaling.y<sp/>*<sp/>(<ref refid="Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef" kindref="member">MAX_Y</ref><sp/>-<sp/>y));</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ImVec2(xN,<sp/>yN);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="396" refid="main_8cpp_1aadd75f0fd8f5677340c27a7df7c28366" refkind="member"><highlight class="normal">ImVec2<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(ImVec2<sp/>offset,<sp/>ImVec2<sp/>scaling,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>position)<sp/>{</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>position.<ref refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kindref="member">getX</ref>(),<sp/>position.<ref refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kindref="member">getY</ref>());</highlight></codeline>
+<codeline lineno="398"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408" refid="main_8cpp_1a9d21b7be18e221988e1051a55465f3a2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a9d21b7be18e221988e1051a55465f3a2" kindref="member">ShowPillarOnWindow</ref>(ImDrawList*<sp/>drawList,<sp/><ref refid="classPillar" kindref="compound">Pillar</ref><sp/>pillar,<sp/>ImU32<sp/>color,<sp/>ImVec2<sp/>offset,<sp/>ImVec2<sp/>scaling)<sp/>{</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/>ImVec2<sp/>center<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>pillar.<ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>());</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius<sp/>=<sp/>pillar.<ref refid="classPillar_1a404e92b3ee6005fcd400ae120ce0b560" kindref="member">getRadius</ref>()<sp/>*<sp/>2.5;</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;haven&apos;t<sp/>drawn<sp/>yet&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aef05f78be1cf48474bb638b05af91d4e" kindref="member">DrawCircle</ref>(drawList,<sp/>center,<sp/>radius,<sp/>color);</highlight></codeline>
+<codeline lineno="413"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423" refid="main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7" kindref="member">drawBotPose</ref>(ImDrawList*<sp/>drawList,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>botPose,<sp/>ImVec2<sp/>offset,<sp/>ImVec2<sp/>scaling)<sp/>{</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/>ImU32<sp/>color<sp/>=<sp/>IM_COL32(144,<sp/>238,<sp/>144,<sp/>200);</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculate<sp/>the<sp/>position<sp/>of<sp/>the<sp/>first<sp/>point</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>should<sp/>be<sp/>botPose<sp/>+<sp/>(botRadius<sp/>*<sp/>1.5<sp/>@<sp/>bot<sp/>heading)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>scaleAmount<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>lineOutOfCenter<sp/>=<sp/><ref refid="classPose2D_1a35455cacb295ea54820030b9dbb191f2" kindref="member">Pose2D::fromPolar</ref>(<ref refid="Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60" kindref="member">BOT_RADIUS</ref><sp/>*<sp/>1.5<sp/>*<sp/>scaleAmount,<sp/>0);</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/>lineOutOfCenter.<ref refid="classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea" kindref="member">transformPose</ref>(botPose);</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ImVec2<sp/>p1<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>lineOutOfCenter);</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>sideLine<sp/>=<sp/><ref refid="classPose2D_1a35455cacb295ea54820030b9dbb191f2" kindref="member">Pose2D::fromPolar</ref>(scaleAmount<sp/>*<sp/><ref refid="Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60" kindref="member">BOT_RADIUS</ref><sp/>*<sp/>0.75,<sp/><ref refid="classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c" kindref="member">Pose2D::degreesToRadians</ref>(120));</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/>sideLine.<ref refid="classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea" kindref="member">transformPose</ref>(botPose);</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ImVec2<sp/>p2<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>sideLine);</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>otherSide<sp/>=<sp/><ref refid="classPose2D_1a35455cacb295ea54820030b9dbb191f2" kindref="member">Pose2D::fromPolar</ref>(<ref refid="Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60" kindref="member">BOT_RADIUS</ref><sp/>*<sp/>scaleAmount<sp/>*<sp/>0.75,<sp/><ref refid="classPose2D_1ad02ce98e6c53fb62bb65eda3cae90a1c" kindref="member">Pose2D::degreesToRadians</ref>(240));</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/>otherSide.<ref refid="classPose2D_1a732b26c3659a88456d5fc0e4e1b0a8ea" kindref="member">transformPose</ref>(botPose);</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ImVec2<sp/>p3<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>otherSide);</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/>drawList-&gt;AddTriangle(p1,<sp/>p2,<sp/>p3,<sp/>color);</highlight></codeline>
+<codeline lineno="440"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450" refid="main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c" kindref="member">drawRectangle</ref>(ImDrawList*<sp/>drawList,<sp/>ImVec2<sp/>offset,<sp/>ImVec2<sp/>scaling,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>p1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref>&amp;<sp/>p2)<sp/>{</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>const<sp/>Pose2D<sp/>MinPosition<sp/>=<sp/>Pose2D(std::min(p1.getX(),<sp/>p2.getX()),<sp/>std::min(p1.getY(),<sp/>p2.getY()));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>const<sp/>Pose2D<sp/>MaxPosition<sp/>=<sp/>Pose2D(std::max(p1.getX(),<sp/>p2.getX()),<sp/>std::max(p1.getY(),<sp/>p2.getY()));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fun<sp/>math<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>xCenter<sp/>=<sp/>(p1.<ref refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kindref="member">getX</ref>()<sp/>+<sp/>p2.<ref refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kindref="member">getX</ref>())<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yCenter<sp/>=<sp/>(p1.<ref refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kindref="member">getY</ref>()<sp/>+<sp/>p2.<ref refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kindref="member">getY</ref>())<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>xDiagonal<sp/>=<sp/>(p1.<ref refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kindref="member">getX</ref>()<sp/>-<sp/>p2.<ref refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kindref="member">getX</ref>())<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yDiagonal<sp/>=<sp/>(p1.<ref refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kindref="member">getY</ref>()<sp/>-<sp/>p2.<ref refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kindref="member">getY</ref>())<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"></highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>p3(xCenter<sp/>-<sp/>yDiagonal,<sp/>yCenter<sp/>+<sp/>xDiagonal);</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>p4(xCenter<sp/>+<sp/>yDiagonal,<sp/>yCenter<sp/>-<sp/>xDiagonal);</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"></highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ImVec2<sp/>m1<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>p1);</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ImVec2<sp/>m2<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>p2);</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ImVec2<sp/>m3<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>p3);</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ImVec2<sp/>m4<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scaling,<sp/>p4);</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>std::<sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>&quot;p2<sp/>position:<sp/>&quot;<sp/>&lt;&lt;<sp/>p2.getY()<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/>drawList-&gt;AddQuadFilled(m1,<sp/>m3,<sp/>m2,<sp/>m4,<sp/>IM_COL32(255,<sp/>165,<sp/>0,<sp/>170));</highlight></codeline>
+<codeline lineno="469"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight></codeline>
+<codeline lineno="479" refid="main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf" kindref="member">ShowFieldWindow</ref>(std::mutex*<sp/>pillarsMutex,<sp/>std::vector&lt;Pose2D&gt;&amp;<sp/>path,<sp/><ref refid="classField" kindref="compound">Field</ref>&amp;<sp/>field,<sp/>std::atomic&lt;bool&gt;&amp;<sp/>showNodes,<sp/>std::atomic&lt;bool&gt;&amp;<sp/>showEdges)<sp/>{</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::Begin(</highlight><highlight class="stringliteral">&quot;Field&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/>ImDrawList*<sp/>drawList<sp/>=<sp/>ImGui::GetWindowDrawList();</highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/>ImVec2<sp/>windowSize(<ref refid="Field_8hpp_1a898606140dee9ce0adf096de00824d94" kindref="member">MAX_X</ref><sp/>*<sp/>2.5,<sp/><ref refid="Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef" kindref="member">MAX_Y</ref><sp/>*<sp/>2.5);</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::SetWindowSize(windowSize);</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/>ImVec2<sp/>windowPos<sp/>=<sp/>ImGui::GetWindowPos();</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/>windowPos.x<sp/>+=<sp/>windowSize.x<sp/>/<sp/>100;</highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/><sp/><sp/>windowPos.y<sp/>+=<sp/>windowSize.y<sp/>/<sp/>100;</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/><sp/><sp/>ImVec2<sp/>offset<sp/>=<sp/><sp/>ImVec2(windowPos.x<sp/>+<sp/>windowSize.x<sp/>/<sp/>50,<sp/>windowPos.y<sp/>-<sp/>windowSize.y<sp/>/<sp/>50);</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/>ImVec2<sp/>scalingFactor<sp/>=<sp/>ImVec2(windowSize.x<sp/>/<sp/><ref refid="Field_8hpp_1a898606140dee9ce0adf096de00824d94" kindref="member">MAX_X</ref>,<sp/>windowSize.y<sp/>/<sp/><ref refid="Field_8hpp_1a985cc18be96dda7f59fd0400725e4aef" kindref="member">MAX_Y</ref>);</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="491"><highlight class="normal"><sp/><sp/><sp/><sp/>pillarsMutex-&gt;lock();</highlight></codeline>
+<codeline lineno="492"><highlight class="normal"></highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Pillar&gt;<sp/>pillars<sp/>=<sp/>field.<ref refid="classField_1a1f3f3b289e23572dc12f9aef6b33817e" kindref="member">getCopyPillars</ref>();</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPillar" kindref="compound">Pillar</ref>&amp;<sp/>pillar:<sp/>pillars)<sp/>{</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a9d21b7be18e221988e1051a55465f3a2" kindref="member">ShowPillarOnWindow</ref>(drawList,<sp/>pillar,<sp/>IM_COL32(255,<sp/>0,<sp/>0,<sp/>200),<sp/>offset,<sp/>scalingFactor);</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="498"><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Hole&gt;<sp/>holes<sp/>=<sp/>field.<ref refid="classField_1a87df29e3618d42c11b886bbcf07b1453" kindref="member">getManager</ref>().<ref refid="classHoleManager_1a586843e9065c89985c3b76bc8a2f9003" kindref="member">getHoles</ref>();</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;size:<sp/>&quot;<sp/>&lt;&lt;<sp/>holes.size()<sp/>&lt;&lt;<sp/>std::endl;<sp/>//<sp/>output<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classHole" kindref="compound">Hole</ref><sp/>hole:<sp/>holes)<sp/>{</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;X1<sp/>Y1<sp/>X2<sp/>Y2:<sp/>{&quot;<sp/>&lt;&lt;<sp/>hole.getOneSquareCorner().getX()<sp/>&lt;&lt;<sp/>&quot;<sp/>&quot;<sp/>&lt;&lt;<sp/>hole.getOneSquareCorner().getY()<sp/>&lt;&lt;<sp/>&quot;<sp/>&quot;<sp/>&lt;&lt;<sp/>hole.getSecondSquareCorner().getX()<sp/>&lt;&lt;<sp/>&quot;<sp/>&quot;<sp/>&lt;&lt;<sp/>hole.getSecondSquareCorner().getY()<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hole.isFoundHole())<sp/>{</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c" kindref="member">drawRectangle</ref>(drawList,<sp/>offset,<sp/>scalingFactor,<sp/>hole.getOneSquareCorner(),<sp/>hole.getSecondSquareCorner());</highlight></codeline>
+<codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Hole&gt;<sp/>subHoles<sp/>=<sp/>hole.getSubHolesCopy();</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classHole" kindref="compound">Hole</ref><sp/>holer:<sp/>subHoles)<sp/>{</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a6a0a2f2d8d9d5b25ec8f68b5610d003c" kindref="member">drawRectangle</ref>(drawList,<sp/>offset,<sp/>scalingFactor,<sp/>holer.getOneSquareCorner(),<sp/>holer.getSecondSquareCorner());</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a4eb982ee4c09fb7f60fe5247c6a904b7" kindref="member">drawBotPose</ref>(drawList,<sp/>field.<ref refid="classField_1a55f738166b3267d7fa313465d2866dd4" kindref="member">getBotPose</ref>().<ref refid="classPillar_1a6643c4f436b8264606fd1ef9adfafc75" kindref="member">getPose</ref>(),<sp/>offset,<sp/>scalingFactor);</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"></highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(showNodes.load())<sp/>{</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;Pose2D&gt;<sp/>*&gt;<sp/>nodes<sp/>=<sp/>field.<ref refid="classField_1ae20c991c2df6d7e863458e181b683140" kindref="member">getGraph</ref>().<ref refid="classGraph_1af1568475acf410ff0d52a2d756929064" kindref="member">getNodes</ref>();</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"></highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classNode" kindref="compound">Node&lt;Pose2D&gt;</ref><sp/>*&amp;node:<sp/>nodes)<sp/>{</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>position<sp/>=<sp/>node-&gt;getData();</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"></highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImVec2<sp/>center<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scalingFactor,<sp/>position.<ref refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kindref="member">getX</ref>(),<sp/>position.<ref refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kindref="member">getY</ref>());</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius<sp/>=<sp/><ref refid="Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60" kindref="member">BOT_RADIUS</ref><sp/>*<sp/>2.5;</highlight></codeline>
+<codeline lineno="524"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aef05f78be1cf48474bb638b05af91d4e" kindref="member">DrawCircle</ref>(drawList,<sp/>center,<sp/>radius,<sp/>IM_COL32(120,<sp/>120,<sp/>0,<sp/>200));</highlight></codeline>
+<codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>draw<sp/>a<sp/>line<sp/>from<sp/>every<sp/>node<sp/>to<sp/>the<sp/>adjacent<sp/>yes<sp/>we<sp/>will<sp/>double<sp/>count<sp/>draws<sp/>with<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="526"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>std::vector&lt;Node&lt;Pose2D&gt;*&gt;<sp/>adjacent<sp/>=<sp/>getAdj(nodes[nodeIndex]);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="527"><highlight class="normal"></highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="529"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"></highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(showEdges.load())<sp/>{</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;Pose2D&gt;<sp/>*&gt;<sp/>nodes<sp/>=<sp/>field.<ref refid="classField_1ae20c991c2df6d7e863458e181b683140" kindref="member">getGraph</ref>().<ref refid="classGraph_1af1568475acf410ff0d52a2d756929064" kindref="member">getNodes</ref>();</highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classNode" kindref="compound">Node&lt;Pose2D&gt;</ref><sp/>*&amp;node:<sp/>nodes)<sp/>{</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Node&lt;Pose2D&gt;<sp/>*&gt;<sp/>adjacent<sp/>=<sp/>field.<ref refid="classField_1ae20c991c2df6d7e863458e181b683140" kindref="member">getGraph</ref>().<ref refid="classGraph_1a4969a395490f7e67cc70a7feb58a0b54" kindref="member">getAdj</ref>(node);</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classNode" kindref="compound">Node&lt;Pose2D&gt;</ref><sp/>*&amp;adj:<sp/>adjacent)<sp/>{</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImVec2<sp/>p1<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scalingFactor,<sp/>node-&gt;getData());</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImVec2<sp/>p2<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scalingFactor,<sp/>adj-&gt;getData());</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drawList-&gt;AddLine(p1,<sp/>p2,<sp/>IM_COL32(100,<sp/>100,<sp/>100,<sp/>100),<sp/>2);</highlight></codeline>
+<codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>path.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImVec2<sp/>p1<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scalingFactor,<sp/>path[i<sp/>-<sp/>1].getX(),<sp/>path[i<sp/>-<sp/>1].getY());</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImVec2<sp/>p2<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scalingFactor,<sp/>path[i].getX(),<sp/>path[i].getY());</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drawList-&gt;AddLine(p1,<sp/>p2,<sp/>IM_COL32(100,<sp/>100,<sp/>100,<sp/>100),<sp/>2);</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="550"><highlight class="normal"></highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImVec2<sp/>center<sp/>=<sp/><ref refid="main_8cpp_1a3ef8063c34d114204774d6b132c6880c" kindref="member">coordsToScreen</ref>(offset,<sp/>scalingFactor,<sp/>path[i].getX(),<sp/>path[i].getY());</highlight></codeline>
+<codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius<sp/>=<sp/><ref refid="Pose2D_8hpp_1aa214e157b90ee2b54649c3bb808b4d60" kindref="member">BOT_RADIUS</ref><sp/>*<sp/>2.5;</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aef05f78be1cf48474bb638b05af91d4e" kindref="member">DrawCircle</ref>(drawList,<sp/>center,<sp/>radius,<sp/>IM_COL32(30,<sp/>120,<sp/>220,<sp/>150));</highlight></codeline>
+<codeline lineno="554"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="555"><highlight class="normal"></highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/><sp/><sp/>pillarsMutex-&gt;unlock();</highlight></codeline>
+<codeline lineno="557"><highlight class="normal"></highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/>ImVec2<sp/>mousePos<sp/>=<sp/>ImGui::GetMousePos();</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>std::string<sp/>mousePosStr<sp/>=<sp/>std::to_string((int)mousePos.x)<sp/>+<sp/>&quot;,<sp/>&quot;<sp/>+<sp/>std::to_string((int)mousePos.y);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::Text(</highlight><highlight class="stringliteral">&quot;mouse:<sp/>%d,<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)mousePos.x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)mousePos.y);</highlight></codeline>
+<codeline lineno="561"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>transformed<sp/>=<sp/><ref refid="main_8cpp_1aaa7651b6621852bfdbb91085d2a74d77" kindref="member">ScreenToCoords</ref>(ImVec2((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>mousePos.x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>mousePos.y),<sp/>offset,<sp/>scalingFactor);</highlight></codeline>
+<codeline lineno="562"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::Text(</highlight><highlight class="stringliteral">&quot;Pose<sp/>on<sp/>field:<sp/>%d,<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>transformed.<ref refid="classPose2D_1ad3453560b394884b5b94de1264b946fa" kindref="member">getX</ref>(),<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>transformed.<ref refid="classPose2D_1acfc52591b36947d8ead57ada1c12e5c2" kindref="member">getY</ref>());</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"></highlight></codeline>
+<codeline lineno="564"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::End();</highlight></codeline>
+<codeline lineno="565"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="566"><highlight class="normal"></highlight></codeline>
+<codeline lineno="567"><highlight class="normal"></highlight></codeline>
+<codeline lineno="572" refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!glfwInit())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/><sp/><sp/>GLFWwindow*<sp/>window<sp/>=<sp/>glfwCreateWindow(1880,<sp/>900,<sp/></highlight><highlight class="stringliteral">&quot;Roomba<sp/>Dashboard&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!window)<sp/>{<sp/>glfwTerminate();<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;<sp/>}</highlight></codeline>
+<codeline lineno="576"><highlight class="normal"><sp/><sp/><sp/><sp/>glfwMakeContextCurrent(window);</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a8a48614912d7bcdd038ad181235ddcf2" kindref="member">setupImGui</ref>(window);</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPose2D" kindref="compound">Pose2D</ref><sp/>desired(0,<sp/>0);</highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>used<sp/>to<sp/>hold<sp/>GUI<sp/>slider<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>angleSend<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>driveForward<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"></highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;bool&gt;<sp/>showNodes;</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/>showNodes.store(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;bool&gt;<sp/>showEdges;</highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/><sp/><sp/>showEdges.store(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="588"><highlight class="normal"></highlight></codeline>
+<codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[100];</highlight></codeline>
+<codeline lineno="590"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffPtr<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="591"><highlight class="normal"></highlight></codeline>
+<codeline lineno="592"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mutex<sp/>pillarsMutex;</highlight></codeline>
+<codeline lineno="593"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Pose2D&gt;<sp/>path;</highlight></codeline>
+<codeline lineno="594"><highlight class="normal"></highlight></codeline>
+<codeline lineno="595"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classField" kindref="compound">Field</ref><sp/>field;</highlight></codeline>
+<codeline lineno="596"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pose2D<sp/>toAdd(0,<sp/>0,<sp/>0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="597"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>graph.addNode(new<sp/>Node&lt;Pose2D&gt;(toAdd));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="598"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>connectTCP(pillars,<sp/>pillarsMutex,<sp/>desired);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="599"><highlight class="normal"><sp/><sp/><sp/><sp/>std::thread<sp/>tcpConnect(<ref refid="main_8cpp_1aeb814458701307eaffced2d1f95dc3f9" kindref="member">connectTCP</ref>,<sp/>std::ref(field),<sp/>std::ref(pillarsMutex),<sp/>std::ref(path));</highlight></codeline>
+<codeline lineno="600"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="601"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Main<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="602"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!glfwWindowShouldClose(window))<sp/>{</highlight></codeline>
+<codeline lineno="603"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwPollEvents();</highlight></codeline>
+<codeline lineno="604"><highlight class="normal"></highlight></codeline>
+<codeline lineno="605"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>the<sp/>ImGui<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="606"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui_ImplOpenGL3_NewFrame();</highlight></codeline>
+<codeline lineno="607"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui_ImplGlfw_NewFrame();</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::NewFrame();</highlight></codeline>
+<codeline lineno="609"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bool<sp/>open;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="610"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ImGui::ShowDemoWindow(&amp;open);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="611"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a6ca0b6fd4f6c48ffc0bcf9c1671ee3cf" kindref="member">ShowFieldWindow</ref>(&amp;pillarsMutex,<sp/>path,<sp/>field,<sp/>showNodes,<sp/>showEdges);</highlight></codeline>
+<codeline lineno="612"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;About<sp/>to<sp/>begin&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="613"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="614"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Your<sp/>ImGui<sp/>code<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="615"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Begin(</highlight><highlight class="stringliteral">&quot;Control<sp/>Panel&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="616"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;began&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="617"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//ImGui::Text(&quot;This<sp/>is<sp/>some<sp/>text&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="618"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="619"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Forward&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="620"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="621"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="622"><highlight class="normal"></highlight></codeline>
+<codeline lineno="623"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Backward&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="624"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="stringliteral">&quot;s&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="625"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="626"><highlight class="normal"></highlight></codeline>
+<codeline lineno="627"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Counter<sp/>Clockwise&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="628"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="629"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="630"><highlight class="normal"></highlight></codeline>
+<codeline lineno="631"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Clockwise&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="632"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="stringliteral">&quot;d&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="633"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="634"><highlight class="normal"></highlight></codeline>
+<codeline lineno="635"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Stop&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="636"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="637"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="638"><highlight class="normal"></highlight></codeline>
+<codeline lineno="639"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Scan&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="640"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="stringliteral">&quot;g&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="641"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="642"><highlight class="normal"></highlight></codeline>
+<codeline lineno="643"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Auton&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="644"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="stringliteral">&quot;h&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="645"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="646"><highlight class="normal"></highlight></codeline>
+<codeline lineno="647"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Quit<sp/>all&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="648"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(</highlight><highlight class="stringliteral">&quot;q&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="649"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="650"><highlight class="normal"></highlight></codeline>
+<codeline lineno="651"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::RadioButton(</highlight><highlight class="stringliteral">&quot;Show<sp/>nodes&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="652"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>showNodes.store(!showNodes.load());</highlight></codeline>
+<codeline lineno="653"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="654"><highlight class="normal"></highlight></codeline>
+<codeline lineno="655"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::RadioButton(</highlight><highlight class="stringliteral">&quot;Show<sp/>edges&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="656"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>showEdges.store(!showEdges.load());</highlight></codeline>
+<codeline lineno="657"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="658"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="659"><highlight class="normal"></highlight></codeline>
+<codeline lineno="660"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Generate<sp/>path&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="661"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pillarsMutex.lock();</highlight></codeline>
+<codeline lineno="662"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="663"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;desire:<sp/>&quot;<sp/>&lt;&lt;<sp/>desired<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="664"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>graph-&gt;getNodes().size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="665"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;node:<sp/>&quot;<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/>&quot;.<sp/><sp/>&quot;<sp/>&lt;&lt;<sp/>graph-&gt;getNodes()[i]-&gt;getData().getX()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="666"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="667"><highlight class="comment"></highlight></codeline>
+<codeline lineno="668"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Attempting<sp/>to<sp/>make<sp/>a<sp/>path<sp/>between:<sp/>&quot;<sp/>&lt;&lt;<sp/>graph-&gt;getNodes().front()-&gt;getData().getX()<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>graph-&gt;getNodes().front()-&gt;getData().getY()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="669"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;To:<sp/>&quot;<sp/>&lt;&lt;graph-&gt;getNodes().back()-&gt;getData().getX()<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>graph-&gt;getNodes().back()-&gt;getData().getY()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="670"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Attempting<sp/>to<sp/>make<sp/>a<sp/>path<sp/>between:<sp/>0,<sp/>0</highlight></codeline>
+<codeline lineno="671"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>To:<sp/>-100,<sp/>-100</highlight></codeline>
+<codeline lineno="672"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="673"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path<sp/>=<sp/><sp/>field.<ref refid="classField_1aa988c5de70875dd81c766c9429a4b986" kindref="member">makePath</ref>();</highlight></codeline>
+<codeline lineno="674"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pillarsMutex.unlock();</highlight></codeline>
+<codeline lineno="675"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;PATH<sp/>NODE<sp/>SIZE:<sp/>&quot;<sp/>&lt;&lt;<sp/>pathNodes.size()<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="676"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>path.push_back(botPose.getPose());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="677"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="678"><highlight class="normal"></highlight></codeline>
+<codeline lineno="679"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;send<sp/>planned<sp/>path&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="680"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string<sp/>message<sp/>=<sp/>parsePathIntoRoutine(path);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="681"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(<ref refid="main_8cpp_1a752b76589dc853d37e6bb0f07e6b57c9" kindref="member">parsePathIntoRoutine</ref>(path));</highlight></codeline>
+<codeline lineno="682"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="683"><highlight class="normal"></highlight></codeline>
+<codeline lineno="684"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::SliderAngle(</highlight><highlight class="stringliteral">&quot;Turn<sp/>angle&quot;</highlight><highlight class="normal">,<sp/>&amp;angleSend);</highlight></codeline>
+<codeline lineno="685"><highlight class="normal"></highlight></codeline>
+<codeline lineno="686"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::InputText(</highlight><highlight class="stringliteral">&quot;message:<sp/>&quot;</highlight><highlight class="normal">,<sp/>buffer,<sp/>100);</highlight></codeline>
+<codeline lineno="687"><highlight class="normal"></highlight></codeline>
+<codeline lineno="688"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;send<sp/>component&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="689"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a0e791708278afd1945bd5e4876b90740" kindref="member">addToQueue</ref>(std::string(1,<sp/>buffer[0]));</highlight></codeline>
+<codeline lineno="690"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>99;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="691"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer[i]<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="692"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffPtr<sp/>=<sp/>std::min((</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)<sp/>0,<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)<sp/>i<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="693"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="694"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="695"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::swap(buffer[i],<sp/>buffer[i<sp/>+<sp/>1]);</highlight></codeline>
+<codeline lineno="696"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="697"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer[buffPtr]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="698"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="699"><highlight class="normal"></highlight></codeline>
+<codeline lineno="700"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Send<sp/>turn&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="701"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1abe296e2909cfc40a8d7cd431a6dbe459" kindref="member">sendAngleToQueue</ref>((int16_t)<sp/>(angleSend<sp/>*<sp/>180<sp/>/<sp/>M_PI));</highlight></codeline>
+<codeline lineno="702"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="703"><highlight class="normal"></highlight></codeline>
+<codeline lineno="704"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::SliderInt(</highlight><highlight class="stringliteral">&quot;Drive<sp/>x<sp/>cm&quot;</highlight><highlight class="normal">,<sp/>&amp;driveForward,<sp/>0,<sp/>999);</highlight></codeline>
+<codeline lineno="705"><highlight class="normal"></highlight></codeline>
+<codeline lineno="706"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Drive<sp/>x&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="707"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1ab2b6c72d73cb5cdf34a271f97a8d6df5" kindref="member">sendDistanceToQueue</ref>(driveForward);</highlight></codeline>
+<codeline lineno="708"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="709"><highlight class="normal"></highlight></codeline>
+<codeline lineno="710"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Discretize&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="711"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;HUH:<sp/>&quot;<sp/>&lt;&lt;<sp/>pillars[0].getX()<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="712"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1a3e9096a686ffb177056e24dfb920a610" kindref="member">discretizeGraph</ref>();</highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="714"><highlight class="normal"></highlight></codeline>
+<codeline lineno="715"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ImGui::Button(</highlight><highlight class="stringliteral">&quot;Weight&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="716"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.<ref refid="classField_1ab1945d8274ee391ea813863aa94c5d52" kindref="member">weightGraph</ref>();</highlight></codeline>
+<codeline lineno="717"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="718"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;About<sp/>to<sp/>end&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="719"><highlight class="normal"></highlight></codeline>
+<codeline lineno="720"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::End();</highlight></codeline>
+<codeline lineno="721"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Render</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="722"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Render();</highlight></codeline>
+<codeline lineno="723"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>display_w,<sp/>display_h;</highlight></codeline>
+<codeline lineno="724"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwGetFramebufferSize(window,<sp/>&amp;display_w,<sp/>&amp;display_h);</highlight></codeline>
+<codeline lineno="725"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glViewport(0,<sp/>0,<sp/>display_w,<sp/>display_h);</highlight></codeline>
+<codeline lineno="726"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glClearColor(0.1f,<sp/>0.1f,<sp/>0.1f,<sp/>1.0f);</highlight></codeline>
+<codeline lineno="727"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glClear(GL_COLOR_BUFFER_BIT);</highlight></codeline>
+<codeline lineno="728"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());</highlight></codeline>
+<codeline lineno="729"><highlight class="normal"></highlight></codeline>
+<codeline lineno="730"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSwapBuffers(window);</highlight></codeline>
+<codeline lineno="731"><highlight class="normal"></highlight></codeline>
+<codeline lineno="732"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::this_thread::sleep_for(std::chrono::milliseconds(16));</highlight></codeline>
+<codeline lineno="733"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="734"><highlight class="normal"></highlight></codeline>
+<codeline lineno="735"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a98630ac7b141e5c9e3e7dd9cd24269a6" kindref="member">stopClient</ref>.store(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="736"><highlight class="normal"></highlight></codeline>
+<codeline lineno="737"><highlight class="normal"><sp/><sp/><sp/><sp/>tcpConnect.join();</highlight></codeline>
+<codeline lineno="738"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="739"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cleanup</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="740"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui_ImplOpenGL3_Shutdown();</highlight></codeline>
+<codeline lineno="741"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui_ImplGlfw_Shutdown();</highlight></codeline>
+<codeline lineno="742"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::DestroyContext();</highlight></codeline>
+<codeline lineno="743"><highlight class="normal"><sp/><sp/><sp/><sp/>glfwDestroyWindow(window);</highlight></codeline>
+<codeline lineno="744"><highlight class="normal"><sp/><sp/><sp/><sp/>glfwTerminate();</highlight></codeline>
+<codeline lineno="745"><highlight class="normal"></highlight></codeline>
+<codeline lineno="746"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="747"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/main.cpp"/>
+  </compounddef>
+</doxygen>

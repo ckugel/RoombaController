@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structRectangle" xml:lang="en-US">
+<title>Rectangle Struct Reference</title>
+<indexterm><primary>Rectangle</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Pose2D.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_structRectangle_1a9ab0b4bae48e8330e4064bfc2aac696d">r1</link></para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_structRectangle_1ab7c029f35f42207f6cd273c7251ff8fb">r2</link></para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_structRectangle_1a084cafc6917f1a0881e6e111329a4588">r3</link></para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_structRectangle_1ad96df264562ce0b343bc9569ac899b29">r4</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Struct to resemble the four corners of a rectangle </para>
+<para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00313">313</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structRectangle_1a9ab0b4bae48e8330e4064bfc2aac696d"/><section>
+    <title>r1</title>
+<indexterm><primary>r1</primary><secondary>Rectangle</secondary></indexterm>
+<indexterm><primary>Rectangle</primary><secondary>r1</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Rectangle::r1</computeroutput></para><para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00314">314</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<anchor xml:id="_structRectangle_1ab7c029f35f42207f6cd273c7251ff8fb"/><section>
+    <title>r2</title>
+<indexterm><primary>r2</primary><secondary>Rectangle</secondary></indexterm>
+<indexterm><primary>Rectangle</primary><secondary>r2</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Rectangle::r2</computeroutput></para><para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00314">314</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<anchor xml:id="_structRectangle_1a084cafc6917f1a0881e6e111329a4588"/><section>
+    <title>r3</title>
+<indexterm><primary>r3</primary><secondary>Rectangle</secondary></indexterm>
+<indexterm><primary>Rectangle</primary><secondary>r3</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Rectangle::r3</computeroutput></para><para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00314">314</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<anchor xml:id="_structRectangle_1ad96df264562ce0b343bc9569ac899b29"/><section>
+    <title>r4</title>
+<indexterm><primary>r4</primary><secondary>Rectangle</secondary></indexterm>
+<indexterm><primary>Rectangle</primary><secondary>r4</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Rectangle::r4</computeroutput></para><para>
+Definition at line <link linkend="_Pose2D_8hpp_source_1l00314">314</link> of file <link linkend="_Pose2D_8hpp_source">Pose2D.hpp</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Pose2D_8hpp">Pose2D.hpp</link></section>
+</section>

@@ -1,0 +1,361 @@
+.TH "Graph< V >" 3 "Version 1" "Roomba Controller Dashboard" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Graph< V >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Graph\&.hpp>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCustomCompare\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBvoid\fP \fBaddNode\fP (\fBNode\fP< \fBV\fP > *\fBnewNode\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBaddNode\fP (\fBNode\fP< \fBV\fP > *\fBnextNode\fP, std::vector< \fBNode\fP< \fBV\fP > * > \fBadjacentNodes\fP, \fBdouble\fP \fBweight\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBaddNode\fP (\fBNode\fP< \fBV\fP > *\fBnextNode\fP, std::vector< \fBNode\fP< \fBV\fP > * > \fBadjacentNodes\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBaddNode\fP (\fBNode\fP< \fBV\fP > *\fBnextNode\fP, \fBNode\fP< \fBV\fP > *\fBnodeITSLATE\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBaddConnection\fP (\fBNode\fP< \fBV\fP > *\fBone\fP, \fBNode\fP< \fBV\fP > *\fBtwo\fP, \fBdouble\fP \fBweight\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBaddConnection\fP (\fBNode\fP< \fBV\fP > *\fBone\fP, \fBNode\fP< \fBV\fP > *\fBtwo\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBaddNode\fP (\fBNode\fP< \fBV\fP > *\fBnextNode\fP, \fBNode\fP< \fBV\fP > *\fBnodeITSLATE\fP, \fBdouble\fP \fBweight\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBsetHead\fP (\fBint\fP \fBindex\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBremoveNode\fP (\fBsize_t\fP \fBindex\fP)"
+.br
+.ti -1c
+.RI "std::vector< \fBNode\fP< \fBV\fP > * > \fBDijkstra\fP (\fBNode\fP< \fBV\fP > *\fBfrom\fP, \fBNode\fP< \fBV\fP > *\fBfind\fP)"
+.br
+.ti -1c
+.RI "std::vector< std::vector< \fBdouble\fP > > \fBgetAdjacencyList\fP ()"
+.br
+.ti -1c
+.RI "std::vector< \fBNode\fP< \fBV\fP > * > \fBgetAdj\fP (\fBNode\fP< \fBV\fP > *\fBnext\fP)"
+.br
+.ti -1c
+.RI "std::vector< \fBNode\fP< \fBV\fP > * > \fBgetNodes\fP ()"
+.br
+.ti -1c
+.RI "\fBGraph\fP ()"
+.br
+.ti -1c
+.RI "\fB~Graph\fP ()"
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "\fBtypedef\fP std::pair< \fBdouble\fP, std::vector< \fBNode\fP< \fBV\fP > * > > \fBpair\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBvoid\fP \fBresize\fP ()"
+.br
+.ti -1c
+.RI "\fBint\fP \fBnumVisited\fP (std::vector< \fBbool\fP > \fBlistOfBools\fP)"
+.br
+.ti -1c
+.RI "\fBbool\fP \fBcontains\fP (\fBNode\fP< \fBV\fP > *\fBnode\fP, std::vector< \fBNode\fP< \fBV\fP > * > \fBlistOfNodes\fP)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBNode\fP< \fBV\fP > * > \fBnodes\fP"
+.br
+.ti -1c
+.RI "std::vector< std::vector< \fBdouble\fP > > \fBmatrix\fP"
+.br
+.ti -1c
+.RI "\fBNode\fP< \fBV\fP > * \fBhead\fP = \fBnullptr\fP"
+.br
+.ti -1c
+.RI "std::map< \fBNode\fP< \fBV\fP > *, \fBunsigned\fP \fBint\fP > \fBnodeMap\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<\fBtypename\fP \fBV\fP>
+.br
+class Graph< V >"
+.PP
+Definition at line \fB17\fP of file \fBGraph\&.hpp\fP\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<\fBtypename\fP \fBV\fP > \fBtypedef\fP std::pair<\fBdouble\fP, std::vector<\fBNode\fP<\fBV\fP>*> > \fBGraph\fP< \fBV\fP >::pair\fR [protected]\fP"
+
+.PP
+Definition at line \fB19\fP of file \fBGraph\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<\fBtypename\fP \fBV\fP > \fBGraph\fP< \fBV\fP >\fB::Graph\fP ()"
+
+.PP
+Definition at line \fB14\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBGraph\fP< \fBV\fP >::~\fBGraph\fP ()"
+
+.PP
+Definition at line \fB254\fP of file \fBGraph\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::addConnection (\fBNode\fP< \fBV\fP > * one, \fBNode\fP< \fBV\fP > * two)"
+Add a connection between two nodes 
+.PP
+\fBParameters\fP
+.RS 4
+\fIone\fP node one 
+.br
+\fItwo\fP node two 
+.RE
+.PP
+
+.PP
+Definition at line \fB277\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::addConnection (\fBNode\fP< \fBV\fP > * one, \fBNode\fP< \fBV\fP > * two, \fBdouble\fP weight)"
+add a weight between nodes 
+.PP
+\fBParameters\fP
+.RS 4
+\fIone\fP the first node 
+.br
+\fItwo\fP the second node 
+.br
+\fIweight\fP the weight to put between them 
+.RE
+.PP
+
+.PP
+Definition at line \fB267\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::addNode (\fBNode\fP< \fBV\fP > * newNode)"
+Add a node to the graph 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewNode\fP a new node to add to the graph 
+.RE
+.PP
+
+.PP
+Definition at line \fB102\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::addNode (\fBNode\fP< \fBV\fP > * nextNode, \fBNode\fP< \fBV\fP > * nodeITSLATE)"
+Add a node with a connection 
+.PP
+\fBParameters\fP
+.RS 4
+\fInextNode\fP the node to add 
+.br
+\fInodeITSLATE\fP a node to add a connection to 
+.RE
+.PP
+
+.PP
+Definition at line \fB132\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::addNode (\fBNode\fP< \fBV\fP > * nextNode, \fBNode\fP< \fBV\fP > * nodeITSLATE, \fBdouble\fP weight)"
+Add a node with a weight to the graph 
+.PP
+\fBParameters\fP
+.RS 4
+\fInextNode\fP the node to add 
+.br
+\fInodeITSLATE\fP the node to connect to 
+.br
+\fIweight\fP the weight between those vertices 
+.RE
+.PP
+
+.PP
+Definition at line \fB282\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::addNode (\fBNode\fP< \fBV\fP > * nextNode, std::vector< \fBNode\fP< \fBV\fP > * > adjacentNodes)"
+Add a node 
+.PP
+\fBParameters\fP
+.RS 4
+\fInextNode\fP 
+.br
+\fIadjacentNodes\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB127\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::addNode (\fBNode\fP< \fBV\fP > * nextNode, std::vector< \fBNode\fP< \fBV\fP > * > adjacentNodes, \fBdouble\fP weight)"
+Adds a node with adjacent nodes all with the same weight 
+.PP
+\fBParameters\fP
+.RS 4
+\fInextNode\fP the node to add 
+.br
+\fIadjacentNodes\fP the nodes to make a connect for 
+.br
+\fIweight\fP the weight for all the edges 
+.RE
+.PP
+
+.PP
+Definition at line \fB111\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBbool\fP \fBGraph\fP< \fBV\fP >::contains (\fBNode\fP< \fBV\fP > * node, std::vector< \fBNode\fP< \fBV\fP > * > listOfNodes)\fR [protected]\fP"
+Returns true if the graph containes a node 
+.PP
+\fBParameters\fP
+.RS 4
+\fInode\fP the node to determine if it's inside 
+.br
+\fIlistOfNodes\fP the list of nodes to check against 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+whether node is in the list of nodes 
+.RE
+.PP
+
+.PP
+Definition at line \fB87\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > std::vector< \fBNode\fP< \fBV\fP > * > \fBGraph\fP< \fBV\fP >::Dijkstra (\fBNode\fP< \fBV\fP > * from, \fBNode\fP< \fBV\fP > * find)"
+Dijkstra's algorithm 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfrom\fP the node that you start at 
+.br
+\fIfind\fP the node we want to get to 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a path for the nodes 
+.RE
+.PP
+
+.PP
+Definition at line \fB191\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > std::vector< \fBNode\fP< \fBV\fP > * > \fBGraph\fP< \fBV\fP >::getAdj (\fBNode\fP< \fBV\fP > * next)"
+Get the adjacent nodes of a node 
+.PP
+\fBParameters\fP
+.RS 4
+\fInext\fP the node to get its' connected nodes 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the adjacent nodes 
+.RE
+.PP
+
+.PP
+Definition at line \fB172\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > std::vector< std::vector< \fBdouble\fP > > \fBGraph\fP< \fBV\fP >::getAdjacencyList ()"
+get the adjaceency matrix for the graph whihc contains the weigthings 
+.PP
+\fBReturns\fP
+.RS 4
+the matrix for the weights 
+.RE
+.PP
+
+.PP
+Definition at line \fB262\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > std::vector< \fBNode\fP< \fBV\fP > * > \fBGraph\fP< \fBV\fP >::getNodes ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+All the nodes 
+.RE
+.PP
+
+.PP
+Definition at line \fB97\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBint\fP \fBGraph\fP< \fBV\fP >::numVisited (std::vector< \fBbool\fP > listOfBools)\fR [protected]\fP"
+get the number of nodes we have visited 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlistOfBools\fP list of bools to combine 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the number of nodes visitied 
+.RE
+.PP
+
+.PP
+Definition at line \fB289\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::removeNode (\fBsize_t\fP index)"
+Remove a node from the graph based on index 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP the index to remove 
+.RE
+.PP
+
+.PP
+Definition at line \fB390\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::resize ()\fR [protected]\fP"
+resize the adjacency matrix 
+.PP
+Definition at line \fB79\fP of file \fBGraph\&.cpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > \fBvoid\fP \fBGraph\fP< \fBV\fP >::setHead (\fBint\fP index)"
+Set the head of the graph 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP the index to become head 
+.RE
+.PP
+
+.PP
+Definition at line \fB185\fP of file \fBGraph\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<\fBtypename\fP \fBV\fP > \fBNode\fP<\fBV\fP>* \fBGraph\fP< \fBV\fP >::head = \fBnullptr\fP\fR [protected]\fP"
+
+.PP
+Definition at line \fB27\fP of file \fBGraph\&.hpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > std::vector<std::vector<\fBdouble\fP> > \fBGraph\fP< \fBV\fP >::matrix\fR [protected]\fP"
+
+.PP
+Definition at line \fB26\fP of file \fBGraph\&.hpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > std::map<\fBNode\fP<\fBV\fP>*, \fBunsigned\fP \fBint\fP> \fBGraph\fP< \fBV\fP >::nodeMap\fR [protected]\fP"
+
+.PP
+Definition at line \fB28\fP of file \fBGraph\&.hpp\fP\&.
+.SS "template<\fBtypename\fP \fBV\fP > std::vector<\fBNode\fP<\fBV\fP>*> \fBGraph\fP< \fBV\fP >::nodes\fR [protected]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBGraph\&.hpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Roomba Controller Dashboard from the source code\&.

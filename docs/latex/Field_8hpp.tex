@@ -1,0 +1,84 @@
+\doxysection{/home/calebk/\+Documents/coding/\+Roomba\+Controller/src/\+Field.hpp File Reference}
+\hypertarget{Field_8hpp}{}\label{Field_8hpp}\index{/home/calebk/Documents/coding/RoombaController/src/Field.hpp@{/home/calebk/Documents/coding/RoombaController/src/Field.hpp}}
+{\ttfamily \#include "{}Pillar.\+hpp"{}}\newline
+{\ttfamily \#include "{}vector"{}}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include "{}Graph.\+hpp"{}}\newline
+{\ttfamily \#include "{}Hole\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}Pose2\+D.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classField}{Field}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Field_8hpp_a898606140dee9ce0adf096de00824d94}{MAX\+\_\+X}}~426.\+72
+\item 
+\#define \mbox{\hyperlink{Field_8hpp_a985cc18be96dda7f59fd0400725e4aef}{MAX\+\_\+Y}}~242.\+57
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5}{Cardinality}} \{ \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5a2c63acbe79d9f41ba6bb7766e9c37702}{N}} = \textquotesingle{}N\textquotesingle{}
+, \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5af1ce01387d2348f8b858721a7db81670}{S}} = \textquotesingle{}S\textquotesingle{}
+, \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5ab199e021998d49b1f09338d8b9b18ecb}{E}} = \textquotesingle{}E\textquotesingle{}
+, \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5ab722ceeb601c72cd78fbd35f3581fdf7}{W}} = \textquotesingle{}W\textquotesingle{}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{Field_8hpp_a898606140dee9ce0adf096de00824d94}\label{Field_8hpp_a898606140dee9ce0adf096de00824d94} 
+\index{Field.hpp@{Field.hpp}!MAX\_X@{MAX\_X}}
+\index{MAX\_X@{MAX\_X}!Field.hpp@{Field.hpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_X}{MAX\_X}}
+{\footnotesize\ttfamily \#define MAX\+\_\+X~426.\+72}
+
+THe max x position on the field 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+\Hypertarget{Field_8hpp_a985cc18be96dda7f59fd0400725e4aef}\label{Field_8hpp_a985cc18be96dda7f59fd0400725e4aef} 
+\index{Field.hpp@{Field.hpp}!MAX\_Y@{MAX\_Y}}
+\index{MAX\_Y@{MAX\_Y}!Field.hpp@{Field.hpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_Y}{MAX\_Y}}
+{\footnotesize\ttfamily \#define MAX\+\_\+Y~242.\+57}
+
+The max y position on the field 
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5}\label{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5} 
+\index{Field.hpp@{Field.hpp}!Cardinality@{Cardinality}}
+\index{Cardinality@{Cardinality}!Field.hpp@{Field.hpp}}
+\doxysubsubsection{\texorpdfstring{Cardinality}{Cardinality}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5}{Cardinality}}}
+
+Norht, South, East, West \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N@{N}!Field.hpp@{Field.hpp}}\index{Field.hpp@{Field.hpp}!N@{N}}}\Hypertarget{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5a2c63acbe79d9f41ba6bb7766e9c37702}\label{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5a2c63acbe79d9f41ba6bb7766e9c37702} 
+N&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S@{S}!Field.hpp@{Field.hpp}}\index{Field.hpp@{Field.hpp}!S@{S}}}\Hypertarget{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5af1ce01387d2348f8b858721a7db81670}\label{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5af1ce01387d2348f8b858721a7db81670} 
+S&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E@{E}!Field.hpp@{Field.hpp}}\index{Field.hpp@{Field.hpp}!E@{E}}}\Hypertarget{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5ab199e021998d49b1f09338d8b9b18ecb}\label{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5ab199e021998d49b1f09338d8b9b18ecb} 
+E&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W@{W}!Field.hpp@{Field.hpp}}\index{Field.hpp@{Field.hpp}!W@{W}}}\Hypertarget{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5ab722ceeb601c72cd78fbd35f3581fdf7}\label{Field_8hpp_a8926bbad0c6fb22d1c85cb4fdcd286d5ab722ceeb601c72cd78fbd35f3581fdf7} 
+W&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{Field_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{Field_8hpp_source}{Field.\+hpp}}.
+

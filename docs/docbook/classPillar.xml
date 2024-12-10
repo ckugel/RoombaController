@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classPillar" xml:lang="en-US">
+<title>Pillar Class Reference</title>
+<indexterm><primary>Pillar</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Pillar.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classPillar_1aa8dc2bded98a242ff4957c2604e33ec2">Pillar</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classPillar_1aa3c5156fb822cf9ca4014ca8e3510fd4">Pillar</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;<link linkend="_classPillar_1a74fea03287d330085c4a60f8ba3cc6d3">position</link>, double <link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">radius</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classPillar_1a9c9992655592342b529b765c6de0e462">Pillar</link> (double x, double y, double heading, double <link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">radius</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classPillar_1ad994a5ff8afddb6ac0d52d573b8f31bd">Pillar</link> (double x, double y, double <link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">radius</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> &amp; <link linkend="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75">getPose</link> ()</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPillar_1adc8c902c96a36b5e8e6642e2b462e927">getX</link> ()</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPillar_1a6a39e5dac33d94196391caeeb379c48a">getY</link> ()</para>
+</listitem>
+            <listitem><para>double <link linkend="_classPillar_1a404e92b3ee6005fcd400ae120ce0b560">getRadius</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPillar_1acde6b927c883e0a5720e20d6b7f04ede">setRadius</link> (double newRadius)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classPillar_1a9877735341d7110c3d34633867528dbb">setPosition</link> (const <link linkend="_classPose2D">Pose2D</link> &amp;newPosition)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_classPillar">Pillar</link> <link linkend="_classPillar_1a01e5ad8ad29b0637edc291aaff93785e">parseFromStream</link> (std::istringstream &amp;stream)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classPose2D">Pose2D</link> <link linkend="_classPillar_1a74fea03287d330085c4a60f8ba3cc6d3">position</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc">radius</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>A <link linkend="_classPillar">Pillar</link> is a cyclinder on the field. It has both a position and a radius. </para>
+<para>
+Definition at line <link linkend="_Pillar_8hpp_source_1l00014">14</link> of file <link linkend="_Pillar_8hpp_source">Pillar.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classPillar_1aa8dc2bded98a242ff4957c2604e33ec2"/><section>
+    <title>Pillar()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>Pillar</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>Pillar</secondary></indexterm>
+<para><computeroutput>Pillar::Pillar ( )</computeroutput></para>
+<para>Constructs a new pillar object </para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00007">7</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1aa3c5156fb822cf9ca4014ca8e3510fd4"/><section>
+    <title>Pillar()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>Pillar</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>Pillar</secondary></indexterm>
+<para><computeroutput>Pillar::Pillar (const <link linkend="_classPose2D">Pose2D</link> &amp; position, double radius)</computeroutput></para>
+<para>Makes a new pillar with given position and radius 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>the position of the pillar on the field </para>
+</entry>
+                            </row>
+                            <row>
+<entry>radius</entry><entry>
+<para>the radius of the pillar on the field </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00018">18</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1a9c9992655592342b529b765c6de0e462"/><section>
+    <title>Pillar()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>Pillar</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>Pillar</secondary></indexterm>
+<para><computeroutput>Pillar::Pillar (double x, double y, double heading, double radius)</computeroutput></para>
+<para>Constructs a new pillar from components 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>component of position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>component of position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>heading</entry><entry>
+<para>component of position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>radius</entry><entry>
+<para>of the pillar </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00012">12</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1ad994a5ff8afddb6ac0d52d573b8f31bd"/><section>
+    <title>Pillar()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>Pillar</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>Pillar</secondary></indexterm>
+<para><computeroutput>Pillar::Pillar (double x, double y, double radius)</computeroutput></para>
+<para>Constructs a new pillar from components. ignores heading 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>the x component of the position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>the y component of the position </para>
+</entry>
+                            </row>
+                            <row>
+<entry>radius</entry><entry>
+<para>the radius of the pillar </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00023">23</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classPillar_1a6643c4f436b8264606fd1ef9adfafc75"/><section>
+    <title>getPose()</title>
+<indexterm><primary>getPose</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>getPose</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> &amp; Pillar::getPose ( )</computeroutput></para>
+<para>Gets a reference to the position of the pillar. If <link linkend="_classPose2D">Pose2D</link> functions are called on that reference it will effect this pillars position <formalpara><title>Returns</title>
+
+<para>the position of the pillar </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00029">29</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1a404e92b3ee6005fcd400ae120ce0b560"/><section>
+    <title>getRadius()</title>
+<indexterm><primary>getRadius</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>getRadius</secondary></indexterm>
+<para><computeroutput>double Pillar::getRadius ( ) const</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>the radius of the pillar </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00041">41</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1adc8c902c96a36b5e8e6642e2b462e927"/><section>
+    <title>getX()</title>
+<indexterm><primary>getX</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>getX</secondary></indexterm>
+<para><computeroutput>double Pillar::getX ( )</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>The X compoenent of the position </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00033">33</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1a6a39e5dac33d94196391caeeb379c48a"/><section>
+    <title>getY()</title>
+<indexterm><primary>getY</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>getY</secondary></indexterm>
+<para><computeroutput>double Pillar::getY ( )</computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>The y component of the positoon </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00037">37</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1a01e5ad8ad29b0637edc291aaff93785e"/><section>
+    <title>parseFromStream()</title>
+<indexterm><primary>parseFromStream</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>parseFromStream</secondary></indexterm>
+<para><computeroutput><link linkend="_classPillar">Pillar</link> Pillar::parseFromStream (std::istringstream &amp; stream)<computeroutput>[static]</computeroutput></computeroutput></para>
+<para>Makes a pillar from a given string stream. Formatted as: X Y theta R 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>stream</entry><entry>
+<para>the stream in which to parse the pillar from </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>the pillar from the data in the stream </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00050">50</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1a9877735341d7110c3d34633867528dbb"/><section>
+    <title>setPosition()</title>
+<indexterm><primary>setPosition</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>setPosition</secondary></indexterm>
+<para><computeroutput>void Pillar::setPosition (const <link linkend="_classPose2D">Pose2D</link> &amp; newPosition)</computeroutput></para>
+<para>Sets the position of the pillar 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>newPosition</entry><entry>
+<para>the new position to set to </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00058">58</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1acde6b927c883e0a5720e20d6b7f04ede"/><section>
+    <title>setRadius()</title>
+<indexterm><primary>setRadius</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>setRadius</secondary></indexterm>
+<para><computeroutput>void Pillar::setRadius (double newRadius)</computeroutput></para>
+<para>Sets the radius of the pillar 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>newRadius</entry><entry>
+<para>the radius to set to </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_Pillar_8cpp_source_1l00045">45</link> of file <link linkend="_Pillar_8cpp_source">Pillar.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classPillar_1a74fea03287d330085c4a60f8ba3cc6d3"/><section>
+    <title>position</title>
+<indexterm><primary>position</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>position</secondary></indexterm>
+<para><computeroutput><link linkend="_classPose2D">Pose2D</link> Pillar::position<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>Pose to handle position and related math </para>
+<para>
+Definition at line <link linkend="_Pillar_8hpp_source_1l00019">19</link> of file <link linkend="_Pillar_8hpp_source">Pillar.hpp</link>.</para>
+</section>
+<anchor xml:id="_classPillar_1a39d7d2ab79fc9a515e0c1d1f490947fc"/><section>
+    <title>radius</title>
+<indexterm><primary>radius</primary><secondary>Pillar</secondary></indexterm>
+<indexterm><primary>Pillar</primary><secondary>radius</secondary></indexterm>
+<para><computeroutput>double Pillar::radius<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>The radius of the pillar </para>
+<para>
+Definition at line <link linkend="_Pillar_8hpp_source_1l00024">24</link> of file <link linkend="_Pillar_8hpp_source">Pillar.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Pillar_8hpp">Pillar.hpp</link>/home/calebk/Documents/coding/RoombaController/src/<link linkend="_Pillar_8cpp">Pillar.cpp</link></section>
+</section>

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classNode" kind="class" language="C++" prot="public">
+    <compoundname>Node</compoundname>
+    <includes refid="Node_8hpp" local="no">Node.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename V</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classNode_1a35376923cad4d844bc6294cb4543017b" prot="private" static="no" mutable="no">
+        <type>V</type>
+        <definition>V Node&lt; V &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>Node::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The data we store </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Node.hpp" line="22" column="7" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Node.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Node&lt; V &gt;::Node</definition>
+        <argsstring>(V data)</argsstring>
+        <name>Node</name>
+        <qualifiedname>Node::Node</qualifiedname>
+        <param>
+          <type>V</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a node from given data <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to construct the node from </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Node.hpp" line="29" column="5" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Node.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_1a81895d8b8dfffcc5d220b2d816e7063c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>V</type>
+        <definition>V Node&lt; V &gt;::getData</definition>
+        <argsstring>()</argsstring>
+        <name>getData</name>
+        <qualifiedname>Node::getData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the data stored in the node </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Node.hpp" line="34" column="7" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Node.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_1ab849a0519ed381feaf341d91e3d87b1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node&lt; V &gt;::SetData</definition>
+        <argsstring>(V newData)</argsstring>
+        <name>SetData</name>
+        <qualifiedname>Node::SetData</qualifiedname>
+        <param>
+          <type>V</type>
+          <declname>newData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sets the data we store in the node <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new data to replace current data with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/calebk/Documents/coding/RoombaController/src/Node.hpp" line="40" column="10" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Node.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Represents a node in a graph. Really just a wrapped for V <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>V</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data that the node encapsulates </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="/home/calebk/Documents/coding/RoombaController/src/Node.hpp" line="17" column="1" bodyfile="/home/calebk/Documents/coding/RoombaController/src/Node.hpp" bodystart="17" bodyend="41"/>
+    <listofallmembers>
+      <member refid="classNode_1a35376923cad4d844bc6294cb4543017b" prot="private" virt="non-virtual"><scope>Node</scope><name>data</name></member>
+      <member refid="classNode_1a81895d8b8dfffcc5d220b2d816e7063c" prot="public" virt="non-virtual"><scope>Node</scope><name>getData</name></member>
+      <member refid="classNode_1ab4dbea374a06a1f9ac1e85b8ded1d983" prot="public" virt="non-virtual"><scope>Node</scope><name>Node</name></member>
+      <member refid="classNode_1ab849a0519ed381feaf341d91e3d87b1f" prot="public" virt="non-virtual"><scope>Node</scope><name>SetData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -58,7 +58,9 @@ while True:  # Loop recieving/sending data from/to client until client disconnec
                     print("Recieved Sensor scan request... sending data:\n")
 
 # conn.send("o 27.65 200 0.00 4.29 o 350 60 0.00 6.56 o 56 120 0.00 3 o 350 190 0.0 9 o 150 230 0 7.8 o 190 70 0 2 o 40 23 0 2 o 75 0 0 4 h 43 47 0.785 h 48 42 0.785 h 47 57 -0.785 d 300 100 0 F".encode())
-                    conn.send("o 27.65 200 0.00 4.29 o 350 60 0.00 6.56 o 56 120 0.00 3 o 350 190 0.0 9 o 150 230 0 7.8 o 190 70 0 2 o 40 23 0 2 o 75 0 0 4 H 50 35 50 55 d 300 100 0 F".encode())
+                   # conn.send("o 27.65 200 0.00 4.29 o 350 60 0.00 6.56 o 56 120 0.00 3 o 350 190 0.0 9 o 150 230 0 7.8 o 190 70 0 2 o 40 23 0 2 o 75 0 0 4 H 50 35 50 55 d 300 100 0 F".encode())
+
+                    conn.send(" o 56 120 0.00 3 o 350 190 0.0 9 o 150 230 0 7.8 o 190 70 0 2 o 40 23 0 2 o 75 0 0 4 H 70 25 70 65 d 300 100 0 F".encode())
 
 
                     # conn.send("H 20 20 40 40 ".encode())
