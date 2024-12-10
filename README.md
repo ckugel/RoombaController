@@ -1,6 +1,9 @@
 # About
 This is the high level controller application for the roomba for Computer Engineer 2880. The main repo for our code can be found [here](https://github.com/ckugel/Waste-Cleanup.git).
 
+# Documentation
+There is documentation on using the app in the Wiki page and there is documentation on the functions within the app hosted [here](https://ckugel.github.io/RoombaController/docs/html/index.html)
+
 # How to use
 The app is fairly straightforward to use. The blue icon on the field is the bot. The red icon's on the field are pillars that we can see on the field.
 There are a few buttons that a user can use. They can choose whether to enter autonomous mode or to control the bot themselves. In autonomous mode the bot will SLAM and generate a path to the ore as well as to the "entrance" to the field which is where the bot started.
